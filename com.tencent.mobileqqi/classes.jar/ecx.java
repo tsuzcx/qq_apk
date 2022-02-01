@@ -1,37 +1,33 @@
-import android.graphics.Bitmap;
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
 
 public class ecx
-  implements IIconListener
+  extends Handler
 {
   public ecx(CircleMemberListActivity paramCircleMemberListActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    int i;
+    int j;
+    if (paramMessage.what == 1000)
+    {
+      i = CircleMemberListActivity.a(this.a).q();
+      j = CircleMemberListActivity.a(this.a).r();
+      if (i <= 0) {
+        break label63;
+      }
+      i -= 1;
+    }
     for (;;)
     {
+      this.a.b.a(new ecy(this, i, j - 1));
       return;
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        int i = CircleMemberListActivity.a(this.a).getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = CircleMemberListActivity.a(this.a).getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof edf)))
-          {
-            paramBitmap = (edf)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy);
-            }
-          }
-          paramInt2 += 1;
-        }
-      }
+      label63:
+      i = 0;
     }
   }
 }

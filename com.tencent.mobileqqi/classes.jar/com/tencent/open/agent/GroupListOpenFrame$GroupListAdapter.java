@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.open.agent.datamodel.FriendDataManager;
-import hjh;
+import hjg;
 
 public class GroupListOpenFrame$GroupListAdapter
   extends BaseAdapter
@@ -37,9 +37,9 @@ public class GroupListOpenFrame$GroupListAdapter
     {
       paramViewGroup = new GroupListOpenFrame.GroupListAdapter.ViewHolder(this);
       paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903345, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232180));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131232181));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232179));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232179));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131232180));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232178));
       paramView.setTag(paramViewGroup);
       str = this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramInt);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
@@ -53,7 +53,7 @@ public class GroupListOpenFrame$GroupListAdapter
     for (;;)
     {
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, 0, i, 0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new hjh(this, paramInt, str));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new hjg(this, paramInt, str));
       return paramView;
       paramViewGroup = (GroupListOpenFrame.GroupListAdapter.ViewHolder)paramView.getTag();
       break;

@@ -12,8 +12,8 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.testassister.activity.ShareDumpMemoryActivity;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import hup;
 import huq;
-import hur;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -38,16 +38,16 @@ public class DumpMemInfoHandler
   private static String d = "";
   private int jdField_a_of_type_Int = 0;
   private boolean jdField_a_of_type_Boolean = false;
-  private hur[] jdField_a_of_type_ArrayOfHur = new hur[DumpMemInfoHandler.Heap.values().length];
+  private huq[] jdField_a_of_type_ArrayOfHuq = new huq[DumpMemInfoHandler.Heap.values().length];
   private Hashtable[] jdField_a_of_type_ArrayOfJavaUtilHashtable = new Hashtable[DumpMemInfoHandler.Heap.values().length];
   private String e;
   
   public DumpMemInfoHandler()
   {
     d = Environment.getExternalStorageDirectory().getPath() + "/Tencent/MobileQQ/log/";
-    while (i < this.jdField_a_of_type_ArrayOfHur.length)
+    while (i < this.jdField_a_of_type_ArrayOfHuq.length)
     {
-      this.jdField_a_of_type_ArrayOfHur[i] = new hur(this, null);
+      this.jdField_a_of_type_ArrayOfHuq[i] = new huq(this, null);
       this.jdField_a_of_type_ArrayOfJavaUtilHashtable[i] = new Hashtable();
       i += 1;
     }
@@ -78,9 +78,9 @@ public class DumpMemInfoHandler
     DumpMemInfoHandler.Heap[] arrayOfHeap = DumpMemInfoHandler.Heap.values();
     ((StringBuffer)localObject).append(String.format("TotalPss%8dK\n", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfHur.length)
+    while (i < this.jdField_a_of_type_ArrayOfHuq.length)
     {
-      ((StringBuffer)localObject).append(String.format("\n\n%-11s    %dK\n", new Object[] { arrayOfHeap[i].name(), Long.valueOf(this.jdField_a_of_type_ArrayOfHur[i].a) }));
+      ((StringBuffer)localObject).append(String.format("\n\n%-11s    %dK\n", new Object[] { arrayOfHeap[i].name(), Long.valueOf(this.jdField_a_of_type_ArrayOfHuq[i].a) }));
       if (this.jdField_a_of_type_ArrayOfJavaUtilHashtable[i].size() > 0)
       {
         Map.Entry[] arrayOfEntry = a(this.jdField_a_of_type_ArrayOfJavaUtilHashtable[i]);
@@ -355,7 +355,7 @@ public class DumpMemInfoHandler
   {
     paramHashtable = paramHashtable.entrySet();
     paramHashtable = (Map.Entry[])paramHashtable.toArray(new Map.Entry[paramHashtable.size()]);
-    Arrays.sort(paramHashtable, new huq(this));
+    Arrays.sort(paramHashtable, new hup(this));
     return paramHashtable;
   }
   
@@ -469,12 +469,12 @@ public class DumpMemInfoHandler
               continue;
             }
             ((Hashtable)localObject2).put(paramString, Integer.valueOf(((Integer)((Hashtable)localObject2).get(paramString)).intValue() + i));
-            localObject2 = this.jdField_a_of_type_ArrayOfHur[n];
-            ((hur)localObject2).a += i;
-            localObject2 = this.jdField_a_of_type_ArrayOfHur[n];
-            ((hur)localObject2).b += j;
-            localObject2 = this.jdField_a_of_type_ArrayOfHur[n];
-            ((hur)localObject2).c += k;
+            localObject2 = this.jdField_a_of_type_ArrayOfHuq[n];
+            ((huq)localObject2).a += i;
+            localObject2 = this.jdField_a_of_type_ArrayOfHuq[n];
+            ((huq)localObject2).b += j;
+            localObject2 = this.jdField_a_of_type_ArrayOfHuq[n];
+            ((huq)localObject2).c += k;
             this.jdField_a_of_type_Int += i;
             localObject2 = paramString;
             n = k;

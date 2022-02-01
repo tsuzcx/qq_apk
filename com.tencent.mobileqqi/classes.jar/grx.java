@@ -1,19 +1,10 @@
 import android.widget.ImageView;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.troop.activity.TroopBarCommentActivity;
+import com.tencent.image.URLImageView;
 
 public class grx
-  implements Runnable
 {
-  public grx(TroopBarCommentActivity paramTroopBarCommentActivity) {}
-  
-  public void run()
-  {
-    this.a.b = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839370);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.a.getString(2131558490));
-  }
+  public ImageView a;
+  public URLImageView a;
 }
 
 

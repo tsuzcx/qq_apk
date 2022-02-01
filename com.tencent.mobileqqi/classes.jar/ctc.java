@@ -1,15 +1,23 @@
 import android.graphics.Bitmap;
+import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.LoginActivity;
 
-public class ctc
+class ctc
   implements Runnable
 {
-  public ctc(LoginActivity paramLoginActivity, String paramString) {}
+  ctc(ctb paramctb, Bitmap paramBitmap) {}
   
   public void run()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.a(this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.runOnUiThread(new ctd(this, localBitmap));
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_Ctb.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Ctb.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(500L);
+      this.jdField_a_of_type_Ctb.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_Ctb.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+      return;
+    }
+    this.jdField_a_of_type_Ctb.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838113);
   }
 }
 

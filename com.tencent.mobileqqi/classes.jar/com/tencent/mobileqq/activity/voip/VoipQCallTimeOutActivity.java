@@ -8,8 +8,8 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.FriendManager;
+import ewy;
 import ewz;
-import exa;
 
 public class VoipQCallTimeOutActivity
   extends BaseActivity
@@ -28,10 +28,10 @@ public class VoipQCallTimeOutActivity
     }
     for (;;)
     {
-      ((Button)findViewById(2131234711)).setOnClickListener(new ewz(this, localIntent, paramBundle));
-      ((TextView)findViewById(2131234709)).setText(paramBundle);
-      ((Button)findViewById(2131234712)).setOnClickListener(new exa(this, str));
-      ((ImageView)findViewById(2131234708)).setImageDrawable(this.b.c(str));
+      ((Button)findViewById(2131234710)).setOnClickListener(new ewy(this, localIntent, paramBundle));
+      ((TextView)findViewById(2131234708)).setText(paramBundle);
+      ((Button)findViewById(2131234711)).setOnClickListener(new ewz(this, str));
+      ((ImageView)findViewById(2131234707)).setImageDrawable(this.b.c(str));
       return;
     }
   }

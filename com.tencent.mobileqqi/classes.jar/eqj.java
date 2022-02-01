@@ -1,15 +1,24 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.RenMaiQuanMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.service.circle.IGroupObserver;
 
 public class eqj
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements IGroupObserver
 {
-  public CheckBox a;
-  public TextView a;
+  public eqj(RenMaiQuanMemberListInnerFrame paramRenMaiQuanMemberListInnerFrame) {}
   
-  private eqj(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (paramInt == 2) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.k();
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaUtilArrayList, false);
+      this.a.jdField_a_of_type_Eqk.notifyDataSetChanged();
+    }
+  }
 }
 
 

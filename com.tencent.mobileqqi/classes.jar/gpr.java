@@ -1,20 +1,18 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
+import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView;
 
 public class gpr
-  extends GestureDetector.SimpleOnGestureListener
+  extends FriendListObserver
 {
   public gpr(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  protected void c(boolean paramBoolean, String paramString)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (this.a.a == null)) {}
-    while (paramMotionEvent2.getY() - paramMotionEvent1.getY() >= 0.0F) {
-      return false;
+    if ((!paramBoolean) || (!this.a.b)) {
+      return;
     }
-    this.a.b(false);
-    return true;
+    this.a.a.a(paramString);
   }
 }
 

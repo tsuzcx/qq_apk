@@ -1,37 +1,20 @@
-import android.view.View;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
 public class eah
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public eah(PttItemBuilder paramPttItemBuilder, MessageForPtt paramMessageForPtt, ActionSheet paramActionSheet) {}
+  AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
+  String jdField_a_of_type_JavaLangString;
   
-  public void OnClick(View paramView, int paramInt)
+  public eah(String paramString, AudioPlayer paramAudioPlayer)
   {
-    ChatActivityFacade.a(PttItemBuilder.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    paramView = ChatActivityFacade.a(PttItemBuilder.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder), PttItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if (paramView != null) {}
-    try
-    {
-      ChatActivityFacade.a(PttItemBuilder.i(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, paramView.uniseq, true);
-      PttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    }
-    catch (RuntimeException paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        Toast.makeText(PttItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder), paramView.getMessage(), 0).show();
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = paramAudioPlayer;
+  }
+  
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

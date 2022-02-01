@@ -1,44 +1,28 @@
+import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.data.TroopBarPostAbsLayout.AbsItemViewHolder;
-import com.tencent.mobileqq.troop.data.TroopBarPostLayout3;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.TroopBarPageEntity;
+import com.tencent.mobileqq.troop.data.TroopBarPostLayoutBanner;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
 
 public class gvi
-  extends TroopBarPostAbsLayout.AbsItemViewHolder
+  implements Runnable
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public URLImageView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c = null;
-  public TextView d = null;
-  public TextView e = null;
-  public TextView f = null;
+  public gvi(TroopBarPostLayoutBanner paramTroopBarPostLayoutBanner, View paramView) {}
   
-  public gvi(TroopBarPostLayout3 paramTroopBarPostLayout3, View paramView)
+  public void run()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_ComTencentImageURLImageView = null;
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232490));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232498));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131232499));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232478));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232491));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232503));
-    this.c = ((TextView)paramView.findViewById(2131232500));
-    this.d = ((TextView)paramView.findViewById(2131232504));
-    this.e = ((TextView)paramView.findViewById(2131232501));
-    this.f = ((TextView)paramView.findViewById(2131232502));
+    Object localObject2 = this.jdField_a_of_type_AndroidViewView.getContext();
+    Object localObject1 = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((!(localObject2 instanceof BaseActivity)) || (!(localObject1 instanceof View))) {
+      return;
+    }
+    localObject1 = (TroopBarPageEntity)((View)localObject1).getTag(2131230860);
+    localObject2 = (BaseActivity)localObject2;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("bid", ((TroopBarPageEntity)localObject1).id);
+    TroopBarUtils.a((BaseActivity)localObject2, localBundle, "http://xiaoqu.qq.com/cgi-bin/bar/sign", 1, null, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPostLayoutBanner.a);
+    TroopBarUtils.a("Clk_sign", ((TroopBarPageEntity)localObject1).id, "");
   }
 }
 

@@ -8,9 +8,9 @@ public class cxb
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.b = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.a.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e);
   }
 }
 

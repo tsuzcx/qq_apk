@@ -1,41 +1,18 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.widget.AbsSpinner;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsSpinner.SavedState;
 
-public class hvj
+public final class hvj
+  implements Parcelable.Creator
 {
-  private final SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  
-  public hvj(AbsSpinner paramAbsSpinner) {}
-  
-  public View a(int paramInt)
+  public AbsSpinner.SavedState a(Parcel paramParcel)
   {
-    View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localView != null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
-    }
-    return localView;
+    return new AbsSpinner.SavedState(paramParcel, null);
   }
   
-  public void a()
+  public AbsSpinner.SavedState[] a(int paramInt)
   {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int j = localSparseArray.size();
-    int i = 0;
-    while (i < j)
-    {
-      View localView = (View)localSparseArray.valueAt(i);
-      if (localView != null) {
-        AbsSpinner.a(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
-      }
-      i += 1;
-    }
-    localSparseArray.clear();
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
+    return new AbsSpinner.SavedState[paramInt];
   }
 }
 

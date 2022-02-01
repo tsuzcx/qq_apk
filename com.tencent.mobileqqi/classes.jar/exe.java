@@ -1,19 +1,25 @@
-import android.content.Context;
-import android.widget.Toast;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.unipay.plugsdk.IUnipayServiceCallBack.Stub;
 
-class exe
-  implements Runnable
+public class exe
+  extends IUnipayServiceCallBack.Stub
 {
-  exe(exc paramexc, Context paramContext) {}
+  public exe(VoipTencentPayActivity paramVoipTencentPayActivity) {}
   
-  public void run()
+  public void UnipayCallBack(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Exc.a.a.hide();
-    Toast.makeText(this.jdField_a_of_type_AndroidContentContext, "加载失败", 0).show();
-    this.jdField_a_of_type_Exc.a.finish();
+    QLog.d("UnipayPlugAPI", 2, "UnipayCallBack \n\nresultCode = " + paramInt1 + "\npayChannel = " + paramInt2 + "\npayState = " + paramInt3 + "\nproviderState = " + paramInt4 + "\nnpayMsg =" + paramString1);
+    if ((paramInt1 == 0) || (paramInt1 == 2))
+    {
+      VoipTencentPayActivity.a().post(new exf(this));
+      return;
+    }
+    VoipTencentPayActivity.a(this.a);
   }
+  
+  public void UnipayNeedLogin() {}
 }
 
 

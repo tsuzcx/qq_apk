@@ -1,4 +1,3 @@
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
 import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
 public class gas
@@ -8,7 +7,7 @@ public class gas
   
   public void run()
   {
-    MagicfaceViewController.a(this.a).d();
+    this.a.a(MagicfaceViewController.a(this.a), 1, null);
   }
 }
 

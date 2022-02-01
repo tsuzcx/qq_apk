@@ -130,7 +130,7 @@ public class LiteVideoActivity
   {
     setTitle(2131558512);
     if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231376));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231375));
     }
     this.jdField_b_of_type_AndroidWidgetTextView = this.k;
     if (this.jdField_b_of_type_AndroidWidgetTextView != null) {

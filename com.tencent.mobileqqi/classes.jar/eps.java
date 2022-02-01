@@ -1,15 +1,26 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
+import java.util.HashMap;
 
 public class eps
+  implements Comparator
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
+  public eps(DiscussionListInnerFrame paramDiscussionListInnerFrame, HashMap paramHashMap) {}
   
-  eps(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public int a(Entity paramEntity1, Entity paramEntity2)
+  {
+    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
+    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
+    if (l1 < l2) {
+      return -1;
+    }
+    if (l1 > l2) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

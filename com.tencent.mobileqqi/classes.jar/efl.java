@@ -1,43 +1,75 @@
-import android.os.Handler;
-import android.view.MotionEvent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter.ViewHolder;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
+import com.tencent.widget.AbsListView;
 
 public class efl
-  implements View.OnTouchListener
+  implements SlideDetectListView.OnScrollToTopListener
 {
-  private float jdField_a_of_type_Float;
-  private float b;
-  
   public efl(SystemMsgListView paramSystemMsgListView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a(paramMotionEvent.getRawY()))
-      {
-        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-        this.b = paramMotionEvent.getRawY();
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.sendEmptyMessageDelayed(1013, 500L);
-      }
+    if ((SystemMsgListView.a(this.a) != null) && (paramInt == 0) && (SystemMsgListView.a(this.a) == SystemMsgListView.a(this.a).getCount())) {
+      SystemMsgListView.b(this.a);
+    }
+    SystemMsgListView.a(this.a, paramInt);
+    if (paramInt != 0)
+    {
+      SystemMsgListView.a(this.a).c();
+      SystemMsgListView.a(this.a).a();
     }
     for (;;)
     {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
-      continue;
-      if (paramMotionEvent.getAction() == 2)
-      {
-        if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) > 60.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) > 60.0F)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
-        }
+      return;
+      if (SystemMsgListView.a(this.a).a()) {
+        SystemMsgListView.a(this.a).b();
       }
-      else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView.a.removeMessages(1013);
+      int i = SystemMsgListView.a(this.a).getChildCount();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        SystemMsgListAdapter.ViewHolder localViewHolder = (SystemMsgListAdapter.ViewHolder)SystemMsgListView.a(this.a).getChildAt(paramInt).getTag();
+        if ((localViewHolder != null) && (!TextUtils.isEmpty(localViewHolder.jdField_a_of_type_JavaLangString)))
+        {
+          Bitmap localBitmap = SystemMsgListView.a(this.a).a(1, localViewHolder.jdField_a_of_type_JavaLangString);
+          paramAbsListView = localBitmap;
+          if (localBitmap == null)
+          {
+            SystemMsgListView.a(this.a).a(localViewHolder.jdField_a_of_type_JavaLangString, 1, false);
+            if (SystemMsgListView.a(this.a) == null) {
+              SystemMsgListView.a(this.a, ImageUtil.a());
+            }
+            paramAbsListView = SystemMsgListView.a(this.a);
+          }
+          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramAbsListView);
+        }
+        paramInt += 1;
       }
     }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    SystemMsgListView.b(this.a, paramInt1 + paramInt2 - 1);
+    if (paramInt1 > 1) {
+      FriendSystemMsgController.a().a();
+    }
+    while (!SystemMsgListView.c(this.a)) {
+      return;
+    }
+    FriendSystemMsgController.a().f();
   }
 }
 

@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountSettingActivity;
 
 public class dmg
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public dmg(SubAccountMessageActivity paramSubAccountMessageActivity, String paramString) {}
+  public dmg(SubAccountSettingActivity paramSubAccountSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity, SubLoginActivity.class);
-    paramDialogInterface.putExtra("is_need_bind", false);
-    paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.f();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.finish();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

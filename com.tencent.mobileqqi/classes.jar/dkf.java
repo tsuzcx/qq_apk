@@ -1,13 +1,31 @@
+import android.util.Pair;
+import android.view.View;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.List;
 
 public class dkf
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public dkf(SplashActivity paramSplashActivity, int paramInt) {}
+  public dkf(SplashActivity paramSplashActivity, List paramList, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.e();
+    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return;
+    }
+    try
+    {
+      SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (dkh)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
 }
 

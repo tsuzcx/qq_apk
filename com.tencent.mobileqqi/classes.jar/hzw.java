@@ -1,23 +1,12 @@
-import android.app.Activity;
-import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
 
 class hzw
-  extends hzx
 {
-  public Activity a;
+  public IPluginManager.PluginParams a;
   
-  public hzw(hzv paramhzv, Activity paramActivity, IPluginManager.PluginParams paramPluginParams)
-  {
-    super(paramhzv);
-    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
+  hzw(hzu paramhzu) {}
   
-  public void a()
-  {
-    IPluginManager.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
-  }
+  public void a() {}
 }
 
 

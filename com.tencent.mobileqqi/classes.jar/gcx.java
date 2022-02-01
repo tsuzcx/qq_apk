@@ -1,20 +1,18 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.music.SongInfo;
 
 public final class gcx
-  extends Handler
+  implements Parcelable.Creator
 {
-  public gcx(QQPlayerService paramQQPlayerService, Looper paramLooper)
+  public SongInfo a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new SongInfo(paramParcel, null);
   }
   
-  public void handleMessage(Message paramMessage)
+  public SongInfo[] a(int paramInt)
   {
-    QQPlayerService.a(this.a, (Intent)paramMessage.obj);
+    return new SongInfo[paramInt];
   }
 }
 

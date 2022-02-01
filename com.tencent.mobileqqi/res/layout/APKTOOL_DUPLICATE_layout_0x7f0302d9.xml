@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f080bf3" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bfe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f080bf2" />
     <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0302d5" />
 </RelativeLayout>

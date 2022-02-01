@@ -42,7 +42,7 @@ public class bmc
     localObject = QRUtils.a(paramString2, -1);
     if (localObject != null)
     {
-      ((TextView)this.a.findViewById(2131232583)).setText(paramString2);
+      ((TextView)this.a.findViewById(2131232582)).setText(paramString2);
       this.a.jdField_e_of_type_AndroidViewView.setVisibility(0);
       if (this.a.f != 540)
       {

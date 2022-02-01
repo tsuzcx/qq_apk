@@ -10,7 +10,7 @@ public class chz
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

@@ -1,27 +1,43 @@
-import android.view.View;
-import android.widget.ExpandableListAdapter;
 import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.StatisticTroopAssist;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnChildClickListener;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.Map;
 
 public class doe
-  implements ExpandableListView.OnChildClickListener
+  extends FriendListObserver
 {
   public doe(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
+  protected void a(boolean paramBoolean, Map paramMap)
   {
-    if (((TroopMessageSettingAdapter)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
-      return true;
+    if (paramBoolean) {}
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.b, this.a.jdField_a_of_type_JavaUtilList);
+    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+    this.a.e();
+    QQToast.a(this.a.a(), 2131562192, 0).b(this.a.d());
+  }
+  
+  protected void c(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.b, this.a.jdField_a_of_type_JavaUtilList);
+      if (this.a.jdField_a_of_type_JavaUtilMap != null) {}
     }
-    StatisticTroopAssist.c(this.a.a(), this.a.b.a());
-    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
-    this.a.a(paramExpandableListView);
-    return true;
+    else
+    {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+    this.a.e();
   }
 }
 

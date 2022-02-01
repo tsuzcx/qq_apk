@@ -1,20 +1,22 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.service.circle.IGroupObserver;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.service.circle.IFriendObserver;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class ezw
-  implements Runnable
+  extends FriendListObserver
 {
   public ezw(CircleManager paramCircleManager) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String[] paramArrayOfString, Bundle paramBundle)
   {
-    if (this.a.b != null)
+    if ((paramBundle.getBoolean("isHighPriority", false)) && (this.a.c != null))
     {
-      Iterator localIterator = this.a.b.iterator();
-      while (localIterator.hasNext()) {
-        ((IGroupObserver)localIterator.next()).a(true, 3);
+      paramBundle = this.a.c.iterator();
+      while (paramBundle.hasNext()) {
+        ((IFriendObserver)paramBundle.next()).a(paramBoolean, paramArrayOfString);
       }
     }
   }

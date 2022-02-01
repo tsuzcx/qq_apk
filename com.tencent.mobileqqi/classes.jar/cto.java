@@ -1,58 +1,170 @@
-import android.os.SystemClock;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.widget.AutoCompleteTextView;
 import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.app.PrivacyDeclareHelper;
-import com.tencent.mobileqq.app.PrivacyDeclareHelper.Callback;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.international.LocaleString;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.observer.AccountObserver;
 
 public class cto
-  implements PrivacyDeclareHelper.Callback
+  extends AccountObserver
 {
-  public cto(LoginActivity paramLoginActivity, String paramString, byte[] paramArrayOfByte) {}
+  public cto(LoginActivity paramLoginActivity) {}
   
-  public void a()
+  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    PrivacyDeclareHelper.a(LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity));
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount == null) && (libsafeedit.checkPassLegal("!@#ewaGbhkc$!!=")))
+    QLog.d("login", 1, "LoginActivity onLoginFailed ret=" + paramInt);
+    if (!this.a.isFinishing()) {}
+    try
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();
-      int i = 0;
-      if (i < this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.size())
+      this.a.dismissDialog(0);
+      this.a.runOnUiThread(new ctp(this));
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginActivity", 2, "onLoginFailed errorMsg = " + paramString2 + " ret=" + paramInt);
+      }
+      if (!TextUtils.isEmpty(this.a.c))
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(i) == null) || (((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(i)).getUin() == null)) {}
-        while (!((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(i)).getUin().equals(str))
+        List localList = this.a.getAppRuntime().getApplication().getAllAccounts();
+        if ((localList != null) && (localList.size() > 0))
         {
-          i += 1;
-          break;
+          str = this.a.a.getText().toString();
+          int i = 0;
+          for (;;)
+          {
+            if (i >= localList.size()) {
+              break label258;
+            }
+            localSimpleAccount = (SimpleAccount)localList.get(i);
+            if (localSimpleAccount != null) {
+              break;
+            }
+            i += 1;
+          }
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(i));
       }
     }
-    com.tencent.common.app.BaseApplicationImpl.jdField_c_of_type_Long = SystemClock.uptimeMillis() - LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
+    catch (Exception localException)
     {
-      com.tencent.common.app.BaseApplicationImpl.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.showDialog(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.b.login(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount);
+      String str;
+      SimpleAccount localSimpleAccount;
+      do
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
+      } while (!str.equals(this.a.b.b(localSimpleAccount.getUin())));
+      SharedPreUtils.a(this.a.b.getApplication().getApplicationContext(), this.a.c, true);
+      label258:
+      if ((paramString2 == null) || (paramString2.equals("")))
+      {
+        QQToast.a(this.a, 2131562451, 0).a();
+        return;
+      }
+      if (!TextUtils.isEmpty(paramString3))
+      {
+        Intent localIntent = new Intent(this.a, NotificationActivity.class);
+        localIntent.putExtra("type", 8);
+        if (paramInt == 40) {
+          localIntent.putExtra("msg", paramString2);
+        }
+        for (;;)
+        {
+          localIntent.putExtra("loginalias", paramString1);
+          localIntent.putExtra("loginret", paramInt);
+          this.a.startActivity(localIntent);
+          return;
+          localIntent.putExtra("msg", LocaleString.a(this.a, paramString2) + " " + paramString3);
+        }
+      }
+      if (paramInt == 2008)
+      {
+        QQToast.a(this.a, 2131563021, 0).a();
+        return;
+      }
+      QQToast.a(this.a, LocaleString.a(this.a, paramString2), 0).a();
+    }
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    if (paramString1.equals(LoginActivity.a(this.a))) {
+      PrivacyDeclareHelper.a(paramString1, null);
     }
     for (;;)
     {
-      AlbumUtil.b();
+      QLog.d("login", 1, "LoginActivity onLoginSuccess");
       return;
-      com.tencent.common.app.BaseApplicationImpl.jdField_c_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.showDialog(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.getAppRuntime().login(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity));
+      PrivacyDeclareHelper.a(paramString1, LoginActivity.a(this.a));
+    }
+  }
+  
+  protected void onLoginTimeout(String paramString)
+  {
+    QLog.d("login", 1, "LoginActivity onLoginTimeout");
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      if (!TextUtils.isEmpty(this.a.c))
+      {
+        paramString = this.a.getAppRuntime().getApplication().getAllAccounts();
+        if ((paramString != null) && (paramString.size() > 0))
+        {
+          str = this.a.a.getText().toString();
+          int i = 0;
+          for (;;)
+          {
+            if (i >= paramString.size()) {
+              break label170;
+            }
+            localSimpleAccount = (SimpleAccount)paramString.get(i);
+            if (localSimpleAccount != null) {
+              break;
+            }
+            i += 1;
+          }
+        }
+      }
+    }
+    catch (Exception paramString)
+    {
+      String str;
+      SimpleAccount localSimpleAccount;
+      do
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      } while (!str.equals(this.a.b.b(localSimpleAccount.getUin())));
+      SharedPreUtils.a(this.a.b.getApplication().getApplicationContext(), this.a.c, true);
+      label170:
+      QQToast.a(this.a, 2131562451, 0).a();
+    }
+  }
+  
+  protected void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

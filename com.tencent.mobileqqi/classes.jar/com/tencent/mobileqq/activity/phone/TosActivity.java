@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.international.LocaleUtil;
 import com.tencent.util.VersionUtils;
 import com.tencent.widget.ProtectedWebView;
-import ely;
+import elx;
 
 public class TosActivity
   extends IphoneTitleBarActivity
@@ -65,7 +65,7 @@ public class TosActivity
     }
     for (;;)
     {
-      this.a.setOnLongClickListener(new ely(this));
+      this.a.setOnLongClickListener(new elx(this));
       return true;
       this.a.loadUrl(paramBundle);
       continue;

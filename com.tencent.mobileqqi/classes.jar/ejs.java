@@ -1,55 +1,39 @@
 import android.content.Context;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.messagesearch.HistoryItem;
 import com.tencent.mobileqq.activity.messagesearch.MessageItem;
 import com.tencent.mobileqq.activity.messagesearch.MessageResultAdapter;
 import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.mobileqq.activity.messagesearch.SearchHistoryAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 import com.tencent.widget.XListView;
 
 public class ejs
-  implements AdapterView.OnItemClickListener
+  implements AdapterView.OnItemLongClickListener
 {
   public ejs(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onItemClick, position = " + paramInt);
+      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onLongClick, position = " + paramInt);
     }
     paramAdapterView = MessageSearchDialog.a(this.a).a();
     if (paramAdapterView == this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter)
     {
-      paramAdapterView = (MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.getItem(paramInt);
-      MessageSearchDialog.a(this.a, MessageSearchDialog.a(this.a).a().a(MessageSearchDialog.a(this.a).jdField_a_of_type_JavaLangString, MessageSearchDialog.a(this.a).jdField_a_of_type_Int, paramAdapterView.a));
-      if (QLog.isColorLevel()) {
-        QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onItemClick, mRecordCount = " + MessageSearchDialog.a(this.a));
-      }
-      this.a.dismiss();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem = ((MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.getItem(paramInt));
+      paramAdapterView = new QQCustomMenu();
+      paramAdapterView.a(2131234878, MessageSearchDialog.a(this.a).getString(17039361));
+      paramAdapterView.a(2131231189, MessageSearchDialog.a(this.a).getString(2131562129));
+      MessageSearchDialog.a(this.a, BubbleContextMenu.a(paramView, paramAdapterView, MessageSearchDialog.a(this.a), null));
     }
-    do
+    for (;;)
     {
-      return;
-      if (paramAdapterView == this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter)
-      {
-        paramAdapterView = (HistoryItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter.getItem(paramInt);
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramAdapterView.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramAdapterView.jdField_a_of_type_JavaLangString.length());
-        this.a.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-        ((InputMethodManager)this.a.jdField_a_of_type_AndroidWidgetEditText.getContext().getSystemService("input_method")).toggleSoftInput(0, 2);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onItemClick, unknown data type");
+      return true;
+      if (paramAdapterView != this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {}
+    }
   }
 }
 

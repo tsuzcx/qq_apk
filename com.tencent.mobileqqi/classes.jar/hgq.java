@@ -1,23 +1,17 @@
-import android.database.DataSetObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.mobileqq.widget.GridListView.GridListAdapter;
-import com.tencent.mobileqq.widget.GridListView.WraperAdapter;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class hgq
-  extends DataSetObserver
+  implements View.OnClickListener
 {
   public hgq(GridListView paramGridListView) {}
   
-  public void onChanged()
+  public void onClick(View paramView)
   {
-    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetInvalidated();
+    int i = ((Integer)paramView.getTag(2131233144)).intValue();
+    this.a.a.a(this.a, paramView, i, 0L);
   }
 }
 

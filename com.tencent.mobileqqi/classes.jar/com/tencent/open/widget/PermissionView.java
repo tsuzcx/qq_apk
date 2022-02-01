@@ -75,12 +75,12 @@ public class PermissionView
   protected void a()
   {
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131232109));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131232108));
     this.jdField_a_of_type_AndroidWidgetListView.setDivider(null);
     this.jdField_a_of_type_ComTencentOpenWidgetPermissionView$PermissionAdapter = new PermissionView.PermissionAdapter(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232112));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232113));
-    this.b = ((RelativeLayout)findViewById(2131232110));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232111));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232112));
+    this.b = ((RelativeLayout)findViewById(2131232109));
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentOpenWidgetPermissionView$PermissionAdapter);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams());
   }

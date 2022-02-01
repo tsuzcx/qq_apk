@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
+import bwi;
 import bwj;
-import bwk;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.MyCheckBox;
@@ -35,10 +35,10 @@ public class AutoReplySettingActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231160);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231159);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMyCheckBox = ((MyCheckBox)findViewById(2131231013));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231161));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231162));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231160));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231161));
     this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplication.getContext().getSharedPreferences("share", 0);
     this.jdField_b_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
     boolean bool = this.jdField_b_of_type_AndroidContentSharedPreferences.getBoolean(getString(2131563452) + this.jdField_a_of_type_JavaLangString, true);
@@ -52,8 +52,8 @@ public class AutoReplySettingActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bwj(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetMyCheckBox.setOnCheckedChangeListener(new bwk(this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bwi(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetMyCheckBox.setOnCheckedChangeListener(new bwj(this));
       return;
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);

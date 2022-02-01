@@ -1,47 +1,24 @@
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.proxy.GroupActionResp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.utils.DialogUtil;
+import java.util.List;
 
 public class cpp
-  extends FriendListObserver
+  implements AdapterView.OnItemClickListener
 {
   public cpp(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void a(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(GroupManagerActivity.a, 2, "onAddGroupResp isSuccess = " + paramBoolean);
+    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
+      return;
     }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void b(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(GroupManagerActivity.a, 2, "onRenameGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void c(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(GroupManagerActivity.a, 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void d(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(GroupManagerActivity.a, 2, "onResortGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(true);
-    GroupManagerActivity.c(this.a, true);
+    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
+    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131562003, 2131562625, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 1);
   }
 }
 

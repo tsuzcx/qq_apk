@@ -1,29 +1,33 @@
+import android.content.Intent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.InnerFrameManager;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class erh
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
   public erh(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = ((SelectMemberActivity.ResultRecord)paramView.getTag()).a;
-    if (this.a.a(paramAdapterView))
+    if (!NetworkUtil.e(BaseApplication.getContext()))
     {
-      this.a.a(paramAdapterView);
-      this.a.d();
-      paramInt = this.a.a.a();
-      if ((paramInt == 8) || (paramInt == 9) || (paramInt == 6) || (paramInt == 5) || (paramInt == 7) || (paramInt == 2)) {
-        ((SelectMemberInnerFrame)this.a.a.getCurrentView()).f();
-      }
-      this.a.a(false);
+      QQToast.a(this.a, this.a.getString(2131562452), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
+      return;
     }
+    if ((this.a.jdField_a_of_type_AndroidContentIntent != null) && (this.a.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("ShowJoinDiscTips", false)))
+    {
+      DialogUtil.a(this.a, 230, this.a.getString(2131560225), this.a.getString(2131562255), 2131560229, 2131560230, new eri(this), new erj(this)).show();
+      ReportController.b(this.a.b, "CliOper", "", "", "Multi_call", "Show_join_discuss_tips", 0, 0, "", "", "", "");
+      return;
+    }
+    this.a.f();
   }
 }
 

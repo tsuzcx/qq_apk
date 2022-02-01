@@ -1,20 +1,18 @@
-import android.app.Dialog;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class clg
   implements Animation.AnimationListener
 {
-  public clg(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public clg(ForwardFriendListActivity paramForwardFriendListActivity, int paramInt) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    ForwardFriendListActivity.a(this.a).show();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.requestLayout();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

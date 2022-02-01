@@ -1,17 +1,14 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.TimerTask;
 
-class gxx
-  implements FilenameFilter
+public class gxx
+  extends TimerTask
 {
-  gxx(gxw paramgxw) {}
+  public gxx(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void run()
   {
-    if (paramString == null) {
-      return false;
-    }
-    return paramString.startsWith("[Thumb]");
+    this.a.e();
   }
 }
 

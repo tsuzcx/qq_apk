@@ -7,7 +7,9 @@ public class hww
   
   public void run()
   {
-    this.a.dismiss();
+    TipsPopupWindow.a(this.a);
+    TipsPopupWindow.a(this.a, false);
+    TipsPopupWindow.b(this.a, false);
   }
 }
 

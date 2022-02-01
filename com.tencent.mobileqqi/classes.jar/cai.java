@@ -1,20 +1,16 @@
-import android.app.Dialog;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class cai
-  implements Animation.AnimationListener
+public final class cai
+  implements View.OnClickListener
 {
-  cai(cah paramcah) {}
+  public cai(Handler paramHandler, Runnable paramRunnable) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.dismiss();
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 0L);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

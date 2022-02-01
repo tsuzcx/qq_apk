@@ -1,18 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.MyEnterTroopChatItemBuilder;
 
 public class dzv
-  implements AnimationTextView.OnDoubleClick
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public dzv(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
+  public TextView b;
   
-  public void a(View paramView)
-  {
-    ChatActivityUtils.a(MixedMsgItemBuilder.a(this.a), paramView, (ChatActivity)MixedMsgItemBuilder.a(this.a));
-  }
+  public dzv(MyEnterTroopChatItemBuilder paramMyEnterTroopChatItemBuilder) {}
 }
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02015c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08028e" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030076" />
-    <com.tencent.widget.PinnedHeaderExpandableListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803ec" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02015c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:groupIndicator="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020181" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08028d" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030076" />
+    <com.tencent.widget.PinnedHeaderExpandableListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803eb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02015c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:groupIndicator="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020181" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null" />
 </LinearLayout>

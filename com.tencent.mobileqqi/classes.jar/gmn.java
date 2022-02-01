@@ -10,12 +10,12 @@ public class gmn
   {
     try
     {
-      if (ShareAppLogActivity.a(this.a) == null)
+      if ((ShareAppLogActivity.a(this.a) != null) && (ShareAppLogActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
       {
-        ShareAppLogActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
-        ShareAppLogActivity.a(this.a).b(2131562645);
+        ShareAppLogActivity.a(this.a).dismiss();
+        ShareAppLogActivity.a(this.a).cancel();
       }
-      ShareAppLogActivity.a(this.a).show();
+      ShareAppLogActivity.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

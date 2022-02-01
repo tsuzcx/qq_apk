@@ -13,9 +13,9 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import fes;
 import fet;
 import feu;
-import fev;
 import java.util.Locale;
 
 public class PrivacyPolicyHelper
@@ -45,17 +45,17 @@ public class PrivacyPolicyHelper
     Object localObject = Locale.getDefault().getLanguage();
     if ((((String)localObject).endsWith("cn")) || (((String)localObject).endsWith("zh")))
     {
-      localSpannableString.setSpan(new fev(paramContext, paramString, "https://www.imqq.com/mobile/terms/terms.html?language=ch_simple&lan=cn&lan=cn&lan=cn"), 114, 120, 33);
+      localSpannableString.setSpan(new feu(paramContext, paramString, "https://www.imqq.com/mobile/terms/terms.html?language=ch_simple&lan=cn&lan=cn&lan=cn"), 114, 120, 33);
       localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 114, 120, 17);
-      localSpannableString.setSpan(new fev(paramContext, paramString, "https://www.imqq.com/mobile/privacy/privacy.html?language=ch_simple&lan=cn&lan=cn&lan=cn"), 121, 127, 33);
+      localSpannableString.setSpan(new feu(paramContext, paramString, "https://www.imqq.com/mobile/privacy/privacy.html?language=ch_simple&lan=cn&lan=cn&lan=cn"), 121, 127, 33);
       localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 121, 127, 17);
-      localSpannableString.setSpan(new fev(paramContext, paramString, "https://www.imqq.com/mobile/privacy/privacy.html?language=ch_simple&lan=cn&lan=cn&lan=cn"), 128, 136, 33);
+      localSpannableString.setSpan(new feu(paramContext, paramString, "https://www.imqq.com/mobile/privacy/privacy.html?language=ch_simple&lan=cn&lan=cn&lan=cn"), 128, 136, 33);
       localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 128, 136, 17);
     }
     for (;;)
     {
-      paramString = new fet();
-      localObject = new feu();
+      paramString = new fes();
+      localObject = new fet();
       paramContext = DialogUtil.d(paramContext, 0, paramContext.getString(2131563387), localSpannableString.toString(), 2131563386, 2131563385, (DialogInterface.OnClickListener)localObject, paramString);
       paramContext.setCanceledOnTouchOutside(false);
       paramContext.setCancelable(true);
@@ -64,14 +64,14 @@ public class PrivacyPolicyHelper
       paramString.setTextSize(1, 13.0F);
       paramString.setHighlightColor(0);
       paramString.setMovementMethod(a());
-      ((TextView)paramContext.findViewById(2131231473)).setTextColor(Color.parseColor("#40A0FF"));
+      ((TextView)paramContext.findViewById(2131231472)).setTextColor(Color.parseColor("#40A0FF"));
       paramContext.show();
       return paramContext;
-      localSpannableString.setSpan(new fev(paramContext, paramString, "https://www.imqq.com/mobile/terms/terms.html?language=en_simple&lan=en&lan=en&lan=en"), 416, 433, 33);
+      localSpannableString.setSpan(new feu(paramContext, paramString, "https://www.imqq.com/mobile/terms/terms.html?language=en_simple&lan=en&lan=en&lan=en"), 416, 433, 33);
       localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 416, 433, 17);
-      localSpannableString.setSpan(new fev(paramContext, paramString, "https://www.imqq.com/privacy/privacy_En.html"), 434, 449, 33);
+      localSpannableString.setSpan(new feu(paramContext, paramString, "https://www.imqq.com/privacy/privacy_En.html"), 434, 449, 33);
       localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 434, 449, 17);
-      localSpannableString.setSpan(new fev(paramContext, paramString, "https://www.imqq.com/privacy/privacy_En.html"), 453, 475, 33);
+      localSpannableString.setSpan(new feu(paramContext, paramString, "https://www.imqq.com/privacy/privacy_En.html"), 453, 475, 33);
       localSpannableString.setSpan(new ForegroundColorSpan(-12541697), 453, 475, 17);
     }
   }

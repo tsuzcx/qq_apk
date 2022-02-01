@@ -1,9 +1,10 @@
+import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.open.downloadnew.DownloadManager;
 
 public final class hmn
   implements Runnable
 {
-  public hmn(String paramString) {}
+  public hmn(DownloadListener paramDownloadListener) {}
   
   public void run()
   {

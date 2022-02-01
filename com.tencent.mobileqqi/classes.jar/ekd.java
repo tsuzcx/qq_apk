@@ -1,25 +1,29 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.widget.EditText;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class ekd
-  implements Runnable
+  extends ContactBindObserver
 {
   public ekd(BindNumberActivity paramBindNumberActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    if (!this.a.isFinishing())
+    super.a(paramBoolean);
+    BindNumberActivity localBindNumberActivity = this.a;
+    if (paramBoolean)
     {
-      long l = SystemClock.uptimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
-      this.a.a.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
-      this.a.a.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      this.a.a.setSelection(this.a.a.getText().toString().length());
+      this.a.a.b();
+      BindNumberActivity.a(this.a).sendEmptyMessage(3);
+    }
+    for (;;)
+    {
+      this.a.b.unRegistObserver(BindNumberActivity.a(this.a));
+      BindNumberActivity.a(this.a, null);
+      return;
+      this.a.d();
     }
   }
 }

@@ -1,29 +1,52 @@
-import android.os.Handler;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
 public final class gac
-  implements IHttpCommunicatorListener
+  implements Runnable
 {
-  public void a(HttpMsg paramHttpMsg) {}
+  public gac(Activity paramActivity, String paramString) {}
   
-  public void a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
+  public void run()
   {
-    ReportLog.a().sendEmptyMessage(10000001);
-  }
-  
-  public void a(String paramString) {}
-  
-  public boolean a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
-  {
-    return true;
-  }
-  
-  public void b(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
-  {
-    ReportLog.a = false;
-    ReportLog.a().sendEmptyMessage(10000001);
+    try
+    {
+      if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+        return;
+      }
+      if ("V 6.0.3.6604".contains("CheckIn"))
+      {
+        AlertDialog localAlertDialog = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).create();
+        localAlertDialog.show();
+        Object localObject = localAlertDialog.getWindow();
+        ((Window)localObject).setContentView(2130903294);
+        ((TextView)((Window)localObject).findViewById(2131231987)).setText("Dump内存信息!");
+        ((TextView)((Window)localObject).findViewById(2131231990)).setText("是否dump内存信息？");
+        Button localButton = (Button)((Window)localObject).findViewById(2131231993);
+        localObject = (Button)((Window)localObject).findViewById(2131231992);
+        if (localButton != null)
+        {
+          localButton.setText(2131562539);
+          ((Button)localObject).setText(2131561746);
+          localButton.setOnClickListener(new gad(this, localAlertDialog));
+          ((Button)localObject).setOnClickListener(new gaf(this, localAlertDialog));
+          return;
+        }
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.e("ReportLog", 2, "showDumpDialog exception.", localThrowable);
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

@@ -22,14 +22,14 @@ public class fjz
       paramProtoReq.mergeFrom(paramProtoResp);
       int i = paramProtoReq.head.result.get();
       if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+        QLog.d("Q.systemmsg.", 2, "clearGroupSystemMsgResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
       }
       return;
     }
     catch (Exception paramProtoResp)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", paramProtoResp);
+      QLog.d("Q.systemmsg.", 2, "clearGroupSystemMsgResp exception", paramProtoResp);
     }
   }
 }

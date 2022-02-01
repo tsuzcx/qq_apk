@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.view.View;
 import android.view.ViewGroup;
-import eaw;
+import eav;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,12 +24,12 @@ public class StructingMsgItemBuilder$ViewCache
     return i;
   }
   
-  private eaw a(String paramString, ViewGroup paramViewGroup)
+  private eav a(String paramString, ViewGroup paramViewGroup)
   {
     Iterator localIterator = this.b.get(paramString).iterator();
     while (localIterator.hasNext())
     {
-      paramString = (eaw)localIterator.next();
+      paramString = (eav)localIterator.next();
       if (paramString != null) {
         paramString.a(paramViewGroup);
       }
@@ -70,24 +70,24 @@ public class StructingMsgItemBuilder$ViewCache
   
   public void a(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new eaw(paramString, paramView, paramViewGroup));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new eav(paramString, paramView, paramViewGroup));
   }
   
   public void a(String paramString, ViewGroup paramViewGroup)
   {
     if (paramViewGroup == null) {}
-    eaw localeaw;
+    eav localeav;
     do
     {
       return;
       while (!paramString.hasNext()) {
         paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.get(paramString).iterator();
       }
-      localeaw = (eaw)paramString.next();
-    } while ((localeaw == null) || ((localeaw.a() != paramViewGroup) && (localeaw.a() != null)));
-    localeaw.a().removeAllViews();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localeaw);
-    this.b.add(localeaw);
+      localeav = (eav)paramString.next();
+    } while ((localeav == null) || ((localeav.a() != paramViewGroup) && (localeav.a() != null)));
+    localeav.a().removeAllViews();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localeav);
+    this.b.add(localeav);
   }
 }
 

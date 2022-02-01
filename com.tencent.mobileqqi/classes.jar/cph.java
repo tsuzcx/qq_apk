@@ -1,15 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class cph
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public cph(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    this.a.c();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    StatisticCollector.a(this.a.getBaseContext()).a(this.a.b, this.a.b.a(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 

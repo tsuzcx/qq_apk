@@ -11,8 +11,8 @@ import com.tencent.open.agent.datamodel.Friend;
 import com.tencent.open.agent.datamodel.FriendDataManager;
 import com.tencent.open.agent.datamodel.ImageLoader;
 import com.tencent.open.agent.datamodel.QZonePortraitData;
+import hjb;
 import hjc;
-import hjd;
 import java.util.List;
 
 public class FriendChooser$SearchResultAdapter
@@ -48,16 +48,16 @@ public class FriendChooser$SearchResultAdapter
     if (paramView == null)
     {
       paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2130903970, paramViewGroup, false);
-      paramViewGroup = new hjd();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231568));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231411));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131234481));
+      paramViewGroup = new hjc();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231567));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231410));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131234480));
       paramView.setTag(paramViewGroup);
     }
     while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
       return paramView;
-      paramViewGroup = (hjd)paramView.getTag();
+      paramViewGroup = (hjc)paramView.getTag();
     }
     Friend localFriend = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     Object localObject;
@@ -73,7 +73,7 @@ public class FriendChooser$SearchResultAdapter
       }
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838010);
       localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      ImageLoader.a().a(localFriend.d, new hjc(this, (ImageView)localObject));
+      ImageLoader.a().a(localFriend.d, new hjb(this, (ImageView)localObject));
     }
     for (;;)
     {

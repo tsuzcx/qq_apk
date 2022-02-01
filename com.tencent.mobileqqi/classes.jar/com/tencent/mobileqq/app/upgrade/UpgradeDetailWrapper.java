@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import fkt;
+import fks;
 import protocol.KQQConfig.UpgradeInfo;
 
 public class UpgradeDetailWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new fkt();
+  public static final Parcelable.Creator CREATOR = new fks();
   public ApkUpdateDetail a;
   public UpgradeDetailWrapper.NewApkInfo a;
   public UpgradeInfo a;

@@ -5,14 +5,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.open.base.LogUtility;
-import hmr;
+import hmq;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DownloadInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new hmr();
+  public static final Parcelable.Creator CREATOR = new hmq();
   public static final int a = 0;
   protected static final String a;
   public static final int b = 1;

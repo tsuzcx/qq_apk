@@ -1,35 +1,21 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.qphone.base.util.QLog;
 
 public class esc
-  implements QvipSpecialSoundManager.CallBack
+  extends Handler
 {
   public esc(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean) {}
-    for (;;)
+    switch (paramMessage.what)
     {
-      try
-      {
-        QvipSpecialCareActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        QvipSpecialCareActivity.a(this.a);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QvipSpecialCareActivity", 2, "loadSpecialSoundConfig fail.");
-      }
+    default: 
+      return;
     }
+    QvipSpecialCareActivity.b(this.a);
+    QvipSpecialCareActivity.a(this.a, this.a.getString(2131562882));
   }
 }
 

@@ -82,12 +82,12 @@ public class VoipContactsSearchResultAdapter
     {
       paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903149, paramViewGroup, false);
       paramViewGroup = new VoipContactsSearchResultAdapter.ViewTag();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231408));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231409));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231412));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231411));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231413));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231414));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231407));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231408));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231411));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231410));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231412));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231413));
       paramView.setTag(paramViewGroup);
       localObject1 = (IContactSearchable)getItem(paramInt);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((IContactSearchable)localObject1).c());

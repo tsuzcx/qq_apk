@@ -3,8 +3,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
 import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
@@ -28,35 +27,25 @@ public class djx
         paramBundle = paramBundle.getByteArray("data");
         if (paramBundle != null)
         {
-          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
+          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+          localFollowResponse.mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+          if (paramInt == 0)
           {
-            if ((this.a.a == null) || ((this.a.a != null) && (localGetPublicAccountDetailInfoResponse.seqno.has()) && (localGetPublicAccountDetailInfoResponse.seqno.get() != this.a.a.seqno)))
-            {
-              SplashActivity.a(this.a, localGetPublicAccountDetailInfoResponse);
-              new AccountDetail(SplashActivity.a(this.a));
-              paramBundle = this.a.getSharedPreferences(this.a.b.a(), 0);
-              if ((paramBundle != null) && (paramBundle.getBoolean("qqi_public_account_first_login", true)))
-              {
-                SplashActivity.d(this.a);
-                paramBundle.edit().putBoolean("qqi_public_account_first_login", false).commit();
-              }
-            }
+            SplashActivity.f(this.a);
+            this.a.getSharedPreferences(this.a.b.a(), 0).edit().putBoolean("qqi_public_account", true).commit();
+            return;
           }
-          else {
-            SplashActivity.e(this.a);
+          if (paramInt != 58)
+          {
+            SplashActivity.g(this.a);
+            return;
           }
-        }
-        else
-        {
-          SplashActivity.e(this.a);
-          return;
         }
       }
       catch (Exception paramBundle) {}
     }
-    SplashActivity.e(this.a);
+    SplashActivity.g(this.a);
     return;
   }
 }

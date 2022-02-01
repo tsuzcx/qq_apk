@@ -1,23 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class grn
-  implements View.OnClickListener
+class grn
+  implements ActionSheet.OnButtonClickListener
 {
-  public grn(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  grn(grm paramgrm, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramView.getId() == 2131230986)
+    switch (paramInt)
     {
-      paramView = (ActionSheet)ActionSheetHelper.a(this.a, null);
-      paramView.a(2131561928, 3);
-      paramView.d(2131561746);
-      paramView.a(new gro(this, paramView));
-      paramView.show();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_Grm.a.a(this.jdField_a_of_type_Grm.a.a);
     }
   }
 }

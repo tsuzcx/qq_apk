@@ -1,16 +1,25 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.DiscussionListInnerFrame;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
 public class epv
+  extends Handler
 {
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public TextView b;
+  public epv(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
   
-  private epv(DiscussionListInnerFrame paramDiscussionListInnerFrame) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.a.setPadding(0, 0, 40, 0);
+      return;
+    }
+    this.a.a.setPadding(0, 0, 0, 0);
+  }
 }
 
 

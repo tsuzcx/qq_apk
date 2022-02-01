@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
 
 public final class dvr
   implements Parcelable.Creator
 {
-  public ForwardUtils.SectionBase a(Parcel paramParcel)
+  public ForwardUtils.Section_Pic a(Parcel paramParcel)
   {
-    return new ForwardUtils.SectionBase(paramParcel);
+    return new ForwardUtils.Section_Pic(paramParcel);
   }
   
-  public ForwardUtils.SectionBase[] a(int paramInt)
+  public ForwardUtils.Section_Pic[] a(int paramInt)
   {
-    return new ForwardUtils.SectionBase[paramInt];
+    return new ForwardUtils.Section_Pic[paramInt];
   }
 }
 

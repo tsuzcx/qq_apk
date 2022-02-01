@@ -9,7 +9,7 @@ import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import fot;
+import fos;
 
 public class EmoticonPagerRadioGroup
   extends RadioGroup
@@ -42,12 +42,12 @@ public class EmoticonPagerRadioGroup
   {
     float f1 = 15.0F;
     float f2 = 10.0F;
-    fot localfot = new fot(this, getContext());
+    fos localfos = new fos(this, getContext());
     Resources localResources;
     if (paramInt == 2)
     {
-      localfot.setButtonDrawable(2130839152);
-      localfot.setGravity(17);
+      localfos.setButtonDrawable(2130839152);
+      localfos.setGravity(17);
       localResources = getContext().getResources();
       if (paramInt != 2) {
         break label185;
@@ -61,20 +61,20 @@ public class EmoticonPagerRadioGroup
       int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
       localLayoutParams.leftMargin = i;
       localLayoutParams.rightMargin = i;
-      localfot.setLayoutParams(localLayoutParams);
-      localfot.setClickable(true);
+      localfos.setLayoutParams(localLayoutParams);
+      localfos.setClickable(true);
       if ((paramInt != 3) && (paramInt != 2))
       {
-        localfot.setClickable(false);
-        localfot.setFocusable(false);
+        localfos.setClickable(false);
+        localfos.setFocusable(false);
       }
-      return localfot;
+      return localfos;
       if (paramInt == 3)
       {
-        localfot.setButtonDrawable(2130839155);
+        localfos.setButtonDrawable(2130839155);
         break;
       }
-      localfot.setButtonDrawable(2130837975);
+      localfos.setButtonDrawable(2130837975);
       break;
       label185:
       if (paramInt == 3)

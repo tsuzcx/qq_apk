@@ -1,12 +1,15 @@
+import cooperation.plugin.PluginInstaller;
 import java.io.File;
-import java.io.FileFilter;
+import java.io.FilenameFilter;
 
-public final class iae
-  implements FileFilter
+public class iae
+  implements FilenameFilter
 {
-  public boolean accept(File paramFile)
+  public iae(PluginInstaller paramPluginInstaller, String paramString) {}
+  
+  public boolean accept(File paramFile, String paramString)
   {
-    return paramFile.getName().endsWith(".cfg");
+    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,19 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public final class ero
-  implements Parcelable.Creator
+public class ero
+  implements TextWatcher
 {
-  public SelectMemberActivity.ResultRecord a(Parcel paramParcel)
+  private ero(SelectMemberActivity paramSelectMemberActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    return new SelectMemberActivity.ResultRecord(paramParcel, null);
+    paramEditable = SelectMemberActivity.a(this.a).getText().toString().trim();
+    this.a.b(paramEditable);
   }
   
-  public SelectMemberActivity.ResultRecord[] a(int paramInt)
-  {
-    return new SelectMemberActivity.ResultRecord[paramInt];
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

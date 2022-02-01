@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import com.tencent.util.AnimateUtils;
-import hwn;
+import hwm;
 
 public class OverScroller
 {
@@ -13,9 +13,9 @@ public class OverScroller
   private static final int d = 1;
   private int jdField_a_of_type_Int;
   private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private final hwn jdField_a_of_type_Hwn;
+  private final hwm jdField_a_of_type_Hwm;
   private final boolean jdField_a_of_type_Boolean;
-  private final hwn jdField_b_of_type_Hwn;
+  private final hwm jdField_b_of_type_Hwm;
   
   public OverScroller(Context paramContext)
   {
@@ -41,43 +41,43 @@ public class OverScroller
   {
     this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Hwn = new hwn();
-    this.b = new hwn();
-    hwn.a(paramContext);
+    this.jdField_a_of_type_Hwm = new hwm();
+    this.b = new hwm();
+    hwm.a(paramContext);
   }
   
   public float a()
   {
-    return (float)Math.sqrt(hwn.a(this.jdField_a_of_type_Hwn) * hwn.a(this.jdField_a_of_type_Hwn) + hwn.a(this.b) * hwn.a(this.b));
+    return (float)Math.sqrt(hwm.a(this.jdField_a_of_type_Hwm) * hwm.a(this.jdField_a_of_type_Hwm) + hwm.a(this.b) * hwm.a(this.b));
   }
   
   public final int a()
   {
-    return hwn.a(this.jdField_a_of_type_Hwn);
+    return hwm.a(this.jdField_a_of_type_Hwm);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Hwn.a();
+    this.jdField_a_of_type_Hwm.a();
     this.b.a();
   }
   
   public final void a(float paramFloat)
   {
-    this.jdField_a_of_type_Hwn.a(paramFloat);
+    this.jdField_a_of_type_Hwm.a(paramFloat);
     this.b.a(paramFloat);
   }
   
   @Deprecated
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Hwn.b(paramInt);
+    this.jdField_a_of_type_Hwm.b(paramInt);
     this.b.b(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Hwn.b(paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_Hwm.b(paramInt1, paramInt2, paramInt3);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -88,7 +88,7 @@ public class OverScroller
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Hwn.a(paramInt1, paramInt3, paramInt5);
+    this.jdField_a_of_type_Hwm.a(paramInt1, paramInt3, paramInt5);
     this.b.a(paramInt2, paramInt4, paramInt5);
   }
   
@@ -101,8 +101,8 @@ public class OverScroller
   {
     if ((this.jdField_a_of_type_Boolean) && (!a()))
     {
-      float f1 = hwn.a(this.jdField_a_of_type_Hwn);
-      float f2 = hwn.a(this.b);
+      float f1 = hwm.a(this.jdField_a_of_type_Hwm);
+      float f2 = hwm.a(this.b);
       if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
       {
         paramInt3 = (int)(f1 + paramInt3);
@@ -112,7 +112,7 @@ public class OverScroller
     for (;;)
     {
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Hwn.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
+      this.jdField_a_of_type_Hwm.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
       this.b.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
       return;
     }
@@ -121,46 +121,46 @@ public class OverScroller
   public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
   {
     a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
-    hwn.a(this.jdField_a_of_type_Hwn, paramLong);
-    hwn.a(this.b, paramLong);
+    hwm.a(this.jdField_a_of_type_Hwm, paramLong);
+    hwm.a(this.b, paramLong);
   }
   
   public final void a(boolean paramBoolean)
   {
-    hwn.a(this.jdField_a_of_type_Hwn, hwn.a(this.b, paramBoolean));
+    hwm.a(this.jdField_a_of_type_Hwm, hwm.a(this.b, paramBoolean));
   }
   
   public final boolean a()
   {
-    return (hwn.a(this.jdField_a_of_type_Hwn)) && (hwn.a(this.b));
+    return (hwm.a(this.jdField_a_of_type_Hwm)) && (hwm.a(this.b));
   }
   
   public boolean a(float paramFloat1, float paramFloat2)
   {
-    int i = hwn.c(this.jdField_a_of_type_Hwn);
-    int j = hwn.b(this.jdField_a_of_type_Hwn);
-    int k = hwn.c(this.b);
-    int m = hwn.b(this.b);
+    int i = hwm.c(this.jdField_a_of_type_Hwm);
+    int j = hwm.b(this.jdField_a_of_type_Hwm);
+    int k = hwm.c(this.b);
+    int m = hwm.b(this.b);
     return (!a()) && (Math.signum(paramFloat1) == Math.signum(i - j)) && (Math.signum(paramFloat2) == Math.signum(k - m));
   }
   
   public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     this.jdField_a_of_type_Int = 1;
-    boolean bool1 = this.jdField_a_of_type_Hwn.a(paramInt1, paramInt3, paramInt4);
+    boolean bool1 = this.jdField_a_of_type_Hwm.a(paramInt1, paramInt3, paramInt4);
     boolean bool2 = this.b.a(paramInt2, paramInt5, paramInt6);
     return (bool1) || (bool2);
   }
   
   public final int b()
   {
-    return hwn.a(this.b);
+    return hwm.a(this.b);
   }
   
   @Deprecated
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Hwn.a(paramInt);
+    this.jdField_a_of_type_Hwm.a(paramInt);
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3)
@@ -179,18 +179,18 @@ public class OverScroller
     for (;;)
     {
       return true;
-      long l = AnimationUtils.currentAnimationTimeMillis() - hwn.a(this.jdField_a_of_type_Hwn);
-      int i = hwn.d(this.jdField_a_of_type_Hwn);
+      long l = AnimationUtils.currentAnimationTimeMillis() - hwm.a(this.jdField_a_of_type_Hwm);
+      int i = hwm.d(this.jdField_a_of_type_Hwm);
       if (l < i)
       {
         float f = (float)l / i;
         if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
         for (f = AnimateUtils.a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
         {
-          if (!hwn.a(this.jdField_a_of_type_Hwn)) {
-            this.jdField_a_of_type_Hwn.b(f);
+          if (!hwm.a(this.jdField_a_of_type_Hwm)) {
+            this.jdField_a_of_type_Hwm.b(f);
           }
-          if (hwn.a(this.b)) {
+          if (hwm.a(this.b)) {
             break;
           }
           this.b.b(f);
@@ -199,10 +199,10 @@ public class OverScroller
       }
       a();
       continue;
-      if ((!hwn.a(this.jdField_a_of_type_Hwn)) && (!this.jdField_a_of_type_Hwn.b()) && (!this.jdField_a_of_type_Hwn.a())) {
-        this.jdField_a_of_type_Hwn.a();
+      if ((!hwm.a(this.jdField_a_of_type_Hwm)) && (!this.jdField_a_of_type_Hwm.b()) && (!this.jdField_a_of_type_Hwm.a())) {
+        this.jdField_a_of_type_Hwm.a();
       }
-      if ((!hwn.a(this.b)) && (!this.b.b()) && (!this.b.a())) {
+      if ((!hwm.a(this.b)) && (!this.b.b()) && (!this.b.a())) {
         this.b.a();
       }
     }
@@ -210,7 +210,7 @@ public class OverScroller
   
   public final int c()
   {
-    return hwn.b(this.jdField_a_of_type_Hwn);
+    return hwm.b(this.jdField_a_of_type_Hwm);
   }
   
   @Deprecated
@@ -221,33 +221,33 @@ public class OverScroller
   
   public boolean c()
   {
-    return ((!hwn.a(this.jdField_a_of_type_Hwn)) && (hwn.e(this.jdField_a_of_type_Hwn) != 0)) || ((!hwn.a(this.b)) && (hwn.e(this.b) != 0));
+    return ((!hwm.a(this.jdField_a_of_type_Hwm)) && (hwm.e(this.jdField_a_of_type_Hwm) != 0)) || ((!hwm.a(this.b)) && (hwm.e(this.b) != 0));
   }
   
   public final int d()
   {
-    return hwn.b(this.b);
+    return hwm.b(this.b);
   }
   
   public final int e()
   {
-    return hwn.c(this.jdField_a_of_type_Hwn);
+    return hwm.c(this.jdField_a_of_type_Hwm);
   }
   
   public final int f()
   {
-    return hwn.c(this.b);
+    return hwm.c(this.b);
   }
   
   @Deprecated
   public final int g()
   {
-    return Math.max(hwn.d(this.jdField_a_of_type_Hwn), hwn.d(this.b));
+    return Math.max(hwm.d(this.jdField_a_of_type_Hwm), hwm.d(this.b));
   }
   
   public int h()
   {
-    return (int)(AnimationUtils.currentAnimationTimeMillis() - Math.min(hwn.a(this.jdField_a_of_type_Hwn), hwn.a(this.b)));
+    return (int)(AnimationUtils.currentAnimationTimeMillis() - Math.min(hwm.a(this.jdField_a_of_type_Hwm), hwm.a(this.b)));
   }
 }
 

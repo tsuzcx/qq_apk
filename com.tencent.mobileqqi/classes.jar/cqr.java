@@ -1,16 +1,37 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HornPublishActivity;
-import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.activity.IndividuationSetActivity;
+import com.tencent.mobileqq.app.ConfigObserver;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class cqr
-  implements View.OnClickListener
+  extends ConfigObserver
 {
-  public cqr(HornPublishActivity paramHornPublishActivity) {}
+  public cqr(IndividuationSetActivity paramIndividuationSetActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo)
   {
-    TextUtils.a(this.a.a);
+    View localView;
+    if (paramBoolean)
+    {
+      paramGetResourceRespInfo = this.a.findViewById(2131231817);
+      localView = this.a.findViewById(2131231819);
+    }
+    switch (IndividuationSetActivity.a(this.a))
+    {
+    default: 
+      IndividuationSetActivity.a(this.a, false);
+      paramGetResourceRespInfo.setVisibility(8);
+      localView.setVisibility(8);
+      return;
+    case 1: 
+      IndividuationSetActivity.a(this.a, true);
+      paramGetResourceRespInfo.setVisibility(0);
+      localView.setVisibility(8);
+      return;
+    }
+    IndividuationSetActivity.a(this.a, true);
+    paramGetResourceRespInfo.setVisibility(8);
+    localView.setVisibility(0);
   }
 }
 

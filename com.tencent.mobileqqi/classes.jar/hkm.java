@@ -1,27 +1,15 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.open.appcommon.js.AppInterface;
-import com.tencent.open.appcommon.js.BaseInterface;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
 
-class hkm
-  implements Runnable
+public class hkm
+  implements DialogInterface.OnDismissListener
 {
-  hkm(hkl paramhkl, String paramString) {}
+  public hkm(AppInterface paramAppInterface) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      if ((this.jdField_a_of_type_Hkl.a.webView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_Hkl.a.webView.loadUrl(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.a(BaseInterface.TAG, "webview loadUrl>>> ", localException);
-    }
+    this.a.tipDialog = null;
   }
 }
 

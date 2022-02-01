@@ -1,16 +1,17 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class gky
-  implements View.OnLongClickListener
+  implements View.OnTouchListener
 {
   public gky(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
   
-  public boolean onLongClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(paramView);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
   }
 }
 

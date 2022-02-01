@@ -1,13 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class emj
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
   public emj(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
     this.a.a = null;
   }

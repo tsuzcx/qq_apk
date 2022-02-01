@@ -1,14 +1,14 @@
+import com.tencent.i18n.pa.proto.QQiPublicAccount.RecommendedPublicAccountInfo;
 import com.tencent.mobileqq.app.I18nPublicAccountsManagerImp;
-import java.util.Comparator;
 
 public class fcx
-  implements Comparator
 {
-  private fcx(I18nPublicAccountsManagerImp paramI18nPublicAccountsManagerImp) {}
+  public QQiPublicAccount.RecommendedPublicAccountInfo a;
+  public String a;
   
-  public int a(fcy paramfcy1, fcy paramfcy2)
+  private fcx(I18nPublicAccountsManagerImp paramI18nPublicAccountsManagerImp)
   {
-    return paramfcy2.a.compareTo(paramfcy1.a);
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

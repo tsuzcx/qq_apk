@@ -1,15 +1,60 @@
+import QQService.TagInfo;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ToggleButton;
 import com.tencent.mobileqq.activity.EditTagActivity;
+import java.util.ArrayList;
 
 public class cjw
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public cjw(EditTagActivity paramEditTagActivity) {}
+  ArrayList jdField_a_of_type_JavaUtilArrayList;
   
-  public void onClick(View paramView)
+  public cjw(EditTagActivity paramEditTagActivity, ArrayList paramArrayList)
   {
-    this.a.a();
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = new ToggleButton(paramViewGroup.getContext());
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(28.0F * this.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_Float)));
+      paramView.setBackgroundResource(2130840279);
+      ((ToggleButton)paramView).setGravity(17);
+      ((ToggleButton)paramView).setTextSize(this.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.getResources().getInteger(2131492869));
+      ((ToggleButton)paramView).setTextColor(Color.parseColor("#777777"));
+    }
+    for (;;)
+    {
+      ((ToggleButton)paramView).setOnCheckedChangeListener(null);
+      ((ToggleButton)paramView).setChecked(this.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.a((TagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), this.jdField_a_of_type_ComTencentMobileqqActivityEditTagActivity.jdField_a_of_type_JavaUtilArrayList));
+      ((ToggleButton)paramView).setOnCheckedChangeListener(new cjx(this, paramInt));
+      ((ToggleButton)paramView).setText(((TagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).strContent);
+      ((ToggleButton)paramView).setTextOn(((TagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).strContent);
+      ((ToggleButton)paramView).setTextOff(((TagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).strContent);
+      return paramView;
+    }
   }
 }
 

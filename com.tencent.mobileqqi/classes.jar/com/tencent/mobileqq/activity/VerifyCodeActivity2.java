@@ -14,11 +14,11 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import duq;
 import dur;
 import dus;
 import dut;
 import duu;
-import duv;
 import mqq.manager.VerifyCodeManager;
 import mqq.observer.ServerNotifyObserver;
 
@@ -26,7 +26,7 @@ public class VerifyCodeActivity2
   extends IphoneTitleBarActivity
 {
   final int jdField_a_of_type_Int = 4;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new duv(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new duu(this);
   private View jdField_a_of_type_AndroidViewView;
   public EditText a;
   public ImageView a;
@@ -39,7 +39,7 @@ public class VerifyCodeActivity2
   
   public VerifyCodeActivity2()
   {
-    this.jdField_a_of_type_MqqObserverServerNotifyObserver = new dur(this);
+    this.jdField_a_of_type_MqqObserverServerNotifyObserver = new duq(this);
   }
   
   private void a(Intent paramIntent)
@@ -61,10 +61,10 @@ public class VerifyCodeActivity2
     }
     this.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(i);
     this.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramIntent);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131234651));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new duu(this));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131234649);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234650));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131234650));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new dut(this));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131234648);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234649));
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)getAppRuntime());
     this.jdField_a_of_type_MqqManagerVerifyCodeManager = ((VerifyCodeManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(6));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -74,8 +74,8 @@ public class VerifyCodeActivity2
   private void g()
   {
     setTitle(2131563158);
-    a(2131561746, new dus(this));
-    b(2131561977, new dut(this));
+    a(2131561746, new dur(this));
+    b(2131561977, new dus(this));
   }
   
   public void a(String paramString)
@@ -130,8 +130,8 @@ public class VerifyCodeActivity2
       return;
       setContentView(2130904046);
       j(2130837729);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234648));
-      this.b = ((TextView)findViewById(2131234652));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234647));
+      this.b = ((TextView)findViewById(2131234651));
       a(getIntent());
       paramBundle = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(LoginActivity.class);
       if (paramBundle != null) {

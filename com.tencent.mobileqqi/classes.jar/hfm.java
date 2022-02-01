@@ -1,7 +1,7 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.CameraUtil;
 import com.tencent.mobileqq.widget.CameraFrameLayout;
-import com.tencent.mobileqq.widget.QQToast;
 
 public class hfm
   implements Runnable
@@ -10,7 +10,16 @@ public class hfm
   
   public void run()
   {
-    QQToast.a(this.a.getContext(), 0, this.a.getContext().getString(2131561697), 0).b(((BaseActivity)this.a.getContext()).d());
+    synchronized (CameraFrameLayout.a(this.a))
+    {
+      if (CameraFrameLayout.a(this.a) != null)
+      {
+        CameraUtil.a(CameraFrameLayout.a(this.a));
+        CameraFrameLayout.a(this.a, null);
+      }
+      CameraFrameLayout.a(this.a).obtainMessage(2).sendToTarget();
+      return;
+    }
   }
 }
 

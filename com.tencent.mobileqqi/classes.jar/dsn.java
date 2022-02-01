@@ -1,22 +1,50 @@
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class dsn
-  extends FriendListObserver
+  implements View.OnClickListener
 {
   public dsn(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean) || (paramString == null)) {}
-    do
-    {
+    long l = System.currentTimeMillis();
+    if ((l - TroopRequestActivity.d > 0L) && (l - TroopRequestActivity.d < 800L)) {
       return;
-      paramString = ((FriendManager)this.a.b.getManager(8)).a(paramString);
-    } while (paramString == null);
-    TroopRequestActivity.a(this.a, paramString);
+    }
+    TroopRequestActivity.d = l;
+    Bundle localBundle = TroopInfoActivity.a(this.a.p, 4);
+    int i = TroopRequestActivity.a(this.a).msg.group_msg_type.get();
+    QQAppInterface localQQAppInterface;
+    String str;
+    if ((i == 2) || (i == 10) || (i == 12))
+    {
+      i = 1;
+      localQQAppInterface = this.a.b;
+      str = TroopRequestActivity.a(this.a).msg.group_code.get() + "";
+      if (i == 0) {
+        break label172;
+      }
+    }
+    label172:
+    for (paramView = "0";; paramView = "1")
+    {
+      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
+      ChatSettingForTroop.a(this.a, localBundle, 2);
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 

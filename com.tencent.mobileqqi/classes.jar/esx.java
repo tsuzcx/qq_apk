@@ -1,25 +1,19 @@
-import android.content.Context;
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.io.File;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
 public class esx
   implements Runnable
 {
-  public esx(QvipSpecialSoundManager paramQvipSpecialSoundManager, esw paramesw) {}
+  public esx(QvipSpecialSoundManager paramQvipSpecialSoundManager, QvipSpecialSoundManager.CallBack paramCallBack) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(this.jdField_a_of_type_Esw.c))
-    {
-      File localFile = new File(QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager).getFilesDir(), this.jdField_a_of_type_Esw.c);
-      if (localFile != null) {}
-      for (long l = localFile.length();; l = 0L)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(l);
-        return;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.b("updateSpecialSound down fial, id=" + this.jdField_a_of_type_Esw.a);
+    String str = QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(str);
+    boolean bool = QvipSpecialSoundManager.a.containsKey("key_special_sound_list" + QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager).a());
+    QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager, this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager$CallBack, bool);
   }
 }
 

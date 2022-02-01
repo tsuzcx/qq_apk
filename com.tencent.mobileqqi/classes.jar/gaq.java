@@ -1,18 +1,58 @@
-import android.media.SoundPool;
-import com.tencent.mobileqq.magicface.service.SoundPoolUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
+import com.tencent.mobileqq.magicface.view.MagicfaceContainerView.MagicfaceGestureListener;
 
 public class gaq
-  extends TimerTask
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public gaq(SoundPoolUtil paramSoundPoolUtil, int paramInt, String paramString) {}
+  public gaq(MagicfaceContainerView paramMagicfaceContainerView) {}
   
-  public void run()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a != null) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a.play(this.jdField_a_of_type_Int, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
+    if (MagicfaceContainerView.a(this.a) != null) {
+      MagicfaceContainerView.a(this.a).a(5);
     }
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
+      if (MagicfaceContainerView.a(this.a) != null) {
+        MagicfaceContainerView.a(this.a).a(0);
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
+            break;
+          }
+        } while (MagicfaceContainerView.a(this.a) == null);
+        MagicfaceContainerView.a(this.a).a(1);
+        return false;
+        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
+          break;
+        }
+      } while (MagicfaceContainerView.a(this.a) == null);
+      MagicfaceContainerView.a(this.a).a(2);
+      return false;
+    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (MagicfaceContainerView.a(this.a) == null));
+    MagicfaceContainerView.a(this.a).a(3);
+    return false;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if (MagicfaceContainerView.a(this.a) != null) {
+      MagicfaceContainerView.a(this.a).a(4);
+    }
+    return false;
   }
 }
 

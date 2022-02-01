@@ -1,19 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
 
 public class hhg
-  implements DialogInterface.OnKeyListener
+  extends Handler
 {
-  public hhg(QQProgressDialog paramQQProgressDialog, boolean paramBoolean) {}
+  public hhg(QQProgressNotifier paramQQProgressNotifier) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt == 84) || (paramInt == 4)) {
-      return this.jdField_a_of_type_Boolean;
+    if (paramMessage.what == 1) {
+      this.a.a(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
     }
-    return false;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMessage.what != 2);
+      this.a.a();
+    } while ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 4) && (paramMessage.arg1 != 6) && (paramMessage.arg1 != 5));
+    if ((paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
+    {
+      paramMessage = new Intent();
+      paramMessage.putExtra("isNeedFinish", true);
+      this.a.a.setResult(-1, paramMessage);
+    }
+    for (;;)
+    {
+      this.a.a.finish();
+      return;
+      this.a.a.setResult(-1);
+    }
   }
 }
 

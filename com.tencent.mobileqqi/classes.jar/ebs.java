@@ -1,14 +1,15 @@
 import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
 class ebs
   implements Runnable
 {
-  ebs(ebq paramebq, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2) {}
+  ebs(ebp paramebp, AIOImageData[] paramArrayOfAIOImageData, int paramInt) {}
   
   public void run()
   {
-    if (ebp.c(this.jdField_a_of_type_Ebq.a) != null) {
-      ((AIOGalleryScene)ebp.d(this.jdField_a_of_type_Ebq.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long);
+    if (ebo.e(this.jdField_a_of_type_Ebp.a) != null) {
+      ((AIOGalleryScene)ebo.f(this.jdField_a_of_type_Ebp.a)).a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Int);
     }
   }
 }

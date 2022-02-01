@@ -9,8 +9,7 @@ public class dud
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
-    this.a.e();
+    UpgradeActivity.a(this.a, false);
   }
 }
 

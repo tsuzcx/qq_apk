@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0137" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08034e" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingBottom="5.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0137" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08034d" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingBottom="5.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" />

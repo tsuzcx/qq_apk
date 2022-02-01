@@ -1,18 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
-class dno
-  implements DialogInterface.OnClickListener
+public class dno
+  implements View.OnClickListener
 {
-  dno(dnn paramdnn) {}
+  public dno(SubaccountUgActivity paramSubaccountUgActivity, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    paramView = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.a(), null);
+    paramView.a(2131561629);
+    paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.getResources().getString(2131561946), 3);
+    paramView.d(2131561746);
+    paramView.a(new dnp(this, paramView));
+    paramView.show();
   }
 }
 

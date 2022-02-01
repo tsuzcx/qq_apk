@@ -1,51 +1,46 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.app.AppConstants;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 
 public class gtg
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public gtg(TroopBarReplyActivity paramTroopBarReplyActivity, ActionSheet paramActionSheet) {}
+  public gtg(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramInt)
+    if (this.a.isFinishing()) {}
+    do
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b();
       return;
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_AndroidNetUri = TroopBarUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity, AppConstants.ap, 1001);
-      continue;
-      paramView = new ArrayList();
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList != null) {
-        paramView.addAll(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList);
+      switch (paramMessage.what)
+      {
+      case 1002: 
+      default: 
+        return;
+      case 1001: 
+        this.a.a(false);
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        }
+        QQToast.a(this.a, 2131560744, 1).b(this.a.d());
       }
-      TroopBarReplyActivity localTroopBarReplyActivity = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity;
-      Intent localIntent = new Intent(localTroopBarReplyActivity, TroopBarReplyActivity.class);
-      localIntent.setClass(localTroopBarReplyActivity, PhotoListActivity.class);
-      localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramView);
-      localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", TroopBarReplyActivity.class.getName());
-      localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqqi");
-      localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
-      localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 8);
-      localIntent.getExtras().remove("forward_type");
-      localIntent.putExtra("album_enter_directly", true);
-      localIntent.putExtra("ALBUM_ID", AlbumUtil.b);
-      localIntent.putExtra("ALBUM_NAME", AlbumUtil.c);
-      localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.startActivityForResult(localIntent, 1001);
-      AlbumUtil.a(localTroopBarReplyActivity, false, true);
+    } while (!(paramMessage.obj instanceof String));
+    paramMessage = (String)paramMessage.obj;
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.indexOf(paramMessage);
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(i);
+    this.a.i();
+    return;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
+    this.a.a(false);
+    this.a.b();
   }
 }
 

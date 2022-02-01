@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import ezl;
+import ezk;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -36,7 +36,7 @@ public abstract class BusinessHandler
   
   private void a(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, BusinessObserver paramBusinessObserver, Handler paramHandler)
   {
-    paramObject = new ezl(this, paramBusinessObserver, paramInt, paramHandler, paramBoolean1, paramObject);
+    paramObject = new ezk(this, paramBusinessObserver, paramInt, paramHandler, paramBoolean1, paramObject);
     if (paramBoolean2)
     {
       paramHandler.postAtFrontOfQueue(paramObject);

@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import android.widget.ProgressBar;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.filemanager.data.PreviewImageAdapter;
 
-public final class fxr
-  implements Parcelable.Creator
+public class fxr
 {
-  public OfflineFileInfo a(Parcel paramParcel)
-  {
-    return new OfflineFileInfo(paramParcel);
-  }
+  public ProgressBar a;
+  public URLImageView a;
   
-  public OfflineFileInfo[] a(int paramInt)
-  {
-    return new OfflineFileInfo[paramInt];
-  }
+  public fxr(PreviewImageAdapter paramPreviewImageAdapter) {}
 }
 
 

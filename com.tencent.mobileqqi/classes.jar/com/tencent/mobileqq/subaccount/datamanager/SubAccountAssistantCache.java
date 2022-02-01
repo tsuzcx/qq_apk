@@ -14,7 +14,7 @@ import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import glo;
+import gln;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -27,7 +27,7 @@ public class SubAccountAssistantCache
   private static String jdField_b_of_type_JavaLangString = "Q.subaccount.SubAccountAssistantCache";
   private long jdField_a_of_type_Long = 0L;
   private SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
-  private glo jdField_a_of_type_Glo = new glo(this, null);
+  private gln jdField_a_of_type_Gln = new gln(this, null);
   private CharSequence jdField_a_of_type_JavaLangCharSequence = "";
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private byte[] jdField_a_of_type_ArrayOfByte = { 0 };
@@ -615,7 +615,7 @@ public class SubAccountAssistantCache
       }
     }
     label160:
-    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Glo);
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Gln);
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
       long l = ((SubAccountMessageData)this.jdField_a_of_type_JavaUtilArrayList.get(0)).a().time;

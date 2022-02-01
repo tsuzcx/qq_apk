@@ -1,29 +1,17 @@
-import android.widget.Button;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 public class ejc
-  implements RadioGroup.OnCheckedChangeListener
+  implements DialogInterface.OnDismissListener
 {
-  public ejc(MainAssistObserver paramMainAssistObserver, RadioButton paramRadioButton1, RadioButton paramRadioButton2, Button paramButton) {}
+  public ejc(MainAssistObserver paramMainAssistObserver, RadioButton paramRadioButton) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramInt == this.jdField_a_of_type_AndroidWidgetRadioButton.getId()) || (paramInt == this.b.getId()))
-    {
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      if (paramInt != this.jdField_a_of_type_AndroidWidgetRadioButton.getId()) {
-        break label53;
-      }
-    }
-    label53:
-    while (paramInt != this.b.getId())
-    {
-      return;
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      break;
+    if (this.jdField_a_of_type_AndroidWidgetRadioButton.isChecked()) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a = false;
     }
   }
 }

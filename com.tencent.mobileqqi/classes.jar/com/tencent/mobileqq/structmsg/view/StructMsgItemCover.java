@@ -13,7 +13,7 @@ import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 import com.tencent.mobileqq.widget.CustomScaleType;
-import glc;
+import glb;
 import java.io.File;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -29,7 +29,7 @@ public class StructMsgItemCover
   
   public StructMsgItemCover()
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new glc(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new glb(this);
     this.jdField_a_of_type_JavaLangString = "picture";
   }
   

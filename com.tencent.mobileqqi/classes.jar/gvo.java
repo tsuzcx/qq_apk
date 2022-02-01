@@ -1,21 +1,21 @@
 import android.view.View;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.troop.data.TroopBarPostAbsLayout.AbsItemViewHolder;
-import com.tencent.mobileqq.troop.data.TroopBarPostLayoutTab;
+import com.tencent.mobileqq.troop.data.TroopBarPostLayoutTop;
 import java.util.ArrayList;
 
 public class gvo
   extends TroopBarPostAbsLayout.AbsItemViewHolder
 {
-  public View a;
   public LinearLayout a;
-  protected ArrayList a;
+  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  public LinearLayout b;
   
-  public gvo(TroopBarPostLayoutTab paramTroopBarPostLayoutTab, View paramView)
+  public gvo(TroopBarPostLayoutTop paramTroopBarPostLayoutTop, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232624));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232625);
+    this.b = ((LinearLayout)paramView.findViewById(2131232627));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232626));
   }
 }
 

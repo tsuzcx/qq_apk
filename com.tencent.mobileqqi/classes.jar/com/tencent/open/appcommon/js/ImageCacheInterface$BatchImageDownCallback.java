@@ -7,7 +7,7 @@ import com.tencent.open.appcommon.CallBackEvent.CallBackEventListener;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.base.img.ImageDownCallback;
 import com.tencent.smtt.sdk.WebView;
-import hlb;
+import hla;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public class ImageCacheInterface$BatchImageDownCallback
           break;
         }
         this.jdField_b_of_type_Long = System.currentTimeMillis();
-        paramString1 = new hlb();
+        paramString1 = new hla();
         paramString1.jdField_a_of_type_ComTencentSmttSdkWebView = ((WebView)this.jdField_a_of_type_ComTencentOpenAppcommonJsImageCacheInterface.webviewRef.get());
         paramString1.jdField_a_of_type_JavaLangString = ("javascript:QzoneApp.fire('loadImg','" + this.jdField_a_of_type_OrgJsonJSONArray.toString() + "');void(0);");
         this.jdField_b_of_type_Int -= this.jdField_a_of_type_OrgJsonJSONArray.length();
@@ -106,10 +106,10 @@ public class ImageCacheInterface$BatchImageDownCallback
             {
               ??? = arrayOfString[i];
               Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonJsImageCacheInterface.mHandler.obtainMessage(0);
-              hlb localhlb = new hlb();
-              localhlb.jdField_a_of_type_ComTencentSmttSdkWebView = ((WebView)this.jdField_a_of_type_ComTencentOpenAppcommonJsImageCacheInterface.webviewRef.get());
-              localhlb.jdField_a_of_type_JavaLangString = ???;
-              localMessage.obj = localhlb;
+              hla localhla = new hla();
+              localhla.jdField_a_of_type_ComTencentSmttSdkWebView = ((WebView)this.jdField_a_of_type_ComTencentOpenAppcommonJsImageCacheInterface.webviewRef.get());
+              localhla.jdField_a_of_type_JavaLangString = ???;
+              localMessage.obj = localhla;
               localMessage.arg1 = 1;
               this.jdField_a_of_type_ComTencentOpenAppcommonJsImageCacheInterface.mHandler.sendMessage(localMessage);
               i += 1;
@@ -144,7 +144,7 @@ public class ImageCacheInterface$BatchImageDownCallback
           if ((System.currentTimeMillis() - this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) || (this.jdField_a_of_type_OrgJsonJSONArray.length() > this.jdField_a_of_type_Int) || (this.jdField_a_of_type_OrgJsonJSONArray.length() >= this.jdField_b_of_type_Int))
           {
             this.jdField_b_of_type_Long = System.currentTimeMillis();
-            paramString1 = new hlb();
+            paramString1 = new hla();
             paramString1.jdField_a_of_type_ComTencentSmttSdkWebView = ((WebView)this.jdField_a_of_type_ComTencentOpenAppcommonJsImageCacheInterface.webviewRef.get());
             paramString1.jdField_a_of_type_JavaLangString = ("javascript:QzoneApp.fire('loadImg','" + this.jdField_a_of_type_OrgJsonJSONArray + "');void(0);");
             this.jdField_b_of_type_Int -= this.jdField_a_of_type_OrgJsonJSONArray.length();

@@ -30,9 +30,9 @@ import com.tencent.mobileqq.utils.VoiceHelper;
 import com.tencent.mobileqq.utils.VoicePlayer;
 import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
 import com.tencent.qphone.base.util.QLog;
+import hgv;
 import hgw;
 import hgx;
-import hgy;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -106,7 +106,7 @@ public class MicroPhoneDialog
     this.jdField_a_of_type_Boolean = false;
     this.jdField_c_of_type_JavaLangString = null;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new hgw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new hgv(this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsVoiceHelper = paramVoiceHelper;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
@@ -163,7 +163,7 @@ public class MicroPhoneDialog
   private boolean c()
   {
     if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).c();
+      return ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).d();
     }
     Iterator localIterator = ((ActivityManager)this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSystemService("activity")).getRunningAppProcesses().iterator();
     while (localIterator.hasNext()) {
@@ -211,26 +211,26 @@ public class MicroPhoneDialog
   
   private void h()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232664));
-    View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131232672);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232663));
+    View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131232671);
     localView.setOnClickListener(this);
     localView.setContentDescription(getContext().getString(2131561846));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233066));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMicroPhoneClipImageView = ((MicroPhoneClipImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233067));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233065));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMicroPhoneClipImageView = ((MicroPhoneClipImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233066));
     this.jdField_a_of_type_ComTencentMobileqqWidgetMicroPhoneClipImageView.setSoundWave(0);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233070));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnTouchListener(new hgx(this));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233068));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233069));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress = ((OvalProgress)findViewById(2131232665));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233069));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnTouchListener(new hgw(this));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233067));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233068));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress = ((OvalProgress)findViewById(2131232664));
     this.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232666));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131232667));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233071));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233072));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131233074));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232665));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131232666));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233070));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131233071));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131233073));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131233075));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131233074));
     this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.r = 0;
     if (QLog.isColorLevel()) {
@@ -309,7 +309,7 @@ public class MicroPhoneDialog
     if (QLog.isColorLevel()) {
       QLog.d("Q.profilecard.MicroPhone", 2, "path: " + this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(new hgy(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(new hgx(this));
     AudioUtil.a(this.jdField_a_of_type_AndroidContentContext, true);
     if (QLog.isColorLevel()) {
       QLog.d("Q.profilecard.MicroPhone", 2, "QQRecorder start() is called,time is:" + System.currentTimeMillis());
@@ -640,17 +640,17 @@ public class MicroPhoneDialog
         {
         default: 
           return;
-        case 2131232665: 
+        case 2131232664: 
           if (QLog.isColorLevel()) {
             QLog.d("Q.profilecard.MicroPhone", 2, "click player button... for test time=" + System.currentTimeMillis());
           }
           i();
           return;
-        case 2131232672: 
+        case 2131232671: 
           j();
           ProfileCardUtil.d(this.jdField_a_of_type_JavaLangString);
           return;
-        case 2131233074: 
+        case 2131233073: 
           this.jdField_b_of_type_JavaLangString = null;
           if (!this.jdField_a_of_type_Boolean) {
             b();

@@ -28,9 +28,9 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import eao;
 import eap;
 import eaq;
-import ear;
 
 public class ShakeItemBuilder
   extends BaseBubbleBuilder
@@ -40,7 +40,7 @@ public class ShakeItemBuilder
   public ShakeItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new eap(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new eao(this);
   }
   
   public int a(ChatMessage paramChatMessage)
@@ -65,7 +65,7 @@ public class ShakeItemBuilder
       localObject = new TextView(paramBaseChatItemLayout);
       ((TextView)localObject).setTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131362087));
       ((TextView)localObject).setMaxWidth(BaseChatItemLayout.g);
-      ((TextView)localObject).setId(2131231227);
+      ((TextView)localObject).setId(2131231226);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 16;
       paramViewHolder.addView((View)localObject, localLayoutParams);
@@ -146,7 +146,7 @@ public class ShakeItemBuilder
     String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131562859);
     String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131561439);
     if (paramView.isSendFromLocal()) {
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new eaq(this, paramView), new ear(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new eap(this, paramView), new eaq(this)).show();
     }
   }
   

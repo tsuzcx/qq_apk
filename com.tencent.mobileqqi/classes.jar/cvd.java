@@ -1,53 +1,98 @@
+import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.SubAccountBindObserver;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.observer.SubAccountObserver;
 
 public class cvd
-  extends SubAccountObserver
+  extends SubAccountBindObserver
 {
   public cvd(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: mainAccount=" + paramString1 + " subAccount=" + paramString2);
+      QLog.d("LoginVerifyCodeActivity", 2, "onGetBindSubAccount: start");
     }
-    if (TextUtils.isEmpty(paramString3))
+    this.a.f();
+    if (LoginVerifyCodeActivity.a(this.a))
     {
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12005");
-      paramString1.put("fail_step", "getKeyEmpty");
-      paramString1.put("fail_location", "subLogin");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a.b.a(), "actSBGeykey", false, 0L, 0L, paramString1, "");
-      this.a.g();
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack:subLogin ...has Failed key  =  null");
+      LoginVerifyCodeActivity.a(this.a, false);
+      if ((paramBoolean) && (paramSubAccountBackProtocData != null))
+      {
+        SubAccountAssistantForward.b(this.a.b);
+        SubAccountAssistantForward.a(this.a.b);
+        SubAccountAssistantForward.c(this.a.b);
+        SubAccountAssistantForward.d(this.a.b);
+        SubAccountAssistantForward.a(this.a.b, this.a, this.a.b.getAccount());
+        this.a.finish();
       }
-      this.a.a(2131562096, 0);
     }
-    do
+    while ((!paramBoolean) || (paramSubAccountBackProtocData == null) || (!paramSubAccountBackProtocData.a()))
     {
       return;
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12006");
-      paramString1.put("fail_step", "getKeyNotEmpty");
-      paramString1.put("fail_location", "subLogin");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a.b.a(), "actSBGeykey", true, 0L, 0L, paramString1, "");
+      this.a.a(2131561710, 1);
+      return;
+    }
+    this.a.a(this.a.getString(2131562520), this.a.getString(2131563026), this.a.getString(2131562540), new cvf(this));
+  }
+  
+  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount: start");
+    }
+    this.a.g();
+    Object localObject;
+    if (paramBoolean)
+    {
+      this.a.a(2131561720, 2);
       if (QLog.isColorLevel()) {
-        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: key not null");
+        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginVerifyCodeActivity", 2, "subaccount onGetKeyBack goto bind");
+      SubAccountAssistantForward.b(this.a.b);
+      SubAccountAssistantForward.a(this.a.b);
+      SubAccountAssistantForward.c(this.a.b);
+      SubAccountAssistantForward.d(this.a.b);
+      localObject = new Intent(this.a, SplashActivity.class);
+      ((Intent)localObject).putExtra("tab_index", 0);
+      ((Intent)localObject).setFlags(67108864);
+      this.a.startActivity((Intent)localObject);
+      this.a.finish();
+    }
+    for (;;)
+    {
+      if ((paramSubAccountBackProtocData != null) && (QLog.isColorLevel())) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = " + paramSubAccountBackProtocData.a + "...errorType = " + paramSubAccountBackProtocData.p);
       }
-      SubAccountAssistantManager.a().a(this.a.b, paramString2, paramString3);
-    } while (!QLog.isColorLevel());
-    QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: success .........");
+      return;
+      String str;
+      switch (paramSubAccountBackProtocData.p)
+      {
+      default: 
+        this.a.a(2131561710, 0);
+        break;
+      case 1002: 
+        localObject = this.a.getString(2131562520);
+        str = this.a.getString(2131563298);
+        this.a.a((String)localObject, str, new cve(this));
+        break;
+      case 1003: 
+        this.a.a(2131563083, 0);
+        break;
+      case 1004: 
+        str = paramSubAccountBackProtocData.a;
+        localObject = str;
+        if (TextUtils.isEmpty(str)) {
+          localObject = this.a.getString(2131561474);
+        }
+        this.a.a((String)localObject, 0);
+      }
+    }
   }
 }
 

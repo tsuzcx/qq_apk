@@ -1,20 +1,30 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class hzo
-  extends WeakReference
+public final class hzo
+  implements IPluginManager.OnPluginReadyListener
 {
-  public Object a;
-  
-  public hzo(Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue)
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    super(paramObject2, paramReferenceQueue);
-    this.a = paramObject1;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      IPluginManager.b((Activity)paramContext, paramPluginParams);
+      return;
+    }
+    Toast.makeText(paramContext, "加载失败", 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     hzo
  * JD-Core Version:    0.7.0.1
  */

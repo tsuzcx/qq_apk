@@ -1,31 +1,30 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
 import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class fqj
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public fqj(FMActivity paramFMActivity) {}
+  public fqj(FMActivity paramFMActivity, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
+    switch (paramInt)
+    {
     }
-    if ((((Button)paramView.findViewById(2131231701)).getTag() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(null);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.b.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_Long)) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+      }
+      FMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity);
     }
-    if (this.a.b.a().b(this.a.jdField_a_of_type_Long)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(Integer.valueOf(-1));
-    FMActivity.a(this.a);
   }
 }
 

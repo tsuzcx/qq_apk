@@ -26,7 +26,7 @@ public class PhoneLaunchView
     super(paramActivity, paramBoolean);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     a(2130903310);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131232042));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131232041));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   

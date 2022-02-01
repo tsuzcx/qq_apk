@@ -1,11 +1,29 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.LinearLayout;
+import com.tencent.open.agent.FriendListOpenFrame;
+import com.tencent.open.agent.FriendListOpenFrame.FriendListAdapter;
 
 public class hjd
+  extends Handler
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public hjd(FriendListOpenFrame paramFriendListOpenFrame) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 40, 0);
+      return;
+    case 2: 
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 0, 0);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter.notifyDataSetChanged();
+  }
 }
 
 

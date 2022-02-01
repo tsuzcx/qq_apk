@@ -1,21 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
 
-public class ddz
-  implements DialogInterface.OnClickListener
+class ddz
+  implements Runnable
 {
-  public ddz(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  ddz(ddy paramddy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clean_chat_log", 0, 0, "", "", "", "");
-    if (!this.a.isFinishing()) {
-      this.a.showDialog(1);
-    }
-    ThreadManager.b(new dea(this));
+    this.a.a.c();
+    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
   }
 }
 

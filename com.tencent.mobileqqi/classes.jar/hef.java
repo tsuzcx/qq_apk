@@ -1,17 +1,14 @@
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ThreadFactory;
 
-public class hef
-  extends ThreadPoolExecutor
+class hef
+  implements ThreadFactory
 {
-  private static int a = 0;
-  public static final String a = "InfiniteTaskThread_";
-  
-  public hef(int paramInt, long paramLong)
+  public Thread newThread(Runnable paramRunnable)
   {
-    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new heg(), new ThreadPoolExecutor.CallerRunsPolicy());
+    hee.a();
+    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + hee.b());
+    paramRunnable.setDaemon(true);
+    return paramRunnable;
   }
 }
 

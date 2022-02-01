@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter;
+import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import java.util.Comparator;
 
 public class err
-  extends SlideDetectListView.OnScrollGroupFloatingListener
+  implements Comparator
 {
-  public err(TroopListInnerFrame paramTroopListInnerFrame) {}
+  private err(TroopListInnerFrame.TroopListAdapter paramTroopListAdapter) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
   {
-    if (TroopListInnerFrame.a(this.a) != null) {
-      TroopListInnerFrame.a(this.a, paramInt1);
+    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
+      return 1;
     }
+    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
+      return -1;
+    }
+    return 0;
   }
 }
 

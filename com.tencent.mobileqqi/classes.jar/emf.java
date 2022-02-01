@@ -1,12 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+
 public class emf
+  implements View.OnClickListener
 {
-  public int a;
-  public byte[] a;
-  public int b;
+  public emf(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  private emf(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a = new byte[paramInt];
+    PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 1, true);
+    paramView.setClickable(false);
   }
 }
 

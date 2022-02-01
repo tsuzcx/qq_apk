@@ -38,12 +38,12 @@ import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
+import ghp;
 import ghq;
 import ghr;
 import ghs;
 import ght;
 import ghu;
-import ghv;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -74,7 +74,7 @@ public class StatusHistoryActivity
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ght(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ghs(this);
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -84,9 +84,9 @@ public class StatusHistoryActivity
   private StatusObserver jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private SlideDetectListView.OnSlideListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener = new ghs(this);
+  private SlideDetectListView.OnSlideListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener = new ghr(this);
   private SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView;
-  private ghu jdField_a_of_type_Ghu;
+  private ght jdField_a_of_type_Ght;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   public boolean a;
   private long jdField_b_of_type_Long;
@@ -195,7 +195,7 @@ public class StatusHistoryActivity
       {
         this.jdField_a_of_type_JavaUtilArrayList.clear();
         a(3);
-        this.jdField_a_of_type_Ghu.notifyDataSetChanged();
+        this.jdField_a_of_type_Ght.notifyDataSetChanged();
       }
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
     }
@@ -221,7 +221,7 @@ public class StatusHistoryActivity
     {
       this.s = paramInt;
       if (this.s == 0) {
-        this.jdField_a_of_type_Ghu.notifyDataSetChanged();
+        this.jdField_a_of_type_Ght.notifyDataSetChanged();
       }
     }
   }
@@ -321,7 +321,7 @@ public class StatusHistoryActivity
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra(jdField_b_of_type_JavaLangString);
     this.e = getIntent().getIntExtra("key_profile_entry_type", 999);
     this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = ((ProfileActivity.AllInOne)getIntent().getParcelableExtra("key_allinone_pa"));
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new ghv(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new ghu(this, null);
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver);
     setTitle(getString(2131559276));
     if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().equals(this.jdField_c_of_type_JavaLangString))
@@ -333,12 +333,12 @@ public class StatusHistoryActivity
       this.f = 23;
     }
     ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Modify_signature", "Clk_signature_list", this.f, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131234530));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131234529));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setContentBackground(2130837729);
     this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903988, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231657));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231656));
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231656));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231655));
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837862);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, true);
@@ -346,12 +346,12 @@ public class StatusHistoryActivity
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollListener(this);
-    this.jdField_a_of_type_Ghu = new ghu(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Ghu);
+    this.jdField_a_of_type_Ght = new ght(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Ght);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(null, new ghq(this, getResources().getDisplayMetrics().widthPixels / 6));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(null, new ghp(this, getResources().getDisplayMetrics().widthPixels / 6));
     this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(false);
-    this.jdField_b_of_type_AndroidOsHandler = new ghr(this, Looper.myLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new ghq(this, Looper.myLooper());
     a(true, false);
     return true;
   }
@@ -411,7 +411,7 @@ public class StatusHistoryActivity
       return;
     }
     this.o = 1;
-    this.jdField_a_of_type_Ghu.notifyDataSetChanged();
+    this.jdField_a_of_type_Ght.notifyDataSetChanged();
   }
 }
 

@@ -1,22 +1,28 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
 import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.HashMap;
 
 class dic
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  dic(dib paramdib, SetTroopAdminsActivity.TroopAdmin paramTroopAdmin) {}
+  dic(dib paramdib, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = ActionSheet.a(this.jdField_a_of_type_Dib.a);
-    paramView.a(String.format(this.jdField_a_of_type_Dib.a.getString(2131561531), new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivitySetTroopAdminsActivity$TroopAdmin.b }));
-    paramView.a(2131561758, 3);
-    paramView.d(2131561746);
-    paramView.a(new did(this, paramView));
-    paramView.show();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    SetTroopAdminsActivity.a(this.jdField_a_of_type_Dib.jdField_a_of_type_Dia.a, 2131561762);
+    SetTroopAdminsActivity.a(this.jdField_a_of_type_Dib.jdField_a_of_type_Dia.a).put(this.jdField_a_of_type_Dib.jdField_a_of_type_ComTencentMobileqqActivitySetTroopAdminsActivity$TroopAdmin.a, this.jdField_a_of_type_Dib.jdField_a_of_type_ComTencentMobileqqActivitySetTroopAdminsActivity$TroopAdmin);
+    ((TroopHandler)this.jdField_a_of_type_Dib.jdField_a_of_type_Dia.a.b.a(19)).a((byte)0, SetTroopAdminsActivity.a(this.jdField_a_of_type_Dib.jdField_a_of_type_Dia.a), this.jdField_a_of_type_Dib.jdField_a_of_type_ComTencentMobileqqActivitySetTroopAdminsActivity$TroopAdmin.a);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

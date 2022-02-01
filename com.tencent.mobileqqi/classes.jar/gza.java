@@ -1,14 +1,24 @@
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import java.util.Queue;
 
 public class gza
-  implements Runnable
+  implements Animation.AnimationListener
 {
   public gza(MessageSubtitleView paramMessageSubtitleView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    MessageSubtitleView.b(this.a);
+    if ((MessageSubtitleView.a(this.a, paramAnimation)) && (!this.a.a.isEmpty())) {
+      MessageSubtitleView.a(this.a).post(MessageSubtitleView.a(this.a));
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

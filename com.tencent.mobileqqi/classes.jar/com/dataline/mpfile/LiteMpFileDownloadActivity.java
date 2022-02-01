@@ -69,7 +69,7 @@ public class LiteMpFileDownloadActivity
     this.jdField_a_of_type_ComDatalineMpfileMpfileTaskListAdapter = new MpfileTaskListAdapter(this, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.b);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComDatalineMpfileMpfileTaskListAdapter.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131231199));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131231198));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComDatalineMpfileMpfileTaskListAdapter);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setLongClickable(true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this);

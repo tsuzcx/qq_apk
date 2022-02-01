@@ -1,30 +1,50 @@
-import com.tencent.mobileqq.richstatus.ActionInfo;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.IActionListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ggr
-  implements IActionListener
+  extends Handler
 {
   public ggr(EditActivity paramEditActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt1 == 102) && (EditActivity.a(this.a).b != 0) && (" ".equals(EditActivity.a(this.a).c)))
+    switch (paramMessage.what)
     {
-      ActionInfo localActionInfo = EditActivity.a(this.a).a(EditActivity.a(this.a).b);
-      if (localActionInfo != null)
+    }
+    do
+    {
+      do
       {
-        EditActivity.a(this.a).c = localActionInfo.d;
-        EditActivity.a(this.a, false);
-      }
-    }
-    if (EditActivity.a(this.a) != null)
+        do
+        {
+          return;
+          EditActivity.b(this.a, true);
+        } while (!EditActivity.a(this.a));
+        paramMessage = this.a.b.getPreferences().getString(this.a.b.a() + "sp_hot_status", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("get_hot_rich_status", 2, "old_hot_action_ids: " + paramMessage);
+        }
+      } while ((paramMessage == null) || (paramMessage.length() <= 0));
+      paramMessage = paramMessage.split(";");
+    } while ((paramMessage == null) || (paramMessage.length <= 0));
+    int i = 0;
+    while ((i < 6) && (i < paramMessage.length))
     {
-      EditActivity.a(this.a, true);
-      EditActivity.a(this.a).notifyDataSetChanged();
+      if ((paramMessage[i] != null) && (paramMessage[i].length() > 0))
+      {
+        String[] arrayOfString = paramMessage[i].split(":");
+        if ((arrayOfString != null) && (arrayOfString.length == 2)) {
+          EditActivity.a(this.a).add(Integer.valueOf(Integer.parseInt(arrayOfString[0])));
+        }
+      }
+      i += 1;
     }
+    EditActivity.b(this.a);
   }
 }
 

@@ -1,65 +1,49 @@
-import com.tencent.mobileqq.app.AppConstants;
+import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.subaccount.SubAccountDataControll;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountAssistantCache;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountDBOperation;
-import com.tencent.mobileqq.utils.TimeFormatterUtils;
+import com.tencent.mobileqq.app.SubAccountBindObserver;
+import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SubAccountObserver;
 
 public class glj
-  extends SubAccountObserver
+  extends SubAccountBindObserver
 {
-  public glj(SubAccountDataControll paramSubAccountDataControll, QQAppInterface paramQQAppInterface, RecentUser paramRecentUser) {}
+  public glj(SubAccountProtocManager paramSubAccountProtocManager) {}
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    int j = 0;
-    int i = j;
-    if (paramString3 != null)
-    {
-      i = j;
-      if (paramString3.length() > 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountDataControll.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString3);
-        i = 1;
-      }
+    if ((!SubAccountProtocManager.a(this.a)) && (SubAccountProtocManager.a(this.a) != null)) {
+      SubAccountProtocManager.a(this.a).postDelayed(SubAccountProtocManager.a(this.a), 100L);
     }
-    paramString1 = SubAccountDataControll.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountDataControll).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (paramString1 != null) {
-      SubAccountDataControll.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountDataControll).a(paramString1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    for (;;)
+    synchronized (SubAccountProtocManager.c())
     {
-      if (i == 0) {
-        SubAccountDataControll.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountDataControll).c();
+      SubAccountProtocManager.c(this.a, false);
+      SubAccountProtocManager.d(this.a, true);
+      if ((paramSubAccountBackProtocData != null) && (paramSubAccountBackProtocData.b)) {
+        SubAccountProtocManager.a(this.a).e(false);
       }
-      i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.O, 7000);
-      j = SubAccountDataControll.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      int k = j - i;
       if (QLog.isColorLevel()) {
-        QLog.d("SUB_ACCOUNT", 2, "initSubAccountAllData setReaded subaccount,old:" + i + " target:" + j + " increase:" + k);
-      }
-      if (k != 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(AppConstants.O, 7000, k);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.O);
+        QLog.d("Q.subaccount.SubAccountProtocManager", 2, "onGetBindSubAccount:");
       }
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser != null)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.lastmsgtime == 9223372036854775804L) {
-          SubAccountDataControll.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountDataControll).c("");
-        } else {
-          SubAccountDataControll.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountDataControll).c(TimeFormatterUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.lastmsgtime * 1000L, true, SubAccountAssistantCache.a));
-        }
-      }
-      else {
-        SubAccountDataControll.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountDataControll).c("");
-      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, SubAccountBackProtocData arg2)
+  {
+    synchronized ()
+    {
+      SubAccountProtocManager.a(this.a, false);
+      return;
+    }
+  }
+  
+  protected void c(boolean paramBoolean, SubAccountBackProtocData arg2)
+  {
+    synchronized ()
+    {
+      SubAccountProtocManager.b(this.a, false);
+      return;
     }
   }
 }

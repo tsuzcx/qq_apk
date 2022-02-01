@@ -1,22 +1,20 @@
+import QQService.RespTmpChatPicDownload;
 import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import com.tencent.mobileqq.transfile.LbsTransfileProcessor;
 
 public class gnm
   extends MessageObserver
 {
-  public gnm(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
+  public gnm(LbsTransfileProcessor paramLbsTransfileProcessor) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  protected void a(boolean paramBoolean, RespTmpChatPicDownload paramRespTmpChatPicDownload)
   {
-    this.a.a("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
+    if ((paramRespTmpChatPicDownload != null) && (paramRespTmpChatPicDownload.lReplyCode == 0) && (paramRespTmpChatPicDownload.strDownloadURL != null) && (paramRespTmpChatPicDownload.strDownloadURL.length() > 0))
     {
-      this.a.e();
+      this.a.d(paramRespTmpChatPicDownload.strDownloadURL);
       return;
     }
-    this.a.d();
+    this.a.b(null, null);
   }
 }
 

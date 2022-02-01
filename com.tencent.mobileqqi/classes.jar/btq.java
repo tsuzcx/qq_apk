@@ -57,8 +57,8 @@ public class btq
     {
       paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity.getLayoutInflater().inflate(2130903933, null);
       paramView = new bts(null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131232909));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131232911));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131232908));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131232910));
       paramViewGroup.setTag(paramView);
       paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     }

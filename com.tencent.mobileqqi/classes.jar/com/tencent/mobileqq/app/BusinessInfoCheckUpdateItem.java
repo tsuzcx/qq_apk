@@ -79,11 +79,11 @@ public class BusinessInfoCheckUpdateItem
     String[] arrayOfString2 = { "100005", "100005.100001", "1" };
     String[] arrayOfString3 = { "100005", "100005.100002", "1" };
     String[] arrayOfString4 = { "100005", "100005.100006", "1" };
-    String[] arrayOfString5 = { "100005", "100005.100011", "1" };
-    String[] arrayOfString6 = { "100007", "100007", "1" };
-    String[] arrayOfString7 = { "100007", "100007.100009.100010", "1" };
+    String[] arrayOfString5 = { "100007", "100007.100009", "1" };
+    String[] arrayOfString6 = { "100007", "100007.100009.100010", "1" };
+    String[] arrayOfString7 = { "100300", "100300", "2" };
     String[] arrayOfString8 = { "100200", "100200", "1" };
-    this.jdField_a_of_type_Array2dOfJavaLangString = new String[][] { arrayOfString1, arrayOfString2, arrayOfString3, { "100005", "100005.100003", "1" }, arrayOfString4, arrayOfString5, arrayOfString6, { "100007", "100007.100008", "1" }, { "100007", "100007.100009", "1" }, arrayOfString7, { "100400", "100400", "1" }, { "100005", "100005.100012", "1" }, { "100300", "100300", "2" }, { "826", "826", "0" }, arrayOfString8 };
+    this.jdField_a_of_type_Array2dOfJavaLangString = new String[][] { arrayOfString1, arrayOfString2, arrayOfString3, { "100005", "100005.100003", "1" }, arrayOfString4, { "100005", "100005.100011", "1" }, { "100007", "100007", "1" }, { "100007", "100007.100008", "1" }, arrayOfString5, arrayOfString6, { "100400", "100400", "1" }, { "100005", "100005.100012", "1" }, arrayOfString7, { "826", "826", "0" }, arrayOfString8 };
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.B = paramInt;
   }
@@ -277,7 +277,7 @@ public class BusinessInfoCheckUpdateItem
     BusinessInfoCheckUpdate.TimeReqBody localTimeReqBody = new BusinessInfoCheckUpdate.TimeReqBody();
     localTimeReqBody.iProtocolVer.set(1);
     localTimeReqBody.uiClientPlatID.set(109);
-    localTimeReqBody.sClientVer.set("6.0.2.6602");
+    localTimeReqBody.sClientVer.set("6.0.3.6604");
     localTimeReqBody.uiUin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
     List localList = ResourcePluginInfo.getAll(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager(), 64, false);
     Object localObject1 = (RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34);

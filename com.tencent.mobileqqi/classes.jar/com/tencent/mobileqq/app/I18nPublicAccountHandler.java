@@ -23,8 +23,8 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import fcu;
 import fcv;
-import fcw;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -100,7 +100,7 @@ public class I18nPublicAccountHandler
       {
         return;
         paramFromServiceMsg = new QQiPublicAccount.FetchPublicAccountWhiteListResp();
-        paramToServiceMsg = new fcv();
+        paramToServiceMsg = new fcu();
         try
         {
           paramFromServiceMsg.mergeFrom((byte[])paramObject);
@@ -129,7 +129,7 @@ public class I18nPublicAccountHandler
       a(90001, bool, paramToServiceMsg);
       return;
     }
-    paramToServiceMsg = new fcw();
+    paramToServiceMsg = new fcv();
     if (paramFromServiceMsg.isSuccess()) {}
     for (;;)
     {

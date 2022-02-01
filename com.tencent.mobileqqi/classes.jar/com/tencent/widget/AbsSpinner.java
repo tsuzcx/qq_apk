@@ -10,7 +10,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
-import hvj;
+import hvi;
 
 public abstract class AbsSpinner
   extends AdapterView
@@ -20,7 +20,7 @@ public abstract class AbsSpinner
   private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver;
   final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   SpinnerAdapter jdField_a_of_type_AndroidWidgetSpinnerAdapter;
-  final hvj jdField_a_of_type_Hvj = new hvj(this);
+  final hvi jdField_a_of_type_Hvi = new hvi(this);
   boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
@@ -173,12 +173,12 @@ public abstract class AbsSpinner
   void c()
   {
     int j = getChildCount();
-    hvj localhvj = this.jdField_a_of_type_Hvj;
+    hvi localhvi = this.jdField_a_of_type_Hvi;
     int k = this.ap;
     int i = 0;
     while (i < j)
     {
-      localhvj.a(k + i, getChildAt(i));
+      localhvi.a(k + i, getChildAt(i));
       i += 1;
     }
   }
@@ -227,13 +227,13 @@ public abstract class AbsSpinner
       if ((i < 0) || (this.jdField_a_of_type_AndroidWidgetSpinnerAdapter == null) || (i >= this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getCount())) {
         break label439;
       }
-      View localView = this.jdField_a_of_type_Hvj.a(i);
+      View localView = this.jdField_a_of_type_Hvi.a(i);
       localObject = localView;
       if (localView == null) {
         localObject = this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getView(i, null, this);
       }
       if (localObject != null) {
-        this.jdField_a_of_type_Hvj.a(i, (View)localObject);
+        this.jdField_a_of_type_Hvi.a(i, (View)localObject);
       }
       if (localObject == null) {
         break label439;

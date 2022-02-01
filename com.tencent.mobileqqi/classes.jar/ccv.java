@@ -1,45 +1,18 @@
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class ccv
-  extends MessageObserver
+  implements IIconListener
 {
   public ccv(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected void b(boolean paramBoolean, String paramString)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
+    if ((this.a.jdField_a_of_type_AndroidWidgetTextView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.b == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      ChatSettingActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus, this.a.jdField_a_of_type_AndroidWidgetTextView);
     }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.e(this.a);
-    if (paramBoolean)
-    {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.b(this.a, true);
-      }
-      ChatSettingActivity.c(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131562919, 1);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.e(this.a);
-    if (paramBoolean)
-    {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.b(this.a, false);
-      }
-      ChatSettingActivity.c(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131562919, 1);
   }
 }
 

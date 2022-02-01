@@ -1,19 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
-import mqq.app.permission.PermissionItem;
-import mqq.app.permission.PermissionManager;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
 class cnc
-  implements PermissionDialogCallback
+  implements PermissionCallback
 {
-  cnc(cnb paramcnb, View paramView, int paramInt) {}
+  cnc(cnb paramcnb) {}
   
-  public void a() {}
-  
-  public void b()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Cnb.a.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.CAMERA", 200), PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new cnd(this));
+    new PermissionsDialog().a(this.a.jdField_a_of_type_Cna.a, paramInt, paramArrayOfString, new cnd(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.jdField_a_of_type_Cna.OnClick(this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_Int);
   }
 }
 

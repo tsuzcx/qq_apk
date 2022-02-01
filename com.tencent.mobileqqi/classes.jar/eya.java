@@ -1,14 +1,13 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.adapter.ForwardDiscussionListAdapter;
 
 public class eya
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public String a;
-  public TextView b;
+  public eya(ForwardDiscussionListAdapter paramForwardDiscussionListAdapter) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

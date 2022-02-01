@@ -1,10 +1,19 @@
-import android.os.Handler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
 public class cpb
-  extends Handler
+  extends BroadcastReceiver
 {
   public cpb(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent != null) && (paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
+      this.a.finish();
+    }
+  }
 }
 
 

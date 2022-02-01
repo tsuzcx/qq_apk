@@ -1,26 +1,28 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQzoneFeed;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
 
 public class eaj
-  implements View.OnClickListener
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public eaj(QzoneFeedItemBuilder paramQzoneFeedItemBuilder, MessageForQzoneFeed paramMessageForQzoneFeed) {}
+  public long a;
+  public ViewGroup a;
+  public ImageView a;
+  public URLImageView a;
+  public String a;
+  public ViewGroup b;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
   
-  public void onClick(View paramView)
-  {
-    paramView = paramView.getContext();
-    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
-    localUserInfo.a = QzoneFeedItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).a();
-    localUserInfo.b = QzoneFeedItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).e();
-    localUserInfo.c = QzoneFeedItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).getSid();
-    QZoneHelper.b((Activity)paramView, localUserInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl, "mqqChat.QzoneCard", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.appId, -1);
-  }
+  public eaj(QzoneFeedItemBuilder paramQzoneFeedItemBuilder) {}
 }
 
 

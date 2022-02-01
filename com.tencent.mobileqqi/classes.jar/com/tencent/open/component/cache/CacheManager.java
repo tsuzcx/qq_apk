@@ -2,7 +2,7 @@ package com.tencent.open.component.cache;
 
 import android.content.Context;
 import com.tencent.open.component.cache.database.DbCacheService;
-import hmd;
+import hmc;
 import java.io.File;
 
 public class CacheManager
@@ -17,7 +17,7 @@ public class CacheManager
   protected static String a(Context paramContext, boolean paramBoolean)
   {
     if (!paramBoolean) {}
-    for (paramContext = hmd.a(paramContext); paramContext == null; paramContext = hmd.a(paramContext, "cache")) {
+    for (paramContext = hmc.a(paramContext); paramContext == null; paramContext = hmc.a(paramContext, "cache")) {
       return null;
     }
     return paramContext.getAbsolutePath();

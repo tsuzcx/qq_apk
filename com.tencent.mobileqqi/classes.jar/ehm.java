@@ -1,15 +1,21 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.language.SelectLanguageActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.language.SelectTransLangActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ehm
   implements View.OnClickListener
 {
-  public ehm(SelectLanguageActivity paramSelectLanguageActivity) {}
+  public ehm(SelectTransLangActivity paramSelectTransLangActivity) {}
   
   public void onClick(View paramView)
   {
-    SelectLanguageActivity.a(this.a, 8);
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("uin", this.a.b.a());
+    paramView.putExtra("url", "http://m.fanyi.qq.com/intro/?ADTAG=iqq");
+    this.a.startActivity(paramView);
   }
 }
 

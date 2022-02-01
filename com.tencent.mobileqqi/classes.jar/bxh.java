@@ -1,25 +1,16 @@
-import android.view.MotionEvent;
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bxh
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
   public bxh(ChatActivity paramChatActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.a.findViewById(2131231208).setBackgroundResource(2130840096);
-    }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1) {
-        this.a.findViewById(2131231208).setBackgroundResource(2130840095);
-      }
-    }
+    this.a.b.cancel();
   }
 }
 

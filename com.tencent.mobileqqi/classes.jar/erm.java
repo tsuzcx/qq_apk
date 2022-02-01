@@ -1,93 +1,67 @@
-import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.FaceDecoder;
 import java.util.ArrayList;
 
 public class erm
-  extends DiscussionObserver
+  extends BaseAdapter
 {
-  public erm(SelectMemberActivity paramSelectMemberActivity) {}
+  private erm(SelectMemberActivity paramSelectMemberActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong)
+  public int getCount()
   {
-    if (!paramBoolean) {
-      SelectMemberActivity.jdField_a_of_type_Boolean = false;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      if (paramBoolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SelectMemberActivity", 2, "create discussion success: roomId: " + paramLong + ", mSubType: " + SelectMemberActivity.a(this.a) + ", mEntrance: " + this.a.q);
-        }
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", String.valueOf(paramLong));
-        this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-        if ((this.a.jdField_a_of_type_AndroidContentIntent != null) && (this.a.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendToVideo", false))) {
-          this.a.a(paramBoolean, paramLong);
-        }
-        this.a.finish();
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "create discussion fail");
-    }
-    QQToast.a(this.a, this.a.getString(2131562044), 2000).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
+    return this.a.c.size();
   }
   
-  protected void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList)
+  public Object getItem(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      if (paramBoolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SelectMemberActivity", 2, "add discussion member success: roomId: " + paramLong);
-        }
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", String.valueOf(paramLong));
-        this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-        if ((this.a.jdField_a_of_type_AndroidContentIntent != null) && (this.a.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendToVideo", false))) {
-          this.a.a(paramBoolean, paramLong, paramArrayList);
-        }
-        this.a.finish();
-      }
+    if ((paramInt >= 0) && (paramInt < this.a.c.size())) {
+      return this.a.c.get(paramInt);
     }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add discussion member fail");
-    }
-    QQToast.a(this.a, this.a.getString(2131562045), 2000).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
+    return null;
   }
   
-  protected void a(Object[] paramArrayOfObject)
+  public long getItemId(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    SelectMemberActivity.ResultRecord localResultRecord = (SelectMemberActivity.ResultRecord)getItem(paramInt);
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.a.getLayoutInflater().inflate(2130903253, null);
     }
-    if (paramArrayOfObject == null) {}
-    String str;
-    do
+    paramViewGroup.setTag(localResultRecord);
+    paramView = this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.b(localResultRecord.jdField_a_of_type_JavaLangString);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131230985);
+    localImageView.setImageDrawable(paramView);
+    if (localResultRecord.jdField_a_of_type_Int == 4)
     {
-      return;
-      str = (String)paramArrayOfObject[0];
-    } while (!this.a.E.equals(str));
-    int i = ((Integer)paramArrayOfObject[1]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add discussion member failed, error code: " + i);
+      paramInt = 11;
+      paramView = this.a.a.a(paramInt, localResultRecord.jdField_a_of_type_JavaLangString);
+      if (paramView != null) {
+        break label169;
+      }
+      this.a.a.a(localResultRecord.jdField_a_of_type_JavaLangString, paramInt, true);
+      paramView = this.a.jdField_b_of_type_AndroidGraphicsBitmap;
     }
-    QQToast.a(this.a, this.a.getString(2131562045), 0).b(this.a.d());
+    label169:
+    for (;;)
+    {
+      localImageView.setImageBitmap(paramView);
+      localImageView.setContentDescription(localResultRecord.b + " 已选中,双击删除,按钮");
+      return paramViewGroup;
+      paramInt = 1;
+      break;
+    }
   }
 }
 

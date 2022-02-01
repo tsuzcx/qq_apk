@@ -1,15 +1,4 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-
-class egw
-  implements Runnable
-{
-  egw(egv paramegv) {}
-  
-  public void run()
-  {
-    this.a.a.a();
-  }
-}
+public class egw {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar

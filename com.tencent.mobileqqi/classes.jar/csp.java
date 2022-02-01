@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import java.util.List;
 
 public class csp
   implements Runnable
 {
-  public csp(Leba paramLeba) {}
+  public csp(LebaListMgrActivity paramLebaListMgrActivity) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "init leba list when init UI in refreshAllListInUI()");
-    }
-    Leba.c(this.a);
+    LebaShowListManager.a().a(this.a, this.a.b);
+    List localList = LebaShowListManager.a().a();
+    this.a.runOnUiThread(new csq(this, localList));
   }
 }
 

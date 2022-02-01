@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
 
 public class eep
-  implements View.OnClickListener
+  extends Handler
 {
-  public eep(NewFriendActivity paramNewFriendActivity) {}
+  public eep(RecommendListView paramRecommendListView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.g();
+    RecommendListView.a(this.a);
   }
 }
 

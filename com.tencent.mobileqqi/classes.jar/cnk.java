@@ -1,49 +1,47 @@
-import android.view.animation.Animation;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.widget.BounceScrollView.OnScrollChangedListener;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class cnk
-  implements BounceScrollView.OnScrollChangedListener
+  implements Runnable
 {
   public cnk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("PROFILE_TEST", 4, "onScrollChanged, [" + paramInt1 + "," + paramInt2 + "],[" + paramInt3 + "," + paramInt4 + "]");
-    }
-    if ((this.a.a.a.a == 33) || (FriendProfileCardActivity.a(this.a) == null)) {}
-    for (;;)
+    if (FriendProfileCardActivity.a(this.a) != null)
     {
-      return;
-      Object localObject2 = null;
-      Object localObject1;
-      if ((paramInt2 > paramInt4) && (paramInt2 >= this.a.c) && (FriendProfileCardActivity.a(this.a).getVisibility() == 8)) {
-        localObject1 = FriendProfileCardActivity.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig currentCardTemplate=" + FriendProfileCardActivity.a(this.a).toString());
       }
-      while ((localObject1 != null) && (localObject1 != FriendProfileCardActivity.a(this.a).getAnimation()))
+      if (FriendProfileCardActivity.a(this.a).a(this.a.b))
       {
-        ((Animation)localObject1).reset();
-        FriendProfileCardActivity.a(this.a).startAnimation((Animation)localObject1);
-        return;
-        localObject1 = localObject2;
-        if (paramInt2 < paramInt4)
+        localMessage = this.a.a.obtainMessage(8);
+        if (QLog.isColorLevel())
         {
-          localObject1 = localObject2;
-          if (paramInt2 <= this.a.c)
-          {
-            localObject1 = localObject2;
-            if (FriendProfileCardActivity.a(this.a).getVisibility() == 0) {
-              localObject1 = FriendProfileCardActivity.b(this.a);
-            }
+          if ((FriendProfileCardActivity.a(this.a) == null) || (FriendProfileCardActivity.a(this.a).a == null)) {
+            break label192;
           }
+          i = FriendProfileCardActivity.a(this.a).a.size();
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig result=" + localMessage.what + ",templateAttr size=" + i);
         }
+        this.a.a.sendMessage(localMessage);
       }
     }
+    label192:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        return;
+        Message localMessage = this.a.a.obtainMessage(9);
+        continue;
+        int i = 0;
+      }
+    }
+    QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig currentCardTemplate is null");
   }
 }
 

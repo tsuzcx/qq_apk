@@ -1,12 +1,20 @@
-import com.tencent.mobileqq.activity.photo.LocalPhotoInfo;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.transfile.DataLineDownloader;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import java.net.URL;
 
 public class gnd
+  implements BitmapDecoder
 {
-  public LocalPhotoInfo a;
-  public boolean a;
+  public gnc a;
   
   public gnd(DataLineDownloader paramDataLineDownloader) {}
+  
+  public Bitmap a(URL paramURL)
+  {
+    this.jdField_a_of_type_Gnc = this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader.a(paramURL);
+    return DataLineDownloader.a(this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader, this.jdField_a_of_type_Gnc);
+  }
 }
 
 

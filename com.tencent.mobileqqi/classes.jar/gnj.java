@@ -1,45 +1,17 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.ForwardImageProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.pic.PicBusiManager;
+import com.tencent.mobileqq.pic.PicReq;
+import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
 
 public class gnj
-  extends TransProcessorHandler
+  extends AsyncTask
 {
-  public gnj(ForwardImageProcessor paramForwardImageProcessor) {}
+  public gnj(GroupPicUploadProcessor paramGroupPicUploadProcessor, PicReq paramPicReq) {}
   
-  public void handleMessage(Message paramMessage)
+  protected Void a(Void... paramVarArgs)
   {
-    int i = paramMessage.what;
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((i == 2002) || ((ForwardImageProcessor.a(this.a).equals(localFileMsg.m)) && (localFileMsg.e == 1) && (i != 2002)))
-    {
-      if ((localFileMsg.o == null) || (!localFileMsg.o.equals(ForwardImageProcessor.b(this.a)))) {
-        return;
-      }
-      switch (i)
-      {
-      }
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      ForwardImageProcessor.a(this.a);
-      continue;
-      if (FileUtils.b(ForwardImageProcessor.c(this.a)))
-      {
-        ForwardImageProcessor.a(this.a).a().b(this);
-        ForwardImageProcessor.b(this.a);
-      }
-      else
-      {
-        ForwardImageProcessor.a(this.a);
-      }
-    }
+    PicBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq, this.jdField_a_of_type_ComTencentMobileqqTransfileGroupPicUploadProcessor.a);
+    return null;
   }
 }
 

@@ -1,24 +1,12 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.BuddyListAdapter.ViewTag;
 
 public class exr
-  implements View.OnClickListener
+  extends BuddyListAdapter.ViewTag
 {
-  public exr(BuddyListAdapter paramBuddyListAdapter) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((BuddyListAdapter.a(this.a) != null) && (BuddyListAdapter.a(this.a).isShowing())) {
-      BuddyListAdapter.a(this.a).dismiss();
-    }
-    GroupManagerActivity.a((Activity)BuddyListAdapter.a(this.a));
-    ReportController.b(BuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
-  }
+  public ImageView a;
+  public TextView a;
 }
 
 

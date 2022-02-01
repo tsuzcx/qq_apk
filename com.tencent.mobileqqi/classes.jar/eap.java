@@ -1,30 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShakeWindow;
-import com.tencent.qphone.base.util.QLog;
 
 public class eap
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public eap(ShakeItemBuilder paramShakeItemBuilder) {}
+  public eap(ShakeItemBuilder paramShakeItemBuilder, MessageForShakeWindow paramMessageForShakeWindow) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
-    }
-    paramView = (MessageForShakeWindow)AIOUtils.a(paramView);
-    if ((ShakeItemBuilder.a(this.a) instanceof ChatActivity))
-    {
-      ((ChatActivity)ShakeItemBuilder.b(this.a)).u();
-      ShakeItemBuilder.a(this.a).b(paramView.frienduin, false);
-      return;
-    }
-    ShakeItemBuilder.b(this.a).b(paramView.frienduin, false);
+    ChatActivityFacade.a(ShakeItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder), ShakeItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder), ShakeItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
   }
 }
 

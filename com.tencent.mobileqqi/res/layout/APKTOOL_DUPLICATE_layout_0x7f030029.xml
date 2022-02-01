@@ -13,7 +13,7 @@
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f080160" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f080161" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f080162" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f080163" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f080163" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f080164" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
     </LinearLayout>
 </com.tencent.mobileqq.widget.BounceScrollView>

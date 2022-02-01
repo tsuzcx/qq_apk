@@ -1,22 +1,13 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class cjg
-  implements View.OnClickListener
+  implements Runnable
 {
   public cjg(EditActivity paramEditActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.f();
-    paramView = this.a.a.getText().toString();
-    Intent localIntent = this.a.getIntent();
-    localIntent.putExtra("result", paramView);
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
+    this.a.e();
   }
 }
 

@@ -1,16 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogShowMessageCallback;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
 
 public class gdp
   implements DialogInterface.OnClickListener
 {
-  public gdp(PermissionsDialog paramPermissionsDialog, PermissionDialogShowMessageCallback paramPermissionDialogShowMessageCallback) {}
+  public gdp(PermissionsDialog paramPermissionsDialog) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPermissionsDialogPermissionDialogShowMessageCallback.a();
+    if (paramInt == 1) {
+      PermissionsDialog.a(this.a).b();
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    PermissionsDialog.a(this.a).a();
   }
 }
 

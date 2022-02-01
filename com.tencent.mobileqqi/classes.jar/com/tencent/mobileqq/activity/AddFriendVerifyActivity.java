@@ -263,8 +263,8 @@ public class AddFriendVerifyActivity
         continue;
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         paramBundle = (String)localArrayList.get(0);
-        localObject1 = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131231294);
-        localObject2 = (EditText)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232846);
+        localObject1 = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131231293);
+        localObject2 = (EditText)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131232845);
         ((TextView)localObject1).setText(getString(2131562694) + ":" + paramBundle);
         ((EditText)localObject2).setSingleLine(true);
         ((EditText)localObject2).setContentDescription(getString(2131561094));
@@ -299,8 +299,8 @@ public class AddFriendVerifyActivity
             this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject3);
             this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject4);
             localObject5 = (String)localArrayList.get(i);
-            ((TextView)((View)localObject3).findViewById(2131231294)).setText(paramBundle + (String)localObject5);
-            paramBundle = (EditText)((View)localObject4).findViewById(2131232846);
+            ((TextView)((View)localObject3).findViewById(2131231293)).setText(paramBundle + (String)localObject5);
+            paramBundle = (EditText)((View)localObject4).findViewById(2131232845);
             paramBundle.setFilters(new InputFilter[] { localObject1 });
             paramBundle.setSingleLine(false);
             this.jdField_a_of_type_JavaUtilArrayList.add(paramBundle);
@@ -412,7 +412,7 @@ public class AddFriendVerifyActivity
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramView.getId() == 2131232846) {}
+    if (paramView.getId() == 2131232845) {}
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     case 2: 

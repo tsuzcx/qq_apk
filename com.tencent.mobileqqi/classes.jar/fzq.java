@@ -1,39 +1,24 @@
 import android.app.Activity;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.common.util.Util;
 import com.tencent.mobileqq.jsp.DataApiPlugin;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import java.io.IOException;
 
-public class fzq
+class fzq
   implements Runnable
 {
-  public fzq(DataApiPlugin paramDataApiPlugin, String paramString1, String paramString2, Bundle paramBundle1, Bundle paramBundle2, String paramString3) {}
+  fzq(fzp paramfzp, Activity paramActivity, String paramString, int paramInt) {}
   
   public void run()
   {
-    i = 200;
-    Object localObject1 = null;
-    try
+    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
     {
-      localObject2 = HttpUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.jdField_b_of_type_AndroidOsBundle);
-      localObject1 = localObject2;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        i = 0;
-        localIOException.printStackTrace();
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        this.jdField_a_of_type_Fzp.a.callJs(this.jdField_a_of_type_Fzp.c, new String[] { "null", Integer.toString(this.jdField_a_of_type_Int) });
       }
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqJspDataApiPlugin.mRuntime.a();
-    if ((!TextUtils.isEmpty(this.c)) && (localObject2 != null)) {
-      ((Activity)localObject2).runOnUiThread(new fzr(this, (Activity)localObject2, localObject1, i));
+    else {
+      return;
     }
+    this.jdField_a_of_type_Fzp.a.callJs(this.jdField_a_of_type_Fzp.c, new String[] { Util.b(this.jdField_a_of_type_JavaLangString), Integer.toString(this.jdField_a_of_type_Int) });
   }
 }
 

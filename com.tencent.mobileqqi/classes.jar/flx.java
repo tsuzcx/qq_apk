@@ -1,23 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.app.ConditionSearchManager.ISearchListener;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import java.util.List;
 
 public class flx
-  extends LBSObserver
+  implements ConditionSearchManager.ISearchListener
 {
-  public flx(LocationSelectActivity paramLocationSelectActivity) {}
+  public flx(SearchResultActivity paramSearchResultActivity) {}
   
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
+  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    if (Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L)
+    if (!paramBoolean1)
     {
-      this.a.a(paramBoolean, paramArrayOfString);
+      this.a.b = 3;
+      this.a.jdField_a_of_type_Flz.notifyDataSetChanged();
       return;
     }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
-    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramArrayOfString };
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    paramList = this.a;
+    if (paramBoolean2) {}
+    for (int i = 1;; i = 0)
+    {
+      paramList.b = i;
+      break;
+    }
   }
 }
 

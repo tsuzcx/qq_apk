@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantItemData;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
-import java.util.Comparator;
 
 public class gjt
-  implements Comparator
+  implements Runnable
 {
-  public gjt(QZoneShareAlbumAssistantManager paramQZoneShareAlbumAssistantManager) {}
+  public gjt(QZoneShareAlbumAssistantManager paramQZoneShareAlbumAssistantManager, QQAppInterface paramQQAppInterface) {}
   
-  public int a(QZoneShareAlbumAssistantItemData paramQZoneShareAlbumAssistantItemData1, QZoneShareAlbumAssistantItemData paramQZoneShareAlbumAssistantItemData2)
+  public void run()
   {
-    long l1 = paramQZoneShareAlbumAssistantItemData1.lastmsgtime;
-    long l2 = paramQZoneShareAlbumAssistantItemData2.lastmsgtime;
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

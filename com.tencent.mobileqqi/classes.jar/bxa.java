@@ -1,23 +1,13 @@
-import android.content.Intent;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.activity.TroopNewcomerNoticeActivity;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
 
 public class bxa
   implements Runnable
 {
-  public bxa(ChatActivity paramChatActivity) {}
+  public bxa(ChatActivity paramChatActivity, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    TroopNotificationHelper.e(this.a.a.a);
-    Intent localIntent = new Intent(this.a, TroopNewcomerNoticeActivity.class);
-    localIntent.putExtra("troop_friend_uin", this.a.a.a);
-    this.a.overridePendingTransition(2130968695, 2130968696);
-    this.a.startActivity(localIntent);
-    ReportController.a(null, "P_CliOper", "Grp_bulletin", "", "AIOchat", "notice_exp", 0, 0, this.a.a.a, "", "", "");
+    ChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity, this.jdField_a_of_type_Int, this.b, "");
   }
 }
 

@@ -1,31 +1,10 @@
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
 public class cgm
-  implements Runnable
+  extends Handler
 {
-  public cgm(DevlockPushActivity paramDevlockPushActivity) {}
-  
-  public void run()
-  {
-    try
-    {
-      if ((DevlockPushActivity.a(this.a) != null) && (DevlockPushActivity.a(this.a).isShowing()))
-      {
-        DevlockPushActivity.a(this.a).dismiss();
-        DevlockPushActivity.a(this.a).cancel();
-      }
-      DevlockPushActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
+  public cgm(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
 }
 
 

@@ -5,7 +5,7 @@ import android.util.Pair;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import fnr;
+import fnq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -86,9 +86,9 @@ public class DebugMemoryMgr
       Iterator localIterator = jdField_a_of_type_JavaUtilMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
-        fnr localfnr = (fnr)((Map.Entry)localIterator.next()).getValue();
-        if ((localfnr != null) && (fnr.a(localfnr) >= 5242880L)) {
-          localArrayList.add(Pair.create(fnr.a(localfnr), Long.valueOf(fnr.a(localfnr))));
+        fnq localfnq = (fnq)((Map.Entry)localIterator.next()).getValue();
+        if ((localfnq != null) && (fnq.a(localfnq) >= 5242880L)) {
+          localArrayList.add(Pair.create(fnq.a(localfnq), Long.valueOf(fnq.a(localfnq))));
         }
       }
     }

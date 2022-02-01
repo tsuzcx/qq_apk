@@ -16,7 +16,7 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import ibi;
+import ibh;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -350,7 +350,7 @@ public final class QfavUtil
         if (paramBoolean)
         {
           paramContext2 = paramContext1.getString(2131560795);
-          paramContext1 = DialogUtil.a(paramContext1, 230, str, paramContext2, 2131561746, 2131560796, new ibi(), null);
+          paramContext1 = DialogUtil.a(paramContext1, 230, str, paramContext2, 2131561746, 2131560796, new ibh(), null);
           paramContext1.setMessageCount(null);
           paramContext1.show();
           return;

@@ -1,23 +1,43 @@
-import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
 import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.RenMaiQuanTeamListInnerFrame;
-import com.tencent.mobileqq.data.CircleGroup;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import java.util.ArrayList;
 
-class eqp
-  implements View.OnClickListener
+public class eqp
+  implements View.OnKeyListener
 {
-  eqp(eqo parameqo, CircleGroup paramCircleGroup) {}
+  public eqp(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramView = new Bundle();
-    paramView.putInt("group_uin", this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupId);
-    paramView.putString("group_name", this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupName);
-    this.jdField_a_of_type_Eqo.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(7, paramView);
-    ReportController.b(this.jdField_a_of_type_Eqo.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Network_circle", "Mutichat_circle_grp", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupId), "", "", "");
+    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0))
+    {
+      SelectMemberActivity.a(this.a).requestFocus();
+      if ((SelectMemberActivity.a(this.a).getText().toString().equals("")) && (this.a.c.size() != 0))
+      {
+        paramView = ((SelectMemberActivity.ResultRecord)this.a.c.get(this.a.c.size() - 1)).a;
+        if (this.a.a(paramView))
+        {
+          this.a.a(paramView);
+          this.a.d();
+          paramInt = this.a.a.a();
+          if ((paramInt == 8) || (paramInt == 9) || (paramInt == 6) || (paramInt == 5)) {
+            ((SelectMemberInnerFrame)this.a.a.getCurrentView()).f();
+          }
+          this.a.a(false);
+        }
+      }
+    }
+    while ((paramInt != 4) || (!SelectMemberActivity.a(this.a).getText().toString().trim().equals(""))) {
+      return false;
+    }
+    this.a.i();
+    return false;
   }
 }
 

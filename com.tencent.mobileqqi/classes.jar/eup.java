@@ -9,7 +9,7 @@ public class eup
   
   public void onClick(View paramView)
   {
-    this.a.q();
+    this.a.r();
   }
 }
 

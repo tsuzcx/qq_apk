@@ -1,21 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.emoticonview.EmotionPreviewLayout;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class fov
-  extends Handler
+  implements ActionSheet.OnButtonClickListener
 {
-  public fov(EmotionPreviewLayout paramEmotionPreviewLayout) {}
+  public fov(FavoriteEmoticonInfo paramFavoriteEmoticonInfo, QQAppInterface paramQQAppInterface, EmoticonCallback paramEmoticonCallback, ActionSheet paramActionSheet) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
-    default: 
-      return;
     }
-    EmotionPreviewLayout.a(this.a);
-    this.a.setVisibility(8);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo);
+    }
   }
 }
 

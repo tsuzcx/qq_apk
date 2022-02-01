@@ -2,7 +2,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 
 public class cyn
@@ -12,9 +12,9 @@ public class cyn
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
+    paramView = new Intent(this.a.a(), SoundAndVibrateActivity.class);
     this.a.startActivity(paramView);
-    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
+    ReportController.b(this.a.b, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
   }
 }
 

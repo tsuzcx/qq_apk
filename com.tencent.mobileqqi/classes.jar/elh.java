@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class elh
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public elh(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.finish();
+    this.a.b = null;
   }
 }
 

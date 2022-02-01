@@ -1,24 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.adapter.AllBuddyListAdapter;
-import com.tencent.mobileqq.app.ContactSorter;
 import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
 
 public class exi
-  implements Comparator
+  implements View.OnClickListener
 {
-  public exi(AllBuddyListAdapter paramAllBuddyListAdapter) {}
+  public exi(AllBuddyListAdapter paramAllBuddyListAdapter, Friends paramFriends) {}
   
-  private String a(Entity paramEntity)
+  public void onClick(View paramView)
   {
-    paramEntity = (Friends)paramEntity;
-    return ContactUtils.a(paramEntity) + paramEntity.uin;
-  }
-  
-  public int a(Entity paramEntity1, Entity paramEntity2)
-  {
-    return ContactSorter.a(a(paramEntity1), a(paramEntity2));
+    paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 1);
+    paramView.f = 59;
+    ProfileActivity.a(AllBuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterAllBuddyListAdapter), paramView);
   }
 }
 

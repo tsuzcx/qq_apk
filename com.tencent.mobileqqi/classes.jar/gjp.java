@@ -1,21 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
 
 public class gjp
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
   public gjp(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    QZoneShareAlbumAssistantActivity.a(this.a).setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(View paramView) {}
 }
 
 

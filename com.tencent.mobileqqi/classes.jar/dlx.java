@@ -1,40 +1,54 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.adapter.SubAccountMessageAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.SubAccountMessageProcessor;
 import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class dlx
-  implements View.OnClickListener
+  extends FriendListObserver
 {
   public dlx(SubAccountMessageActivity paramSubAccountMessageActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    this.a.b.a().c(AppConstants.O, 7000);
-    if (!PhoneNumLoginImpl.a().a(this.a.b, this.a)) {}
+    if ((paramBoolean) && (SubAccountMessageActivity.a(this.a) != null) && (SubAccountMessageActivity.a(this.a).subuin != null) && (paramString != null) && (SubAccountMessageActivity.a(this.a).subuin.equals(paramString)))
+    {
+      paramString = ContactUtils.b(this.a.b, paramString, false);
+      if ((!TextUtils.isEmpty(paramString)) && ((TextUtils.isEmpty(SubAccountMessageActivity.a(this.a).subname)) || (!paramString.equals(SubAccountMessageActivity.a(this.a).subname))))
+      {
+        SubAccountMessageActivity.a(this.a).subname = paramString;
+        if (SubAccountMessageActivity.a(this.a) != null) {
+          SubAccountMessageActivity.a(this.a).setText(paramString);
+        }
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
     do
     {
       return;
-      paramView = "";
-      if (SubAccountMessageActivity.a(this.a) != null) {
-        paramView = SubAccountMessageActivity.a(this.a).subuin;
+      if (SubAccountMessageActivity.a(this.a) != null)
+      {
+        int i = 0;
+        while (i < SubAccountMessageActivity.a(this.a).getChildCount())
+        {
+          View localView = SubAccountMessageActivity.a(this.a).getChildAt(i);
+          SubAccountMessageActivity.a(this.a).a(paramString, localView);
+          i += 1;
+        }
       }
-      ReportController.b(this.a.b, "CliOper", "", paramView, "Bind_account", "Clk_readmsg", 0, 0, "", "", "", "");
-    } while (!this.a.f());
-    this.a.d();
-    if (SubAccountMessageActivity.a(this.a))
-    {
-      ((MessageHandler)this.a.b.a(0)).a().a(SubAccountMessageActivity.a(this.a).subuin, "sub.account.switchAccount");
-      return;
-    }
-    SubAccountMessageActivity.b(this.a);
+    } while ((SubAccountMessageActivity.a(this.a) == null) || (SubAccountMessageActivity.a(this.a).subuin == null) || (!SubAccountMessageActivity.a(this.a).subuin.equals(paramString)));
+    paramString = this.a.b.b(paramString);
+    SubAccountMessageActivity.a(this.a).setImageDrawable(paramString);
   }
 }
 

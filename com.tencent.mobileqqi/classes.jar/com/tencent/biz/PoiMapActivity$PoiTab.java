@@ -28,7 +28,7 @@ public class PoiMapActivity$PoiTab
     this.jdField_a_of_type_Int = 1;
     this.jdField_b_of_type_Int = 2;
     this.d = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((PoiMapActivity)paramContext).findViewById(2131233262));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((PoiMapActivity)paramContext).findViewById(2131233261));
     this.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView = new PoiMapActivity.TabView(paramPoiMapActivity, paramContext, paramString, paramInt);
     this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(paramContext);
     this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter = new PoiMapActivity.PoiItemAdapter(paramPoiMapActivity);

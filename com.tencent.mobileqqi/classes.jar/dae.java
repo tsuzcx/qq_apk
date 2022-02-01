@@ -1,23 +1,76 @@
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.ShieldListObserver;
+import com.tencent.mobileqq.util.Utils;
+import java.util.List;
 
 public class dae
-  extends MessageObserver
+  extends ShieldListObserver
 {
   public dae(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  protected void b(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, List paramList)
   {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+    if (this.a.a == null) {
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.h(this.a.a)) {
+      str = ProfileCardMoreActivity.a(this.a);
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
       this.a.a(paramBoolean, false);
+      return;
     }
   }
   
-  protected void c(boolean paramBoolean, String paramString)
+  protected void b(boolean paramBoolean, List paramList)
   {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+    int k = 0;
+    if (this.a.a == null) {
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.h(this.a.a)) {
+      str = ProfileCardMoreActivity.a(this.a);
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
       this.a.a(paramBoolean, true);
+      return;
     }
   }
 }

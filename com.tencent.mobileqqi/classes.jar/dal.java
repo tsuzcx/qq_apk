@@ -1,23 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.PublicAccountActivity;
 
 public class dal
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  public dal(PublicAccountActivity paramPublicAccountActivity, int paramInt) {}
+  public dal(PublicAccountActivity paramPublicAccountActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).setAnimation(null);
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).offsetTopAndBottom(this.jdField_a_of_type_Int);
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).requestLayout();
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity, null);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

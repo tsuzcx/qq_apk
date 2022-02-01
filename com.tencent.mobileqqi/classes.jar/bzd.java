@@ -1,15 +1,34 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class bzd
-  implements View.OnTouchListener
+  implements Animation.AnimationListener
 {
-  bzd(bzc parambzc) {}
+  bzd(bzb parambzb) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivity", 2, "animSet onAnimationEnd is called,time is:" + System.currentTimeMillis());
+    }
+    this.a.a.a.post(new bze(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivity", 2, "animSet onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivity", 2, "animSet onAnimationStart is called,time is:" + System.currentTimeMillis());
+    }
   }
 }
 

@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
 
 public class gjm
-  implements Runnable
+  implements View.OnClickListener
 {
   public gjm(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QZoneShareAlbumAssistantActivity.a(this.a).a(QZoneShareAlbumAssistantActivity.b(this.a));
-    QZoneShareAlbumAssistantActivity.a(this.a).notifyDataSetChanged();
+    QZoneShareAlbumAssistantActivity.a(this.a);
   }
 }
 

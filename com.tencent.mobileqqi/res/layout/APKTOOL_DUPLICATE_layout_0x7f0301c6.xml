@@ -2,6 +2,6 @@
 <merge
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08010b" android:visibility="gone" android:clickable="true" android:layout_width="64.0dip" android:layout_height="34.0dip" android:layout_margin="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803d5" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020858" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0dbd" android:shadowColor="#7f000000" android:shadowDx="1.5" android:shadowDy="1.5" android:shadowRadius="1.5" android:layout_centerInParent="true" />
+        <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803d4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020858" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0dbd" android:shadowColor="#7f000000" android:shadowDx="1.5" android:shadowDy="1.5" android:shadowRadius="1.5" android:layout_centerInParent="true" />
     </com.tencent.mobileqq.widget.ShaderAnimLayout>
 </merge>

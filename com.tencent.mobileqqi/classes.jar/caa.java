@@ -1,19 +1,25 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public final class caa
-  extends AsyncTask
+  implements FMDialogUtil.FMDialogInterface
 {
-  public caa(QQAppInterface paramQQAppInterface, String paramString) {}
+  public caa(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, ForwardFileInfo paramForwardFileInfo) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void a()
   {
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    return null;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
   }
   
-  protected void a(Void paramVoid) {}
+  public void b() {}
 }
 
 

@@ -1,22 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.SubaccountUgActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 
 class dnt
   implements DialogInterface.OnClickListener
 {
-  dnt(dns paramdns) {}
+  dnt(dnr paramdnr) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.d();
-      this.a.a.f = true;
-      SubAccountAssistantManager.a().a(this.a.a.b);
-      this.a.a.f();
-    }
+    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

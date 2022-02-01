@@ -1,24 +1,26 @@
 import android.os.Handler;
-import android.widget.TextView;
+import android.os.Message;
 import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 
 public class bwa
-  implements Runnable
+  extends Handler
 {
   public bwa(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (AuthDevVerifyCodeActivity.a(this.a) <= 1)
+    switch (paramMessage.what)
     {
-      AuthDevVerifyCodeActivity.a(this.a).setText(2131562863);
-      AuthDevVerifyCodeActivity.a(this.a).setEnabled(true);
-      AuthDevVerifyCodeActivity.a(this.a).setClickable(true);
+    default: 
       return;
     }
-    AuthDevVerifyCodeActivity.b(this.a);
-    AuthDevVerifyCodeActivity.a(this.a).setText(this.a.getString(2131562863) + "(" + AuthDevVerifyCodeActivity.a(this.a) + ")");
-    this.a.a.postDelayed(this, 1000L);
+    this.a.g();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131563125);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

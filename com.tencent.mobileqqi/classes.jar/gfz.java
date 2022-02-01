@@ -1,19 +1,30 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.ActionSheet;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class gfz
-  implements View.OnClickListener
+  implements AdapterView.OnItemSelectedListener
 {
   public gfz(IosTimepicker paramIosTimepicker) {}
   
-  public void onClick(View paramView)
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
+    IosTimepicker.a(this.a, paramView, 1);
+    if (paramView.getTag() != null)
     {
-      IosTimepicker.a(this.a).dismiss();
-      IosTimepicker.a(this.a, null);
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt) {
+          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+        }
+        paramInt += 1;
+      }
     }
   }
 }

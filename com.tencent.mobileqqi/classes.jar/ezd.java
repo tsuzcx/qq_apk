@@ -1,5 +1,5 @@
-import android.hardware.SensorManager;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ezd
   implements Runnable
@@ -8,12 +8,9 @@ public class ezd
   
   public void run()
   {
-    if (BaseActivity.a() == null)
-    {
-      ezg localezg = new ezg(null);
-      SensorManager localSensorManager = (SensorManager)this.a.getSystemService("sensor");
-      localSensorManager.registerListener(localezg, localSensorManager.getDefaultSensor(1), 0);
-      BaseActivity.a(localezg);
+    BaseActivity.s = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("qqBaseActivity", 2, "startUnlockActivity.mShowGesture set false");
     }
   }
 }

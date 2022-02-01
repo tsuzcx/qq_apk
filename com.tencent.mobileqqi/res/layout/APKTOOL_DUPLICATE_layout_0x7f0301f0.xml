@@ -8,9 +8,9 @@
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
         <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
             <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080128" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020484" android:layout_width="169.0dip" android:layout_height="201.0dip" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803a0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxWidth="300.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0986" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080128" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08039f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxWidth="300.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0986" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080128" android:layout_centerHorizontal="true" />
         </RelativeLayout>
     </RelativeLayout>
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805b4" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0987" style="@style/APKTOOL_DUPLICATE_style_0x7f0e017f" />
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805b3" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0987" style="@style/APKTOOL_DUPLICATE_style_0x7f0e017f" />
     <TextView android:layout_width="fill_parent" android:layout_height="30.0dip" />
 </LinearLayout>

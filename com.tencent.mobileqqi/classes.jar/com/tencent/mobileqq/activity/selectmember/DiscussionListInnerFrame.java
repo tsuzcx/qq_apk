@@ -16,9 +16,9 @@ import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.widget.XListView;
+import eps;
 import ept;
 import epu;
-import epv;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -29,7 +29,7 @@ public class DiscussionListInnerFrame
   implements View.OnClickListener
 {
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private epu jdField_a_of_type_Epu;
+  private ept jdField_a_of_type_Ept;
   public ArrayList a;
   
   public DiscussionListInnerFrame(Context paramContext)
@@ -95,7 +95,7 @@ public class DiscussionListInnerFrame
         }
       }
     }
-    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new ept(this, (HashMap)localObject1));
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new eps(this, (HashMap)localObject1));
   }
   
   public String a()
@@ -112,11 +112,11 @@ public class DiscussionListInnerFrame
   {
     super.a(paramBundle);
     setContentView(2130903975);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232612));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232611));
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131361815);
     g();
-    this.jdField_a_of_type_Epu = new epu(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Epu);
+    this.jdField_a_of_type_Ept = new ept(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ept);
   }
   
   public void b(Bundle paramBundle)
@@ -132,12 +132,12 @@ public class DiscussionListInnerFrame
   
   public void f()
   {
-    this.jdField_a_of_type_Epu.notifyDataSetChanged();
+    this.jdField_a_of_type_Ept.notifyDataSetChanged();
   }
   
   public void onClick(View paramView)
   {
-    paramView = (epv)paramView.getTag();
+    paramView = (epu)paramView.getTag();
     if ((paramView != null) && (paramView.a != null))
     {
       paramView = paramView.a;

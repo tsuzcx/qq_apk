@@ -716,7 +716,7 @@ public class DragSortListView
     {
       View localView = getChildAt(paramInt);
       if (localView != null) {
-        return (ImageView)localView.findViewById(2131232967);
+        return (ImageView)localView.findViewById(2131232966);
       }
     }
     return null;
@@ -1170,18 +1170,18 @@ public class DragSortListView
         i = -j;
       }
       if (i >= n) {
-        break label216;
+        break label214;
       }
       f = (n - i) / n;
     }
-    label216:
+    label214:
     for (f *= f;; f = 0.0F)
     {
       i = (int)(f * (255.0F * this.mCurrFloatAlpha));
       paramCanvas.save();
       paramCanvas.translate(this.mFloatLoc.x, this.mFloatLoc.y);
       paramCanvas.clipRect(0, 0, k, m);
-      paramCanvas.saveLayerAlpha(0.0F, 0.0F, k, m, i, 31);
+      paramCanvas.saveLayerAlpha(0.0F, 0.0F, k, m, i);
       this.mFloatView.draw(paramCanvas);
       paramCanvas.restore();
       paramCanvas.restore();
@@ -1237,8 +1237,8 @@ public class DragSortListView
       this.mIsDelShow = false;
       if (this.mProgressPos >= 0)
       {
-        localObject = (RelativeLayout)getItemChild(this.mProgressPos, 2131231699);
-        if (((ProgressCircle)((RelativeLayout)localObject).findViewById(2131231700)).getVisibility() == 0) {
+        localObject = (RelativeLayout)getItemChild(this.mProgressPos, 2131231698);
+        if (((ProgressCircle)((RelativeLayout)localObject).findViewById(2131231699)).getVisibility() == 0) {
           ((RelativeLayout)localObject).setVisibility(0);
         }
       }
@@ -1254,8 +1254,8 @@ public class DragSortListView
       this.mIsDelShow = false;
       if (this.mProgressPos >= 0)
       {
-        localObject = (RelativeLayout)getItemChild(this.mProgressPos, 2131231699);
-        if (((ProgressCircle)((RelativeLayout)localObject).findViewById(2131231700)).getVisibility() == 0) {
+        localObject = (RelativeLayout)getItemChild(this.mProgressPos, 2131231698);
+        if (((ProgressCircle)((RelativeLayout)localObject).findViewById(2131231699)).getVisibility() == 0) {
           ((RelativeLayout)localObject).setVisibility(0);
         }
       }
@@ -1405,7 +1405,7 @@ public class DragSortListView
           hideDelButton();
           this.mIsItemEvent = false;
         }
-        paramMotionEvent = (Button)getItemChild(this.mTapPos, 2131231649);
+        paramMotionEvent = (Button)getItemChild(this.mTapPos, 2131231648);
         if (paramMotionEvent == null) {
           return false;
         }
@@ -1536,7 +1536,7 @@ public class DragSortListView
             hideDelButton();
           }
         }
-        Button localButton = (Button)getItemChild(this.mTapPos, 2131231649);
+        Button localButton = (Button)getItemChild(this.mTapPos, 2131231648);
         if ((this.mIsUpdateEvent) && (localButton != null))
         {
           this.mIsUpdateEvent = false;
@@ -1845,8 +1845,8 @@ public class DragSortListView
       } while (localObject == null);
       ((ShaderAnimLayout)localObject).a();
       this.mIsDelShow = true;
-      localObject = (RelativeLayout)getItemChild(this.mSrcPos, 2131231699);
-      localProgressCircle = (ProgressCircle)((RelativeLayout)localObject).findViewById(2131231700);
+      localObject = (RelativeLayout)getItemChild(this.mSrcPos, 2131231698);
+      localProgressCircle = (ProgressCircle)((RelativeLayout)localObject).findViewById(2131231699);
     } while ((((RelativeLayout)localObject).getVisibility() != 0) || (localProgressCircle.getVisibility() != 0));
     ((RelativeLayout)localObject).setVisibility(8);
     this.mProgressPos = this.mSrcPos;

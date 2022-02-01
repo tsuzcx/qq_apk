@@ -39,12 +39,12 @@ public class RoamMapController
     //   18: checkcast 37	com/tencent/mobileqq/app/LBSHandler
     //   21: putfield 39	com/tencent/mobileqq/maproam/RoamMapController:jdField_a_of_type_ComTencentMobileqqAppLBSHandler	Lcom/tencent/mobileqq/app/LBSHandler;
     //   24: aload_0
-    //   25: new 41	gbh
+    //   25: new 41	gbg
     //   28: dup
     //   29: aload_0
     //   30: iload_3
     //   31: aload 4
-    //   33: invokespecial 44	gbh:<init>	(Lcom/tencent/mobileqq/maproam/RoamMapController;ILjava/util/ArrayList;)V
+    //   33: invokespecial 44	gbg:<init>	(Lcom/tencent/mobileqq/maproam/RoamMapController;ILjava/util/ArrayList;)V
     //   36: putfield 46	com/tencent/mobileqq/maproam/RoamMapController:jdField_a_of_type_ComTencentMobileqqAppLBSObserver	Lcom/tencent/mobileqq/app/LBSObserver;
     //   39: aload_0
     //   40: getfield 24	com/tencent/mobileqq/maproam/RoamMapController:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;

@@ -1,36 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.sdk.modelbase.BaseResp;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import java.io.IOException;
+import java.util.Map;
 
-class fzu
-  implements WXShareHelper.WXShareListener
+public class fzu
+  implements Runnable
 {
-  fzu(fzt paramfzt) {}
+  public fzu(QQApiPlugin paramQQApiPlugin, String paramString, Map paramMap, Runnable paramRunnable) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((this.a.a.c == null) || (!this.a.a.c.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    boolean bool;
-    switch (paramBaseResp.errCode)
+    label138:
+    try
     {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131562035);
-      bool = false;
+      localObject = HttpUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, "GET", null, null);
+      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
+      if (localObject == null) {
+        break label110;
+      }
+      int i = ((Bitmap)localObject).getWidth();
+      int j = ((Bitmap)localObject).getHeight();
+      if (i * j <= 8000) {
+        break label138;
+      }
+      double d = Math.sqrt(8000.0D / (i * j));
+      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
+      ((Bitmap)localObject).recycle();
+      localObject = localBitmap;
     }
-    while (!TextUtils.isEmpty(this.a.a.b))
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      this.a.a.callJs(this.a.a.b, new String[] { String.valueOf(bool) });
-      return;
-      QRUtils.a(2, 2131562917);
-      bool = true;
-      continue;
-      bool = false;
+      Object localObject;
+      break label110;
     }
+    catch (IOException localIOException)
+    {
+      label110:
+      for (;;) {}
+    }
+    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
+    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

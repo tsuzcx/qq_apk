@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c34" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip"
+<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c33" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.feed.ui.component.PhotoGuideBanner android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c35" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.qzone.feed.ui.component.PhotoGuideBanner android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c34" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </FrameLayout>

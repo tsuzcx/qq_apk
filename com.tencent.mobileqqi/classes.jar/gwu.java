@@ -1,16 +1,12 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
 
 class gwu
   implements DialogInterface.OnClickListener
 {
-  gwu(gwt paramgwt) {}
+  gwu(gws paramgws) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    VideoPlayLogic.a(this.a.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

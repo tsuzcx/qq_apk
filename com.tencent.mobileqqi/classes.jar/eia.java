@@ -1,40 +1,34 @@
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.PrivacyDeclareHelper.Callback;
+import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.observer.QZoneObserver;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.EUCountryUtils;
+import cooperation.qzone.QzonePluginProxyActivity;
 
 public class eia
-  implements PrivacyDeclareHelper.Callback
+  extends QZoneObserver
 {
   public eia(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Barry", 2, "in 16-UP to privacy page, user reject");
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
+      }
+      if ((this.a.a != null) && (this.a.a.b != null)) {}
     }
-    MainAssistObserver.a(this.a);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Barry", 2, "in 16-UP to privacy page, user FinishSelf");
+    else
+    {
+      return;
     }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Barry", 2, "in 16-UP to privacy page, user confirm");
+    QQAppInterface localQQAppInterface = this.a.a.b;
+    if (!GuardManager.a.a()) {
+      QzonePluginProxyActivity.a(localQQAppInterface);
     }
-    EUCountryUtils.a(this.a.a.b.a(), 1);
-    EUCountryUtils.b(this.a.a.b.a(), 1);
-    MainAssistObserver.a(this.a, 0);
-    MainAssistObserver.a(this.a).dismiss();
+    this.a.h();
   }
 }
 

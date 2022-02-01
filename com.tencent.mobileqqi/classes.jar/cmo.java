@@ -1,20 +1,18 @@
-import android.app.Dialog;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class cmo
   implements Animation.AnimationListener
 {
-  public cmo(ForwardRecentActivity paramForwardRecentActivity) {}
+  public cmo(ForwardRecentActivity paramForwardRecentActivity, int paramInt) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_AndroidAppDialog.show();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.requestLayout();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

@@ -2,27 +2,17 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.PublicAccountActivity;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 
 public class dak
   implements Animation.AnimationListener
 {
-  public dak(PublicAccountActivity paramPublicAccountActivity) {}
+  public dak(PublicAccountActivity paramPublicAccountActivity, int paramInt) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      PublicAccountActivity.a(this.a).show();
-      label10:
-      PublicAccountActivity.a(this.a).setAnimation(null);
-      PublicAccountActivity.b(this.a).setVisibility(8);
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      break label10;
-    }
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).setAnimation(null);
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).offsetTopAndBottom(this.jdField_a_of_type_Int);
+    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).requestLayout();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

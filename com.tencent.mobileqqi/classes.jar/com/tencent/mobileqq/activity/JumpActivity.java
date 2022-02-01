@@ -18,7 +18,7 @@ import com.tencent.mobileqq.utils.FileProvider7Helper;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.QLog;
-import crf;
+import cre;
 import java.io.File;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -375,7 +375,7 @@ public class JumpActivity
         if (paramIntent == null) {
           break;
         }
-        localObject = new crf(this);
+        localObject = new cre(this);
         if (!ChatActivityUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this, paramIntent, true, true, (Handler.Callback)localObject)) {
           break;
         }

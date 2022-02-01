@@ -1,24 +1,17 @@
-import android.app.Dialog;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class chu
-  implements Animation.AnimationListener
+  extends FriendListObserver
 {
-  public chu(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation, Dialog paramDialog) {}
+  public chu(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation) {
-      this.jdField_a_of_type_AndroidAppDialog.show();
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

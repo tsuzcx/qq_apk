@@ -1,19 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.search.ContactsSearchablePhoneContact;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class eks
-  implements DialogInterface.OnKeyListener
+  extends SearchResultDialog
 {
-  public eks(ContactListView paramContactListView) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public eks(ContactListView paramContactListView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
   {
-    if (paramInt == 4) {
-      this.a.f();
+    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new ArrayList();
+    Iterator localIterator = this.a.a.iterator();
+    if (localIterator.hasNext()) {
+      ((ArrayList)localObject).addAll((List)localIterator.next());
     }
-    return false;
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(new ContactsSearchablePhoneContact(paramContext, paramQQAppInterface, (PhoneContact)((Iterator)localObject).next(), 38654705664L));
+    }
+    return localArrayList;
   }
 }
 

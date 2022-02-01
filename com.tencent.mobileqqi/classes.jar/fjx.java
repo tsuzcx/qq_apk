@@ -22,7 +22,7 @@ public class fjx
       paramProtoReq.mergeFrom(paramProtoResp);
       int i = paramProtoReq.head.result.get();
       if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
       }
       return;
     }

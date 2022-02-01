@@ -15,7 +15,7 @@ import com.tencent.mobileqq.activity.FriendProfileImageModel;
 import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
 import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import eyk;
+import eyj;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -26,7 +26,7 @@ public class FriendProfileImageAdapter
   int jdField_a_of_type_Int;
   Context jdField_a_of_type_AndroidContentContext;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new eyk(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new eyj(this);
   private FriendProfileImageModel jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel;
   Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   

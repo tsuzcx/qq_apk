@@ -9,7 +9,7 @@ public class fst
   
   public void onClick(View paramView)
   {
-    this.a.a(paramView);
+    this.a.b(paramView);
   }
 }
 

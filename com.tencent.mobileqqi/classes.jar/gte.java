@@ -1,3 +1,5 @@
+import android.widget.ImageButton;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 
 public class gte
@@ -7,7 +9,9 @@ public class gte
   
   public void run()
   {
-    this.a.a(true);
+    this.a.a.setVisibility(0);
+    this.a.b.setImageResource(2130839370);
+    this.a.b.setContentDescription(this.a.getString(2131558490));
   }
 }
 

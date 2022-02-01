@@ -25,10 +25,10 @@ import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
+import gsw;
 import gsx;
-import gsy;
+import gta;
 import gtb;
-import gtc;
 import java.util.ArrayList;
 
 public class TroopBarPublishLocationSelectActivity
@@ -63,8 +63,8 @@ public class TroopBarPublishLocationSelectActivity
     this.jdField_a_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocListener = null;
-    this.jdField_a_of_type_AndroidOsHandler = new gtb(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new gtc(this);
+    this.jdField_a_of_type_AndroidOsHandler = new gta(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new gtb(this);
   }
   
   protected static final void a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, HttpWebCgiAsyncTask.Callback paramCallback)
@@ -120,7 +120,7 @@ public class TroopBarPublishLocationSelectActivity
   
   public void a(boolean paramBoolean)
   {
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232084);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232083);
     if (paramBoolean)
     {
       localTextView.setText(getString(2131559302));
@@ -165,7 +165,7 @@ public class TroopBarPublishLocationSelectActivity
     Contacts.OverScrollViewTag localOverScrollViewTag = new Contacts.OverScrollViewTag();
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTag(localOverScrollViewTag);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new gsy(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new gsx(this));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -198,9 +198,9 @@ public class TroopBarPublishLocationSelectActivity
       this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopBarUtils$MyLBSApiPOI);
       this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903325, null);
       d();
-      paramBundle = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232083);
-      TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232084);
-      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232085);
+      paramBundle = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232082);
+      TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232083);
+      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232084);
       ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131231066);
       localTextView1.setTextColor(-8355712);
       localTextView1.setText(2131563139);
@@ -208,7 +208,7 @@ public class TroopBarPublishLocationSelectActivity
       paramBundle.setVisibility(8);
       localProgressBar.setVisibility(8);
       this.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new gsx(this));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new gsw(this));
       this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocationAdapter = new TroopBarPublishLocationSelectActivity.LocationAdapter(this, this);
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocationAdapter);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);

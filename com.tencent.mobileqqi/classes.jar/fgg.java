@@ -1,25 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SaveTrafficHandler;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class fgg
-  extends Thread
+  implements Runnable
 {
-  public fgg(SaveTrafficHandler paramSaveTrafficHandler, String paramString, int paramInt)
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean;
+  public boolean b = false;
+  
+  public fgg(SaveTrafficHandler paramSaveTrafficHandler, int paramInt, boolean paramBoolean)
   {
-    super(paramString);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = false;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a.a() != null)
-    {
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a.a(), 0).edit();
-      localEditor.putInt("key_savetrafficseq", this.jdField_a_of_type_Int);
-      localEditor.commit();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 0);
   }
 }
 

@@ -43,8 +43,8 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MsgAutoMonitorUtil;
+import fiy;
 import fiz;
-import fja;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -821,10 +821,10 @@ public class C2CMessageProcessor
     //   853: iconst_1
     //   854: if_icmple +15 -> 869
     //   857: aload_3
-    //   858: new 571	fiy
+    //   858: new 571	fix
     //   861: dup
     //   862: aload_0
-    //   863: invokespecial 574	fiy:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
+    //   863: invokespecial 574	fix:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
     //   866: invokestatic 580	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   869: aload_0
     //   870: getfield 30	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -1573,7 +1573,7 @@ public class C2CMessageProcessor
       break label1387;
       if (!localArrayList.isEmpty())
       {
-        Collections.sort(localArrayList, new fiz(this));
+        Collections.sort(localArrayList, new fiy(this));
         l1 = ((MessageRecord)localArrayList.get(0)).time;
         long l2 = Math.min(paramToServiceMsg.extraData.getLong("lEndTime"), ((MessageRecord)localArrayList.get(localArrayList.size() - 1)).time + 5L);
         i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, 0, l1, l2);
@@ -1716,7 +1716,7 @@ public class C2CMessageProcessor
     label441:
     if (paramObject.size() > 0)
     {
-      Collections.sort(paramObject, new fja(this));
+      Collections.sort(paramObject, new fiz(this));
       l1 = ((MessageRecord)paramObject.get(0)).time;
       paramToServiceMsg = paramObject;
       for (;;)

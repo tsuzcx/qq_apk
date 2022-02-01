@@ -1,17 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class dfo
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnKeyListener
 {
   public dfo(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramDialogInterface == RegisterPhoneNumActivity.a(this.a)) {
-      RegisterPhoneNumActivity.a(this.a, null);
+    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
+    {
+      this.a.e();
+      this.a.finish();
     }
+    return false;
   }
 }
 

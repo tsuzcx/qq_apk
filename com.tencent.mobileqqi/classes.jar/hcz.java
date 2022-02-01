@@ -1,5 +1,5 @@
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
-import com.tencent.util.InputMethodUtil;
 
 public class hcz
   implements Runnable
@@ -8,7 +8,7 @@ public class hcz
   
   public void run()
   {
-    InputMethodUtil.a(QQCustomDialogWtihEmoticonInput.a(this.a));
+    this.a.a.setVisibility(0);
   }
 }
 

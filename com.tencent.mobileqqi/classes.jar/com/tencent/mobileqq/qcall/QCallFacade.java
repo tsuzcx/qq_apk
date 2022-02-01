@@ -22,8 +22,8 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import gfr;
 import gfs;
-import gft;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,8 +35,8 @@ public class QCallFacade
   implements Manager
 {
   private static final String jdField_a_of_type_JavaLangString = QCallFacade.class.getSimpleName();
-  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new gft(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gfs(this);
+  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new gfs(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gfr(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public QCallFacade(QQAppInterface paramQQAppInterface)

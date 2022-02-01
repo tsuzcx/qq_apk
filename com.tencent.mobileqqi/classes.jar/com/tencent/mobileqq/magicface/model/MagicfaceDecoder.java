@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.magicface.model;
 
-import gak;
+import gaj;
 
 public abstract class MagicfaceDecoder
 {
@@ -21,7 +21,7 @@ public abstract class MagicfaceDecoder
   {
     c();
     if (!this.jdField_a_of_type_Boolean) {
-      new Thread(new gak(this)).start();
+      new Thread(new gaj(this)).start();
     }
   }
   

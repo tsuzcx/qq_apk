@@ -1,78 +1,44 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.activity.recent.DrawerFrame.IDrawerCallbacks;
-import com.tencent.qphone.base.util.QLog;
 
 public class cfj
-  implements DrawerFrame.IDrawerCallbacks
+  implements Animation.AnimationListener
 {
   public cfj(Conversation paramConversation) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.recent", 4, "onDrawerStartMoving");
+    if ((Conversation.a(this.a)) && (paramAnimation == this.a.jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation[this.a.Z]))
+    {
+      paramAnimation = this.a;
+      paramAnimation.Z += 1;
+      if ((this.a.Z >= 0) && (this.a.Z < this.a.jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation.length))
+      {
+        this.a.jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation[this.a.Z].reset();
+        Conversation.a(this.a).startAnimation(this.a.jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation[this.a.Z]);
+      }
     }
-    if ((!Conversation.e(this.a)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.c)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.f();
+    else
+    {
+      return;
     }
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.b()) {
-      this.a.m();
+    paramAnimation = this.a;
+    paramAnimation.Y += 1;
+    if (this.a.Y % 2 == 0)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1029, 800L);
+      return;
     }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1029, 160L);
   }
   
-  @TargetApi(11)
-  public void a(float paramFloat)
-  {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      if (Conversation.a(this.a) != null) {
-        Conversation.a(this.a).setAlpha(1.0F - paramFloat);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F - paramFloat);
-      }
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(int paramInt)
-  {
-    if ((!Conversation.e(this.a)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a();
-    }
-    this.a.a(paramInt, true);
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      if (Conversation.a(this.a) != null) {
-        Conversation.a(this.a).setVisibility(8);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      }
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((!Conversation.e(this.a)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.b();
-    }
-    this.a.a(paramInt, false);
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      if (Conversation.a(this.a) != null) {
-        Conversation.a(this.a).setVisibility(0);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

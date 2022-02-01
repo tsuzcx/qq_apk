@@ -1,35 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
 public class gww
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public gww(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (VideoPlayLogic.a(this.a) != null) {
-      VideoPlayLogic.a(this.a).c();
-    }
-    if (VideoPlayLogic.a(this.a))
-    {
-      if (this.a.c()) {
-        ReportController.b(VideoPlayLogic.a(this.a).b, "P_CliOper", "Grp_AIO", "", "video", "jump", 0, 0, VideoPlayLogic.a(this.a).a, "1", "", "");
-      }
-      for (;;)
-      {
-        new StructMsgForGeneralShare.GeneralClickHandler(VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a), VideoPlayLogic.a(this.a)).a(VideoPlayLogic.a(this.a));
-        return;
-        ReportController.b(VideoPlayLogic.a(this.a).b, "P_CliOper", "Grp_AIO", "", "video", "jump", 0, 0, VideoPlayLogic.a(this.a).a, "0", "", "");
-      }
-    }
-    this.a.a(VideoPlayLogic.a(this.a));
+    VideoPlayLogic.a(this.a);
   }
 }
 

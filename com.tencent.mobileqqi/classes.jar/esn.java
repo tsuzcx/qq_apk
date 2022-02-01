@@ -1,23 +1,13 @@
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
-import com.tencent.mobileqq.app.QvipSpecialCareObserver;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class esn
-  extends QvipSpecialCareObserver
 {
-  public esn(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
+  public FormSimpleItem a;
+  public String a;
+  public String b;
   
-  public void a(Object paramObject)
-  {
-    if (paramObject != null) {
-      QvipSpecialCarePersonActivity.b(this.a);
-    }
-    switch (((Integer)paramObject).intValue())
-    {
-    default: 
-      return;
-    }
-    QvipSpecialCarePersonActivity.a(this.a);
-  }
+  private esn(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
 }
 
 

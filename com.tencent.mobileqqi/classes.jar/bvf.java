@@ -1,7 +1,9 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bvf
@@ -11,8 +13,15 @@ public class bvf
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AssistantSettingActivity.c(this.a).setContentDescription(this.a.getString(2131231141));
-    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131563451), "qqsetting_auto_receive_magic_face_key", paramBoolean);
+    AssistantSettingActivity.d(this.a).setContentDescription("联系人列表按字母排列");
+    paramCompoundButton = this.a.b;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "0X8004043", "0X8004043", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, this.a.b.a(), null, "qqsetting_all_contacts_key", paramBoolean);
+      return;
+    }
   }
 }
 

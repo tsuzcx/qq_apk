@@ -23,8 +23,8 @@ import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
+import eov;
 import eow;
-import eox;
 
 public class RecentOptionBar
 {
@@ -32,9 +32,9 @@ public class RecentOptionBar
   protected static final int[] b;
   protected static final int[] c;
   protected static final int[] d;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eox(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eow(this);
   private View jdField_a_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new eow(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new eov(this);
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private View jdField_b_of_type_AndroidViewView;
@@ -45,7 +45,7 @@ public class RecentOptionBar
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131231437, 2131231438, 2131231439, 2131231440 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131231436, 2131231437, 2131231438, 2131231439 };
     jdField_b_of_type_ArrayOfInt = new int[] { 2130837914, 2130837912, 2130837918, 2130837916 };
     jdField_c_of_type_ArrayOfInt = new int[] { 2131562415, 2131561857, 2131562912, 2131562815 };
     jdField_d_of_type_ArrayOfInt = new int[] { 2131558440, 2131558441, 2131558442, 2131558443 };
@@ -60,9 +60,9 @@ public class RecentOptionBar
   
   private void a(View paramView, BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131231434);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131231435);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131231436);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131231433);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131231434);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131231435);
     int i = 0;
     if (i < 4)
     {
@@ -73,11 +73,11 @@ public class RecentOptionBar
         i += 1;
         break;
         paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        Object localObject = (ImageView)paramView.findViewById(2131231441);
+        Object localObject = (ImageView)paramView.findViewById(2131231440);
         if (localObject != null) {
           ((ImageView)localObject).setImageResource(jdField_b_of_type_ArrayOfInt[i]);
         }
-        localObject = (TextView)paramView.findViewById(2131231442);
+        localObject = (TextView)paramView.findViewById(2131231441);
         if (localObject != null) {
           ((TextView)localObject).setText(jdField_c_of_type_ArrayOfInt[i]);
         }
@@ -90,7 +90,7 @@ public class RecentOptionBar
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
     this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(paramBaseActivity, 2130968626);
     this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-    this.e = paramBaseActivity.findViewById(2131231915);
+    this.e = paramBaseActivity.findViewById(2131231914);
     this.e.setVisibility(8);
   }
   

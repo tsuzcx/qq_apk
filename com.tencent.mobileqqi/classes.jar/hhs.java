@@ -1,21 +1,20 @@
 import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class hhs
-  extends Animation
+  implements Animation.AnimationListener
 {
   public hhs(ShaderAnimLayout paramShaderAnimLayout) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_Boolean == true) {}
-    for (this.a.jdField_a_of_type_Float = (1.0F - paramFloat);; this.a.jdField_a_of_type_Float = paramFloat)
-    {
-      this.a.invalidate();
-      return;
-    }
+    this.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

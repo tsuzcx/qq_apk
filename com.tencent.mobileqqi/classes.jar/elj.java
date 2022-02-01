@@ -1,16 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class elj
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
   public elj(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.setResult(1);
-    this.a.finish();
+    return paramInt == 4;
   }
 }
 

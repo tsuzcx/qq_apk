@@ -1,21 +1,23 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class crf
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public crf(JumpActivity paramJumpActivity) {}
+  public crf(LbsBaseActivity paramLbsBaseActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    this.a.finish();
-    return true;
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      LbsBaseActivity.a(this.a).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     crf
  * JD-Core Version:    0.7.0.1
  */

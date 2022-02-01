@@ -17,8 +17,8 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.BaseApplication;
+import gtm;
 import gtn;
-import gto;
 import java.net.URLEncoder;
 
 public abstract class TroopCreateBaseActivity
@@ -93,14 +93,14 @@ public abstract class TroopCreateBaseActivity
     QQProgressDialog localQQProgressDialog = new QQProgressDialog(this, d());
     localQQProgressDialog.a(paramString);
     localQQProgressDialog.setCancelable(false);
-    localQQProgressDialog.setOnDismissListener(new gtn(this));
+    localQQProgressDialog.setOnDismissListener(new gtm(this));
     this.jdField_a_of_type_AndroidAppDialog = localQQProgressDialog;
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
   public void c(String paramString1, String paramString2, String paramString3)
   {
-    paramString3 = new gto(this, paramString3);
+    paramString3 = new gtn(this, paramString3);
     DialogUtil.a(this, 230, paramString1, paramString2, 2131561746, 2131562539, paramString3, paramString3).show();
   }
   

@@ -17,7 +17,6 @@ import bvg;
 import bvh;
 import bvi;
 import bvj;
-import bvk;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
@@ -49,7 +48,6 @@ public class AssistantSettingActivity
   private FormSwitchItem f;
   private FormSwitchItem g;
   private FormSwitchItem h;
-  private FormSwitchItem i;
   
   static
   {
@@ -58,20 +56,19 @@ public class AssistantSettingActivity
   
   public AssistantSettingActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bvd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bvc(this);
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231144));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231140));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231141));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231140));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231141));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231145));
     this.d = ((FormSwitchItem)findViewById(2131231146));
-    this.e = ((FormSwitchItem)findViewById(2131231147));
-    this.i = ((FormSwitchItem)findViewById(2131231148));
-    this.f = ((FormSwitchItem)findViewById(2131231143));
-    this.g = ((FormSwitchItem)findViewById(2131231142));
-    this.h = ((FormSwitchItem)findViewById(2131231145));
+    this.h = ((FormSwitchItem)findViewById(2131231147));
+    this.e = ((FormSwitchItem)findViewById(2131231143));
+    this.f = ((FormSwitchItem)findViewById(2131231142));
+    this.g = ((FormSwitchItem)findViewById(2131231144));
     this.jdField_a_of_type_AndroidViewView = findViewById(2131231138);
     this.jdField_b_of_type_AndroidViewView = findViewById(2131231137);
     this.jdField_c_of_type_AndroidViewView = findViewById(2131231139);
@@ -80,56 +77,53 @@ public class AssistantSettingActivity
     }
     if (PreDownloadStrategyAlpha.c == 0L)
     {
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
       if (!MagicfaceViewController.a()) {
-        break label672;
+        break label627;
       }
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
     }
     for (;;)
     {
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
-      boolean bool = SettingCloneUtil.readValue(this, null, getString(2131563437), "qqsetting_screenshot_key", false);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+      SettingCloneUtil.readValue(this, null, getString(2131563437), "qqsetting_screenshot_key", false);
+      boolean bool = SettingCloneUtil.readValue(this, null, getString(2131563451), "qqsetting_auto_receive_pic_key", true);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new buz(this));
-      bool = SettingCloneUtil.readValue(this, null, getString(2131563451), "qqsetting_auto_receive_pic_key", true);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bve(this));
       bool = SettingCloneUtil.readValue(this, null, getString(2131563451), "qqsetting_auto_receive_magic_face_key", true);
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bvf(this));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bvd(this));
       bool = SettingCloneUtil.readValue(this, null, getString(2131563454), "qqsetting_enter_sendmsg_key", false);
-      this.d.setChecked(bool);
-      this.d.setOnCheckedChangeListener(new bvg(this));
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(bool);
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new bve(this));
       bool = SettingCloneUtil.readValue(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), null, "qqsetting_all_contacts_key", false);
+      this.d.setChecked(bool);
+      this.d.setOnCheckedChangeListener(new bvf(this));
+      bool = SettingCloneUtil.readValue(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), null, "qqsetting_msg_lockscreen_key", true);
+      this.h.setChecked(bool);
+      this.h.setOnCheckedChangeListener(new bvg(this));
+      this.f.setVisibility(8);
+      bool = PreferenceManager.getDefaultSharedPreferences(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).getBoolean("setting_aio_realtime_bg_open" + this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), false);
       this.e.setChecked(bool);
       this.e.setOnCheckedChangeListener(new bvh(this));
-      bool = SettingCloneUtil.readValue(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), null, "qqsetting_msg_lockscreen_key", true);
-      this.i.setChecked(bool);
-      this.i.setOnCheckedChangeListener(new bvi(this));
-      this.g.setVisibility(8);
-      bool = PreferenceManager.getDefaultSharedPreferences(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).getBoolean("setting_aio_realtime_bg_open" + this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), false);
-      this.f.setChecked(bool);
-      this.f.setOnCheckedChangeListener(new bvj(this));
       bool = SettingCloneUtil.readValue(this, null, getString(2131563455), "qqsetting_notify_icon_key", false);
-      this.h.setChecked(bool);
-      this.h.setOnCheckedChangeListener(new bvk(this));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bva(this));
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new bvb(this));
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new bvc(this));
+      this.g.setChecked(bool);
+      this.g.setOnCheckedChangeListener(new bvi(this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new bvj(this));
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new bva(this));
+      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new bvb(this));
       this.jdField_a_of_type_AndroidViewView.setContentDescription("流量统计");
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("摇动手机截屏");
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("2G/3G/4G下自动接收图片");
-      this.d.setContentDescription("回车键发送消息");
-      this.g.setContentDescription("WiFi下自动在后台下载新版本");
-      this.e.setContentDescription("联系人列表按字母排列");
-      this.h.setContentDescription("系统通知栏显示QQ图标");
-      this.i.setContentDescription("锁屏界面显示未读消息提醒");
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("2G/3G/4G下自动接收图片");
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("回车键发送消息");
+      this.f.setContentDescription("WiFi下自动在后台下载新版本");
+      this.d.setContentDescription("联系人列表按字母排列");
+      this.g.setContentDescription("系统通知栏显示QQ图标");
+      this.h.setContentDescription("锁屏界面显示未读消息提醒");
       return;
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
       break;
-      label672:
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+      label627:
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
     }
   }
   

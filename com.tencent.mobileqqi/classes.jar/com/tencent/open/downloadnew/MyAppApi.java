@@ -24,18 +24,18 @@ import com.tencent.tmassistantsdk.openSDK.ITMQQDownloaderOpenSDKListener;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK_V2;
+import hnn;
 import hno;
 import hnp;
-import hnq;
+import hns;
 import hnt;
 import hnu;
 import hnv;
 import hnw;
 import hnx;
 import hny;
-import hnz;
-import hod;
-import hog;
+import hoc;
+import hof;
 import mqq.app.AppActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -285,7 +285,7 @@ public class MyAppApi
   
   public void a(Activity paramActivity)
   {
-    ThreadManager.b().post(new hnu(this, paramActivity));
+    ThreadManager.b().post(new hnt(this, paramActivity));
   }
   
   protected void a(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener, int paramInt3, boolean paramBoolean, String paramString2)
@@ -336,7 +336,7 @@ public class MyAppApi
           ((MyAppDialog)localObject).b(paramString1);
           ((MyAppDialog)localObject).setCancelable(true);
           ((MyAppDialog)localObject).setOnCancelListener(paramOnCancelListener);
-          ((MyAppDialog)localObject).setOnDismissListener(new hog(this));
+          ((MyAppDialog)localObject).setOnDismissListener(new hof(this));
           if ((!(paramActivity instanceof AppActivity)) || (((AppActivity)paramActivity).isResume())) {
             continue;
           }
@@ -455,9 +455,9 @@ public class MyAppApi
           StaticAnalyz.a("200", str2, str1);
           return;
         }
-        ThreadManager.b().post(new hnw(this, str2, str1));
+        ThreadManager.b().post(new hnv(this, str2, str1));
         bool4 = ControlPolicyUtil.a();
-        hnx localhnx = new hnx(this, bool2, bool3, paramOnClickListener, paramBundle, k, bool4, paramActivity, str2, bool1, str1);
+        hnw localhnw = new hnw(this, bool2, bool3, paramOnClickListener, paramBundle, k, bool4, paramActivity, str2, bool1, str1);
         MyAppApi.ClickListenerProxy localClickListenerProxy = new MyAppApi.ClickListenerProxy(this, paramOnClickListener, str2, str1);
         MyAppApi.BackListener localBackListener = new MyAppApi.BackListener(this, str2, str1);
         Object localObject2 = null;
@@ -474,8 +474,8 @@ public class MyAppApi
             }
           }
         }
-        a(paramActivity, j, i, (String)localObject1, localhnx, localClickListenerProxy, localBackListener, paramBundle.getInt("source"), bool4, paramBundle.getString(DownloadConstants.o));
-        ThreadManager.b().post(new hny(this, str2, str1));
+        a(paramActivity, j, i, (String)localObject1, localhnw, localClickListenerProxy, localBackListener, paramBundle.getInt("source"), bool4, paramBundle.getString(DownloadConstants.o));
+        ThreadManager.b().post(new hnx(this, str2, str1));
         this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
         return;
         if (i != 0) {
@@ -606,7 +606,7 @@ public class MyAppApi
       ((TMQQDownloaderOpenSDK_V2)this.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKBaseQQDownloaderOpenSDK).startToDownloadTaskList(paramContext, localTMQQDownloaderOpenSDKParam, paramBoolean1, paramBoolean2, j);
       return;
       localObject = new TicketUtils();
-      ((TicketUtils)localObject).a(new hod(this, (TicketUtils)localObject, localTMQQDownloaderOpenSDKParam, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
+      ((TicketUtils)localObject).a(new hoc(this, (TicketUtils)localObject, localTMQQDownloaderOpenSDKParam, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
       if (!(paramContext instanceof BaseActivity)) {
         break;
       }
@@ -617,7 +617,7 @@ public class MyAppApi
   
   public void a(String paramString, Activity paramActivity)
   {
-    ThreadManager.b().post(new hnp(this, paramString, paramActivity));
+    ThreadManager.b().post(new hno(this, paramString, paramActivity));
   }
   
   public void a(boolean paramBoolean, String paramString)
@@ -703,7 +703,7 @@ public class MyAppApi
           return false;
         }
         localObject = new TicketUtils();
-        ((TicketUtils)localObject).a(new hnz(this, (TicketUtils)localObject, localTMQQDownloaderOpenSDKParam, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
+        ((TicketUtils)localObject).a(new hny(this, (TicketUtils)localObject, localTMQQDownloaderOpenSDKParam, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
         if ((paramContext instanceof BaseActivity)) {
           ((TicketUtils)localObject).a(((BaseActivity)paramContext).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
         }
@@ -783,7 +783,7 @@ public class MyAppApi
       if (this.jdField_d_of_type_Boolean)
       {
         if (!b()) {
-          new Handler(Looper.getMainLooper()).postDelayed(new hnv(this), 2000L);
+          new Handler(Looper.getMainLooper()).postDelayed(new hnu(this), 2000L);
         }
         this.jdField_d_of_type_Boolean = false;
         paramActivity = CommonDataAdapter.a().a().getSharedPreferences("showTost_pf", 0).edit();
@@ -926,7 +926,7 @@ public class MyAppApi
         {
           paramString = str1;
           boolean bool = ControlPolicyUtil.a();
-          a(paramActivity, 1, 1, "0", new hnt(this, localBundle, bool, paramActivity, str4, str3), new MyAppApi.ClickListenerProxy(this, null, str4, str3), new MyAppApi.BackListener(this, str4, str3), 0, bool, paramString);
+          a(paramActivity, 1, 1, "0", new hns(this, localBundle, bool, paramActivity, str4, str3), new MyAppApi.ClickListenerProxy(this, null, str4, str3), new MyAppApi.BackListener(this, str4, str3), 0, bool, paramString);
           return;
         }
       }
@@ -989,8 +989,8 @@ public class MyAppApi
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("mqq.i.intent.action.ACCOUNT_EXPIRED");
-    hno localhno = new hno(this);
-    CommonDataAdapter.a().a().registerReceiver(localhno, localIntentFilter);
+    hnn localhnn = new hnn(this);
+    CommonDataAdapter.a().a().registerReceiver(localhnn, localIntentFilter);
   }
   
   public void d(Activity paramActivity)
@@ -1029,7 +1029,7 @@ public class MyAppApi
       LogUtility.e("MyAppApi", "startToAuthorizedDirect lastAuthorizeParam = null, needCarryQQIdentity = false");
       return;
       localTicketUtils = new TicketUtils();
-      localTicketUtils.a(new hnq(this, localTicketUtils, l, paramActivity));
+      localTicketUtils.a(new hnp(this, localTicketUtils, l, paramActivity));
     } while (!(paramActivity instanceof BaseActivity));
     localTicketUtils.a(((BaseActivity)paramActivity).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
   }

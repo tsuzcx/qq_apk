@@ -11,7 +11,7 @@ import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.BaseApplication;
-import dfi;
+import dfh;
 import mqq.observer.WtloginObserver;
 
 public class RegisterPersonalInfoActivity
@@ -21,7 +21,7 @@ public class RegisterPersonalInfoActivity
   private static final String jdField_a_of_type_JavaLangString = "RegisterPersonalInfoActivity";
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new dfi(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new dfh(this);
   private byte[] jdField_a_of_type_ArrayOfByte = null;
   private ClearableEditText jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText;
   private String jdField_b_of_type_JavaLangString = "";
@@ -81,8 +81,8 @@ public class RegisterPersonalInfoActivity
     this.d = getIntent().getStringExtra("key");
     this.e = getIntent().getStringExtra("key_register_now_account");
     this.g = getIntent().getIntExtra("eu_birthday_bundle", 0);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233274));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131231661));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233273));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131231660));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   

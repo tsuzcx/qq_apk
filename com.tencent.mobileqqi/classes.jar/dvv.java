@@ -1,54 +1,80 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.PanelAdapter;
+import com.tencent.mobileqq.activity.aio.PanelAdapter.ViewHolder;
 
 public class dvv
-  implements SensorEventListener
+  extends LinearLayout
 {
-  public dvv(MediaPlayerManager paramMediaPlayerManager) {}
+  public int a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = null;
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public dvv(PanelAdapter paramPanelAdapter, Context paramContext, AttributeSet paramAttributeSet)
   {
-    float f3;
-    float f2;
-    float f1;
-    int i;
-    int j;
-    int k;
-    if (paramSensorEvent.sensor.getType() == 1)
+    super(paramContext, paramAttributeSet);
+    setOrientation(1);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    int k = paramPanelAdapter.a();
+    int m = paramPanelAdapter.b();
+    int i = 0;
+    while (i < m)
     {
-      float f6 = paramSensorEvent.values[0];
-      float f5 = paramSensorEvent.values[1];
-      float f4 = paramSensorEvent.values[2];
-      f3 = f4;
-      f2 = f5;
-      f1 = f6;
-      if (MediaPlayerManager.c())
+      paramPanelAdapter = new LinearLayout(paramContext);
+      paramAttributeSet = new LinearLayout.LayoutParams(-1, -1);
+      paramAttributeSet.weight = 1.0F;
+      paramPanelAdapter.setOrientation(0);
+      int j = 0;
+      while (j < k)
       {
-        f1 = f6 * 10.0F;
-        f2 = f5 * 10.0F;
-        f3 = f4 * 10.0F;
+        Object localObject = new LinearLayout.LayoutParams(-1, -1);
+        ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
+        if (j == 0) {
+          ((LinearLayout.LayoutParams)localObject).leftMargin = AIOUtils.a(23.0F, getContext().getResources());
+        }
+        if (j == k - 1) {
+          ((LinearLayout.LayoutParams)localObject).rightMargin = AIOUtils.a(23.0F, getContext().getResources());
+        }
+        if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+          this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+        }
+        View localView = LayoutInflater.from(paramContext).inflate(2130903120, null);
+        paramPanelAdapter.addView(localView, (ViewGroup.LayoutParams)localObject);
+        localObject = new PanelAdapter.ViewHolder();
+        ((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131231292));
+        ((PanelAdapter.ViewHolder)localObject).b = ((ImageView)localView.findViewById(2131231294));
+        ((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231293));
+        localView.setTag(localObject);
+        j += 1;
       }
-      i = (int)(this.a.jdField_a_of_type_Float - f1);
-      j = (int)(this.a.b - f2);
-      k = (int)(this.a.c - f3);
-      if ((i == 0) && (j == 0) && (k == 0)) {
-        break label156;
-      }
+      addView(paramPanelAdapter, paramAttributeSet);
+      i += 1;
     }
-    for (this.a.jdField_a_of_type_Boolean = true;; this.a.jdField_a_of_type_Boolean = false) {
-      label156:
-      do
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    while (i < getChildCount())
+    {
+      Object localObject = getChildAt(i);
+      if (localObject != null)
       {
-        this.a.jdField_a_of_type_Float = f1;
-        this.a.b = f2;
-        this.a.c = f3;
-        return;
-      } while ((i != 0) || (j != 0) || (k != 0));
+        localObject = (PanelAdapter.ViewHolder)((View)localObject).getTag();
+        if (((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView != null) {
+          ((PanelAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+        }
+      }
+      i += 1;
     }
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

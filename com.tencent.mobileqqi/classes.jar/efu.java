@@ -1,43 +1,44 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
 import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
+import com.tencent.widget.AbsListView;
 
 public class efu
-  implements View.OnTouchListener
+  implements SlideDetectListView.OnScrollToTopListener
 {
-  private float jdField_a_of_type_Float;
-  private float b;
-  
   public efu(NotificationView paramNotificationView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a(paramMotionEvent.getRawY()))
-      {
-        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-        this.b = paramMotionEvent.getRawY();
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.sendEmptyMessageDelayed(1013, 500L);
-      }
+    if ((NotificationView.a(this.a) != null) && (paramInt == 0) && (NotificationView.a(this.a) == NotificationView.a(this.a).getCount())) {
+      NotificationView.b(this.a);
     }
-    for (;;)
+    NotificationView.a(this.a, paramInt);
+    if (paramInt != 0)
     {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-      continue;
-      if (paramMotionEvent.getAction() == 2)
-      {
-        if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) > 60.0F) || (Math.abs(paramMotionEvent.getRawY() - this.b) > 60.0F)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-        }
-      }
-      else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.a.removeMessages(1013);
-      }
+      NotificationView.a(this.a).c();
+      NotificationView.a(this.a).a();
     }
+    while (!NotificationView.a(this.a).a()) {
+      return;
+    }
+    NotificationView.a(this.a).b();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    NotificationView.b(this.a, paramInt1 + paramInt2 - 1);
+    if (paramInt1 > 1) {
+      GroupSystemMsgController.a().a();
+    }
+    while (!this.a.b) {
+      return;
+    }
+    GroupSystemMsgController.a().f();
   }
 }
 

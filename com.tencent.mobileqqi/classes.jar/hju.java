@@ -1,38 +1,44 @@
-import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 import com.tencent.open.agent.SwitchAccountActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class hju
-  implements View.OnTouchListener
+class hju
+  extends GestureDetector.SimpleOnGestureListener
 {
-  protected GestureDetector.SimpleOnGestureListener a;
-  protected GestureDetector a;
-  View jdField_a_of_type_AndroidViewView;
+  hju(hjt paramhjt) {}
   
-  public hju(SwitchAccountActivity paramSwitchAccountActivity)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new hjv(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "action = " + i);
-    }
-    if (i == 0)
+    if ((Math.abs(paramFloat1) > Math.abs(paramFloat2)) && (Math.abs(paramFloat1) > 20.0F) && (!this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a))
     {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a == true) {
-        this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = false;
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
+      {
+        paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131230987);
+        if (paramMotionEvent1 != null)
+        {
+          if (paramMotionEvent1.getVisibility() == 0) {
+            break label115;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("AccountManage", 2, "show current selectedAccountView");
+          }
+          ((ShaderAnimLayout)paramMotionEvent1).a();
+          this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = true;
+          this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+        }
+      }
+      for (;;)
+      {
+        return true;
+        label115:
+        ((ShaderAnimLayout)paramMotionEvent1).d();
+        this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = true;
+        this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
       }
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
     return false;
   }
 }

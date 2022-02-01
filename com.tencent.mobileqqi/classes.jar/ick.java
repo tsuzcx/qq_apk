@@ -1,33 +1,16 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.FaceData;
+import cooperation.qzone.model.GpsInfo4LocalImage;
 
 public final class ick
   implements Parcelable.Creator
 {
-  public FaceData a(Parcel paramParcel)
+  public GpsInfo4LocalImage a(Parcel paramParcel)
   {
-    FaceData localFaceData = new FaceData();
-    localFaceData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFaceData.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localFaceData.jdField_a_of_type_Long = paramParcel.readLong();
-    localFaceData.jdField_b_of_type_Long = paramParcel.readLong();
-    localFaceData.jdField_c_of_type_Long = paramParcel.readLong();
-    localFaceData.jdField_d_of_type_Long = paramParcel.readLong();
-    localFaceData.jdField_e_of_type_Long = paramParcel.readLong();
-    localFaceData.jdField_a_of_type_Int = paramParcel.readInt();
-    localFaceData.jdField_f_of_type_Long = paramParcel.readLong();
-    localFaceData.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localFaceData.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localFaceData.g = paramParcel.readLong();
-    localFaceData.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localFaceData.h = paramParcel.readLong();
-    localFaceData.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localFaceData.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    return localFaceData;
+    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
   }
   
-  public FaceData[] a(int paramInt)
+  public GpsInfo4LocalImage[] a(int paramInt)
   {
     return null;
   }

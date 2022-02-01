@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.BadTokenException;
+import cgs;
 import cgt;
 import cgu;
 import cgv;
-import cgw;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -31,15 +31,15 @@ public class DialogActivity
       if (QLog.isColorLevel()) {
         QLog.e("raw_photo", 2, "showDialog ", localBadTokenException);
       }
-      getWindow().getDecorView().post(new cgw(this, paramQQCustomDialog));
+      getWindow().getDecorView().post(new cgv(this, paramQQCustomDialog));
     }
   }
   
   protected void doOnResume()
   {
     super.doOnResume();
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230).setMessage(getString(2131561491)).setPositiveButton(getString(2131563227), new cgu(this)).setNegativeButton(getString(2131562473), new cgt(this));
-    localQQCustomDialog.setOnCancelListener(new cgv(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230).setMessage(getString(2131561491)).setPositiveButton(getString(2131563227), new cgt(this)).setNegativeButton(getString(2131562473), new cgs(this));
+    localQQCustomDialog.setOnCancelListener(new cgu(this));
     a(localQQCustomDialog);
   }
   

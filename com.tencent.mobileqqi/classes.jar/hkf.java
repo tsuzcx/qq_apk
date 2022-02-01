@@ -1,63 +1,88 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.OfflineSecurity;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
 import com.tencent.open.appcommon.AppViewBaseActivity;
-import com.tencent.open.appcommon.Common;
+import com.tencent.open.appcommon.js.OpenJsBridge;
 import com.tencent.open.base.LogUtility;
-import java.io.File;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.QuotaUpdater;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
+import java.lang.ref.WeakReference;
 
+@SuppressLint({"NewApi"})
 public class hkf
-  implements Runnable
+  extends WebChromeClient
 {
-  public hkf(AppViewBaseActivity paramAppViewBaseActivity, Object paramObject, String paramString1, String paramString2) {}
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
   
-  public void run()
+  public hkf(AppViewBaseActivity paramAppViewBaseActivity1, AppViewBaseActivity paramAppViewBaseActivity2)
   {
-    this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.f = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.b == null) {}
-    for (;;)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppViewBaseActivity2);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    LogUtility.c("WebConsole", paramString1 + " --From line " + paramInt + " of " + paramString2);
+    if (Build.VERSION.SDK_INT == 7) {}
+    try
     {
-      return;
-      Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.b.obtainMessage();
-      localMessage.obj = this.jdField_a_of_type_JavaLangObject;
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || ((this.jdField_a_of_type_JavaLangString.startsWith("file:///")) && (!this.jdField_a_of_type_JavaLangString.startsWith(Common.q)))) {
-        if (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.h)
-        {
-          this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.g = System.currentTimeMillis();
-          LogUtility.b("opensdk", ">>end verify html ,load assets,so we ingore it=" + (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.g - this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.f) + ">>");
-          localMessage.what = 104;
-        }
+      paramString2 = (AppViewBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((paramString2 != null) && (!paramString2.isFinishing())) {
+        paramString2.b(paramString1);
       }
-      while (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.b != null)
+      return;
+    }
+    catch (Exception paramString1) {}
+  }
+  
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  {
+    if (LogUtility.a()) {
+      LogUtility.c("WebConsole", paramConsoleMessage.message() + " -- From line " + paramConsoleMessage.lineNumber() + " of " + paramConsoleMessage.sourceId());
+    }
+    if (Build.VERSION.SDK_INT > 7) {
+      try
       {
-        this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.b.sendMessage(localMessage);
-        return;
-        boolean bool = false;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        AppViewBaseActivity localAppViewBaseActivity = (AppViewBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if ((localAppViewBaseActivity != null) && (!localAppViewBaseActivity.isFinishing()))
         {
-          String str = "";
-          int i = this.jdField_a_of_type_JavaLangString.lastIndexOf(File.separator);
-          if (i != -1) {
-            str = this.jdField_a_of_type_JavaLangString.substring(i + 1);
+          if (paramConsoleMessage == null) {}
+          for (paramConsoleMessage = "";; paramConsoleMessage = paramConsoleMessage.message())
+          {
+            localAppViewBaseActivity.b(paramConsoleMessage);
+            break;
           }
-          bool = OfflineSecurity.a(this.b, str, "98");
         }
-        this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.g = System.currentTimeMillis();
-        if (bool)
-        {
-          localMessage.what = 102;
-          LogUtility.b("opensdk", ">>end verify html ,result ok,tmcost=" + (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.g - this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.f) + ">>");
-        }
-        else
-        {
-          localMessage.what = 103;
-          LogUtility.b("opensdk", ">>end verify html ,result fail,tmcost=" + (this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.g - this.jdField_a_of_type_ComTencentOpenAppcommonAppViewBaseActivity.f) + ">>");
-          continue;
-          localMessage.what = 102;
-        }
+        return true;
+      }
+      catch (Exception paramConsoleMessage) {}
+    }
+  }
+  
+  public void onExceededDatabaseQuota(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, QuotaUpdater paramQuotaUpdater)
+  {
+    paramQuotaUpdater.updateQuota(2L * paramLong2);
+  }
+  
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    try
+    {
+      paramString1 = (AppViewBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((paramString1 != null) && (!paramString1.isFinishing()) && (paramString1.a.a(paramWebView, paramString2)))
+      {
+        paramJsResult.cancel();
+        return true;
       }
     }
+    catch (Exception paramWebView) {}
+    return false;
   }
 }
 

@@ -1,14 +1,4 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class ehq
-{
-  public ImageView a;
-  public TextView a;
-  public String a;
-  
-  ehq(ehp paramehp) {}
-}
+public class ehq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar

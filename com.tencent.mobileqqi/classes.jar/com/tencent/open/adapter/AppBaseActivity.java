@@ -169,18 +169,18 @@ public class AppBaseActivity
   {
     this.jdField_a_of_type_AndroidWidgetTextView = this.k;
     this.jdField_b_of_type_AndroidWidgetTextView = this.m;
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131231448);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131231447);
     View localView1 = getLayoutInflater().inflate(2130903336, null);
     View localView2 = getLayoutInflater().inflate(2130903337, null);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     localLayoutParams.addRule(13, 1);
     localRelativeLayout.addView(localView1, localLayoutParams);
     localRelativeLayout.addView(localView2, localLayoutParams);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232132);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131232131);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232131);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131232130);
     this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-    this.c = ((TextView)localView1.findViewById(2131232129));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView1.findViewById(2131232130));
+    this.c = ((TextView)localView1.findViewById(2131232128));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView1.findViewById(2131232129));
     f();
   }
   
@@ -199,7 +199,7 @@ public class AppBaseActivity
       return;
     }
     LogUtility.b(jdField_a_of_type_JavaLangString, ">>>setNightTheme runtime:" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getClass().getName());
-    localObject = findViewById(2131232115);
+    localObject = findViewById(2131232114);
     if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentCommonAppAppInterface))
     {
       ((View)localObject).setVisibility(0);

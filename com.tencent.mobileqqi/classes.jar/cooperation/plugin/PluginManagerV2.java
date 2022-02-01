@@ -20,10 +20,10 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.rc.GetQQAppInterfaceDataRemoteCommand;
+import iag;
 import iah;
 import iai;
 import iaj;
-import iak;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
@@ -114,7 +114,7 @@ public final class PluginManagerV2
     paramContext.setTitle(paramString);
     paramContext.setMessage("下载中...");
     paramContext.setCancelable(false);
-    paramContext.setButton(-2, "取消", new iah(paramOnClickListener));
+    paramContext.setButton(-2, "取消", new iag(paramOnClickListener));
     return paramContext;
   }
   
@@ -164,8 +164,8 @@ public final class PluginManagerV2
           localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
           localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
           localLaunchState.jdField_a_of_type_Boolean = false;
-          localLaunchState.jdField_a_of_type_AndroidAppProgressDialog = a(paramContext, (String)localObject1, new iai(this, paramPluginParams.b, null));
-          a((String)localObject2, paramBoolean, new iak(localLaunchState));
+          localLaunchState.jdField_a_of_type_AndroidAppProgressDialog = a(paramContext, (String)localObject1, new iah(this, paramPluginParams.b, null));
+          a((String)localObject2, paramBoolean, new iaj(localLaunchState));
           return;
         }
       }
@@ -176,7 +176,7 @@ public final class PluginManagerV2
     ((PluginManagerV2.LaunchState)localObject2).jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
     ((PluginManagerV2.LaunchState)localObject2).jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
     ((PluginManagerV2.LaunchState)localObject2).jdField_a_of_type_Boolean = true;
-    a((String)localObject1, paramBoolean, new iak((PluginManagerV2.LaunchState)localObject2));
+    a((String)localObject1, paramBoolean, new iaj((PluginManagerV2.LaunchState)localObject2));
   }
   
   private void a(String paramString, IPluginManager.OnQueryPluginListener paramOnQueryPluginListener)
@@ -343,7 +343,7 @@ public final class PluginManagerV2
       }
       else
       {
-        paramPluginParams = new iaj(this, paramOnPluginReadyListener, bool1, paramContext, paramPluginParams, bool3, null);
+        paramPluginParams = new iai(this, paramOnPluginReadyListener, bool1, paramContext, paramPluginParams, bool3, null);
         a(paramContext, localPluginInfo.mName, localPluginInfo.mLength, paramPluginParams, paramPluginParams, bool1).show();
         return;
       }
@@ -383,7 +383,7 @@ public final class PluginManagerV2
     } while (paramOnPluginReadyListener == null);
     paramOnPluginReadyListener.a(true, paramContext, paramPluginParams);
     return;
-    paramPluginParams = new iaj(this, paramOnPluginReadyListener, true, paramContext, paramPluginParams, bool, null);
+    paramPluginParams = new iai(this, paramOnPluginReadyListener, true, paramContext, paramPluginParams, bool, null);
     a(paramContext, paramPluginInfo.mName, paramPluginInfo.mLength, paramPluginParams, paramPluginParams, true).show();
   }
   

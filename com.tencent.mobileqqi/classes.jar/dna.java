@@ -1,41 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.CommonWebActivity;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dna
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
   public dna(SubLoginActivity paramSubLoginActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.d) {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1982: 
+      this.a.finish();
       return;
     }
-    if (paramInt == 0)
-    {
-      paramView = new Intent(this.a, CommonWebActivity.class);
-      paramView.putExtra("uin", SubLoginActivity.a(this.a));
-      paramView.putExtra("reqType", 3);
-      paramView.putExtra("url", "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756");
-      this.a.startActivity(paramView);
-    }
-    for (;;)
-    {
-      this.a.d = true;
-      this.a.a.dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-        paramView.putExtra("isSubaccount", true);
-        this.a.startActivity(paramView);
-      }
-    }
+    this.a.e();
   }
 }
 

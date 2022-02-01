@@ -1,15 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.LoginActivity;
 
 public class ctw
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
   public ctw(LoginActivity paramLoginActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!this.a.isFinishing()) {
-      this.a.showDialog(3);
-    }
+    LoginActivity.b(this.a, false);
   }
 }
 

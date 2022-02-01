@@ -1,20 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.DataLineDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import java.net.URL;
-
-public class gne
-  implements BitmapDecoder
+public abstract interface gne
 {
-  public gnd a;
-  
-  public gne(DataLineDownloader paramDataLineDownloader) {}
-  
-  public Bitmap a(URL paramURL)
-  {
-    this.jdField_a_of_type_Gnd = this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader.a(paramURL);
-    return DataLineDownloader.a(this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader, this.jdField_a_of_type_Gnd);
-  }
+  public static final int a = 0;
+  public static final int b = 1;
+  public static final int c = 2;
+  public static final int d = 3;
+  public static final int e = 4;
+  public static final int f = 5;
+  public static final int g = 10;
+  public static final int h = 7;
 }
 
 

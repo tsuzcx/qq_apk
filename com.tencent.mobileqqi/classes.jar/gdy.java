@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pic.PicPreDownloader;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class gdy
-  extends TimerTask
+  implements Runnable
 {
-  public gdy(PicPreDownloader paramPicPreDownloader) {}
+  public gdy(PicPreDownloader paramPicPreDownloader, MessageRecord paramMessageRecord, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    if (!this.a.a.get())
-    {
-      this.a.a.set(true);
-      Logger.b("PIC_TAG_PRELOAD", "timer count off,picPreDownload set on", "mIsPicPreloadSuitable" + this.a.a.get());
-    }
+    PicPreDownloader.a(this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

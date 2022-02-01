@@ -12,8 +12,8 @@ public class iap
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity.a = true;
-    this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity.b.a().a(this.jdField_a_of_type_JavaLangString, false);
-    QlinkDialogActivity.a(this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity, this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity, this.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity.b.a().a(this.jdField_a_of_type_JavaLangString, true);
+    paramDialogInterface.dismiss();
     this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity.finish();
   }
 }

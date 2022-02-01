@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
 import com.tencent.mobileqq.activity.ChatHistory;
 
-public class cbo
-  implements DialogInterface.OnClickListener
+class cbo
+  extends Thread
 {
-  public cbo(ChatHistory paramChatHistory) {}
+  cbo(cbn paramcbn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    new cbp(this).start();
+    ChatHistory.a(this.a.a, this.a.a.b, this.a.a.a);
+    this.a.a.c.dismiss();
   }
 }
 

@@ -10,9 +10,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import hfc;
 import hfd;
 import hfe;
-import hff;
 import java.util.Timer;
 
 public class AntiphingToast
@@ -36,7 +36,7 @@ public class AntiphingToast
   
   public AntiphingToast()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new hfd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new hfc(this);
   }
   
   public static int a(int paramInt)
@@ -56,7 +56,7 @@ public class AntiphingToast
     localTranslateAnimation.setDuration(700L);
     localTranslateAnimation.setStartOffset(20L);
     if (paramBoolean == true) {
-      localTranslateAnimation.setAnimationListener(new hfe(this));
+      localTranslateAnimation.setAnimationListener(new hfd(this));
     }
     this.jdField_a_of_type_AndroidWidgetFrameLayout.startAnimation(localTranslateAnimation);
   }
@@ -95,7 +95,7 @@ public class AntiphingToast
     View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903659, null);
     if (localView != null)
     {
-      TextView localTextView = (TextView)localView.findViewById(2131233295);
+      TextView localTextView = (TextView)localView.findViewById(2131233294);
       if (localTextView != null) {
         localTextView.setText(paramString);
       }
@@ -123,7 +123,7 @@ public class AntiphingToast
       this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903659, null);
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233295);
+        TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233294);
         if ((localTextView != null) && (paramString != null)) {
           localTextView.setText(paramString);
         }
@@ -133,7 +133,7 @@ public class AntiphingToast
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setFocusable(false);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
     a(-80.0F, 0.0F, false);
-    new Timer().schedule(new hff(this), this.g + 700);
+    new Timer().schedule(new hfe(this), this.g + 700);
     return true;
   }
   

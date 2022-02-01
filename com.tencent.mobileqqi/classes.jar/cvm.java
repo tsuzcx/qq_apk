@@ -1,112 +1,32 @@
-import android.content.Intent;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class cvm
-  extends WtloginObserver
+  implements Runnable
 {
   public cvm(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
   
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg)
+  public void run()
   {
-    if (QLog.isColorLevel())
+    try
     {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
-      }
-    }
-    if (paramInt2 == 0)
-    {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  login success ret =  " + paramInt2);
-      if ((LoginVerifyCodeActivity2.c(this.a) == 2) || (LoginVerifyCodeActivity2.c(this.a) == 3))
+      if ((LoginVerifyCodeActivity2.a(this.a) == null) && (!this.a.isFinishing()))
       {
-        this.a.g();
-        paramErrMsg = new Intent();
-        paramErrMsg.putExtra("last_account", paramString);
-        this.a.setResult(-1, paramErrMsg);
-        this.a.finish();
-        return;
+        LoginVerifyCodeActivity2.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
+        LoginVerifyCodeActivity2.a(this.a).b(2131562645);
       }
-      LoginVerifyCodeActivity2.a(this.a).ssoGetTicketNoPasswd(paramString, 4096, this.a.a);
+      if ((LoginVerifyCodeActivity2.a(this.a) != null) && (!LoginVerifyCodeActivity2.a(this.a).isShowing())) {
+        LoginVerifyCodeActivity2.a(this.a).show();
+      }
       return;
     }
-    this.a.g();
-    paramString = null;
-    if (paramErrMsg != null) {
-      paramString = paramErrMsg.getMessage();
-    }
-    if (TextUtils.isEmpty(paramString))
+    catch (Throwable localThrowable)
     {
-      this.a.d();
-      return;
-    }
-    this.a.a(paramString, 0);
-  }
-  
-  public void OnRefreshSMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.mobile=" + paramString1 + " msg=" + paramString2 + " timeLimit=" + paramInt2);
-      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.errMsg=" + paramErrMsg);
-      }
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.g();
-    if (paramInt3 != 0)
-    {
-      paramString1 = null;
-      if (paramErrMsg != null) {
-        paramString1 = paramErrMsg.getMessage();
-      }
-      if (TextUtils.isEmpty(paramString1))
+      for (;;)
       {
-        this.a.d();
-        return;
-      }
-      this.a.a(paramString1, 0);
-      return;
-    }
-    LoginVerifyCodeActivity2.a(this.a, 60);
-  }
-  
-  public void OnVerifySMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount mobile=" + paramString1 + " msgCode=" + paramString2 + " ret=" + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+        localThrowable.printStackTrace();
       }
     }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramInt != 0)
-    {
-      this.a.g();
-      paramString1 = null;
-      if (paramErrMsg != null) {
-        paramString1 = paramErrMsg.getMessage();
-      }
-      if (TextUtils.isEmpty(paramString1))
-      {
-        this.a.d();
-        return;
-      }
-      this.a.a(paramString1, 0);
-      return;
-    }
-    LoginVerifyCodeActivity2.a(this.a);
   }
 }
 

@@ -1,24 +1,24 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.app.CardObserver;
 
-class dah
-  implements Runnable
+public class dah
+  extends CardObserver
 {
-  dah(dag paramdag) {}
+  public dah(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if ((ProfileCardMoreActivity.b(this.a.a) != null) && (ProfileCardMoreActivity.b(this.a.a).equals("我的好友"))) {
-      ProfileCardMoreActivity.a(this.a.a, this.a.a.getString(2131559856));
-    }
-    FormSimpleItem localFormSimpleItem = this.a.a.c;
-    if (TextUtils.isEmpty(ProfileCardMoreActivity.b(this.a.a))) {}
-    for (String str = "";; str = ProfileCardMoreActivity.b(this.a.a))
-    {
-      localFormSimpleItem.setRightText(str);
+    if (!this.a.a.a.equals(paramString)) {
       return;
     }
+    this.a.h();
+    if (paramBoolean)
+    {
+      this.a.a(2131562776, 2);
+      return;
+    }
+    this.a.a(2131562773, 1);
   }
 }
 

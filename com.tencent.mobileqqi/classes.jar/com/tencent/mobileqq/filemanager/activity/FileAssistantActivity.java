@@ -27,9 +27,9 @@ import cooperation.qlink.QlinkPluginProxyActivity;
 import cooperation.weiyun.WeiyunHelper;
 import cooperation.weiyun.WeiyunRemoteCommand;
 import cooperation.weiyun.WeiyunRemoteCommand.OnStateChangeListener;
+import frn;
 import fro;
-import frp;
-import frr;
+import frq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -46,7 +46,7 @@ public class FileAssistantActivity
   TextView jdField_a_of_type_AndroidWidgetTextView;
   FileCategoryAdapter jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = null;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private WeiyunRemoteCommand.OnStateChangeListener jdField_a_of_type_CooperationWeiyunWeiyunRemoteCommand$OnStateChangeListener = new frr(this);
+  private WeiyunRemoteCommand.OnStateChangeListener jdField_a_of_type_CooperationWeiyunWeiyunRemoteCommand$OnStateChangeListener = new frq(this);
   private WeiyunRemoteCommand jdField_a_of_type_CooperationWeiyunWeiyunRemoteCommand;
   List jdField_a_of_type_JavaUtilList = new ArrayList();
   private FMObserver b;
@@ -59,8 +59,8 @@ public class FileAssistantActivity
   
   public FileAssistantActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fro(this);
-    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new frp(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new frn(this);
+    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fro(this);
   }
   
   private void g()
@@ -199,7 +199,7 @@ public class FileAssistantActivity
     super.doOnCreate(paramBundle);
     setContentView(2130903495);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(a());
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232730));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232729));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = new FileCategoryAdapter(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter);
     l();

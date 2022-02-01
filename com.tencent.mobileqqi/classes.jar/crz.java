@@ -1,41 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
-public class crz
-  extends Handler
+class crz
+  implements Runnable
 {
-  public crz(Leba paramLeba) {}
+  crz(cry paramcry) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ("0".equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()))) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 11340002: 
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
-        }
-        this.a.h();
-        return;
-      }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.notifyDataSetChanged();
-    Leba.a(this.a);
-    return;
-    paramMessage = new Thread(new csa(this));
-    paramMessage.setPriority(5);
-    paramMessage.start();
-    return;
-    Leba.a(this.a);
+    Leba.b(this.a.a);
   }
 }
 

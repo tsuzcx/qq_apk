@@ -3,9 +3,6 @@ import android.widget.TextView;
 public class dcd
 {
   TextView a;
-  TextView b;
-  TextView c;
-  TextView d;
 }
 
 

@@ -1,26 +1,12 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.utils.QQCustomSplitDialog;
 
 public class hdr
-  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public hdr(QQCustomSplitDialog paramQQCustomSplitDialog, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.a != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.dismiss();
-    }
-  }
+  private hdr(QQCustomSplitDialog paramQQCustomSplitDialog) {}
 }
 
 

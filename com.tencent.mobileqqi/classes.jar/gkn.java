@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class gkn
+  extends URLDrawableDownListener.Adapter
 {
-  public String a;
-  public String b;
+  public gkn(AbsShareMsg paramAbsShareMsg) {}
   
-  public gkn(StatisticCollector paramStatisticCollector, String paramString1, String paramString2)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    paramView.setBackgroundDrawable(null);
   }
 }
 

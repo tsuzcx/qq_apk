@@ -1,55 +1,28 @@
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.base.TicketUtils.TicketCallback;
 import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK;
 import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
-import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK_V2;
 
-class hoc
-  implements Runnable
+public class hoc
+  implements TicketUtils.TicketCallback
 {
-  hoc(hnz paramhnz) {}
+  public hoc(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void run()
+  public void a()
   {
-    boolean bool2 = false;
     LogUtility.c("TIME-STATISTIC", "onGetA1Fail");
-    DownloadInfo localDownloadInfo = this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, this.a.jdField_a_of_type_AndroidOsBundle);
-    DownloadManager.a().e(localDownloadInfo);
-    for (;;)
-    {
-      boolean bool3;
-      try
-      {
-        LogUtility.a("State_Log", "OpenSDK startToAppDetail param SNGAppId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.SNGAppId + " apkId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskApkId + " taskAppId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskAppId + " packageName=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskPackageName + " version=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.taskVersion + " uin=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.uin + " via=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam.via);
-        LogUtility.c("TIME-STATISTIC", "downloadSdk.startToAppDetail");
-        this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.c();
-        if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
-        {
-          ((TMQQDownloaderOpenSDK)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a).startToAppDetail(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, this.a.jdField_a_of_type_Boolean, this.a.b);
-          return;
-        }
-        int i = this.a.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.j);
-        int j = this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.a.jdField_a_of_type_AndroidOsBundle);
-        boolean bool1 = this.a.jdField_a_of_type_Boolean;
-        bool3 = this.a.b;
-        if (i == 3)
-        {
-          bool1 = false;
-          ((TMQQDownloaderOpenSDK_V2)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a).startToAppDetail(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, bool1, bool2, j);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        LogUtility.b("MyAppApi", "startToAppDetail err", localException);
-        return;
-      }
-      bool2 = bool3;
-    }
+    ThreadManager.b().post(new hoe(this));
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    LogUtility.c("TIME-STATISTIC", "onGetA1");
+    ThreadManager.b().post(new hod(this, paramArrayOfByte, paramString));
   }
 }
 

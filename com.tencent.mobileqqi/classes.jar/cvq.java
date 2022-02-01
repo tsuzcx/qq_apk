@@ -1,14 +1,36 @@
 import com.tencent.mobileqq.activity.MayKnowManActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class cvq
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
   public cvq(MayKnowManActivity paramMayKnowManActivity) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (MayKnowManActivity.a(this.a, 10, this.a.c)) {
-      MayKnowManActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(MayKnowManActivity.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged:" + paramInt);
+    }
+    if ((this.a.jdField_a_of_type_JavaUtilList != null) && (paramInt == 0) && (this.a.jdField_a_of_type_Boolean))
+    {
+      int i = this.a.jdField_a_of_type_ComTencentWidgetXListView.r();
+      if (this.a.jdField_a_of_type_JavaUtilList.size() <= i) {
+        this.a.c();
+      }
+    }
+    if (this.a.jdField_a_of_type_Cvx != null) {
+      this.a.jdField_a_of_type_Cvx.a(paramAbsListView, paramInt);
+    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.jdField_a_of_type_Cvx != null) {
+      this.a.jdField_a_of_type_Cvx.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
 }

@@ -1,18 +1,16 @@
-import android.app.Dialog;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class dre
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
-  public dre(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
+  public dre(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a(paramAdapterView, paramView, paramInt);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

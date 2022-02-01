@@ -1,27 +1,16 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.CheckMsgCount;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public class fhm
-  extends FriendListObserver
+  implements Runnable
 {
-  private fhm(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
+  public fhm(CheckMsgCount paramCheckMsgCount) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    int i = 0;
-    if (!paramBoolean1) {
-      this.a.a(6);
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        this.a.a(7);
-      }
-      return;
-      if (paramBoolean2) {
-        i = 1;
-      }
-    }
+    CheckMsgCount.a(this.a).a.a().p();
   }
 }
 

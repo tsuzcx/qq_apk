@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class cmq
-  implements DialogInterface.OnDismissListener
+  extends FriendListObserver
 {
-  public cmq(ForwardRecentActivity paramForwardRecentActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  public cmq(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.jdField_a_of_type_AndroidAppDialog = null;
+    if (paramBoolean) {
+      ForwardRecentActivity.b(this.a);
+    }
   }
 }
 

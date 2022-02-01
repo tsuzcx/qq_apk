@@ -1,13 +1,22 @@
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
 import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
 
 public class gnl
-  implements Runnable
+  extends MessageObserver
 {
   public gnl(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
   {
-    this.a.a();
+    this.a.a("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.d();
   }
 }
 

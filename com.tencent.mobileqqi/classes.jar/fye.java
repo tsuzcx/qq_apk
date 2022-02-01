@@ -9,7 +9,11 @@ public final class fye
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), -1, this.a, 0).b(FMToastUtil.a());
+    QQToast localQQToast = new QQToast(BaseApplicationImpl.getContext());
+    localQQToast.a(2130837933);
+    localQQToast.c(3000);
+    localQQToast.b(this.a);
+    localQQToast.b(FMToastUtil.a());
   }
 }
 

@@ -6,14 +6,20 @@ import com.tencent.mobileqq.utils.QQCustomSplitDialog;
 public class hdq
   implements View.OnClickListener
 {
-  public hdq(QQCustomSplitDialog paramQQCustomSplitDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  int jdField_a_of_type_Int;
+  
+  public hdq(QQCustomSplitDialog paramQQCustomSplitDialog, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog, 0);
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.a != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSplitDialog.dismiss();
   }
 }
 

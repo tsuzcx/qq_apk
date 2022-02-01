@@ -2,6 +2,6 @@
 <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">"
 <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0206" />
-    <TextView android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080313" android:layout_marginRight="15.0dip" android:maxLines="2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0207" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08076f" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0208" />
+    <TextView android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080312" android:layout_marginRight="15.0dip" android:maxLines="2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0207" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08076e" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0208" />
 </LinearLayout>

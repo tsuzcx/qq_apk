@@ -10,8 +10,9 @@ public class duf
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(this.a.b, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
-    UpgradeActivity.a(this.a, false);
+    ReportController.b(this.a.b, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
+    this.a.finish();
+    this.a.e();
   }
 }
 

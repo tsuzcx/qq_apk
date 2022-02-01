@@ -25,8 +25,8 @@ import com.tencent.mobileqq.vip.IPCDownloadListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
+import fkt;
 import fku;
-import fkv;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -70,13 +70,13 @@ public class BubbleManager
   protected AppInterface a;
   public BubbleManager.BubbleInfoLruCache a;
   public BubbleManager.LruLinkedHashMap a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new fku(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new fkt(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
   private DownloaderFactory.DownloadConfig jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory$DownloadConfig = null;
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = null;
   public IPCDownloadListener a;
   private Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
   JSONArray jdField_a_of_type_OrgJsonJSONArray = null;
-  DownloadListener b = new fkv(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
+  DownloadListener b = new fku(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
   
   static
   {

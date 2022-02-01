@@ -1,18 +1,22 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.view.ProfileGameView;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.qphone.base.util.QLog;
 
-class gey
-  implements Runnable
+public class gey
+  extends Handler
 {
-  gey(gex paramgex, Bitmap paramBitmap) {}
+  public gey(ProfileHeaderView paramProfileHeaderView, ProfileCardInfo paramProfileCardInfo) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_Gex.a.a.get("map_key_face");
-    if (localImageView != null) {
-      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (ProfileHeaderView.b == paramMessage.what)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView handleMessage msg what is check tips time=" + this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Int);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.j(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
     }
   }
 }

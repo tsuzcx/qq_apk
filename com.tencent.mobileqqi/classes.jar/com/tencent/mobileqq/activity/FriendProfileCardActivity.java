@@ -32,20 +32,20 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import cms;
+import cmr;
+import cmu;
 import cmv;
 import cmw;
 import cmx;
 import cmy;
 import cmz;
 import cna;
-import cnb;
+import cnh;
 import cni;
 import cnj;
 import cnk;
 import cnl;
 import cnm;
-import cnn;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.CardHandler;
@@ -146,24 +146,24 @@ public class FriendProfileCardActivity
   private static boolean h = false;
   private long M = 0L;
   private Dialog jdField_a_of_type_AndroidAppDialog;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cni(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new cnh(this);
   public Uri a;
   public Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cmv(this);
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new cnn(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cmu(this);
+  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new cnm(this);
   public View a;
   private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new cmz(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new cmy(this);
   public LinearLayout a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public ProfileActivity.CardContactInfo a;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cms(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cna(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cmr(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cmz(this);
   public ProfileCardInfo a;
   private ProfileCardTemplate jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = null;
   public ProfileHeaderView a;
-  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new cmy(this);
+  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new cmx(this);
   private BounceScrollView jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView;
   public ProfileCardMoreInfoView a;
   private QQToastNotifier jdField_a_of_type_ComTencentMobileqqWidgetQQToastNotifier;
@@ -191,7 +191,7 @@ public class FriendProfileCardActivity
   public FriendProfileCardActivity()
   {
     this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo = new ProfileCardInfo();
-    this.jdField_a_of_type_AndroidOsHandler = new cmw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cmv(this);
   }
   
   private void a(int paramInt)
@@ -566,7 +566,7 @@ public class FriendProfileCardActivity
   {
     if ((this.jdField_b_of_type_AndroidWidgetLinearLayout != null) && (paramView != null))
     {
-      Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233045);
+      Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233044);
       if (localObject != null) {}
       try
       {
@@ -613,7 +613,7 @@ public class FriendProfileCardActivity
       paramView.setTag(localDataTag);
       paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramView.setContentDescription(getString(paramInt4));
-      paramView = (TextView)paramView.findViewById(2131233040);
+      paramView = (TextView)paramView.findViewById(2131233039);
       paramView.setText(paramInt2);
       paramView.setContentDescription(getString(paramInt4));
       paramView.setCompoundDrawablesWithIntrinsicBounds(paramInt3, 0, 0, 0);
@@ -1219,7 +1219,7 @@ public class FriendProfileCardActivity
         break label141;
       }
       k();
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new cnj(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new cni(this));
       if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
         break label158;
       }
@@ -1429,27 +1429,27 @@ public class FriendProfileCardActivity
     this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setInterpolator(this, 17432581);
     this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
     localObject1 = View.inflate(this, 2130903613, null);
-    this.jdField_c_of_type_AndroidViewView = ((View)localObject1).findViewById(2131233076);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)((View)localObject1).findViewById(2131231313));
+    this.jdField_c_of_type_AndroidViewView = ((View)localObject1).findViewById(2131233075);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)((View)localObject1).findViewById(2131231312));
     this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.f = 1;
     this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setMotionEventInterceptor(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOnScrollChangedListener(new cnk(this));
-    this.jdField_b_of_type_AndroidViewView = ((View)localObject1).findViewById(2131233079);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131231456));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOnScrollChangedListener(new cnj(this));
+    this.jdField_b_of_type_AndroidViewView = ((View)localObject1).findViewById(2131233078);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131231455));
     this.jdField_c_of_type_AndroidWidgetTextView = new FakeTextView(this);
-    this.jdField_c_of_type_AndroidWidgetTextView.setId(2131231380);
+    this.jdField_c_of_type_AndroidWidgetTextView.setId(2131231379);
     this.jdField_c_of_type_AndroidWidgetTextView.setText(2131562408);
     this.jdField_b_of_type_AndroidWidgetTextView = new FakeTextView(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131231376);
+    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131231375);
     if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 33) {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2130903605, null);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131233044));
-      localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233045);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131233043));
+      localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233044);
       if (localObject2 != null) {}
       try
       {
@@ -1457,10 +1457,10 @@ public class FriendProfileCardActivity
         if (!((Animatable)localObject2).isRunning()) {
           ((Animatable)localObject2).start();
         }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView = ((ProfileCardMoreInfoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233046));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView = ((ProfileCardMoreInfoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131233045));
         this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
         this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((View)localObject1).findViewById(2131233077));
+        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((View)localObject1).findViewById(2131233076));
         a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
         if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 33)
         {
@@ -2714,7 +2714,7 @@ public class FriendProfileCardActivity
     if ((QLog.isColorLevel()) && (paramProfileCardTemplate != null)) {
       QLog.i("Q.profilecard.FrdProfileCard", 2, "revice request to downloadCardTemplate cardTemplate= " + paramProfileCardTemplate.toString());
     }
-    ThreadManager.a(new cnm(this, paramProfileCardTemplate));
+    ThreadManager.a(new cnl(this, paramProfileCardTemplate));
   }
   
   @SuppressLint({"ServiceCast", "NewApi"})
@@ -2800,7 +2800,7 @@ public class FriendProfileCardActivity
       }
     }
     label305:
-    localActionSheet1.a(new cnb(this, localActionSheet1));
+    localActionSheet1.a(new cna(this, localActionSheet1));
     localActionSheet1.show();
   }
   
@@ -2981,7 +2981,7 @@ public class FriendProfileCardActivity
   
   public void d()
   {
-    ThreadManager.b(new cnl(this));
+    ThreadManager.b(new cnk(this));
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -3801,7 +3801,7 @@ public class FriendProfileCardActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     if ((paramObject instanceof MessageRecord)) {
-      runOnUiThread(new cmx(this));
+      runOnUiThread(new cmw(this));
     }
   }
 }

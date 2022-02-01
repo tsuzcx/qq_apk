@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class dym
-  implements Runnable
+public class dym
+  implements ActionSheet.OnButtonClickListener
 {
-  dym(dyl paramdyl) {}
+  public dym(FileItemBuilder paramFileItemBuilder, MessageForFile paramMessageForFile, BaseChatItemLayout paramBaseChatItemLayout, dyn paramdyn, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ChatActivityUtils.a(FileItemBuilder.a(this.a.a), 2131563033, 1);
+    paramView = FileItemBuilder.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
+    if (paramView != null) {
+      FileManagerUtil.a(FileItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder), paramView, FileItemBuilder.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder), false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Dyn, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status, false);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
   }
 }
 

@@ -1,26 +1,35 @@
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TextSignatureItemBuilder;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder.Holder;
 
 public class ebe
-  extends AbstractChatItemBuilder.ViewHolder
+  implements Animation.AnimationListener
 {
-  public int a;
-  public long a;
-  public ViewGroup a;
-  public ImageView a;
-  AnyScaleTypeImageView jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView;
-  public String a;
-  public TextView b;
-  public String b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public ebe(TextTranslationItemBuilder paramTextTranslationItemBuilder, TextTranslationItemBuilder.Holder paramHolder, CharSequence paramCharSequence) {}
   
-  public ebe(TextSignatureItemBuilder paramTextSignatureItemBuilder) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_a_of_type_AndroidWidgetTextView.startAnimation(TextTranslationItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.d = 0;
+    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramAnimation.width = -2;
+    paramAnimation.height = -2;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_a_of_type_AndroidViewViewGroup.setAnimation(null);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.d = 0;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_a_of_type_AndroidWidgetTextView.startAnimation(TextTranslationItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder));
+  }
 }
 
 

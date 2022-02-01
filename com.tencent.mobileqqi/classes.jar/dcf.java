@@ -1,30 +1,28 @@
-import com.tencent.mobileqq.activity.QQLSUnlockActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class dcf
-  extends Thread
+  implements View.OnClickListener
 {
-  public dcf(QQLSUnlockActivity paramQQLSUnlockActivity) {}
+  public dcf(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    if (!NetworkUtil.e(this.a))
     {
-      wait(1500L);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, " QQLSUnlockActivity finish");
-      }
-      this.a.finish();
+      this.a.q();
       return;
     }
-    catch (InterruptedException localInterruptedException)
+    if (NetworkUtil.b(this.a))
     {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+      this.a.m();
+      return;
     }
-    finally {}
+    DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131562272)).setMessage(2131563235).setPositiveButton(2131563186, new dch(this)).setNegativeButton(2131561746, new dcg(this)).show();
   }
 }
 

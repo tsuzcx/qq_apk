@@ -1,19 +1,19 @@
 import android.content.Context;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.res.Resources;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public final class gxp
   implements Runnable
 {
-  public gxp(boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
+  public gxp(Context paramContext, String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130837961, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    QQCustomDialog localQQCustomDialog = DialogUtil.b(this.jdField_a_of_type_AndroidContentContext, 230);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString).setMessage(this.b);
+    localQQCustomDialog.setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getResources().getString(this.jdField_a_of_type_Int), new gxq(this));
+    localQQCustomDialog.show();
   }
 }
 

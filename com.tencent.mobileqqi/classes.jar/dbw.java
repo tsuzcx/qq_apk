@@ -1,18 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.activity.QQLSUnlockActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class dbw
-  implements View.OnTouchListener
+  implements Runnable
 {
   public dbw(QQLSActivity paramQQLSActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    QQLSActivity.a(this.a).setCursorVisible(true);
-    return false;
+    if (!QQLSActivity.a(this.a))
+    {
+      ReportController.b(QQLSActivity.a(this.a), "CliOper", "", "", "0X800444B", "0X800444B", 0, 0, "", "", "", "");
+      Intent localIntent = new Intent(this.a, QQLSUnlockActivity.class);
+      this.a.startActivity(localIntent);
+    }
   }
 }
 

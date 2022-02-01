@@ -1,23 +1,25 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnBufferingUpdateListener;
-import com.tencent.mobileqq.troop.widget.VideoViewX;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
 
 public class gzv
-  implements MediaPlayer.OnBufferingUpdateListener
+  implements DialogInterface.OnDismissListener
 {
-  public gzv(VideoViewX paramVideoViewX) {}
+  public gzv(TroopShareUtility paramTroopShareUtility) {}
   
-  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    VideoViewX.e(this.a, paramInt);
-    if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).onBufferingUpdate(VideoViewX.a(this.a), paramInt);
+    TroopShareUtility.a(this.a, false);
+    if ((!(TroopShareUtility.a(this.a) instanceof TroopCreateLogicActivity)) || (this.a.a)) {
+      return;
     }
+    ((TroopCreateLogicActivity)TroopShareUtility.a(this.a)).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gzv
  * JD-Core Version:    0.7.0.1
  */

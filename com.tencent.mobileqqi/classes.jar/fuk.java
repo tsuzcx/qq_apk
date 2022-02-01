@@ -1,8 +1,10 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.OutputStream;
 
 public class fuk
   implements Runnable
@@ -11,33 +13,47 @@ public class fuk
   
   public void run()
   {
-    if (this.a.b == 0)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      this.a.b();
-      return;
-    }
-    if (this.a.f.equalsIgnoreCase(""))
-    {
-      this.a.a();
-      return;
-    }
-    this.a.g = System.currentTimeMillis();
-    try
-    {
-      if (this.a.jdField_a_of_type_JavaIoOutputStream != null) {
-        this.a.jdField_a_of_type_JavaIoOutputStream.flush();
-      }
-      this.a.jdField_a_of_type_Long = FileManagerUtil.a(this.a.d);
-      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.a.c + "]retry request Httpmsg,rd[" + String.valueOf(this.a.jdField_a_of_type_Long) + "]");
-      FileManagerRSWorker.a(this.a, this.a.jdField_a_of_type_Long, this.a.h);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      if ("run task sessionid[" + String.valueOf(this.a.c) + "]," + " actionType[" + String.valueOf(this.a.jdField_b_of_type_Int) + "], " + "strUin[" + this.a.e != null)
       {
-        QLog.e("FileManagerRSWorker<FileAssistant>", 1, localIOException.getMessage());
+        localObject = FileManagerUtil.e(this.a.e);
+        QLog.d("FileManagerRSWorker<FileAssistant>", 2, (String)localObject);
       }
+    }
+    else
+    {
+      this.a.g = System.currentTimeMillis();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
+      switch (this.a.jdField_b_of_type_Int)
+      {
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
+      return;
+      if ("null], filePath[" + this.a.jdField_b_of_type_JavaLangString != null)
+      {
+        localObject = this.a.jdField_b_of_type_JavaLangString;
+        break;
+      }
+      localObject = "null], uniseq[" + String.valueOf(this.a.jdField_b_of_type_Long) + "]";
+      break;
+      localObject = new FileManagerReporter.fileAssistantReportData();
+      ((FileManagerReporter.fileAssistantReportData)localObject).a = "send_file_number";
+      FileManagerReporter.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), (FileManagerReporter.fileAssistantReportData)localObject);
+      this.a.b();
+      continue;
+      localObject = new FileManagerReporter.fileAssistantReportData();
+      ((FileManagerReporter.fileAssistantReportData)localObject).a = "rece_file_number";
+      FileManagerReporter.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), (FileManagerReporter.fileAssistantReportData)localObject);
+      this.a.a();
+      continue;
+      this.a.g();
+      continue;
+      this.a.h();
     }
   }
 }

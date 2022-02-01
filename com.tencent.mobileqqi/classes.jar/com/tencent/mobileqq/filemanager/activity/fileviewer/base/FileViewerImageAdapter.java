@@ -12,7 +12,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import ftg;
+import ftf;
 import java.io.File;
 import java.util.List;
 
@@ -102,7 +102,7 @@ public class FileViewerImageAdapter
     if (paramView == null)
     {
       paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseBaseFileViewerActivity).inflate(2130903515, null);
-      paramViewGroup = new ftg(this);
+      paramViewGroup = new ftf(this);
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131230758));
       paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131230757));
       paramView.setTag(paramViewGroup);
@@ -117,7 +117,7 @@ public class FileViewerImageAdapter
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       b(paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar);
       return paramView;
-      paramViewGroup = (ftg)paramView.getTag();
+      paramViewGroup = (ftf)paramView.getTag();
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileviewerBaseBaseFileViewerActivity.a(localFileViewerImageInfo.jdField_a_of_type_JavaLangObject);
     if (localObject == null)

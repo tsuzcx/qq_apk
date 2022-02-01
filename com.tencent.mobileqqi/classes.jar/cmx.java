@@ -1,13 +1,19 @@
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class cmx
-  implements Runnable
+  implements IIconListener
 {
   public cmx(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.k();
+    if ((this.a.a.a != null) && (this.a.a.a.b == paramInt1) && (paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.a.a(this.a.a.a);
+    }
   }
 }
 

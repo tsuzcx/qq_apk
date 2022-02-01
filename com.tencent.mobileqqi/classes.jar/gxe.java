@@ -1,35 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import android.text.Editable;
+import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
+import java.util.Comparator;
 
-public class gxe
-  implements View.OnClickListener
+public final class gxe
+  implements Comparator
 {
-  public gxe(VideoPlayLogic paramVideoPlayLogic) {}
+  public gxe(Editable paramEditable) {}
   
-  public void onClick(View paramView)
+  public int a(AtTroopMemberSpan paramAtTroopMemberSpan1, AtTroopMemberSpan paramAtTroopMemberSpan2)
   {
-    if (VideoPlayLogic.a(this.a).a()) {
-      if (VideoPlayLogic.a(this.a) != null)
-      {
-        VideoPlayLogic.a(this.a).setVisibility(0);
-        if (VideoPlayLogic.a(this.a)) {
-          ReportController.b(VideoPlayLogic.a(this.a).b, "P_CliOper", "Grp_AIO", "", "video", "close_barrage", 0, 0, VideoPlayLogic.a(this.a).a, "1", "", "");
-        }
-      }
+    int i = 0;
+    int j = this.a.getSpanStart(paramAtTroopMemberSpan1);
+    int k = this.a.getSpanStart(paramAtTroopMemberSpan2);
+    if (j < k) {
+      i = -1;
     }
-    while (VideoPlayLogic.a(this.a) == null) {
-      return;
+    while (j <= k) {
+      return i;
     }
-    if (VideoPlayLogic.a(this.a)) {
-      ReportController.b(VideoPlayLogic.a(this.a).b, "P_CliOper", "Grp_AIO", "", "video", "close_barrage", 0, 0, VideoPlayLogic.a(this.a).a, "0", "", "");
-    }
-    VideoPlayLogic.a(this.a).setVisibility(8);
+    return 1;
   }
 }
 

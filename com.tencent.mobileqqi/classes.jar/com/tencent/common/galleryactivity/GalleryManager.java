@@ -80,7 +80,7 @@ public abstract class GalleryManager
   public AnimationView a()
   {
     AnimationView localAnimationView = new AnimationView(this.jdField_a_of_type_AndroidAppActivity, null);
-    localAnimationView.setId(2131231778);
+    localAnimationView.setId(2131231777);
     localAnimationView.setVisibility(4);
     return localAnimationView;
   }

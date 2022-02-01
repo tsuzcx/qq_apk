@@ -1,31 +1,13 @@
 import com.tencent.mobileqq.filemanager.activity.VerifyPwdActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
-public class fsp
-  extends FMObserver
+class fsp
+  implements Runnable
 {
-  public fsp(VerifyPwdActivity paramVerifyPwdActivity) {}
+  fsp(fso paramfso) {}
   
-  protected void a(boolean paramBoolean)
+  public void run()
   {
-    this.a.runOnUiThread(new fsr(this, paramBoolean));
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    FMToastUtil.a(paramString);
-    this.a.runOnUiThread(new fss(this));
-  }
-  
-  protected void d()
-  {
-    this.a.runOnUiThread(new fsq(this));
-  }
-  
-  protected void d(int paramInt, String paramString)
-  {
-    FMToastUtil.a(paramString);
+    VerifyPwdActivity.a(this.a.a);
   }
 }
 

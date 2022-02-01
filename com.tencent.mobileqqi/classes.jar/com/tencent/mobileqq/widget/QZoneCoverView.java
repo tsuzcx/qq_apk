@@ -22,8 +22,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.model.CoverCacheData;
 import cooperation.qzone.util.ImageFilePathUtil;
+import hhk;
 import hhl;
-import hhm;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -199,7 +199,7 @@ public class QZoneCoverView
           if (QLog.isColorLevel()) {
             QLog.i("Q.qzonecover.", 2, "change custom mCurLoadingOrShowingUrl = " + this.jdField_d_of_type_JavaLangString);
           }
-          new hhm(this).start();
+          new hhl(this).start();
         }
         return;
         if (this.B != 5)
@@ -936,7 +936,7 @@ public class QZoneCoverView
     for (Object localObject = (QZoneCoverView.PhotoInfo)this.jdField_c_of_type_JavaUtilLinkedList.remove(0);; localObject = null)
     {
       if (localObject != null) {
-        new hhl(this, (QZoneCoverView.PhotoInfo)localObject).start();
+        new hhk(this, (QZoneCoverView.PhotoInfo)localObject).start();
       }
       for (;;)
       {

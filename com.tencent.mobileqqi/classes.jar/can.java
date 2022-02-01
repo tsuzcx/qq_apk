@@ -1,18 +1,26 @@
+import android.content.Intent;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
 import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.app.AppConstants;
 
-class can
-  implements Runnable
+public class can
+  implements View.OnClickListener
 {
-  can(cam paramcam, List paramList) {}
+  public can(ChatBackgroundSettingActivity paramChatBackgroundSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Cam.a).clear();
-    ChatBackgroundSettingActivity.a(this.jdField_a_of_type_Cam.a).addAll(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Cam.a.e();
-    this.jdField_a_of_type_Cam.a.a.notifyDataSetChanged();
+    paramView = this.a.getIntent();
+    String str = AppConstants.an + ChatBackgroundSettingActivity.a(this.a) + "/" + "custom_background/";
+    str = str + System.currentTimeMillis() + ".jpg";
+    Rect localRect = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+    PhotoUtils.a(paramView, this.a, ChatBackgroundSettingActivity.class.getName(), localRect.width() / 5 * 4, localRect.height() / 5 * 4, localRect.width(), localRect.height(), str);
   }
 }
 

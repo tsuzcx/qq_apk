@@ -9,7 +9,7 @@ public class dua
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d();
+    UpgradeActivity.a(this.a, true);
   }
 }
 

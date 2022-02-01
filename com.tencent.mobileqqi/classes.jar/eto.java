@@ -10,12 +10,7 @@ public class eto
   
   public void onClick(View paramView)
   {
-    if (VoipDetailActivity.VoipQQLabel.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity$VoipQQLabel))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity$VoipQQLabel.c();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity$VoipQQLabel.b();
+    this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity$VoipQQLabel.d();
   }
 }
 

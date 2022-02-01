@@ -1,22 +1,23 @@
 import android.os.Handler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
 
 public class dgx
   implements Runnable
 {
-  public dgx(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public dgx(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
   public void run()
   {
-    if (RegisterSendUpSms.a(this.a) == 1)
+    if (RegisterVerifyCodeActivity.a(this.a) == 1)
     {
-      RegisterSendUpSms.a(this.a).setText(2131562881);
-      RegisterSendUpSms.a(this.a).setEnabled(true);
+      RegisterVerifyCodeActivity.a(this.a).setText(2131562863);
+      RegisterVerifyCodeActivity.a(this.a).setEnabled(true);
+      RegisterVerifyCodeActivity.a(this.a).setClickable(true);
       return;
     }
-    RegisterSendUpSms.b(this.a);
-    RegisterSendUpSms.a(this.a).setText(this.a.getString(2131562881) + "(" + RegisterSendUpSms.a(this.a) + ")");
+    RegisterVerifyCodeActivity.b(this.a);
+    RegisterVerifyCodeActivity.a(this.a).setText(this.a.getString(2131562863) + "(" + RegisterVerifyCodeActivity.a(this.a) + ")");
     this.a.b.postDelayed(this, 1000L);
   }
 }

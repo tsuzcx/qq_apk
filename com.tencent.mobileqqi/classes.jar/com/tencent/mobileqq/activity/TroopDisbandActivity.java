@@ -26,11 +26,11 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.qphone.base.util.QLog;
+import dox;
 import doy;
 import doz;
 import dpa;
-import dpb;
-import dpd;
+import dpc;
 import java.util.ArrayList;
 
 public class TroopDisbandActivity
@@ -49,8 +49,8 @@ public class TroopDisbandActivity
   protected ImageView a;
   protected TextView a;
   public TroopDisbandActivity.MemberGridAdapter a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dpd(this);
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dpb(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dpc(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dpa(this);
   public TroopInfo a;
   public QQProgressNotifier a;
   public ArrayList a;
@@ -67,20 +67,20 @@ public class TroopDisbandActivity
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233206));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233208));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131233205);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233207));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131233210));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233211));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233213));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233205));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233207));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131233204);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233206));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131233209));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233210));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233212));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131233212));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131233211));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity$MemberGridAdapter = new TroopDisbandActivity.MemberGridAdapter(this);
     this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity$MemberGridAdapter);
     this.f = (getResources().getDimensionPixelSize(2131427421) * 2);
-    Object localObject = findViewById(2131233209);
+    Object localObject = findViewById(2131233208);
     int i = this.f;
     int j = ((View)localObject).getPaddingLeft();
     this.f = (((View)localObject).getPaddingRight() + j + i);
@@ -130,7 +130,7 @@ public class TroopDisbandActivity
           break;
         }
         this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity$MemberGridAdapter.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.getSomeMemberUins());
-        new doy(this).start();
+        new dox(this).start();
         return;
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         this.jdField_a_of_type_AndroidViewView.setClickable(false);
@@ -236,7 +236,7 @@ public class TroopDisbandActivity
     {
     default: 
       return;
-    case 2131233205: 
+    case 2131233204: 
       paramView = new Intent(this, TroopMemberListActivity.class);
       if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
       {
@@ -251,7 +251,7 @@ public class TroopDisbandActivity
         paramView.putExtra("troop_uin", this.jdField_d_of_type_JavaLangString);
         paramView.putExtra("troop_code", this.jdField_b_of_type_JavaLangString);
       }
-    case 2131233213: 
+    case 2131233212: 
       int j = 1;
       int i = j;
       if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
@@ -306,9 +306,9 @@ public class TroopDisbandActivity
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
     localQQCustomDialog.setTitle(paramView);
     localQQCustomDialog.setMessage(str);
-    localQQCustomDialog.setPositiveButton(getString(2131562539), new doz(this, localQQCustomDialog));
+    localQQCustomDialog.setPositiveButton(getString(2131562539), new doy(this, localQQCustomDialog));
     localQQCustomDialog.setPositiveButtonContentDescription(getString(2131558431));
-    localQQCustomDialog.setNegativeButton(getString(2131561746), new dpa(this));
+    localQQCustomDialog.setNegativeButton(getString(2131561746), new doz(this));
     localQQCustomDialog.setNegativeButtonContentDescription(getString(2131558432));
     localQQCustomDialog.show();
     ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_dismiss_grp", 0, 0, "", "", "", "");

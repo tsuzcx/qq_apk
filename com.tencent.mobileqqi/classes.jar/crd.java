@@ -1,15 +1,27 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.text.format.DateFormat;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.utils.StringUtil;
+import java.util.List;
 
 class crd
   implements Runnable
 {
-  crd(crc paramcrc, Bitmap paramBitmap) {}
+  crd(crb paramcrb) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Crc.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    String str1 = StringUtil.a(this.a.a.c, 0, 32);
+    String str2 = StringUtil.a(this.a.a.e, 0, 32);
+    if (this.a.a.jdField_a_of_type_JavaUtilList != null) {
+      this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + String.format(this.a.a.getString(2131559084), new Object[] { Integer.valueOf(this.a.a.jdField_a_of_type_JavaUtilList.size()) }));
+    }
+    for (;;)
+    {
+      this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.a.getString(2131559085, new Object[] { str2, DateFormat.format("yy-M-d", this.a.a.jdField_b_of_type_Long) }));
+      return;
+      this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
+    }
   }
 }
 

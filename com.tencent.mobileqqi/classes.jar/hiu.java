@@ -1,17 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.widget.Button;
 import com.tencent.open.agent.AuthorityActivity;
-import org.json.JSONObject;
 
 public class hiu
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public hiu(AuthorityActivity paramAuthorityActivity, int paramInt, JSONObject paramJSONObject) {}
+  public hiu(AuthorityActivity paramAuthorityActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    Object localObject = this.a;
+    int i = ((AuthorityActivity)localObject).y;
+    ((AuthorityActivity)localObject).y = (i - 1);
+    if (i > 0)
+    {
+      localObject = (String)this.a.getResources().getText(2131561488);
+      AuthorityActivity localAuthorityActivity = this.a;
+      i = localAuthorityActivity.z;
+      localAuthorityActivity.z = (i + 1);
+      switch (i % 3)
+      {
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.b, 500L);
+        return;
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "·  ");
+        continue;
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "·· ");
+        continue;
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "···");
+      }
+    }
+    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+    this.a.g = true;
+    this.a.h = false;
+    this.a.p();
   }
 }
 

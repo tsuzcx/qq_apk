@@ -1,10 +1,18 @@
-import android.os.Handler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
 
 public class gmi
-  extends Handler
+  implements CompoundButton.OnCheckedChangeListener
 {
   public gmi(ShareAppLogActivity paramShareAppLogActivity) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    switch (paramCompoundButton.getId())
+    {
+    }
+  }
 }
 
 

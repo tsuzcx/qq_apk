@@ -25,7 +25,7 @@ import com.tencent.mobileqq.qcall.QCallFacade;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
-import etn;
+import etm;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -311,12 +311,12 @@ public class VoipDetailActivity
   
   public void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234666));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new etn(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234665));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234667));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234663));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234662));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131234665));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new etm(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234664));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131234666));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234662));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234661));
     switch (jdField_a_of_type_ComTencentMobileqqActivityVoipVoipContact.relationship)
     {
     }

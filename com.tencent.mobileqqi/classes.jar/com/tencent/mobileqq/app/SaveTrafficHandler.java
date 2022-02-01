@@ -9,9 +9,9 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import fge;
 import fgf;
 import fgg;
-import fgh;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -53,15 +53,15 @@ public class SaveTrafficHandler
   {
     super(paramQQAppInterface);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new fgf(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new fge(this, Looper.getMainLooper());
     this.d = false;
   }
   
   private void a(int paramInt)
   {
-    fgh localfgh = (fgh)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
-    if (localfgh != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localfgh);
+    fgg localfgg = (fgg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
+    if (localfgg != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localfgg);
     }
   }
   
@@ -157,7 +157,7 @@ public class SaveTrafficHandler
   {
     if (this.d)
     {
-      localObject = (fgh)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
+      localObject = (fgg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
       if (localObject != null) {
         break label78;
       }
@@ -169,8 +169,8 @@ public class SaveTrafficHandler
     label78:
     if (paramInt2 == 0)
     {
-      new fgg(this, "SaveTrafficPrefThread", paramInt1).start();
-      ((fgh)localObject).b = true;
+      new fgf(this, "SaveTrafficPrefThread", paramInt1).start();
+      ((fgg)localObject).b = true;
     }
     int i;
     if (paramBoolean)

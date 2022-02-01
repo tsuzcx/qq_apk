@@ -95,15 +95,15 @@ public class ChallengeActivity
   
   protected void d()
   {
-    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131232143));
-    this.jdField_b_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131232145));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232146));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131232142));
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131232147));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232155));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232154));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232149));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232151));
+    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131232142));
+    this.jdField_b_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131232144));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232145));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131232141));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131232146));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232154));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232153));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232148));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232150));
     this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.a(this);
     this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
     this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new LengthInputFilter(this.jdField_a_of_type_AndroidWidgetEditText, 100) };

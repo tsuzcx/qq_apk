@@ -1,17 +1,29 @@
+import android.view.View;
 import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.widget.ClickableImageSpan;
-import com.tencent.mobileqq.widget.ClickableImageSpan.ClickableImageSpanListener;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ghc
-  implements ClickableImageSpan.ClickableImageSpanListener
+  implements ActionSheet.OnButtonClickListener
 {
   public ghc(EditActivity paramEditActivity) {}
   
-  public void a(ClickableImageSpan paramClickableImageSpan)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((EditActivity.a(this.a) == paramClickableImageSpan) && (System.currentTimeMillis() - this.a.a > 1300L)) {
-      this.a.d();
+    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+      do
+      {
+        return;
+      } while (System.currentTimeMillis() - this.a.jdField_a_of_type_Long <= 1300L);
+      this.a.e();
+      return;
     }
+    EditActivity.a(this.a).e = null;
+    EditActivity.c(this.a, true);
   }
 }
 

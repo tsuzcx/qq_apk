@@ -1,26 +1,36 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnScrollChangedListener;
-import android.view.WindowManager.LayoutParams;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.ProxyDrawable;
 import com.tencent.widget.BubblePopupWindow;
-import java.lang.ref.WeakReference;
 
 public class hvp
-  implements ViewTreeObserver.OnScrollChangedListener
+  extends ProxyDrawable
 {
-  public hvp(BubblePopupWindow paramBubblePopupWindow) {}
+  int jdField_a_of_type_Int;
+  int b;
   
-  public void onScrollChanged()
+  public hvp(BubblePopupWindow paramBubblePopupWindow, Drawable paramDrawable)
   {
-    if (BubblePopupWindow.a(this.a) != null) {}
-    for (View localView = (View)BubblePopupWindow.a(this.a).get();; localView = null)
+    super(paramDrawable);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Rect localRect = getBounds();
+    if (this.b > this.jdField_a_of_type_Int)
     {
-      if ((localView != null) && (BubblePopupWindow.a(this.a) != null))
-      {
-        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.a(this.a).getLayoutParams();
-        BubblePopupWindow.a(this.a, localView, localLayoutParams, BubblePopupWindow.a(this.a), BubblePopupWindow.b(this.a));
-        this.a.a(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
-      }
-      return;
+      int i = paramCanvas.save();
+      paramCanvas.clipRect(this.jdField_a_of_type_Int, 0, this.b, localRect.height());
+      this.mCurrDrawable.draw(paramCanvas);
+      paramCanvas.restoreToCount(i);
     }
   }
 }

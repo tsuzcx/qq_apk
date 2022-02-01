@@ -1,17 +1,12 @@
-import com.qq.taf.jce.JceOutputStream;
-import com.tencent.mobileqq.transfile.CommenTransFileProcessor;
-import java.util.TimerTask;
+import com.tencent.mobileqq.activity.photo.LocalPhotoInfo;
+import com.tencent.mobileqq.transfile.DataLineDownloader;
 
 public class gnc
-  extends TimerTask
 {
-  public gnc(CommenTransFileProcessor paramCommenTransFileProcessor, JceOutputStream paramJceOutputStream) {}
+  public LocalPhotoInfo a;
+  public boolean a;
   
-  public void run()
-  {
-    byte[] arrayOfByte = this.jdField_a_of_type_ComQqTafJceJceOutputStream.toByteArray();
-    CommenTransFileProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileCommenTransFileProcessor, this.jdField_a_of_type_ComTencentMobileqqTransfileCommenTransFileProcessor.a, arrayOfByte);
-  }
+  public gnc(DataLineDownloader paramDataLineDownloader) {}
 }
 
 

@@ -1,25 +1,30 @@
 import android.view.View;
-import android.widget.Toast;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
 import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
-class ccn
-  implements Runnable
+public class ccn
+  implements View.OnClickListener
 {
-  ccn(ccm paramccm, Object paramObject, View paramView) {}
+  public ccn(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, PicEmoticonInfo paramPicEmoticonInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Ccm.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
+    if ((paramView != null) && ((paramView instanceof ImageView)))
     {
-      Toast.makeText(this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131562826), 0).show();
-      return;
+      View localView = (View)paramView.getParent();
+      paramView = paramView.getTag();
+      String str = EmosmUtils.getEmoticonSoundPath(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.eId);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.a(1, localView, paramView, str);
     }
-    if (this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
-      this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
-    }
-    this.jdField_a_of_type_Ccm.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Ccm.jdField_a_of_type_JavaLangString);
   }
 }
 

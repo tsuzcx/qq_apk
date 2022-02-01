@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatusEditText;
 
 public class ghe
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
   public ghe(EditActivity paramEditActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.g();
+    EditActivity.a(this.a).requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(EditActivity.a(this.a), 2);
   }
 }
 

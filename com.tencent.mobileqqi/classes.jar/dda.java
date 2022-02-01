@@ -1,44 +1,28 @@
-import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
+import android.widget.ImageView;
 import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
 import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.map.GeoPoint;
+import com.tencent.tencentmap.mapsdk.map.MapController;
 
-public class dda
-  extends SOSOMapLBSApiListener
+class dda
+  implements Runnable
 {
-  public dda(QQMapActivity paramQQMapActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
+  dda(dcz paramdcz, SOSOMapLBSApiResult paramSOSOMapLBSApiResult, String paramString) {}
   
-  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
+  public void run()
   {
-    SOSOMapLBSApi.getInstance().removeLocationUpdate();
-    String str;
-    if (paramSOSOMapLBSApiResult.Address == null)
-    {
-      str = "";
-      if (QLog.isColorLevel()) {
-        QLog.d("get_location", 2, "get location finish, latitude = " + paramSOSOMapLBSApiResult.Latitude + " longitude=" + paramSOSOMapLBSApiResult.Longitude + " address=" + str);
-      }
-      if (paramSOSOMapLBSApiResult.Info != 1) {
-        break label113;
-      }
-      this.a.runOnUiThread(new ddb(this, paramSOSOMapLBSApiResult, str));
-    }
+    GeoPoint localGeoPoint = new GeoPoint((int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Latitude * 1000000.0D), (int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Longitude * 1000000.0D));
+    this.jdField_a_of_type_Dcz.a.a.setCenter(localGeoPoint);
+    if (this.jdField_a_of_type_Dcz.a.h) {}
     for (;;)
     {
-      label113:
-      try
-      {
-        this.a.dismissDialog(0);
-        return;
-      }
-      catch (IllegalArgumentException paramSOSOMapLBSApiResult) {}
-      str = paramSOSOMapLBSApiResult.Address;
-      break;
-      this.a.s();
+      this.jdField_a_of_type_Dcz.a.a(localGeoPoint, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Dcz.a.h();
+      return;
+      this.jdField_a_of_type_Dcz.a.j = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Dcz.a.b.setVisibility(0);
+      this.jdField_a_of_type_Dcz.a.c.setVisibility(0);
+      this.jdField_a_of_type_Dcz.a.a(localGeoPoint);
     }
   }
 }

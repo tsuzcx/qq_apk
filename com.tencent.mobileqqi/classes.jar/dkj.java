@@ -1,12 +1,17 @@
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class dkj
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public dkj(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.k();
   }
 }
 

@@ -14,7 +14,7 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gnn;
+import gnm;
 
 public class LbsTransfileProcessor
   extends CommenTransFileProcessor
@@ -26,7 +26,7 @@ public class LbsTransfileProcessor
   public LbsTransfileProcessor(String paramString1, int paramInt, String paramString2, boolean paramBoolean, TransFileController paramTransFileController)
   {
     super(paramString1, paramInt, paramString2, paramBoolean, paramTransFileController);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gnn(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gnm(this);
     b(false);
     this.aa = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.e();
   }

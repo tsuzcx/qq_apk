@@ -1,3 +1,6 @@
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.LoginActivity;
 
 public class csz
@@ -7,9 +10,13 @@ public class csz
   
   public void run()
   {
-    if (!this.a.isFinishing()) {
-      this.a.showDialog(3);
-    }
+    this.a.a.setVisibility(0);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
+    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
+    localTranslateAnimation.setDuration(500L);
+    localTranslateAnimation.setFillAfter(true);
+    localTranslateAnimation.setAnimationListener(new cta(this));
+    this.a.a.startAnimation(localTranslateAnimation);
   }
 }
 

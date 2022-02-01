@@ -1,20 +1,30 @@
 import android.app.Activity;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class dyq
-  implements FileManagerUtil.TipsClickedInterface
+  extends ClickableSpan
 {
   public dyq(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    FileManagerUtil.a(GrayTipsItemBuilder.a(this.a).a(), 3);
-    FileManagerUtil.a((Activity)GrayTipsItemBuilder.a(this.a), GrayTipsItemBuilder.b(this.a).a(), GrayTipsItemBuilder.a(this.a).a, GrayTipsItemBuilder.b(this.a).d);
+    if ((GrayTipsItemBuilder.t(this.a) instanceof Activity))
+    {
+      ChatActivityUtils.a(GrayTipsItemBuilder.p(this.a), (Activity)GrayTipsItemBuilder.u(this.a), GrayTipsItemBuilder.D(this.a).a, true, true, null);
+      ReportController.b(GrayTipsItemBuilder.q(this.a), "CliOper", "", "", "Multi_call", "Clk_discuss_tips", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

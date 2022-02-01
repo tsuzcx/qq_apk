@@ -1,7 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
-import com.tencent.mobileqq.utils.VipUtils;
 
 public class ess
   implements DialogInterface.OnClickListener
@@ -11,7 +10,6 @@ public class ess
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    VipUtils.b(this.a, 3, "mvip.gongneng.mobileqq.tiexintixing.ringandroid");
   }
 }
 

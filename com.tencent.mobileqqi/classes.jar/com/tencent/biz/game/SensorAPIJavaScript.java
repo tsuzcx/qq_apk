@@ -292,7 +292,7 @@ public class SensorAPIJavaScript
   
   public final String getClientInfo()
   {
-    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "6602" + "\"}";
+    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "6604" + "\"}";
   }
   
   public final String getDeviceInfo()

@@ -1878,7 +1878,7 @@ public class BizTroopHandler
     try
     {
       localReqBody.uint64_gcode.set(a(paramString));
-      ByteStringMicro localByteStringMicro = ByteStringMicro.copyFrom("6.0.2".getBytes());
+      ByteStringMicro localByteStringMicro = ByteStringMicro.copyFrom("6.0.3".getBytes());
       localReqBody.str_version.set(localByteStringMicro);
       localReqBody.uint32_mobile_ostype.set(0);
       localReqBody.uint64_uin.set(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
@@ -1914,7 +1914,7 @@ public class BizTroopHandler
       {
         localReqBody.uint32_network_type.set(1);
         localReqBody.uint32_cur_play_time.set(0);
-        localReqBody.bytes_mobileQ_ver.set(ByteStringMicro.copyFrom("6.0.2".getBytes()));
+        localReqBody.bytes_mobileQ_ver.set(ByteStringMicro.copyFrom("6.0.3".getBytes()));
         localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
         localToServiceMsg.extraData.putString("pageUrl", paramString);
         b(localToServiceMsg);

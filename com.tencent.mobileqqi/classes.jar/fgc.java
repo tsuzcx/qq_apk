@@ -1,21 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.RoamInfoListWrapper;
-import java.util.ArrayList;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.SQLiteDatabase;
 
-public final class fgc
-  implements Parcelable.Creator
+public class fgc
+  implements Runnable
 {
-  public RoamInfoListWrapper a(Parcel paramParcel)
-  {
-    RoamInfoListWrapper localRoamInfoListWrapper = new RoamInfoListWrapper();
-    localRoamInfoListWrapper.a = paramParcel.readArrayList(ArrayList.class.getClassLoader());
-    return localRoamInfoListWrapper;
-  }
+  fgc(SQLiteDatabase paramSQLiteDatabase) {}
   
-  public RoamInfoListWrapper[] a(int paramInt)
+  public void run()
   {
-    return new RoamInfoListWrapper[paramInt];
+    Toast.makeText(BaseApplicationImpl.getContext(), "transaction exception!", 1).show();
   }
 }
 

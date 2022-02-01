@@ -4,7 +4,7 @@ import java.util.Comparator;
 class fhs
   implements Comparator
 {
-  fhs(fhq paramfhq) {}
+  fhs(fhp paramfhp) {}
   
   public int a(File paramFile1, File paramFile2)
   {

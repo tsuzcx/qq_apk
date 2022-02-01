@@ -61,9 +61,9 @@ import com.tencent.widget.ActionSheet;
 import com.tencent.widget.XListView;
 import cooperation.qqfav.QfavUtil;
 import cooperation.qqfav.widget.QfavMicroPhoneDialog;
+import eae;
 import eaf;
 import eag;
-import eah;
 import mqq.manager.ServerConfigManager.ConfigType;
 
 public class PttItemBuilder
@@ -266,7 +266,7 @@ public class PttItemBuilder
   
   private void a(PttItemBuilder.Holder paramHolder, MessageForPtt paramMessageForPtt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new eaf(this, paramMessageForPtt));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new eae(this, paramMessageForPtt));
   }
   
   private void a(MessageForPtt paramMessageForPtt)
@@ -373,12 +373,12 @@ public class PttItemBuilder
       {
         return;
         paramContext = (MessageForPtt)paramChatMessage;
-        if (2131231192 != paramInt) {
+        if (2131231191 != paramInt) {
           break;
         }
         paramInt = QQRecorder.a(paramContext.url);
       } while (paramInt <= 0);
-      paramChatMessage = new QfavMicroPhoneDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new eag(this, paramContext));
+      paramChatMessage = new QfavMicroPhoneDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new eaf(this, paramContext));
       if (paramChatMessage.a(paramContext.url, paramInt))
       {
         paramChatMessage.show();
@@ -386,12 +386,12 @@ public class PttItemBuilder
       }
       QfavUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131560785, 1);
       return;
-      if (paramInt == 2131234874)
+      if (paramInt == 2131234873)
       {
         ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
         return;
       }
-      if (paramInt == 2131234879)
+      if (paramInt == 2131234878)
       {
         if (TextUtils.isEmpty(paramContext.sttText)) {}
         for (paramContext = this.jdField_a_of_type_AndroidContentContext.getString(2131561420);; paramContext = paramContext.sttText) {
@@ -411,7 +411,7 @@ public class PttItemBuilder
         ((android.content.ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("msg", paramContext));
         return;
       }
-    } while (paramInt != 2131231190);
+    } while (paramInt != 2131231189);
     if ((paramContext.sttText != null) && (paramContext.sttText.length() > 0))
     {
       paramChatMessage = new Bundle();
@@ -436,7 +436,7 @@ public class PttItemBuilder
       paramView.a(2131561439);
       paramView.c(2131562859);
       paramView.d(2131561746);
-      paramView.a(new eah(this, localMessageForPtt, paramView));
+      paramView.a(new eag(this, localMessageForPtt, paramView));
       paramView.show();
       return;
     }
@@ -1036,11 +1036,11 @@ public class PttItemBuilder
     }
     if ((paramView.sttAbility == 2) && (paramView.expandStt))
     {
-      localQQCustomMenu.a(2131234879, this.jdField_a_of_type_AndroidContentContext.getString(2131561878));
-      localQQCustomMenu.a(2131231190, this.jdField_a_of_type_AndroidContentContext.getString(2131562132));
+      localQQCustomMenu.a(2131234878, this.jdField_a_of_type_AndroidContentContext.getString(2131561878));
+      localQQCustomMenu.a(2131231189, this.jdField_a_of_type_AndroidContentContext.getString(2131562132));
     }
     localQQCustomMenu.a(this.jdField_a_of_type_AndroidContentContext.getString(2131562611));
-    localQQCustomMenu.a(2131231192, this.jdField_a_of_type_AndroidContentContext.getString(2131560772));
+    localQQCustomMenu.a(2131231191, this.jdField_a_of_type_AndroidContentContext.getString(2131560772));
     ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
     return localQQCustomMenu.a();
   }
@@ -1072,7 +1072,7 @@ public class PttItemBuilder
           {
             return;
           } while ((localMessageForPtt == MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a()) || (!localMessageForPtt.isReady()));
-          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())
+          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.d())
           {
             QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131561724, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131427376));
             return;

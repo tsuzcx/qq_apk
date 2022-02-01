@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendListInfo;
+import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
 
 public final class giv
   implements Parcelable.Creator
 {
-  public FriendListInfo a(Parcel paramParcel)
+  public FriendSingleInfo a(Parcel paramParcel)
   {
-    return new FriendListInfo(paramParcel);
+    return new FriendSingleInfo(paramParcel);
   }
   
-  public FriendListInfo[] a(int paramInt)
+  public FriendSingleInfo[] a(int paramInt)
   {
-    return new FriendListInfo[paramInt];
+    return new FriendSingleInfo[paramInt];
   }
 }
 

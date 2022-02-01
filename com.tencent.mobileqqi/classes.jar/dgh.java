@@ -1,20 +1,27 @@
+import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
-public class dgh
-  implements View.OnLongClickListener
+class dgh
+  implements View.OnClickListener
 {
-  public dgh(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  dgh(dgg paramdgg) {}
   
-  public boolean onLongClick(View paramView)
+  @SuppressLint({"NewApi"})
+  public void onClick(View paramView)
   {
-    paramView = new QQCustomMenu();
-    paramView.a(2131234879, this.a.getString(2131561879));
-    RegisterQQNumberActivity.a(this.a, BubbleContextMenu.a(RegisterQQNumberActivity.a(this.a), paramView, new dgi(this), null));
-    return true;
+    if ((RegisterQQNumberActivity.a(this.a.a) != null) && (RegisterQQNumberActivity.a(this.a.a).isShowing())) {
+      RegisterQQNumberActivity.a(this.a.a).dismiss();
+    }
+    if (Build.VERSION.SDK_INT < 11)
+    {
+      ((android.text.ClipboardManager)this.a.a.getSystemService("clipboard")).setText(RegisterQQNumberActivity.a(this.a.a) + "");
+      return;
+    }
+    ((android.content.ClipboardManager)this.a.a.getSystemService("clipboard")).setText(RegisterQQNumberActivity.a(this.a.a) + "");
   }
 }
 

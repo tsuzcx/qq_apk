@@ -142,14 +142,14 @@ public class DragSortAdapter
     }
     paramViewGroup.setVisibility(0);
     ImageView localImageView1 = (ImageView)paramViewGroup.findViewById(2131231102);
-    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131231694);
+    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131231693);
     ImageView localImageView3 = (ImageView)paramViewGroup.findViewById(2131230761);
-    ImageView localImageView4 = (ImageView)paramViewGroup.findViewById(2131231695);
+    ImageView localImageView4 = (ImageView)paramViewGroup.findViewById(2131231694);
     View localView1 = paramViewGroup.findViewById(2131230987);
     EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.mData.get(paramInt);
-    View localView2 = paramViewGroup.findViewById(2131231699);
-    Object localObject = (Button)paramViewGroup.findViewById(2131231649);
-    ProgressCircle localProgressCircle = (ProgressCircle)paramViewGroup.findViewById(2131231700);
+    View localView2 = paramViewGroup.findViewById(2131231698);
+    Object localObject = (Button)paramViewGroup.findViewById(2131231648);
+    ProgressCircle localProgressCircle = (ProgressCircle)paramViewGroup.findViewById(2131231699);
     paramView = this.mEmoticonWording.a(localEmoticonPackage.wordingId, localEmoticonPackage.expiretime);
     if (localEmoticonPackage.valid)
     {
@@ -188,7 +188,7 @@ public class DragSortAdapter
           }
           localImageView2.setVisibility(8);
           localImageView3.setVisibility(8);
-          ((TextView)paramViewGroup.findViewById(2131231697)).setText(localEmoticonPackage.name);
+          ((TextView)paramViewGroup.findViewById(2131231696)).setText(localEmoticonPackage.name);
           localImageView1.setImageDrawable(getEPIcon(localEmoticonPackage));
           paramView = (ImageView)paramViewGroup.findViewById(2131231103);
           if (localEmoticonPackage.hasSound != true) {
@@ -200,7 +200,7 @@ public class DragSortAdapter
     }
     for (;;)
     {
-      paramView = (TextView)paramViewGroup.findViewById(2131231698);
+      paramView = (TextView)paramViewGroup.findViewById(2131231697);
       long l = new Date().getTime() / 1000L;
       if ((localEmoticonPackage.expiretime <= l) || ((localEmoticonPackage.expiretime - l) / 86400L >= 1L)) {
         break label793;

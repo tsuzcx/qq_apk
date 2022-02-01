@@ -1,31 +1,13 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
-import com.tencent.widget.PinnedHeaderExpandableListView;
-import com.tencent.widget.PinnedHeaderExpandableListView.ExpandableListAdapter;
+import android.view.View.OnClickListener;
+import com.tencent.widget.Switch;
 
 public class hwo
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public hwo(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
+  public hwo(Switch paramSwitch) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      long l = this.a.b(this.a.q());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
-          this.a.d(i);
-        }
-      }
-    }
-    return true;
-  }
+  public void onClick(View paramView) {}
 }
 
 

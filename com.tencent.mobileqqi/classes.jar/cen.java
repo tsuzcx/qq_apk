@@ -1,32 +1,16 @@
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.richstatus.IIconListener;
 
 public class cen
-  extends MessageObserver
+  implements IIconListener
 {
   private cen(Contacts paramContacts) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    Contacts localContacts = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localContacts.c = bool;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter.a(this.a.c);
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter.b();
-      }
-      return;
-    }
-  }
-  
-  protected void c()
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.a(1400L, true);
+    if ((this.a.a) && (paramBitmap != null) && (paramInt2 == 200)) {
+      this.a.a(1400L, false);
     }
   }
 }

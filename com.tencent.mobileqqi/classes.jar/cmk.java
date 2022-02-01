@@ -1,9 +1,7 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.XListView;
 
 public class cmk
   implements View.OnClickListener
@@ -12,8 +10,9 @@ public class cmk
   
   public void onClick(View paramView)
   {
-    ForwardRecentActivity.a(this.a).a(String.valueOf(AppConstants.P), -1, "", this.a.getString(2131559075));
-    ReportController.b(this.a.b, "CliOper", "", "", "0X8004051", "0X8004051", 0, 0, "", "", "", "");
+    int i = ForwardRecentActivity.a(this.a).k();
+    int j = ((Integer)paramView.getTag(-1)).intValue();
+    this.a.a(ForwardRecentActivity.a(this.a), paramView, Integer.valueOf(j + i).intValue(), paramView.getId());
   }
 }
 

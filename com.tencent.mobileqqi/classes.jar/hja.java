@@ -1,26 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import android.widget.HorizontalScrollView;
-import com.tencent.open.agent.FriendChooser;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.open.agent.FriendChooser.GridViewAdapter;
+import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
 
 public class hja
-  extends Handler
+  implements ImageLoader.ImageLoadListener
 {
-  public hja(FriendChooser paramFriendChooser) {}
+  public hja(FriendChooser.GridViewAdapter paramGridViewAdapter, ImageView paramImageView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
   }
 }
 

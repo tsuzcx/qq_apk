@@ -10,12 +10,12 @@ public class deo
   {
     try
     {
-      if ((RecentLoginDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
-        RecentLoginDevActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
+      if ((RecentLoginDevActivity.a(this.a) != null) && (RecentLoginDevActivity.a(this.a).isShowing()))
+      {
+        RecentLoginDevActivity.a(this.a).dismiss();
+        RecentLoginDevActivity.a(this.a).cancel();
       }
-      if ((RecentLoginDevActivity.a(this.a) != null) && (!RecentLoginDevActivity.a(this.a).isShowing())) {
-        RecentLoginDevActivity.a(this.a).show();
-      }
+      RecentLoginDevActivity.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

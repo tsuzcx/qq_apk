@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.CardHandler;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class dvh
-  extends Thread
+public class dvh
 {
-  dvh(dvg paramdvg) {}
-  
-  public void run()
-  {
-    this.a.a.jdField_a_of_type_JavaUtilArrayList = this.a.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b();
-  }
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
 }
 
 

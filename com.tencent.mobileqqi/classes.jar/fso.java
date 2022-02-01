@@ -1,16 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class fso
-  implements View.OnClickListener
+  extends FMObserver
 {
-  public fso(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public fso(VerifyPwdActivity paramVerifyPwdActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    this.a.runOnUiThread(new fsq(this, paramBoolean));
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    FMToastUtil.a(paramString);
+    this.a.runOnUiThread(new fsr(this));
+  }
+  
+  protected void d()
+  {
+    this.a.runOnUiThread(new fsp(this));
+  }
+  
+  protected void d(int paramInt, String paramString)
+  {
+    FMToastUtil.a(paramString);
   }
 }
 

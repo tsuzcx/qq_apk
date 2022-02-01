@@ -16,11 +16,11 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import bwk;
 import bwl;
 import bwm;
 import bwn;
 import bwo;
-import bwp;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.NearHornHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -68,11 +68,11 @@ public class BaseHornListActivity
   public Context a;
   protected BitmapDrawable a;
   public LayoutInflater a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bwl(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bwk(this);
   public View a;
   protected ListView a;
   protected TextView a;
-  public bwo a;
+  public bwn a;
   public BaseHornListActivity.BaseHornAdapter a;
   public NearHornHandler a;
   public HornDetail a;
@@ -90,7 +90,7 @@ public class BaseHornListActivity
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Bwo = new bwo(this);
+    this.jdField_a_of_type_Bwn = new bwn(this);
   }
   
   public static String a(String paramString)
@@ -607,9 +607,9 @@ public class BaseHornListActivity
         Object localObject = this.jdField_a_of_type_AndroidWidgetListView.getChildAt(paramInt1);
         if (localObject != null)
         {
-          localObject = (bwp)((View)localObject).getTag();
-          if ((localObject != null) && (paramString.equals(((bwp)localObject).jdField_a_of_type_JavaLangString))) {
-            ((bwp)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          localObject = (bwo)((View)localObject).getTag();
+          if ((localObject != null) && (paramString.equals(((bwo)localObject).jdField_a_of_type_JavaLangString))) {
+            ((bwo)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
           }
         }
       }
@@ -618,7 +618,7 @@ public class BaseHornListActivity
         if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_ComTencentMobileqqDataHornDetail == null) || (!paramString.equals(this.jdField_a_of_type_ComTencentMobileqqDataHornDetail.uin))) {
           break;
         }
-        ((bwp)this.jdField_a_of_type_AndroidViewView.getTag()).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        ((bwo)this.jdField_a_of_type_AndroidViewView.getTag()).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
         return;
       }
       paramInt1 += 1;
@@ -1137,8 +1137,8 @@ public class BaseHornListActivity
     localActionSheet.c(2131562420);
     localActionSheet.c(2131562427);
     localActionSheet.d(2131561746);
-    localActionSheet.a(new bwm(this));
-    localActionSheet.setOnDismissListener(new bwn(this));
+    localActionSheet.a(new bwl(this));
+    localActionSheet.setOnDismissListener(new bwm(this));
     localActionSheet.setCanceledOnTouchOutside(true);
     this.jdField_a_of_type_AndroidAppDialog = localActionSheet;
     try

@@ -1,23 +1,17 @@
 import com.tencent.mobileqq.activity.HelloListActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class cpz
-  extends FriendListObserver
+  implements Runnable
 {
-  public cpz(HelloListActivity paramHelloListActivity) {}
+  public cpz(HelloListActivity paramHelloListActivity, MessageRecord paramMessageRecord) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {
-      this.a.a(0);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 1001) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity.a(0);
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.a(0);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityHelloListActivity.a();
   }
 }
 

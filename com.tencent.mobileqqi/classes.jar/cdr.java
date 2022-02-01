@@ -1,15 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.webviewplugin.ReportPlugin;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class cdr
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public cdr(ChatSettingForTroop paramChatSettingForTroop) {}
+  public cdr(ChatSettingForTroop paramChatSettingForTroop, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    ChatSettingForTroop.a(this.a);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b != null))
+      {
+        ReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, 301, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.c, "", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b.getAccount());
+        continue;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.ao == 1) {
+          ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.b);
+        }
+      }
+    }
   }
 }
 

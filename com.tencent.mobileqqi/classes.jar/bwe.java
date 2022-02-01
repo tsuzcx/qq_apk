@@ -10,15 +10,12 @@ public class bwe
   {
     try
     {
-      if ((AuthDevVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (AuthDevVerifyCodeActivity.a(this.a).isShowing()))
       {
-        AuthDevVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
-        AuthDevVerifyCodeActivity.a(this.a).b(2131562645);
-        AuthDevVerifyCodeActivity.a(this.a).c(true);
+        AuthDevVerifyCodeActivity.a(this.a).dismiss();
+        AuthDevVerifyCodeActivity.a(this.a).cancel();
       }
-      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (!AuthDevVerifyCodeActivity.a(this.a).isShowing())) {
-        AuthDevVerifyCodeActivity.a(this.a).show();
-      }
+      AuthDevVerifyCodeActivity.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

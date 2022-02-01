@@ -1,26 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.statistics.ReportController;
 
-public class cfd
-  extends BroadcastReceiver
+class cfd
+  implements Runnable
 {
-  public cfd(Conversation paramConversation) {}
+  cfd(cfc paramcfc) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getStringExtra("wording");
-    int i = paramIntent.getIntExtra("timetowait", 360000);
-    this.a.a.A = i;
-    this.a.a.d = paramContext;
-    this.a.a.a(13, 2);
-    this.a.a.a(null);
-    new Handler().postDelayed(new cfe(this), i);
-    ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
+    this.a.a.a.a(13, 0);
+    this.a.a.a.a(null);
   }
 }
 

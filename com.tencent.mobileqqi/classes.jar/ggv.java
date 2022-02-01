@@ -1,49 +1,19 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.GridView;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import java.util.ArrayList;
-import java.util.Collections;
 
 class ggv
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  ggv(ggu paramggu) {}
+  ggv(ggu paramggu, ImageView paramImageView, TextView paramTextView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    EditActivity.a(this.a.a).setVisibility(0);
-    paramAnimation = new ArrayList();
-    int i = 0;
-    while (i < 6)
-    {
-      paramAnimation.add(Integer.valueOf(i));
-      i += 1;
-    }
-    Collections.shuffle(paramAnimation);
-    i = 0;
-    if (i < 6)
-    {
-      View localView = EditActivity.a(this.a.a).getChildAt(((Integer)paramAnimation.get(i)).intValue());
-      if (localView == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localView.postDelayed(new ggw(this, (ImageView)localView.findViewById(2131232969), (TextView)localView.findViewById(2131232970)), i * 100);
-      }
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    EditActivity.a(this.a.a).setVisibility(4);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+    localAlphaAnimation.setDuration(200L);
+    localAlphaAnimation.setAnimationListener(new ggw(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAlphaAnimation);
+    this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(localAlphaAnimation);
   }
 }
 

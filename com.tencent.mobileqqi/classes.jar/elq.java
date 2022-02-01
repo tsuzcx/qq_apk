@@ -1,31 +1,14 @@
 import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
 public class elq
-  extends ContactBindObserver
+  implements Runnable
 {
   public elq(PhoneMatchActivity paramPhoneMatchActivity) {}
   
-  protected void b(boolean paramBoolean)
+  public void run()
   {
-    if (this.a.a != null)
-    {
-      this.a.b.unRegistObserver(this.a.a);
-      this.a.a = null;
-    }
-    this.a.d();
-    if (paramBoolean)
-    {
-      if (this.a.a != null)
-      {
-        this.a.b.unRegistObserver(this.a.a);
-        this.a.a = null;
-      }
-      this.a.finish();
-      return;
-    }
-    this.a.b(2131558979);
+    this.a.a.e();
   }
 }
 

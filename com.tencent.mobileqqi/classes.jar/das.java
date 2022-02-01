@@ -1,27 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.mobileqq.activity.PublicAccountChatActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
 public class das
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public das(PublicAccountChatActivity paramPublicAccountChatActivity) {}
+  public das(PublicAccountChatActivity paramPublicAccountChatActivity, AccountDetail paramAccountDetail) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a.isFinishing());
-    try
-    {
-      PublicAccountChatActivity.a(this.a);
-      return;
-    }
-    catch (Exception paramMessage) {}
+    this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.isAgreeSyncLbs = true;
+    PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity.b, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+    PublicAccountChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
   }
 }
 

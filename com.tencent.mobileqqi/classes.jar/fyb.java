@@ -9,7 +9,7 @@ public final class fyb
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 0).b(FMToastUtil.a());
+    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 1).b(FMToastUtil.a());
   }
 }
 

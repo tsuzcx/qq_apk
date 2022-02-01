@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a013b" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08067e" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="25.0dip" android:singleLine="true" android:layout_alignParentLeft="true" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08067f" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0303df" />
-    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080680" android:visibility="gone" android:clickable="true" android:layout_width="100.0dip" android:layout_height="52.0dip" android:layout_alignParentRight="true">
-        <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080681" android:background="#ffaaaaaa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d04fa" android:layout_centerVertical="true" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a013b" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08067d" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="25.0dip" android:singleLine="true" android:layout_alignParentLeft="true" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08067e" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0303df" />
+    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08067f" android:visibility="gone" android:clickable="true" android:layout_width="100.0dip" android:layout_height="52.0dip" android:layout_alignParentRight="true">
+        <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080680" android:background="#ffaaaaaa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d04fa" android:layout_centerVertical="true" />
     </com.tencent.mobileqq.widget.ShaderAnimLayout>
 </RelativeLayout>

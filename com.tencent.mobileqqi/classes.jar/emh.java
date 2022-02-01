@@ -1,7 +1,7 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.utils.AlbumUtil;
 
 public class emh
   implements View.OnClickListener
@@ -10,11 +10,8 @@ public class emh
   
   public void onClick(View paramView)
   {
-    if (!CameraPreviewActivity.a(this.a))
-    {
-      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
-      paramView.setClickable(false);
-    }
+    this.a.finish();
+    AlbumUtil.a(this.a, true, false);
   }
 }
 

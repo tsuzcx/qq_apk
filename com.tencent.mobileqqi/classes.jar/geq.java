@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.profile.ProfileCardBrowserActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
 
 public class geq
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   public geq(ProfileCardBrowserActivity paramProfileCardBrowserActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.g();
-    this.a.h();
-    ReportController.b(this.a.b, "P_CliOper", "Vip_SummaryCard", "", "SummaryCard", "CLICK_VIPOPENSERVICE", 0, 0, "", "", "", "");
+    new ProfileCardTemplate().a(this.a.b);
   }
 }
 

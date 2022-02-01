@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
 
 public class exo
+  implements Runnable
 {
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  public exo(BuddyListAdapter paramBuddyListAdapter) {}
   
-  private exo(BaseWhatASmoothAdapter paramBaseWhatASmoothAdapter) {}
+  public void run()
+  {
+    this.a.notifyDataSetChanged();
+  }
 }
 
 

@@ -1,16 +1,10 @@
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class fmb
 {
-  public int a;
-  public ImageView a;
+  public ProgressBar a;
   public TextView a;
-  public RichStatus a;
-  public String a;
-  public TextView b;
-  public TextView c;
 }
 
 

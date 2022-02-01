@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.FilterQueryProvider;
 import android.widget.Filterable;
+import hvt;
 import hvu;
-import hvv;
+import hxe;
 import hxf;
-import hxg;
 
 public abstract class XCursorAdapter
   extends XBaseAdapter
-  implements Filterable, hvv
+  implements Filterable, hvu
 {
   @Deprecated
   public static final int b = 1;
@@ -25,8 +25,8 @@ public abstract class XCursorAdapter
   protected Cursor a;
   protected DataSetObserver a;
   protected FilterQueryProvider a;
-  protected hvu a;
-  protected hxf a;
+  protected hvt a;
+  protected hxe a;
   public boolean a;
   protected boolean b;
   
@@ -87,8 +87,8 @@ public abstract class XCursorAdapter
     Cursor localCursor = this.jdField_a_of_type_AndroidDatabaseCursor;
     if (localCursor != null)
     {
-      if (this.jdField_a_of_type_Hxf != null) {
-        localCursor.unregisterContentObserver(this.jdField_a_of_type_Hxf);
+      if (this.jdField_a_of_type_Hxe != null) {
+        localCursor.unregisterContentObserver(this.jdField_a_of_type_Hxe);
       }
       if (this.jdField_a_of_type_AndroidDatabaseDataSetObserver != null) {
         localCursor.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
@@ -97,8 +97,8 @@ public abstract class XCursorAdapter
     this.jdField_a_of_type_AndroidDatabaseCursor = paramCursor;
     if (paramCursor != null)
     {
-      if (this.jdField_a_of_type_Hxf != null) {
-        paramCursor.registerContentObserver(this.jdField_a_of_type_Hxf);
+      if (this.jdField_a_of_type_Hxe != null) {
+        paramCursor.registerContentObserver(this.jdField_a_of_type_Hxe);
       }
       if (this.jdField_a_of_type_AndroidDatabaseDataSetObserver != null) {
         paramCursor.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
@@ -122,8 +122,8 @@ public abstract class XCursorAdapter
     Cursor localCursor = this.jdField_a_of_type_AndroidDatabaseCursor;
     if (localCursor != null)
     {
-      if (this.jdField_a_of_type_Hxf != null) {
-        localCursor.unregisterContentObserver(this.jdField_a_of_type_Hxf);
+      if (this.jdField_a_of_type_Hxe != null) {
+        localCursor.unregisterContentObserver(this.jdField_a_of_type_Hxe);
       }
       if (this.jdField_a_of_type_AndroidDatabaseDataSetObserver != null) {
         localCursor.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
@@ -132,8 +132,8 @@ public abstract class XCursorAdapter
     this.jdField_a_of_type_AndroidDatabaseCursor = paramCursor;
     if (paramCursor != null)
     {
-      if (this.jdField_a_of_type_Hxf != null) {
-        paramCursor.registerContentObserver(this.jdField_a_of_type_Hxf);
+      if (this.jdField_a_of_type_Hxe != null) {
+        paramCursor.registerContentObserver(this.jdField_a_of_type_Hxe);
       }
       if (this.jdField_a_of_type_AndroidDatabaseDataSetObserver != null) {
         paramCursor.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
@@ -206,14 +206,14 @@ public abstract class XCursorAdapter
       if ((paramInt & 0x2) != 2) {
         break label152;
       }
-      this.jdField_a_of_type_Hxf = new hxf(this);
+      this.jdField_a_of_type_Hxe = new hxe(this);
     }
-    for (this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new hxg(this, null);; this.jdField_a_of_type_AndroidDatabaseDataSetObserver = null)
+    for (this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new hxf(this, null);; this.jdField_a_of_type_AndroidDatabaseDataSetObserver = null)
     {
       if (bool)
       {
-        if (this.jdField_a_of_type_Hxf != null) {
-          paramCursor.registerContentObserver(this.jdField_a_of_type_Hxf);
+        if (this.jdField_a_of_type_Hxe != null) {
+          paramCursor.registerContentObserver(this.jdField_a_of_type_Hxe);
         }
         if (this.jdField_a_of_type_AndroidDatabaseDataSetObserver != null) {
           paramCursor.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
@@ -229,7 +229,7 @@ public abstract class XCursorAdapter
       i = -1;
       break label54;
       label152:
-      this.jdField_a_of_type_Hxf = null;
+      this.jdField_a_of_type_Hxe = null;
     }
   }
   
@@ -289,10 +289,10 @@ public abstract class XCursorAdapter
   
   public Filter getFilter()
   {
-    if (this.jdField_a_of_type_Hvu == null) {
-      this.jdField_a_of_type_Hvu = new hvu(this);
+    if (this.jdField_a_of_type_Hvt == null) {
+      this.jdField_a_of_type_Hvt = new hvt(this);
     }
-    return this.jdField_a_of_type_Hvu;
+    return this.jdField_a_of_type_Hvt;
   }
   
   public Object getItem(int paramInt)

@@ -6,6 +6,6 @@
         <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020862" android:layout_width="wrap_content" android:layout_height="wrap_content" />
         <TextView android:textSize="20.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0120" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d1247" />
     </LinearLayout>
-    <TextView android:textSize="40.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0120" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e4c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0d77" />
+    <TextView android:textSize="40.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0120" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e4b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0d77" />
     <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208b7" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="30.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="30.0dip" />
 </LinearLayout>

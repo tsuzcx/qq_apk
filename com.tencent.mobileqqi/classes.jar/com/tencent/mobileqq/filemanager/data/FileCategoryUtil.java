@@ -7,7 +7,7 @@ import android.provider.MediaStore.Audio.Media;
 import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Video.Media;
 import com.dataline.util.file.MediaStoreUtil;
-import fxl;
+import fxk;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,7 +16,7 @@ import java.util.List;
 public class FileCategoryUtil
 {
   private static ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static Comparator jdField_a_of_type_JavaUtilComparator = new fxl();
+  private static Comparator jdField_a_of_type_JavaUtilComparator = new fxk();
   
   public static int a(Context paramContext)
   {

@@ -34,9 +34,9 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import cooperation.qqfav.QfavBuilder;
 import cooperation.qqfav.QfavReport;
+import dzh;
 import dzi;
 import dzj;
-import dzk;
 
 public class LongMsgItemBuilder
   extends BaseBubbleBuilder
@@ -68,7 +68,7 @@ public class LongMsgItemBuilder
       paramViewHolder.setMaxWidth(BaseChatItemLayout.f);
       paramViewHolder.setSpannableFactory(QQText.a);
       paramViewHolder.setMovementMethod(LinkMovementMethod.getInstance());
-      paramViewHolder.setId(2131231227);
+      paramViewHolder.setId(2131231226);
       localHolder.a = paramViewHolder;
     }
     localHolder.a.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
@@ -85,7 +85,7 @@ public class LongMsgItemBuilder
     localHolder.a.setOnTouchListener(paramOnLongClickAndTouchListener);
     localHolder.a.setOnLongClickListener(paramOnLongClickAndTouchListener);
     if ((localHolder.a instanceof AnimationTextView)) {
-      ((AnimationTextView)localHolder.a).a = new dzi(this);
+      ((AnimationTextView)localHolder.a).a = new dzh(this);
     }
     return paramViewHolder;
   }
@@ -106,16 +106,16 @@ public class LongMsgItemBuilder
     {
     default: 
       return;
-    case 2131234874: 
+    case 2131234873: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
-    case 2131234879: 
+    case 2131234878: 
       ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(MessageForMixedMsg.getTextFromMixedMsg(paramChatMessage));
       return;
-    case 2131234880: 
+    case 2131234879: 
       ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForLongMsg)paramChatMessage);
       return;
-    case 2131231190: 
+    case 2131231189: 
       paramContext = new Bundle();
       paramContext.putInt("forward_type", -1);
       paramContext.putString("forward_text", MessageForMixedMsg.getTextFromMixedMsg(paramChatMessage).toString());
@@ -124,7 +124,7 @@ public class LongMsgItemBuilder
       ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(paramChatMessage, 21);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004045", "0X8004045", 0, 0, "", "", "", "");
       return;
-    case 2131234886: 
+    case 2131234885: 
       paramContext = new Intent(this.jdField_a_of_type_AndroidContentContext, SelectTransLangActivity.class);
       this.jdField_a_of_type_AndroidContentContext.startActivity(paramContext);
       return;
@@ -139,7 +139,7 @@ public class LongMsgItemBuilder
     String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131562859);
     String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131561439);
     if (paramView.isSendFromLocal()) {
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new dzj(this, paramView), new dzk(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new dzi(this, paramView), new dzj(this)).show();
     }
   }
   
@@ -200,19 +200,19 @@ public class LongMsgItemBuilder
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     if ((paramView.extraflag == 32768) && (paramView.isSendFromLocal()))
     {
-      localQQCustomMenu.a(2131234879, this.jdField_a_of_type_AndroidContentContext.getString(2131561880));
-      localQQCustomMenu.a(2131234880, this.jdField_a_of_type_AndroidContentContext.getString(2131562855));
+      localQQCustomMenu.a(2131234878, this.jdField_a_of_type_AndroidContentContext.getString(2131561880));
+      localQQCustomMenu.a(2131234879, this.jdField_a_of_type_AndroidContentContext.getString(2131562855));
     }
     for (;;)
     {
-      localQQCustomMenu.a(2131231190, this.jdField_a_of_type_AndroidContentContext.getString(2131562129));
-      localQQCustomMenu.a(2131231192, this.jdField_a_of_type_AndroidContentContext.getString(2131560772));
+      localQQCustomMenu.a(2131231189, this.jdField_a_of_type_AndroidContentContext.getString(2131562129));
+      localQQCustomMenu.a(2131231191, this.jdField_a_of_type_AndroidContentContext.getString(2131560772));
       if (!paramView.isSend()) {
-        localQQCustomMenu.a(2131234886, this.jdField_a_of_type_AndroidContentContext.getString(2131559793));
+        localQQCustomMenu.a(2131234885, this.jdField_a_of_type_AndroidContentContext.getString(2131559793));
       }
       ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
       return localQQCustomMenu.a();
-      localQQCustomMenu.a(2131234879, this.jdField_a_of_type_AndroidContentContext.getString(17039361));
+      localQQCustomMenu.a(2131234878, this.jdField_a_of_type_AndroidContentContext.getString(17039361));
     }
   }
 }

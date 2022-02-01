@@ -1,16 +1,16 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class chy
   implements View.OnClickListener
 {
-  public chy(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public chy(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
   }
 }
 

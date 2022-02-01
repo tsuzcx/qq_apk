@@ -10,9 +10,9 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.NightModeLogic;
 import com.tencent.qphone.base.util.QLog;
+import dnw;
 import dnx;
-import dny;
-import doa;
+import dnz;
 
 public class ThemeSwitchDlgActivity
   extends BaseActivity
@@ -29,8 +29,8 @@ public class ThemeSwitchDlgActivity
     }
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = a(2131563150, 2131562472, 2131561746, 2131562899, new dnx(this), new dny(this));
-      this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new doa(this));
+      this.jdField_a_of_type_AndroidAppDialog = a(2131563150, 2131562472, 2131561746, 2131562899, new dnw(this), new dnx(this));
+      this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new dnz(this));
     }
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -43,7 +43,7 @@ public class ThemeSwitchDlgActivity
     String str1 = getResources().getString(paramInt4);
     Dialog localDialog = new Dialog(this, 2131624405);
     localDialog.setContentView(2130903162);
-    TextView localTextView = (TextView)localDialog.findViewById(2131231469);
+    TextView localTextView = (TextView)localDialog.findViewById(2131231468);
     if (localTextView != null) {
       localTextView.setText((CharSequence)localObject2);
     }
@@ -51,13 +51,13 @@ public class ThemeSwitchDlgActivity
     if (localObject2 != null) {
       ((TextView)localObject2).setText((CharSequence)localObject1);
     }
-    localObject1 = (TextView)localDialog.findViewById(2131231472);
+    localObject1 = (TextView)localDialog.findViewById(2131231471);
     if (localObject1 != null)
     {
       ((TextView)localObject1).setText(str2);
       ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
     }
-    paramOnClickListener1 = (TextView)localDialog.findViewById(2131231473);
+    paramOnClickListener1 = (TextView)localDialog.findViewById(2131231472);
     if (paramOnClickListener1 != null)
     {
       paramOnClickListener1.setText(str1);

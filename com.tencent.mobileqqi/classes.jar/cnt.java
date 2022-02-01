@@ -1,24 +1,28 @@
-import android.os.AsyncTask;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.content.res.Resources;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class cnt
-  implements Animation.AnimationListener
+  implements Runnable
 {
   public cnt(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.execute(new Void[0]);
-    this.a.c = false;
-    FriendProfileImageActivity.a(this.a).setVisibility(0);
+    this.a.jdField_c_of_type_Boolean = false;
+    if (this.a.a != 0L)
+    {
+      this.a.b.setVisibility(0);
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.a.getResources().getDimension(2131427548), 0.0F);
+      localTranslateAnimation.setDuration(300L);
+      localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
+      return;
+    }
+    this.a.b.setVisibility(8);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

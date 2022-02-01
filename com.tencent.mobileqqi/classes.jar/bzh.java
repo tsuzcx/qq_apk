@@ -1,15 +1,13 @@
-import android.os.Handler;
 import com.tencent.mobileqq.activity.ChatActivity;
 
-public class bzh
+class bzh
   implements Runnable
 {
-  public bzh(ChatActivity paramChatActivity) {}
+  bzh(bzg parambzg) {}
   
   public void run()
   {
-    ChatActivity.a(this.a);
-    this.a.a.postDelayed(new bzi(this), 10L);
+    this.a.a.a(131072);
   }
 }
 

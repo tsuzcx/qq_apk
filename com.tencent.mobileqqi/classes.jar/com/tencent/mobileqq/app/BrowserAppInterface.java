@@ -16,7 +16,7 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import ezj;
+import ezi;
 import java.util.ArrayList;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
@@ -26,7 +26,7 @@ public class BrowserAppInterface
 {
   public static final String b = BrowserAppInterface.class.getSimpleName();
   long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ezj(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ezi(this);
   SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   protected final Object a;
@@ -101,7 +101,7 @@ public class BrowserAppInterface
       bool1 = true;
       return bool1;
     }
-    paramContext = MobileQQ.getMobileQQ().getProcessName();
+    paramContext = MobileQQ.getMobileQQ().getProcessNames();
     int i = 0;
     for (;;)
     {

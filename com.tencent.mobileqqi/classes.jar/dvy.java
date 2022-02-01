@@ -1,34 +1,19 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import mqq.app.AppActivity;
+import mqq.app.permission.PermissionItem;
+import mqq.app.permission.PermissionManager;
 
-public class dvy
-  implements ActionSheet.OnButtonClickListener
+public final class dvy
+  implements PermissionDialogCallback
 {
-  public dvy(PlusPanel paramPlusPanel, Uri paramUri, ActionSheet paramActionSheet) {}
+  public dvy(AppActivity paramAppActivity, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a() {}
+  
+  public void b()
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    case 0: 
-      PlusPanelUtils.a(PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel), PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel), this.jdField_a_of_type_AndroidNetUri, PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel));
-      PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putString("LastScreenShotUri", null).commit();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    }
-    PlusPanelUtils.a(PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel), PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel), PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.jdField_a_of_type_MqqAppAppActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.CAMERA", 200), PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new dvz(this));
   }
 }
 

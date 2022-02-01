@@ -1,16 +1,21 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
-import com.tencent.widget.TCWDatePicker;
-import com.tencent.widget.TCWDatePickerDialog.OnDateSetListener;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import com.tencent.mobileqq.text.QQText;
 
-public class gmp
-  implements TCWDatePickerDialog.OnDateSetListener
+public final class gmp
+  extends Spannable.Factory
 {
-  public gmp(ShareAppLogActivity paramShareAppLogActivity, TextView paramTextView) {}
-  
-  public void a(TCWDatePicker paramTCWDatePicker, int paramInt1, int paramInt2, int paramInt3)
+  public Spannable newSpannable(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt1 + "-" + (paramInt2 + 1) + "-" + paramInt3);
+    if ((!QQText.b) && ((paramCharSequence instanceof QQText))) {
+      try
+      {
+        QQText localQQText = (QQText)((QQText)paramCharSequence).clone();
+        return localQQText;
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    }
+    return super.newSpannable(paramCharSequence);
   }
 }
 

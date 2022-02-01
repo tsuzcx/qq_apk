@@ -3,11 +3,11 @@ import com.tencent.mobileqq.activity.RegisterSendUpSms;
 class dgv
   implements Runnable
 {
-  dgv(dgu paramdgu, int paramInt) {}
+  dgv(dgt paramdgt) {}
   
   public void run()
   {
-    RegisterSendUpSms.a(this.jdField_a_of_type_Dgu.a, this.jdField_a_of_type_Int);
+    this.a.a.a(2131562790, 1);
   }
 }
 

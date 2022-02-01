@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
 
-class etk
-  implements Runnable
+public class etk
 {
-  etk(etj parametj) {}
-  
-  public void run()
-  {
-    VoipAddressBookView.c(this.a.a).e();
-    this.a.a.a.sendEmptyMessage(3);
-  }
+  private int a;
+  public Button a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public PhoneContact a;
+  public String a;
 }
 
 

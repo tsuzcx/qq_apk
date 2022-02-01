@@ -10,8 +10,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import elp;
 import elq;
-import elr;
 
 public class PhoneMatchActivity
   extends DialogBaseActivity
@@ -23,7 +23,7 @@ public class PhoneMatchActivity
   private void e()
   {
     this.l.setText(getResources().getString(2131558979));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232049));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232048));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     a(2131561842, this);
   }
@@ -37,10 +37,10 @@ public class PhoneMatchActivity
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new elq(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new elp(this);
       this.b.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
-    this.b.a(new elr(this));
+    this.b.a(new elq(this));
     a(2131562875, 1000L);
   }
   

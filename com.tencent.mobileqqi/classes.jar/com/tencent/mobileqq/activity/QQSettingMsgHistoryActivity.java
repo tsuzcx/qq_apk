@@ -40,14 +40,14 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CacheManager;
 import cooperation.qqfav.QfavHelper;
 import cooperation.qzone.QZoneHelper;
+import ddu;
 import ddv;
-import ddw;
+import ddx;
 import ddy;
-import ddz;
+import dea;
 import deb;
-import dec;
+import ded;
 import dee;
-import def;
 import java.io.File;
 import java.util.Vector;
 import mqq.app.MobileQQ;
@@ -64,7 +64,7 @@ public class QQSettingMsgHistoryActivity
   private long jdField_a_of_type_Long = 0L;
   public Handler a;
   private View jdField_a_of_type_AndroidViewView;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new def(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dee(this);
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   public QQProgressDialog a;
@@ -80,7 +80,7 @@ public class QQSettingMsgHistoryActivity
   
   public QQSettingMsgHistoryActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new ddv(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ddu(this);
   }
   
   private void b(String paramString)
@@ -208,15 +208,15 @@ public class QQSettingMsgHistoryActivity
     setTitle(2131562217);
     this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
     setVolumeControlStream(3);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131233122));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131233121));
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
     if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.f() == 1) {}
     for (boolean bool = true;; bool = false)
     {
       paramBundle.setChecked(bool);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131233123);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131233124);
-      this.c = findViewById(2131233125);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131233122);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131233123);
+      this.c = findViewById(2131233124);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
@@ -346,22 +346,22 @@ public class QQSettingMsgHistoryActivity
     {
     default: 
       return;
-    case 2131233123: 
+    case 2131233122: 
       paramView = DialogUtil.c(this, 230, null, null, 2131561746, 2131562539, null, null);
       paramView.setMessage(getString(2131561824));
       paramView.setDividerGone();
-      localObject1 = new ddw(this);
-      localObject2 = new ddy(this);
+      localObject1 = new ddv(this);
+      localObject2 = new ddx(this);
       paramView.setPositiveButton(2131562539, (DialogInterface.OnClickListener)localObject1);
       paramView.setNegativeButton(2131561746, (DialogInterface.OnClickListener)localObject2);
       paramView.show();
       return;
-    case 2131233124: 
+    case 2131233123: 
       paramView = DialogUtil.c(this, 230, null, null, 2131561746, 2131562539, null, null);
       paramView.setMessage(getString(2131561667));
       paramView.setDividerGone();
-      localObject1 = new ddz(this);
-      localObject2 = new deb(this);
+      localObject1 = new ddy(this);
+      localObject2 = new dea(this);
       paramView.setPositiveButton(2131562539, (DialogInterface.OnClickListener)localObject1);
       paramView.setNegativeButton(2131561746, (DialogInterface.OnClickListener)localObject2);
       paramView.show();
@@ -370,8 +370,8 @@ public class QQSettingMsgHistoryActivity
     paramView = DialogUtil.c(this, 230, null, null, 2131561746, 2131562539, null, null);
     paramView.setMessage(getString(2131560603));
     paramView.setDividerGone();
-    Object localObject1 = new dec(this);
-    Object localObject2 = new dee(this);
+    Object localObject1 = new deb(this);
+    Object localObject2 = new ded(this);
     paramView.setPositiveButton(2131562539, (DialogInterface.OnClickListener)localObject1);
     paramView.setNegativeButton(2131561746, (DialogInterface.OnClickListener)localObject2);
     paramView.show();

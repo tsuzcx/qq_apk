@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.antiphing.AntiphingHandler;
-import com.tencent.qphone.base.util.QLog;
 
 public class eyv
-  implements DialogInterface.OnClickListener
 {
-  public eyv(AntiphingHandler paramAntiphingHandler) {}
+  public int a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public eyv(AntiphingHandler paramAntiphingHandler)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(AntiphingHandler.a(this.a), 4, "right button is clicked! ");
-    }
-    AntiphingHandler.a(this.a, 0);
+    this.jdField_a_of_type_JavaLangString = "0";
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

@@ -1,50 +1,33 @@
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItem;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListViewItemTag;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BizTroopHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class eyn
-  implements View.OnLongClickListener
+class eyn
+  implements DialogInterface.OnClickListener
 {
-  public eyn(TroopListAdapter2 paramTroopListAdapter2) {}
+  eyn(eym parameym, boolean paramBoolean, TroopInfo paramTroopInfo) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof TroopListAdapter2.TroopListViewItemTag)) {}
-    Object localObject;
-    do
+    paramInt = 0;
+    paramDialogInterface.dismiss();
+    if ((NetworkUtil.a(this.jdField_a_of_type_Eym.a.jdField_a_of_type_AndroidContentContext) == 0) && ((this.jdField_a_of_type_Eym.a.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)))
     {
-      do
-      {
-        return false;
-        paramView = (TroopListAdapter2.TroopListViewItemTag)paramView;
-      } while ((paramView.a == null) || (paramView.a.a == null));
-      localObject = paramView.a.a;
-    } while (localObject == null);
-    boolean bool = ((FriendManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).h(((TroopInfo)localObject).troopuin);
-    if (bool) {}
-    for (paramView = this.a.jdField_a_of_type_AndroidContentContext.getString(2131560396);; paramView = this.a.jdField_a_of_type_AndroidContentContext.getString(2131560395))
-    {
-      QQCustomDialog localQQCustomDialog = DialogUtil.c(this.a.jdField_a_of_type_AndroidContentContext, 230, null, null, 2131561746, 2131561875, null, null);
-      localQQCustomDialog.setTitle(paramView);
-      localQQCustomDialog.setMessage(paramView);
-      localQQCustomDialog.setDividerGone();
-      paramView = new eyo(this, bool, (TroopInfo)localObject);
-      localObject = new eyp(this);
-      localQQCustomDialog.setPositiveButton(2131562539, paramView);
-      localQQCustomDialog.setNegativeButton(2131561746, (DialogInterface.OnClickListener)localObject);
-      localQQCustomDialog.show();
-      return false;
+      paramDialogInterface = (BaseActivity)this.jdField_a_of_type_Eym.a.jdField_a_of_type_AndroidContentContext;
+      QQToast.a(paramDialogInterface, 2131560394, 0).b(paramDialogInterface.d());
+      return;
     }
+    paramDialogInterface = (BizTroopHandler)this.jdField_a_of_type_Eym.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(21);
+    if (this.jdField_a_of_type_Boolean) {
+      paramInt = 1;
+    }
+    paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramInt);
   }
 }
 

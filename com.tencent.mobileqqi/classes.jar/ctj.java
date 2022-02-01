@@ -7,9 +7,7 @@ public class ctj
   
   public void run()
   {
-    if (!this.a.isFinishing()) {
-      this.a.showDialog(3);
-    }
+    LoginActivity.a(this.a, true);
   }
 }
 

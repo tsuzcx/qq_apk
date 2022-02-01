@@ -3,7 +3,7 @@ import com.tencent.mobileqq.activity.Leba;
 class csm
   implements Runnable
 {
-  csm(csc paramcsc) {}
+  csm(csb paramcsb) {}
   
   public void run()
   {

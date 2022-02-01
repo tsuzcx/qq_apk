@@ -1,22 +1,23 @@
+import com.tencent.widget.ListView;
+
 public class hwh
+  implements Runnable
 {
-  private int a;
+  private int jdField_a_of_type_Int;
   private int b;
   
-  public int a()
-  {
-    return this.a;
-  }
+  private hwh(ListView paramListView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public hwh a(int paramInt1, int paramInt2)
   {
-    this.a = paramInt1;
+    this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
+    return this;
   }
   
-  public int b()
+  public void run()
   {
-    return this.b;
+    this.jdField_a_of_type_ComTencentWidgetListView.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
   }
 }
 

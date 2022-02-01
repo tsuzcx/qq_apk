@@ -72,8 +72,8 @@ public class LocalImageFileCategoryAdapter
       paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileCategoryBrowserActivity.a);
       paramViewGroup = new LocalImageFileCategoryAdapter.LocalImageHolder(this);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131230758));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232747));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131231331));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232746));
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131231330));
       paramView.setTag(paramViewGroup);
     }
     for (;;)

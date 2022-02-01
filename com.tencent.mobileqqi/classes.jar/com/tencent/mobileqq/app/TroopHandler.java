@@ -54,8 +54,8 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import fhe;
 import fhf;
-import fhg;
 import friendlist.GetMultiTroopInfoResp;
 import friendlist.GetTroopAppointRemarkResp;
 import friendlist.GetTroopListRespV2;
@@ -258,11 +258,11 @@ public class TroopHandler
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
     boolean bool = false;
-    fhf localfhf = new fhf();
-    localfhf.jdField_a_of_type_Long = paramIntent.getLongExtra("TroopUin", 0L);
-    localfhf.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isClear", false);
-    localfhf.b = paramIntent.getIntExtra("lat", 0);
-    localfhf.c = paramIntent.getIntExtra("lon", 0);
+    fhe localfhe = new fhe();
+    localfhe.jdField_a_of_type_Long = paramIntent.getLongExtra("TroopUin", 0L);
+    localfhe.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isClear", false);
+    localfhe.b = paramIntent.getIntExtra("lat", 0);
+    localfhe.c = paramIntent.getIntExtra("lon", 0);
     if (paramFromServiceMsg.isSuccess()) {}
     for (;;)
     {
@@ -270,28 +270,28 @@ public class TroopHandler
       {
         paramIntent = new GroupLocation.SetGroupLocationRes();
         paramIntent.mergeFrom(paramArrayOfByte);
-        localfhf.jdField_a_of_type_Int = paramIntent.result.get();
-        if (localfhf.jdField_a_of_type_Int != 0) {
+        localfhe.jdField_a_of_type_Int = paramIntent.result.get();
+        if (localfhe.jdField_a_of_type_Int != 0) {
           break label209;
         }
-        localfhf.jdField_a_of_type_JavaLangString = paramIntent.grouplocation.get();
+        localfhe.jdField_a_of_type_JavaLangString = paramIntent.grouplocation.get();
         paramIntent = (FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
         if (paramIntent != null)
         {
-          paramFromServiceMsg = paramIntent.a("" + localfhf.jdField_a_of_type_Long);
-          paramFromServiceMsg.strLocation = localfhf.jdField_a_of_type_JavaLangString;
+          paramFromServiceMsg = paramIntent.a("" + localfhe.jdField_a_of_type_Long);
+          paramFromServiceMsg.strLocation = localfhe.jdField_a_of_type_JavaLangString;
           paramIntent.b(paramFromServiceMsg);
         }
         bool = true;
       }
       catch (Exception paramIntent)
       {
-        localfhf.jdField_a_of_type_Int = -1;
+        localfhe.jdField_a_of_type_Int = -1;
         continue;
       }
-      a(15, bool, localfhf);
+      a(15, bool, localfhe);
       return;
-      localfhf.jdField_a_of_type_Int = paramFromServiceMsg.getResultCode();
+      localfhe.jdField_a_of_type_Int = paramFromServiceMsg.getResultCode();
       continue;
       label209:
       bool = false;
@@ -1896,7 +1896,7 @@ public class TroopHandler
   
   private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
-    fhg localfhg = new fhg();
+    fhf localfhf = new fhf();
     Object localObject = null;
     if (paramFromServiceMsg.isSuccess()) {
       label261:
@@ -1913,9 +1913,9 @@ public class TroopHandler
     try
     {
       paramFromServiceMsg.mergeFrom(paramArrayOfByte);
-      localfhg.jdField_a_of_type_Int = paramFromServiceMsg.dwResult.get();
-      localfhg.jdField_a_of_type_JavaLangString = paramFromServiceMsg.sErrInfo.get();
-      if (localfhg.jdField_a_of_type_Int != 0) {
+      localfhf.jdField_a_of_type_Int = paramFromServiceMsg.dwResult.get();
+      localfhf.jdField_a_of_type_JavaLangString = paramFromServiceMsg.sErrInfo.get();
+      if (localfhf.jdField_a_of_type_Int != 0) {
         break label353;
       }
       paramArrayOfByte = (SearchGroup.GroupClusterInfo)paramFromServiceMsg.stGroupClusterInfo.get();
@@ -1923,10 +1923,10 @@ public class TroopHandler
         break label261;
       }
       bool = true;
-      localfhg.jdField_a_of_type_Boolean = bool;
-      localfhg.b = paramArrayOfByte.dwTotalSearchNum.get();
-      localfhg.jdField_a_of_type_Long = paramFromServiceMsg.dwNextRecTime.get();
-      localfhg.jdField_a_of_type_JavaUtilList = paramArrayOfByte.vGroupInfo.get();
+      localfhf.jdField_a_of_type_Boolean = bool;
+      localfhf.b = paramArrayOfByte.dwTotalSearchNum.get();
+      localfhf.jdField_a_of_type_Long = paramFromServiceMsg.dwNextRecTime.get();
+      localfhf.jdField_a_of_type_JavaUtilList = paramArrayOfByte.vGroupInfo.get();
       bool = true;
     }
     catch (Exception paramArrayOfByte)
@@ -1943,10 +1943,10 @@ public class TroopHandler
       {
         paramIntent = (RecommendTroopManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(19);
         if (paramIntent != null) {
-          paramIntent.a(localfhg.jdField_a_of_type_Long, localfhg.jdField_a_of_type_JavaUtilList);
+          paramIntent.a(localfhf.jdField_a_of_type_Long, localfhf.jdField_a_of_type_JavaUtilList);
         }
       }
-      a(28, bool, localfhg);
+      a(28, bool, localfhf);
       if (paramFromServiceMsg != null)
       {
         if (NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()) != 1) {
@@ -1963,12 +1963,12 @@ public class TroopHandler
         return;
         bool = false;
         break;
-        localfhg.jdField_a_of_type_Int = -1;
-        localfhg.jdField_a_of_type_Boolean = true;
+        localfhf.jdField_a_of_type_Int = -1;
+        localfhf.jdField_a_of_type_Boolean = true;
         bool = false;
         break label137;
-        localfhg.jdField_a_of_type_Int = paramFromServiceMsg.getResultCode();
-        localfhg.jdField_a_of_type_Boolean = true;
+        localfhf.jdField_a_of_type_Int = paramFromServiceMsg.getResultCode();
+        localfhf.jdField_a_of_type_Boolean = true;
         paramFromServiceMsg = null;
         bool = false;
         break label137;
@@ -1978,7 +1978,7 @@ public class TroopHandler
         paramIntent[2] = "param_Flow";
       }
     }
-    a(13, bool, localfhg);
+    a(13, bool, localfhf);
   }
   
   private void b(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

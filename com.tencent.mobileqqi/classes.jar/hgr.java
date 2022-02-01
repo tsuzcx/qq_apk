@@ -1,18 +1,9 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class hgr
-  implements View.OnClickListener
 {
-  public hgr(GridListView paramGridListView) {}
-  
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag(2131233145)).intValue();
-    this.a.a.a(this.a, paramView, i, 0L);
-  }
+  private static final int a = 12;
+  public View[] a = new View[12];
 }
 
 

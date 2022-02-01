@@ -1,17 +1,18 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
 
 public class gxb
-  implements Runnable
+  implements View.OnClickListener
 {
   public gxb(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (VideoPlayLogic.a(this.a) != null) {
-      VideoPlayLogic.c(this.a);
+    if ((VideoPlayLogic.a(this.a) instanceof ChatActivity)) {
+      ((ChatActivity)VideoPlayLogic.a(this.a)).t();
     }
-    this.a.b.removeCallbacks(VideoPlayLogic.a(this.a));
   }
 }
 

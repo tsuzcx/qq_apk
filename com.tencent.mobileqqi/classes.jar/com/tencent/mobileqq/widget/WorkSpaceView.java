@@ -12,7 +12,7 @@ import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
 import com.tencent.mobileqq.activity.Conversation;
-import hhz;
+import hhy;
 import java.util.Timer;
 
 public class WorkSpaceView
@@ -24,7 +24,7 @@ public class WorkSpaceView
   private static final int g = 1;
   private float jdField_a_of_type_Float;
   public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new hhz(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new hhy(this);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
   private WorkSpaceView.OnScreenChangeListener jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener;

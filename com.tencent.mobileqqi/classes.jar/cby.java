@@ -1,34 +1,28 @@
-import android.hardware.SensorManager;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.image.AbstractGifImage;
 import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
 
 public class cby
-  implements AudioPlayer.AudioPlayerListener
+  implements AbsListView.OnScrollListener
 {
   public cby(ChatHistory paramChatHistory) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.l();
-    if (this.a.a != null) {
+    this.a.v = paramInt;
+    if (paramInt == 0)
+    {
+      AbstractGifImage.resumeAll();
+      return;
+    }
+    if ((this.a.a != null) && (this.a.a.c == 1) && (!this.a.a.a)) {
       this.a.a.b();
     }
-    this.a.setVolumeControlStream(3);
-    ChatHistory.a(this.a).unregisterListener(this.a);
-  }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.a(2131563199);
-    this.a.setVolumeControlStream(3);
-    ChatHistory.a(this.a).unregisterListener(this.a);
-  }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
+    AbstractGifImage.pauseAll();
   }
 }
 

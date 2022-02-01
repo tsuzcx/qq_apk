@@ -1,52 +1,15 @@
-import common.qzone.component.cache.common.SoftHashMap;
-import java.util.AbstractCollection;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
 public class hzn
-  extends AbstractCollection
+  extends WeakReference
 {
-  public hzn(SoftHashMap paramSoftHashMap) {}
+  public Object a;
   
-  public void clear()
+  public hzn(Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue)
   {
-    this.a.clear();
-  }
-  
-  public boolean contains(Object paramObject)
-  {
-    return this.a.containsValue(paramObject);
-  }
-  
-  public Iterator iterator()
-  {
-    return new hzm(this.a);
-  }
-  
-  public int size()
-  {
-    return this.a.size();
-  }
-  
-  public Object[] toArray()
-  {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(localIterator.next());
-    }
-    return localArrayList.toArray();
-  }
-  
-  public Object[] toArray(Object[] paramArrayOfObject)
-  {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(localIterator.next());
-    }
-    return localArrayList.toArray(paramArrayOfObject);
+    super(paramObject2, paramReferenceQueue);
+    this.a = paramObject1;
   }
 }
 

@@ -1,39 +1,23 @@
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopRemindSettingManager;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr.SelfGagInfo;
 
-public class byf
-  implements Runnable
+class byf
+  extends AsyncTask
 {
-  public byf(ChatActivity paramChatActivity) {}
+  byf(bye parambye) {}
   
-  public void run()
+  protected TroopGagMgr.SelfGagInfo a(Void... paramVarArgs)
   {
-    new byg(this).execute(new Void[0]);
-    if ((this.a.getIntent().getExtras().containsKey("forward_type")) && (this.a.a.a != null) && (this.a.a.a.equals(this.a.getIntent().getStringExtra("uin")))) {}
-    for (int i = 1;; i = 0)
-    {
-      FriendManager localFriendManager = (FriendManager)this.a.b.getManager(8);
-      boolean bool = localFriendManager.f(this.a.a.a);
-      if ((TroopRemindSettingManager.a().a(this.a.a.a, this.a.b)) && (!bool))
-      {
-        ChatActivityUtils.a(this.a, this.a.getString(2131562215), 3000L);
-        TroopRemindSettingManager.a().a(this.a.a.a, this.a.b);
-      }
-      if ((i == 0) && (this.a.b.b(this.a.a.a) == 3) && (!bool)) {
-        ChatActivityUtils.a(this.a, this.a.getString(2131563267), 3000L);
-      }
-      if (bool) {
-        localFriendManager.g(this.a.a.a);
-      }
-      return;
-    }
+    return ((TroopGagMgr)this.a.a.b.getManager(44)).a(this.a.a.a.a, true);
+  }
+  
+  protected void a(TroopGagMgr.SelfGagInfo paramSelfGagInfo)
+  {
+    ChatActivity.a(this.a.a, paramSelfGagInfo, true);
   }
 }
 

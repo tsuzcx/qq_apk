@@ -1,24 +1,31 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.activity.SubaccountUgActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListenner;
 
-class dnd
-  implements DialogInterface.OnClickListener
+public class dnd
+  implements InputMethodRelativeLayout.onSizeChangedListenner
 {
-  dnd(dnc paramdnc) {}
+  public dnd(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    SubAccountAssistantForward.b(this.a.a.b);
-    SubAccountAssistantForward.a(this.a.a.b);
-    this.a.a.a().setTitle("");
-    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    if (paramBoolean)
+    {
+      int[] arrayOfInt = new int[2];
+      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
+      paramInt1 = arrayOfInt[1];
+      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
+      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
+      if (paramInt1 > 0) {
+        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
+      }
+      SubLoginActivity.b(this.a).setVisibility(8);
+      return;
+    }
+    SubLoginActivity.b(this.a).setVisibility(0);
+    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
   }
 }
 

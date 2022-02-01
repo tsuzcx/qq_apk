@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.util.FaceDrawable;
 
 public class haj
-  extends DiscussionObserver
+  extends FriendListObserver
 {
   private haj(FaceDrawable paramFaceDrawable) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (paramBoolean2)
-    {
-      FaceDrawable.a(this.a, paramBoolean1, 101, paramString, FaceDrawable.a(this.a));
-      return;
-    }
-    FaceDrawable.a(this.a, paramBoolean1, 101, paramString, null);
+    FaceDrawable.a(this.a, paramBoolean, 1, paramString, FaceDrawable.a(this.a));
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    FaceDrawable.a(this.a, paramBoolean, 11, paramString, FaceDrawable.a(this.a));
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    FaceDrawable.a(this.a, paramBoolean, 4, paramString, FaceDrawable.a(this.a));
   }
 }
 

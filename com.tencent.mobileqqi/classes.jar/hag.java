@@ -1,26 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
-import java.util.LinkedList;
 
 public class hag
-  extends DiscussionObserver
+  extends FriendListObserver
 {
   private hag(FaceDecoder paramFaceDecoder) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (FaceDecoder.a(this.a) != null)
-    {
-      Bitmap localBitmap = this.a.a(101, paramString);
-      if ((paramBoolean1) && (localBitmap != null)) {
-        FaceDecoder.a(this.a).a(FaceDecoder.a(this.a) + FaceDecoder.a(this.a).size(), 101, paramString, localBitmap);
-      }
-    }
-    if ((!FaceDecoder.a(this.a)) && (!FaceDecoder.a(this.a).isEmpty()) && (FaceDecoder.a(this.a) < 4)) {
-      FaceDecoder.a(this.a);
-    }
+    FaceDecoder.a(this.a, paramBoolean, (byte)1, paramString);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    FaceDecoder.a(this.a, paramBoolean, (byte)11, paramString);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    FaceDecoder.a(this.a, paramBoolean, (byte)4, paramString);
   }
 }
 

@@ -1,30 +1,22 @@
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SubaccountUgActivity;
 import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class dnq
-  implements ActionSheet.OnButtonClickListener
+public class dnq
+  implements View.OnClickListener
 {
-  dnq(dnp paramdnp, ActionSheet paramActionSheet) {}
+  public dnq(SubaccountUgActivity paramSubaccountUgActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_Dnp.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.f());
-      this.jdField_a_of_type_Dnp.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.d();
-      this.jdField_a_of_type_Dnp.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.e = true;
-      SubAccountAssistantManager.a().a(this.jdField_a_of_type_Dnp.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.b, this.jdField_a_of_type_Dnp.jdField_a_of_type_JavaLangString);
-    }
+    paramView = new Intent(this.a.a(), QQBrowserActivity.class);
+    paramView.putExtra("uin", this.a.a.a(this.a.b));
+    paramView.putExtra("reqType", 3);
+    paramView.putExtra("url", "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756");
+    this.a.startActivity(paramView);
   }
 }
 

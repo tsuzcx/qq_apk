@@ -10,6 +10,7 @@ public class dfq
   public void onClick(View paramView)
   {
     this.a.e();
+    this.a.finish();
   }
 }
 

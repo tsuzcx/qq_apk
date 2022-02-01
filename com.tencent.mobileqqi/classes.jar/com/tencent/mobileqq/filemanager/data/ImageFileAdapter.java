@@ -103,8 +103,8 @@ public class ImageFileAdapter
         paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudFileBrowserActivity.c);
         paramView.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudFileBrowserActivity.a);
         paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131230758));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232747));
-        paramViewGroup.b = ((ImageView)paramView.findViewById(2131231331));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232746));
+        paramViewGroup.b = ((ImageView)paramView.findViewById(2131231330));
         paramView.setTag(paramViewGroup);
         label118:
         if (b(paramInt) != 2) {
@@ -128,9 +128,9 @@ public class ImageFileAdapter
       paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903493, null);
       paramView.setClickable(true);
       paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudFileBrowserActivity.b);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232729));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232728));
       paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131231066));
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131231868));
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131231867));
       break;
       paramViewGroup = (ImageFileAdapter.ViewHolder)paramView.getTag();
       break label118;

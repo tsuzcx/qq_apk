@@ -15,28 +15,10 @@ public class dza
   
   public void onClick(View paramView)
   {
-    String str;
-    if ((GrayTipsItemBuilder.l(this.a) instanceof Activity))
+    if ((GrayTipsItemBuilder.n(this.a) instanceof Activity))
     {
-      if (GrayTipsItemBuilder.n(this.a).jdField_a_of_type_Int != 1006) {
-        break label153;
-      }
-      str = GrayTipsItemBuilder.o(this.a).jdField_a_of_type_JavaLangString;
-      paramView = null;
-    }
-    for (;;)
-    {
-      ChatActivityUtils.a(GrayTipsItemBuilder.g(this.a), (Activity)GrayTipsItemBuilder.m(this.a), GrayTipsItemBuilder.q(this.a).jdField_a_of_type_Int, paramView, GrayTipsItemBuilder.r(this.a).d, str, true, GrayTipsItemBuilder.s(this.a).b, true, true, null, null);
-      str = ChatActivityUtils.a(GrayTipsItemBuilder.t(this.a).jdField_a_of_type_Int);
-      paramView = str;
-      if (str == null) {
-        paramView = "";
-      }
-      ReportController.b(GrayTipsItemBuilder.h(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "12", paramView, "", "");
-      return;
-      label153:
-      paramView = GrayTipsItemBuilder.p(this.a).jdField_a_of_type_JavaLangString;
-      str = null;
+      ChatActivityUtils.a(GrayTipsItemBuilder.i(this.a), (Activity)GrayTipsItemBuilder.o(this.a), GrayTipsItemBuilder.u(this.a).a, true, true, null);
+      ReportController.b(GrayTipsItemBuilder.j(this.a), "CliOper", "", "", "0X8003F02", "0X8003F02", 0, 0, "", "", "", "");
     }
   }
   

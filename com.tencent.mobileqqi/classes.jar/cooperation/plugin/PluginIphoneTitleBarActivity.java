@@ -26,7 +26,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.mobileqq.widget.FakeImageView;
 import com.tencent.mobileqq.widget.FakeTextView;
-import iag;
+import iaf;
 import java.lang.reflect.Method;
 
 public class PluginIphoneTitleBarActivity
@@ -48,7 +48,7 @@ public class PluginIphoneTitleBarActivity
   
   public PluginIphoneTitleBarActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new iag(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new iaf(this);
   }
   
   private void a(String paramString)
@@ -69,7 +69,7 @@ public class PluginIphoneTitleBarActivity
     ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130840102));
     if (this.l == null)
     {
-      this.b = ((ViewGroup)findViewById(2131231448));
+      this.b = ((ViewGroup)findViewById(2131231447));
       b(this.b);
       c();
       a();
@@ -94,7 +94,7 @@ public class PluginIphoneTitleBarActivity
   
   public View a()
   {
-    this.m = ((TextView)findViewById(2131231376));
+    this.m = ((TextView)findViewById(2131231375));
     return this.m;
   }
   
@@ -110,7 +110,7 @@ public class PluginIphoneTitleBarActivity
   protected void a(int paramInt, View.OnClickListener paramOnClickListener)
   {
     this.l.setVisibility(8);
-    this.l = ((TextView)findViewById(2131231457));
+    this.l = ((TextView)findViewById(2131231456));
     b(this.l);
     this.l.setVisibility(0);
     this.l.setText(paramInt);
@@ -207,8 +207,8 @@ public class PluginIphoneTitleBarActivity
   
   public View b_()
   {
-    this.n = ((TextView)findViewById(2131231380));
-    this.k = ((ImageView)findViewById(2131231461));
+    this.n = ((TextView)findViewById(2131231379));
+    this.k = ((ImageView)findViewById(2131231460));
     b(this.n);
     b(this.k);
     return this.n;
@@ -216,7 +216,7 @@ public class PluginIphoneTitleBarActivity
   
   protected View c()
   {
-    this.l = ((TextView)findViewById(2131231456));
+    this.l = ((TextView)findViewById(2131231455));
     this.l.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     b(this.l);
     return this.l;
@@ -247,6 +247,13 @@ public class PluginIphoneTitleBarActivity
     {
     default: 
       return super.findViewById(paramInt);
+    case 2131231455: 
+      if (this.l == null)
+      {
+        this.l = new FakeTextView(this);
+        this.l.setId(2131231455);
+      }
+      return this.l;
     case 2131231456: 
       if (this.l == null)
       {
@@ -254,39 +261,32 @@ public class PluginIphoneTitleBarActivity
         this.l.setId(2131231456);
       }
       return this.l;
-    case 2131231457: 
-      if (this.l == null)
-      {
-        this.l = new FakeTextView(this);
-        this.l.setId(2131231457);
-      }
-      return this.l;
-    case 2131231376: 
+    case 2131231375: 
       if (this.m == null)
       {
         this.m = new FakeTextView(this);
-        this.m.setId(2131231376);
+        this.m.setId(2131231375);
       }
       return this.m;
-    case 2131231380: 
+    case 2131231379: 
       if (this.n == null)
       {
         this.n = new FakeTextView(this);
-        this.n.setId(2131231380);
+        this.n.setId(2131231379);
       }
       return this.n;
-    case 2131231461: 
+    case 2131231460: 
       if (this.k == null)
       {
         this.k = new FakeImageView(this);
-        this.k.setId(2131231461);
+        this.k.setId(2131231460);
       }
       return this.k;
     }
     if (this.b == null)
     {
       this.b = new RelativeLayout(this);
-      this.b.setId(2131231448);
+      this.b.setId(2131231447);
     }
     return this.b;
   }
@@ -376,13 +376,13 @@ public class PluginIphoneTitleBarActivity
     case 16908332: 
       finish();
       return true;
-    case 2131231456: 
+    case 2131231455: 
       this.l.performClick();
       return true;
-    case 2131231380: 
+    case 2131231379: 
       this.n.performClick();
       return true;
-    case 2131231464: 
+    case 2131231463: 
       this.o.performClick();
       return true;
     }

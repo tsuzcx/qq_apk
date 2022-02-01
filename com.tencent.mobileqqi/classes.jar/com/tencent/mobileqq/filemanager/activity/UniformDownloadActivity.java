@@ -11,8 +11,8 @@ import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import fsm;
-import fso;
+import fsl;
+import fsn;
 
 public class UniformDownloadActivity
   extends BaseActivity
@@ -47,26 +47,26 @@ public class UniformDownloadActivity
   {
     super.doOnCreate(paramBundle);
     super.setContentView(2130903512);
-    paramBundle = (TextView)findViewById(2131232778);
-    TextView localTextView = (TextView)findViewById(2131232779);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232771));
+    paramBundle = (TextView)findViewById(2131232777);
+    TextView localTextView = (TextView)findViewById(2131232778);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232770));
     if (localTextView != null)
     {
       if (getIntent().getLongExtra(c, 0L) == 1L) {
         localTextView.setText(2131562563);
       }
-      localTextView.setOnClickListener(new fsm(this));
+      localTextView.setOnClickListener(new fsl(this));
     }
     if (paramBundle != null) {
-      paramBundle.setOnClickListener(new fso(this));
+      paramBundle.setOnClickListener(new fsn(this));
     }
     paramBundle = getIntent();
     this.g = paramBundle.getStringExtra(b);
     this.h = paramBundle.getStringExtra(d);
     this.jdField_a_of_type_Long = paramBundle.getLongExtra(e, 0L);
-    paramBundle = (TextView)findViewById(2131232774);
-    localTextView = (TextView)findViewById(2131232775);
-    ImageView localImageView = (ImageView)findViewById(2131232772);
+    paramBundle = (TextView)findViewById(2131232773);
+    localTextView = (TextView)findViewById(2131232774);
+    ImageView localImageView = (ImageView)findViewById(2131232771);
     paramBundle.setText(this.h);
     localTextView.setText(FileUtil.a(this.jdField_a_of_type_Long));
     int i = FileManagerUtil.b(this.h);

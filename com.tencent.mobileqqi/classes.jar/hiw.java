@@ -1,16 +1,30 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BragActivity;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.FriendChooser.GridViewAdapter;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.open.agent.datamodel.FriendDataManager;
+import java.util.ArrayList;
 
 public class hiw
-  implements ImageLoader.ImageLoadListener
+  implements AdapterView.OnItemClickListener
 {
-  public hiw(BragActivity paramBragActivity) {}
+  public hiw(FriendChooser paramFriendChooser) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.setImageBitmap(paramBitmap);
+    paramAdapterView = (Friend)this.a.jdField_a_of_type_ComTencentOpenAgentFriendChooser$GridViewAdapter.getItem(paramInt);
+    if (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a))
+    {
+      this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.b(paramAdapterView.a);
+      this.a.b.remove(paramAdapterView);
+      this.a.i();
+      ((OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).g();
+      this.a.b(false);
+    }
   }
 }
 

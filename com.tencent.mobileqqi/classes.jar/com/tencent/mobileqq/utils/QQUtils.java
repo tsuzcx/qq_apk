@@ -25,10 +25,10 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BadgeUtils;
+import hdv;
 import hdw;
 import hdx;
 import hdy;
-import hdz;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -191,7 +191,7 @@ public class QQUtils
   
   public static void a(Context paramContext, String paramString)
   {
-    new hdw(paramContext, paramString).run();
+    new hdv(paramContext, paramString).run();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString1, String paramString2, int paramInt2, Handler paramHandler, int paramInt3)
@@ -216,7 +216,7 @@ public class QQUtils
     paramString1.putExtra("duplicate", false);
     paramString1.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
     paramQQAppInterface.a().sendOrderedBroadcast(paramString1, null);
-    paramHandler.postDelayed(new hdy(paramQQAppInterface, paramString2, paramInt2), paramInt3);
+    paramHandler.postDelayed(new hdx(paramQQAppInterface, paramString2, paramInt2), paramInt3);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, Handler paramHandler)
@@ -224,7 +224,7 @@ public class QQUtils
     if (paramQQAppInterface == null) {
       return;
     }
-    paramQQAppInterface.a(new hdz(paramMessageRecord, paramQQAppInterface, paramHandler));
+    paramQQAppInterface.a(new hdy(paramMessageRecord, paramQQAppInterface, paramHandler));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
@@ -293,7 +293,7 @@ public class QQUtils
       QLog.d(a, 2, "createShortcutWhihTips.no shortcut.");
     }
     a(paramQQAppInterface, paramString1, paramString2);
-    paramHandler.postDelayed(new hdx(paramQQAppInterface, paramString2, paramInt1, paramString3), paramInt2);
+    paramHandler.postDelayed(new hdw(paramQQAppInterface, paramString2, paramInt1, paramString3), paramInt2);
   }
   
   public static void a(String paramString1, int paramInt, String paramString2, ArrayList paramArrayList)

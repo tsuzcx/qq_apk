@@ -17,12 +17,12 @@ import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import htv;
 import htw;
 import htx;
 import hty;
 import htz;
 import hua;
-import hub;
 import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
 public class AuthDevVerifyCodeActivity2
@@ -38,9 +38,9 @@ public class AuthDevVerifyCodeActivity2
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private OpenSDKAppInterface jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new htx(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new htw(this);
   protected String a;
-  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new htw(this);
+  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new htv(this);
   private TextView b;
   protected String b;
   private int c;
@@ -50,7 +50,7 @@ public class AuthDevVerifyCodeActivity2
     this.jdField_a_of_type_JavaLangString = null;
     this.jdField_b_of_type_JavaLangString = null;
     this.jdField_c_of_type_Int = 60;
-    this.jdField_a_of_type_AndroidOsHandler = new hty(this);
+    this.jdField_a_of_type_AndroidOsHandler = new htx(this);
   }
   
   private void b(int paramInt)
@@ -123,12 +123,12 @@ public class AuthDevVerifyCodeActivity2
   
   private void i()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new htz(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new hty(this));
   }
   
   private void j()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new hua(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new htz(this));
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -145,7 +145,7 @@ public class AuthDevVerifyCodeActivity2
   
   public void handleMessage(String paramString1, String paramString2)
   {
-    runOnUiThread(new hub(this, paramString1, paramString2));
+    runOnUiThread(new hua(this, paramString1, paramString2));
   }
   
   public void onClick(View paramView)
@@ -154,7 +154,7 @@ public class AuthDevVerifyCodeActivity2
     {
     default: 
       return;
-    case 2131232954: 
+    case 2131232953: 
       e();
       return;
     }
@@ -176,13 +176,13 @@ public class AuthDevVerifyCodeActivity2
     if (QLog.isColorLevel()) {
       QLog.d("Q.devlock.AuthDevVerifyCodeActivity2", 2, "onCreate  phoneNum=" + this.jdField_c_of_type_JavaLangString);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232964));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131232017));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232963));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131232016));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232954));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232953));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131563062, new Object[] { this.jdField_c_of_type_JavaLangString }));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232966));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232965));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131562863));
     this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131562539));

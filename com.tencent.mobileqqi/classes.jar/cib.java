@@ -1,18 +1,18 @@
-import android.view.MotionEvent;
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class cib
-  implements View.OnTouchListener
+  implements AdapterView.OnItemClickListener
 {
-  public cib(DiscussionMemberActivity paramDiscussionMemberActivity, InputMethodManager paramInputMethodManager) {}
+  public cib(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

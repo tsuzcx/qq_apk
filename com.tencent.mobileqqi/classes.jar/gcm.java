@@ -13,8 +13,7 @@ public class gcm
   
   public void handleMessage(Message paramMessage)
   {
-    TroopInfoManager.a(this.a);
-    TroopInfoManager.b(this.a);
+    TroopInfoManager.c(this.a);
   }
 }
 

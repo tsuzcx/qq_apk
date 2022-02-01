@@ -44,6 +44,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.OverScrollViewListener;
+import dlo;
 import dlp;
 import dlq;
 import dlr;
@@ -54,11 +55,10 @@ import dlv;
 import dlw;
 import dlx;
 import dly;
-import dlz;
-import dmb;
+import dma;
+import dmd;
 import dme;
 import dmf;
-import dmg;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -75,20 +75,20 @@ public class SubAccountMessageActivity
 {
   public static final int a = 1011;
   private static final boolean jdField_c_of_type_Boolean = true;
-  private Handler jdField_a_of_type_AndroidOsHandler = new dlp(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dlx(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new dlo(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dlw(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private DragRelativeLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout;
   private SubAccountMessageAdapter jdField_a_of_type_ComTencentMobileqqAdapterSubAccountMessageAdapter;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dly(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dlz(this);
-  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dmb(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dlx(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dly(this);
+  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dma(this);
   private SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   private SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView;
-  private OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new dme(this);
+  private OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new dmd(this);
   private String jdField_a_of_type_JavaLangString = "Q.subaccount.SubAccountMessageActivity";
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private final int jdField_b_of_type_Int = 0;
@@ -112,7 +112,7 @@ public class SubAccountMessageActivity
     }
     for (paramInt = i;; paramInt = 2131563155)
     {
-      a(str, paramString1, 2131561746, paramInt, new dmg(this, paramString2), new dlq(this));
+      a(str, paramString1, 2131561746, paramInt, new dmf(this, paramString2), new dlp(this));
       return;
       str = getString(2131563202);
     }
@@ -120,12 +120,12 @@ public class SubAccountMessageActivity
   
   private void a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dlr(this), paramLong);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new dlq(this), paramLong);
   }
   
   private void a(String paramString1, String paramString2)
   {
-    a(paramString1, paramString2, 2131561746, 2131562539, new dmf(this), null);
+    a(paramString1, paramString2, 2131561746, 2131562539, new dme(this), null);
   }
   
   private void a(boolean paramBoolean)
@@ -147,7 +147,7 @@ public class SubAccountMessageActivity
     for (;;)
     {
       localActionSheet.d(2131561746);
-      localActionSheet.a(new dlt(this, localActionSheet, paramBoolean1, paramBoolean2));
+      localActionSheet.a(new dls(this, localActionSheet, paramBoolean1, paramBoolean2));
       localActionSheet.show();
       return;
       if (paramBoolean2)
@@ -189,15 +189,15 @@ public class SubAccountMessageActivity
     Object localObject = this.p;
     ((ImageView)localObject).setVisibility(0);
     ((ImageView)localObject).setImageResource(2130838011);
-    ((ImageView)localObject).setOnClickListener(new dlw(this));
+    ((ImageView)localObject).setOnClickListener(new dlv(this));
     ((ImageView)localObject).setContentDescription(getText(2131562407));
     localObject = LayoutInflater.from(a());
     View localView = ((LayoutInflater)localObject).inflate(2130904005, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234561));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131234562));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131234563));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131234564));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131234559));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234560));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131234561));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131234562));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131234563));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131234558));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a(localView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)((LayoutInflater)localObject).inflate(2130903325, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
@@ -365,7 +365,7 @@ public class SubAccountMessageActivity
       localActionSheet.a(getResources().getString(2131561833), 1);
       localActionSheet.a(getResources().getString(2131563128), 3);
       localActionSheet.d(2131561746);
-      localActionSheet.a(new dls(this, localActionSheet, bool));
+      localActionSheet.a(new dlr(this, localActionSheet, bool));
       localActionSheet.show();
       return;
     }
@@ -544,13 +544,13 @@ public class SubAccountMessageActivity
   {
     if ((paramObject instanceof MessageRecord)) {
       if (!((MessageRecord)paramObject).isSendFromLocal()) {
-        runOnUiThread(new dlu(this));
+        runOnUiThread(new dlt(this));
       }
     }
     while (!AppConstants.O.equals(String.valueOf(paramObject))) {
       return;
     }
-    runOnUiThread(new dlv(this));
+    runOnUiThread(new dlu(this));
   }
 }
 

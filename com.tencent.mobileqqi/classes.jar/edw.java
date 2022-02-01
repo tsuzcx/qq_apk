@@ -1,23 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.ForwardOperations;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 import com.tencent.mobileqq.activity.contact.newfriend.CircleGroupListView;
-import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
 
 public class edw
-  extends SearchResultDialog
+  implements Animation.AnimationListener
 {
-  public edw(CircleGroupListView paramCircleGroupListView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
+  public edw(CircleGroupListView paramCircleGroupListView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.show();
+    this.a.b.setAnimation(null);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    return this.a.a.a(-1000, 1);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

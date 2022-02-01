@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.aio.item.DetectableAnimationDrawable;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.EnterTroopChatItemBuilder;
+import java.util.List;
 
 public class dyi
-  implements Runnable
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public dyi(DetectableAnimationDrawable paramDetectableAnimationDrawable) {}
+  public LinearLayout a;
+  public List a;
+  public TextView b;
   
-  public void run()
-  {
-    this.a.a();
-  }
+  public dyi(EnterTroopChatItemBuilder paramEnterTroopChatItemBuilder) {}
 }
 
 

@@ -1,48 +1,35 @@
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog.OnRoamResultObserver;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.List;
 
 public class gci
-  implements Runnable
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public gci(RoamSearchDialog paramRoamSearchDialog, List paramList, int paramInt) {}
+  private gci(RoamSearchDialog paramRoamSearchDialog) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidContentContext.getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_JavaUtilList.size() < this.jdField_a_of_type_Int)
+    if (paramInt == 3)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Gcl.b = true;
-      if (QLog.isColorLevel()) {
-        QLog.i(RoamSearchDialog.jdField_a_of_type_JavaLangString, 2, "getResultFromLocation, currentCount = " + this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_JavaUtilList.size() + ", totalCount = " + this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label239;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Gcl.a = false;
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Gcl.notifyDataSetChanged();
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      RoamSearchDialog.a(this.a);
+      return true;
     }
-    for (;;)
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_JavaUtilList);
+      if (paramKeyEvent.getAction() == 1) {
+        RoamSearchDialog.a(this.a);
       }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Gcl.b = false;
-      break;
-      label239:
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      return true;
     }
+    return false;
   }
 }
 

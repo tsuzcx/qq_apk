@@ -1,21 +1,29 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.adapter.ForwardRecentListAdapter;
-import com.tencent.mobileqq.app.QQServiceEntry.Tag;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.utils.QQUtils;
 
 public class eyg
-  implements View.OnLongClickListener
+  implements DialogInterface.OnClickListener
 {
-  public eyg(ForwardRecentListAdapter paramForwardRecentListAdapter) {}
+  public eyg(ForwardRecentListAdapter paramForwardRecentListAdapter, String paramString) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (QQServiceEntry.Tag)paramView.getTag();
-    if ((Long.valueOf(paramView.jdField_a_of_type_JavaLangString).longValue() > 10000L) && (paramView.jdField_a_of_type_Int == 0)) {
-      this.a.a(paramView.b, paramView.jdField_a_of_type_JavaLangString).show();
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    return true;
+    Friends localFriends = ((FriendManager)this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter.a.getManager(8)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+    if (localFriends != null) {
+      paramDialogInterface = localFriends.name;
+    }
+    QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter.a, this.jdField_a_of_type_JavaLangString, paramDialogInterface);
   }
 }
 

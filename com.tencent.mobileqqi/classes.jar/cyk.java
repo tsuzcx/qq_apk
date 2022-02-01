@@ -12,13 +12,13 @@ public class cyk
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131563461), "qqsetting_notify_myfeedpush_key", paramBoolean);
-    NotifyPushSettingActivity.d(this.a).setContentDescription("与我相关的动态");
+    NotifyPushSettingActivity.e(this.a).setContentDescription("退出后仍接收消息通知");
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131561654), "qqsetting_receivemsg_whenexit_key", paramBoolean);
     paramCompoundButton = this.a.b;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, "", "", "", "");
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, "", "", "", "");
       return;
     }
   }

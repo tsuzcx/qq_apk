@@ -1,26 +1,17 @@
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageChangedListener;
-import java.util.ArrayList;
+import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
 
 public class ckj
-  implements EmoticonPackageChangedListener
+  extends EmoticonPackageDownloadListener
 {
   public ckj(EmosmActivity paramEmosmActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage)
+  public void onCoverComplete(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
   {
-    int i = 0;
-    while (i < EmosmActivity.a(this.a).size())
-    {
-      if (((EmoticonPackage)EmosmActivity.a(this.a).get(i)).epId.equals(paramEmoticonPackage.epId)) {
-        return;
-      }
-      i += 1;
+    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
+    while (EmosmActivity.a(this.a) == null) {
+      return;
     }
     this.a.runOnUiThread(EmosmActivity.a(this.a));
   }

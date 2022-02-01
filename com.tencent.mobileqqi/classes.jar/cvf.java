@@ -1,29 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 
 class cvf
   implements DialogInterface.OnClickListener
 {
-  cvf(cve paramcve) {}
+  cvf(cvd paramcvd) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1)
-    {
-      this.a.a.e();
-      LoginVerifyCodeActivity.a(this.a.a, true);
-      SubAccountAssistantManager.a().a(this.a.a.b);
-      this.a.a.h();
-    }
-    for (;;)
-    {
-      SubAccountAssistantForward.a(this.a.a.b, 0L);
-      return;
-      this.a.a.h();
-    }
+    SubAccountAssistantForward.b(this.a.a.b);
+    SubAccountAssistantForward.a(this.a.a.b);
+    SubAccountAssistantForward.c(this.a.a.b);
+    SubAccountAssistantForward.d(this.a.a.b);
+    SubAccountAssistantForward.a(this.a.a.b, this.a.a, this.a.a.b.getAccount());
+    this.a.a.finish();
   }
 }
 

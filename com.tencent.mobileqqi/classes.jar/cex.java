@@ -1,16 +1,26 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.qphone.base.util.QLog;
 
-class cex
-  implements Runnable
+public class cex
+  extends FMObserver
 {
-  cex(cew paramcew, String paramString) {}
+  public cex(Conversation paramConversation) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (Conversation.a(this.jdField_a_of_type_Cew.a) != null) {
-      Conversation.a(this.jdField_a_of_type_Cew.a).a(this.jdField_a_of_type_JavaLangString, 3000);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("silasBug", 4, "OnFileTransferProgress");
     }
+    this.a.a(8, paramString, -2147483648);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("silasBug", 4, "OnFileTransferEnd");
+    }
+    this.a.a(8, paramString1, -2147483648);
   }
 }
 

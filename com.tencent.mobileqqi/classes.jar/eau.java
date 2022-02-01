@@ -1,13 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.ViewCache;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.widget.AbsListView.RecyclerListener;
 
 public class eau
-  implements DialogInterface.OnClickListener
+  implements AbsListView.RecyclerListener
 {
   public eau(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(View paramView)
+  {
+    if (paramView == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localObject = AIOUtils.a(paramView);
+        } while (!StructingMsgItemBuilder.StructingMsgViewHolder.class.isInstance(localObject));
+        localObject = (StructingMsgItemBuilder.StructingMsgViewHolder)localObject;
+      } while ((!StructingMsgItemBuilder.StructingMsgViewHolder.class.isInstance(localObject)) || (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (!MessageForStructing.class.isInstance(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage)) || (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (!(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing)));
+      localObject = (MessageForStructing)((StructingMsgItemBuilder.StructingMsgViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    } while ((((MessageForStructing)localObject).structingMsg == null) || (!(((MessageForStructing)localObject).structingMsg instanceof StructMsgForGeneralShare)));
+    Object localObject = ((StructMsgForGeneralShare)((MessageForStructing)localObject).structingMsg).getLayoutStr();
+    StructingMsgItemBuilder.a().a((String)localObject, (ViewGroup)paramView.findViewById(2131230779));
+  }
 }
 
 

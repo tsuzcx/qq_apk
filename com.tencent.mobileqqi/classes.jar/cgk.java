@@ -1,26 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class cgk
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   public cgk(DevlockPushActivity paramDevlockPushActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("devlock", 4, "left button is clicked! ");
-    }
     try
     {
-      ReportController.b(null, "P_CliOper", "Safe_DeviceLock", this.a.b.a(), "UserBehavior", "Push", 0, 4, "", "", "", "");
+      if ((DevlockPushActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      {
+        DevlockPushActivity.a(this.a, new QQProgressDialog(this.a, this.a.d()));
+        DevlockPushActivity.a(this.a).b(2131562645);
+      }
+      if ((DevlockPushActivity.a(this.a) != null) && (!DevlockPushActivity.a(this.a).isShowing())) {
+        DevlockPushActivity.a(this.a).show();
+      }
       return;
     }
-    catch (Exception paramDialogInterface) {}
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

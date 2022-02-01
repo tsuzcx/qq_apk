@@ -16,9 +16,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.utils.SMSBodyObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
+import dgx;
 import dgy;
 import dgz;
-import dha;
 import mqq.manager.AccountManager;
 import mqq.observer.AccountObserver;
 
@@ -32,8 +32,8 @@ public class RegisterVerifyCodeActivity
   private Button jdField_a_of_type_AndroidWidgetButton;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new dgy(this);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new dgz(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new dgx(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new dgy(this);
   private int c;
   private int h = 60;
   
@@ -73,14 +73,14 @@ public class RegisterVerifyCodeActivity
   
   private void e()
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232964)).setText(getString(2131563062, new Object[] { this.jdField_c_of_type_JavaLangString }));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232966));
+    ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232963)).setText(getString(2131563062, new Object[] { this.jdField_c_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232965));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131562863) + "(" + this.jdField_c_of_type_Int + ")");
     this.jdField_b_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232998));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232997));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232017));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232016));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
   }
   
@@ -149,7 +149,7 @@ public class RegisterVerifyCodeActivity
   
   public void handleMessage(String paramString1, String paramString2)
   {
-    runOnUiThread(new dha(this, paramString1, paramString2));
+    runOnUiThread(new dgz(this, paramString1, paramString2));
   }
   
   public void onClick(View paramView)
@@ -163,7 +163,7 @@ public class RegisterVerifyCodeActivity
     {
     default: 
       return;
-    case 2131232966: 
+    case 2131232965: 
       f();
       return;
     }

@@ -1,12 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
 
 class eis
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnDismissListener
 {
-  eis(ein paramein) {}
+  eis(eim parameim) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

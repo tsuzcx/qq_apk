@@ -90,7 +90,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qlink.QlinkServiceManager;
-import gjb;
+import gja;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
@@ -3627,7 +3627,7 @@ public class MessageProtoCodec
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new gjb(paramMessageHandler, paramMsg));
+      new Handler(localLooper).post(new gja(paramMessageHandler, paramMsg));
       return;
     }
     ((DataLineHandler)paramMessageHandler.a.a(8)).a(paramMsg);

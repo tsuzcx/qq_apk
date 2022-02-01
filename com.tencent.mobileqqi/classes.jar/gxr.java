@@ -1,11 +1,9 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-class gxr
+public final class gxr
   implements DialogInterface.OnClickListener
 {
-  gxr(gxq paramgxq) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();

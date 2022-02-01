@@ -1,18 +1,24 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-class ctt
-  implements Runnable
+public class ctt
+  implements View.OnClickListener
 {
-  ctt(cts paramcts) {}
+  public ctt(LoginActivity paramLoginActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.isFinishing()))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+    if ((this.a.b != null) && (this.a.b.isShown())) {
+      this.a.b.setVisibility(8);
     }
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
+    libsafeedit.clearPassBuffer();
   }
 }
 

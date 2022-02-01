@@ -22,13 +22,13 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.widget.SlipLimitedListView;
+import djd;
 import dje;
 import djf;
 import djg;
 import djh;
 import dji;
 import djj;
-import djk;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -42,14 +42,14 @@ public class SpaceGateActivity
   private static final int jdField_b_of_type_Int = 2;
   private static final int c = 3;
   private Cursor jdField_a_of_type_AndroidDatabaseCursor;
-  private Handler jdField_a_of_type_AndroidOsHandler = new djh(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dji(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new djg(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new djh(this);
   private View jdField_a_of_type_AndroidViewView;
   private DragRelativeLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout;
   private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new djj(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dji(this);
   private SlipLimitedListView jdField_a_of_type_ComTencentMobileqqWidgetSlipLimitedListView;
-  private djk jdField_a_of_type_Djk;
+  private djj jdField_a_of_type_Djj;
   private String jdField_a_of_type_JavaLangString;
   private Map jdField_a_of_type_JavaUtilMap;
   private String jdField_b_of_type_JavaLangString;
@@ -76,11 +76,11 @@ public class SpaceGateActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131234509);
-    this.jdField_a_of_type_Djk = new djk(this, this.jdField_a_of_type_AndroidDatabaseCursor);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlipLimitedListView = ((SlipLimitedListView)findViewById(2131234508));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlipLimitedListView.setAdapter(this.jdField_a_of_type_Djk);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlipLimitedListView.setOnSlideListener(new dje(this));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131234508);
+    this.jdField_a_of_type_Djj = new djj(this, this.jdField_a_of_type_AndroidDatabaseCursor);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlipLimitedListView = ((SlipLimitedListView)findViewById(2131234507));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlipLimitedListView.setAdapter(this.jdField_a_of_type_Djj);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlipLimitedListView.setOnSlideListener(new djd(this));
   }
   
   private void e()
@@ -108,7 +108,7 @@ public class SpaceGateActivity
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.a() == -1)
     {
       this.jdField_a_of_type_AndroidDatabaseCursor = a();
-      this.jdField_a_of_type_Djk.a(this.jdField_a_of_type_AndroidDatabaseCursor);
+      this.jdField_a_of_type_Djj.a(this.jdField_a_of_type_AndroidDatabaseCursor);
       e();
     }
   }
@@ -176,7 +176,7 @@ public class SpaceGateActivity
   {
     ProfileActivity.AllInOne localAllInOne = (ProfileActivity.AllInOne)paramView.getTag(2130838010);
     boolean bool = ((FriendManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).b(localAllInOne.jdField_a_of_type_JavaLangString);
-    if (2131231416 == paramView.getId())
+    if (2131231415 == paramView.getId())
     {
       paramView = new Intent(this, ChatActivity.class);
       paramView.putExtra("uin", localAllInOne.jdField_a_of_type_JavaLangString);
@@ -225,18 +225,18 @@ public class SpaceGateActivity
   protected void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
-    this.jdField_a_of_type_Djk.a(a());
+    this.jdField_a_of_type_Djj.a(a());
   }
   
   public void update(Observable paramObservable, Object paramObject)
   {
     if ((paramObject instanceof MessageRecord)) {
-      runOnUiThread(new djf(this, (MessageRecord)paramObject));
+      runOnUiThread(new dje(this, (MessageRecord)paramObject));
     }
     while ((!(paramObject instanceof RecentUser)) || (((RecentUser)paramObject).type != 1009)) {
       return;
     }
-    runOnUiThread(new djg(this));
+    runOnUiThread(new djf(this));
   }
 }
 

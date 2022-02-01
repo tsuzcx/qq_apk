@@ -192,7 +192,7 @@ public class WtloginManagerImpl
     localNewIntent.putExtra("userAccount", paramString2);
     localNewIntent.putExtra("countryCode", paramString1);
     localNewIntent.putExtra("appid", paramInt);
-    if ("com.tencent.mobileqq:openSdk".equals(this.app.getApplication().getProcessName())) {
+    if ("com.tencent.mobileqq:openSdk".equals(this.app.getApplication().getProcessNames())) {
       localNewIntent.putExtra("from_where", "ssoAccountAction");
     }
     localNewIntent.withouLogin = true;

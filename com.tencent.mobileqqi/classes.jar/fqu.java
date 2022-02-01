@@ -1,30 +1,13 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter.ItemHolder;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.FMOfflineFileActivity;
 
 public class fqu
   implements View.OnClickListener
 {
-  public fqu(FMLocalFileActivity paramFMLocalFileActivity) {}
+  public fqu(FMOfflineFileActivity paramFMOfflineFileActivity) {}
   
-  public void onClick(View paramView)
-  {
-    if (!this.a.c()) {
-      if (QLog.isColorLevel()) {
-        QLog.i(FMLocalFileActivity.b, 2, "click too fast , wait a minute.");
-      }
-    }
-    do
-    {
-      return;
-      this.a.d();
-      paramView = (FileCategoryAdapter.ItemHolder)paramView.getTag();
-    } while (paramView.a == 0);
-    int i = paramView.a;
-    FMLocalFileActivity.a(this.a, i);
-  }
+  public void onClick(View paramView) {}
 }
 
 

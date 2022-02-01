@@ -1,9 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class ctf
   implements DialogInterface.OnClickListener
@@ -12,8 +9,12 @@ public class ctf
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = (UpgradeDetailWrapper)this.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
-    UpgradeDetailActivity.a(this.a, paramDialogInterface, true, false, false);
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

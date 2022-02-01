@@ -1,28 +1,14 @@
-import android.content.Context;
-import android.os.Handler;
 import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
-import java.util.Timer;
+import java.util.TimerTask;
 
-public class exc
-  implements IPluginManager.OnPluginReadyListener
+class exc
+  extends TimerTask
 {
-  public exc(VoipTencentPayActivity paramVoipTencentPayActivity) {}
+  exc(exb paramexb) {}
   
-  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      paramContext = new exd(this);
-      new Timer().schedule(paramContext, 100L);
-      return;
-    }
-    VoipTencentPayActivity.a().post(new exe(this, paramContext));
+    this.a.a.d();
   }
 }
 

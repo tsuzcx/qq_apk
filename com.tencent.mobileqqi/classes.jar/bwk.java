@@ -1,33 +1,15 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AutoReplySettingActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseHornListActivity;
 
 public class bwk
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public bwk(AutoReplySettingActivity paramAutoReplySettingActivity) {}
+  public bwk(BaseHornListActivity paramBaseHornListActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (this.a.b != null)
-    {
-      this.a.b.edit().putBoolean(this.a.getString(2131563452) + this.a.jdField_a_of_type_JavaLangString, paramBoolean).commit();
-      if (paramBoolean)
-      {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        AutoReplySettingActivity.a(this.a).setVisibility(0);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    AutoReplySettingActivity.a(this.a).setVisibility(8);
+    this.a.t_();
   }
 }
 

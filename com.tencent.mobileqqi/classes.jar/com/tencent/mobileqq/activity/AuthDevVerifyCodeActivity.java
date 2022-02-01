@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import bvz;
 import bwa;
 import bwb;
 import bwc;
 import bwd;
 import bwe;
 import bwf;
-import bwg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.utils.SMSBodyObserver;
 import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
@@ -42,10 +42,10 @@ public class AuthDevVerifyCodeActivity
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new bwa(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new bvz(this);
   protected String a;
-  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new bwd(this);
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bwc(this);
+  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new bwc(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bwb(this);
   private boolean jdField_a_of_type_Boolean = false;
   private TextView b;
   protected String b;
@@ -57,7 +57,7 @@ public class AuthDevVerifyCodeActivity
     this.jdField_a_of_type_JavaLangString = null;
     this.jdField_b_of_type_JavaLangString = null;
     this.h = 60;
-    this.jdField_a_of_type_AndroidOsHandler = new bwb(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bwa(this);
   }
   
   private void b(int paramInt)
@@ -167,12 +167,12 @@ public class AuthDevVerifyCodeActivity
   
   private void i()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new bwe(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new bwd(this));
   }
   
   private void j()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new bwf(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new bwe(this));
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -189,7 +189,7 @@ public class AuthDevVerifyCodeActivity
   
   public void handleMessage(String paramString1, String paramString2)
   {
-    runOnUiThread(new bwg(this, paramString1, paramString2));
+    runOnUiThread(new bwf(this, paramString1, paramString2));
   }
   
   public void onClick(View paramView)
@@ -198,7 +198,7 @@ public class AuthDevVerifyCodeActivity
     {
     default: 
       return;
-    case 2131232954: 
+    case 2131232953: 
       e();
       return;
     }
@@ -218,13 +218,13 @@ public class AuthDevVerifyCodeActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onCreate mIsFromLogin = " + this.jdField_a_of_type_Boolean + " mVerifySeq=" + this.jdField_c_of_type_Int + " phoneNum=" + this.jdField_c_of_type_JavaLangString);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232964));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131232017));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232963));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131232016));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232954));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232953));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131563062, new Object[] { this.jdField_c_of_type_JavaLangString }));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232966));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232965));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131562863));
     this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131562539));

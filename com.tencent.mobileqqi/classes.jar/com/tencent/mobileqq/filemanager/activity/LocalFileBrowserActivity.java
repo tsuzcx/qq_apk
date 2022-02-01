@@ -21,6 +21,7 @@ import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.BubblePopupWindow;
+import frs;
 import frt;
 import fru;
 import frv;
@@ -30,9 +31,8 @@ import fry;
 import frz;
 import fsa;
 import fsb;
-import fsc;
+import fsd;
 import fse;
-import fsf;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -80,10 +80,10 @@ public class LocalFileBrowserActivity
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fry(this);
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new fsc(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new fse(this);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new fru(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new frx(this);
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new fsb(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new fsd(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new frt(this);
   }
   
   private void a(int paramInt)
@@ -92,7 +92,7 @@ public class LocalFileBrowserActivity
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelected(true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelection(paramInt);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelected(true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.post(new frw(this, paramInt));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.post(new frv(this, paramInt));
   }
   
   private void a(String paramString, boolean paramBoolean)
@@ -132,7 +132,7 @@ public class LocalFileBrowserActivity
     }
     for (;;)
     {
-      new frv(this, paramBoolean).execute(new String[] { paramString });
+      new fru(this, paramBoolean).execute(new String[] { paramString });
       return;
       if (!this.jdField_a_of_type_JavaUtilMap.containsKey(this.jdField_c_of_type_JavaLangString)) {
         break;
@@ -161,8 +161,8 @@ public class LocalFileBrowserActivity
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232737));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = ((NoFileRelativeLayout)findViewById(2131232738));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232736));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = ((NoFileRelativeLayout)findViewById(2131232737));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131562479);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setEmptyView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout);
@@ -173,7 +173,7 @@ public class LocalFileBrowserActivity
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new frx(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new frw(this));
   }
   
   private void j()
@@ -235,11 +235,11 @@ public class LocalFileBrowserActivity
   {
     setTitle(getString(FileCategoryEntity.a(this.jdField_b_of_type_Int)));
     if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231376));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231375));
     }
     this.jdField_b_of_type_AndroidWidgetTextView = this.k;
     if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new fsf(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new fse(this));
     }
     this.jdField_b_of_type_AndroidWidgetTextView = this.k;
   }
@@ -266,13 +266,13 @@ public class LocalFileBrowserActivity
     j();
     k();
     l();
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232736));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232735));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232735));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232734));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter = new LocalFileAdapter(this, this.jdField_a_of_type_JavaUtilArrayList, this);
     i();
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollToTopListener(new frt(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollToTopListener(new frs(this));
     a(this.jdField_c_of_type_JavaLangString, true);
     if (this.jdField_b_of_type_Int == 6) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -289,9 +289,9 @@ public class LocalFileBrowserActivity
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     localActionSheet.a(getResources().getStringArray(2131689515)[1], 3);
-    localActionSheet.a(new frz(this, localActionSheet));
-    localActionSheet.setOnDismissListener(new fsa(this));
-    localActionSheet.setOnCancelListener(new fsb(this));
+    localActionSheet.a(new fry(this, localActionSheet));
+    localActionSheet.setOnDismissListener(new frz(this));
+    localActionSheet.setOnCancelListener(new fsa(this));
     localActionSheet.d(2131561746);
     localActionSheet.show();
   }

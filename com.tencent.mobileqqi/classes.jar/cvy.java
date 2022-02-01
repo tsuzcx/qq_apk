@@ -1,78 +1,20 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
 import cannon.Visitor;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.activity.MayKnowManActivity;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.FaceInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
-import java.util.List;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class cvy
-  extends FacePreloadBaseAdapter
+class cvy
+  implements View.OnClickListener
 {
-  public cvy(MayKnowManActivity paramMayKnowManActivity, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, 1, true);
-  }
+  cvy(cvx paramcvx, Visitor paramVisitor) {}
   
-  protected Object a(int paramInt)
+  public void onClick(View paramView)
   {
-    FacePreloadBaseAdapter.FaceInfo localFaceInfo = new FacePreloadBaseAdapter.FaceInfo(this);
-    localFaceInfo.jdField_a_of_type_JavaLangString = String.valueOf(((Visitor)getItem(paramInt)).uin);
-    return localFaceInfo;
-  }
-  
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return (Visitor)this.a.a.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return ((Visitor)this.a.a.get(paramInt)).uin;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130903278, null);
-    }
-    paramView = (cvx)paramViewGroup.getTag();
-    if (paramView == null)
-    {
-      paramView = new cvx(this.a, null);
-      paramView.c = ((ImageView)paramViewGroup.findViewById(2131231924));
-      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131231926));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231925));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131231927));
-      paramViewGroup.setTag(paramView);
-    }
-    for (;;)
-    {
-      Visitor localVisitor = (Visitor)this.a.a.get(paramInt);
-      paramView.jdField_a_of_type_JavaLangString = String.valueOf(localVisitor.uin);
-      if ((localVisitor.name == null) || (localVisitor.name.length() == 0)) {
-        localVisitor.name = String.valueOf(localVisitor.uin);
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localVisitor.name);
-      String str = String.format(this.a.getString(2131561514), new Object[] { Integer.valueOf(localVisitor.weight) });
-      paramView.b.setText(str);
-      paramView.c.setImageBitmap(a(1, String.valueOf(localVisitor.uin)));
-      paramView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new cvz(this, localVisitor));
-      return paramViewGroup;
-    }
+    this.jdField_a_of_type_Cvx.a.startActivity(new Intent(this.jdField_a_of_type_Cvx.a, AddFriendLogicActivity.class).putExtra("uin", String.valueOf(this.jdField_a_of_type_CannonVisitor.uin)).putExtra("nick_name", this.jdField_a_of_type_CannonVisitor.name).putExtra("param_last_activity_name", MayKnowManActivity.a(this.jdField_a_of_type_Cvx.a)).putExtra("source_id", 3003));
+    ReportController.b(this.jdField_a_of_type_Cvx.a.b, "CliOper", "", "", "Contacts_tab", "Contacts_tab_frdoffer_add", 0, 0, "", "", "", "");
   }
 }
 

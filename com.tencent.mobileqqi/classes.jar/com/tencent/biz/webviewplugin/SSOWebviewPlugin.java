@@ -213,7 +213,7 @@ public class SSOWebviewPlugin
               Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
               ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
               ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-              ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("6.0.2");
+              ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("6.0.3");
               localObject1 = new WebSSOAgent.UniSsoServerReq();
               ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
               localJSONObject.remove("callback");

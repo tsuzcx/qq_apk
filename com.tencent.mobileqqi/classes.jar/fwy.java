@@ -1,185 +1,140 @@
 import android.app.Notification;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.SucDownloadInfo;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.RemoteViews;
+import android.widget.TextView;
 import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class fwy
-  extends Handler
-  implements UniformDownloader.IUniformDownloaderListener
 {
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  Notification jdField_a_of_type_AndroidAppNotification;
-  final Bundle jdField_a_of_type_AndroidOsBundle;
-  int b = 0;
-  int c = 0;
+  float jdField_a_of_type_Float = 14.0F;
+  int jdField_a_of_type_Int = 0;
+  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
+  Integer jdField_a_of_type_JavaLangInteger = null;
+  final String jdField_a_of_type_JavaLangString = "SearchForText";
+  float jdField_b_of_type_Float = 16.0F;
+  Integer jdField_b_of_type_JavaLangInteger = null;
+  final String jdField_b_of_type_JavaLangString = "SearchForTitle";
   
-  public fwy(UniformDownloadNfn paramUniformDownloadNfn, Looper paramLooper, int paramInt, Bundle paramBundle, long paramLong)
+  public fwy(UniformDownloadNfn paramUniformDownloadNfn, Context paramContext)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = ((Bundle)paramBundle.clone());
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidOsBundle.putInt("_notify_param_Id", this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_AndroidOsBundle != null)
+    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+    a(paramContext, false);
+  }
+  
+  private boolean a(ViewGroup paramViewGroup)
+  {
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
     {
-      this.jdField_a_of_type_AndroidAppNotification = paramUniformDownloadNfn.a(paramBundle);
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      {
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForTitle".equals(localTextView.getText().toString()))
+        {
+          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_b_of_type_Float = localTextView.getTextSize();
+          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
+        }
+      }
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  private boolean b(ViewGroup paramViewGroup)
+  {
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      {
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForText".equals(localTextView.getText().toString()))
+        {
+          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_a_of_type_Float = localTextView.getTextSize();
+          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
+        }
+      }
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public Integer a()
+  {
+    return this.jdField_a_of_type_JavaLangInteger;
+  }
+  
+  public void a(Context paramContext, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+    }
+    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {}
+    while (this.jdField_a_of_type_Int > 3) {
       return;
     }
-    QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + paramLong + "]. notify runable, param is null");
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadStart, NF");
-    paramBundle = Message.obtain();
-    paramBundle.what = 1;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    localBundle.putInt("_START_WAITING_", 0);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadStart, sendMessage failed, NF");
-    }
-  }
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadFailed, NF");
-    paramBundle = Message.obtain();
-    paramBundle.what = 5;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_ERR_CODE_", paramInt);
-    localBundle.putString("_FILE_ERR_STRING_", paramString);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadFailed, sendMessage failed, NF");
-    }
-  }
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    int i = UniformDownloadNfn.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadNfn);
-    paramBundle = UniformDownloadUtil.b(paramString);
-    if (paramBundle != null) {
-      UniformDownloadMgr.a().a(new UniformDownloadMgr.SucDownloadInfo(paramBundle, i));
-    }
-    QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadSucess, NF");
-    Message localMessage = Message.obtain();
-    localMessage.what = 4;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_FILE_PATH_", paramString);
-    localBundle.putLong("_FILE_SIZE_", paramLong);
-    localBundle.putInt("_NEW_N_ID_", i);
-    if (paramBundle != null) {
-      localBundle.putString("_PKG_NAME_", paramBundle);
-    }
-    localMessage.setData(localBundle);
-    if (!sendMessage(localMessage)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadSucess, sendMessage failed, NF");
-    }
-  }
-  
-  public void b(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadResume progress=" + paramInt + ", NF ");
-    paramBundle = Message.obtain();
-    paramBundle.what = 7;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadResume, sendMessage failed, NF");
-    }
-  }
-  
-  public void c(int paramInt, Bundle paramBundle)
-  {
-    paramBundle = Message.obtain();
-    paramBundle.what = 2;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadProgress, sendMessage failed, NF");
-    }
-  }
-  
-  public void d(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadPause, NF");
-    paramBundle = Message.obtain();
-    paramBundle.what = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadPause, sendMessage failed, NF");
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = false;
-    super.handleMessage(paramMessage);
-    Object localObject = paramMessage.getData();
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Int += 1;
+    try
     {
-    }
-    for (;;)
-    {
-      this.b = paramMessage.what;
+      Notification localNotification = new Notification();
+      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
+      LinearLayout localLinearLayout = new LinearLayout(paramContext);
+      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, localLinearLayout);
+      if (!a(paramContext)) {
+        QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. recurseTitleGroup failed");
+      }
+      if (!b(paramContext)) {
+        QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. recurseTextGroup, failed");
+      }
+      localLinearLayout.removeAllViews();
       return;
-      QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_START, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadNfn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      int i = ((Bundle)localObject).getInt("_START_WAITING_");
-      localObject = UniformDownloadMgr.a();
-      String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url");
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename");
-      long l = this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize");
-      int j = this.jdField_a_of_type_Int;
-      if (i == 1) {
-        bool = true;
-      }
-      ((UniformDownloadMgr)localObject).a(str1, str2, l, j, bool);
-      this.c = 1;
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadNfn.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      if (2 != this.c) {
-        UniformDownloadMgr.a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename"), this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize"), this.jdField_a_of_type_Int, false);
-      }
-      this.c = 2;
-      continue;
-      QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_PAUSE, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadNfn.c(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      UniformDownloadMgr.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.c = 3;
-      continue;
-      QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_SUC, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadNfn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      UniformDownloadMgr.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.c = 4;
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadNfn.d(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      UniformDownloadMgr.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.c = 5;
-      continue;
-      QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_RESUME, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadNfn.e(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      UniformDownloadMgr.a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename"), this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize"), this.jdField_a_of_type_Int, true);
-      this.c = 7;
-      continue;
-      QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_CLR, NF. NId = " + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadNfn.a(this.jdField_a_of_type_Int);
-      UniformDownloadMgr.a().b(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
     }
+    catch (Exception paramContext)
+    {
+      QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. extractColors, exception");
+      paramContext.printStackTrace();
+      return;
+    }
+    catch (NoSuchFieldError paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+  }
+  
+  public float b()
+  {
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public Integer b()
+  {
+    return this.jdField_b_of_type_JavaLangInteger;
   }
 }
 

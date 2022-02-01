@@ -1,19 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.contact.newfriend.CircleGroupListView;
+import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.service.circle.IGroupObserver;
+import java.util.ArrayList;
 
 public class edu
-  implements View.OnClickListener
+  implements IGroupObserver
 {
-  public edu(SearchResultDialog paramSearchResultDialog, int paramInt) {}
+  public edu(CircleGroupListView paramCircleGroupListView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).setText(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog));
-    SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).setSelection(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).length());
-    ReportController.b(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog), "CliOper", "", "", "Search", "Last_search", this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.b(this.jdField_a_of_type_Int), 0, "", "", "", "");
+    boolean bool = true;
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(this.a.jdField_a_of_type_JavaUtilArrayList);
+      this.a.jdField_a_of_type_Edz.notifyDataSetChanged();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.isShowing())) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.a(this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(-1000, 1));
+      }
+    }
+    CircleGroupListView localCircleGroupListView;
+    if (paramInt == 2)
+    {
+      this.a.c();
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+      {
+        if (!paramBoolean) {
+          break label143;
+        }
+        localCircleGroupListView = this.a;
+        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
+          break label138;
+        }
+      }
+    }
+    label138:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      CircleGroupListView.a(localCircleGroupListView, paramBoolean);
+      return;
+    }
+    label143:
+    this.a.a(2131562785, 1);
   }
 }
 

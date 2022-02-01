@@ -11,11 +11,11 @@ import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import ezz;
 import faa;
-import fab;
+import fac;
 import fad;
 import fae;
-import faf;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -75,7 +75,7 @@ public class ConditionSearchManager
   private static final String z = "admin_region_config";
   public long a;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new faf(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fae(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private AddressData jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData = null;
   public LinkedList a;
@@ -204,7 +204,7 @@ public class ConditionSearchManager
       return 3;
     }
     this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fab(this, localFile));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new faa(this, localFile));
     return 0;
   }
   
@@ -359,7 +359,7 @@ public class ConditionSearchManager
     {
       localArrayList = new ArrayList(this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.size());
       localArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.values());
-      Collections.sort(localArrayList, new faa(this));
+      Collections.sort(localArrayList, new ezz(this));
     }
     return localArrayList;
   }
@@ -451,12 +451,12 @@ public class ConditionSearchManager
       a(false);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fad(this, (String)localObject, paramGetResourceRespInfo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fac(this, (String)localObject, paramGetResourceRespInfo));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new fae(this, paramBoolean));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new fad(this, paramBoolean));
   }
   
   public void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString1, String[] paramArrayOfString2)

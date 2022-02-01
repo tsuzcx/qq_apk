@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 
 public class fsf
-  implements View.OnClickListener
 {
-  public fsf(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public int a;
+  public int b;
   
-  public void onClick(View paramView)
+  public fsf(LocalFileBrowserActivity paramLocalFileBrowserActivity)
   {
-    LocalFileBrowserActivity.a(this.a);
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+  }
+  
+  public fsf(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

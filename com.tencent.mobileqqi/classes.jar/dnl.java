@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
 
-class dnl
-  implements DialogInterface.OnClickListener
+public class dnl
+  extends Handler
 {
-  dnl(dni paramdni) {}
+  public dnl(SubaccountUgActivity paramSubaccountUgActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    SubAccountAssistantForward.b(this.a.a.b);
-    SubAccountAssistantForward.a(this.a.a.b);
-    SubAccountAssistantForward.a(this.a.a.b, this.a.a, this.a.a.b.getAccount());
-    this.a.a.finish();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

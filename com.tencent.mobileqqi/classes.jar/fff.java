@@ -1,61 +1,37 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.model.QZoneManager.FeedType;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 
 public class fff
-  extends Handler
+  extends BroadcastReceiver
 {
-  public fff(QQAppInterface paramQQAppInterface, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public fff(QQAppInterface paramQQAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMessage.what)
+    int i;
+    if (paramIntent.getAction().equals("com.tencent.qzone.cleanunreadcount"))
     {
-    }
-    do
-    {
-      return;
-      paramMessage = (QQAppInterface)((WeakReference)paramMessage.obj).get();
-      if (paramMessage != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(QQAppInterface.jdField_b_of_type_JavaLangString, 2, "getOnlineFriend app is null");
-    return;
-    long l1 = QQAppInterface.bg;
-    long l2 = SystemClock.uptimeMillis();
-    long l3 = l2 - this.a.jdField_b_of_type_Long;
-    if ((!"0".equals(paramMessage.a())) && (l3 > QQAppInterface.bg))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(QQAppInterface.jdField_b_of_type_JavaLangString, 2, "getOnlineFriend");
-      }
-      this.a.jdField_b_of_type_Long = l2;
-      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.a(1);
-      if (localFriendListHandler != null) {
-        localFriendListHandler.d(paramMessage.a(), (byte)0);
+      i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
+      paramContext = (QZoneManagerImp)this.a.getManager(9);
+      if (paramContext != null)
+      {
+        if (i != 0) {
+          break label62;
+        }
+        if (paramContext.a(QZoneManager.FeedType.friendSpace) > 0) {
+          paramContext.a(QZoneManager.FeedType.friendSpace, 0, 0L, null);
+        }
       }
     }
-    if (l3 < QQAppInterface.bg) {
-      l1 = QQAppInterface.bg - l3;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(QQAppInterface.jdField_b_of_type_JavaLangString, 2, "getOnlineFriend send next msg " + l1);
-      }
-      paramMessage = this.a.a.obtainMessage(0, new WeakReference(paramMessage));
-      this.a.a.sendMessageDelayed(paramMessage, l1);
+    label62:
+    while ((i != 1) || (paramContext.a(QZoneManager.FeedType.mySpacefeed) <= 0)) {
       return;
     }
+    paramContext.a(QZoneManager.FeedType.mySpacefeed, 0, 0L, null);
   }
 }
 

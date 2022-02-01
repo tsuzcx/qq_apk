@@ -2,11 +2,11 @@ package cooperation.qzone.util;
 
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import idi;
+import idh;
 
 public abstract class UrlKeyGenerator
 {
-  public static final UrlKeyGenerator a = new idi();
+  public static final UrlKeyGenerator a = new idh();
   private static final String a = "http://";
   private static final String b = "https://";
   

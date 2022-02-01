@@ -1,33 +1,20 @@
-import android.content.res.Resources;
-import android.graphics.NinePatch;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import com.tencent.mobileqq.bubble.VipBubbleDrawable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
 
-public final class fld
-  extends Drawable.ConstantState
+public class fld
+  implements TextWatcher
 {
-  public final NinePatch a;
+  public fld(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public fld(NinePatch paramNinePatch)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a = paramNinePatch;
+    this.a.b = true;
   }
   
-  public int getChangingConfigurations()
-  {
-    return 0;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public Drawable newDrawable()
-  {
-    return new VipBubbleDrawable(null, this);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new VipBubbleDrawable(paramResources, this);
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

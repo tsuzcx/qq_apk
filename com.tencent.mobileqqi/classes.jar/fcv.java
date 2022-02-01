@@ -1,10 +1,8 @@
-import java.util.List;
-
 public class fcv
 {
   public int a;
   public String a;
-  public List a;
+  public boolean a;
 }
 
 

@@ -15,10 +15,23 @@ public class dyr
   
   public void onClick(View paramView)
   {
-    if ((GrayTipsItemBuilder.t(this.a) instanceof Activity))
+    String str;
+    if ((GrayTipsItemBuilder.v(this.a) instanceof Activity))
     {
-      ChatActivityUtils.a(GrayTipsItemBuilder.p(this.a), (Activity)GrayTipsItemBuilder.u(this.a), GrayTipsItemBuilder.D(this.a).a, true, true, null);
-      ReportController.b(GrayTipsItemBuilder.q(this.a), "CliOper", "", "", "Multi_call", "Clk_discuss_tips", 0, 0, "", "", "", "");
+      if (GrayTipsItemBuilder.E(this.a).jdField_a_of_type_Int != 1006) {
+        break label132;
+      }
+      str = GrayTipsItemBuilder.F(this.a).jdField_a_of_type_JavaLangString;
+      paramView = null;
+    }
+    for (;;)
+    {
+      ChatActivityUtils.a(GrayTipsItemBuilder.r(this.a), (Activity)GrayTipsItemBuilder.w(this.a), GrayTipsItemBuilder.H(this.a).jdField_a_of_type_Int, paramView, GrayTipsItemBuilder.I(this.a).d, str, true, GrayTipsItemBuilder.J(this.a).b, true, true, null, "");
+      ReportController.b(GrayTipsItemBuilder.s(this.a), "CliOper", "", "", "Two_call", "Clk_addfrd_tips", 0, 0, "", "", "", "");
+      return;
+      label132:
+      paramView = GrayTipsItemBuilder.G(this.a).jdField_a_of_type_JavaLangString;
+      str = null;
     }
   }
   

@@ -66,7 +66,7 @@
     <uses-feature android:name="android.hardware.location.network" android:required="false"/>
     <uses-feature android:name="android.hardware.telephony" android:required="false"/>
     <application android:allowBackup="false" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/APKTOOL_DUPLICATE_string_0x7f0d0bb7" android:name="com.tencent.common.app.BaseApplicationImpl" android:networkSecurityConfig="@xml/APKTOOL_DUPLICATE_xml_0x7f060003" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0262">
-        <meta-data android:name="com.tencent.rdm.uuid" android:value="709357e5-7b77-4155-a0b5-efc1b397cf79"/>
+        <meta-data android:name="com.tencent.rdm.uuid" android:value="fe187389-0b69-487a-98dc-392be9ad1ab8"/>
         <meta-data android:name="DBVersion" android:value="85"/>
         <meta-data android:name="SC_DBVersion" android:value="26"/>
         <meta-data android:name="QfavDBVersion" android:value="5"/>
@@ -851,6 +851,7 @@
         <meta-data android:name="InstallChannel" android:value="debug"/>
         <uses-library android:name="com.google.android.media.effects" android:required="false"/>
         <uses-library android:name="com.motorola.hardware.frontcamera" android:required="false"/>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.zebra.WatermarkPluginProxyActivity" android:process=":plugin" android:screenOrientation="portrait" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0267" android:windowSoftInputMode="adjustPan"/>
         <activity android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.zebra.ZebraPluginProxyActivity" android:process=":zebra" android:screenOrientation="portrait" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0267" android:windowSoftInputMode="adjustPan"/>
         <activity android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.demoji.DEmojiPluginProxyActivity" android:process=":demoji" android:screenOrientation="portrait" android:theme="@style/APKTOOL_DUPLICATE_style_0x7f0e0267" android:windowSoftInputMode="adjustPan"/>

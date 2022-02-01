@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.open.agent.AuthorityActivity;
+import org.json.JSONObject;
 
 public class hit
   implements DialogInterface.OnClickListener
 {
-  public hit(AuthorityActivity paramAuthorityActivity) {}
+  public hit(AuthorityActivity paramAuthorityActivity, int paramInt, JSONObject paramJSONObject) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 

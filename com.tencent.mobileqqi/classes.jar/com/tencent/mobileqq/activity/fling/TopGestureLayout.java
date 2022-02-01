@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import ehd;
+import ehc;
 
 public class TopGestureLayout
   extends RelativeLayout
@@ -49,7 +49,7 @@ public class TopGestureLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new ehd(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new ehc(this, paramContext));
   }
   
   private boolean a()

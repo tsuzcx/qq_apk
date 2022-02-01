@@ -1,25 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.message.AccostMessageProcessor;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class fir
-  implements fiw
 {
-  public fir(AccostMessageProcessor paramAccostMessageProcessor, byte[] paramArrayOfByte, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
+  public long e;
   
-  public ToServiceMsg a()
+  public fir(AccostMessageProcessor paramAccostMessageProcessor, long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList paramArrayList, String paramString)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageAccostMessageProcessor.a.a("MessageSvc.GetMsgV4");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "--->getC2CMessage cChannel: 4vCookies: " + this.jdField_a_of_type_ArrayOfByte + ",cSyncFlag:" + this.jdField_a_of_type_Int);
-    }
-    localToServiceMsg.extraData.putByte("cChannel", (byte)4);
-    localToServiceMsg.extraData.putByteArray("vCookies", this.jdField_a_of_type_ArrayOfByte);
-    localToServiceMsg.extraData.putInt("cSyncFlag", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putByte("onlineSyncFlag", (byte)1);
-    return localToServiceMsg;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public fir(AccostMessageProcessor paramAccostMessageProcessor, long paramLong, ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 

@@ -1,22 +1,77 @@
-import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
 public class dll
-  implements View.OnClickListener
+  extends FriendListObserver
 {
   public dll(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void onClick(View paramView)
+  void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
+    ThreadManager.a().post(new dlm(this, paramString, paramInt));
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
+    for (;;)
+    {
+      return;
+      int i;
+      if (SubAccountBindActivity.a(this.a) != null) {
+        i = SubAccountBindActivity.a(this.a).getChildCount();
+      }
+      while (j < SubAccountBindActivity.a(this.a).size())
+      {
+        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
+        {
+          TextView localTextView1 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131231000);
+          TextView localTextView2 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131231001);
+          localTextView1.setText(ContactUtils.g(this.a.b, paramString));
+          localTextView2.setText(this.a.b.b(paramString));
+          a(paramString, j);
+          return;
+        }
+        j += 1;
+        continue;
+        i = 0;
+      }
     }
-    paramView = new Intent(this.a, SubLoginActivity.class);
-    this.a.startActivity(paramView);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
+    for (;;)
+    {
+      return;
+      int i;
+      if (SubAccountBindActivity.a(this.a) != null) {
+        i = SubAccountBindActivity.a(this.a).getChildCount();
+      }
+      while (j < SubAccountBindActivity.a(this.a).size())
+      {
+        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
+        {
+          a(paramString, j);
+          return;
+        }
+        j += 1;
+        continue;
+        i = 0;
+      }
+    }
   }
 }
 

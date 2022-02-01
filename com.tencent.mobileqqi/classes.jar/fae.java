@@ -1,26 +1,75 @@
+import SummaryCard.RespCondSearch;
 import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class fae
-  implements Runnable
+  extends FriendListObserver
 {
-  public fae(ConditionSearchManager paramConditionSearchManager, boolean paramBoolean) {}
+  public fae(ConditionSearchManager paramConditionSearchManager) {}
   
-  public void run()
+  protected void a(long paramLong, boolean paramBoolean, Object paramObject, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.jdField_a_of_type_JavaUtilLinkedList != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "searchseq = " + this.a.jdField_a_of_type_Long + " | seq = " + paramLong);
+    }
+    if (this.a.jdField_a_of_type_Long != paramLong) {
+      return;
+    }
+    if ((paramBoolean) && (paramInt == 0))
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.jdField_a_of_type_JavaUtilLinkedList.iterator();
-      while (localIterator.hasNext()) {
-        ((ConditionSearchManager.IConfigListener)localIterator.next()).a(1, this.jdField_a_of_type_Boolean);
+      paramObject = (RespCondSearch)paramObject;
+      ConditionSearchManager localConditionSearchManager = this.a;
+      if (paramObject.cEndFlag == 0)
+      {
+        paramBoolean = true;
+        localConditionSearchManager.jdField_c_of_type_Boolean = paramBoolean;
+        this.a.m = paramObject.iPage;
+        this.a.b = paramObject.dwSessionID;
+        if (this.a.jdField_a_of_type_JavaUtilList != null) {
+          break label290;
+        }
+        this.a.jdField_a_of_type_JavaUtilList = paramObject.vUserList;
       }
+      for (;;)
+      {
+        if ((this.a.n >= 2) || ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() >= 10)) || (!this.a.jdField_c_of_type_Boolean)) {
+          break label330;
+        }
+        paramObject = this.a;
+        paramObject.n += 1;
+        ((FriendListHandler)ConditionSearchManager.a(this.a).a(1)).a(this.a.jdField_a_of_type_Long, this.a.m + 1, this.a.b, this.a.j, this.a.k, this.a.l, this.a.jdField_c_of_type_ArrayOfJavaLangString, this.a.d);
+        return;
+        paramBoolean = false;
+        break;
+        label290:
+        if ((paramObject.vUserList != null) && (!paramObject.vUserList.isEmpty())) {
+          this.a.jdField_a_of_type_JavaUtilList.addAll(paramObject.vUserList);
+        }
+      }
+      label330:
+      if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() < 6)) {
+        this.a.jdField_c_of_type_Boolean = false;
+      }
+      this.a.a(true, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_c_of_type_Boolean);
+      return;
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a());
+    if ((paramBoolean) && (paramInt != 0))
+    {
+      this.a.jdField_c_of_type_Boolean = false;
+      this.a.a(true, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_c_of_type_Boolean);
+      return;
     }
+    if (this.a.n == 0)
+    {
+      this.a.a(false, null, this.a.jdField_c_of_type_Boolean);
+      return;
+    }
+    this.a.a(true, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_c_of_type_Boolean);
   }
 }
 

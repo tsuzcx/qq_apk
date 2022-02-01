@@ -1,45 +1,43 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
 
 public class dxl
-  extends Animation
+  extends View
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private float b = 0.0F;
-  
-  public dxl(ComboAnimation3 paramComboAnimation3) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public dxl(ComboAnimation3 paramComboAnimation3, Context paramContext)
   {
-    float f2 = 1.5F;
-    float f1 = 0.0F;
-    if (paramFloat < this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 5.0F) {
-      paramFloat = f2;
-    }
-    for (;;)
+    super(paramContext);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Drawable[] arrayOfDrawable = this.a.a;
+    int j = arrayOfDrawable.length;
+    int i = 0;
+    while (i < j)
     {
-      paramTransformation.setAlpha(f1);
-      paramTransformation.getMatrix().setScale(paramFloat, paramFloat, this.jdField_a_of_type_Float, this.b);
-      return;
-      if (paramFloat < 13.0F * this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float)
-      {
-        f1 = 0.5F - (paramFloat - this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 8.0F) * 0.5F;
-        paramFloat = 1.5F + (paramFloat - this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 8.0F) * 0.5F;
-      }
-      else
-      {
-        paramFloat = 2.0F;
-      }
+      arrayOfDrawable[i].draw(paramCanvas);
+      i += 1;
     }
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
-    this.b = (paramInt2 * 0.5F);
+    paramInt1 = 0;
+    paramInt3 = paramInt4 - paramInt2;
+    Drawable[] arrayOfDrawable = this.a.a;
+    paramInt4 = arrayOfDrawable.length;
+    paramInt2 = 0;
+    while (paramInt1 < paramInt4)
+    {
+      Drawable localDrawable = arrayOfDrawable[paramInt1];
+      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
+      paramInt2 += localDrawable.getIntrinsicWidth();
+      paramInt1 += 1;
+    }
   }
 }
 

@@ -34,8 +34,8 @@ public class NoFileRelativeLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130903501, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232738));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232724));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232737));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232723));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231016));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }

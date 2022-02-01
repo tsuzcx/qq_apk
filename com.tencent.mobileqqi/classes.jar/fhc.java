@@ -1,70 +1,42 @@
-import android.os.Binder;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.os.MessageQueue;
-import com.tencent.widget.TraceUtils;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.Executor;
 
 public class fhc
-  extends HandlerThread
+  implements Executor
 {
-  public fhc(String paramString)
+  Runnable jdField_a_of_type_JavaLangRunnable;
+  final Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  
+  protected void a()
   {
-    super(paramString);
+    try
+    {
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
+      if (localRunnable != null) {
+        ThreadManager.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      return;
+    }
+    finally {}
   }
   
-  protected void onLooperPrepared()
+  public void execute(Runnable paramRunnable)
   {
-    for (;;)
+    try
     {
-      Message localMessage;
-      try
-      {
-        Method localMethod = MessageQueue.class.getDeclaredMethod("next", new Class[0]);
-        localMethod.setAccessible(true);
-        MessageQueue localMessageQueue = Looper.myQueue();
-        Binder.clearCallingIdentity();
-        Binder.clearCallingIdentity();
-        localMessage = (Message)localMethod.invoke(localMessageQueue, new Object[0]);
-        if (localMessage == null) {
-          return;
-        }
-        if (localMessage.getCallback() != null)
-        {
-          TraceUtils.a(localMessage.getCallback().getClass().getName() + "." + "run");
-          localMessage.getCallback().run();
-          TraceUtils.a();
-          Binder.clearCallingIdentity();
-          localMessage.recycle();
-          continue;
-        }
-        localHandler = localMessage.getTarget();
+      this.jdField_a_of_type_JavaUtilQueue.offer(new fhd(this, paramRunnable));
+      if (this.jdField_a_of_type_JavaLangRunnable == null) {
+        a();
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      Handler localHandler;
-      Object localObject = Handler.class.getDeclaredField("mCallback");
-      ((Field)localObject).setAccessible(true);
-      localObject = (Handler.Callback)((Field)localObject).get(localHandler);
-      if (localObject != null)
-      {
-        TraceUtils.a(localObject.getClass().getName() + "." + "dispatchMsg");
-        ((Handler.Callback)localObject).handleMessage(localMessage);
-        TraceUtils.a();
-      }
-      else
-      {
-        TraceUtils.a(localHandler + "." + "dispatchMsg");
-        localHandler.handleMessage(localMessage);
-        TraceUtils.a();
-      }
+      return;
+    }
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
     }
   }
 }

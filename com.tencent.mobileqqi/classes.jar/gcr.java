@@ -1,15 +1,14 @@
 import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
-import com.tencent.mobileqq.music.SongInfo;
 
 public class gcr
   implements Runnable
 {
-  public gcr(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, SongInfo paramSongInfo) {}
+  public gcr(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
+    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlayStateChanged(this.jdField_a_of_type_Int);
   }
 }
 

@@ -50,8 +50,8 @@ public class bx
     if (this.jdField_a_of_type_By == null)
     {
       this.jdField_a_of_type_By = new by(this, null);
-      this.jdField_a_of_type_By.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131231293));
-      this.jdField_a_of_type_By.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231294));
+      this.jdField_a_of_type_By.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131231292));
+      this.jdField_a_of_type_By.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231293));
     }
     this.jdField_a_of_type_By.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_Array2dOfInt[paramInt][0]);
     paramView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDrawable(this.jdField_b_of_type_Array2dOfInt[paramInt][1]);

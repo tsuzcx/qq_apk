@@ -1,32 +1,15 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.Comparator;
 
-class ery
-  implements Runnable
+public class ery
+  implements Comparator
 {
-  ery(erx paramerx) {}
+  private ery(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void run()
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberListInnerFrame", 2, "read troop members from database after updating data from server");
-      }
-      this.a.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0).edit().putLong("key_last_update_time" + this.a.a.b, System.currentTimeMillis()).commit();
-      this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      Object localObject = TroopMemberListInnerFrame.a(this.a.a, this.a.a.b);
-      localObject = this.a.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, localObject);
-      this.a.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-      return;
-    }
-    catch (Exception localException) {}
+    return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
   }
 }
 

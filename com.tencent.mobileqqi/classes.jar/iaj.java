@@ -1,50 +1,74 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
-import cooperation.plugin.PluginManagerV2;
+import cooperation.plugin.PluginManagerV2.LaunchState;
 
 public class iaj
-  implements DialogInterface.OnClickListener
+  extends OnPluginInstallListener.Stub
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  IPluginManager.OnPluginReadyListener jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener;
-  IPluginManager.PluginParams jdField_a_of_type_CooperationPluginIPluginManager$PluginParams;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  private PluginManagerV2.LaunchState a;
   
-  private iaj(PluginManagerV2 paramPluginManagerV2, IPluginManager.OnPluginReadyListener paramOnPluginReadyListener, boolean paramBoolean1, Context paramContext, IPluginManager.PluginParams paramPluginParams, boolean paramBoolean2)
+  public iaj(PluginManagerV2.LaunchState paramLaunchState)
   {
-    this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
-    this.b = paramBoolean2;
+    this.a = paramLaunchState;
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInstallBegin(String paramString)
   {
-    int i = 0;
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case -1: 
-      PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2, 1, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallBegin." + paramString);
     }
-    if (this.jdField_a_of_type_Boolean) {
-      paramInt = i;
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppProgressDialog != null)) {
+      this.a.jdField_a_of_type_AndroidAppProgressDialog.show();
     }
-    for (;;)
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallDownloadProgress." + paramString);
+    }
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppProgressDialog != null))
     {
-      PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2, paramInt, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
-      return;
-      paramInt = i;
-      if (this.b) {
-        paramInt = 2;
+      this.a.jdField_a_of_type_AndroidAppProgressDialog.setMax(paramInt2);
+      this.a.jdField_a_of_type_AndroidAppProgressDialog.setProgress(paramInt1);
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallError." + paramString + "," + paramInt);
+    }
+    paramString = this.a;
+    IPluginManager.OnPluginReadyListener localOnPluginReadyListener;
+    if ((paramString != null) && (paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null))
+    {
+      localOnPluginReadyListener = paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener;
+      if (paramInt != 2) {
+        break label86;
       }
+    }
+    label86:
+    for (boolean bool = true;; bool = false)
+    {
+      localOnPluginReadyListener.a(bool, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+      return;
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallFinish." + paramString);
+    }
+    paramString = this.a;
+    if ((!paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_AndroidAppProgressDialog != null)) {
+      paramString.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+    }
+    if ((paramString != null) && (paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null)) {
+      paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
     }
   }
 }

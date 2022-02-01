@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
+import cax;
 import cay;
 import caz;
 import cba;
@@ -17,7 +18,6 @@ import cbc;
 import cbd;
 import cbe;
 import cbf;
-import cbg;
 import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.biz.eqq.EnterpriseDetailActivity;
 import com.tencent.biz.ui.CustomMenuBar;
@@ -49,19 +49,19 @@ public class ChatForEnterpriseActivity
   extends ChatActivity
 {
   private static final String z = "Q.enterprise.ChatForEnterpriseActivity";
-  private cbg jdField_a_of_type_Cbg;
+  private cbf jdField_a_of_type_Cbf;
   private CustomMenuBar jdField_a_of_type_ComTencentBizUiCustomMenuBar;
-  private EnterpriseQQObserver jdField_a_of_type_ComTencentMobileqqAppEnterpriseQQObserver = new cbd(this);
+  private EnterpriseQQObserver jdField_a_of_type_ComTencentMobileqqAppEnterpriseQQObserver = new cbc(this);
   private PublicAccountInfo jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo;
   List jdField_a_of_type_JavaUtilList = null;
-  private Handler jdField_b_of_type_AndroidOsHandler = new cay(this);
+  private Handler jdField_b_of_type_AndroidOsHandler = new cax(this);
   private View jdField_b_of_type_AndroidViewView;
   protected MessageObserver b;
   private ImageView c;
   
   public ChatForEnterpriseActivity()
   {
-    this.jdField_b_of_type_ComTencentMobileqqAppMessageObserver = new caz(this);
+    this.jdField_b_of_type_ComTencentMobileqqAppMessageObserver = new cay(this);
   }
   
   private void C()
@@ -81,11 +81,11 @@ public class ChatForEnterpriseActivity
     this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131231110);
     this.jdField_a_of_type_ComTencentBizUiCustomMenuBar = ((CustomMenuBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131231112));
     localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131231109);
-    ((View)localObject).setOnClickListener(new cba(this));
+    ((View)localObject).setOnClickListener(new caz(this));
     this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setCoverView((View)localObject);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setOnMenuItemClickListener(new cbb(this));
-    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setOnBackClickListner(new cbc(this));
+    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setOnMenuItemClickListener(new cba(this));
+    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setOnBackClickListner(new cbb(this));
   }
   
   private void D()
@@ -122,7 +122,7 @@ public class ChatForEnterpriseActivity
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.isSyncLbs) && (!this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected) && (!this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs))
       {
-        localObject = DialogUtil.a(this, 230, getString(2131558608), String.format(getString(2131558609), new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d }), 2131558610, 2131558611, new cbe(this, (PublicAccountDataManager)localObject), new cbf(this, (PublicAccountDataManager)localObject));
+        localObject = DialogUtil.a(this, 230, getString(2131558608), String.format(getString(2131558609), new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d }), 2131558610, 2131558611, new cbd(this, (PublicAccountDataManager)localObject), new cbe(this, (PublicAccountDataManager)localObject));
         ((QQCustomDialog)localObject).setCanceledOnTouchOutside(true);
         ((QQCustomDialog)localObject).show();
       }
@@ -158,9 +158,9 @@ public class ChatForEnterpriseActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.enterprise.ChatForEnterpriseActivity", 2, "getMyLocationAndSend(): BEGIN");
     }
-    this.jdField_a_of_type_Cbg = new cbg(this, 1, 1, 1, 8);
+    this.jdField_a_of_type_Cbf = new cbf(this, 1, 1, 1, 8);
     SOSOMapLBSApi.getInstance().verifyRegCode("QQ2013", "LWPAH-5CHEJ-Y6CR2-AQPLX-IV2JQ");
-    SOSOMapLBSApi.getInstance().requestLocationUpdate(getApplicationContext(), this.jdField_a_of_type_Cbg);
+    SOSOMapLBSApi.getInstance().requestLocationUpdate(getApplicationContext(), this.jdField_a_of_type_Cbf);
     if (QLog.isColorLevel()) {
       QLog.d("Q.enterprise.ChatForEnterpriseActivity", 2, "getMyLocationAndSend(): END");
     }
@@ -287,7 +287,7 @@ public class ChatForEnterpriseActivity
     this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     sendBroadcast(new Intent("com.tencent.mobileqq.RemoveLbsObserver"));
     SOSOMapLBSApi.getInstance().removeLocationUpdate();
-    this.jdField_a_of_type_Cbg = null;
+    this.jdField_a_of_type_Cbf = null;
   }
   
   protected void e()

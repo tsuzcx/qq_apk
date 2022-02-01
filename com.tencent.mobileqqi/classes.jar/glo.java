@@ -1,22 +1,41 @@
-import com.tencent.mobileqq.data.SubAccountMessage;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountAssistantCache;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountMessageData;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.mobileqq.subaccount.logic.SubAccountGetMessageControll;
+import com.tencent.qphone.base.util.QLog;
 
 public class glo
-  implements Comparator
+  extends MessageObserver
 {
-  private glo(SubAccountAssistantCache paramSubAccountAssistantCache) {}
+  public glo(SubAccountGetMessageControll paramSubAccountGetMessageControll) {}
   
-  public int a(SubAccountMessageData paramSubAccountMessageData1, SubAccountMessageData paramSubAccountMessageData2)
+  public void b(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    if ((paramSubAccountMessageData1 != null) && (paramSubAccountMessageData1.a() != null) && (paramSubAccountMessageData2 != null) && (paramSubAccountMessageData2.a() != null)) {
-      return (int)(paramSubAccountMessageData2.a().time - paramSubAccountMessageData1.a().time);
+    paramString = SubAccountGetMessageControll.a(this.a);
+    if ((paramBoolean) && (paramSubAccountBackProtocData != null)) {}
+    try
+    {
+      if (!paramSubAccountBackProtocData.a)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： is get msg last finish = false");
+        }
+        return;
+      }
+      SubAccountGetMessageControll.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： observer = >onGetSubAccountMsgNotify pushNum =" + SubAccountGetMessageControll.a(this.a));
+      }
+      if (SubAccountGetMessageControll.a(this.a) > 0)
+      {
+        SubAccountGetMessageControll.a(this.a, 0);
+        this.a.a(false);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： observer = >onGetSubAccountMsgNotify end");
+      }
+      return;
     }
-    if ((paramSubAccountMessageData2 == null) || (paramSubAccountMessageData2.a() == null)) {
-      return -1;
-    }
-    return 1;
+    finally {}
   }
 }
 

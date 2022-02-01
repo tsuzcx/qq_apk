@@ -10,14 +10,12 @@ public class dvc
   {
     try
     {
-      if ((VerifyPhoneNumActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      if ((VerifyPhoneNumActivity.a(this.a) != null) && (VerifyPhoneNumActivity.a(this.a).isShowing()))
       {
-        VerifyPhoneNumActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
-        VerifyPhoneNumActivity.a(this.a).b(2131562645);
+        VerifyPhoneNumActivity.a(this.a).dismiss();
+        VerifyPhoneNumActivity.a(this.a).cancel();
       }
-      if ((VerifyPhoneNumActivity.a(this.a) != null) && (!VerifyPhoneNumActivity.a(this.a).isShowing())) {
-        VerifyPhoneNumActivity.a(this.a).show();
-      }
+      VerifyPhoneNumActivity.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

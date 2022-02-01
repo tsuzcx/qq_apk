@@ -10,9 +10,9 @@ public class epo
   
   public void run()
   {
-    NearFieldDiscussHandler localNearFieldDiscussHandler = (NearFieldDiscussHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(40);
     nearfield_discuss.LBSInfo localLBSInfo = CreateFaceToFaceDiscussionActivity.a(this.a);
-    localNearFieldDiscussHandler.c(this.a.a.toString(), this.a.jdField_b_of_type_Int, localLBSInfo);
+    ((NearFieldDiscussHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(40)).b(this.a.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.jdField_b_of_type_Int, localLBSInfo);
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 

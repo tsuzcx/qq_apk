@@ -1,3 +1,5 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
@@ -7,27 +9,19 @@ import com.tencent.mobileqq.statistics.ReportController;
 public class djc
   implements CompoundButton.OnCheckedChangeListener
 {
-  public djc(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public djc(SoundAndVibrateActivity paramSoundAndVibrateActivity, SharedPreferences paramSharedPreferences) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = 1;
-    if (paramBoolean)
+    paramCompoundButton = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    paramCompoundButton.putBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.b.a(), paramBoolean);
+    paramCompoundButton.commit();
+    paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.b;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      this.a.b.d(1);
-      paramCompoundButton = this.a.b;
-      if (!paramBoolean) {
-        break label68;
-      }
-    }
-    for (;;)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "ThemeSound", "SwitchTabSound", 0, i, "", "", "", "");
       return;
-      this.a.b.d(0);
-      break;
-      label68:
-      i = 0;
     }
   }
 }

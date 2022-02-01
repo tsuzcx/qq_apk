@@ -1,11 +1,16 @@
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+
 class doq
   implements Runnable
 {
-  doq(doo paramdoo, String paramString) {}
+  doq(don paramdon) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Doo.b(this.jdField_a_of_type_JavaLangString);
+    this.a.a.a.removeMessages(1);
+    this.a.a.a.removeMessages(1);
+    this.a.a.a.sendEmptyMessageDelayed(1, 500L);
   }
 }
 

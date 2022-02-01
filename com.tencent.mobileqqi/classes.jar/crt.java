@@ -1,38 +1,17 @@
-import android.text.TextUtils;
+import android.os.Handler;
+import android.view.ViewStub;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.main.CommonLoadingView;
+import com.tencent.mobileqq.activity.main.CommonLoadingView.OnFirstDrawListener;
 
 public class crt
-  extends FriendListObserver
+  implements CommonLoadingView.OnFirstDrawListener
 {
-  public crt(Leba paramLeba) {}
+  public crt(Leba paramLeba, CommonLoadingView paramCommonLoadingView, ViewStub paramViewStub) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void x_()
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    do
-    {
-      Object localObject;
-      do
-      {
-        do
-        {
-          return;
-          localObject = (QZoneManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(9);
-        } while (localObject == null);
-        localObject = ((QZoneManagerImp)localObject).a();
-      } while ((TextUtils.isEmpty((CharSequence)localObject)) || (((String)localObject).length() <= 3) || (!((String)localObject).equals(paramString)) || (this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter == null));
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba", 2, "FriendListObserver.newMsgUin=" + (String)localObject);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.notifyDataSetChanged();
-      Leba.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.lebatab.leba", 2, "onUpdateCustomHead. notifyData.");
+    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.post(new cru(this));
   }
 }
 

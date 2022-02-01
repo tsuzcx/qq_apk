@@ -1,30 +1,32 @@
 import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.widget.ActionSheet;
 
 public class fli
-  implements IphonePickerView.PickerViewAdapter
+  implements IphonePickerView.IphonePickListener
 {
   public fli(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public int a()
+  public void a()
   {
-    return 1;
+    if ((this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.a.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
+    }
   }
   
-  public int a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.a.c == 0) {
-      return ConditionSearchFriendActivity.b.length;
+    if (this.a.c == 0)
+    {
+      this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(ConditionSearchFriendActivity.jdField_b_of_type_ArrayOfJavaLangString[paramInt2]);
+      this.a.jdField_b_of_type_Int = paramInt2;
+      return;
     }
-    return ConditionSearchFriendActivity.a.length;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (this.a.c == 0) {
-      return ConditionSearchFriendActivity.b[paramInt2];
-    }
-    return ConditionSearchFriendActivity.a[paramInt2];
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(ConditionSearchFriendActivity.jdField_a_of_type_ArrayOfJavaLangString[paramInt2]);
+    this.a.jdField_a_of_type_Int = paramInt2;
   }
 }
 

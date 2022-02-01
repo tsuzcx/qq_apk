@@ -1,11 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
+import com.tencent.widget.AbsListView;
 
 public class erq
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends SlideDetectListView.OnScrollGroupFloatingListener
 {
-  TextView a;
-  TextView b;
+  public erq(TroopListInnerFrame paramTroopListInnerFrame) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (TroopListInnerFrame.a(this.a) != null) {
+      TroopListInnerFrame.a(this.a, paramInt1);
+    }
+  }
 }
 
 

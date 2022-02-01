@@ -10,8 +10,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import gbh;
 import gbi;
-import gbj;
 
 public class Utils
 {
@@ -21,7 +21,7 @@ public class Utils
   {
     paramContext = new Dialog(paramContext, 2131624405);
     paramContext.setContentView(2130903677);
-    TextView localTextView = (TextView)paramContext.findViewById(2131231469);
+    TextView localTextView = (TextView)paramContext.findViewById(2131231468);
     if (localTextView != null) {
       localTextView.setText(paramString1);
     }
@@ -29,11 +29,11 @@ public class Utils
     if (paramString1 != null) {
       paramString1.setText(paramString2);
     }
-    paramString1 = (TextView)paramContext.findViewById(2131231472);
+    paramString1 = (TextView)paramContext.findViewById(2131231471);
     if (paramString1 != null) {
       paramString1.setText(17039360);
     }
-    paramString1 = (TextView)paramContext.findViewById(2131231473);
+    paramString1 = (TextView)paramContext.findViewById(2131231472);
     if (paramString1 != null) {
       paramString1.setText(17039370);
     }
@@ -71,20 +71,20 @@ public class Utils
   
   public static void a(Context paramContext, int paramInt, String paramString, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
-    paramContext = a(paramContext, paramContext.getResources().getString(paramInt), paramString, new gbi());
-    paramString = (TextView)paramContext.findViewById(2131231473);
+    paramContext = a(paramContext, paramContext.getResources().getString(paramInt), paramString, new gbh());
+    paramString = (TextView)paramContext.findViewById(2131231472);
     if (paramString != null)
     {
       a();
       paramString.setOnClickListener(paramOnClickListener1);
     }
-    paramString = (TextView)paramContext.findViewById(2131231472);
+    paramString = (TextView)paramContext.findViewById(2131231471);
     if (paramString != null)
     {
       if (paramOnClickListener2 != null) {
         break label84;
       }
-      paramString.setOnClickListener(new gbj());
+      paramString.setOnClickListener(new gbi());
     }
     for (;;)
     {

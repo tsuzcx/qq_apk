@@ -1,58 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class cps
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public cps(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 1;
-    int k = VipUtils.a(this.a.b, null);
-    int i;
-    if ((k & 0x2) != 0)
-    {
-      i = 1;
-      if ((k & 0x4) == 0) {
-        break label91;
-      }
+    paramDialogInterface = GroupManagerActivity.a(this.a).getInputValue();
+    if (paramDialogInterface.equals("")) {
+      paramDialogInterface = this.a.getResources().getString(2131563127);
     }
     for (;;)
     {
-      if ((i == 0) && (j == 0)) {
-        break label96;
+      if (GroupManagerActivity.a(this.a) == 0) {
+        if (this.a.jdField_a_of_type_JavaUtilList.size() > 0)
+        {
+          b = (byte)(((Groups)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_JavaUtilList.size() - 1)).seqid + 1);
+          GroupManagerActivity.a(this.a, this.a.b.a(b, paramDialogInterface));
+          if (QLog.isColorLevel()) {
+            QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "AddFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+          }
+          if (GroupManagerActivity.a(this.a)) {
+            this.a.a(2131561617);
+          }
+          ReportController.b(this.a.b, "CliOper", "", "", "category", "Add_category", 0, 0, "", "", "", "");
+        }
       }
-      if (30 != this.a.a.size()) {
-        break label143;
+      while (1 != GroupManagerActivity.a(this.a)) {
+        for (;;)
+        {
+          return;
+          byte b = 1;
+        }
       }
-      paramView = new QQToast(this.a);
-      paramView.c(2000);
-      paramView.b(2131563261);
-      paramView.a();
-      return;
-      i = 0;
-      break;
-      label91:
-      j = 0;
-    }
-    label96:
-    if (16 == this.a.a.size())
-    {
-      paramView = new QQToast(this.a);
-      paramView.c(2000);
-      paramView.b(2131563260);
-      paramView.a();
+      GroupManagerActivity.a(this.a, this.a.b.b((byte)GroupManagerActivity.a(this.a).group_id, paramDialogInterface));
+      if (QLog.isColorLevel()) {
+        QLog.d(GroupManagerActivity.jdField_a_of_type_JavaLangString, 2, "EditeFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+      }
+      if (GroupManagerActivity.a(this.a)) {
+        this.a.a(2131562393);
+      }
+      ReportController.b(this.a.b, "CliOper", "", "", "category", "Name_category", 0, 0, "", "", "", "");
       return;
     }
-    label143:
-    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131561596, 2131562625, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-    GroupManagerActivity.a(this.a, 0);
   }
 }
 

@@ -1,25 +1,17 @@
 import android.view.View;
-import android.widget.Toast;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class cck
-  implements Runnable
+public class cck
+  implements View.OnClickListener
 {
-  cck(ccj paramccj, Object paramObject, View paramView) {}
+  public cck(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Ccj.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_Ccj.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_Ccj.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
-    {
-      Toast.makeText(this.jdField_a_of_type_Ccj.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ccj.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131562826), 0).show();
-      return;
-    }
-    if (this.jdField_a_of_type_Ccj.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
-      this.jdField_a_of_type_Ccj.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_Ccj.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
-    }
-    this.jdField_a_of_type_Ccj.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Ccj.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.b.b(this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

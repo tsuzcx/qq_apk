@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 
 public class frg
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
   public frg(FMRecentFileActivity paramFMRecentFileActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a.a(Integer.valueOf(-1));
-    FMRecentFileActivity.a(this.a);
+    paramView = this.a;
+    if (!this.a.b.a().a()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.c(bool);
+      FMRecentFileActivity.a(this.a);
+      return;
+    }
   }
 }
 

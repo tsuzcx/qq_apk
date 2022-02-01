@@ -1,35 +1,19 @@
-import android.view.View;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import java.util.ArrayList;
 
 public class cwu
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
   public cwu(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.a.jdField_a_of_type_Byte = 0;
-      this.a.jdField_c_of_type_Boolean = true;
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131559089));
-      continue;
-      this.a.jdField_a_of_type_Byte = 1;
-      this.a.jdField_c_of_type_Boolean = true;
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131559090));
-      continue;
-      this.a.jdField_a_of_type_Byte = 2;
-      this.a.jdField_c_of_type_Boolean = true;
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText("");
-    }
+    this.a.c();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());
+    this.a.a.a(this.a.jdField_b_of_type_JavaLangString, this.a.c, localArrayList);
   }
 }
 

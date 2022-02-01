@@ -1,5 +1,4 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -7,21 +6,16 @@ import com.tencent.qphone.base.util.BaseApplication;
 public final class hdx
   implements Runnable
 {
-  public hdx(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2) {}
+  public hdx(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
   public void run()
   {
-    String str1 = null;
+    String str = null;
     if (QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), new String[] { this.jdField_a_of_type_JavaLangString })) {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131561614);
+      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getString(2131561614);
     }
-    for (String str2 = "0";; str2 = "1")
-    {
-      if (str1 != null) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2, str1, 0).b(this.jdField_a_of_type_Int);
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Fast_launch", "Fast_launch_creat", 0, 0, this.b, str2, "", "");
-      return;
+    if (str != null) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2, str, 0).b(this.jdField_a_of_type_Int);
     }
   }
 }

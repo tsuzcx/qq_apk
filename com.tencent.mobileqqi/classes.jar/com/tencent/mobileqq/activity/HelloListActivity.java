@@ -22,10 +22,10 @@ import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.XListView;
+import cpx;
 import cpy;
 import cpz;
 import cqa;
-import cqb;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -42,9 +42,9 @@ public class HelloListActivity
   private Cursor jdField_a_of_type_AndroidDatabaseCursor;
   private DragRelativeLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout;
   private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cpz(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cpy(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private cqb jdField_a_of_type_Cqb;
+  private cqa jdField_a_of_type_Cqa;
   private Map jdField_a_of_type_JavaUtilMap;
   private int d;
   
@@ -89,8 +89,8 @@ public class HelloListActivity
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.a() == -1)
     {
       this.jdField_a_of_type_AndroidDatabaseCursor = a();
-      this.jdField_a_of_type_Cqb = new cqb(this, this.jdField_a_of_type_AndroidDatabaseCursor);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Cqb);
+      this.jdField_a_of_type_Cqa = new cqa(this, this.jdField_a_of_type_AndroidDatabaseCursor);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Cqa);
     }
   }
   
@@ -134,13 +134,13 @@ public class HelloListActivity
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     setTitle(2131562371);
     a();
-    findViewById(2131231770).setOnClickListener(new cpy(this));
-    this.jdField_a_of_type_Cqb = new cqb(this, this.jdField_a_of_type_AndroidDatabaseCursor);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231199));
+    findViewById(2131231769).setOnClickListener(new cpx(this));
+    this.jdField_a_of_type_Cqa = new cqa(this, this.jdField_a_of_type_AndroidDatabaseCursor);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231198));
     paramBundle = new View(this);
     paramBundle.setLayoutParams(new AbsListView.LayoutParams(-1, (int)DisplayUtils.a(this, 50.0F)));
     this.jdField_a_of_type_ComTencentWidgetXListView.b(paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Cqb);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Cqa);
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this);
     return true;
   }
@@ -158,7 +158,7 @@ public class HelloListActivity
   protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    this.jdField_a_of_type_Cqb.a(a());
+    this.jdField_a_of_type_Cqa.a(a());
   }
   
   public void doOnPause()
@@ -173,7 +173,7 @@ public class HelloListActivity
   {
     super.doOnResume();
     a();
-    this.jdField_a_of_type_Cqb.a(a());
+    this.jdField_a_of_type_Cqa.a(a());
   }
   
   public void onClick(View paramView)
@@ -181,7 +181,7 @@ public class HelloListActivity
     ProfileActivity.AllInOne localAllInOne = (ProfileActivity.AllInOne)paramView.getTag(2130838010);
     Object localObject = (FriendManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
     boolean bool = ((FriendManager)localObject).b(localAllInOne.jdField_a_of_type_JavaLangString);
-    if (2131231773 == paramView.getId())
+    if (2131231772 == paramView.getId())
     {
       localObject = ((FriendManager)localObject).a(localAllInOne.jdField_a_of_type_JavaLangString);
       if ((localObject == null) || (bool))
@@ -197,7 +197,7 @@ public class HelloListActivity
         ProfileActivity.a(this, paramView);
       }
     }
-    while (2131231772 != paramView.getId()) {
+    while (2131231771 != paramView.getId()) {
       for (;;)
       {
         return;
@@ -221,7 +221,7 @@ public class HelloListActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     if ((paramObject instanceof MessageRecord)) {
-      runOnUiThread(new cqa(this, (MessageRecord)paramObject));
+      runOnUiThread(new cpz(this, (MessageRecord)paramObject));
     }
   }
 }

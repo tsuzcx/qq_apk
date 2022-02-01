@@ -1,13 +1,41 @@
 import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class efz
   implements Runnable
 {
-  public efz(RecommendTroopView paramRecommendTroopView) {}
+  public efz(RecommendTroopView paramRecommendTroopView, List paramList) {}
   
   public void run()
   {
-    RecommendTroopView.a(this.a);
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_JavaUtilList.size() <= 0) {
+        break label134;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_Ege.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_Ege);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_Ege.notifyDataSetChanged();
+    }
+    for (;;)
+    {
+      RecommendTroopView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView);
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
+      {
+        ega localega = new ega(this);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localega);
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_JavaUtilList = new ArrayList();
+      break;
+      label134:
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setEmptyView(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView.b);
+    }
   }
 }
 

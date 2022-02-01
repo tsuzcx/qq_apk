@@ -1,63 +1,20 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
 import com.tencent.mobileqq.utils.QQCustomSingleChoiceDialog;
 
 public class hdj
-  extends BaseAdapter
+  implements AdapterView.OnItemClickListener
 {
   public hdj(QQCustomSingleChoiceDialog paramQQCustomSingleChoiceDialog) {}
   
-  public int getCount()
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence.length;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.inflater == null) {
-      this.a.inflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.a.inflater.inflate(2130903164, null);
-      paramView = new hdl(this.a, null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231474));
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131231475));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (hdl)paramViewGroup.getTag();
-    if (paramView.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_ArrayOfJavaLangCharSequence[paramInt]);
-      if (this.a.jdField_a_of_type_Int == paramInt) {
-        paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      }
-    }
-    else
-    {
-      return paramViewGroup;
-    }
-    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-    return paramViewGroup;
+    this.a.jdField_a_of_type_Int = paramInt;
+    QQCustomSingleChoiceDialog.a(this.a).notifyDataSetChanged();
+    this.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.a, paramInt);
   }
 }
 

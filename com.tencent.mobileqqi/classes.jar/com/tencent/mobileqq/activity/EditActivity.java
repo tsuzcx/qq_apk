@@ -14,11 +14,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import cjd;
 import cje;
 import cjf;
 import cjg;
 import cjh;
-import cji;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.emoticonview.EmoticonCallback;
 import com.tencent.mobileqq.emoticonview.EmoticonInfo;
@@ -56,7 +56,7 @@ public class EditActivity
   public static final int q = 100;
   public static final int r = 101;
   float jdField_a_of_type_Float = 1.5F;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new cji(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new cjh(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -78,25 +78,25 @@ public class EditActivity
   
   private void h()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231764));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231763));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new cje(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new cjd(this));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel = new SystemAndEmojiEmoticonPanel(this, this);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231766));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231765));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnClickListener(new cjf(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnClickListener(new cje(this));
   }
   
   private void i()
   {
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231763));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231762));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setEditableFactory(QQTextBuilder.a);
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.requestFocus();
     setTitle(this.t);
-    b(2131561977, new cjg(this));
+    b(2131561977, new cjf(this));
     d(true);
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getLayoutParams();
     int i1;
@@ -115,7 +115,7 @@ public class EditActivity
       if (localLayoutParams != null) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setLayoutParams(localLayoutParams);
       }
-      new Handler().postDelayed(new cjh(this), 500L);
+      new Handler().postDelayed(new cjg(this), 500L);
       return;
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSingleLine(false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(this.g);
@@ -234,7 +234,7 @@ public class EditActivity
     this.v = paramBundle.getIntExtra("support_emotion", 0);
     setContentView(2130903246);
     j(2130837729);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131231762));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131231761));
     if (this.v == 1) {
       h();
     }

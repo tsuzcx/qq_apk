@@ -1,37 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.text.format.Time;
 import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class gmf
-  extends Handler
+  implements FilenameFilter
 {
-  public gmf(ShareAppLogHelper paramShareAppLogHelper, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public gmf(ShareAppLogHelper paramShareAppLogHelper) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean accept(File paramFile, String paramString)
   {
-    switch (paramMessage.what)
-    {
-    }
+    if (!paramString.endsWith(".log")) {}
     do
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (ShareAppLogHelper.a(this.a) == null);
-        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
-        return;
-      } while (ShareAppLogHelper.a(this.a) == null);
-      ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
-      return;
-    } while (ShareAppLogHelper.a(this.a) == null);
-    ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
+      return false;
+      paramFile = ShareAppLogHelper.a(this.a, paramString);
+    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
+    return true;
   }
 }
 

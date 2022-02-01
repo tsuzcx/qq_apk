@@ -11,10 +11,10 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToastNotifier;
+import dfc;
 import dfd;
-import dfe;
+import dff;
 import dfg;
-import dfh;
 
 public class RegisterBaseActivity
   extends IphoneTitleBarActivity
@@ -27,7 +27,7 @@ public class RegisterBaseActivity
   protected ViewGroup a;
   private QQCustomDialog a;
   protected QQToastNotifier a;
-  public Handler b = new dfd(this);
+  public Handler b = new dfc(this);
   public String c;
   public String d = "86";
   public String e;
@@ -37,7 +37,7 @@ public class RegisterBaseActivity
   {
     try
     {
-      this.b.post(new dfh(this, paramInt));
+      this.b.post(new dfg(this, paramInt));
       return;
     }
     catch (Exception localException)
@@ -73,7 +73,7 @@ public class RegisterBaseActivity
   {
     try
     {
-      this.b.post(new dfe(this, paramString1, paramString2));
+      this.b.post(new dfd(this, paramString1, paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -115,7 +115,7 @@ public class RegisterBaseActivity
   
   public void g()
   {
-    this.b.post(new dfg(this));
+    this.b.post(new dff(this));
   }
   
   public void h()

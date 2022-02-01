@@ -1,29 +1,16 @@
-import android.os.AsyncTask;
-import android.os.Handler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class ccb
-  extends AsyncTask
+public class ccb
+  implements View.OnClickListener
 {
-  ccb(cca paramcca) {}
+  public ccb(ChatHistory paramChatHistory) {}
   
-  protected Object a(MessageRecord... paramVarArgs)
+  public void onClick(View paramView)
   {
-    this.a.a.b.a().a(paramVarArgs[0], true);
-    return null;
-  }
-  
-  protected void onPostExecute(Object paramObject)
-  {
-    super.onPostExecute(paramObject);
-    ChatHistory.a(this.a.a).removeMessages(1);
-    if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
-      this.a.a.a.dismiss();
-    }
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

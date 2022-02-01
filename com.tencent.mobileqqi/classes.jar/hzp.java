@@ -1,25 +1,19 @@
 import android.app.Activity;
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
 import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
 import cooperation.plugin.IPluginManager.PluginParams;
 
 public final class hzp
-  implements IPluginManager.OnPluginReadyListener
+  implements Runnable
 {
-  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  public hzp(IPluginManager.PluginParams paramPluginParams, Activity paramActivity1, Activity paramActivity2) {}
+  
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    if (this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.jdField_a_of_type_AndroidAppDialog != null) {
+      new SplashDialogWrapper(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.jdField_a_of_type_AndroidAppDialog, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.jdField_a_of_type_Boolean, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c).show();
     }
-    if (paramBoolean)
-    {
-      IPluginManager.b((Activity)paramContext, paramPluginParams);
-      return;
-    }
-    Toast.makeText(paramContext, "加载失败", 0).show();
+    IPluginManager.b(this.b, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
   }
 }
 

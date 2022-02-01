@@ -1,8 +1,6 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
 import com.tencent.open.applist.H5ConfirmDialog;
-import com.tencent.open.applist.H5ConfirmDialog.Dialogcallback;
 
 public class hlc
   implements View.OnClickListener
@@ -11,7 +9,7 @@ public class hlc
   
   public void onClick(View paramView)
   {
-    this.a.dialogcallback.a(this.a.createIcon_cb.isChecked());
+    this.a.dismiss();
   }
 }
 

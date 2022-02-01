@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.ElasticHorScrView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.widget.ActionSheet;
 
 public class dbr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dbr(QQBrowserActivity paramQQBrowserActivity) {}
+  public dbr(QQBrowserActivity paramQQBrowserActivity, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.getWidth() < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(true);
     }
+    while (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.getWidth() < this.b)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(true);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(false);
   }
 }
 

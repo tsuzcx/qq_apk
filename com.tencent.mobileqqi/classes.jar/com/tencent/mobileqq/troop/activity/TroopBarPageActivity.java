@@ -31,13 +31,13 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.XListView;
+import gry;
 import grz;
 import gsa;
 import gsb;
-import gsc;
+import gse;
 import gsf;
 import gsg;
-import gsh;
 import java.util.List;
 import mqq.util.WeakReference;
 
@@ -75,7 +75,7 @@ public class TroopBarPageActivity
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   public LinearLayout a;
   public TroopBarPageEntity a;
-  final HttpWebCgiAsyncTask.Callback jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new gsg(this);
+  final HttpWebCgiAsyncTask.Callback jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new gsf(this);
   public TroopBarPostAdapter a;
   protected PullRefreshHeader a;
   public XListView a;
@@ -99,7 +99,7 @@ public class TroopBarPageActivity
     this.jdField_a_of_type_AndroidUtilSparseArray = null;
     this.jdField_b_of_type_AndroidWidgetLinearLayout = null;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new gsf(this);
+    this.jdField_a_of_type_AndroidOsHandler = new gse(this);
   }
   
   private void h()
@@ -108,7 +108,7 @@ public class TroopBarPageActivity
     localActionSheet.a(2131560688, 5);
     localActionSheet.a(2131560689, 5);
     localActionSheet.d(2131561746);
-    localActionSheet.a(new gsb(this, localActionSheet));
+    localActionSheet.a(new gsa(this, localActionSheet));
     if (!localActionSheet.isShowing()) {
       localActionSheet.show();
     }
@@ -261,7 +261,7 @@ public class TroopBarPageActivity
   
   public void c(boolean paramBoolean)
   {
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232084);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232083);
     if (paramBoolean)
     {
       localTextView.setText(getString(2131559300));
@@ -274,7 +274,7 @@ public class TroopBarPageActivity
   protected void d()
   {
     TextView localTextView = (TextView)findViewById(2131230976);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new grz(this, localTextView));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new gry(this, localTextView));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -294,7 +294,7 @@ public class TroopBarPageActivity
     f();
     d();
     a(true);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new gsh(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new gsg(this);
     paramBundle = new IntentFilter("change_post_type");
     paramBundle.addAction("refresh_page");
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
@@ -322,7 +322,7 @@ public class TroopBarPageActivity
   
   protected void e()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231461));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231460));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838011);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -332,13 +332,13 @@ public class TroopBarPageActivity
   protected void f()
   {
     setTitle(2131560691);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232488));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232487));
     this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837729);
     g();
     this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903325, null);
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232083);
-    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232084);
-    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232085);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232082);
+    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232083);
+    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131232084);
     ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131231066);
     localTextView1.setTextColor(-8355712);
     localTextView1.setText(2131563139);
@@ -349,8 +349,8 @@ public class TroopBarPageActivity
     this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(getLayoutInflater().inflate(2130903216, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter = new TroopBarPostAdapter(new WeakReference(this), this.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new gsa(this));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232489));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new grz(this));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232488));
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
   }
   
@@ -360,7 +360,7 @@ public class TroopBarPageActivity
     Contacts.OverScrollViewTag localOverScrollViewTag = new Contacts.OverScrollViewTag();
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTag(localOverScrollViewTag);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new gsc(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new gsb(this));
   }
   
   public void onClick(View paramView)

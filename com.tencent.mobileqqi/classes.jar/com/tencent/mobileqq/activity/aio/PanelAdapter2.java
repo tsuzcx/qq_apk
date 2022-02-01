@@ -68,9 +68,9 @@ public class PanelAdapter2
     if (paramView == null)
     {
       localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903120, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131231293));
-      paramViewGroup.b = ((ImageView)localView.findViewById(2131231295));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231294));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131231292));
+      paramViewGroup.b = ((ImageView)localView.findViewById(2131231294));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231293));
       localView.setTag(paramViewGroup);
       paramView = paramViewGroup;
       paramViewGroup = paramView;

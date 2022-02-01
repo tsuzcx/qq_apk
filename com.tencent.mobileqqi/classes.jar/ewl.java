@@ -9,6 +9,7 @@ public class ewl
   public void run()
   {
     this.a.a.hide();
+    this.a.finish();
   }
 }
 

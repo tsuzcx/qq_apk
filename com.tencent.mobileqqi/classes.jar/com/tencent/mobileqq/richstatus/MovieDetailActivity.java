@@ -17,8 +17,8 @@ import com.tencent.mobileqq.jsbridge.JsBridge;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.widget.ProtectedWebView;
+import ghh;
 import ghi;
-import ghj;
 import java.io.File;
 import mqq.app.AppRuntime;
 
@@ -68,7 +68,7 @@ public class MovieDetailActivity
   
   private void e()
   {
-    Object localObject = (RelativeLayout)findViewById(2131234645);
+    Object localObject = (RelativeLayout)findViewById(2131234644);
     this.jdField_a_of_type_ComTencentWidgetProtectedWebView = new ProtectedWebView(BaseApplicationImpl.a);
     ((RelativeLayout)localObject).addView(this.jdField_a_of_type_ComTencentWidgetProtectedWebView, 0, new RelativeLayout.LayoutParams(-1, -1));
     this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setScrollBarStyle(0);
@@ -79,15 +79,15 @@ public class MovieDetailActivity
     ((WebSettings)localObject).setDatabasePath(getApplicationContext().getDir("database", 0).getPath());
     ((WebSettings)localObject).setDomStorageEnabled(true);
     ((WebSettings)localObject).setGeolocationEnabled(true);
-    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebViewClient(new ghj(this, null));
-    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebChromeClient(new ghi(this, null));
+    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebViewClient(new ghi(this, null));
+    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebChromeClient(new ghh(this, null));
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge = new JsBridge();
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler = new StatusJsHandler(this, this.jdField_a_of_type_ComTencentWidgetProtectedWebView, null);
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler, "statusJsHandler");
-    this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131234646));
+    this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131234645));
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131234647));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131231187);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131234646));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131231186);
     if (ThemeUtil.isInNightMode(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface)) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     }

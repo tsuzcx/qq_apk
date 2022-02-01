@@ -1,15 +1,45 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
 import com.tencent.open.applist.WebAppActivity;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class hlk
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
   public hlk(WebAppActivity paramWebAppActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    return true;
+    try
+    {
+      if (paramView == this.a.jdField_a_of_type_AndroidWidgetImageView)
+      {
+        if (!this.a.jdField_a_of_type_ComTencentSmttSdkWebView.canGoBack()) {
+          return;
+        }
+        this.a.jdField_a_of_type_ComTencentSmttSdkWebView.goBack();
+        return;
+      }
+      if (paramView == this.a.b)
+      {
+        this.a.jdField_a_of_type_ComTencentSmttSdkWebView.goForward();
+        return;
+      }
+    }
+    catch (Exception paramView)
+    {
+      LogUtility.c("WebAppActivity", "onClick", paramView);
+      return;
+    }
+    if (paramView == this.a.c)
+    {
+      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.reload();
+      return;
+    }
+    if (paramView == this.a.d) {
+      this.a.finish();
+    }
   }
 }
 

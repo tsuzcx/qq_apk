@@ -1,21 +1,53 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
+import android.widget.Adapter;
 import com.tencent.mobileqq.activity.recent.LocalSearchBar;
+import com.tencent.mobileqq.activity.recent.OnRecentUserOpsListener;
+import com.tencent.mobileqq.search.ContactsSearchableRecentUser;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class eoq
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
+  private long jdField_a_of_type_Long = 0L;
+  
   public eoq(LocalSearchBar paramLocalSearchBar) {}
   
-  public void onClick(View paramView)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.a.a > 1000L)
+    paramLong = System.currentTimeMillis();
+    long l = Math.abs(paramLong - this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onItemClick() gap = " + l);
+    }
+    if (l < 250L) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "onItemClick() 点击太快了吧， pos = " + paramInt);
+      }
+    }
+    label189:
+    for (;;)
     {
-      this.a.a = l;
-      Conversation.d(false);
-      this.a.a();
+      return;
+      this.jdField_a_of_type_Long = paramLong;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "onItemClick() pos = " + paramInt);
+      }
+      paramAdapterView = paramAdapterView.a();
+      if (paramAdapterView == null) {}
+      for (paramAdapterView = null;; paramAdapterView = paramAdapterView.getItem(paramInt))
+      {
+        if (!(paramAdapterView instanceof ContactsSearchableRecentUser)) {
+          break label189;
+        }
+        paramAdapterView = (ContactsSearchableRecentUser)paramAdapterView;
+        if (LocalSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLocalSearchBar) == null) {
+          break;
+        }
+        LocalSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLocalSearchBar).a(paramView, paramAdapterView, paramAdapterView.c(), false);
+        return;
+      }
     }
   }
 }

@@ -1,7 +1,8 @@
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.qphone.base.util.QLog;
 
 public class fvy
-  extends fvj
+  extends fva
 {
   public fvy(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
@@ -10,7 +11,20 @@ public class fvy
   
   protected String a()
   {
-    return "StateSenderCancelSend";
+    return "StateSenderCancelSendWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "]. recvOnLineFile entity is null");
+      return;
+    }
+    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
+    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fva.a() + "->StateSenderCancelSend)");
+    this.jdField_a_of_type_Fva = new fvx(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
   }
 }
 

@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.observer.AccountObserver;
 
 public class fcm
+  extends AccountObserver
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b = 0L;
-  public long c = 0L;
-  public long d = 0L;
-  public long e;
-  private long f;
+  public fcm(FriendsManager paramFriendsManager) {}
   
-  public fcm(FriendListHandler paramFriendListHandler)
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
+    ThreadManager.b(new fcn(this, paramString2, paramString1));
   }
 }
 

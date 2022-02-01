@@ -1,233 +1,110 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.TroopManageActivity;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.managers.TroopRemindSettingManager;
-import com.tencent.mobileqq.model.FriendManager;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class dsk
-  implements View.OnClickListener
+  extends TroopObserver
 {
-  public dsk(TroopRequestActivity paramTroopRequestActivity, TextView paramTextView) {}
+  public dsk(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt, byte paramByte)
   {
-    int i = 1;
-    int k = 1;
-    int m = 1;
-    int j = 1;
-    if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getString(2131562451), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.d());
+    if ((paramInt == 4) || (paramInt == 5) || (paramInt == 6) || (paramInt == 7)) {
+      this.a.a.sendEmptyMessage(1);
     }
-    String str2;
-    label386:
-    label593:
-    do
+    if (paramInt == 8) {
+      this.a.a.sendEmptyMessage(1);
+    }
+  }
+  
+  protected void a(int paramInt, byte paramByte, String paramString)
+  {
+    if ((paramInt == 4) || (paramInt == 5) || (paramInt == 6) || (paramInt == 7))
+    {
+      if (paramByte != 0) {
+        break label68;
+      }
+      this.a.a.sendEmptyMessage(0);
+      this.a.finish();
+    }
+    for (;;)
+    {
+      if (paramInt == 8)
+      {
+        if (paramByte != 0) {
+          break;
+        }
+        this.a.a.sendEmptyMessage(0);
+      }
+      return;
+      label68:
+      this.a.a.sendEmptyMessage(1);
+    }
+    this.a.a.sendEmptyMessage(1);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    if (paramLong != Long.parseLong(this.a.p)) {}
+    for (;;)
+    {
+      return;
+      this.a.h();
+      if (!paramBoolean) {
+        break;
+      }
+      if ((paramTroopInfo.cGroupOption == 4) || (paramTroopInfo.cGroupOption == 5)) {
+        TroopRequestActivity.a(this.a, paramTroopInfo.joinTroopQuestion);
+      }
+      TroopRequestActivity.a(this.a, paramTroopInfo.cGroupOption);
+      if (TroopRequestActivity.a(this.a) != 3) {
+        TroopRequestActivity.a(this.a);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("Q.systemmsg.TroopRequestActivity", 2, "troop.cGroupOption = " + paramTroopInfo.cGroupOption);
+        return;
+        QQToast.a(this.a.b.getApplication(), 2131563078, 0).b(this.a.d());
+      }
+    }
+    this.a.a.sendEmptyMessage(1);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    try
+    {
+      this.a.p = this.a.p.trim();
+      long l = Long.parseLong(this.a.p);
+      if (paramLong != l) {
+        return;
+      }
+    }
+    catch (NumberFormatException paramString)
     {
       do
       {
-        String str1;
-        int n;
         do
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getIntent().getExtras().getBoolean("is_unread");
-                    str2 = TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.group_code.get() + "";
-                    str1 = "0";
-                    n = TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.group_msg_type.get();
-                    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_Boolean) {
-                      str1 = "1";
-                    }
-                    if (paramView != TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity)) {
-                      break;
-                    }
-                    if (((FriendManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b.getManager(8)).a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p) != null) {}
-                    while (TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.group_msg_type.get() == 80)
-                    {
-                      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.a(), TroopManageActivity.class);
-                      paramView.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p);
-                      paramView.putExtra("key_is_need_update_Group_info", true);
-                      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.startActivity(paramView);
-                      return;
-                      TroopRemindSettingManager.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b);
-                    }
-                  } while (!TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 1));
-                  TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).b(2131562875);
-                  TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).show();
-                  if (n == 1)
-                  {
-                    i = j;
-                    if (TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity) != null)
-                    {
-                      if ("".equals(TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity))) {
-                        i = j;
-                      }
-                    }
-                    else {
-                      if (i == 0) {
-                        break label386;
-                      }
-                    }
-                    for (paramView = "1";; paramView = "0")
-                    {
-                      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_contacts", "", "notice", "agree_ask", 0, 0, str2, str1, paramView, "1");
-                      return;
-                      i = 0;
-                      break;
-                    }
-                  }
-                } while (n != 2);
-                j = TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.group_inviter_role.get();
-                if ((j == 2) || (j == 3)) {
-                  i = 0;
-                }
-                if (i != 0) {}
-                for (paramView = "0";; paramView = "1")
-                {
-                  ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, str2, str1, paramView, "1");
-                  return;
-                }
-                if (paramView != TroopRequestActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity)) {
-                  break;
-                }
-              } while (!TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 0));
-              TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).b(2131562875);
-              TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).show();
-              if (n == 1)
-              {
-                i = k;
-                if (TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity) != null)
-                {
-                  if ("".equals(TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity))) {
-                    i = k;
-                  }
-                }
-                else {
-                  if (i == 0) {
-                    break label593;
-                  }
-                }
-                for (paramView = "1";; paramView = "0")
-                {
-                  ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_contacts", "", "notice", "refuse_ask", 0, 0, str2, str1, paramView, "1");
-                  return;
-                  i = 0;
-                  break;
-                }
-              }
-            } while (n != 2);
-            j = TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.group_inviter_role.get();
-            if (j != 2)
-            {
-              i = m;
-              if (j != 3) {}
-            }
-            else
-            {
-              i = 0;
-            }
-            if (i != 0) {}
-            for (paramView = "0";; paramView = "1")
-            {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_contacts", "", "notice", "refuse_invite", 0, 0, str2, str1, paramView, "1");
-              return;
-            }
-            if (paramView != TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity)) {
-              break;
-            }
-          } while (!TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2));
-          TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).b(2131562875);
-          TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).show();
-          if (n == 1)
-          {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_contacts", "", "notice", "ignore_ask", 0, 0, str2, str1, "", "");
-            return;
+          if (QLog.isColorLevel()) {
+            QLog.e("Q.systemmsg.TroopRequestActivity", 2, "NumberFormatException");
           }
-        } while (n != 2);
-        i = TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.group_inviter_role.get();
-        if ((i == 2) || (i == 3))
-        {
-          i = 0;
-          if (i == 0) {
-            break label838;
-          }
-        }
-        for (paramView = "0";; paramView = "1")
-        {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_contacts", "", "notice", "ignore_invite", 0, 0, str2, str1, paramView, "");
-          return;
-          i = 1;
-          break;
-        }
-      } while (paramView != this.jdField_a_of_type_AndroidWidgetTextView);
-      if (TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.group_msg_type.get() == 80)
-      {
-        paramView = TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p, 5);
-        TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.a(), paramView);
-        return;
-      }
-      if (((FriendManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b.getManager(8)).a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p) != null) {}
-      for (;;)
-      {
-        if (((TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.group_msg_type.get() == 11) && (TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.sub_type.get() == 3)) || (TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.group_msg_type.get() == 7))
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_ComTencentMobileqqAppTroopHandler != null) {}
-          try
-          {
-            long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p);
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.g();
-            this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(l, 8388736);
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_contacts", "", "notice", "again_join", 0, 0, str2, "", "", "");
-            return;
-            TroopRemindSettingManager.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b);
-          }
-          catch (Exception paramView)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("Q.systemmsg.TroopRequestActivity", 2, paramView.toString());
-              }
-            }
-          }
-        }
-      }
-    } while ((TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.group_msg_type.get() != 10) || (TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).msg.sub_type.get() != 3));
-    label838:
-    TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).b(2131562875);
-    TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity).show();
-    paramView = new ArrayList();
-    paramView.add(TroopRequestActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity));
-    if ((paramView.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p.length() > 0)) {
-      ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b.a(19)).a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p, paramView, "");
+        } while ((!paramBoolean) || (paramTroopInfo == null));
+        paramTroopInfo = GroupCatalogTool.a(BaseApplication.getContext()).a(this.a, Long.toString(paramTroopInfo.dwGroupClassExt));
+      } while (paramTroopInfo == null);
+      paramString = new Message();
+      paramString.what = 2;
+      paramString.obj = paramTroopInfo.a();
+      this.a.a.sendMessage(paramString);
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_contacts", "", "notice", "again_invite", 0, 0, str2, "", "", "");
   }
 }
 

@@ -1,18 +1,49 @@
-import android.view.animation.TranslateAnimation;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.richstatus.EditActivity;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class ggu
-  implements Runnable
+class ggu
+  implements Animation.AnimationListener
 {
-  public ggu(EditActivity paramEditActivity) {}
+  ggu(ggt paramggt) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -20.0F, 0.0F);
-    localTranslateAnimation.setDuration(400L);
-    localTranslateAnimation.setAnimationListener(new ggv(this));
-    EditActivity.a(this.a).startAnimation(localTranslateAnimation);
+    EditActivity.a(this.a.a).setVisibility(0);
+    paramAnimation = new ArrayList();
+    int i = 0;
+    while (i < 6)
+    {
+      paramAnimation.add(Integer.valueOf(i));
+      i += 1;
+    }
+    Collections.shuffle(paramAnimation);
+    i = 0;
+    if (i < 6)
+    {
+      View localView = EditActivity.a(this.a.a).getChildAt(((Integer)paramAnimation.get(i)).intValue());
+      if (localView == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        localView.postDelayed(new ggv(this, (ImageView)localView.findViewById(2131232968), (TextView)localView.findViewById(2131232969)), i * 100);
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    EditActivity.a(this.a.a).setVisibility(4);
   }
 }
 

@@ -18,10 +18,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import cle;
 import clf;
 import clg;
 import clh;
-import cli;
 import com.tencent.mobileqq.adapter.ForwardSelectionFriendListAdapter;
 import com.tencent.mobileqq.adapter.ForwardSelectionFriendListAdapter.ViewTag;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -84,7 +84,7 @@ public class ForwardFriendListActivity
       return;
     }
     Contacts.a += 1;
-    this.jdField_a_of_type_AndroidAppDialog = new clf(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
+    this.jdField_a_of_type_AndroidAppDialog = new cle(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
     paramInt = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
     TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -paramInt);
@@ -92,20 +92,20 @@ public class ForwardFriendListActivity
     localTranslateAnimation1.setFillAfter(true);
     TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -paramInt, 0.0F);
     localTranslateAnimation2.setDuration(200L);
-    localTranslateAnimation1.setAnimationListener(new clg(this));
-    localTranslateAnimation2.setAnimationListener(new clh(this, paramInt));
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new cli(this, paramInt, localTranslateAnimation2));
+    localTranslateAnimation1.setAnimationListener(new clf(this));
+    localTranslateAnimation2.setAnimationListener(new clg(this, paramInt));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new clh(this, paramInt, localTranslateAnimation2));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation1);
   }
   
   private void d()
   {
     e();
-    this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView = ((PinnedHeaderExpandableListView)findViewById(2131231724));
+    this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView = ((PinnedHeaderExpandableListView)findViewById(2131231723));
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setContentBackground(2130837729);
     Object localObject = LayoutInflater.from(a()).inflate(2130903944, this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView, false);
-    ((View)localObject).findViewById(2131233086).setVisibility(8);
-    localObject = (EditText)((View)localObject).findViewById(2131233087);
+    ((View)localObject).findViewById(2131233085).setVisibility(8);
+    localObject = (EditText)((View)localObject).findViewById(2131233086);
     ((EditText)localObject).setFocusable(false);
     ((EditText)localObject).setOnClickListener(this);
     ((EditText)localObject).setCursorVisible(false);
@@ -115,24 +115,24 @@ public class ForwardFriendListActivity
   private void e()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231116));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231374));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231376));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231373));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231375));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131559063));
     if (getSupportActionBar() != null) {
       getSupportActionBar().setTitle(this.jdField_a_of_type_AndroidWidgetTextView.getText());
     }
-    this.c = ((TextView)findViewById(2131231456));
+    this.c = ((TextView)findViewById(2131231455));
     this.c.setVisibility(0);
     this.c.setOnClickListener(this);
     this.c.setText(2131561692);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231457));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231456));
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.d = ((TextView)findViewById(2131231380));
+    this.d = ((TextView)findViewById(2131231379));
     this.d.setVisibility(0);
     this.d.setText(2131561746);
     this.d.setContentDescription("取消本次转发");
     this.d.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231461));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231460));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     IphoneTitleBarActivity.b(this.jdField_a_of_type_AndroidWidgetImageView);
     IphoneTitleBarActivity.b(this.jdField_b_of_type_AndroidWidgetTextView);
@@ -246,7 +246,7 @@ public class ForwardFriendListActivity
         }
       }
       return;
-    case 2131233087: 
+    case 2131233086: 
       if (this.jdField_b_of_type_Int == 1)
       {
         a(12);
@@ -254,10 +254,10 @@ public class ForwardFriendListActivity
       }
       a(8);
       return;
-    case 2131231456: 
+    case 2131231455: 
       finish();
       return;
-    case 2131231380: 
+    case 2131231379: 
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.u == 11))
       {
         ForwardOperations.a(this, false, "shareToQQ", this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a);

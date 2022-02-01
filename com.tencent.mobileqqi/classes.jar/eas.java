@@ -1,36 +1,18 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler.Callback;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class eas
-  implements TroopQZoneUploadAlbumHandler.Callback
+  implements DialogInterface.OnClickListener
 {
-  public eas(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing, BaseChatItemLayout paramBaseChatItemLayout) {}
+  public eas(StructingMsgItemBuilder paramStructingMsgItemBuilder, Context paramContext, ChatMessage paramChatMessage) {}
   
-  public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {}
-    do
-    {
-      return;
-      paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
-      if (paramInt1 != 1001) {
-        paramInt2 = 100;
-      }
-      paramView.setProgress(paramInt2);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131230801);
-    } while (!(paramView instanceof ProgressBar));
-    ((ProgressBar)paramView).setProgress(paramInt2);
-    if (paramInt2 == 100) {}
-    for (paramInt1 = 8;; paramInt1 = 0)
-    {
-      paramView.setVisibility(paramInt1);
-      return;
-    }
+    ChatActivityFacade.a(StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder), this.jdField_a_of_type_AndroidContentContext, StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
   }
 }
 

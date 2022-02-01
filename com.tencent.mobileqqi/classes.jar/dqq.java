@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.TroopMemberGagActivity;
-import com.tencent.mobileqq.activity.TroopMemberGagActivity.GagItemListener;
+import com.tencent.mobileqq.activity.TroopMemberGagActivity.TroopGagListAdapter;
 import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
 
 public class dqq
-  implements TroopMemberGagActivity.GagItemListener
 {
-  public dqq(TroopMemberGagActivity paramTroopMemberGagActivity) {}
+  public TroopGagMgr.GagItem a;
+  public boolean a;
   
-  public void a(TroopGagMgr.GagItem paramGagItem)
+  public dqq(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter, TroopGagMgr.GagItem paramGagItem, boolean paramBoolean)
   {
-    this.a.a = paramGagItem.a;
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem = paramGagItem;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

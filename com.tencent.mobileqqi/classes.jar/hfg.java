@@ -1,23 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.widget.CameraFrameLayout;
+import com.tencent.mobileqq.widget.CameraPreview;
 
 public class hfg
-  extends Handler
+  implements Runnable
 {
   public hfg(CameraFrameLayout paramCameraFrameLayout) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      CameraFrameLayout.a(this.a, paramMessage.arg1);
-      return;
+    if (CameraFrameLayout.a(this.a) != null) {
+      CameraFrameLayout.a(this.a).a(this.a.getWidth(), this.a.getHeight());
     }
-    CameraFrameLayout.a(this.a);
   }
 }
 

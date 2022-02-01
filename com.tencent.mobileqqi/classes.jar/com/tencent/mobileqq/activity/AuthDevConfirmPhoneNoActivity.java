@@ -52,11 +52,11 @@ public class AuthDevConfirmPhoneNoActivity
   {
     setContentView(2130903569);
     setTitle(2131561941);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232943));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232946));
-    this.c = ((TextView)findViewById(2131232947));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232948));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232949));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232942));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232945));
+    this.c = ((TextView)findViewById(2131232946));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232947));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232948));
     if ((QLog.isColorLevel()) && ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null) || (this.c == null) || (this.jdField_a_of_type_AndroidWidgetButton == null) || (this.jdField_b_of_type_AndroidWidgetButton == null)))
     {
       QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "one or more controls is null! ");
@@ -64,7 +64,7 @@ public class AuthDevConfirmPhoneNoActivity
     }
     a();
     c(2131561753, this);
-    Object localObject = (TextView)findViewById(2131231456);
+    Object localObject = (TextView)findViewById(2131231455);
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
@@ -143,7 +143,7 @@ public class AuthDevConfirmPhoneNoActivity
     {
     default: 
       return;
-    case 2131232948: 
+    case 2131232947: 
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "click confirm mobile phone button! ");
       }
@@ -170,7 +170,7 @@ public class AuthDevConfirmPhoneNoActivity
         return;
         paramView = "Manually";
       }
-    case 2131232949: 
+    case 2131232948: 
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "click modify mobile phone button! ");
       }

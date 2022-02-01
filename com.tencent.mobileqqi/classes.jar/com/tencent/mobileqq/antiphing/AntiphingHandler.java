@@ -27,9 +27,9 @@ import com.tencent.mobileqq.widget.AntiphingToast;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
+import eyt;
 import eyu;
 import eyv;
-import eyw;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -180,7 +180,7 @@ public class AntiphingHandler
     }
   }
   
-  private boolean a(String paramString, eyw parameyw)
+  private boolean a(String paramString, eyv parameyv)
   {
     if (paramString == null) {
       return false;
@@ -233,13 +233,13 @@ public class AntiphingHandler
         } while (localObject == null);
         if (((String)localObject).equalsIgnoreCase(str))
         {
-          parameyw.jdField_a_of_type_JavaLangString = ((String)localObject);
-          parameyw.jdField_a_of_type_Int = 1;
+          parameyv.jdField_a_of_type_JavaLangString = ((String)localObject);
+          parameyv.jdField_a_of_type_Int = 1;
           return true;
         }
       } while ((i != 1) || (!str.contains((CharSequence)localObject)));
-      parameyw.jdField_a_of_type_JavaLangString = ((String)localObject);
-      parameyw.jdField_a_of_type_Int = 2;
+      parameyv.jdField_a_of_type_JavaLangString = ((String)localObject);
+      parameyv.jdField_a_of_type_Int = 2;
       return true;
     }
   }
@@ -329,11 +329,11 @@ public class AntiphingHandler
       }
     }
     label121:
-    for (Object localObject2 = null;; localObject2 = new eyv(this))
+    for (Object localObject2 = null;; localObject2 = new eyu(this))
     {
       DialogUtil.a(localActivity, 230, paramString1, paramString2, paramString3, paramString4, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
       return;
-      localObject1 = new eyu(this);
+      localObject1 = new eyt(this);
       break;
     }
   }
@@ -392,15 +392,15 @@ public class AntiphingHandler
         a(this.jdField_d_of_type_JavaLangString, 2, "Already Shown Tips!!");
       }
     }
-    eyw localeyw;
+    eyv localeyv;
     do
     {
       return false;
       if (QLog.isColorLevel()) {
         a(this.jdField_d_of_type_JavaLangString, 2, "Js is call back!");
       }
-      localeyw = new eyw(this);
-      if (a(paramString1, localeyw)) {
+      localeyv = new eyv(this);
+      if (a(paramString1, localeyv)) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -408,12 +408,12 @@ public class AntiphingHandler
     return false;
     try
     {
-      long l = Long.parseLong(localeyw.jdField_a_of_type_JavaLangString);
+      long l = Long.parseLong(localeyv.jdField_a_of_type_JavaLangString);
       int i = Integer.parseInt(paramString3);
       int j = Integer.parseInt(paramString4);
       int k = Integer.parseInt(paramString5);
       int m = Integer.parseInt(paramString6);
-      a(i, j, k, m, paramString2, Long.valueOf(l), localeyw.jdField_a_of_type_Int);
+      a(i, j, k, m, paramString2, Long.valueOf(l), localeyv.jdField_a_of_type_Int);
       return true;
     }
     catch (Exception paramString1) {}
@@ -453,7 +453,7 @@ public class AntiphingHandler
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.mRuntime.a().findViewById(2131231181));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.mRuntime.a().findViewById(2131231180));
     Object localObject = this.mRuntime.a();
     AntiphishingUrlConfig localAntiphishingUrlConfig;
     String str;

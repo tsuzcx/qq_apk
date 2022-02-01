@@ -13,7 +13,7 @@ import com.tencent.mobileqq.data.OpenID;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.msf.service.protocol.security.RequestCustomSig;
 import com.tencent.qphone.base.util.QLog;
-import ibv;
+import ibu;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -114,7 +114,7 @@ public class QZoneShareManager
     localRequestCustomSig.reserved = new byte[0];
     ((HashMap)localObject).put("RequestCustomSig", localRequestCustomSig);
     ((HashMap)localObject).put("OpenAppid", paramString);
-    paramAppRuntime.changeToken((HashMap)localObject, new ibv(paramString, paramBusinessObserver));
+    paramAppRuntime.changeToken((HashMap)localObject, new ibu(paramString, paramBusinessObserver));
     return null;
   }
   

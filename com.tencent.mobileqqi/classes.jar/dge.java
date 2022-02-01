@@ -1,23 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class dge
-  implements Runnable
+class dge
+  implements DialogInterface.OnClickListener
 {
-  public dge(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString1, String paramString2) {}
+  dge(dgd paramdgd) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, 230, null, null, 2131561746, 2131561875, null, null);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setDividerGone();
-    dgf localdgf = new dgf(this);
-    dgg localdgg = new dgg(this);
-    localQQCustomDialog.setPositiveButton(2131561875, localdgf);
-    localQQCustomDialog.setNegativeButton(2131561746, localdgg);
-    localQQCustomDialog.show();
+    paramDialogInterface.dismiss();
+    RegisterPhoneNumActivity.d(this.a.a);
   }
 }
 

@@ -1,19 +1,15 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class erd
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
   public erd(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.a.g();
-    }
-    return false;
+    this.a.b();
   }
 }
 

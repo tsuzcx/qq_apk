@@ -1,23 +1,24 @@
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
-import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.IIconListener;
 import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
 public class cgf
-  implements IStatusListener
+  implements IIconListener
 {
   public cgf(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (paramInt == -1) {
-      this.a.a(2131561424, 1);
+    if (DetailProfileActivity.a(this.a) == null) {
+      DetailProfileActivity.a(this.a, (StatusManager)this.a.b.getManager(13));
     }
-    this.a.a();
+    if ((DetailProfileActivity.a(this.a) != null) && (DetailProfileActivity.a(this.a).a().b == paramInt1) && (paramInt2 == 201) && (paramBitmap != null)) {
+      this.a.a();
+    }
   }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

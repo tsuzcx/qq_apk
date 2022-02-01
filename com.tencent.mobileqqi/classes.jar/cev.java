@@ -1,38 +1,67 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.app.DiscussionObserver;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class cev
-  extends CardObserver
+  extends DiscussionObserver
 {
   public cev(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected void a()
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    this.a.a(9, null, -2147483648);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onDelDiscussion");
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, ArrayList paramArrayList)
+  {
+    this.a.a(8, Long.toString(paramLong), 3000);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
     {
-      if ((paramBoolean) && (paramObject != null) && (!Utils.a(paramObject.uin, this.a.a.a())))
-      {
-        this.a.a(8, paramObject.uin, -2147483648);
-        this.a.k();
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onChangeDiscussionName");
       }
-      return;
+      this.a.a(8, paramString, 3000);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramString + "]");
+    }
+    if (paramBoolean1) {
+      this.a.b(new cew(this, paramString));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
+    if ((paramBoolean) && (bool))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_updateDiscussionInfo");
+      }
+      this.a.a(0L);
     }
   }
   
   protected void b(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (paramString != null) && (this.a.a.a().equals(paramString)))
+    if (paramBoolean)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onGreetingRecv");
+        QLog.i("Q.recent", 2, "refresh recent, from_onQuitDiscussion");
       }
-      this.a.a(8, AppConstants.V, 1001);
+      this.a.a(8, paramString, 3000);
     }
   }
 }

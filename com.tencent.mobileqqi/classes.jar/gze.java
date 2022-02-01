@@ -1,19 +1,20 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView;
-import com.tencent.tencentmap.mapsdk.map.ItemizedOverlay;
-import com.tencent.tencentmap.mapsdk.map.ItemizedOverlay.OnFocusChangeListener;
-import com.tencent.tencentmap.mapsdk.map.OverlayItem;
 
 public class gze
-  implements ItemizedOverlay.OnFocusChangeListener
+  implements Animation.AnimationListener
 {
   public gze(NearbyTroopsMapView paramNearbyTroopsMapView) {}
   
-  public void onFocusChanged(ItemizedOverlay paramItemizedOverlay, OverlayItem paramOverlayItem)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramOverlayItem == null) {
-      NearbyTroopsMapView.a(this.a, false);
-    }
+    this.a.showNearestPopView();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

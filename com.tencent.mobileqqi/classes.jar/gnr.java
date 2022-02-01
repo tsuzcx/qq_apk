@@ -1,20 +1,36 @@
-import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.NewIntent;
 
 public class gnr
-  extends TimerTask
+  implements Runnable
 {
-  public gnr(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner) {}
+  public long a;
+  public ProtoReqManager.ProtoResp a;
+  public NewIntent a;
+  public boolean a;
+  long b;
+  public boolean b;
+  public long c;
+  public boolean c = false;
+  
+  public gnr(ProtoReqManager paramProtoReqManager)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+  }
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.a(9004, -1, "nonetwork");
-    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_MqqAppNewIntent.putExtra("key_timeout", this.jdField_a_of_type_Long);
+    MessageObserver.StatictisInfo localStatictisInfo = this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp.a;
+    localStatictisInfo.c += 1;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a.put(this.jdField_a_of_type_MqqAppNewIntent, this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(this.jdField_a_of_type_MqqAppNewIntent);
   }
 }
 

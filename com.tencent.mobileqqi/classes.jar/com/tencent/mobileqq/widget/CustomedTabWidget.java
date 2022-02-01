@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import hgh;
 import hgi;
 import hgj;
-import hgk;
 
 @SuppressLint({"ResourceAsColor"})
 public class CustomedTabWidget
@@ -32,7 +32,7 @@ public class CustomedTabWidget
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private CustomedTabWidget.OnSwitchTabListener jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$OnSwitchTabListener;
-  public hgk a;
+  public hgj a;
   public boolean a;
   private float jdField_b_of_type_Float;
   public Rect b;
@@ -51,7 +51,7 @@ public class CustomedTabWidget
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840192);
     this.c = paramContext.getResources().getDrawable(2130840191);
     this.jdField_b_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Hgk = new hgk(this);
+    this.jdField_a_of_type_Hgj = new hgj(this);
   }
   
   private void a(int paramInt)
@@ -69,13 +69,13 @@ public class CustomedTabWidget
       getChildAt(this.f).getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
     } while ((this.jdField_a_of_type_AndroidGraphicsRect.left == this.jdField_b_of_type_AndroidGraphicsRect.left) && (this.jdField_a_of_type_AndroidGraphicsRect.right == this.jdField_b_of_type_AndroidGraphicsRect.right));
     this.jdField_a_of_type_Float = ((this.jdField_a_of_type_AndroidGraphicsRect.left - this.jdField_b_of_type_AndroidGraphicsRect.left) / 4);
-    this.jdField_a_of_type_Hgk.sendEmptyMessage(0);
+    this.jdField_a_of_type_Hgj.sendEmptyMessage(0);
   }
   
   private void a(View paramView)
   {
-    paramView.setOnClickListener(new hgi(this));
-    paramView.setOnTouchListener(new hgj(this));
+    paramView.setOnClickListener(new hgh(this));
+    paramView.setOnTouchListener(new hgi(this));
     if (getChildCount() == 1) {
       paramView.setSelected(true);
     }
@@ -144,7 +144,7 @@ public class CustomedTabWidget
   
   public void setOnSwitchTabListener(CustomedTabWidget.OnSwitchTabListener paramOnSwitchTabListener)
   {
-    this.jdField_a_of_type_Hgk.removeMessages(0);
+    this.jdField_a_of_type_Hgj.removeMessages(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$OnSwitchTabListener = paramOnSwitchTabListener;
   }
 }

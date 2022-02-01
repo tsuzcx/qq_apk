@@ -1,20 +1,16 @@
 import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.voip.VoipDialInterface;
 
 public class etr
-  extends Handler
+  implements Runnable
 {
   public etr(VoipDialInterface paramVoipDialInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
     VoipDialInterface.a(this.a);
+    VoipDialInterface.a(this.a).postDelayed(this, 1000L);
+    VoipDialInterface.b(this.a).sendEmptyMessage(100);
   }
 }
 

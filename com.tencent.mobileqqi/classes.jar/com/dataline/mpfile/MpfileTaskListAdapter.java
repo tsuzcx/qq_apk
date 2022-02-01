@@ -85,22 +85,22 @@ public class MpfileTaskListAdapter
       {
         localObject = new MpfileTaskListAdapter.ItemHolder(this);
         paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903524, paramViewGroup, false);
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232748));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232747));
         ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.b);
         ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setLongClickable(true);
         ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(new eg(this));
         ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject);
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232752));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131232741));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232753));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131232742));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232750));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232743));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131231506));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232746));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).d = ((TextView)paramView.findViewById(2131231883));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131232751));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131232740));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232752));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131232741));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232749));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232742));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131231505));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232745));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).d = ((TextView)paramView.findViewById(2131231882));
         ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131230987));
-        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131231701));
+        ((MpfileTaskListAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131231700));
         paramView.setTag(localObject);
         paramViewGroup = (ViewGroup)localObject;
       }

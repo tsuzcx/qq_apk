@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.LocalFileCategoryBrowserActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class fsg
+  implements AdapterView.OnItemClickListener
 {
-  public int a;
-  public int b;
+  public fsg(LocalFileCategoryBrowserActivity paramLocalFileCategoryBrowserActivity) {}
   
-  public fsg(LocalFileBrowserActivity paramLocalFileBrowserActivity)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public fsg(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    LocalFileCategoryBrowserActivity.a(this.a, paramView);
   }
 }
 

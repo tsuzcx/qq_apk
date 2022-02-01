@@ -3,7 +3,7 @@ package com.tencent.mobileqq.startup.step;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.startup.director.StartupDirector;
-import gkd;
+import gkc;
 import mqq.app.AppActivity;
 import mqq.app.permission.PermissionManager;
 
@@ -19,7 +19,7 @@ public class SetPermission
   
   private void a()
   {
-    this.jdField_a_of_type_MqqAppAppActivity.permissionManager.request(new gkd(this));
+    this.jdField_a_of_type_MqqAppAppActivity.permissionManager.request(new gkc(this));
   }
   
   protected boolean a()

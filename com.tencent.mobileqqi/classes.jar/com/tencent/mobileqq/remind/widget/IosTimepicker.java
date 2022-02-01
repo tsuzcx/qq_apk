@@ -15,10 +15,10 @@ import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemSelectedListener;
 import com.tencent.widget.VerticalGallery.OnEndFlingListener;
 import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
+import gfy;
 import gfz;
 import gga;
 import ggb;
-import ggc;
 
 public class IosTimepicker
   extends LinearLayout
@@ -50,9 +50,9 @@ public class IosTimepicker
   private IosTimepicker.OnTimePickerSelectListener jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$OnTimePickerSelectListener;
   private WheelView jdField_a_of_type_ComTencentMobileqqRemindWidgetWheelView = null;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new gga(this);
-  private VerticalGallery.OnEndFlingListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener = new ggc(this);
-  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = new ggb(this);
+  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new gfz(this);
+  private VerticalGallery.OnEndFlingListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener = new ggb(this);
+  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = new gga(this);
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long;
   private NumberAdapter jdField_b_of_type_ComTencentMobileqqRemindNumberAdapter;
@@ -142,11 +142,11 @@ public class IosTimepicker
     this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$OnTimePickerSelectListener = paramOnTimePickerSelectListener;
     this.jdField_a_of_type_ArrayOfJavaLangString = TimeHelper.jdField_a_of_type_ArrayOfJavaLangString;
     this.jdField_b_of_type_ArrayOfJavaLangString = TimeHelper.jdField_b_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqRemindWidgetWheelView = ((WheelView)findViewById(2131232973));
-    this.jdField_b_of_type_ComTencentMobileqqRemindWidgetWheelView = ((WheelView)findViewById(2131232974));
-    this.c = ((WheelView)findViewById(2131232975));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232972));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new gfz(this));
+    this.jdField_a_of_type_ComTencentMobileqqRemindWidgetWheelView = ((WheelView)findViewById(2131232972));
+    this.jdField_b_of_type_ComTencentMobileqqRemindWidgetWheelView = ((WheelView)findViewById(2131232973));
+    this.c = ((WheelView)findViewById(2131232974));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232971));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new gfy(this));
     this.jdField_b_of_type_ComTencentMobileqqRemindWidgetWheelView.setScrollCycle(true);
     this.c.setScrollCycle(true);
     this.jdField_a_of_type_ComTencentMobileqqRemindWidgetWheelView.setTag("day");

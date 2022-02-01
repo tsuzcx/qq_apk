@@ -1,17 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
 
 public class eaz
-  implements AnimationTextView.OnDoubleClick
+  implements DialogInterface.OnClickListener
 {
   public eaz(TextItemBuilder paramTextItemBuilder) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatActivityUtils.a(TextItemBuilder.b(this.a), paramView, (ChatActivity)TextItemBuilder.a(this.a));
+    if (!TextTranslationItemBuilder.d) {}
+    for (boolean bool = true;; bool = false)
+    {
+      TextTranslationItemBuilder.d = bool;
+      return;
+    }
   }
 }
 

@@ -23,9 +23,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import gdk;
 import gdl;
 import gdm;
-import gdn;
 import java.util.List;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
@@ -46,26 +46,26 @@ public class TroopSystemMessage
   public TroopSystemMessage()
   {
     super(4);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gdl(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gdk(this);
   }
   
   public TroopSystemMessage(int paramInt)
   {
     super(4, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gdl(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gdk(this);
   }
   
   public TroopSystemMessage(int paramInt, QQAppInterface paramQQAppInterface)
   {
     super(4, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gdl(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gdk(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
   public TroopSystemMessage(MessageForSystemMsg paramMessageForSystemMsg, int paramInt, QQAppInterface paramQQAppInterface)
   {
     super(4);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gdl(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gdk(this);
     if (paramMessageForSystemMsg != null)
     {
       this.o = paramInt;
@@ -130,19 +130,19 @@ public class TroopSystemMessage
   public View a(ViewGroup paramViewGroup, View paramView)
   {
     this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
-    gdn localgdn = new gdn();
+    gdm localgdm = new gdm();
     View localView = paramView;
     if (paramView == null)
     {
       localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130903367, paramViewGroup, false);
-      localgdn.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232301));
-      localgdn.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232302));
-      localgdn.b = ((TextView)localView.findViewById(2131232303));
-      localgdn.c = ((TextView)localView.findViewById(2131232304));
-      localgdn.d = ((TextView)localView.findViewById(2131232305));
+      localgdm.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232300));
+      localgdm.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232301));
+      localgdm.b = ((TextView)localView.findViewById(2131232302));
+      localgdm.c = ((TextView)localView.findViewById(2131232303));
+      localgdm.d = ((TextView)localView.findViewById(2131232304));
     }
-    a(localgdn.jdField_a_of_type_AndroidWidgetImageView);
-    if (!a(localgdn)) {
+    a(localgdm.jdField_a_of_type_AndroidWidgetImageView);
+    if (!a(localgdm)) {
       localView = null;
     }
     return localView;
@@ -153,7 +153,7 @@ public class TroopSystemMessage
     this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg = paramMessageForSystemMsg;
   }
   
-  boolean a(gdn paramgdn)
+  boolean a(gdm paramgdm)
   {
     String str = "";
     if (this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.msg_describe.has()) {
@@ -162,23 +162,23 @@ public class TroopSystemMessage
     if (TextUtils.isEmpty(str)) {
       return false;
     }
-    paramgdn.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramgdn.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-    paramgdn.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(str);
+    paramgdm.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    paramgdm.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    paramgdm.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(str);
     str = "";
     if (this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.msg_additional.has()) {
       str = this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.msg_additional.get();
     }
     if (!TextUtils.isEmpty(str))
     {
-      paramgdn.b.setVisibility(0);
-      paramgdn.b.setText(str);
-      paramgdn.b.setContentDescription(str);
+      paramgdm.b.setVisibility(0);
+      paramgdm.b.setText(str);
+      paramgdm.b.setContentDescription(str);
       if ((this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.sub_type.get() != 1) || (this.o != 1) || (this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.actions.get() == null) || (this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.actions.get().size() <= 0)) {
         break label385;
       }
-      paramgdn.c.setVisibility(0);
-      paramgdn.d.setVisibility(8);
+      paramgdm.c.setVisibility(0);
+      paramgdm.d.setVisibility(8);
       str = ((structmsg.SystemMsgAction)this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.actions.get().get(0)).name.get();
       if (!TextUtils.isEmpty(str)) {
         break label405;
@@ -191,19 +191,19 @@ public class TroopSystemMessage
     {
       if (((structmsg.SystemMsgAction)this.jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg.structMsg.msg.actions.get(0)).action_info.type.get() == 12)
       {
-        paramgdn.c.setTextAppearance(this.jdField_a_of_type_AndroidContentContext, 2131624335);
-        paramgdn.c.setBackgroundResource(2130837821);
+        paramgdm.c.setTextAppearance(this.jdField_a_of_type_AndroidContentContext, 2131624335);
+        paramgdm.c.setBackgroundResource(2130837821);
       }
-      paramgdn.c.setText(str);
-      paramgdn.c.setContentDescription(str);
-      paramgdn.c.setOnClickListener(new gdm(this));
+      paramgdm.c.setText(str);
+      paramgdm.c.setContentDescription(str);
+      paramgdm.c.setOnClickListener(new gdl(this));
       for (;;)
       {
         return true;
-        paramgdn.b.setVisibility(8);
+        paramgdm.b.setVisibility(8);
         break;
-        paramgdn.c.setVisibility(8);
-        paramgdn.d.setVisibility(0);
+        paramgdm.c.setVisibility(8);
+        paramgdm.d.setVisibility(0);
       }
     }
   }

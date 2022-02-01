@@ -1,20 +1,22 @@
 import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SubAccountBindActivity;
 import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
 
-class dlk
-  implements Runnable
+public class dlk
+  implements View.OnClickListener
 {
-  dlk(dlj paramdlj) {}
+  public dlk(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Dli.a.e();
-    this.a.jdField_a_of_type_Dli.a.a(this.a.jdField_a_of_type_Dli.a.getString(2131562096));
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_Dli.a, SubLoginActivity.class);
-    localIntent.putExtra("subuin", this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
-    this.a.jdField_a_of_type_Dli.a.startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
+    }
+    paramView = new Intent(this.a, SubLoginActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

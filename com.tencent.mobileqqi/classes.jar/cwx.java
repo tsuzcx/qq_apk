@@ -1,37 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
 
 public class cwx
-  extends TroopObserver
+  implements DialogInterface.OnClickListener
 {
   public cwx(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) || (paramArrayList == null)) {
-      return;
+    paramDialogInterface = MySelfTroopMemberCard.a(this.a).getInputValue();
+    if ((paramDialogInterface != null) && (!paramDialogInterface.equals("")) && (!paramDialogInterface.equals(this.a.a.getText()))) {
+      MySelfTroopMemberCard.a(this.a).post(new cwy(this, paramDialogInterface));
     }
-    int i = 0;
-    label11:
-    TroopMemberCardInfo localTroopMemberCardInfo;
-    if (i < paramArrayList.size())
-    {
-      localTroopMemberCardInfo = (TroopMemberCardInfo)paramArrayList.get(i);
-      if ((localTroopMemberCardInfo != null) && (localTroopMemberCardInfo.memberuin != null)) {
-        break label49;
-      }
-    }
-    label49:
-    while (!localTroopMemberCardInfo.memberuin.equals(this.a.b.a()))
-    {
-      i += 1;
-      break label11;
-      break;
-    }
-    this.a.a(localTroopMemberCardInfo, false);
   }
 }
 

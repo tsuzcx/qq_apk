@@ -1,214 +1,89 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import android.widget.LinearLayout;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import com.tencent.mobileqq.data.TroopBarPageEntity;
 import com.tencent.mobileqq.data.TroopBarPageEntity.TypeListEntity;
-import com.tencent.mobileqq.data.TroopBarPostEntity;
 import com.tencent.mobileqq.troop.activity.TroopBarPageActivity;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
 import com.tencent.mobileqq.troop.widget.TroopBarPostAdapter;
-import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class gsg
-  implements HttpWebCgiAsyncTask.Callback
+  extends BroadcastReceiver
 {
   public gsg(TroopBarPageActivity paramTroopBarPageActivity) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 0)
+    String str = paramIntent.getAction();
+    if ("change_post_type".equals(str))
     {
-      if (paramBundle == null) {}
-      for (bool1 = false; TroopBarUtils.a(paramJSONObject, "retcode") == 100000; bool1 = paramBundle.getBoolean("requestPageOnly"))
+      paramContext = (TroopBarPageEntity.TypeListEntity)paramIntent.getSerializableExtra("post_type");
+      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.curType = paramContext;
+      this.a.a(paramContext);
+      this.a.b(false);
+      this.a.a(this.a.r, paramContext.type, 0L, true, false);
+    }
+    label72:
+    do
+    {
+      do
       {
-        this.a.b(false);
-        if (!this.a.jdField_b_of_type_Boolean)
+        do
         {
-          this.a.jdField_b_of_type_Boolean = true;
-          this.a.a(this.a.r, bool1, true);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("IphoneTitleBarActivity", 2, "requestTroopbarPage---RESULT_CODE_SIGN_ERROR");
-        }
-        return;
-      }
-      this.a.jdField_b_of_type_Boolean = false;
-      paramInt = TroopBarUtils.a(paramJSONObject, "errno");
-      if (paramInt == 0)
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity == null) {}
-        for (paramBundle = TroopBarUtils.a;; paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.curType)
-        {
-          if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity == null)
+          break label72;
+          do
           {
-            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity = new TroopBarPageEntity();
-            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.id = this.a.r;
-            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.curType = paramBundle;
+            return;
+          } while (!"refresh_page".equals(str));
+          str = paramIntent.getStringExtra("sub_action");
+          if ("show_loading".equals(str))
+          {
+            this.a.b(true);
+            return;
           }
-          this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.refreshData(paramJSONObject);
-          TroopBarPageActivity.a(this.a).setVisibility(0);
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity);
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter.notifyDataSetChanged();
-          TroopBarUtils.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity);
-          if ((bool1) || (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.curType == null)) {
+          if ("hide_loading".equals(str))
+          {
+            this.a.b(false);
+            return;
+          }
+          if (!"sign_in".equals(str)) {
             break;
           }
-          this.a.b(false);
-          this.a.a(this.a.r, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.curType.type, 0L, true, false);
-          return;
-        }
-      }
-      i = TroopBarUtils.a(paramJSONObject, "retcode");
-      if (i != 0) {
-        QQToast.a(this.a, 1, this.a.getString(2131560704, new Object[] { Integer.valueOf(i) }), 0).b(this.a.d());
-      }
-      for (;;)
-      {
-        this.a.b(false);
-        return;
-        QQToast.a(this.a, 1, this.a.getString(2131560704, new Object[] { Integer.valueOf(paramInt) }), 0).b(this.a.d());
-      }
-    }
-    int i = 0;
-    if ((paramInt == -1001) || (paramInt == -1002)) {
-      i = 1;
-    }
-    int j = i;
-    Object localObject1;
-    if (i == 0)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity == null) {}
-      for (localObject1 = null;; localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.getTypeList())
-      {
-        j = i;
-        if (localObject1 == null) {
-          break label531;
-        }
-        j = 0;
-        while (j < ((ArrayList)localObject1).size())
-        {
-          if (paramInt == ((TroopBarPageEntity.TypeListEntity)((ArrayList)localObject1).get(j)).type) {
-            i = 1;
+          try
+          {
+            paramIntent = new JSONObject(paramIntent.getStringExtra("broadcast_data"));
+            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.updateBannerDataAfterAction("sign_in", paramIntent);
+            this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity);
+            this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter.notifyDataSetChanged();
+            TroopBarUtils.a(this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity);
+            QQToast.a(paramContext, 2, this.a.getString(2131560700), 0).b(paramContext.getResources().getDimensionPixelSize(2131427376));
+            this.a.b(false);
+            return;
           }
-          j += 1;
-        }
-      }
-      j = i;
-    }
-    label531:
-    if (j == 0)
-    {
-      this.a.b(false);
-      return;
-    }
-    long l;
-    if (paramBundle == null)
-    {
-      l = 0L;
-      label552:
-      if (paramBundle != null) {
-        break label642;
-      }
-    }
-    label642:
-    for (boolean bool1 = false;; bool1 = paramBundle.getBoolean("clear_data"))
-    {
-      if (TroopBarUtils.a(paramJSONObject, "retcode") != 100000) {
-        break label653;
-      }
-      this.a.b(false);
-      if (!this.a.c)
-      {
-        this.a.c = true;
-        this.a.a(this.a.r, paramInt, l, bool1, true);
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("IphoneTitleBarActivity", 2, "requestPost---RESULT_CODE_SIGN_ERROR");
-      return;
-      l = paramBundle.getLong("start_post_index");
-      break label552;
-    }
-    label653:
-    this.a.c = false;
-    if (paramJSONObject != null) {}
-    for (;;)
-    {
+          catch (JSONException paramContext) {}
+        } while (!QLog.isColorLevel());
+        QLog.e("IphoneTitleBarActivity", 2, "BROADCAST_NAME_SIGN_IN-->JSONException");
+        return;
+      } while (!"follow".equals(str));
       try
       {
-        paramBundle = this.a;
-        if (TroopBarUtils.a(paramJSONObject, "isend") != 1) {
-          break label1072;
-        }
-        bool2 = true;
-        paramBundle.c(bool2);
-        localObject1 = paramJSONObject.getJSONArray("posts");
-        paramBundle = new ArrayList();
-        i = 0;
-        if (i >= ((JSONArray)localObject1).length()) {
-          break label1078;
-        }
-        localObject2 = new TroopBarPostEntity(((JSONArray)localObject1).getJSONObject(i));
-        ((TroopBarPostEntity)localObject2).type = String.valueOf(paramInt);
-        paramBundle.add(localObject2);
-        i += 1;
-        continue;
-        this.a.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, Long.valueOf(20L + l));
-        if (!bool1) {
-          continue;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter.a(paramBundle);
+        paramIntent = new JSONObject(paramIntent.getStringExtra("broadcast_data"));
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.updateBannerDataAfterAction("follow", paramIntent);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter.notifyDataSetChanged();
+        TroopBarUtils.a(this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity);
+        QQToast.a(paramContext, 2, this.a.getString(2131560701), 0).b(paramContext.getResources().getDimensionPixelSize(2131427376));
+        this.a.b(false);
+        return;
       }
-      catch (JSONException paramBundle)
-      {
-        Object localObject2;
-        if (TroopBarUtils.a(paramJSONObject, "isend") == 1) {
-          continue;
-        }
-        paramInt = TroopBarUtils.a(paramJSONObject, "retcode");
-        if (paramInt == 0) {
-          continue;
-        }
-        QQToast.a(this.a, 1, this.a.getString(2131560704, new Object[] { Integer.valueOf(paramInt) }), 0).b(this.a.d());
-        continue;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter.a(paramBundle);
-        continue;
-        paramInt = TroopBarUtils.a(paramJSONObject, "errno");
-        QQToast.a(this.a, 1, this.a.getString(2131560704, new Object[] { Integer.valueOf(paramInt) }), 0).b(this.a.d());
-        continue;
-      }
-      if (l == 0L)
-      {
-        localObject1 = SecurityUtile.b(this.a.r);
-        localObject2 = SecurityUtile.b(String.valueOf(paramInt));
-        TroopBarUtils.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
-        TroopBarUtils.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, TroopBarPostEntity.class, "bid=? and type = ?", new String[] { localObject1, localObject2 });
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter.notifyDataSetChanged();
-      this.a.b(false);
-      return;
-      localObject1 = this.a.jdField_a_of_type_AndroidUtilSparseArray;
-      l += 1L;
-      ((SparseArray)localObject1).put(paramInt, Long.valueOf(l));
-      continue;
-      QQToast.a(this.a, 1, this.a.getString(2131560703), 0).b(this.a.d());
-      continue;
-      label1072:
-      boolean bool2 = false;
-      continue;
-      label1078:
-      if (paramInt != -1001) {
-        if (paramInt != -1002) {}
-      }
-    }
+      catch (JSONException paramContext) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("IphoneTitleBarActivity", 2, "BROADCAST_NAME_FOLLOW-->JSONException");
   }
 }
 

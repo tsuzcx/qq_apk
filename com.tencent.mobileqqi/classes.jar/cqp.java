@@ -1,17 +1,48 @@
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
 import com.tencent.mobileqq.activity.HornPublishActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.widget.XEditText;
 
 public class cqp
-  implements Runnable
+  implements EmoticonCallback
 {
-  public cqp(HornPublishActivity paramHornPublishActivity, String paramString) {}
+  public cqp(HornPublishActivity paramHornPublishActivity) {}
   
-  public void run()
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_JavaLangString);
+    TextUtils.a(this.a.a);
+  }
+  
+  public void a(EmoticonInfo paramEmoticonInfo)
+  {
+    if ((paramEmoticonInfo instanceof SystemEmoticonInfo))
+    {
+      int i = this.a.a.getSelectionStart();
+      int j = this.a.a.getSelectionEnd();
+      if ((i >= 0) && (j >= 0) && (j >= i)) {
+        this.a.a.getEditableText().replace(i, j, TextUtils.b(((SystemEmoticonInfo)paramEmoticonInfo).a));
+      }
     }
   }
+  
+  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public boolean a(EmoticonInfo paramEmoticonInfo)
+  {
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void b(EmoticonInfo paramEmoticonInfo) {}
+  
+  public void d() {}
+  
+  public void u_() {}
 }
 
 

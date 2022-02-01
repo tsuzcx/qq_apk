@@ -1,41 +1,93 @@
-import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import java.util.ArrayList;
 
 public class dow
-  implements ActionSheet.OnButtonClickListener
+  extends BaseAdapter
 {
-  public dow(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public dow(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int getCount()
   {
-    boolean bool = false;
-    switch (paramInt)
-    {
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
     }
-    for (;;)
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.a.getLayoutInflater().inflate(2130904025, null);
+    }
+    TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131234600);
+    TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131234602);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131234601);
+    GroupCatalogBean localGroupCatalogBean2 = (GroupCatalogBean)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    Object localObject;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) && (localGroupCatalogBean2.jdField_a_of_type_Int < this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.jdField_a_of_type_Int))
     {
-      TroopAssistantActivity.a(this.a).dismiss();
-      return;
-      paramView = this.a;
-      if (!TroopAssistantActivity.a(this.a)) {
-        bool = true;
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
+      paramView = ((GroupCatalogBean)localObject).jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
+      if ((paramView == null) || (paramView.jdField_a_of_type_Int < localGroupCatalogBean2.jdField_a_of_type_Int)) {
+        break label310;
       }
-      TroopAssistantActivity.a(paramView, bool);
-      TroopAssistantManager.a().b(this.a.b, TroopAssistantActivity.a(this.a));
-      continue;
-      paramView = new Intent(this.a, TroopAssisSettingActivity.class);
-      paramView.setFlags(67108864);
-      this.a.startActivity(paramView);
-      ReportController.b(this.a.b, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
-      continue;
-      TroopAssistantManager.a().a(this.a.b, false);
-      this.a.finish();
+      if (!localGroupCatalogBean2.b.equals(paramView.b)) {}
+    }
+    label302:
+    label310:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt != 0)
+      {
+        localTextView2.setVisibility(0);
+        localTextView2.setText(((GroupCatalogBean)localObject).jdField_a_of_type_JavaLangString);
+        localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130840347, 0);
+      }
+      for (;;)
+      {
+        localTextView1.setText(localGroupCatalogBean2.jdField_a_of_type_JavaLangString);
+        if ((localGroupCatalogBean2.jdField_a_of_type_JavaUtilArrayList == null) || (localGroupCatalogBean2.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
+          break label302;
+        }
+        localImageView.setVisibility(0);
+        return paramViewGroup;
+        GroupCatalogBean localGroupCatalogBean1 = paramView.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
+        localObject = paramView;
+        paramView = localGroupCatalogBean1;
+        break;
+        localTextView2.setVisibility(4);
+        continue;
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) && (localGroupCatalogBean2.b.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.b)))
+        {
+          localTextView2.setVisibility(0);
+          localTextView2.setText("");
+          localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130840347, 0);
+        }
+        else
+        {
+          localTextView2.setVisibility(4);
+        }
+      }
+      localImageView.setVisibility(4);
+      return paramViewGroup;
     }
   }
 }

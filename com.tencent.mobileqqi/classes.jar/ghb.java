@@ -1,30 +1,17 @@
 import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatusEditText.RichStatusEditListener;
 import com.tencent.mobileqq.widget.ClickableImageSpan;
+import com.tencent.mobileqq.widget.ClickableImageSpan.ClickableImageSpanListener;
 
 public class ghb
-  implements RichStatusEditText.RichStatusEditListener
+  implements ClickableImageSpan.ClickableImageSpanListener
 {
   public ghb(EditActivity paramEditActivity) {}
   
   public void a(ClickableImageSpan paramClickableImageSpan)
   {
-    if (EditActivity.a(this.a) == paramClickableImageSpan)
-    {
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).a(null);
-      }
-      EditActivity.a(this.a, null);
-      EditActivity.a(this.a).c = null;
-      EditActivity.a(this.a).d = null;
-      EditActivity.a(this.a).e = null;
-      EditActivity.c(this.a, true);
+    if ((EditActivity.a(this.a) == paramClickableImageSpan) && (System.currentTimeMillis() - this.a.a > 1300L)) {
+      this.a.d();
     }
-  }
-  
-  public boolean a(ClickableImageSpan paramClickableImageSpan)
-  {
-    return paramClickableImageSpan != EditActivity.a(this.a);
   }
 }
 

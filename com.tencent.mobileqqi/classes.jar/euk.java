@@ -9,7 +9,7 @@ public class euk
   
   public void onClick(View paramView)
   {
-    this.a.a(paramView);
+    this.a.h();
   }
 }
 

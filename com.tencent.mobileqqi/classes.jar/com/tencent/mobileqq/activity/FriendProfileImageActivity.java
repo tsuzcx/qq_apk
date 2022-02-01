@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import cno;
 import cnp;
 import cnq;
 import cnr;
@@ -36,16 +37,15 @@ import cns;
 import cnt;
 import cnu;
 import cnv;
-import cnw;
+import cnx;
 import cny;
-import cnz;
+import coa;
 import cob;
 import coc;
 import cod;
-import coe;
+import cof;
 import cog;
 import coh;
-import coi;
 import com.tencent.common.galleryactivity.AnimationUtils;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.adapter.FriendProfileImageAdapter;
@@ -97,7 +97,7 @@ public class FriendProfileImageActivity
   public long a;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   public AsyncTask a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cnw(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cnv(this);
   public View a;
   AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
@@ -111,7 +111,7 @@ public class FriendProfileImageActivity
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private QQToastNotifier jdField_a_of_type_ComTencentMobileqqWidgetQQToastNotifier;
   public Gallery a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new cns(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new cnr(this);
   public boolean a;
   public int b;
   View jdField_b_of_type_AndroidViewView;
@@ -216,9 +216,9 @@ public class FriendProfileImageActivity
       paramRect1 = new TranslateAnimation(-(k - n), 0.0F, -(m - i1), 0.0F);
       paramRect1.setDuration(this.jdField_c_of_type_Long);
       paramRect1.setInterpolator(new AccelerateDecelerateInterpolator());
-      paramRect1.setAnimationListener(new cnt(this));
+      paramRect1.setAnimationListener(new cns(this));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(paramRect1);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new cnu(this), this.jdField_c_of_type_Long);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new cnt(this), this.jdField_c_of_type_Long);
       paramRect1 = new AlphaAnimation(0.0F, 1.0F);
       paramRect1.setInterpolator(new DecelerateInterpolator());
       paramRect1.setDuration(350L);
@@ -244,8 +244,8 @@ public class FriendProfileImageActivity
     paramTextView.setVisibility(4);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
     this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new cnq(this, paramTextView));
-    this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new cnr(this, paramTextView));
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new cnp(this, paramTextView));
+    this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new cnq(this, paramTextView));
   }
   
   private void e()
@@ -261,7 +261,7 @@ public class FriendProfileImageActivity
       localActionSheet.a(2131561928, 3);
     }
     localActionSheet.d(2131561746);
-    localActionSheet.a(new cog(this, localProfileImageInfo, localActionSheet));
+    localActionSheet.a(new cof(this, localProfileImageInfo, localActionSheet));
     localActionSheet.show();
   }
   
@@ -342,7 +342,7 @@ public class FriendProfileImageActivity
     {
       sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.parse("file://" + paramString2)));
       return;
-      DialogUtil.a(this, 230).setTitle(getString(2131562802)).setMessage(getString(2131561976)).setPositiveButton(getString(2131562765), new coi(this, paramString1, paramString2)).setNegativeButton(getString(2131562473), new coh(this)).show();
+      DialogUtil.a(this, 230).setTitle(getString(2131562802)).setMessage(getString(2131561976)).setPositiveButton(getString(2131562765), new coh(this, paramString1, paramString2)).setNegativeButton(getString(2131562473), new cog(this)).show();
     }
   }
   
@@ -466,7 +466,7 @@ public class FriendProfileImageActivity
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new cnv(this));
+    localAnimationSet.setAnimationListener(new cnu(this));
     this.jdField_a_of_type_ComTencentWidgetGallery.startAnimation(localAnimationSet);
     this.jdField_b_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
@@ -490,20 +490,20 @@ public class FriendProfileImageActivity
     getWindow().setBackgroundDrawableResource(2131361815);
     setContentView(2130903250);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231777));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231776));
     this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230976));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231116));
     this.jdField_b_of_type_AndroidViewView = findViewById(2131230991);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231776));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231780));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231781));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231775));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231779));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231780));
     this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131230986));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231779));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231778));
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new cnp(this));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new cno(this));
     this.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter = new FriendProfileImageAdapter(this);
     Object localObject;
     if (881 == paramBundle.getInt("requestType"))
@@ -519,9 +519,9 @@ public class FriendProfileImageActivity
         ((FrameLayout.LayoutParams)localObject).bottomMargin = getResources().getDimensionPixelSize(2131427548);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
         this.jdField_c_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231782));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231781));
         ThreadManager.b(this);
-        this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131231783));
+        this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131231782));
         localObject = ((FriendsManagerImp)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b);
         if ((localObject == null) || (!((ExtensionInfo)localObject).isPendantValid())) {
           break label692;
@@ -545,17 +545,17 @@ public class FriendProfileImageActivity
       ((FriendProfileImageModel.ProfileImageInfo)localObject).jdField_a_of_type_JavaLangString = paramBundle.getString("filekey");
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this, (FriendProfileImageModel.ProfileImageInfo)localObject);
       this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(new cnz(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(new cny(this));
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b(this);
       this.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel);
       this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter);
       this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
       this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131427411));
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new cob(this));
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new coc(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new coa(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new cob(this));
       a(this.jdField_a_of_type_AndroidWidgetTextView);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new cod(this));
-      this.jdField_a_of_type_AndroidOsAsyncTask = new coe(this, (FriendProfileImageModel.ProfileImageInfo)localObject);
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new coc(this));
+      this.jdField_a_of_type_AndroidOsAsyncTask = new cod(this, (FriendProfileImageModel.ProfileImageInfo)localObject);
       return true;
       this.jdField_b_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel = new FriendProfileImagePortraits(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
@@ -686,7 +686,7 @@ public class FriendProfileImageActivity
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b == null)) {
       return;
     }
-    runOnUiThread(new cny(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b)));
+    runOnUiThread(new cnx(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b)));
   }
 }
 

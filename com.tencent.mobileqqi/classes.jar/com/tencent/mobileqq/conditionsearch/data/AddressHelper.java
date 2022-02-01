@@ -35,9 +35,9 @@ public class AddressHelper
     //   46: invokevirtual 49	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   49: astore 5
     //   51: aload 5
-    //   53: ifnull +260 -> 313
+    //   53: ifnull +264 -> 317
     //   56: aload_1
-    //   57: ifnonnull +253 -> 310
+    //   57: ifnonnull +257 -> 314
     //   60: new 51	com/tencent/mobileqq/conditionsearch/data/AddressData
     //   63: dup
     //   64: invokespecial 52	com/tencent/mobileqq/conditionsearch/data/AddressData:<init>	()V
@@ -67,9 +67,9 @@ public class AddressHelper
     //   114: invokestatic 30	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   117: aload_0
     //   118: areturn
-    //   119: astore_1
+    //   119: astore_0
     //   120: aconst_null
-    //   121: astore_0
+    //   121: astore_2
     //   122: invokestatic 24	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   125: ifeq +31 -> 156
     //   128: ldc 8
@@ -79,7 +79,7 @@ public class AddressHelper
     //   135: invokespecial 68	java/lang/StringBuilder:<init>	()V
     //   138: ldc 70
     //   140: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: aload_1
+    //   143: aload_0
     //   144: invokestatic 80	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   147: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   150: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -159,17 +159,21 @@ public class AddressHelper
     //   304: astore_1
     //   305: aload_2
     //   306: astore_0
-    //   307: goto -185 -> 122
-    //   310: goto -242 -> 68
-    //   313: aload_1
-    //   314: astore_0
-    //   315: goto -221 -> 94
+    //   307: aload_0
+    //   308: astore_2
+    //   309: aload_1
+    //   310: astore_0
+    //   311: goto -189 -> 122
+    //   314: goto -246 -> 68
+    //   317: aload_1
+    //   318: astore_0
+    //   319: goto -225 -> 94
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	318	0	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
-    //   0	318	1	paramFile	java.io.File
-    //   24	282	2	localFileInputStream	java.io.FileInputStream
-    //   1	279	3	localObject	Object
+    //   0	322	0	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
+    //   0	322	1	paramFile	java.io.File
+    //   24	285	2	localObject1	Object
+    //   1	279	3	localObject2	Object
     //   40	246	4	localBufferedReader	java.io.BufferedReader
     //   49	22	5	str	String
     //   177	24	5	localException	java.lang.Exception

@@ -2,14 +2,14 @@ package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
-import fhn;
+import fhm;
 
 public class CheckMsgCount
   extends AsyncStep
 {
   protected int a()
   {
-    ThreadManager.a(new fhn(this));
+    ThreadManager.a(new fhm(this));
     return 7;
   }
 }

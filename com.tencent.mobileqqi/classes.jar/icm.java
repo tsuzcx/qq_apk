@@ -1,16 +1,16 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.LocalImageShootInfo;
+import cooperation.qzone.model.MapParcelable;
 
 public final class icm
   implements Parcelable.Creator
 {
-  public LocalImageShootInfo a(Parcel paramParcel)
+  public MapParcelable a(Parcel paramParcel)
   {
-    return new LocalImageShootInfo(paramParcel);
+    return new MapParcelable(paramParcel.readHashMap(getClass().getClassLoader()));
   }
   
-  public LocalImageShootInfo[] a(int paramInt)
+  public MapParcelable[] a(int paramInt)
   {
     return null;
   }

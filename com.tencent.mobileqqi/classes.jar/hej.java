@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.utils.VoicePlayer;
+import com.tencent.mobileqq.utils.ZebraBlacklistUtils;
+import com.tencent.mobileqq.utils.ZebraBlacklistUtils.JceRequestCallback;
 
 public class hej
-  implements Runnable
+  implements ZebraBlacklistUtils.JceRequestCallback
 {
-  public hej(VoicePlayer paramVoicePlayer) {}
+  public hej(ZebraBlacklistUtils paramZebraBlacklistUtils) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(byte[] paramArrayOfByte)
   {
-    VoicePlayer.a(this.a, false);
+    ZebraBlacklistUtils.a(this.a, paramArrayOfByte);
   }
 }
 

@@ -1,42 +1,27 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.data.TroopBarPageEntity;
-import com.tencent.mobileqq.data.TroopBarPageEntity.TypeListEntity;
+import android.view.View;
 import com.tencent.mobileqq.troop.activity.TroopBarPageActivity;
-import com.tencent.mobileqq.troop.widget.TroopBarPostAdapter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class gsa
-  implements AbsListView.OnScrollListener
+  implements ActionSheet.OnButtonClickListener
 {
-  int jdField_a_of_type_Int = 0;
+  public gsa(TroopBarPageActivity paramTroopBarPageActivity, ActionSheet paramActionSheet) {}
   
-  public gsa(TroopBarPageActivity paramTroopBarPageActivity) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "onScrollStateChanged lastVisibleIndex = " + this.jdField_a_of_type_Int + ", scrollState = " + paramInt);
-    }
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter.getCount() - 1) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.curType != null))
+    switch (paramInt)
     {
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.curType.type;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-        break label138;
-      }
     }
-    label138:
-    for (long l = 0L;; l = ((Long)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).longValue())
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.r, paramInt, l, false, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
+      TroopBarPageActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity);
+      continue;
+      TroopBarUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity, "all_bar", new String[0]);
     }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
   }
 }
 

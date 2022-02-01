@@ -1,6 +1,5 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 
 public class edj
@@ -10,7 +9,7 @@ public class edj
   
   public void onClick(View paramView)
   {
-    SearchResultDialog.a(this.a).setText("");
+    this.a.dismiss();
   }
 }
 

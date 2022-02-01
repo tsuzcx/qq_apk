@@ -1,25 +1,53 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
+import android.content.Context;
+import android.graphics.PointF;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.widget.ContextMenuTextView;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.widget.BubblePopupWindow;
 
-@TargetApi(16)
 public class hge
-  implements BubblePopupWindow.OnDismissListener
+  implements View.OnLongClickListener, View.OnTouchListener
 {
-  hge(ContextMenuTextView paramContextMenuTextView) {}
+  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
   
-  public void a()
+  private hge(ContextMenuTextView paramContextMenuTextView) {}
+  
+  protected void a(View paramView)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      ContextMenuTextView.a(this.a, null);
-    }
-    for (;;)
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-1);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-7829368);
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.g()))
     {
-      this.a.a = null;
-      return;
-      ContextMenuTextView.b(this.a, null);
+      a(paramView);
+      return false;
     }
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131234878, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131561879));
+    ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView, BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_AndroidViewView$OnClickListener, null));
+    a(paramView);
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+    }
+    return false;
   }
 }
 

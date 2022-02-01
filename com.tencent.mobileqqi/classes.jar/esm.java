@@ -1,23 +1,22 @@
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QvipSpecialCareObserver;
 
 public class esm
-  extends FriendListObserver
+  extends QvipSpecialCareObserver
 {
   public esm(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void a(Object paramObject)
   {
-    if (paramBoolean) {
-      QvipSpecialCarePersonActivity.a(this.a);
+    if (paramObject != null) {
+      QvipSpecialCarePersonActivity.b(this.a);
     }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean2) {
-      QvipSpecialCarePersonActivity.a(this.a);
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
     }
+    QvipSpecialCarePersonActivity.a(this.a);
   }
 }
 

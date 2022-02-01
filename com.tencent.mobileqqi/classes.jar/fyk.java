@@ -1,23 +1,33 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
 
-public final class fyk
-  extends ClickableSpan
+public class fyk
+  implements Animation.AnimationListener
 {
-  public fyk(FileManagerUtil.TipsClickedInterface paramTipsClickedInterface) {}
+  public fyk(FilePreviewAnimQueue paramFilePreviewAnimQueue, FilePreviewAnimQueue.FilePreviewAnim paramFilePreviewAnim) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a(paramView);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$FilePreviewAnim.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
-    paramTextPaint.setUnderlineText(false);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.jdField_a_of_type_Boolean = true;
   }
 }
 

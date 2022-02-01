@@ -2,7 +2,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.SystemClock;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.PerformanceReportUtils;
 import com.tencent.mobileqq.utils.QQUtils;
@@ -14,53 +13,37 @@ import mqq.manager.ServerConfigManager.ConfigType;
 public final class hcc
   extends AsyncTask
 {
-  public hcc(int paramInt, long paramLong, String paramString) {}
+  public hcc(String paramString, int paramInt) {}
   
   protected Void a(Void... paramVarArgs)
   {
-    int i = 1;
-    paramVarArgs = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.a());
+    paramVarArgs = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.i());
     if (QLog.isDevelopLevel()) {
-      QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch openStr ：" + paramVarArgs);
+      QLog.d(PerformanceReportUtils.b(), 4, "reportFPS openStr ：" + paramVarArgs);
     }
     if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {}
     for (;;)
     {
       return null;
+      long l1;
       try
       {
-        HashMap localHashMap = new HashMap();
-        if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3000))
+        paramVarArgs = PerformanceReportUtils.a();
+        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Int > 0))
         {
-          if (QQAppInterface.c) {
-            i = 0;
+          if ((this.jdField_a_of_type_Int >= 60) && (QLog.isDevelopLevel())) {
+            QLog.e(PerformanceReportUtils.b(), 4, "reportFPS  fps error fpsvalue :" + this.jdField_a_of_type_Int);
           }
-          localHashMap.put("actloginTypt", String.valueOf(i));
-          if (!QQAppInterface.c) {
-            QQAppInterface.c = true;
-          }
-        }
-        switch (this.jdField_a_of_type_Int)
-        {
-        }
-        long l1;
-        for (;;)
-        {
-          SharedPreferences localSharedPreferences = PerformanceReportUtils.a();
-          if ((paramVarArgs == null) || (this.jdField_a_of_type_Long <= 0L)) {
-            break;
-          }
-          long l2 = localSharedPreferences.getLong(paramVarArgs, 0L);
+          long l2 = paramVarArgs.getLong(this.jdField_a_of_type_JavaLangString, 0L);
           l1 = PerformanceReportUtils.a();
-          String str = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.g());
-          if (str != null) {
-            if (QLog.isDevelopLevel()) {
-              QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch  server time：" + str);
-            }
-          }
+          Object localObject = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.j());
+          if (localObject != null) {}
           try
           {
-            l1 = Long.valueOf(str).longValue();
+            if (QLog.isDevelopLevel()) {
+              QLog.d(PerformanceReportUtils.b(), 4, "reportFPS  server time：" + (String)localObject);
+            }
+            l1 = Long.valueOf((String)localObject).longValue();
             l1 *= 1000L;
           }
           catch (Exception localException)
@@ -69,32 +52,26 @@ public final class hcc
             {
               l1 = PerformanceReportUtils.a();
             }
-            paramVarArgs = null;
           }
           if (QLog.isDevelopLevel()) {
-            QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch report_time ：" + l1 + ",lastRp" + l2);
+            QLog.d(PerformanceReportUtils.b(), 4, "reportFPS report_time ：" + l1 + ",lastRp" + l2 + ",reportFPS fpsvalue：" + this.jdField_a_of_type_Int);
           }
-          if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2) && (SystemClock.uptimeMillis() - l2 < l1)) {
-            break;
+          if ((l2 == 0L) || (SystemClock.uptimeMillis() < l2) || (SystemClock.uptimeMillis() - l2 >= l1))
+          {
+            localObject = new HashMap();
+            ((HashMap)localObject).put("param_FPS", String.valueOf(this.jdField_a_of_type_Int));
+            if (QLog.isDevelopLevel()) {
+              QLog.d(PerformanceReportUtils.b(), 4, "reportFPS real report  fpsvalue：" + this.jdField_a_of_type_Int);
+            }
+            StatisticCollector.a(BaseApplication.getContext()).a(QQUtils.a(), this.jdField_a_of_type_JavaLangString, PerformanceReportUtils.a(this.jdField_a_of_type_JavaLangString), 0L, 0L, (HashMap)localObject, PerformanceReportUtils.h());
+            paramVarArgs.edit().putLong(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis()).commit();
+            return null;
           }
-          if (QLog.isDevelopLevel()) {
-            QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch timeConsumed ：" + this.jdField_a_of_type_Long);
-          }
-          StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, paramVarArgs, true, this.jdField_a_of_type_Long, 0L, localHashMap, PerformanceReportUtils.h());
-          localSharedPreferences.edit().putLong(paramVarArgs, SystemClock.uptimeMillis()).commit();
-          return null;
-          paramVarArgs = PerformanceReportUtils.c();
-          continue;
-          paramVarArgs = PerformanceReportUtils.d();
-          continue;
-          paramVarArgs = PerformanceReportUtils.e();
-          continue;
-          paramVarArgs = PerformanceReportUtils.f();
         }
-        return null;
       }
       catch (Exception paramVarArgs) {}
     }
+    return null;
   }
 }
 

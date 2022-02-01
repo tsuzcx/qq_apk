@@ -34,23 +34,23 @@ import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKManager;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKSettingClient;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import hmr;
 import hms;
 import hmt;
 import hmu;
 import hmv;
 import hmw;
 import hmx;
-import hmy;
-import hna;
+import hmz;
+import hnc;
 import hnd;
 import hne;
 import hnf;
 import hng;
-import hnh;
+import hnj;
 import hnk;
 import hnl;
 import hnm;
-import hnn;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -96,7 +96,7 @@ public class DownloadManager
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentTmassistantsdkDownloadclientITMAssistantDownloadSDKClientListener = new hnh(this);
+    this.jdField_a_of_type_ComTencentTmassistantsdkDownloadclientITMAssistantDownloadSDKClientListener = new hng(this);
     this.jdField_b_of_type_Long = 0L;
     this.jdField_c_of_type_Long = 0L;
     this.jdField_c_of_type_Int = 1000;
@@ -111,7 +111,7 @@ public class DownloadManager
     NoticeDownloadListener.a().a(ThreadManager.b().getLooper());
     a(WebViewDownloadListener.a());
     a(NoticeDownloadListener.a());
-    ThreadManager.b().post(new hne(this));
+    ThreadManager.b().post(new hnd(this));
   }
   
   public static int a(int paramInt)
@@ -215,7 +215,7 @@ public class DownloadManager
     label75:
     for (localObject = ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString;; localObject = ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString)
     {
-      ThreadManager.b().post(new hmv(this, (String)localObject));
+      ThreadManager.b().post(new hmu(this, (String)localObject));
       LogUtility.a(jdField_a_of_type_JavaLangString, "pause url=" + (String)localObject + ", appid=" + paramString);
       return 0;
     }
@@ -389,7 +389,7 @@ public class DownloadManager
   
   public void a()
   {
-    ThreadManager.b().post(new hms(this));
+    ThreadManager.b().post(new hmr(this));
   }
   
   public void a(int paramInt, DownloadInfo paramDownloadInfo)
@@ -481,7 +481,7 @@ public class DownloadManager
   
   public void a(Activity paramActivity, Bundle paramBundle, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2)
   {
-    new Handler(Looper.getMainLooper()).post(new hna(this, paramBundle, paramActivity, paramInt1, paramApkUpdateDetail, paramInt2));
+    new Handler(Looper.getMainLooper()).post(new hmz(this, paramBundle, paramActivity, paramInt1, paramApkUpdateDetail, paramInt2));
   }
   
   public void a(AppInterface paramAppInterface)
@@ -505,7 +505,7 @@ public class DownloadManager
       try
       {
         if (paramDownloadInfo.jdField_c_of_type_Boolean) {
-          ImageCache.a("app", ImageUtil.a(paramDownloadInfo.jdField_b_of_type_JavaLangString, 100), new hmt(this, paramDownloadInfo));
+          ImageCache.a("app", ImageUtil.a(paramDownloadInfo.jdField_b_of_type_JavaLangString, 100), new hms(this, paramDownloadInfo));
         }
         Object localObject = a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
         if (localObject != null)
@@ -519,7 +519,7 @@ public class DownloadManager
             {
               localObject = paramDownloadInfo.jdField_h_of_type_JavaLangString;
               int i = paramDownloadInfo.jdField_f_of_type_Int;
-              ThreadManager.b().post(new hmu(this, (String)localObject, i, paramDownloadInfo));
+              ThreadManager.b().post(new hmt(this, (String)localObject, i, paramDownloadInfo));
             }
           }
           else
@@ -582,10 +582,10 @@ public class DownloadManager
           paramDownloadInfo.a(4);
           if (paramDownloadInfo.jdField_f_of_type_Int == 1)
           {
-            ThreadManager.b().post(new hnk(this, paramDownloadInfo));
+            ThreadManager.b().post(new hnj(this, paramDownloadInfo));
             return;
           }
-          ThreadManager.b().post(new hnl(this, paramDownloadInfo));
+          ThreadManager.b().post(new hnk(this, paramDownloadInfo));
           return;
           paramString = CommonDataAdapter.a().a().getString(2131559999);
           i = 3;
@@ -609,7 +609,7 @@ public class DownloadManager
           if (paramDownloadInfo.jdField_f_of_type_Int == 1) {}
           for (localObject = paramDownloadInfo.jdField_h_of_type_JavaLangString; localObject != null; localObject = paramDownloadInfo.jdField_c_of_type_JavaLangString)
           {
-            ThreadManager.b().post(new hnm(this, (String)localObject));
+            ThreadManager.b().post(new hnl(this, (String)localObject));
             break;
           }
         }
@@ -1181,8 +1181,8 @@ public class DownloadManager
   
   protected void b()
   {
-    ThreadManager.b().postDelayed(new hnf(this), 5000L);
-    ThreadManager.b().postDelayed(new hng(this), 10000L);
+    ThreadManager.b().postDelayed(new hne(this), 5000L);
+    ThreadManager.b().postDelayed(new hnf(this), 10000L);
   }
   
   public void b(DownloadInfo paramDownloadInfo)
@@ -1200,13 +1200,13 @@ public class DownloadManager
       if (paramDownloadInfo.jdField_h_of_type_Int == 0)
       {
         if (paramDownloadInfo.jdField_f_of_type_Int == 1) {
-          ThreadManager.b().post(new hmw(this, paramDownloadInfo));
+          ThreadManager.b().post(new hmv(this, paramDownloadInfo));
         } else {
-          ThreadManager.b().post(new hmx(this, paramDownloadInfo));
+          ThreadManager.b().post(new hmw(this, paramDownloadInfo));
         }
       }
       else {
-        ThreadManager.b().post(new hmy(this, paramDownloadInfo));
+        ThreadManager.b().post(new hmx(this, paramDownloadInfo));
       }
     }
   }
@@ -1250,7 +1250,7 @@ public class DownloadManager
     for (localObject = ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString;; localObject = ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        ThreadManager.b().post(new hnn(this, (String)localObject));
+        ThreadManager.b().post(new hnm(this, (String)localObject));
       }
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
       DownloadDBHelper.a().a(paramString);
@@ -1493,10 +1493,10 @@ public class DownloadManager
     //   53: monitorexit
     //   54: return
     //   55: invokestatic 150	com/tencent/mobileqq/app/ThreadManager:b	()Landroid/os/Handler;
-    //   58: new 933	hmz
+    //   58: new 933	hmy
     //   61: dup
     //   62: aload_0
-    //   63: invokespecial 934	hmz:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;)V
+    //   63: invokespecial 934	hmy:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;)V
     //   66: invokevirtual 174	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   69: pop
     //   70: goto -26 -> 44
@@ -1540,7 +1540,7 @@ public class DownloadManager
   protected void f()
   {
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 200) {
-      ThreadManager.b().postDelayed(new hnd(this), 3000L);
+      ThreadManager.b().postDelayed(new hnc(this), 3000L);
     }
   }
 }

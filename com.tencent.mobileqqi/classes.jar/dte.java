@@ -1,19 +1,41 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.model.FriendManager;
 
 public class dte
-  implements View.OnTouchListener
+  extends FriendListObserver
 {
   public dte(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.e();
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramString = this.a.a.a(paramString);
+      if (paramString != null) {
+        break label28;
+      }
     }
-    return true;
+    label28:
+    Friends localFriends;
+    do
+    {
+      return;
+      localFriends = ((FriendManager)this.a.b.getManager(8)).c(paramString.a);
+    } while (localFriends == null);
+    this.a.a(paramString, localFriends);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

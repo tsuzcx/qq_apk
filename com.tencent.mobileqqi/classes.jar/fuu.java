@@ -1,39 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
 
-class fuu
-  implements Runnable
+public class fuu
+  extends TimerTask
 {
-  fuu(fut paramfut) {}
+  public fuu(OnlineFileSessionWorker paramOnlineFileSessionWorker) {}
   
   public void run()
   {
-    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  thread start. . .");
-    this.a.a(false);
-    for (;;)
-    {
-      if (!this.a.b()) {}
-      try
-      {
-        Thread.sleep(1000L);
-        boolean bool = this.a.b();
-        if (bool)
-        {
-          this.a.a(true);
-          QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  thread exit. . .");
-          return;
-        }
-        Message localMessage = new Message();
-        localMessage.what = 1;
-        this.a.a.a.sendMessage(localMessage);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + OnlineFileSessionWorker.a(this.a).a() + " WaitSenderReplayOnRecvTimer time out!!!!!!!");
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 42, new Object[] { Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
+    this.a.b();
   }
 }
 

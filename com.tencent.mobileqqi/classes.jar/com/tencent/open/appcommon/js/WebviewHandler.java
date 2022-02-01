@@ -3,7 +3,7 @@ package com.tencent.open.appcommon.js;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.smtt.sdk.WebView;
-import hlb;
+import hla;
 
 public class WebviewHandler
   extends Handler
@@ -16,7 +16,7 @@ public class WebviewHandler
     do
     {
       return;
-      paramMessage = (hlb)paramMessage.obj;
+      paramMessage = (hla)paramMessage.obj;
     } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView == null) || (paramMessage.jdField_a_of_type_JavaLangString == null));
     try
     {

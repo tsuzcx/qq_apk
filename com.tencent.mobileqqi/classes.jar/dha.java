@@ -1,20 +1,22 @@
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class dha
-  implements Runnable
+  extends FriendListObserver
 {
-  public dha(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity, String paramString1, String paramString2) {}
+  public dha(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    String str = Utils.a(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() > 0) && (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) != null))
-    {
-      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setText(str);
-      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setEnabled(true);
+    if (paramBoolean) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null)) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
     }
   }
 }

@@ -31,11 +31,11 @@ public class ShareResultDialog
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131231472));
-    this.b = ((TextView)super.findViewById(2131231473));
-    this.c = ((TextView)super.findViewById(2131231686));
-    this.d = ((TextView)super.findViewById(2131231687));
-    this.e = ((TextView)super.findViewById(2131231688));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131231471));
+    this.b = ((TextView)super.findViewById(2131231472));
+    this.c = ((TextView)super.findViewById(2131231685));
+    this.d = ((TextView)super.findViewById(2131231686));
+    this.e = ((TextView)super.findViewById(2131231687));
   }
   
   private void b(boolean paramBoolean)

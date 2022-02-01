@@ -3,8 +3,8 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:layout_weight="1.0">
-        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c63" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207fe" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b51" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0a0017" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:layout_weight="1.0" android:overScrollMode="never" />
+        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c62" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207fe" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b50" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0a0017" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:layout_weight="1.0" android:overScrollMode="never" />
     </LinearLayout>
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ac2" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0302d5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ac1" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0302d5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
 </RelativeLayout>

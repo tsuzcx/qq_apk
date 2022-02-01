@@ -1,28 +1,15 @@
-import cooperation.qlink.QlinkServiceProxy;
-import cooperation.qlink.SendMsg;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class iav
-  extends Thread
+  implements DialogInterface.OnDismissListener
 {
-  public iav(QlinkServiceProxy paramQlinkServiceProxy) {}
+  public iav(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    while (!QlinkServiceProxy.a(this.a).isEmpty())
-    {
-      SendMsg localSendMsg = (SendMsg)QlinkServiceProxy.a(this.a).poll();
-      if (localSendMsg != null) {
-        try
-        {
-          QlinkServiceProxy.a(this.a, localSendMsg);
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
+    this.a.finish();
   }
 }
 

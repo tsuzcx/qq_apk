@@ -1,71 +1,52 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.log.ReportLog;
 
-public class gaa
-  extends Thread
+public final class gaa
+  extends Handler
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int c;
-  int d;
-  
-  public gaa(UiApiPlugin paramUiApiPlugin, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
+  public gaa(Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    super(paramLooper);
   }
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
+    if (paramMessage.what == 10000001)
+    {
+      paramMessage = (ProgressBar)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131231028);
+      localDrawable = ReportLog.jdField_a_of_type_AndroidAppProgressDialog.getContext().getResources().getDrawable(2130837960);
+      paramMessage.setIndeterminateDrawable(localDrawable);
+      paramMessage.setBackgroundDrawable(localDrawable);
+      ((TextView)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131231029)).setText(2131563022);
+      ReportLog.a().sendEmptyMessageDelayed(10000002, 2000L);
+    }
+    while ((paramMessage.what != 10000002) || (ReportLog.jdField_a_of_type_AndroidAppProgressDialog == null))
+    {
+      Drawable localDrawable;
+      return;
+    }
     try
     {
-      JSONObject localJSONObject = UiApiPlugin.a(this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      if (isInterrupted()) {
-        throw new InterruptedException();
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      System.gc();
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "3", "{}" });
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "0", localOutOfMemoryError.toString() });
+      ReportLog.jdField_a_of_type_Boolean = false;
+      ReportLog.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
       return;
     }
-    catch (IOException localIOException)
+    catch (Exception paramMessage)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "{}" });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "{}" });
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
-      if ((localActivity != null) && (!localActivity.isFinishing())) {
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "1", "{}" });
-      }
+      paramMessage.printStackTrace();
       return;
     }
     finally
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.dismiss();
-      }
+      ReportLog.jdField_a_of_type_AndroidAppProgressDialog = null;
     }
   }
 }

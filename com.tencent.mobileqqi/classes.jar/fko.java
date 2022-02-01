@@ -1,23 +1,41 @@
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class fko
-  implements Comparator
+  implements Runnable
 {
-  public fko(RecentUserProxy paramRecentUserProxy) {}
+  public fko(RecentUserProxy paramRecentUserProxy, SharedPreferences paramSharedPreferences) {}
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public void run()
   {
-    long l1 = Math.max(paramRecentUser1.lastmsgtime, paramRecentUser1.lastmsgdrafttime);
-    long l2 = Math.max(paramRecentUser2.lastmsgtime, paramRecentUser2.lastmsgdrafttime);
-    if (l1 < l2) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentUserProxy", 2, "checkNewFriendUpgrade | start");
     }
-    if (l1 == l2) {
-      return 0;
+    Object localObject1 = null;
+    for (;;)
+    {
+      int i;
+      synchronized (RecentUserProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy))
+      {
+        Iterator localIterator = RecentUserProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy).iterator();
+        if (localIterator.hasNext())
+        {
+          RecentUser localRecentUser = (RecentUser)localIterator.next();
+          if ((localRecentUser != null) && (AppConstants.R.equals(localRecentUser.uin))) {
+            localObject1 = localRecentUser;
+          }
+        }
+        else if (localObject1 != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy.b((RecentUser)localObject1);
+        }
+      }
     }
-    return -1;
   }
 }
 

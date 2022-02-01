@@ -23,9 +23,9 @@ import com.tencent.mobileqq.data.TroopBarLevelEntity;
 import com.tencent.mobileqq.data.TroopBarPageEntity;
 import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import gvi;
 import gvj;
 import gvk;
-import gvl;
 import mqq.util.WeakReference;
 
 public class TroopBarPostLayoutBanner
@@ -41,7 +41,7 @@ public class TroopBarPostLayoutBanner
   public TroopBarPostLayoutBanner()
   {
     this.jdField_a_of_type_MqqUtilWeakReference = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new gvl(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new gvk(this);
   }
   
   public View a(Activity paramActivity, LayoutInflater paramLayoutInflater, View paramView, TroopBarAbsDataEntity paramTroopBarAbsDataEntity)
@@ -170,12 +170,12 @@ public class TroopBarPostLayoutBanner
       localObject = new Intent("refresh_page");
       ((Intent)localObject).putExtra("sub_action", "show_loading");
       paramView.getContext().sendBroadcast((Intent)localObject);
-      ThreadManager.a(new gvj(this, paramView));
+      ThreadManager.a(new gvi(this, paramView));
       return;
       localObject = new Intent("refresh_page");
       ((Intent)localObject).putExtra("sub_action", "show_loading");
       paramView.getContext().sendBroadcast((Intent)localObject);
-      ThreadManager.a(new gvk(this, paramView));
+      ThreadManager.a(new gvj(this, paramView));
       return;
       localObject = paramView.getContext();
       paramView = paramView.getTag(2131230860);

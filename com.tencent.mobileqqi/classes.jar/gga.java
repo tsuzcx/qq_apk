@@ -1,31 +1,15 @@
 import android.view.View;
 import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
 
 public class gga
-  implements AdapterView.OnItemSelectedListener
+  implements VerticalGallery.OnSelectViewDataUpdateListener
 {
   public gga(IosTimepicker paramIosTimepicker) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(View paramView, int paramInt)
   {
     IosTimepicker.a(this.a, paramView, 1);
-    if (paramView.getTag() != null)
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt) {
-          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-        }
-        paramInt += 1;
-      }
-    }
   }
 }
 

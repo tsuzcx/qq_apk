@@ -1,5 +1,6 @@
 import com.tencent.mobileqq.international.activity.FeedbackActivity;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class fzi
   implements Runnable
@@ -9,8 +10,8 @@ public class fzi
   public void run()
   {
     FeedbackActivity.c(this.a);
-    QQToast.a(this.a, 2131559865, 0).a();
-    this.a.finish();
+    QQToast.a(this.a, 2131561435, 1).a();
+    QLog.e("FeedBackActivity", 2, "feedback failed");
   }
 }
 

@@ -1,17 +1,34 @@
-import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoMagicStickUtils;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import java.util.ArrayList;
 
-public final class end
-  implements ActionSheet.OnButtonClickListener
+public class end
+  implements View.OnClickListener
 {
-  public end(Activity paramActivity, String paramString1, ActionSheet paramActionSheet, boolean paramBoolean, String paramString2, String paramString3, String paramString4) {}
+  public end(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    PhotoMagicStickUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentWidgetActionSheet, this.jdField_a_of_type_Boolean, paramInt, this.b, this.c, this.d);
+    this.a.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    if (this.a.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(this.a.jdField_b_of_type_Int)))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      int i = this.a.jdField_b_of_type_JavaUtilArrayList.indexOf(Integer.valueOf(this.a.jdField_b_of_type_Int));
+      if (i >= 0) {
+        this.a.jdField_b_of_type_JavaUtilArrayList.remove(i);
+      }
+      PhotoPreviewActivity.a(this.a);
+      return;
+    }
+    if ((PhotoPreviewActivity.a(this.a) == 1) && (this.a.jdField_b_of_type_Int < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
+      PhotoPreviewActivity.a(this.a, (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_b_of_type_Int));
+    }
+    this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    this.a.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(this.a.jdField_b_of_type_Int));
+    PhotoPreviewActivity.a(this.a);
   }
 }
 

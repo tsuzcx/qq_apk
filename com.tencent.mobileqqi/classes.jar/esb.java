@@ -1,13 +1,36 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
+import com.tencent.qphone.base.util.QLog;
 
 public class esb
-  extends TroopMemberListActivity.ViewHolder
+  implements QvipSpecialSoundManager.CallBack
 {
-  public CheckBox a;
+  public esb(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
   
-  private esb(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        QvipSpecialCareActivity.a(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        QvipSpecialCareActivity.a(this.a);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QvipSpecialCareActivity", 2, "loadSpecialSoundConfig fail.");
+      }
+    }
+  }
 }
 
 

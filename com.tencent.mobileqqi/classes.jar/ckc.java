@@ -1,98 +1,35 @@
 import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.EmosmObserver;
+import com.tencent.mobileqq.app.EmosmHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmosmResp;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.emoticon.EmoticonController;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticAssist;
+import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 public class ckc
-  extends EmosmObserver
+  implements DragSortListView.RemoveListener
 {
   public ckc(EmosmActivity paramEmosmActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EmosmActivity", 2, "...........onUpdate.............");
-    }
-    if (paramInt == 1)
+    Object localObject = (EmoticonPackage)EmosmActivity.a(this.a).get(paramInt);
+    if (!NetworkUtil.e(this.a))
     {
-      EmosmActivity.a(this.a);
-      paramObject = (EmosmResp)paramObject;
-      EmosmActivity.a(this.a).b(paramObject.delEpId + "");
-      EmosmActivity.a(this.a).setNotifyOnChange(true);
-      paramInt = 0;
-      if (paramInt < EmosmActivity.a(this.a).getCount())
-      {
-        localObject1 = (EmoticonPackage)EmosmActivity.a(this.a).getItem(paramInt);
-        if (!((EmoticonPackage)localObject1).epId.equals(paramObject.delEpId + "")) {
-          break label273;
-        }
-        EmosmActivity.a(this.a).remove(localObject1);
-        EmoticonController.a(this.a.b).b((EmoticonPackage)localObject1);
-        StatisticAssist.a(this.a.b.getApplication().getApplicationContext(), this.a.b.a(), "Delete_ep");
-        if (3 == ((EmoticonPackage)localObject1).jobType) {
-          ReportController.b(this.a.b, "CliOper", "", "", "MbGuanli", "MbDianjiShanchu", 0, 0, "", "", "", "");
-        }
-        EmosmActivity.a(this.a, (EmoticonPackage)localObject1);
-      }
+      localObject = new QQToast(this.a);
+      ((QQToast)localObject).a(2130837933);
+      ((QQToast)localObject).c(1500);
+      ((QQToast)localObject).a(this.a.getString(2131559056));
+      ((QQToast)localObject).b(0);
+      return;
     }
-    label273:
-    while ((paramInt != 2) || (!paramBoolean)) {
-      for (;;)
-      {
-        if (EmosmActivity.b(this.a) == EmosmActivity.c(this.a)) {
-          this.a.a.dismiss();
-        }
-        return;
-        paramInt += 1;
-      }
-    }
-    Object localObject1 = (EmoticonManager)this.a.b.getManager(12);
-    Object localObject2 = (EmosmResp)paramObject;
-    paramObject = ((EmosmResp)localObject2).data;
-    paramObject.addAll(((EmosmResp)localObject2).magicData);
-    paramInt = 0;
-    int i = 0;
-    label495:
-    for (;;)
-    {
-      try
-      {
-        if (i < paramObject.size())
-        {
-          localObject2 = (EmoticonPackage)paramObject.get(i);
-          EmoticonPackage localEmoticonPackage = ((EmoticonManager)localObject1).b(((EmoticonPackage)localObject2).epId);
-          if ((localEmoticonPackage == null) || ((localEmoticonPackage.expiretime == ((EmoticonPackage)localObject2).expiretime) && (localEmoticonPackage.wordingId == ((EmoticonPackage)localObject2).wordingId) && (localEmoticonPackage.jobType == ((EmoticonPackage)localObject2).jobType))) {
-            break label495;
-          }
-          localEmoticonPackage.expiretime = ((EmoticonPackage)localObject2).expiretime;
-          localEmoticonPackage.wordingId = ((EmoticonPackage)localObject2).wordingId;
-          localEmoticonPackage.jobType = ((EmoticonPackage)localObject2).jobType;
-          ((EmoticonManager)localObject1).a(localEmoticonPackage);
-          paramInt = 1;
-          i += 1;
-          continue;
-        }
-        if (paramInt == 0) {
-          break;
-        }
-      }
-      catch (Exception paramObject)
-      {
-        paramObject.printStackTrace();
-      }
-      this.a.runOnUiThread(EmosmActivity.a(this.a));
-      break;
-    }
+    EmosmActivity.a(this.a, 0);
+    EmosmActivity.b(this.a, 1);
+    this.a.a.a(this.a.getString(2131561933));
+    this.a.a.show();
+    ((EmosmHandler)this.a.b.a(11)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
   }
 }
 

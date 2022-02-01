@@ -1,12 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public final class hbv
   implements Runnable
 {
+  public hbv(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean) {}
+  
   public void run()
   {
-    FileUtils.a(BaseApplicationImpl.a);
+    StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, 0L, 0L, new HashMap(), "");
   }
 }
 

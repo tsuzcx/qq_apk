@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class fls
-  implements View.OnClickListener
+  implements Runnable
 {
   public fls(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b();
+    LocationSelectActivity.a(this.a);
   }
 }
 

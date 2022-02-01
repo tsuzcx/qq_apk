@@ -1,19 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.app.InnerFrameManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
 
 public class eqt
-  implements Runnable
+  implements View.OnClickListener
 {
   public eqt(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
-    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000, localObject);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 0);
   }
 }
 

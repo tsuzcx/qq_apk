@@ -64,17 +64,17 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.XListView;
+import doi;
 import doj;
 import dok;
 import dol;
 import dom;
 import don;
-import doo;
+import dor;
 import dos;
 import dot;
 import dou;
 import dov;
-import dow;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -94,10 +94,10 @@ public class TroopAssistantActivity
   protected View a;
   private RecentAdapter jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
   private DragRelativeLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new doo(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new don(this);
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dos(this);
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new dom(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new don(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dom(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dor(this);
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new dol(this);
   public QQProgressNotifier a;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet = null;
   public XListView a;
@@ -114,7 +114,7 @@ public class TroopAssistantActivity
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsHandler = new dou(this);
+    this.jdField_a_of_type_AndroidOsHandler = new dot(this);
   }
   
   private void a(String paramString, int paramInt)
@@ -169,7 +169,7 @@ public class TroopAssistantActivity
     for (;;)
     {
       localActionSheet.d(2131561746);
-      localActionSheet.a(new dok(this, i, paramString1, localActionSheet));
+      localActionSheet.a(new doj(this, i, paramString1, localActionSheet));
       localActionSheet.show();
       return;
       localActionSheet.e(0);
@@ -191,7 +191,7 @@ public class TroopAssistantActivity
       View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i);
       if (localView != null)
       {
-        localView = localView.findViewById(2131234180);
+        localView = localView.findViewById(2131234179);
         if ((localView != null) && (localView.getVisibility() == 0))
         {
           this.d = false;
@@ -206,18 +206,18 @@ public class TroopAssistantActivity
   
   private void j()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234469));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234468));
     View localView1 = View.inflate(this, 2130904022, null);
-    this.jdField_b_of_type_AndroidViewView = localView1.findViewById(2131234597);
+    this.jdField_b_of_type_AndroidViewView = localView1.findViewById(2131234596);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(localView1);
     View localView2 = getLayoutInflater().inflate(2130903134, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.b(localView2);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = new RecentAdapter(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, this, 1);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter);
-    this.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131234596);
-    localView1 = localView1.findViewById(2131234593);
+    this.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131234595);
+    localView1 = localView1.findViewById(2131234592);
     localView1.setVisibility(8);
-    localView1.setOnClickListener(new doj(this));
+    localView1.setOnClickListener(new doi(this));
   }
   
   private void k()
@@ -233,7 +233,7 @@ public class TroopAssistantActivity
     localImageView.setVisibility(0);
     localImageView.setImageResource(2130838011);
     localImageView.setContentDescription(getString(2131562183));
-    localImageView.setOnClickListener(new dot(this));
+    localImageView.setOnClickListener(new dos(this));
     g();
   }
   
@@ -253,7 +253,7 @@ public class TroopAssistantActivity
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getString(2131562522), 1);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getString(2131561945), 3);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.d(getString(2131561746));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new dow(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new dov(this));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
       return;
       label117:
@@ -324,7 +324,7 @@ public class TroopAssistantActivity
     {
       return;
       i = paramView.getId();
-      if (i == 2131234598)
+      if (i == 2131234597)
       {
         this.jdField_b_of_type_Boolean = false;
         if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null)
@@ -342,7 +342,7 @@ public class TroopAssistantActivity
         ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "help_nav", "Clk_set", 0, 0, "", "", "", "");
         return;
       }
-    } while (i != 2131234599);
+    } while (i != 2131234598);
     this.jdField_b_of_type_Boolean = false;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null)
     {
@@ -664,7 +664,7 @@ public class TroopAssistantActivity
           i = 0;
           QLog.i("TroopAssistantActivity", 2, i);
         }
-        runOnUiThread(new dol(this, paramMessage));
+        runOnUiThread(new dok(this, paramMessage));
         return true;
       }
       catch (Exception paramMessage) {}
@@ -740,7 +740,7 @@ public class TroopAssistantActivity
     {
       paramObservable = (MessageRecord)paramObject;
       if (!paramObservable.isSendFromLocal()) {
-        runOnUiThread(new dov(this));
+        runOnUiThread(new dou(this));
       }
       if ((!paramObservable.isSendFromLocal()) || (paramObservable.msgtype != -2002)) {}
     }

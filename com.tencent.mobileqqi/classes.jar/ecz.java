@@ -1,13 +1,22 @@
+import android.content.Context;
+import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-class ecz
-  implements Runnable
+public class ecz
+  extends SearchResultDialog
 {
-  ecz(ecy paramecy, int paramInt1, int paramInt2) {}
-  
-  public void run()
+  public ecz(CircleMemberListActivity paramCircleMemberListActivity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
   {
-    this.jdField_a_of_type_Ecy.a.a(this.jdField_a_of_type_Int, this.b);
+    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+  }
+  
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    return this.a.a.a(-1000, 1);
   }
 }
 

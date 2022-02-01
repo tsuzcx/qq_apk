@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.Conversation;
 
 public class cfn
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
   public cfn(Conversation paramConversation) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
+    this.a.k();
   }
 }
 

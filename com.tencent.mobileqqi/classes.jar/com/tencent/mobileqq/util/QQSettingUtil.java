@@ -31,7 +31,7 @@ import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.CustomWidgetUtil;
-import hbc;
+import hbb;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -278,7 +278,7 @@ public class QQSettingUtil
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface.a(new hbc(paramQQAppInterface));
+    paramQQAppInterface.a(new hbb(paramQQAppInterface));
   }
   
   public static void b(QQAppInterface paramQQAppInterface)
@@ -325,13 +325,13 @@ public class QQSettingUtil
         i = 1;
         label216:
         localHashMap.put("Mobile_pc_online", Integer.valueOf(i));
-        if (!paramQQAppInterface.o()) {
+        if (!paramQQAppInterface.p()) {
           break label703;
         }
         i = 1;
         label239:
         localHashMap.put("Visible_same", Integer.valueOf(i));
-        if (!paramQQAppInterface.q()) {
+        if (!paramQQAppInterface.r()) {
           break label708;
         }
         i = 1;
@@ -343,13 +343,13 @@ public class QQSettingUtil
         i = 1;
         label286:
         localHashMap.put("Search_number", Integer.valueOf(i));
-        if (!paramQQAppInterface.n()) {
+        if (!paramQQAppInterface.o()) {
           break label718;
         }
         i = 1;
         label309:
         localHashMap.put("Visible_nearby", Integer.valueOf(i));
-        if (!paramQQAppInterface.p()) {
+        if (!paramQQAppInterface.q()) {
           break label723;
         }
         i = 1;

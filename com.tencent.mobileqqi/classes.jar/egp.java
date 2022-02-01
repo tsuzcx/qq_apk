@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
+import com.tencent.widget.AbsListView;
 
 public class egp
-  implements Runnable
+  extends SlideDetectListView.OnScrollGroupFloatingListener
 {
-  public egp(TroopActivity paramTroopActivity) {}
+  public egp(TroopView paramTroopView) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    TroopActivity.c(this.a);
+    if (this.a.a != null) {
+      TroopView.a(this.a, paramInt1);
+    }
   }
 }
 

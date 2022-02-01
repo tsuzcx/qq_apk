@@ -3,14 +3,14 @@ package com.tencent.mobileqq.troop.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import gxn;
+import gxm;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TroopBarUtils$MyBar
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new gxn();
+  public static final Parcelable.Creator CREATOR = new gxm();
   protected static final String a = "sign_info";
   protected static final String b = "sign";
   protected static final String c = "continue";

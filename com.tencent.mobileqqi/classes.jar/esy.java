@@ -1,19 +1,14 @@
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
 
 public class esy
   implements Runnable
 {
-  public esy(QvipSpecialSoundManager paramQvipSpecialSoundManager, QvipSpecialSoundManager.CallBack paramCallBack) {}
+  public esy(QvipSpecialSoundManager paramQvipSpecialSoundManager, QvipSpecialSoundManager.CallBack paramCallBack, boolean paramBoolean) {}
   
   public void run()
   {
-    String str = QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(str);
-    boolean bool = QvipSpecialSoundManager.a.containsKey("key_special_sound_list" + QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager).a());
-    QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager, this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager$CallBack, bool);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager$CallBack.a(this.jdField_a_of_type_Boolean);
   }
 }
 

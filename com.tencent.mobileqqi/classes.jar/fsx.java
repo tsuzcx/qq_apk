@@ -9,7 +9,7 @@ public class fsx
   
   public void onClick(View paramView)
   {
-    this.a.e(paramView);
+    this.a.f(paramView);
   }
 }
 

@@ -29,9 +29,9 @@ import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.emosm.EmosmUtils;
+import foa;
 import fob;
 import foc;
-import fod;
 import java.util.List;
 
 public class EmoticonGridViewAdapter
@@ -41,9 +41,9 @@ public class EmoticonGridViewAdapter
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new fob(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new foa(this);
   public View.OnLongClickListener a;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new fod(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new foc(this);
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -59,7 +59,7 @@ public class EmoticonGridViewAdapter
   
   public EmoticonGridViewAdapter(GridView paramGridView, Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new foc(this);
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new fob(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_Int = ((int)(46.0F * this.jdField_a_of_type_Float));
@@ -255,7 +255,7 @@ public class EmoticonGridViewAdapter
       {
         localViewHolder = new EmoticonGridViewAdapter.ViewHolder(this);
         paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903211, null);
-        localViewHolder.a = ((URLImageView)paramView.findViewById(2131231629));
+        localViewHolder.a = ((URLImageView)paramView.findViewById(2131231628));
         paramView.setTag(localViewHolder);
         localViewHolder.a.setTag(paramViewGroup);
         if (paramViewGroup == null) {

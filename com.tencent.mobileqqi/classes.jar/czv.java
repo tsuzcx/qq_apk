@@ -1,31 +1,37 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.PrivacyDeclareViewActivity;
+import com.tencent.mobileqq.activity.VerifyCreditCardIdentityActivity;
 import com.tencent.mobileqq.app.PrivacyDeclareHelper;
 
-public class czv
-  extends Handler
+class czv
+  implements DialogInterface.OnClickListener
 {
-  public czv(PrivacyDeclareViewActivity paramPrivacyDeclareViewActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  czv(czu paramczu) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     default: 
       return;
-    case 101: 
-      paramMessage = new czw(this);
-      PrivacyDeclareViewActivity.a(this.a, null, PrivacyDeclareViewActivity.a(this.a, 2131563349), PrivacyDeclareViewActivity.a(this.a, 2131563363), PrivacyDeclareViewActivity.a(this.a, 2131561842), paramMessage);
-      return;
+    case 1: 
+      paramDialogInterface.dismiss();
+      paramDialogInterface = new Intent(this.a.a, VerifyCreditCardIdentityActivity.class);
+      paramDialogInterface.putExtra("url", PrivacyDeclareHelper.a(this.a.a));
+      try
+      {
+        this.a.a.startActivityForResult(paramDialogInterface, 2000);
+        return;
+      }
+      catch (Exception paramDialogInterface)
+      {
+        return;
+      }
     }
-    String str = PrivacyDeclareHelper.a(this.a, 2131563358, (String)paramMessage.obj);
-    paramMessage = PrivacyDeclareHelper.a(this.a, 2131562539, (String)paramMessage.obj);
-    PrivacyDeclareViewActivity.a(this.a, null, str, paramMessage, null, null);
+    paramDialogInterface.dismiss();
+    PrivacyDeclareViewActivity.a(this.a.a);
   }
 }
 

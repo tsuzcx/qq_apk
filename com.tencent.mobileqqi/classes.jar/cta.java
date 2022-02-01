@@ -1,23 +1,24 @@
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
-public class cta
-  implements Runnable
+class cta
+  implements Animation.AnimationListener
 {
-  public cta(LoginActivity paramLoginActivity) {}
+  cta(csz paramcsz) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
-    localTranslateAnimation.setDuration(500L);
-    localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new ctb(this));
-    this.a.a.startAnimation(localTranslateAnimation);
+    this.a.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.a.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.invalidate();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,70 +1,34 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import android.widget.TextView;
-import com.tencent.mobileqq.maproam.activity.RoamingActivity.GetAddressTaskListener;
-import com.tencent.mobileqq.utils.ReverseGeocode;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
+import com.tencent.mobileqq.maproam.activity.RoamingActivity;
 
 public class gbx
-  extends AsyncTask
+  extends SOSOMapLBSApiListener
 {
-  GeoPoint jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint;
-  SoftReference jdField_a_of_type_JavaLangRefSoftReference;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public gbx(GeoPoint paramGeoPoint, TextView paramTextView, RoamingActivity.GetAddressTaskListener paramGetAddressTaskListener)
+  public gbx(RoamingActivity paramRoamingActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = new GeoPoint(paramGeoPoint.getLatitudeE6(), paramGeoPoint.getLongitudeE6());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTextView);
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramGetAddressTaskListener);
-    if (paramTextView != null) {
-      paramTextView.setTag(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint);
-    }
+    super(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  protected String a(Context... paramVarArgs)
+  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
   {
-    if ((paramVarArgs != null) && (paramVarArgs[0] != null))
+    SOSOMapLBSApi.getInstance().removeLocationUpdate();
+    if (paramSOSOMapLBSApiResult.Address == null) {}
+    for (String str = "";; str = paramSOSOMapLBSApiResult.Address)
     {
-      paramVarArgs = paramVarArgs[0];
-      int i = 0;
-      while (i < 2)
+      if (paramSOSOMapLBSApiResult.Info == 1) {
+        this.a.runOnUiThread(new gby(this, paramSOSOMapLBSApiResult, str));
+      }
+      try
       {
-        String str = ReverseGeocode.a(paramVarArgs, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6() / 1000000.0D, 3);
-        if ((str != null) && (str.length() > 0)) {
-          return str;
-        }
-        i += 1;
+        this.a.dismissDialog(0);
+        return;
       }
-    }
-    return "";
-  }
-  
-  protected void a(String paramString)
-  {
-    TextView localTextView = (TextView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    RoamingActivity.GetAddressTaskListener localGetAddressTaskListener = (RoamingActivity.GetAddressTaskListener)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-    if ((localTextView != null) && ((localTextView.getTag() instanceof GeoPoint)))
-    {
-      GeoPoint localGeoPoint = (GeoPoint)localTextView.getTag();
-      if ((localGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6()) && (localGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6()))
+      catch (IllegalArgumentException paramSOSOMapLBSApiResult)
       {
-        if ((paramString == null) || (paramString.length() <= 0)) {
-          break label103;
-        }
-        localTextView.setText(paramString);
+        paramSOSOMapLBSApiResult.printStackTrace();
       }
-    }
-    for (;;)
-    {
-      if (localGetAddressTaskListener != null) {
-        localGetAddressTaskListener.a(paramString);
-      }
-      return;
-      label103:
-      localTextView.setText(String.format("(%.3f,%.3f)", new Object[] { Double.valueOf(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6() / 1000000.0D), Double.valueOf(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6() / 1000000.0D) }));
     }
   }
 }

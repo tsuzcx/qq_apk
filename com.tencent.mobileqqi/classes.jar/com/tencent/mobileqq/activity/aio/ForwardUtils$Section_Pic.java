@@ -2,12 +2,12 @@ package com.tencent.mobileqq.activity.aio;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import dvs;
+import dvr;
 
 public final class ForwardUtils$Section_Pic
   extends ForwardUtils.SectionBase
 {
-  public static final Parcelable.Creator CREATOR = new dvs();
+  public static final Parcelable.Creator CREATOR = new dvr();
   public String a;
   public String b;
   

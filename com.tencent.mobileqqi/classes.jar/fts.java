@@ -1,13 +1,14 @@
 import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
 
 public class fts
   implements Runnable
 {
-  public fts(FMObserver paramFMObserver, Object paramObject) {}
+  public fts(FMObserver paramFMObserver, ThumbnailInfo paramThumbnailInfo) {}
   
   public void run()
   {
-    FMObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver, this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataThumbnailInfo);
   }
 }
 

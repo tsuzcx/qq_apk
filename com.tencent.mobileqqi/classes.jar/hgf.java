@@ -1,53 +1,53 @@
 import android.content.Context;
-import android.graphics.PointF;
-import android.os.SystemClock;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
-import com.tencent.widget.BubblePopupWindow;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.CustomAlertDialog;
+import com.tencent.mobileqq.widget.CustomAlertDialog.OnPrepareOptionMenuItem;
+import java.util.HashMap;
+import java.util.List;
 
 public class hgf
-  implements View.OnLongClickListener, View.OnTouchListener
+  extends BaseAdapter
 {
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  List jdField_a_of_type_JavaUtilList;
   
-  private hgf(ContextMenuTextView paramContextMenuTextView) {}
-  
-  protected void a(View paramView)
+  public hgf(CustomAlertDialog paramCustomAlertDialog, List paramList)
   {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-1);
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public boolean onLongClick(View paramView)
+  public int getCount()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-7829368);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.g()))
-    {
-      a(paramView);
-      return false;
-    }
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131234879, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131561879));
-    ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView, BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_AndroidViewView$OnClickListener, null));
-    a(paramView);
-    return true;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public Object getItem(int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130903125, null);
     }
-    return false;
+    ((TextView)paramViewGroup.findViewById(2131231293)).setText((String)((HashMap)this.jdField_a_of_type_JavaUtilList.get(paramInt)).get("optionStr"));
+    paramViewGroup.setOnClickListener(new hgg(this, paramInt));
+    ((ImageView)paramViewGroup.findViewById(2131231292)).setImageResource(((Integer)((HashMap)this.jdField_a_of_type_JavaUtilList.get(paramInt)).get("imgId")).intValue());
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog$OnPrepareOptionMenuItem != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog$OnPrepareOptionMenuItem.a(paramInt, paramViewGroup);
+    }
+    return paramViewGroup;
   }
 }
 

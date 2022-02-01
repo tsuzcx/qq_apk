@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.widget.XExpandableListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02088d" android:layout_gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08047b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:layout_weight="1.0"
+<com.tencent.widget.XExpandableListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02088d" android:layout_gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08047a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android" />

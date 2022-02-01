@@ -1,18 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troop.activity.TroopNewcomerNoticeActivity;
 
 public class gum
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public gum(TroopLocationModifyActivity paramTroopLocationModifyActivity) {}
+  public gum(TroopNewcomerNoticeActivity paramTroopNewcomerNoticeActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    TroopLocationModifyActivity.a(this.a);
-    if (paramInt == 0) {
-      TroopLocationModifyActivity.a(this.a, "");
-    }
+    BaseApplicationImpl.getContext().getSharedPreferences("troop_new_guid", 0).edit().putBoolean(this.a.c, false).commit();
   }
 }
 

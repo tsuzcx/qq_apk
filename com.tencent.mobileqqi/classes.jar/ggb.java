@@ -1,15 +1,15 @@
-import android.view.View;
 import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
+import com.tencent.widget.VerticalGallery;
+import com.tencent.widget.VerticalGallery.OnEndFlingListener;
 
 public class ggb
-  implements VerticalGallery.OnSelectViewDataUpdateListener
+  implements VerticalGallery.OnEndFlingListener
 {
   public ggb(IosTimepicker paramIosTimepicker) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(VerticalGallery paramVerticalGallery)
   {
-    IosTimepicker.a(this.a, paramView, 1);
+    IosTimepicker.a(this.a);
   }
 }
 

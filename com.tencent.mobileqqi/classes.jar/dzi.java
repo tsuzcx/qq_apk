@@ -1,17 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import com.tencent.mobileqq.data.MessageForLongMsg;
 
 public class dzi
-  implements AnimationTextView.OnDoubleClick
+  implements DialogInterface.OnClickListener
 {
-  public dzi(LongMsgItemBuilder paramLongMsgItemBuilder) {}
+  public dzi(LongMsgItemBuilder paramLongMsgItemBuilder, MessageForLongMsg paramMessageForLongMsg) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatActivityUtils.a(LongMsgItemBuilder.a(this.a), paramView, (ChatActivity)LongMsgItemBuilder.a(this.a));
+    ChatActivityFacade.a(LongMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder), LongMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder), LongMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
   }
 }
 

@@ -1,41 +1,21 @@
 import android.os.Handler;
 import android.os.Message;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import java.util.LinkedHashMap;
+import com.tencent.qphone.base.util.QLog;
 
 public class erv
-  extends Handler
+  implements Runnable
 {
   public erv(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-    case 2: 
-      do
-      {
-        return;
-        Object[] arrayOfObject = (Object[])paramMessage.obj;
-        if (arrayOfObject.length == 3)
-        {
-          this.a.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)arrayOfObject[0]);
-          this.a.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject[1]);
-          this.a.jdField_a_of_type_ArrayOfJavaLangString = ((String[])arrayOfObject[2]);
-        }
-        this.a.jdField_a_of_type_Esa.notifyDataSetChanged();
-      } while ((paramMessage.what != 2) && ((paramMessage.what != 1) || (this.a.jdField_a_of_type_Boolean)));
-      this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.k();
-      return;
-    case 3: 
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 40, 0);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListInnerFrame", 2, "read troop members from database before updating data from server");
     }
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 0, 0);
+    Object localObject = TroopMemberListInnerFrame.a(this.a, this.a.b);
+    localObject = this.a.a.obtainMessage(1, localObject);
+    this.a.a.sendMessage((Message)localObject);
   }
 }
 

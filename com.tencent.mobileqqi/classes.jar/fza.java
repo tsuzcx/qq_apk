@@ -1,19 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-class fza
-  implements DialogInterface.OnClickListener
+public class fza
+  implements FMDialogUtil.FMDialogInterface
 {
-  fza(fyz paramfyz) {}
+  public fza(SendBottomBar paramSendBottomBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 1) {
-      this.a.a.b();
-    }
-    paramDialogInterface.dismiss();
+    SendBottomBar.b(this.a);
   }
+  
+  public void b() {}
 }
 
 

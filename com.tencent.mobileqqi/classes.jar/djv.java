@@ -1,23 +1,13 @@
-import android.os.Handler;
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import android.support.v7.app.ActionBar;
 import com.tencent.mobileqq.activity.SplashActivity;
 
-public class djv
-  extends ViewPager.SimpleOnPageChangeListener
+class djv
+  implements Runnable
 {
-  public djv(SplashActivity paramSplashActivity) {}
+  djv(dju paramdju, int paramInt) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void run()
   {
-    this.a.supportInvalidateOptionsMenu();
-    this.a.getSupportActionBar().setSelectedNavigationItem(paramInt);
-    new Handler().postDelayed(new djw(this, paramInt), 500L);
-    this.a.i();
+    this.jdField_a_of_type_Dju.a.a(this.jdField_a_of_type_Dju.a.a(this.jdField_a_of_type_Int));
   }
 }
 

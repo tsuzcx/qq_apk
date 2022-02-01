@@ -1,13 +1,21 @@
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
 import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
 public class dyb
   implements Runnable
 {
-  public dyb(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public dyb(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
   
   public void run()
   {
-    this.a.c();
+    ListenPanel localListenPanel = (ListenPanel)PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).findViewById(2131232852);
+    localListenPanel.setVisibility(0);
+    localListenPanel.setAudioPath(this.jdField_a_of_type_JavaLangString, PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel));
+    localListenPanel.setJumpSource(ListenPanel.c);
+    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).setStatus(4);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.setVisibility(8);
   }
 }
 

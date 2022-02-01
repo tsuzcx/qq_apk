@@ -1,70 +1,38 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.qphone.base.util.QLog;
 
-public class fut
+class fut
+  implements Runnable
 {
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Thread jdField_a_of_type_JavaLangThread = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private boolean jdField_b_of_type_Boolean = true;
+  fut(fus paramfus) {}
   
-  private fut(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
-  
-  public void a()
+  public void run()
   {
-    if (!a())
+    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  thread start. . .");
+    this.a.a(false);
+    for (;;)
     {
-      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make pump thread is  running!!!");
-      return;
-    }
-    a(false);
-    this.jdField_a_of_type_JavaLangThread = new Thread(new fuu(this));
-    this.jdField_a_of_type_JavaLangThread.start();
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      return;
-    }
-  }
-  
-  boolean a()
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      boolean bool = this.jdField_b_of_type_Boolean;
-      return bool;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaLangThread != null)
-    {
-      b(true);
-      this.jdField_a_of_type_JavaLangThread = null;
-    }
-  }
-  
-  void b(boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-  }
-  
-  boolean b()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
+      if (!this.a.b()) {}
+      try
+      {
+        Thread.sleep(1000L);
+        boolean bool = this.a.b();
+        if (bool)
+        {
+          this.a.a(true);
+          QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  thread exit. . .");
+          return;
+        }
+        Message localMessage = new Message();
+        localMessage.what = 1;
+        this.a.a.a.sendMessage(localMessage);
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+      }
     }
   }
 }

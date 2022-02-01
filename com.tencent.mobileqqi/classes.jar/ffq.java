@@ -1,17 +1,29 @@
+import com.tencent.lbsapi.QLBSNotification;
+import com.tencent.lbsapi.QLBSService;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class ffq
-  implements Runnable
+  implements QLBSNotification
 {
   public ffq(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onLocationNotification(int paramInt)
   {
-    if (!this.a.m()) {
+    if (QLog.isColorLevel()) {
+      QLog.d("LBS", 2, "onLocationNotification:" + paramInt);
+    }
+    if (paramInt == 1) {
+      this.a.jdField_a_of_type_ArrayOfByte = this.a.jdField_a_of_type_ComTencentLbsapiQLBSService.getDeviceData();
+    }
+    this.a.jdField_a_of_type_ComTencentLbsapiQLBSService.stopLocation();
+    synchronized (this.a.jdField_a_of_type_ComTencentLbsapiQLBSService)
+    {
+      this.a.jdField_a_of_type_ComTencentLbsapiQLBSService.notifyAll();
+      ReportLog.a("LBS", "onLocationNotification result:" + paramInt);
       return;
     }
-    QQAppInterface.a(this.a).a(QQAppInterface.a(this.a));
   }
 }
 

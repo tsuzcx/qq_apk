@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class dep
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public dep(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public dep(RegisterActivity paramRegisterActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if ((RecentLoginDevActivity.a(this.a) != null) && (RecentLoginDevActivity.a(this.a).isShowing()))
-      {
-        RecentLoginDevActivity.a(this.a).dismiss();
-        RecentLoginDevActivity.a(this.a).cancel();
-      }
-      RecentLoginDevActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a.a = 0;
+    this.a.finish();
   }
 }
 

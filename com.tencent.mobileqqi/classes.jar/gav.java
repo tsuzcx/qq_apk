@@ -1,26 +1,28 @@
-import android.os.Handler;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceTextUpdateListener;
 import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
-public class gav
-  implements MagicfaceActionManager.MagicfaceTextUpdateListener
+class gav
+  implements Runnable
 {
-  public gav(MagicfaceViewController paramMagicfaceViewController, int paramInt, TextView paramTextView) {}
+  gav(gau paramgau, String paramString) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).post(new gaw(this, paramString));
-  }
-  
-  public void b(String paramString)
-  {
-    MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).post(new gax(this, paramString));
-  }
-  
-  public void c(String paramString)
-  {
-    MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).post(new gay(this, paramString));
+    if (this.jdField_a_of_type_Gau.jdField_a_of_type_Int == 1)
+    {
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        break label48;
+      }
+      MagicfaceViewController.a(this.jdField_a_of_type_Gau.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).setVisibility(8);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Gau.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      return;
+      label48:
+      MagicfaceViewController.a(this.jdField_a_of_type_Gau.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).setVisibility(0);
+    }
   }
 }
 

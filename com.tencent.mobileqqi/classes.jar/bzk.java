@@ -1,59 +1,39 @@
-import android.content.Intent;
-import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.StrangerHandler;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bzk
-  implements View.OnClickListener
+class bzk
+  implements ActionSheet.OnButtonClickListener
 {
-  public bzk(ChatActivity paramChatActivity) {}
+  bzk(bzj parambzj, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {
-      return;
-    }
-    paramView = this.a.a.jdField_a_of_type_JavaLangString;
-    if (this.a.a.jdField_a_of_type_Int == 1006) {
-      paramView = this.a.a.f;
-    }
-    switch (((Integer)localObject).intValue())
+    switch (paramInt)
     {
-    default: 
-      return;
-    case 1: 
-      ChatActivityUtils.a(this.a.b, this.a, this.a.a.jdField_a_of_type_Int, paramView, this.a.a.e, true);
-      return;
-    case 2: 
-      ChatActivityUtils.a(this.a.b, this.a, this.a.a.jdField_a_of_type_Int, paramView, this.a.a.e, false);
-      return;
-    case 3: 
-      if (ChatActivityUtils.a(this.a.b, this.a.a)) {
-        ReportController.b(this.a.b, "CliOper", "", this.a.a.jdField_a_of_type_JavaLangString, "Manage_stranger", "Manage_str_add", 0, 0, "", "", "", "");
-      }
-      paramView = this.a;
-      localObject = this.a.a;
-      String str = ChatActivity.a(this.a);
-      if (this.a.getIntent().getStringExtra("param_return_addr") != null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ChatActivityUtils.a(paramView, (SessionInfo)localObject, str, bool);
-        return;
-      }
     }
-    paramView = (ActionSheet)ActionSheetHelper.a(this.a, null);
-    paramView.a(this.a.getResources().getString(2131562554));
-    paramView.a(2131561963, 3);
-    paramView.d(2131561746);
-    paramView.a(new bzl(this, paramView));
-    paramView.show();
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      ReportController.b(this.jdField_a_of_type_Bzj.a.b, "CliOper", "", this.jdField_a_of_type_Bzj.a.a.a, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
+      paramView = (StrangerHandler)this.jdField_a_of_type_Bzj.a.b.a(28);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_Bzj.a.a.a)));
+      paramView.b(localArrayList);
+      if (ChatActivity.a(this.jdField_a_of_type_Bzj.a) == null) {
+        ChatActivity.a(this.jdField_a_of_type_Bzj.a, new QQProgressDialog(this.jdField_a_of_type_Bzj.a, 0));
+      }
+      ChatActivity.a(this.jdField_a_of_type_Bzj.a).show();
+    }
   }
 }
 

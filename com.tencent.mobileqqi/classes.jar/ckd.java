@@ -1,35 +1,36 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.EmosmHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.mobileqq.emoticon.EmoticonController;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.statistics.StatisticAssist;
+import java.util.Iterator;
+import java.util.List;
 
 public class ckd
-  implements DragSortListView.RemoveListener
+  implements View.OnClickListener
 {
   public ckd(EmosmActivity paramEmosmActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    Object localObject = (EmoticonPackage)EmosmActivity.a(this.a).get(paramInt);
-    if (!NetworkUtil.e(this.a))
+    paramView = EmosmActivity.a(this.a).getSelectedPackages().iterator();
+    while (paramView.hasNext())
     {
-      localObject = new QQToast(this.a);
-      ((QQToast)localObject).a(2130837933);
-      ((QQToast)localObject).c(1500);
-      ((QQToast)localObject).a(this.a.getString(2131559056));
-      ((QQToast)localObject).b(0);
-      return;
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramView.next();
+      EmosmActivity.a(this.a).b(localEmoticonPackage.epId);
+      EmosmActivity.a(this.a).setNotifyOnChange(true);
+      EmosmActivity.a(this.a).remove(localEmoticonPackage);
+      EmoticonController.a(this.a.b).b(localEmoticonPackage);
+      StatisticAssist.a(this.a, this.a.b.a(), "Delete_ep");
+      EmosmActivity.a(this.a, localEmoticonPackage);
     }
-    EmosmActivity.a(this.a, 0);
-    EmosmActivity.b(this.a, 1);
-    this.a.a.a(this.a.getString(2131561933));
-    this.a.a.show();
-    ((EmosmHandler)this.a.b.a(11)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
+    EmosmActivity.a(this.a).clearSelectStatus();
+    EmosmActivity.a(this.a).setEnabled(false);
   }
 }
 

@@ -1,13 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class iaw
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
   public iaw(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     this.a.finish();
   }

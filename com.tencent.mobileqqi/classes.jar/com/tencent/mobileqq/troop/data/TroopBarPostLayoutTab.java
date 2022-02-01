@@ -18,8 +18,8 @@ import com.tencent.mobileqq.data.TroopBarPageEntity;
 import com.tencent.mobileqq.data.TroopBarPageEntity.TypeListEntity;
 import com.tencent.mobileqq.troop.activity.TroopBarPageActivity;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import gvm;
 import gvn;
-import gvo;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -46,7 +46,7 @@ public class TroopBarPostLayoutTab
     if (paramView == null)
     {
       paramView = paramLayoutInflater.inflate(2130903451, null);
-      paramLayoutInflater = (gvo)a(paramView);
+      paramLayoutInflater = (gvn)a(paramView);
       paramView.setTag(paramLayoutInflater);
     }
     for (;;)
@@ -65,13 +65,13 @@ public class TroopBarPostLayoutTab
       this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.jdField_a_of_type_AndroidViewView;
       a(paramLayoutInflater.jdField_a_of_type_AndroidWidgetLinearLayout, paramActivity, this.jdField_a_of_type_JavaUtilArrayList, paramTroopBarAbsDataEntity);
       return paramView;
-      paramLayoutInflater = (gvo)paramView.getTag();
+      paramLayoutInflater = (gvn)paramView.getTag();
     }
   }
   
   public TroopBarPostAbsLayout.AbsItemViewHolder a(View paramView)
   {
-    return new gvo(this, paramView);
+    return new gvn(this, paramView);
   }
   
   protected void a(LinearLayout paramLinearLayout, Context paramContext, ArrayList paramArrayList, TroopBarPageEntity paramTroopBarPageEntity)
@@ -137,7 +137,7 @@ public class TroopBarPostLayoutTab
     {
       TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, (j - i) * this.b, 0.0F, 0.0F);
       localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new gvn(this, (TroopBarPageEntity.TypeListEntity)localObject3, ???));
+      localTranslateAnimation.setAnimationListener(new gvm(this, (TroopBarPageEntity.TypeListEntity)localObject3, ???));
       synchronized (this.jdField_a_of_type_AndroidViewView)
       {
         this.jdField_a_of_type_AndroidViewView.startAnimation(localTranslateAnimation);

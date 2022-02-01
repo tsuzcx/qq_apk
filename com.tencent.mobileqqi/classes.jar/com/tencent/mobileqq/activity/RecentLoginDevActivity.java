@@ -22,12 +22,12 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
+import dej;
 import dek;
 import del;
 import dem;
 import den;
 import deo;
-import dep;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,9 +35,9 @@ public class RecentLoginDevActivity
   extends IphoneTitleBarActivity
 {
   private static final String jdField_a_of_type_JavaLangString = "Q.devlock.RecentLoginDevActivity";
-  private Handler jdField_a_of_type_AndroidOsHandler = new dek(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new dej(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new den(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dem(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet = null;
   private List jdField_a_of_type_JavaUtilList = null;
@@ -59,7 +59,7 @@ public class RecentLoginDevActivity
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramString1);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131562751), 3);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131561746);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new dem(this, paramString2, paramArrayList, paramInt));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new del(this, paramString2, paramArrayList, paramInt));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
   }
   
@@ -97,9 +97,9 @@ public class RecentLoginDevActivity
     if (j == 1)
     {
       localRelativeLayout.setBackgroundResource(2130837877);
-      ((TextView)localView.findViewById(2131231901)).setVisibility(8);
+      ((TextView)localView.findViewById(2131231900)).setVisibility(8);
       localObject = (TextView)localView.findViewById(2131231000);
-      localTextView = (TextView)localView.findViewById(2131231507);
+      localTextView = (TextView)localView.findViewById(2131231506);
       if (!TextUtils.isEmpty(localSvcDevLoginInfo.strDeviceName)) {
         break label386;
       }
@@ -126,7 +126,7 @@ public class RecentLoginDevActivity
       }
       localRelativeLayout.setClickable(true);
       localRelativeLayout.setTag(localSvcDevLoginInfo);
-      localRelativeLayout.setOnClickListener(new del(this, localRelativeLayout, i));
+      localRelativeLayout.setOnClickListener(new dek(this, localRelativeLayout, i));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       break;
       if (i == 0)
@@ -148,12 +148,12 @@ public class RecentLoginDevActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new deo(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new den(this));
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new dep(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new deo(this));
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -161,7 +161,7 @@ public class RecentLoginDevActivity
     super.onCreate(paramBundle);
     setContentView(2130903572);
     setTitle(2131562727);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232955));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232954));
     try
     {
       this.jdField_b_of_type_JavaLangString = getPackageManager().getPackageInfo(getPackageName(), 0).packageName;

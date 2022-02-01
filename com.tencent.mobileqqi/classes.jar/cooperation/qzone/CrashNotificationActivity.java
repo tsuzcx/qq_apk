@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import ibr;
+import ibq;
 
 public class CrashNotificationActivity
   extends Activity
@@ -22,14 +22,14 @@ public class CrashNotificationActivity
     localAlertDialog.show();
     Object localObject = localAlertDialog.getWindow();
     ((Window)localObject).setContentView(2130903294);
-    Button localButton1 = (Button)((Window)localObject).findViewById(2131231994);
-    Button localButton2 = (Button)((Window)localObject).findViewById(2131231993);
-    localObject = (TextView)((Window)localObject).findViewById(2131231988);
+    Button localButton1 = (Button)((Window)localObject).findViewById(2131231993);
+    Button localButton2 = (Button)((Window)localObject).findViewById(2131231992);
+    localObject = (TextView)((Window)localObject).findViewById(2131231987);
     if ((localButton1 == null) || (localObject == null)) {
       return null;
     }
-    ((TextView)localObject).setText(getString(2131562388) + "6.0.2" + getString(2131562560));
-    localObject = new ibr(this);
+    ((TextView)localObject).setText(getString(2131562388) + "6.0.3" + getString(2131562560));
+    localObject = new ibq(this);
     localButton1.setOnClickListener((View.OnClickListener)localObject);
     localButton2.setOnClickListener((View.OnClickListener)localObject);
     return localAlertDialog;

@@ -55,7 +55,7 @@ public class PhoneLaunchActivity
     setContentView(2130903310);
     setTitle(getResources().getString(2131558973));
     a(2131561842, this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232042));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232041));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (getIntent().getBooleanExtra("k_start_number", false)) {
       e();

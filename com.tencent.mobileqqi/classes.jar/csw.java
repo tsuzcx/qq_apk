@@ -1,65 +1,40 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
 import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
 import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import com.tencent.mobileqq.config.DownloadIconsListener;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter.ViewHolder;
 import com.tencent.mobileqq.config.struct.LebaViewItem;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.widget.XListView;
 
-public class csw
-  extends DownloadIconsListener
+class csw
+  implements Runnable
 {
-  public csw(LebaListMgrActivity paramLebaListMgrActivity) {}
+  csw(csv paramcsv, String paramString) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void run()
   {
-    int k = 0;
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {}
-    label209:
-    label210:
+    int j;
+    int i;
+    if ((LebaListMgrActivity.a(this.jdField_a_of_type_Csv.a) != null) && (LebaListMgrActivity.a(this.jdField_a_of_type_Csv.a) != null))
+    {
+      j = LebaListMgrActivity.a(this.jdField_a_of_type_Csv.a).getChildCount();
+      i = 0;
+    }
     for (;;)
     {
-      return;
-      int m = LebaListMgrActivity.a(this.a).getCount();
-      int j = 0;
-      int i = k;
-      if (j < m)
+      if (i < j)
       {
-        Object localObject = (LebaViewItem)LebaListMgrActivity.a(this.a).getItem(j);
-        if ((((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo != null) && (paramString.equals(((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName)))
-        {
-          ((LebaViewItem)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramBitmap);
-          j = 1;
-          localObject = LebaShowListManager.a(this.a.a(), paramString, ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName);
-          i = j;
-          if (localObject == null) {
-            break label209;
-          }
-          i = j;
-          if (paramBitmap == null) {
-            break label209;
-          }
-          i = j;
-          if (LebaShowListManager.a().a.containsKey(((File)localObject).getAbsolutePath())) {
-            break label209;
-          }
-          LebaShowListManager.a().a.put(((File)localObject).getAbsolutePath(), paramBitmap);
-          i = 1;
+        LebaListMgrAdapter.ViewHolder localViewHolder = (LebaListMgrAdapter.ViewHolder)LebaListMgrActivity.a(this.jdField_a_of_type_Csv.a).getChildAt(i).getTag();
+        if ((localViewHolder != null) && (localViewHolder.a != null) && (localViewHolder.a.a != null) && (Utils.a(localViewHolder.a.a.strPkgName, this.jdField_a_of_type_JavaLangString))) {
+          LebaListMgrActivity.a(this.jdField_a_of_type_Csv.a).a(localViewHolder);
         }
       }
-      for (;;)
+      else
       {
-        if (i == 0) {
-          break label210;
-        }
-        this.a.runOnUiThread(new csx(this, paramString));
         return;
-        j += 1;
-        break;
       }
+      i += 1;
     }
   }
 }

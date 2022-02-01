@@ -1,23 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.graphics.Bitmap;
+import android.view.View;
 import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.adapter.PeopleAroundAdapter.ViewHolder;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.widget.XListView;
 
 public class cyv
-  implements DialogInterface.OnDismissListener
+  implements IIconListener
 {
   public cyv(PeopleAroundBaseActivity paramPeopleAroundBaseActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    try
+    if ((paramBitmap != null) && (paramInt2 == 200))
     {
-      PeopleAroundBaseActivity.a(this.a).dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
+      int i = this.a.a.getChildCount();
+      paramInt2 = 0;
+      while (paramInt2 < i)
+      {
+        paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+        if ((paramBitmap != null) && ((paramBitmap instanceof PeopleAroundAdapter.ViewHolder)))
+        {
+          paramBitmap = (PeopleAroundAdapter.ViewHolder)paramBitmap;
+          if ((paramBitmap.a == paramInt1) && (paramBitmap.c != null)) {
+            PeopleAroundBaseActivity.a(this.a, paramBitmap.c, paramInt1);
+          }
+        }
+        paramInt2 += 1;
+      }
     }
   }
 }

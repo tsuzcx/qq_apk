@@ -1,13 +1,18 @@
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
 import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class fna
-  implements Runnable
+  implements AccountManagerCallback
 {
   public fna(ContactSyncManager paramContactSyncManager) {}
   
-  public void run()
+  public void run(AccountManagerFuture paramAccountManagerFuture)
   {
-    this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
+    }
   }
 }
 

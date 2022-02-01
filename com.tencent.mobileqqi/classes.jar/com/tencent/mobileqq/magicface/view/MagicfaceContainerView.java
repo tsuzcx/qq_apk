@@ -6,13 +6,13 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import gar;
+import gaq;
 
 public class MagicfaceContainerView
   extends RelativeLayout
 {
   public static final int a = 150;
-  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new gar(this);
+  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new gaq(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
   private MagicfaceContainerView.MagicfaceGestureListener jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView$MagicfaceGestureListener;
   

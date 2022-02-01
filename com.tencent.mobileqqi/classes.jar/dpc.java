@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity.MemberGridAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
 
-class dpc
-  implements DialogInterface.OnClickListener
+public class dpc
+  extends FriendListObserver
 {
-  dpc(dpb paramdpb, QQCustomDialog paramQQCustomDialog) {}
+  public dpc(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

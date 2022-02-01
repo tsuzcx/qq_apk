@@ -1,42 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.statistics.StatisticAssist;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class fws
   implements Runnable
 {
-  public fws(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
+  public fws(UniformDownloadMgr paramUniformDownloadMgr) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_AndroidOsBundle == null))
+    ArrayList localArrayList = new ArrayList();
+    synchronized (UniformDownloadMgr.a(this.a))
     {
-      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] onDownloadNotificationBeClean. param error!!");
-      return;
-    }
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("_notify_param_Id");
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onDownloadNotificationBeClean. URL:" + this.jdField_a_of_type_JavaLangString + " nofiyid:" + i);
-    fwv localfwv = UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
-    if ((localfwv != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a != null))
-    {
-      if (localfwv.a != 1) {
-        break label175;
+      Iterator localIterator = UniformDownloadMgr.a(this.a).values().iterator();
+      while (localIterator.hasNext())
+      {
+        fwu localfwu2 = (fwu)localIterator.next();
+        if ((localfwu2.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) && (localfwu2.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b()) && (2 == localfwu2.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.g())) {
+          localArrayList.add(localfwu2);
+        }
       }
-      StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.a(), "Stop_download_2-1_3-0");
     }
-    for (;;)
+    ??? = localObject2.iterator();
+    while (((Iterator)???).hasNext())
     {
-      UniformDownloadMgr.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
-      UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.b(this.jdField_a_of_type_JavaLangString);
-      UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
-      return;
-      label175:
-      StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.a(), "Stop_download_2-1_3-1");
+      fwu localfwu1 = (fwu)((Iterator)???).next();
+      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> pauseSlienceRuningGenDownloadOfOldApp, url:[" + localfwu1.jdField_a_of_type_JavaLangString + "]");
+      localfwu1.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.e();
     }
+    UniformDownloadMgr.b(this.a);
   }
 }
 

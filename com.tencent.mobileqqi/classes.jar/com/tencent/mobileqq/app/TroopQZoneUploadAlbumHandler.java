@@ -20,10 +20,10 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import cooperation.qzone.QzonePluginProxyActivity;
+import fhg;
 import fhh;
 import fhi;
 import fhj;
-import fhk;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,7 +33,7 @@ public class TroopQZoneUploadAlbumHandler
 {
   public static final int a = 1;
   private static final String jdField_a_of_type_JavaLangString = "UploadPhoto";
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new fhi(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new fhh(this);
   public Handler a;
   public Messenger a;
   public SparseArray a;
@@ -49,7 +49,7 @@ public class TroopQZoneUploadAlbumHandler
     this.jdField_a_of_type_AndroidOsMessenger = null;
     this.jdField_b_of_type_AndroidOsMessenger = null;
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_AndroidOsHandler = new fhh(this, Looper.getMainLooper(), paramQQAppInterface);
+    this.jdField_a_of_type_AndroidOsHandler = new fhg(this, Looper.getMainLooper(), paramQQAppInterface);
   }
   
   private void a(int paramInt)
@@ -70,11 +70,11 @@ public class TroopQZoneUploadAlbumHandler
     }
   }
   
-  private void a(int paramInt1, fhk paramfhk, int paramInt2, int paramInt3)
+  private void a(int paramInt1, fhj paramfhj, int paramInt2, int paramInt3)
   {
     Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
     localMessage.what = 1;
-    localMessage.obj = new Object[] { Integer.valueOf(paramInt1), paramfhk, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) };
+    localMessage.obj = new Object[] { Integer.valueOf(paramInt1), paramfhj, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) };
     localMessage.sendToTarget();
   }
   
@@ -125,17 +125,17 @@ public class TroopQZoneUploadAlbumHandler
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    fhk localfhk = (fhk)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2, null);
-    if (localfhk == null) {
+    fhj localfhj = (fhj)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2, null);
+    if (localfhj == null) {
       return;
     }
-    a(paramInt2, localfhk, paramInt1, paramInt3);
+    a(paramInt2, localfhj, paramInt1, paramInt3);
   }
   
   public void a(int paramInt, String paramString, long paramLong)
   {
     this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(paramInt, new fhk(this, paramString, paramLong));
+    this.jdField_a_of_type_AndroidUtilSparseArray.append(paramInt, new fhj(this, paramString, paramLong));
     d();
     a(paramInt);
   }
@@ -145,9 +145,9 @@ public class TroopQZoneUploadAlbumHandler
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      Object localObject = (fhj)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      View localView = ((fhj)localObject).a();
-      localObject = ((fhj)localObject).a();
+      Object localObject = (fhi)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      View localView = ((fhi)localObject).a();
+      localObject = ((fhi)localObject).a();
       if ((localView != null) && (localObject != null)) {
         ((TroopQZoneUploadAlbumHandler.Callback)localObject).a(localView, paramLong, paramInt1, paramInt2);
       }
@@ -166,14 +166,14 @@ public class TroopQZoneUploadAlbumHandler
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      fhj localfhj = (fhj)localIterator.next();
-      if (localfhj.a() == paramView)
+      fhi localfhi = (fhi)localIterator.next();
+      if (localfhi.a() == paramView)
       {
-        localfhj.b = new WeakReference(paramCallback);
+        localfhi.b = new WeakReference(paramCallback);
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new fhj(this, paramView, paramCallback));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new fhi(this, paramView, paramCallback));
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, long paramLong, int paramInt2, int paramInt3)

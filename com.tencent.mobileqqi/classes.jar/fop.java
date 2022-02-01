@@ -1,18 +1,35 @@
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
+import com.tencent.mobileqq.emoticonview.EmoticonPagerAdapter;
+import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
+import com.tencent.mobileqq.emoticonview.EmoticonViewPager;
+import com.tencent.mobileqq.emoticonview.RecentAndFavPanelViewBinder;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class fop
+public class fop
   implements Runnable
 {
-  fop(fon paramfon, int paramInt, MagicFaceViewBinder paramMagicFaceViewBinder) {}
+  public fop(EmoticonMainPanel paramEmoticonMainPanel) {}
   
   public void run()
   {
-    if (EmoticonMainPanel.b() == 2)
+    QLog.d("belina", 2, "updateRecentEmoticonPanel");
+    if ((EmoticonMainPanel.b() == 1) && (EmoticonMainPanel.d() == 0) && (EmoticonMainPanel.b(this.a) != null) && (EmoticonMainPanel.b(this.a).size() > 0))
     {
-      EmoticonMainPanel.a(this.jdField_a_of_type_Fon.a, EmoticonMainPanel.a(this.jdField_a_of_type_Fon.a));
-      if (EmoticonMainPanel.c() == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewMagicFaceViewBinder.d();
+      EmoticonViewBinder localEmoticonViewBinder = (EmoticonViewBinder)EmoticonMainPanel.b(this.a).get(0);
+      if ((localEmoticonViewBinder != null) && ((localEmoticonViewBinder instanceof RecentAndFavPanelViewBinder)))
+      {
+        ((RecentAndFavPanelViewBinder)localEmoticonViewBinder).a(true);
+        if (EmoticonMainPanel.a(this.a) != null) {
+          EmoticonMainPanel.a(this.a).notifyDataSetChanged();
+        }
+        EmoticonMainPanel.a(this.a, EmoticonMainPanel.b(this.a));
+        if (EmoticonMainPanel.a(this.a) != null)
+        {
+          EmoticonMainPanel.a(this.a).a(EmoticonMainPanel.c(this.a));
+          EmoticonMainPanel.a(this.a).setAdapter(EmoticonMainPanel.a(this.a));
+          EmoticonMainPanel.a(this.a).setCurrentItem(0, false);
+        }
       }
     }
   }

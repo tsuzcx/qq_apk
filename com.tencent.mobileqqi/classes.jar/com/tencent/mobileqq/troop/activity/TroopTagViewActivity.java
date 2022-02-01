@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.widget.QQProgressDialog;
-import gur;
+import guq;
 import java.net.URLEncoder;
 
 public class TroopTagViewActivity
@@ -90,7 +90,7 @@ public class TroopTagViewActivity
       this.jdField_m_of_type_AndroidWidgetTextView.setText(2131562001);
       this.jdField_m_of_type_AndroidWidgetTextView.setVisibility(0);
       this.p.setVisibility(8);
-      this.jdField_m_of_type_AndroidWidgetTextView.setOnClickListener(new gur(this));
+      this.jdField_m_of_type_AndroidWidgetTextView.setOnClickListener(new guq(this));
       return true;
       str = URLEncoder.encode(this.n).replace("+", "%20");
       break;

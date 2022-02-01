@@ -4,21 +4,13 @@ import com.tencent.mobileqq.widget.PullRefreshHeader;
 class ces
   implements Runnable
 {
-  ces(cer paramcer, boolean paramBoolean) {}
+  ces(ceq paramceq, boolean paramBoolean) {}
   
   public void run()
   {
-    Conversation.a(this.jdField_a_of_type_Cer.a, true);
-    PullRefreshHeader localPullRefreshHeader;
-    if (Conversation.b(this.jdField_a_of_type_Cer.a))
-    {
-      Conversation.a(this.jdField_a_of_type_Cer.a, 800L);
-      localPullRefreshHeader = Conversation.a(this.jdField_a_of_type_Cer.a);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label63;
-      }
-    }
-    label63:
+    Conversation.a(this.jdField_a_of_type_Ceq.a, 800L);
+    PullRefreshHeader localPullRefreshHeader = Conversation.a(this.jdField_a_of_type_Ceq.a);
+    if (this.jdField_a_of_type_Boolean) {}
     for (int i = 0;; i = 2)
     {
       localPullRefreshHeader.a(i);

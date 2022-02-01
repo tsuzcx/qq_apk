@@ -1,7 +1,9 @@
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity.ViewHolder;
+import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.qphone.base.util.QLog;
 
 public class dqe
   implements View.OnClickListener
@@ -10,27 +12,22 @@ public class dqe
   
   public void onClick(View paramView)
   {
-    paramView = paramView.getTag();
-    if ((paramView == null) || (!(paramView instanceof TroopMemberCardActivity.ViewHolder))) {}
+    if (this.a.a == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnTroopBarItemClickListener, mTroopMemberCard == null");
+      }
+    }
     do
     {
       return;
-      paramView = (TroopMemberCardActivity.ViewHolder)paramView;
-      if (paramView.a == 0)
-      {
-        this.a.c(this.a.e);
-        this.a.f("Clk_account");
-        return;
+      if (!TextUtils.isEmpty(this.a.a.gbarLinkUrl)) {
+        break;
       }
-      if (paramView.a == 1)
-      {
-        this.a.b(this.a.c, this.a.e);
-        this.a.f("Clk_name");
-        return;
-      }
-    } while (paramView.a != 3);
-    this.a.a(this.a.c, this.a.e);
-    this.a.f("Clk_set");
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnTroopBarItemClickListener, gbarLinkUrl is empty");
+    return;
+    this.a.d(this.a.a.gbarLinkUrl);
+    this.a.f("Clk_tribe");
   }
 }
 

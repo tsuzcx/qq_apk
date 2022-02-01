@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class elt
-  implements Runnable
+  extends ContactBindObserver
 {
-  public elt(PhoneMatchView paramPhoneMatchView) {}
+  public elt(RebindActivity paramRebindActivity) {}
   
-  public void run()
+  protected void c(boolean paramBoolean)
   {
-    this.a.a.e();
+    this.a.d();
+    if (paramBoolean)
+    {
+      Intent localIntent = new Intent(this.a, BindVerifyActivity.class);
+      localIntent.putExtra("k_number", this.a.d);
+      localIntent.putExtra("kBindType", RebindActivity.a(this.a));
+      this.a.startActivityForResult(localIntent, 1);
+      return;
+    }
+    this.a.b(2131562782);
   }
 }
 

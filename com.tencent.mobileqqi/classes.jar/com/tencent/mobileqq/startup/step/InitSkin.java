@@ -12,7 +12,7 @@ import com.tencent.mobileqqi.R.color;
 import com.tencent.mobileqqi.R.drawable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
-import gka;
+import gjz;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -80,7 +80,7 @@ public class InitSkin
         }
         QLog.d("SkinEngine", 2, "No cache found");
         SkinEngine.init(paramContext, jdField_a_of_type_ArrayOfInt, R.color.class, 2131361792, null);
-        ThreadManager.b().postDelayed(new gka("/skin/web_config", "/skin/web_skin_cache"), 10000L);
+        ThreadManager.b().postDelayed(new gjz("/skin/web_config", "/skin/web_skin_cache"), 10000L);
         continue;
         SkinEngine.init(paramContext, jdField_a_of_type_ArrayOfInt, R.color.class, 2131361792, null);
         if (!QLog.isColorLevel()) {
@@ -98,7 +98,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.a) || (!"master".equals(str))) {
+        if ((i != AppSetting.a) || (!"603".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -146,7 +146,7 @@ public class InitSkin
         QLog.d("SkinEngine", 2, "web skin cache time out");
       }
       SkinEngine.init(paramContext, jdField_a_of_type_ArrayOfInt, R.color.class, 2131361792, null);
-      ThreadManager.b().postDelayed(new gka("/skin/web_config", "/skin/web_skin_cache"), 10000L);
+      ThreadManager.b().postDelayed(new gjz("/skin/web_config", "/skin/web_skin_cache"), 10000L);
     }
   }
   
@@ -198,7 +198,7 @@ public class InitSkin
         }
         QLog.d("SkinEngine", 2, "No cache found");
         SkinEngine.init(paramContext, b, R.color.class, 2131361792, null);
-        ThreadManager.b().postDelayed(new gka("/skin/qzone_config", "/skin/qzone_skin_cache"), 10000L);
+        ThreadManager.b().postDelayed(new gjz("/skin/qzone_config", "/skin/qzone_skin_cache"), 10000L);
         continue;
         SkinEngine.init(paramContext, b, R.color.class, 2131361792, null);
         if (!QLog.isColorLevel()) {
@@ -216,7 +216,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.a) || (!"master".equals(str))) {
+        if ((i != AppSetting.a) || (!"603".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -268,7 +268,7 @@ public class InitSkin
         QLog.d("SkinEngine", 2, "qzone skin cache time out");
       }
       SkinEngine.init(paramContext, b, R.color.class, 2131361792, null);
-      ThreadManager.b().postDelayed(new gka("/skin/qzone_config", "/skin/qzone_skin_cache"), 10000L);
+      ThreadManager.b().postDelayed(new gjz("/skin/qzone_config", "/skin/qzone_skin_cache"), 10000L);
     }
   }
   
@@ -320,7 +320,7 @@ public class InitSkin
         }
         QLog.d("SkinEngine", 2, "No cache found");
         SkinEngine.init(paramContext, R.drawable.class, 2130837504, R.color.class, 2131361792, null);
-        ThreadManager.b().postDelayed(new gka("/skin/config", "/skin/skin_cache"), 10000L);
+        ThreadManager.b().postDelayed(new gjz("/skin/config", "/skin/skin_cache"), 10000L);
         continue;
         SkinEngine.init(paramContext, R.drawable.class, 2130837504, R.color.class, 2131361792, null);
         if (!QLog.isColorLevel()) {
@@ -338,7 +338,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.a) || (!"master".equals(str))) {
+        if ((i != AppSetting.a) || (!"603".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -390,7 +390,7 @@ public class InitSkin
         QLog.d("SkinEngine", 2, "cache time out");
       }
       SkinEngine.init(paramContext, R.drawable.class, 2130837504, R.color.class, 2131361792, null);
-      ThreadManager.b().postDelayed(new gka("/skin/config", "/skin/skin_cache"), 10000L);
+      ThreadManager.b().postDelayed(new gjz("/skin/config", "/skin/skin_cache"), 10000L);
     }
   }
   

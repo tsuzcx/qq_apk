@@ -1,35 +1,20 @@
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ContactSorter;
+import java.util.Comparator;
 
 public class esk
-  implements QvipSpecialSoundManager.CallBack
+  implements Comparator
 {
   public esk(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
   
-  public void a(boolean paramBoolean)
+  private String a(String paramString)
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QvipSpecialCarePersonActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        QvipSpecialCarePersonActivity.a(this.a);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QvipSpecialCarePersonActivity", 2, "loadSpecialSoundConfig fail.");
-      }
-    }
+    return QvipSpecialCarePersonActivity.a(this.a, paramString) + paramString;
+  }
+  
+  public int a(String paramString1, String paramString2)
+  {
+    return ContactSorter.a(a(paramString1), a(paramString2));
   }
 }
 

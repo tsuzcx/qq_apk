@@ -23,10 +23,10 @@ import android.view.animation.Transformation;
 import android.widget.Scroller;
 import android.widget.SpinnerAdapter;
 import com.tencent.mobileqqi.R.styleable;
-import hvj;
+import hvi;
+import hwy;
 import hwz;
 import hxa;
-import hxb;
 
 public class VerticalGallery
   extends VerticalAbsSpinner
@@ -42,8 +42,8 @@ public class VerticalGallery
   private VerticalGallery.OnEndFlingListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener = null;
   private VerticalGallery.OnEndMovementListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndMovementListener = null;
   private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = null;
-  private hxb jdField_a_of_type_Hxb = new hxb(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new hwz(this);
+  private hxa jdField_a_of_type_Hxa = new hxa(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new hwy(this);
   private float jdField_b_of_type_Float = 1.0F;
   private View jdField_b_of_type_AndroidViewView;
   private boolean jdField_b_of_type_Boolean;
@@ -173,7 +173,7 @@ public class VerticalGallery
   {
     if (!this.jdField_p_of_type_Boolean)
     {
-      localView = this.jdField_a_of_type_Hvj.a(paramInt1);
+      localView = this.jdField_a_of_type_Hvi.a(paramInt1);
       if (localView != null)
       {
         paramInt1 = localView.getLeft();
@@ -277,7 +277,7 @@ public class VerticalGallery
           }
           return;
         }
-        this.jdField_a_of_type_Hvj.a(i4 + i2, localView);
+        this.jdField_a_of_type_Hvi.a(i4 + i2, localView);
         i2 += 1;
         i1 += 1;
       }
@@ -304,7 +304,7 @@ public class VerticalGallery
         i3 = i1;
         break;
       }
-      this.jdField_a_of_type_Hvj.a(i4 + i3, localView);
+      this.jdField_a_of_type_Hvi.a(i4 + i3, localView);
       i1 += 1;
       i2 = i3;
       i3 -= 1;
@@ -318,7 +318,7 @@ public class VerticalGallery
     {
       paramInt = b();
       int i1 = d(localView);
-      this.jdField_a_of_type_Hxb.b(paramInt - i1);
+      this.jdField_a_of_type_Hxa.b(paramInt - i1);
       return true;
     }
     return false;
@@ -359,7 +359,7 @@ public class VerticalGallery
   {
     if (!this.jdField_p_of_type_Boolean)
     {
-      localView = this.jdField_a_of_type_Hvj.a(paramInt1);
+      localView = this.jdField_a_of_type_Hvi.a(paramInt1);
       if (localView != null)
       {
         paramInt1 = localView.getTop();
@@ -455,7 +455,7 @@ public class VerticalGallery
           }
           return;
         }
-        this.jdField_a_of_type_Hvj.a(i4 + i2, localView);
+        this.jdField_a_of_type_Hvi.a(i4 + i2, localView);
         i2 += 1;
         i1 += 1;
       }
@@ -482,7 +482,7 @@ public class VerticalGallery
         i3 = i1;
         break;
       }
-      this.jdField_a_of_type_Hvj.a(i4 + i3, localView);
+      this.jdField_a_of_type_Hvi.a(i4 + i3, localView);
       i1 += 1;
       i2 = i3;
       i3 -= 1;
@@ -554,7 +554,7 @@ public class VerticalGallery
       i1 = b() - i1;
       if (i1 != 0)
       {
-        this.jdField_a_of_type_Hxb.b(i1);
+        this.jdField_a_of_type_Hxa.b(i1);
         return;
       }
       j();
@@ -570,7 +570,7 @@ public class VerticalGallery
     }
     while (i1 != 0)
     {
-      this.jdField_a_of_type_Hxb.b(i1);
+      this.jdField_a_of_type_Hxa.b(i1);
       return;
       View localView2 = getChildAt(getChildCount() - 1);
       if (localView2.getBottom() - localView1.getTop() < getBottom() - getPaddingBottom())
@@ -979,8 +979,8 @@ public class VerticalGallery
   
   public int a(int paramInt)
   {
-    if (this.jdField_a_of_type_Hxb != null) {
-      this.jdField_a_of_type_Hxb.b(paramInt * -1);
+    if (this.jdField_a_of_type_Hxa != null) {
+      this.jdField_a_of_type_Hxa.b(paramInt * -1);
     }
     return paramInt * -1;
   }
@@ -1049,8 +1049,8 @@ public class VerticalGallery
     label176:
     for (;;)
     {
-      if ((i1 != 0) && (this.jdField_a_of_type_Hxb != null)) {
-        this.jdField_a_of_type_Hxb.b(i1 * -1);
+      if ((i1 != 0) && (this.jdField_a_of_type_Hxa != null)) {
+        this.jdField_a_of_type_Hxa.b(i1 * -1);
       }
       return i1 * -1;
       localView = getChildAt(0);
@@ -1127,7 +1127,7 @@ public class VerticalGallery
       }
       if (((!g()) || (getChildCount() >= this.aB)) && (a(bool, paramInt) != paramInt))
       {
-        hxb.a(this.jdField_a_of_type_Hxb, false);
+        hxa.a(this.jdField_a_of_type_Hxa, false);
         j();
       }
       c(paramInt);
@@ -1139,7 +1139,7 @@ public class VerticalGallery
     }
     for (;;)
     {
-      this.jdField_a_of_type_Hvj.a();
+      this.jdField_a_of_type_Hvi.a();
       k();
       invalidate();
       return;
@@ -1157,9 +1157,9 @@ public class VerticalGallery
         break label263;
       }
       paramInt = i1;
-      if (this.jdField_a_of_type_Hxb != null)
+      if (this.jdField_a_of_type_Hxa != null)
       {
-        this.jdField_a_of_type_Hxb.a(false);
+        this.jdField_a_of_type_Hxa.a(false);
         paramInt = i1;
       }
     }
@@ -1173,7 +1173,7 @@ public class VerticalGallery
       }
       for (;;)
       {
-        this.jdField_a_of_type_Hvj.a();
+        this.jdField_a_of_type_Hvi.a();
         k();
         awakenScrollBars();
         invalidate();
@@ -1183,10 +1183,10 @@ public class VerticalGallery
           break label263;
         }
         paramInt = i1;
-        if (this.jdField_a_of_type_Hxb == null) {
+        if (this.jdField_a_of_type_Hxa == null) {
           break;
         }
-        this.jdField_a_of_type_Hxb.a(false);
+        this.jdField_a_of_type_Hxa.a(false);
         paramInt = i1;
         break;
         m();
@@ -1253,7 +1253,7 @@ public class VerticalGallery
       }
       if (((!g()) || (getChildCount() >= this.aB)) && (a(bool, paramInt) != paramInt))
       {
-        hxb.a(this.jdField_a_of_type_Hxb, false);
+        hxa.a(this.jdField_a_of_type_Hxa, false);
         j();
       }
       d(paramInt);
@@ -1265,7 +1265,7 @@ public class VerticalGallery
     }
     for (;;)
     {
-      this.jdField_a_of_type_Hvj.a();
+      this.jdField_a_of_type_Hvi.a();
       l();
       invalidate();
       return;
@@ -1283,9 +1283,9 @@ public class VerticalGallery
         break label263;
       }
       paramInt = i1;
-      if (this.jdField_a_of_type_Hxb != null)
+      if (this.jdField_a_of_type_Hxa != null)
       {
-        this.jdField_a_of_type_Hxb.a(false);
+        this.jdField_a_of_type_Hxa.a(false);
         paramInt = i1;
       }
     }
@@ -1299,7 +1299,7 @@ public class VerticalGallery
       }
       for (;;)
       {
-        this.jdField_a_of_type_Hvj.a();
+        this.jdField_a_of_type_Hvi.a();
         k();
         awakenScrollBars();
         invalidate();
@@ -1309,10 +1309,10 @@ public class VerticalGallery
           break label263;
         }
         paramInt = i1;
-        if (this.jdField_a_of_type_Hxb == null) {
+        if (this.jdField_a_of_type_Hxa == null) {
           break;
         }
-        this.jdField_a_of_type_Hxb.a(false);
+        this.jdField_a_of_type_Hxa.a(false);
         paramInt = i1;
         break;
         n();
@@ -1353,7 +1353,7 @@ public class VerticalGallery
     localView.offsetLeftAndRight(paramInt);
     o();
     m();
-    this.jdField_a_of_type_Hvj.a();
+    this.jdField_a_of_type_Hvi.a();
     invalidate();
     this.jdField_p_of_type_Boolean = false;
     this.jdField_n_of_type_Boolean = false;
@@ -1423,7 +1423,7 @@ public class VerticalGallery
     localView.offsetTopAndBottom(paramInt);
     r();
     n();
-    this.jdField_a_of_type_Hvj.a();
+    this.jdField_a_of_type_Hvi.a();
     invalidate();
     this.jdField_p_of_type_Boolean = false;
     this.jdField_n_of_type_Boolean = false;
@@ -1545,7 +1545,7 @@ public class VerticalGallery
       i1 = b() - i1;
       if (i1 != 0)
       {
-        this.jdField_a_of_type_Hxb.b(i1);
+        this.jdField_a_of_type_Hxa.b(i1);
         return;
       }
       j();
@@ -1561,7 +1561,7 @@ public class VerticalGallery
     }
     while (i1 != 0)
     {
-      this.jdField_a_of_type_Hxb.b(i1);
+      this.jdField_a_of_type_Hxa.b(i1);
       return;
       View localView2 = getChildAt(getChildCount() - 1);
       if (localView2.getRight() - localView1.getLeft() < getRight() - getPaddingRight())
@@ -1629,7 +1629,7 @@ public class VerticalGallery
   
   protected void e()
   {
-    if (hxb.a(this.jdField_a_of_type_Hxb).isFinished()) {
+    if (hxa.a(this.jdField_a_of_type_Hxa).isFinished()) {
       d();
     }
     g();
@@ -1757,7 +1757,7 @@ public class VerticalGallery
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Hxb.a(false);
+    this.jdField_a_of_type_Hxa.a(false);
     this.jdField_o_of_type_Int = a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     if (this.jdField_o_of_type_Int >= 0)
     {
@@ -1783,11 +1783,11 @@ public class VerticalGallery
     if (h())
     {
       paramFloat1 = c();
-      this.jdField_a_of_type_Hxb.a((int)-(paramFloat1 * paramFloat2));
+      this.jdField_a_of_type_Hxa.a((int)-(paramFloat1 * paramFloat2));
       return true;
     }
     paramFloat2 = c();
-    this.jdField_a_of_type_Hxb.a((int)-(paramFloat2 * paramFloat1));
+    this.jdField_a_of_type_Hxa.a((int)-(paramFloat2 * paramFloat1));
     return true;
   }
   
@@ -1833,7 +1833,7 @@ public class VerticalGallery
     if ((this.f) && (this.aB > 0))
     {
       a(this.jdField_c_of_type_AndroidViewView);
-      postDelayed(new hxa(this), ViewConfiguration.getPressedStateDuration());
+      postDelayed(new hwz(this), ViewConfiguration.getPressedStateDuration());
       a(getChildAt(this.aA - this.ap), this.aA, this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getItemId(this.aA));
     }
     this.f = false;

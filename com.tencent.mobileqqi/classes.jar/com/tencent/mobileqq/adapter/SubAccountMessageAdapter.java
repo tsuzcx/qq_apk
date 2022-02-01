@@ -18,7 +18,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.SubAccountMessage;
 import com.tencent.mobileqq.subaccount.datamanager.SubAccountMessageData;
 import com.tencent.widget.AbsListView.LayoutParams;
-import eym;
+import eyl;
 import java.util.List;
 
 public class SubAccountMessageAdapter
@@ -55,13 +55,13 @@ public class SubAccountMessageAdapter
     if (paramView == null)
     {
       paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130904006, null);
-      paramViewGroup = new eym(this);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131234560);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131234565));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131234568));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131234567));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131234569));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131234566));
+      paramViewGroup = new eyl(this);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131234559);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131234564));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131234567));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131234566));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131234568));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131234565));
       paramView.setTag(paramViewGroup);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0);
@@ -100,7 +100,7 @@ public class SubAccountMessageAdapter
       }
       paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130837877);
       return paramView;
-      paramViewGroup = (eym)paramView.getTag();
+      paramViewGroup = (eyl)paramView.getTag();
       break;
       label351:
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setText(String.valueOf(i));
@@ -158,7 +158,7 @@ public class SubAccountMessageAdapter
   {
     if ((paramView != null) && (!TextUtils.isEmpty(paramString)))
     {
-      paramView = (ImageView)paramView.findViewById(2131234565);
+      paramView = (ImageView)paramView.findViewById(2131234564);
       if (paramView != null)
       {
         Object localObject = paramView.getTag();

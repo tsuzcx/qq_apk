@@ -1,33 +1,18 @@
-import PersonalState.HotRishState;
-import android.os.Handler;
+import android.view.animation.TranslateAnimation;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.StatusObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ggt
-  extends StatusObserver
+  implements Runnable
 {
   public ggt(EditActivity paramEditActivity) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("get_hot_rich_status", 2, "EditActivity.mHotRichStatusObserver.onGetHotStatus, isSuccess:" + paramBoolean);
-    }
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0) && (!EditActivity.c(this.a)))
-    {
-      EditActivity.a(this.a).removeMessages(1);
-      ArrayList localArrayList = new ArrayList();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext()) {
-        localArrayList.add(Integer.valueOf(((HotRishState)paramArrayList.next()).iActId));
-      }
-      EditActivity.a(this.a).clear();
-      EditActivity.a(this.a).addAll(localArrayList);
-      EditActivity.b(this.a);
-    }
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -20.0F, 0.0F);
+    localTranslateAnimation.setDuration(400L);
+    localTranslateAnimation.setAnimationListener(new ggu(this));
+    EditActivity.a(this.a).startAnimation(localTranslateAnimation);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ToggleButton;
-import hwp;
+import hwo;
 
 public class Switch
   extends ToggleButton
@@ -21,7 +21,7 @@ public class Switch
   public Switch(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setOnClickListener(new hwp(this));
+    setOnClickListener(new hwo(this));
   }
 }
 

@@ -1,23 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class cuv
-  implements Runnable
+class cuv
+  implements DialogInterface.OnClickListener
 {
-  public cuv(LoginPhoneNumActivity paramLoginPhoneNumActivity, String paramString1, String paramString2) {}
+  cuv(cuu paramcuu) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityLoginPhoneNumActivity, 230, null, null, 2131561746, 2131561875, null, null);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setDividerGone();
-    cuw localcuw = new cuw(this);
-    cux localcux = new cux(this);
-    localQQCustomDialog.setPositiveButton(2131561875, localcuw);
-    localQQCustomDialog.setNegativeButton(2131561746, localcux);
-    localQQCustomDialog.show();
+    paramDialogInterface.dismiss();
+    LoginPhoneNumActivity.a(this.a.a);
   }
 }
 

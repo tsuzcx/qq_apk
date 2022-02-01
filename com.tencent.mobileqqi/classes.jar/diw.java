@@ -1,5 +1,4 @@
-import android.content.Context;
-import android.net.Uri;
+import android.provider.Settings.System;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
@@ -14,12 +13,13 @@ public class diw
   
   public void onClick(View paramView)
   {
-    this.a.a(SoundAndVibrateActivity.SoundStyle.office);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.b.a(), "sound_type", "qqsetting_notify_soundtype_key", 2131165197);
+    this.a.a(SoundAndVibrateActivity.SoundStyle.system);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.b.a(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
     if (this.a.a().booleanValue())
     {
+      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
       this.a.d();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131165197));
+      this.a.a(paramView);
     }
   }
 }

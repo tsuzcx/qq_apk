@@ -1,23 +1,25 @@
+import com.tencent.mobileqq.app.NewFriendManager;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecommendContact;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Vector;
 
 public class feo
   implements Runnable
 {
-  public feo(PhoneContactManagerImp paramPhoneContactManagerImp, String paramString) {}
+  public feo(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
   public void run()
   {
-    Entity localEntity = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).a(RecommendContact.class, this.jdField_a_of_type_JavaLangString);
-    if (localEntity != null)
-    {
-      PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).b(localEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a.remove(localEntity);
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact", 2, "deleteRecommendList ");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.i();
+    PhoneContactManagerImp.a(this.a).a(RecommendContact.class);
+    this.a.a.clear();
+    this.a.i();
+    ((NewFriendManager)PhoneContactManagerImp.a(this.a).getManager(32)).d();
   }
 }
 

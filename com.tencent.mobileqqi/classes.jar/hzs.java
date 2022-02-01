@@ -1,29 +1,20 @@
-import android.app.Dialog;
-import android.widget.Toast;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
 import cooperation.plugin.IPluginManager.PluginParams;
 
-class hzs
-  extends OnPluginInstallListener.Stub
+public final class hzs
+  implements IPluginManager.OnPluginReadyListener
 {
-  hzs(hzr paramhzr) {}
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    if ((this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a != null) && (this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a.isShowing())) {
-      this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
     }
-    Toast.makeText(this.a.jdField_a_of_type_AndroidAppActivity, "加载失败", 0).show();
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    IPluginManager.d(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+    if (paramBoolean) {
+      IPluginManager.c(paramContext, paramPluginParams);
+    }
   }
 }
 

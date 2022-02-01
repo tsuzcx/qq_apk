@@ -193,19 +193,19 @@ public class AddRequestActivity
   private void b(boolean paramBoolean)
   {
     b();
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233170));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233171));
-    this.g = ((TextView)findViewById(2131233172));
-    TextView localTextView = (TextView)findViewById(2131233181);
-    Object localObject2 = (LinearLayout)findViewById(2131233174);
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131233180);
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233169));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233170));
+    this.g = ((TextView)findViewById(2131233171));
+    TextView localTextView = (TextView)findViewById(2131233180);
+    Object localObject2 = (LinearLayout)findViewById(2131233173);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131233179);
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131230985));
     this.h = ((TextView)findViewById(2131231090));
     Object localObject1 = (TextView)findViewById(2131231001);
-    Object localObject3 = (TextView)findViewById(2131233175);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233183));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131233182));
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131233176));
+    Object localObject3 = (TextView)findViewById(2131233174);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233182));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131233181));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131233175));
     if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null) && (TextUtils.isEmpty(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_additional.get()))) {
       this.t = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_describe.get();
     }
@@ -263,9 +263,9 @@ public class AddRequestActivity
     {
       i1 += 1;
       break label473;
-      localObject2 = (LinearLayout)findViewById(2131233177);
-      localObject1 = (TextView)findViewById(2131233178);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131233179));
+      localObject2 = (LinearLayout)findViewById(2131233176);
+      localObject1 = (TextView)findViewById(2131233177);
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131233178));
       break;
       label586:
       ((LinearLayout)localObject2).setBackgroundResource(2130837879);
@@ -286,7 +286,7 @@ public class AddRequestActivity
         localLinearLayout.setVisibility(0);
         break label400;
       }
-      localObject3 = (ViewGroup)findViewById(2131233168);
+      localObject3 = (ViewGroup)findViewById(2131233167);
       ((View)localObject3).setBackgroundResource(2130837877);
       ((View)localObject3).setVisibility(0);
       ((LinearLayout)localObject2).setVisibility(8);
@@ -303,15 +303,15 @@ public class AddRequestActivity
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
     label782:
-    localObject2 = (TextView)findViewById(2131232971);
+    localObject2 = (TextView)findViewById(2131232970);
     if ((this.jdField_f_of_type_Int == 3014) || (this.jdField_f_of_type_Int == 2014))
     {
       ((TextView)localObject2).setVisibility(0);
       label820:
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233187));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233186));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233186));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233185));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233185));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233184));
       this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null))
       {
@@ -330,7 +330,7 @@ public class AddRequestActivity
       default: 
         this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
         label1073:
-        this.i = ((TextView)findViewById(2131233169));
+        this.i = ((TextView)findViewById(2131233168));
         if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.has()) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.msg_joint_friend.has() == true))
         {
           this.i.setText(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.msg_joint_friend.get());
@@ -356,7 +356,7 @@ public class AddRequestActivity
     for (;;)
     {
       this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.b(this.s));
-      ((ViewGroup)findViewById(2131233168)).setOnClickListener(new bur(this));
+      ((ViewGroup)findViewById(2131233167)).setOnClickListener(new bur(this));
       if (this.jdField_e_of_type_Int != 2) {
         break label1518;
       }
@@ -593,7 +593,7 @@ public class AddRequestActivity
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, d());
     setContentView(2130903632);
     j(2130837729);
-    this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233184));
+    this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233183));
     if ((this.x != null) && (!this.x.equals("")))
     {
       this.jdField_j_of_type_AndroidWidgetTextView.setText(this.x);

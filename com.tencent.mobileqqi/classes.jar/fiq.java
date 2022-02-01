@@ -1,28 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.AccostMessageProcessor;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
 public class fiq
-  extends TroopObserver
+  implements fiv
 {
-  private fiq(UpdateTroop paramUpdateTroop) {}
+  public fiq(AccostMessageProcessor paramAccostMessageProcessor, byte[] paramArrayOfByte, int paramInt) {}
   
-  protected void b(boolean paramBoolean)
+  public ToServiceMsg a()
   {
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageAccostMessageProcessor.a.a("MessageSvc.GetMsgV4");
     if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "--->getC2CMessage cChannel: 4vCookies: " + this.jdField_a_of_type_ArrayOfByte + ",cSyncFlag:" + this.jdField_a_of_type_Int);
     }
-    if (!paramBoolean)
-    {
-      this.a.a(6);
-      return;
-    }
-    UpdateTroop.a(this.a).a.edit().putBoolean("isTrooplistok", true).commit();
-    UpdateTroop.b(this.a).a(3, true, Integer.valueOf(2));
-    this.a.a(7);
+    localToServiceMsg.extraData.putByte("cChannel", (byte)4);
+    localToServiceMsg.extraData.putByteArray("vCookies", this.jdField_a_of_type_ArrayOfByte);
+    localToServiceMsg.extraData.putInt("cSyncFlag", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putByte("onlineSyncFlag", (byte)1);
+    return localToServiceMsg;
   }
 }
 

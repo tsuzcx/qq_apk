@@ -1,10 +1,14 @@
-import android.os.Handler;
 import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class cjj
-  extends Handler
+  implements Runnable
 {
   public cjj(EditInfoActivity paramEditInfoActivity) {}
+  
+  public void run()
+  {
+    this.a.a();
+  }
 }
 
 

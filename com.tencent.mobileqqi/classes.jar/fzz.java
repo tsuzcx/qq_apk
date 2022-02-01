@@ -3,73 +3,61 @@ import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import java.io.IOException;
-import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class fzz
   extends Thread
 {
   int jdField_a_of_type_Int;
   String jdField_a_of_type_JavaLangString;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
-  int b;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
   int c;
   int d;
   
-  public fzz(UiApiPlugin paramUiApiPlugin, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String[] paramArrayOfString)
+  public fzz(UiApiPlugin paramUiApiPlugin, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.jdField_b_of_type_Int = paramInt2;
     this.c = paramInt3;
     this.d = paramInt4;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
   public void run()
   {
-    int i = 0;
-    JSONArray localJSONArray = new JSONArray();
     try
     {
-      int j = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-      if (i < j) {
-        if (isInterrupted()) {
-          throw new InterruptedException();
-        }
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        System.gc();
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "3", "[]" });
-        return;
-        localOutOfMemoryError.put(UiApiPlugin.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], this.c, this.d, this.jdField_a_of_type_Int, this.b));
-        i += 1;
-      }
+      JSONObject localJSONObject = UiApiPlugin.a(this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       if (isInterrupted()) {
         throw new InterruptedException();
       }
     }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      System.gc();
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "3", "{}" });
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "0", localOutOfMemoryError.toString() });
+      return;
+    }
     catch (IOException localIOException)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "[]" });
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "0", localIOException.toString() });
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "{}" });
       return;
     }
     catch (JSONException localJSONException)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "[]" });
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "{}" });
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
       Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
       if ((localActivity != null) && (!localActivity.isFinishing())) {
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "1", "[]" });
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "1", "{}" });
       }
       return;
     }

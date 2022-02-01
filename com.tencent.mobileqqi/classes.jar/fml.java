@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.config.AboutConfig;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.config.ConfigManager;
+import java.util.TimerTask;
 
-public final class fml
-  implements Runnable
+public class fml
+  extends TimerTask
 {
-  public fml(AboutConfig paramAboutConfig, ResourcePluginInfo paramResourcePluginInfo) {}
+  int jdField_a_of_type_Int = 0;
+  
+  public fml(ConfigManager paramConfigManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
-    this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig.c();
+    synchronized (ConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqConfigConfigManager))
+    {
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int > 30)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqConfigConfigManager.d();
+        cancel();
+      }
+      return;
+    }
   }
 }
 

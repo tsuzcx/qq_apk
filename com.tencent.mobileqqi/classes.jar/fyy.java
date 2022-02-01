@@ -1,101 +1,60 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTrans;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderGen;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderGen.IUniformDownloaderGenListener;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.troop.utils.TroopFileError;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class fyy
-  implements UniformDownloaderGen.IUniformDownloaderGenListener
+  implements View.OnClickListener
 {
-  public fyy(UniformDownloaderGen paramUniformDownloaderGen) {}
+  public fyy(SendBottomBar paramSendBottomBar) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  private void a()
   {
-    this.a.b(paramInt);
-    if ((UniformDownloaderGen.a(this.a) != null) && (paramInt - this.a.g() > 0))
+    int i = TroopFileUtils.a(SendBottomBar.a(this.a));
+    if (i == 0)
     {
-      this.a.a(paramInt);
-      UniformDownloaderGen.a(this.a).c(paramInt, paramBundle);
+      TroopFileError.a(SendBottomBar.a(this.a), SendBottomBar.a(this.a).getString(2131560350));
+      this.a.b();
+      return;
     }
+    if (1 == i)
+    {
+      fyz localfyz = new fyz(this);
+      DialogUtil.a(SendBottomBar.a(this.a), 230, SendBottomBar.a(this.a).getString(2131560332), SendBottomBar.a(this.a).getString(2131560337), 2131561746, 2131560308, localfyz, localfyz).show();
+      return;
+    }
+    this.a.b();
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    UniformDownloaderGen.a(this.a);
-    this.a.c(5);
-    if (UniformDownloaderGen.a(this.a) != null) {
-      UniformDownloaderGen.a(this.a).a(paramInt, paramString, paramBundle);
-    }
-  }
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    UniformDownloaderGen.a(this.a);
-    this.a.c(4);
-    if (FileUtils.a(this.a.e)) {
-      this.a.e = UniformDownloadUtil.c(this.a.e);
-    }
-    QLog.i(UniformDownloaderGen.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. >>>Download SUCCESS.  save file to: =" + this.a.e);
-    int i = 1;
-    long l2;
-    long l1;
-    if (paramBundle != null)
+    int j;
+    switch (SendBottomBar.a(this.a).b())
     {
-      l2 = paramBundle.getLong("EXT_TRANS_SIZE ");
-      l1 = paramBundle.getLong("EXT_TTRANS_SIZE ");
-      i = paramBundle.getInt("EXT_AUTOTRY_COUNT");
-    }
-    for (;;)
-    {
-      if (!FileUtils.a(new File(this.a.f), new File(this.a.e)))
-      {
-        QLog.e(UniformDownloaderGen.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed.temppath=" + this.a.f + " path=" + this.a.e);
-        this.a.c(5);
-        paramString = UniformDownloader.a(7);
-        QQAppInterface localQQAppInterface = UniformDownloadMgr.a().a();
-        if (localQQAppInterface != null)
-        {
-          FileManagerUtil.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", this.a.jdField_a_of_type_Long, "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-          FileManagerUtil.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-          StatisticAssist.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.a(), "Stop_download_2-0_3-1");
-          if (UniformDownloaderGen.a(this.a) != null) {
-            UniformDownloaderGen.a(this.a).a(7, paramString, paramBundle);
-          }
-        }
-      }
-      for (;;)
-      {
-        return;
-        QLog.w(UniformDownloaderGen.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 5");
+    default: 
+      j = SendBottomBar.a(this.a).a();
+      if (j != 1) {
         break;
-        UniformDownloadBPTrans.a().a(this.a.jdField_c_of_type_JavaLangString);
-        paramString = UniformDownloadMgr.a().a();
-        if (paramString != null)
-        {
-          FileManagerUtil.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", l1, l2, this.a.b, i, null);
-          FileManagerUtil.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", l1, l2, this.a.b, i, null);
-          StatisticAssist.a(paramString.getApplication().getApplicationContext(), paramString.a(), "Complete_download_2_1");
-        }
-        while (UniformDownloaderGen.a(this.a) != null)
-        {
-          UniformDownloaderGen.a(this.a).a(this.a.e, paramLong, paramBundle);
-          return;
-          QLog.i(UniformDownloaderGen.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 0");
-        }
       }
-      l1 = paramLong;
-      l2 = paramLong;
     }
+    for (int i = 1; j == 5; i = 0)
+    {
+      this.a.b();
+      return;
+      SendBottomBar.a(this.a);
+      return;
+    }
+    if (i != 0)
+    {
+      a();
+      return;
+    }
+    this.a.a(true);
   }
 }
 

@@ -1,14 +1,13 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
 
 public class cbl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   public cbl(ChatHistory paramChatHistory) {}
   
-  public void run()
-  {
-    this.a.j();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

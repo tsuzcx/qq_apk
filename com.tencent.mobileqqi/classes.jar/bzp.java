@@ -1,42 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class bzp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public bzp(ChatActivity paramChatActivity) {}
+  public bzp(ChatActivity paramChatActivity, Intent paramIntent1, Intent paramIntent2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a.jdField_a_of_type_Int == 3000)
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.b(this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.n();
+    if (this.b.getBooleanExtra("isFromShare", false))
     {
-      ChatActivityUtils.a(this.a.b, this.a, this.a.a.jdField_a_of_type_JavaLangString, true, true, null);
-      Long.valueOf(this.a.a.jdField_a_of_type_JavaLangString).longValue();
-      return;
-    }
-    int i;
-    switch (this.a.a.jdField_a_of_type_Int)
-    {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.b, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
-      PlusPanelUtils.a(this.a.b, this.a, this.a.a, true);
-      return;
-      i = 0;
-      continue;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
+      this.b.removeExtra("forward_type");
+      this.b.getExtras().remove("forward_type");
+      this.b.removeExtra("isFromShare");
+      String str2 = this.b.getExtras().getString("leftBackText");
+      String str1;
+      if (str2 != null)
+      {
+        str1 = str2;
+        if (!"".equals(str2)) {}
+      }
+      else
+      {
+        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.getString(2131561692);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a.setText(str1);
     }
   }
 }

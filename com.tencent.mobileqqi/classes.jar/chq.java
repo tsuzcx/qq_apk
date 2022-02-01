@@ -1,26 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import java.util.Comparator;
 
-class chq
-  implements DialogInterface.OnClickListener
+public class chq
+  implements Comparator
 {
-  chq(chp paramchp, String paramString) {}
+  public chq(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
   {
-    ((FriendManager)this.jdField_a_of_type_Chp.a.b.getManager(8)).d(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Chp.a.b.a().a();
-    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_Chp.a.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_Chp.a.finish();
+    if ((paramDiscussionMemberInfo1 != null) && (paramDiscussionMemberInfo2 != null)) {
+      return paramDiscussionMemberInfo1.discussionUin.compareTo(paramDiscussionMemberInfo2.discussionUin);
+    }
+    if (paramDiscussionMemberInfo1 != null) {
+      return 1;
+    }
+    if (paramDiscussionMemberInfo2 != null) {
+      return -1;
+    }
+    return 0;
   }
 }
 

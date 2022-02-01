@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import hvx;
+import hvw;
 import java.util.ArrayList;
 
 public class ExpandableListConnector$PositionMetadata
@@ -9,7 +9,7 @@ public class ExpandableListConnector$PositionMetadata
   private static final int b = 5;
   public int a;
   public ExpandableListConnector.GroupMetadata a;
-  public hvx a;
+  public hvw a;
   
   static
   {
@@ -34,7 +34,7 @@ public class ExpandableListConnector$PositionMetadata
   static PositionMetadata a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ExpandableListConnector.GroupMetadata paramGroupMetadata, int paramInt5)
   {
     PositionMetadata localPositionMetadata = a();
-    localPositionMetadata.jdField_a_of_type_Hvx = hvx.a(paramInt2, paramInt3, paramInt4, paramInt1);
+    localPositionMetadata.jdField_a_of_type_Hvw = hvw.a(paramInt2, paramInt3, paramInt4, paramInt1);
     localPositionMetadata.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = paramGroupMetadata;
     localPositionMetadata.jdField_a_of_type_Int = paramInt5;
     return localPositionMetadata;
@@ -42,7 +42,7 @@ public class ExpandableListConnector$PositionMetadata
   
   private void b()
   {
-    this.jdField_a_of_type_Hvx = null;
+    this.jdField_a_of_type_Hvw = null;
     this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = null;
     this.jdField_a_of_type_Int = 0;
   }

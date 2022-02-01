@@ -1,101 +1,71 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RecentManagerFor3rdPart;
-import com.tencent.mobileqq.app.RecommendTroopManagerImp;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.RecommendTroopMsg;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import com.tencent.util.WeakReferenceHandler;
 
 public class egk
-  implements ActionSheet.OnButtonClickListener
+  implements TabBarView.OnTabChangeListener
 {
-  public egk(TroopActivity paramTroopActivity, ActionSheet paramActionSheet) {}
+  public egk(TroopActivity paramTroopActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    int j = 0;
-    paramView = (RecommendTroopManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b.getManager(19);
-    long l = 0L;
-    int i = 0;
-    switch (paramInt)
+    if (TroopActivity.a(this.a) != null) {
+      TroopActivity.a(this.a).c();
+    }
+    if (this.a.j != 2)
     {
-    default: 
-      i = 0;
-      paramInt = j;
-    case 0: 
+      switch (paramInt2)
+      {
+      default: 
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        this.a.i = 0;
+      }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b.a().b(AppConstants.ag, 9000, -i);
-        paramView = (RecentManagerFor3rdPart)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b.getManager(31);
-        if (paramInt == 0) {
-          break;
-        }
-        paramView.b(AppConstants.ag, 9000);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b.a(Conversation.class);
-        if (paramView != null) {
-          paramView.sendMessage(paramView.obtainMessage(1009));
-        }
+        this.a.a(this.a.i);
+        TroopActivity.a(this.a).sendEmptyMessage(1234);
         return;
-        i = GroupSystemMsgController.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b);
-        Handler localHandler = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b.a(NotificationView.class);
-        if (localHandler != null) {
-          localHandler.sendEmptyMessage(1014);
-        }
-        if (paramView != null) {}
-        for (paramView = paramView.a();; paramView = null)
-        {
-          if ((paramView != null) && (paramView.size() != 0)) {
-            break label216;
-          }
-          paramInt = 1;
-          break;
-        }
-        label216:
-        l = ((RecommendTroopMsg)paramView.get(0)).timeStamp;
-        paramInt = j;
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        this.a.i = 0;
+        continue;
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
+        this.a.i = 1;
       }
     }
-    paramInt = i;
-    if (paramView != null)
+    switch (paramInt2)
     {
-      i = RecommendTroopManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b);
-      paramView.b();
-      paramView.a();
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b.a(RecommendTroopView.class);
-      paramInt = i;
-      if (paramView != null)
-      {
-        paramView.sendEmptyMessage(105);
-        paramInt = i;
+    default: 
+      if (!TroopActivity.a(this.a).a(0).a()) {
+        break;
       }
     }
-    i = paramInt;
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b.a().a(AppConstants.aa, 0);
-    if ((paramView == null) || (paramView.size() == 0)) {
-      l = 0L;
-    }
-    for (paramInt = 1;; paramInt = 0)
+    for (String str = "0";; str = "1")
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b, "CliOper", "", "", "Grp_recommend", "Grp_recom_empty", 0, 0, "", "", "", "");
+      ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+      ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+      this.a.i = 0;
       break;
-      l = ((MessageForSystemMsg)paramView.get(paramView.size() - 1)).getSystemMsg().msg_time.get() * 1000L;
+      if (TroopActivity.a(this.a).a(0).a()) {}
+      for (str = "0";; str = "1")
+      {
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+        this.a.i = 0;
+        break;
+      }
+      if (TroopActivity.a(this.a).a(1).a()) {}
+      for (str = "0";; str = "1")
+      {
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
+        ReportController.b(this.a.b, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
+        this.a.i = 1;
+        break;
+      }
     }
-    paramView.a(AppConstants.ag, 9000, l);
   }
 }
 

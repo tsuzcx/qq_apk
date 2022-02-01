@@ -1,17 +1,13 @@
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import com.tencent.mobileqq.util.ImageCreator;
-import com.tencent.mobileqq.util.ImageWorker;
 
-public class hao
+class hao
   implements Runnable
 {
-  public hao(ImageWorker paramImageWorker, har paramhar, String paramString, ImageCreator paramImageCreator) {}
+  hao(han paramhan, Drawable paramDrawable) {}
   
   public void run()
   {
-    Drawable localDrawable = this.jdField_a_of_type_Har.a(new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilImageCreator, Boolean.valueOf(true) });
-    ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).post(new hap(this, localDrawable));
+    this.jdField_a_of_type_Han.a.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

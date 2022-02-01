@@ -1,26 +1,28 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.content.Intent;
+import android.net.Uri;
 import com.tencent.open.applist.WebAppActivity;
-import com.tencent.open.base.StringAddition;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.DownloadListener;
 
 public class hlg
-  extends WebChromeClient
+  implements DownloadListener
 {
   public hlg(WebAppActivity paramWebAppActivity) {}
   
-  public void onProgressChanged(WebView paramWebView, int paramInt)
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    if (this.a.o == 1) {
-      this.a.b.setProgress(paramInt);
+    LogUtility.c("WebAppActivity", "url= " + paramString1);
+    LogUtility.c("WebAppActivity", "minetype= " + paramString4);
+    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
+    try
+    {
+      this.a.startActivity(paramString1);
+      return;
     }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-    WebAppActivity.a(this.a).setText(StringAddition.a(paramString, 16, true, false));
+    catch (Exception paramString1)
+    {
+      LogUtility.c("WebAppActivity", "no activity handle Intent.ACTION_VIEW ", paramString1);
+    }
   }
 }
 

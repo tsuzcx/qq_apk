@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.item.AIOSendMask;
 import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.qphone.base.util.QLog;
-import fnf;
+import fne;
 
 public class MessageProgressTextView
   extends TextView
@@ -18,7 +18,7 @@ public class MessageProgressTextView
   int jdField_a_of_type_Int;
   private MessageProgressTextView.ProgressListener jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$ProgressListener;
   private BaseTransProcessor jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
-  public fnf a;
+  public fne a;
   int b;
   public boolean b;
   int jdField_c_of_type_Int = 0;
@@ -75,18 +75,18 @@ public class MessageProgressTextView
             QLog.d("ProgressTextView", 2, "currentProgress " + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.a() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
           }
           setProgress(i);
-          if (this.jdField_a_of_type_Fnf != null) {
+          if (this.jdField_a_of_type_Fne != null) {
             break;
           }
-          this.jdField_a_of_type_Fnf = new fnf(this, i, paramInt2);
-          postDelayed(this.jdField_a_of_type_Fnf, l);
+          this.jdField_a_of_type_Fne = new fne(this, i, paramInt2);
+          postDelayed(this.jdField_a_of_type_Fne, l);
           return;
           i = paramInt1;
         } while (paramInt1 < 100);
         this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = null;
         return;
       } while (paramInt2 == 1);
-      this.jdField_a_of_type_Fnf.b(paramInt2);
+      this.jdField_a_of_type_Fne.b(paramInt2);
       return;
       if (QLog.isColorLevel()) {
         QLog.d("ProgressTextView", 2, "doUpdateCurrentProgress ,currentProgress:" + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.a() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
@@ -149,10 +149,10 @@ public class MessageProgressTextView
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor == paramBaseTransProcessor) {
       return;
     }
-    if (this.jdField_a_of_type_Fnf != null)
+    if (this.jdField_a_of_type_Fne != null)
     {
-      removeCallbacks(this.jdField_a_of_type_Fnf);
-      this.jdField_a_of_type_Fnf = null;
+      removeCallbacks(this.jdField_a_of_type_Fne);
+      this.jdField_a_of_type_Fne = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = paramBaseTransProcessor;
   }

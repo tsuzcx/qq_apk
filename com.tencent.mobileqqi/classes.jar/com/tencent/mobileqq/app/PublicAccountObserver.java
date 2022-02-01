@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
 import com.tencent.mobileqq.data.PublicAccountInfo;
+import few;
 import fex;
-import fey;
 
 public class PublicAccountObserver
   implements BusinessObserver
@@ -22,7 +22,7 @@ public class PublicAccountObserver
   {
     if (100 == paramInt)
     {
-      paramObject = (fey)paramObject;
+      paramObject = (fex)paramObject;
       a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
     }
     do
@@ -30,13 +30,13 @@ public class PublicAccountObserver
       return;
       if (101 == paramInt)
       {
-        paramObject = (fex)paramObject;
+        paramObject = (few)paramObject;
         a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
         return;
       }
       if (102 == paramInt)
       {
-        paramObject = (fex)paramObject;
+        paramObject = (few)paramObject;
         b(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
         return;
       }

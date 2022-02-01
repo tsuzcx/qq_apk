@@ -1,13 +1,51 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QCallRecord;
 import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import java.util.ArrayList;
+import java.util.List;
 
-class gfm
+public class gfm
   implements Runnable
 {
-  gfm(gfk paramgfk) {}
+  public gfm(QCallDetailActivity paramQCallDetailActivity) {}
   
   public void run()
   {
-    QCallDetailActivity.a(this.a.a);
+    ArrayList localArrayList;
+    if (QCallDetailActivity.a(this.a) != null) {
+      localArrayList = new ArrayList();
+    }
+    for (;;)
+    {
+      synchronized (QCallDetailActivity.a(this.a))
+      {
+        List localList = QCallDetailActivity.a(this.a).a(QCallDetailActivity.a(this.a), QCallDetailActivity.a(this.a));
+        if ((QCallDetailActivity.a(this.a) != null) && (localList != null) && (!localList.isEmpty()))
+        {
+          int i = 20;
+          int j = 0;
+          if ((j >= i) || (j >= localList.size())) {
+            break label191;
+          }
+          if (((QCallRecord)localList.get(j)).type == QCallRecord.TYPE_DATE)
+          {
+            i += 1;
+            localArrayList.add(localList.get(j));
+            j += 1;
+            continue;
+            this.a.b.runOnUiThread(new gfn(this, localArrayList, bool));
+          }
+        }
+        else
+        {
+          bool = true;
+        }
+      }
+      continue;
+      label191:
+      boolean bool = false;
+    }
   }
 }
 

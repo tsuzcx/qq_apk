@@ -1,16 +1,37 @@
-import android.view.View;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.filemanager.activity.LocalFileCategoryBrowserActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class fsh
-  implements AdapterView.OnItemClickListener
+  implements AbsListView.OnScrollListener
 {
   public fsh(LocalFileCategoryBrowserActivity paramLocalFileCategoryBrowserActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    LocalFileCategoryBrowserActivity.a(this.a, paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPhotoTrace", 2, LocalFileCategoryBrowserActivity.b + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
+    }
+    if (paramInt == 0)
+    {
+      URLDrawable.resume();
+      return;
+    }
+    URLDrawable.pause();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt1 != 0) {
+        URLDrawable.resume();
+      }
+      return;
+    }
   }
 }
 

@@ -77,19 +77,19 @@ public class PlayTogetherResultItemBuilder
           if (paramView == null)
           {
             paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903112, null);
-            ((PlayTogetherResultItemBuilder.PlayTogetherResultViewHolder)localObject).jdField_b_of_type_AndroidViewView = paramViewHolder.findViewById(2131231252);
-            ((PlayTogetherResultItemBuilder.PlayTogetherResultViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131231253));
-            ((PlayTogetherResultItemBuilder.PlayTogetherResultViewHolder)localObject).c = ((TextView)paramViewHolder.findViewById(2131231254));
+            ((PlayTogetherResultItemBuilder.PlayTogetherResultViewHolder)localObject).jdField_b_of_type_AndroidViewView = paramViewHolder.findViewById(2131231251);
+            ((PlayTogetherResultItemBuilder.PlayTogetherResultViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131231252));
+            ((PlayTogetherResultItemBuilder.PlayTogetherResultViewHolder)localObject).c = ((TextView)paramViewHolder.findViewById(2131231253));
             paramMessageRecord = paramViewHolder;
             if (((PlayTogetherResultItemBuilder.PlayTogetherResultViewHolder)localObject).a == null)
             {
               ((PlayTogetherResultItemBuilder.PlayTogetherResultViewHolder)localObject).a = new ArrayList();
               paramMessageRecord = ((PlayTogetherResultItemBuilder.PlayTogetherResultViewHolder)localObject).a;
+              paramMessageRecord.add(paramViewHolder.findViewById(2131231254));
               paramMessageRecord.add(paramViewHolder.findViewById(2131231255));
               paramMessageRecord.add(paramViewHolder.findViewById(2131231256));
               paramMessageRecord.add(paramViewHolder.findViewById(2131231257));
               paramMessageRecord.add(paramViewHolder.findViewById(2131231258));
-              paramMessageRecord.add(paramViewHolder.findViewById(2131231259));
               paramMessageRecord = paramViewHolder;
             }
           }
@@ -99,8 +99,8 @@ public class PlayTogetherResultItemBuilder
           i = j;
           if (j == -1)
           {
-            i = 2131231252;
-            paramViewHolder.setId(2131231252);
+            i = 2131231251;
+            paramViewHolder.setId(2131231251);
           }
           paramViewHolder.setTag(i, paramOnLongClickAndTouchListener);
           ((PlayTogetherResultItemBuilder.PlayTogetherResultViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setText(paramOnLongClickAndTouchListener.mGameName);
@@ -122,11 +122,11 @@ public class PlayTogetherResultItemBuilder
     if (i < k)
     {
       localObject = (MessageForPlayTogetherResult.PlayTogetherResultInfo.PlayTogetherUinInfo)paramViewHolder.get(i);
-      ((TextView)paramView.findViewById(2131231260)).setText(String.valueOf(((MessageForPlayTogetherResult.PlayTogetherResultInfo.PlayTogetherUinInfo)localObject).mGrade));
-      ImageView localImageView = (ImageView)paramView.findViewById(2131231261);
+      ((TextView)paramView.findViewById(2131231259)).setText(String.valueOf(((MessageForPlayTogetherResult.PlayTogetherResultInfo.PlayTogetherUinInfo)localObject).mGrade));
+      ImageView localImageView = (ImageView)paramView.findViewById(2131231260);
       a(paramLinearLayout, String.valueOf(((MessageForPlayTogetherResult.PlayTogetherResultInfo.PlayTogetherUinInfo)localObject).mUin), localImageView);
-      ((TextView)paramView.findViewById(2131231262)).setText(((MessageForPlayTogetherResult.PlayTogetherResultInfo.PlayTogetherUinInfo)localObject).mNickName);
-      ((TextView)paramView.findViewById(2131231263)).setText(((MessageForPlayTogetherResult.PlayTogetherResultInfo.PlayTogetherUinInfo)localObject).mScore);
+      ((TextView)paramView.findViewById(2131231261)).setText(((MessageForPlayTogetherResult.PlayTogetherResultInfo.PlayTogetherUinInfo)localObject).mNickName);
+      ((TextView)paramView.findViewById(2131231262)).setText(((MessageForPlayTogetherResult.PlayTogetherResultInfo.PlayTogetherUinInfo)localObject).mScore);
       paramView.setVisibility(0);
     }
     for (;;)

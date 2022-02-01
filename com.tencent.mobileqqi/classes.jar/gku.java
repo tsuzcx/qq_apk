@@ -1,76 +1,85 @@
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.activity.MusicSharePlayActivity;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.utils.AppShareIDUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AccountNotMatchException;
 
-public final class gku
+public class gku
   implements View.OnClickListener
 {
+  private long jdField_a_of_type_Long = 0L;
+  
+  public gku(StructMsgForAudioShare paramStructMsgForAudioShare) {}
+  
   public void onClick(View paramView)
   {
-    Object localObject2 = paramView.findViewById(2131230767);
-    if (localObject2 == null) {}
-    for (;;)
+    Resources localResources = paramView.getContext().getResources();
+    long l = SystemClock.uptimeMillis();
+    if (l - this.jdField_a_of_type_Long >= 500L)
+    {
+      this.jdField_a_of_type_Long = l;
+      if ((paramView.getTag() instanceof AbsShareMsg)) {
+        break label42;
+      }
+    }
+    label42:
+    do
     {
       return;
-      Object localObject1 = ((View)localObject2).getTag(2131230767);
-      if ((localObject1 == null) || (!(localObject1 instanceof StructMsgForAudioShare))) {
-        continue;
-      }
-      localObject1 = (StructMsgForAudioShare)localObject1;
-      paramView = paramView.getTag();
-      if ((paramView == null) || (!(paramView instanceof StructingMsgItemBuilder.StructingMsgViewHolder))) {
-        continue;
-      }
-      StructingMsgItemBuilder.StructingMsgViewHolder localStructingMsgViewHolder = (StructingMsgItemBuilder.StructingMsgViewHolder)paramView;
-      localObject2 = ((View)localObject2).getContext();
+      Object localObject3 = (AbsShareMsg)paramView.getTag();
+      Context localContext = paramView.getContext();
       try
       {
-        paramView = (QQAppInterface)((BaseApplicationImpl)((Context)localObject2).getApplicationContext()).getAppRuntime(((StructMsgForAudioShare)localObject1).currentAccountUin);
-        AbsShareMsg.doReport(paramView, (AbsShareMsg)localObject1);
-        if (paramView == null) {
-          continue;
+        Object localObject1 = (QQAppInterface)((BaseApplicationImpl)localContext.getApplicationContext()).getAppRuntime(((AbsShareMsg)localObject3).currentAccountUin);
+        if (localObject1 != null) {
+          MediaPlayerManager.a((QQAppInterface)localObject1).a(true);
         }
-        Util.a(paramView, "", "click", ((StructMsgForAudioShare)localObject1).mSourceAppid, ((StructMsgForAudioShare)localObject1).mMsgServiceID, Util.a(localStructingMsgViewHolder.a.a));
-        MediaPlayerManager.a(paramView).a(true);
-        if (!"web".equals(((StructMsgForAudioShare)localObject1).mMsgAction)) {
-          continue;
+        if ((localObject3 != null) && (((AbsShareMsg)localObject3).mMsgServiceID == 2))
+        {
+          localObject1 = (StructMsgForAudioShare)localObject3;
+          if (QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare))
+          {
+            QQPlayerService.c(localContext);
+            paramView.setContentDescription(localResources.getString(2131562973));
+            return;
+          }
         }
-        paramView = new Intent((Context)localObject2, QQBrowserDelegationActivity.class);
-        paramView.putExtra("key_isReadModeEnabled", true);
-        paramView.putExtra("url", ((StructMsgForAudioShare)localObject1).mMsgUrl);
-        paramView.putExtra("param_force_internal_browser", true);
-        paramView.putExtra("isAppShare", true);
-        paramView.putExtra("appShareID", AppShareIDUtil.a(((StructMsgForAudioShare)localObject1).mSourceAppid));
-        ((Context)localObject2).sendBroadcast(new Intent("qqplayer_exit_action"));
-        PublicAccountUtil.a(paramView, ((StructMsgForAudioShare)localObject1).mMsgUrl);
-        ((Context)localObject2).startActivity(paramView);
-        return;
       }
-      catch (AccountNotMatchException paramView)
+      catch (AccountNotMatchException localAccountNotMatchException)
       {
+        Object localObject2;
         for (;;)
         {
           if (QLog.isDevelopLevel()) {
-            QLog.d("StructMsg", 4, paramView.getStackTrace().toString());
+            QLog.d("StructMsg", 4, localAccountNotMatchException.getStackTrace().toString());
           }
-          paramView = null;
+          localObject2 = null;
         }
+        localObject3 = new SongInfo();
+        ((SongInfo)localObject3).a = localObject2.mContentSrc;
+        ((SongInfo)localObject3).b = localObject2.mContentTitle;
+        ((SongInfo)localObject3).c = localObject2.mContentSummary;
+        ((SongInfo)localObject3).d = localObject2.mContentCover;
+        ((SongInfo)localObject3).e = localObject2.mMsgUrl;
+        QQPlayerService.a(new Intent(localContext, MusicSharePlayActivity.class));
+        QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare);
+        QQPlayerService.a(localContext, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForAudioShare.getToken(), (SongInfo)localObject3);
+        paramView.setContentDescription(localResources.getString(2131562615));
+        return;
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("QQPlayerService", 2, "msg is null or serviceId not audio_share");
   }
 }
 

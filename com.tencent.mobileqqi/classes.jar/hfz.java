@@ -1,18 +1,14 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.widget.ContainerView;
+import com.tencent.widget.ScrollView;
 
 public class hfz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public hfz(ContainerView paramContainerView) {}
+  public hfz(ContainerView paramContainerView, int paramInt) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    if (!ContainerView.a(this.a))
-    {
-      ContainerView.a(this.a, ContainerView.a);
-      ContainerView.a(this.a, true);
-    }
+    ContainerView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView).b(0, this.jdField_a_of_type_Int);
   }
 }
 

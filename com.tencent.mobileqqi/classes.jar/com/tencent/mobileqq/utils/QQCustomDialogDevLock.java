@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import hck;
 import hcl;
-import hcm;
 
 public class QQCustomDialogDevLock
   extends Dialog
@@ -54,7 +54,7 @@ public class QQCustomDialogDevLock
     this.d.setText(paramString);
     this.d.setContentDescription(paramString);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new hcl(this, paramOnClickListener));
+    this.d.setOnClickListener(new hck(this, paramOnClickListener));
     a();
     return this;
   }
@@ -85,7 +85,7 @@ public class QQCustomDialogDevLock
     this.e.setText(paramString);
     this.e.setContentDescription(paramString);
     this.e.setVisibility(0);
-    this.e.setOnClickListener(new hcm(this, paramOnClickListener));
+    this.e.setOnClickListener(new hcl(this, paramOnClickListener));
     a();
     return this;
   }
@@ -132,13 +132,13 @@ public class QQCustomDialogDevLock
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231988));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233297));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231395));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233299));
-    this.c = ((TextView)findViewById(2131231396));
-    this.d = ((TextView)findViewById(2131231472));
-    this.e = ((TextView)findViewById(2131231473));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231987));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233296));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231394));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233298));
+    this.c = ((TextView)findViewById(2131231395));
+    this.d = ((TextView)findViewById(2131231471));
+    this.e = ((TextView)findViewById(2131231472));
   }
 }
 

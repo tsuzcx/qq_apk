@@ -1,22 +1,49 @@
+import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnVideoSizeChangedListener;
-import android.view.SurfaceHolder;
 import com.tencent.mobileqq.troop.widget.VideoViewX;
+import com.tencent.qphone.base.util.QLog;
 
 public class gzp
-  implements MediaPlayer.OnVideoSizeChangedListener
+  implements AudioManager.OnAudioFocusChangeListener
 {
   public gzp(VideoViewX paramVideoViewX) {}
   
-  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onAudioFocusChange(int paramInt)
   {
-    VideoViewX.a(this.a, paramMediaPlayer.getVideoWidth());
-    VideoViewX.b(this.a, paramMediaPlayer.getVideoHeight());
-    if ((VideoViewX.b(this.a) != 0) && (VideoViewX.c(this.a) != 0))
+    switch (paramInt)
     {
-      this.a.getHolder().setFixedSize(VideoViewX.b(this.a), VideoViewX.c(this.a));
-      this.a.requestLayout();
+    case 0: 
+    default: 
+    case -2: 
+    case -1: 
+    case -3: 
+      do
+      {
+        return;
+        if (this.a.a())
+        {
+          this.a.c = true;
+          this.a.b();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,loss focus");
+        }
+        this.a.b = false;
+        return;
+      } while ((this.a.a()) && (!QLog.isColorLevel()));
+      QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,temporarily lost audio focus");
+      return;
     }
+    if (VideoViewX.a(this.a) != null) {
+      VideoViewX.a(this.a).setVolume(1.0F, 1.0F);
+    }
+    if ((!this.a.a()) && (this.a.c)) {
+      this.a.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(VideoViewX.a(this.a), 2, "onAudioFocusChange,gain focus");
+    }
+    this.a.b = true;
   }
 }
 

@@ -1,16 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
 
 public class etd
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
   public etd(VoipAddressBookView paramVoipAddressBookView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    VoipAddressBookView.l(this.a);
-    this.a.n();
+    if (paramInt == 4) {
+      VoipAddressBookView.m(this.a);
+    }
+    return false;
   }
 }
 

@@ -1,12 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 
 class eir
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  eir(ein paramein) {}
+  eir(eim parameim) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

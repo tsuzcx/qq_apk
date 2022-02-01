@@ -8,8 +8,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import eeb;
 import eec;
-import eed;
 
 public class ContactRecommendActivity
   extends IphoneTitleBarActivity
@@ -22,7 +22,7 @@ public class ContactRecommendActivity
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext = new eec(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext = new eeb(this);
   }
   
   private void f()
@@ -34,7 +34,7 @@ public class ContactRecommendActivity
     setContentView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
     setTitle(2131562732);
     this.k.setVisibility(8);
-    b(2131562931, new eed(this));
+    b(2131562931, new eec(this));
     d(true);
     localObject = getIntent();
     ((Intent)localObject).putExtra("key_work_mode", 1);

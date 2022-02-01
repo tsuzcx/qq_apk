@@ -1,66 +1,54 @@
+import android.app.Dialog;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.config.operation.QQOperateManager;
-import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
-import com.tencent.mobileqq.data.AppShareID;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
 
 public class byw
-  extends ConfigObserver
+  extends CardObserver
 {
   public byw(ChatActivity paramChatActivity) {}
   
-  protected void a(String paramString, int paramInt, ArrayList paramArrayList)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
-    }
-    if ((!this.a.a.jdField_a_of_type_JavaLangString.equals(paramString)) || (this.a.a.jdField_a_of_type_Int != paramInt)) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
-      }
-    }
-    for (;;)
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-      return;
-      if ((paramArrayList == null) || (paramArrayList.size() == 0))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
-        }
+      if ((paramBoolean) && (this.a.a.jdField_a_of_type_JavaLangString != null) && (paramObject != null) && (this.a.a.jdField_a_of_type_JavaLangString.equals(paramObject.uin)) && ((this.a.a.jdField_a_of_type_Int == 1001) || (this.a.a.jdField_a_of_type_Int == 1003)) && (paramObject != null) && (paramObject.strCertificationInfo != null) && (!paramObject.strCertificationInfo.equals(""))) {
+        ChatActivityFacade.d(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a);
       }
-      else
+      if ((paramBoolean) && (paramObject != null)) {}
+      switch (this.a.a.jdField_a_of_type_Int)
       {
-        paramString = QQOperateManager.a(this.a.b);
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext())
+      default: 
+        if ((this.a.a.jdField_a_of_type_JavaLangString != null) && (this.a.a.jdField_a_of_type_JavaLangString.equals(paramObject.uin)))
         {
-          paramInt = ((QQOperationViopTipTask)paramArrayList.next()).taskid;
-          QQOperationViopTipTask localQQOperationViopTipTask = paramString.a(paramInt);
-          if ((QLog.isDevelopLevel()) && (localQQOperationViopTipTask == null)) {
-            QLog.d("QQOperateVoIP", 4, "on showTips, voipTask is null, taskId=" + paramInt);
-          }
-          if (localQQOperationViopTipTask != null) {
-            if (localQQOperationViopTipTask.isBlueTipsTask()) {
-              ChatActivity.a(this.a, localQQOperationViopTipTask);
-            } else if ((localQQOperationViopTipTask.isGryTipsTask()) && (!paramString.a(this.a.a.jdField_a_of_type_Int, 2))) {
-              ChatActivity.b(this.a, localQQOperationViopTipTask);
-            }
+          this.a.h();
+          this.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.a.d);
+          if (3000 == this.a.a.jdField_a_of_type_Int) {
+            ChatActivity.a(this.a, this.a.a.d, this.a.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_AndroidWidgetTextView);
           }
         }
+        return;
       }
+      this.a.b(false);
+      return;
     }
   }
   
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (ChatActivity.a(this.a) != null)) {
-      ChatActivity.a(this.a).notifyDataSetChanged();
+    if ((this.a.c != null) && (this.a.c.isShowing())) {
+      this.a.dismissDialog(231);
     }
+    if (paramBoolean)
+    {
+      this.a.showDialog(232);
+      return;
+    }
+    this.a.showDialog(233);
   }
 }
 

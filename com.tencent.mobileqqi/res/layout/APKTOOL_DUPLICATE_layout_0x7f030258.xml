@@ -2,12 +2,12 @@
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0230" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08076f" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0233" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08076e" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0233" />
     <LinearLayout android:id="@id/content" android:layout_marginLeft="4.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0237">
         <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e0241" />
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0011" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809c2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203f5" android:paddingLeft="2.0dip" android:paddingTop="0.0dip" android:paddingRight="2.0dip" android:paddingBottom="0.0dip" android:visibility="gone" android:layout_marginTop="0.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />
-            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080313" android:layout_marginLeft="4.0dip" android:singleLine="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0011" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809c1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203f5" android:paddingLeft="2.0dip" android:paddingTop="0.0dip" android:paddingRight="2.0dip" android:paddingBottom="0.0dip" android:visibility="gone" android:layout_marginTop="0.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080312" android:layout_marginLeft="4.0dip" android:singleLine="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

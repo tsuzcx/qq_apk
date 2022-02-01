@@ -1,35 +1,69 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.eqq.CrmUtils;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.InputMethodUtil;
+import com.tencent.widget.XEditTextEx.OnPrivateIMECommandListener;
+import java.util.ArrayList;
 
 public class byc
-  implements View.OnClickListener
+  implements XEditTextEx.OnPrivateIMECommandListener
 {
   public byc(ChatActivity paramChatActivity) {}
   
-  public void onClick(View paramView)
+  public boolean a(String paramString, Bundle paramBundle)
   {
-    if ((this.a.a.jdField_a_of_type_Int == 1008) || (CrmUtils.a(this.a.b, this.a.a.jdField_a_of_type_JavaLangString)))
-    {
-      ChatActivity.a(this.a).a();
-      ChatActivity.b(this.a, false);
-      this.a.e();
-      ReportController.b(this.a.b, "P_CliOper", "Pb_account_lifeservice", this.a.b.getAccount(), "mp_msg_zhushou_5", "share_succ", 0, 0, "", "", "", "");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivity", 2, "onPrivateIMECommand(), action:" + paramString);
     }
-    this.a.b.a(this.a.a.jdField_a_of_type_JavaLangString, Integer.valueOf(4));
-    ChatActivity.a(this.a).a();
-    ChatActivity.c(this.a, false);
-    TroopAssistantManager.a().a(this.a.b, this.a.a.jdField_a_of_type_JavaLangString);
-    QQToast.a(this.a, 2, 2131563074, 0).b(this.a.d());
-    ReportController.b(this.a.b, "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, this.a.a.jdField_a_of_type_JavaLangString, "", "", "");
+    if ((!TextUtils.isEmpty(paramString)) && (paramBundle != null) && (InputMethodUtil.a(this.a)))
+    {
+      if (!"com.sogou.inputmethod.expression".equals(paramString)) {
+        break label229;
+      }
+      paramString = paramBundle.getString("SOGOU_EXP_PATH");
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivity", 2, "onPrivateIMECommand(), path:" + paramString);
+      }
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramBundle = new Intent(this.a, SendPhotoActivity.class);
+        paramBundle.putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        paramBundle.putExtra("uintype", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        paramBundle.putExtra("troop_uin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add(paramString);
+        paramBundle.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", (ArrayList)localObject);
+        paramBundle.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1034);
+        paramBundle.putExtra("PicContants.NEED_COMPRESS", false);
+        paramBundle.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
+        this.a.startActivity(paramBundle);
+      }
+    }
+    label229:
+    while (!"com.sogou.inputmethod.appid".equals(paramString)) {
+      return true;
+    }
+    paramBundle = paramBundle.getString("SOGOU_APP_ID");
+    Object localObject = this.a.b.a();
+    paramString = AuthorityUtil.a(this.a, (String)localObject, paramBundle);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ChatActivity", 2, "onPrivateIMECommand(), appId:" + paramBundle);
+      QLog.d("ChatActivity", 2, "onPrivateIMECommand(), selfUin:" + (String)localObject);
+      QLog.d("ChatActivity", 2, "onPrivateIMECommand(), openId:" + paramString);
+    }
+    paramBundle = (InputMethodManager)this.a.getSystemService("input_method");
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("SOGOU_OPENID", paramString);
+    paramBundle.sendAppPrivateCommand(this.a.jdField_a_of_type_AndroidWidgetEditText, "com.tencent.mobileqq.sogou.openid", (Bundle)localObject);
+    return true;
   }
 }
 

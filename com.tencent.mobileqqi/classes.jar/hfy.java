@@ -1,32 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class hfy
-  implements TextWatcher
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public hfy(ClearableEditText paramClearableEditText) {}
+  public hfy(ContainerView paramContainerView) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onGlobalLayout()
   {
-    libsafeedit.getLoginLegal(paramCharSequence.toString());
-    paramCharSequence = this.a.getText().toString();
-    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
+    if (!ContainerView.a(this.a))
     {
-      this.a.setClearButtonVisible(false);
-      return;
+      ContainerView.a(this.a, ContainerView.a);
+      ContainerView.a(this.a, true);
     }
-    if (ClearableEditText.a(this.a))
-    {
-      this.a.setClearButtonVisible(true);
-      return;
-    }
-    this.a.setClearButtonVisible(false);
   }
 }
 

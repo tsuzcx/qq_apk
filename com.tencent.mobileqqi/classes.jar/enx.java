@@ -1,9 +1,11 @@
 import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class enx
   implements View.OnClickListener
@@ -12,17 +14,10 @@ public class enx
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131232014: 
-      paramView = new Intent(BannerManager.a(this.a), LoginManagerActivity.class);
-      paramView.putExtra("loginInfo", this.a.e);
-      BannerManager.a(this.a).startActivity(paramView);
-      return;
-    }
-    this.a.b();
+    paramView = new Intent(BannerManager.a(this.a), TroopAssisSettingActivity.class);
+    BannerManager.a(this.a).startActivityForResult(paramView, 9001);
+    BannerManager.a(this.a).sendEmptyMessageDelayed(1, 1000L);
+    ReportController.b(BannerManager.a(this.a).b, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
   }
 }
 

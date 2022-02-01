@@ -15,7 +15,7 @@ import com.tencent.mobileqq.newfriend.NewFriendMessage;
 import com.tencent.mobileqq.newfriend.NewFriendPushListener;
 import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
-import feh;
+import feg;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
@@ -297,7 +297,7 @@ public class NewFriendManager
   
   private void k()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new feh(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new feg(this));
   }
   
   public int a()

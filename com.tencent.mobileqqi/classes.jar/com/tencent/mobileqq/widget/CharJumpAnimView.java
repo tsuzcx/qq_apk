@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.TextView;
-import hfw;
+import hfv;
 
 public class CharJumpAnimView
   extends TextView
@@ -22,7 +22,7 @@ public class CharJumpAnimView
   public static final int d = 20;
   private float jdField_a_of_type_Float;
   private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new hfw(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new hfv(this);
   private String jdField_a_of_type_JavaLangString;
   private CharUnit[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetCharUnit;
   private long b = 0L;

@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.util.EUCountryUtils;
 
 class eja
-  implements ejj
+  implements eji
 {
-  eja(eiz parameiz) {}
+  eja(eiy parameiy) {}
   
-  public void a()
+  public void a() {}
+  
+  public void b()
   {
-    if (!EUCountryUtils.f(this.a.a.a.b.a())) {
-      this.a.a.f();
-    }
+    MainAssistObserver.a(this.a.a);
   }
-  
-  public void b() {}
 }
 
 

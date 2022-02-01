@@ -3,7 +3,7 @@ package cooperation.qzone;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import ibz;
+import iby;
 
 public class QzoneCommonProxyActivity
   extends Activity
@@ -16,7 +16,7 @@ public class QzoneCommonProxyActivity
     setContentView(2130903321);
     this.a = getIntent();
     this.a.addFlags(33554432);
-    paramBundle = ibz.a(QzonePluginProxyActivity.a(this.a));
+    paramBundle = iby.a(QzonePluginProxyActivity.a(this.a));
     this.a.setClass(this, paramBundle);
     startActivity(this.a);
     finish();

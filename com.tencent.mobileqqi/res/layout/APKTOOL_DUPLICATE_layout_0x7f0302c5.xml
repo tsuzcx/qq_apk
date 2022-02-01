@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a00cd" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207fe" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b57" android:fadingEdge="none" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
+    <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207fe" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b56" android:fadingEdge="none" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
 </RelativeLayout>

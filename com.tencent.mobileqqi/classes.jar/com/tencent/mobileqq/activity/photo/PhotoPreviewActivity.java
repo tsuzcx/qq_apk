@@ -17,15 +17,15 @@ import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.model.BaseBusinessAlbumInfo;
+import end;
 import ene;
 import enf;
 import eng;
 import enh;
-import eni;
+import enj;
 import enk;
 import enl;
 import enm;
-import enn;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class PhotoPreviewActivity
   public CheckBox a;
   public TextView a;
   PreloadGallery jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery;
-  enn jdField_a_of_type_Enn;
+  enm jdField_a_of_type_Enm;
   public String a;
   public ArrayList a;
   public boolean a;
@@ -103,7 +103,7 @@ public class PhotoPreviewActivity
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     PhotoMagicStickUtils.a(this, paramArrayList, localActionSheet, paramInt1);
     localActionSheet.d(2131561746);
-    localActionSheet.a(new enm(this, paramArrayList, localActionSheet));
+    localActionSheet.a(new enl(this, paramArrayList, localActionSheet));
     localActionSheet.e(paramInt2);
     localActionSheet.show();
   }
@@ -214,13 +214,13 @@ public class PhotoPreviewActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232057);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131232055);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232056);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131232054);
     if (this.jdField_i_of_type_Boolean) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232065));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232066));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232064));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232065));
     f();
     if (this.jdField_b_of_type_Boolean)
     {
@@ -229,20 +229,20 @@ public class PhotoPreviewActivity
     }
     for (;;)
     {
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131232067));
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131232064));
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131232066));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131232063));
       this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230941));
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnClickListener(new ene(this));
-      this.jdField_c_of_type_AndroidViewView = findViewById(2131232058);
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new enf(this));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new eng(this));
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new enh(this));
-      this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new eni(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery = ((PreloadGallery)findViewById(2131231777));
-      this.jdField_a_of_type_Enn = new enn(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery.setAdapter(this.jdField_a_of_type_Enn);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery.setOnNoBlankListener(this.jdField_a_of_type_Enn);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery.setOnItemSelectedListener(new enk(this));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnClickListener(new end(this));
+      this.jdField_c_of_type_AndroidViewView = findViewById(2131232057);
+      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new ene(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new enf(this));
+      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new eng(this));
+      this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new enh(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery = ((PreloadGallery)findViewById(2131231776));
+      this.jdField_a_of_type_Enm = new enm(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery.setAdapter(this.jdField_a_of_type_Enm);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery.setOnNoBlankListener(this.jdField_a_of_type_Enm);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery.setOnItemSelectedListener(new enj(this));
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery.setSpacing(getResources().getDimensionPixelSize(2131427411));
       this.jdField_b_of_type_Int = (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery.setSelection(this.jdField_b_of_type_Int);
@@ -253,7 +253,7 @@ public class PhotoPreviewActivity
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery.setOnItemClickListener(new enl(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPreloadGallery.setOnItemClickListener(new enk(this));
       return;
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);

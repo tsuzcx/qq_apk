@@ -1,19 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.ConditionSearchManager;
 import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
 
 public class flh
-  implements Runnable
+  implements IphonePickerView.PickerViewAdapter
 {
   public flh(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void run()
+  public int a()
   {
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this.a.c);
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
-    localMessage.obj = new Object[] { this.a.c, str };
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    if (this.a.c == 0) {
+      return ConditionSearchFriendActivity.b.length;
+    }
+    return ConditionSearchFriendActivity.a.length;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (this.a.c == 0) {
+      return ConditionSearchFriendActivity.b[paramInt2];
+    }
+    return ConditionSearchFriendActivity.a[paramInt2];
   }
 }
 

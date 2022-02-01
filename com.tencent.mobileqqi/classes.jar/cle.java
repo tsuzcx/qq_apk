@@ -1,18 +1,46 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForceLogoutActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.adapter.ForwardSelectionFriendListAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.search.ContactSearchableFriend;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class cle
-  implements View.OnClickListener
+  extends SearchResultDialog
 {
-  public cle(ForceLogoutActivity paramForceLogoutActivity) {}
-  
-  public void onClick(View paramView)
+  public cle(ForwardFriendListActivity paramForwardFriendListActivity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
   {
-    this.a.finish();
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    HashMap localHashMap = ForwardFriendListActivity.a(this.a).a();
+    Iterator localIterator = localHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (ArrayList)localHashMap.get((Integer)localIterator.next());
+      if (localObject != null)
+      {
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          Friends localFriends = (Friends)((Iterator)localObject).next();
+          localArrayList.add(new ContactSearchableFriend(paramContext, paramQQAppInterface, localFriends, ForwardFriendListActivity.a(this.a).a(localFriends.groupid), 0L, 42949672960L));
+        }
+      }
+    }
+    return localArrayList;
   }
 }
 

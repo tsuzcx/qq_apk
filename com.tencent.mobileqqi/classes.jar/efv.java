@@ -1,44 +1,16 @@
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
 import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
 
 public class efv
-  implements SlideDetectListView.OnScrollToTopListener
+  implements Runnable
 {
   public efv(NotificationView paramNotificationView) {}
   
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void run()
   {
-    if ((NotificationView.a(this.a) != null) && (paramInt == 0) && (NotificationView.a(this.a) == NotificationView.a(this.a).getCount())) {
-      NotificationView.b(this.a);
-    }
-    NotificationView.a(this.a, paramInt);
-    if (paramInt != 0)
-    {
-      NotificationView.a(this.a).c();
-      NotificationView.a(this.a).a();
-    }
-    while (!NotificationView.a(this.a).a()) {
-      return;
-    }
-    NotificationView.a(this.a).b();
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    NotificationView.b(this.a, paramInt1 + paramInt2 - 1);
-    if (paramInt1 > 1) {
-      GroupSystemMsgController.a().a();
-    }
-    while (!this.a.b) {
-      return;
-    }
-    GroupSystemMsgController.a().f();
+    this.a.a.a().a().c();
   }
 }
 

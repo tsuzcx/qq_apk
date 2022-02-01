@@ -1,37 +1,15 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.tmassistantsdk.downloadclient.ITMAssistantExchangeURLListenner;
-import com.tencent.tmassistantsdk.protocol.jce.AppSimpleDetail;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public final class hmi
-  implements ITMAssistantExchangeURLListenner
+  implements Runnable
 {
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
+  public hmi(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void run()
   {
-    LogUtility.b(DownloadApi.jdField_a_of_type_JavaLangString, "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
-    {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            DownloadApi.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (DownloadApi.jdField_a_of_type_JavaLangObject)
-    {
-      DownloadApi.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
+    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

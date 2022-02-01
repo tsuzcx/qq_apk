@@ -1,16 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.VoipDetailActivity;
-import com.tencent.mobileqq.activity.voip.VoipDetailActivity.VoipQQLabel;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import com.tencent.mobileqq.activity.voip.VoipDialInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class etp
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public etp(VoipDetailActivity.VoipQQLabel paramVoipQQLabel, VoipDetailActivity paramVoipDetailActivity) {}
+  public etp(VoipDialInterface paramVoipDialInterface) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity$VoipQQLabel.d();
+    paramContext = BaseApplication.getContext();
+    BaseApplication.getContext();
+    paramIntent = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    paramContext = paramIntent.getNetworkInfo(0);
+    paramIntent = paramIntent.getNetworkInfo(1);
+    if ((!paramContext.isConnected()) && (!paramIntent.isConnected()))
+    {
+      QLog.d(VoipDialInterface.a, 4, "VOIP_ Receive Unconnect");
+      paramContext = VoipDialInterface.a();
+      if (paramContext != null) {
+        paramContext.a();
+      }
+      return;
+    }
+    QLog.d(VoipDialInterface.a, 4, "VOIP_ Receive Connected");
   }
 }
 

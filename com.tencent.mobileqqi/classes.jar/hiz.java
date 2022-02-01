@@ -1,38 +1,26 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.common.app.InnerFrameManager;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import android.widget.HorizontalScrollView;
 import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.open.agent.datamodel.FriendDataManager;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class hiz
-  implements AdapterView.OnItemClickListener
+  extends Handler
 {
   public hiz(FriendChooser paramFriendChooser) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a))) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.c() >= this.a.d)
+    switch (paramMessage.what)
     {
-      this.a.l();
-      return;
     }
-    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
-    this.a.b.add(paramAdapterView);
-    this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a);
-    this.a.i();
-    paramView.g();
-    this.a.b(true);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+    }
   }
 }
 

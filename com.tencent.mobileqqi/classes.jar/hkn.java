@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.open.appcommon.js.AppInterface;
+import com.tencent.open.appcommon.js.BaseInterface;
+import com.tencent.smtt.sdk.WebView;
+import java.util.List;
+import java.util.TimerTask;
 
 public class hkn
-  implements DialogInterface.OnDismissListener
+  extends TimerTask
 {
-  public hkn(AppInterface paramAppInterface) {}
+  public hkn(BaseInterface paramBaseInterface, WebView paramWebView, long paramLong) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.tipDialog = null;
+    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.optLef <= 0)
+    {
+      cancel();
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.firstIn = true;
+    }
+    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.batchCallbackQueue.size() > 0) {
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.batchCallback(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_Long);
+    }
   }
 }
 

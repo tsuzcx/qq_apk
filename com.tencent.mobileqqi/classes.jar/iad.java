@@ -1,10 +1,13 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import cooperation.plugin.PluginDownloader.OnPluginDownLoadListener;
+import java.io.File;
+import java.io.FileFilter;
 
-public class iad
+public final class iad
+  implements FileFilter
 {
-  private HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  private PluginDownloader.OnPluginDownLoadListener jdField_a_of_type_CooperationPluginPluginDownloader$OnPluginDownLoadListener;
+  public boolean accept(File paramFile)
+  {
+    return paramFile.getName().endsWith(".cfg");
+  }
 }
 
 

@@ -7,8 +7,7 @@ public class hwz
   
   public void run()
   {
-    VerticalGallery.a(this.a, false);
-    this.a.B_();
+    this.a.g();
   }
 }
 

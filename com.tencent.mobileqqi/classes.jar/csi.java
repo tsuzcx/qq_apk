@@ -1,20 +1,23 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
-import mqq.app.permission.PermissionItem;
-import mqq.app.permission.PermissionManager;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import com.tencent.widget.XListView;
+import mqq.app.permission.PermissionCallback;
 
 class csi
-  implements PermissionDialogCallback
+  implements PermissionCallback
 {
-  csi(csc paramcsc, View paramView, int paramInt) {}
+  csi(csh paramcsh) {}
   
-  public void a() {}
-  
-  public void b()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Csc.a.a().permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new csj(this));
+    new PermissionsDialog().a(this.a.jdField_a_of_type_Csb.a.a(), paramInt, paramArrayOfString, new csk(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    Leba.b(this.a.jdField_a_of_type_Csb.a, false);
+    this.a.jdField_a_of_type_Csb.a.a(this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_Int, null);
+    this.a.jdField_a_of_type_Csb.a.a.postDelayed(new csj(this), 500L);
   }
 }
 

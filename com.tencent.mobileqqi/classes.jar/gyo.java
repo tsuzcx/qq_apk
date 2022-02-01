@@ -1,19 +1,19 @@
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.view.WindowManager;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
 
 public class gyo
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
   public gyo(MediaControllerX paramMediaControllerX) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
+    int i = MediaControllerX.a(this.a).b();
+    MediaControllerX.a(this.a).a(i + 15000);
     MediaControllerX.a(this.a);
-    if (MediaControllerX.a(this.a)) {
-      MediaControllerX.a(this.a).updateViewLayout(MediaControllerX.a(this.a), MediaControllerX.a(this.a));
-    }
+    this.a.a(5000);
   }
 }
 

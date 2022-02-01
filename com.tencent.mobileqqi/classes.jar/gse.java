@@ -1,13 +1,21 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.troop.activity.TroopBarPageActivity;
+import com.tencent.widget.XListView;
 
-class gse
-  implements Runnable
+public class gse
+  extends Handler
 {
-  gse(gsc paramgsc) {}
+  public gse(TroopBarPageActivity paramTroopBarPageActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a(1);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a.B();
   }
 }
 

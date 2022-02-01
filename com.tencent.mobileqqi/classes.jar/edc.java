@@ -1,23 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
 
 public class edc
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  public edc(CircleMemberListActivity paramCircleMemberListActivity, int paramInt) {}
+  public edc(CircleMemberListActivity paramCircleMemberListActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactCircleMemberListActivity.a.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactCircleMemberListActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactCircleMemberListActivity.a.requestLayout();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactCircleMemberListActivity.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactCircleMemberListActivity.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactCircleMemberListActivity.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog = null;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

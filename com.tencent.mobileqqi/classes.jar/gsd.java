@@ -3,11 +3,11 @@ import com.tencent.mobileqq.troop.activity.TroopBarPageActivity;
 class gsd
   implements Runnable
 {
-  gsd(gsc paramgsc) {}
+  gsd(gsb paramgsb) {}
   
   public void run()
   {
-    this.a.a.a(0);
+    this.a.a.a(1);
   }
 }
 

@@ -11,7 +11,7 @@ import android.view.View;
 import com.tencent.mobileqq.ptt.SoundLevelSource;
 import com.tencent.mobileqqi.R.styleable;
 import com.tencent.qphone.base.util.QLog;
-import hho;
+import hhn;
 
 public class RoundWaveView
   extends View
@@ -20,7 +20,7 @@ public class RoundWaveView
   private final float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private SoundLevelSource jdField_a_of_type_ComTencentMobileqqPttSoundLevelSource;
-  private hho jdField_a_of_type_Hho;
+  private hhn jdField_a_of_type_Hhn;
   private final float jdField_b_of_type_Float;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private final float c;
@@ -68,16 +68,16 @@ public class RoundWaveView
   {
     QLog.i("RoundWaveView", 4, "start wave animation");
     b();
-    this.jdField_a_of_type_Hho = new hho(this, 0.4F, 0.0F, this.jdField_b_of_type_Float, this.e, 1000L);
-    ViewCompat.postOnAnimation(this, this.jdField_a_of_type_Hho);
+    this.jdField_a_of_type_Hhn = new hhn(this, 0.4F, 0.0F, this.jdField_b_of_type_Float, this.e, 1000L);
+    ViewCompat.postOnAnimation(this, this.jdField_a_of_type_Hhn);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Hho != null)
+    if (this.jdField_a_of_type_Hhn != null)
     {
-      this.jdField_a_of_type_Hho.a();
-      this.jdField_a_of_type_Hho = null;
+      this.jdField_a_of_type_Hhn.a();
+      this.jdField_a_of_type_Hhn = null;
     }
   }
   

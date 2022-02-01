@@ -1,14 +1,15 @@
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class fbj
   implements Runnable
 {
-  public fbj(DataLineHandler paramDataLineHandler) {}
+  public fbj(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void run()
   {
-    FMToastUtil.a(2131558549);
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
   }
 }
 

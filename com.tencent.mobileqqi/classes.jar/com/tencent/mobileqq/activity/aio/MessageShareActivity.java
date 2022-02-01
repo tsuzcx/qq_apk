@@ -100,8 +100,8 @@ public class MessageShareActivity
       finish();
       return true;
     case 2: 
-      ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131232069)).setText(getApplicationContext().getResources().getString(2131558927));
-      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131232068).setVisibility(4);
+      ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131232068)).setText(getApplicationContext().getResources().getString(2131558927));
+      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131232067).setVisibility(4);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 800L);
       return true;
     }
@@ -116,7 +116,7 @@ public class MessageShareActivity
     this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624405);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
     this.jdField_a_of_type_AndroidAppDialog.setContentView(2130903319);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131232069)).setText(2131562664);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131232068)).setText(2131562664);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {

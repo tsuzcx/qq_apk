@@ -4,7 +4,7 @@ import com.tencent.mobileqq.gesturelock.LockPatternView;
 class cot
   implements Runnable
 {
-  cot(cos paramcos) {}
+  cot(cor paramcor) {}
   
   public void run()
   {

@@ -1,71 +1,26 @@
+import android.text.TextUtils;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadQueryListener;
 import com.tencent.open.export.js.VipDownloadInterface;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.smtt.sdk.WebView;
 
 public class hor
-  implements DownloadQueryListener
+  implements Runnable
 {
-  public hor(VipDownloadInterface paramVipDownloadInterface) {}
+  public hor(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    LogUtility.e(this.a.a, "getQueryDownloadAction onException code = " + paramInt + " msg= ");
-    JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("errCode", paramInt);
-      localJSONObject.put("errMsg", paramString);
-      paramString = "javascript:publicAccountDownload.queryProcess(" + localJSONObject.toString() + ")";
-      this.a.a(paramString);
+      if ((this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
+      }
       return;
     }
-    catch (JSONException paramString)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      LogUtility.a(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "webview loadUrl>>> ", localException);
     }
-  }
-  
-  public void b(List paramList)
-  {
-    LogUtility.a(this.a.a, "getQueryDownloadAction onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.b);
-          localJSONObject.put("pro", localDownloadInfo.k);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.h);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
-    }
-    paramList = "javascript:publicAccountDownload.queryProcess(" + localJSONArray.toString() + ")";
-    LogUtility.a(this.a.a, "getQueryDownloadAction callback url = " + paramList);
-    this.a.a(paramList);
   }
 }
 

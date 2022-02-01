@@ -1,14 +1,12 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.appreport.AppReport;
 import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.AppNotificationManager;
-import com.tencent.open.downloadnew.common.AppNotificationManager.NoticeIdentity;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.io.File;
 
 public class hnf
   implements Runnable
@@ -17,30 +15,23 @@ public class hnf
   
   public void run()
   {
-    Object localObject1 = AppUtil.b(CommonDataAdapter.a().a());
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
-    {
-      localObject1 = AppNotificationManager.a().a();
-      if (localObject1 != null)
-      {
-        Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          AppNotificationManager.NoticeIdentity localNoticeIdentity = (AppNotificationManager.NoticeIdentity)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
-          if (localNoticeIdentity != null)
-          {
-            Object localObject2 = this.a.a(localNoticeIdentity.b);
-            if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).c)))
-            {
-              localObject2 = this.a.a(((DownloadInfo)localObject2).c);
-              if ((localObject2 != null) && (4 != DownloadManager.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
-                AppNotificationManager.a().a(localNoticeIdentity.a);
-              }
-            }
-          }
-        }
-      }
+    Context localContext = CommonDataAdapter.a().a();
+    boolean bool = localContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false);
+    SimpleAccount localSimpleAccount = BaseApplicationImpl.a().getFirstSimpleAccount();
+    String str = "";
+    if (localSimpleAccount != null) {
+      str = localSimpleAccount.getUin();
     }
+    if (!bool)
+    {
+      LogUtility.c(DownloadManager.a, "getUpdateApp will do full report");
+      AppReport.a(localContext, null, null, str);
+    }
+    while (!new File(localContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists()) {
+      return;
+    }
+    LogUtility.c(DownloadManager.a, "getUpdateApp will do incremental report");
+    AppReport.a(localContext, null, 0, null, null, str);
   }
 }
 

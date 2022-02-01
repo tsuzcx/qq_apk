@@ -1,17 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.open.agent.OpenSdkFriendService;
-import java.util.ArrayList;
+import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback;
+import com.tencent.open.agent.datamodel.ImageLoader;
+import com.tencent.open.agent.datamodel.QZonePortraitData;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class hji
   implements Runnable
 {
-  public hji(OpenSdkFriendService paramOpenSdkFriendService, Handler paramHandler) {}
+  public hji(OpenSdkFriendService.CheckAvatarUpdateCallback paramCheckAvatarUpdateCallback, int paramInt, JSONArray paramJSONArray) {}
   
   public void run()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.a();
-    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 888802, localArrayList).sendToTarget();
+    int i = 0;
+    for (;;)
+    {
+      if (i < this.jdField_a_of_type_Int) {
+        try
+        {
+          String str = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i).getString("openid");
+          str = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$CheckAvatarUpdateCallback.a.f, str);
+          ImageLoader.a().a(str);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
+    }
   }
 }
 

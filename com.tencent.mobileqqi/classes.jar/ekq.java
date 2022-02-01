@@ -1,15 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-class ekq
-  implements Runnable
+public class ekq
+  implements DialogInterface.OnClickListener
 {
-  ekq(ekp paramekp) {}
+  public ekq(ContactListView paramContactListView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e();
-    this.a.a.jdField_a_of_type_Ekz.sendEmptyMessage(3);
+    this.a.f();
+    this.a.m();
   }
 }
 

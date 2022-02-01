@@ -16,8 +16,8 @@ import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
 import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
 import com.tencent.mobileqq.filemanager.data.WeiYunClassificationType;
 import com.tencent.widget.XListView;
+import fqq;
 import fqr;
-import fqs;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -44,8 +44,8 @@ public class FMCloudActivity
   
   public FMCloudActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fqr(this);
-    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fqs(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fqq(this);
+    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fqr(this);
   }
   
   private void a(List paramList)
@@ -234,7 +234,7 @@ public class FMCloudActivity
     super.doOnCreate(paramBundle);
     setContentView(2130903495);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(a());
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232730));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232729));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = new FileCategoryAdapter(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter);
     j();

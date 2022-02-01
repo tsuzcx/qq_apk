@@ -73,13 +73,13 @@ public class LiteMutiPicViewerActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131231530));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232375));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232376));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232377));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131231529));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232374));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232375));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232376));
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131362080));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231520));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232378));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231519));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232377));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView = new WaitTextView(this);
@@ -208,10 +208,10 @@ public class LiteMutiPicViewerActivity
     Object localObject2;
     switch (paramView.getId())
     {
-    case 2131232377: 
+    case 2131232376: 
     default: 
       return;
-    case 2131232376: 
+    case 2131232375: 
       if (NetworkUtil.e(this))
       {
         if ((FileManagerUtil.a()) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getFileTotalSize() > 5242880L))

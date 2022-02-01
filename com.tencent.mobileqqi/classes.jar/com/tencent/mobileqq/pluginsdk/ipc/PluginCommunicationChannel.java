@@ -26,7 +26,7 @@ public abstract interface PluginCommunicationChannel
   public abstract Bundle transfer(String paramString, Bundle paramBundle)
     throws RemoteException;
   
-  public abstract void transferAsync(String paramString, Bundle paramBundle, RemoteCallback paramRemoteCallback)
+  public abstract void transferAsync(String paramString, Bundle paramBundle, RemotesCallback paramRemotesCallback)
     throws RemoteException;
   
   public static abstract class Stub
@@ -120,7 +120,7 @@ public abstract interface PluginCommunicationChannel
       if (paramParcel1.readInt() != 0) {}
       for (Object localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; localObject = null)
       {
-        transferAsync(str, (Bundle)localObject, RemoteCallback.Stub.asInterface(paramParcel1.readStrongBinder()));
+        transferAsync(str, (Bundle)localObject, RemotesCallback.Stub.asInterface(paramParcel1.readStrongBinder()));
         paramParcel2.writeNoException();
         return true;
       }
@@ -264,7 +264,7 @@ public abstract interface PluginCommunicationChannel
         }
       }
       
-      public void transferAsync(String paramString, Bundle paramBundle, RemoteCallback paramRemoteCallback)
+      public void transferAsync(String paramString, Bundle paramBundle, RemotesCallback paramRemotesCallback)
         throws RemoteException
       {
         Parcel localParcel1 = Parcel.obtain();
@@ -279,9 +279,9 @@ public abstract interface PluginCommunicationChannel
             {
               localParcel1.writeInt(1);
               paramBundle.writeToParcel(localParcel1, 0);
-              if (paramRemoteCallback != null)
+              if (paramRemotesCallback != null)
               {
-                paramString = paramRemoteCallback.asBinder();
+                paramString = paramRemotesCallback.asBinder();
                 localParcel1.writeStrongBinder(paramString);
                 this.mRemote.transact(6, localParcel1, localParcel2, 0);
                 localParcel2.readException();

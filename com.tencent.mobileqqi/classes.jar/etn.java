@@ -1,15 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.voip.VoipDetailActivity;
+import com.tencent.mobileqq.activity.voip.VoipDetailActivity.VoipQQLabel;
 
 public class etn
   implements View.OnClickListener
 {
-  public etn(VoipDetailActivity paramVoipDetailActivity) {}
+  public etn(VoipDetailActivity.VoipQQLabel paramVoipQQLabel, VoipDetailActivity paramVoipDetailActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.b(paramView);
+    if (VoipDetailActivity.VoipQQLabel.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity$VoipQQLabel))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity$VoipQQLabel.c();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDetailActivity$VoipQQLabel.b();
   }
 }
 

@@ -52,6 +52,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
+import dsj;
 import dsk;
 import dsl;
 import dsm;
@@ -63,7 +64,6 @@ import dsr;
 import dss;
 import dst;
 import dsu;
-import dsv;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -104,14 +104,14 @@ public class TroopRequestActivity
   public int a;
   public long a;
   public Handler a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dsr(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new dsq(this);
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   public TextView a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dsn(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dsm(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dsm(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dsl(this);
   public TroopHandler a;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dsl(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dsk(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = null;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private structmsg.StructMsg jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = null;
@@ -119,7 +119,7 @@ public class TroopRequestActivity
   public boolean a;
   public byte[] a;
   public long b;
-  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new dss(this);
+  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new dsr(this);
   private Button jdField_b_of_type_AndroidWidgetButton;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   private QQProgressDialog jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog;
@@ -150,7 +150,7 @@ public class TroopRequestActivity
   
   public TroopRequestActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new dsv(this);
+    this.jdField_a_of_type_AndroidOsHandler = new dsu(this);
   }
   
   private void a(Card paramCard)
@@ -264,8 +264,8 @@ public class TroopRequestActivity
       finish();
       return;
     }
-    Object localObject2 = (TextView)findViewById(2131232902);
-    Object localObject1 = (LinearLayout)findViewById(2131233201);
+    Object localObject2 = (TextView)findViewById(2131232901);
+    Object localObject1 = (LinearLayout)findViewById(2131233200);
     ((LinearLayout)localObject1).setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
@@ -290,12 +290,12 @@ public class TroopRequestActivity
       setTitle(a(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get()));
       localImageView1 = (ImageView)findViewById(2131230985);
       localTextView = (TextView)findViewById(2131231090);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233195));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233196));
-      localObject2 = (TextView)findViewById(2131233203);
-      localImageView2 = (ImageView)findViewById(2131231399);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233202));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131233182));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233194));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233195));
+      localObject2 = (TextView)findViewById(2131233202);
+      localImageView2 = (ImageView)findViewById(2131231398);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233201));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131233181));
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
       ((TextView)localObject2).setVisibility(8);
@@ -351,10 +351,10 @@ public class TroopRequestActivity
       ((TextView)localObject2).setBackgroundResource(2130837807);
       ((TextView)localObject2).setVisibility(0);
       label759:
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233096));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233100));
-      this.e = ((TextView)findViewById(2131233199));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233200));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233095));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233099));
+      this.e = ((TextView)findViewById(2131233198));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233199));
       localObject1 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_describe.get();
       localObject5 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_describe.get();
       if (localObject1 != null)
@@ -397,16 +397,16 @@ public class TroopRequestActivity
       this.jdField_f_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.msg_alert.get());
       this.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.msg_alert.get());
       label1130:
-      localObject1 = new dsk(this, (TextView)localObject2);
+      localObject1 = new dsj(this, (TextView)localObject2);
       if ((localObject3 != null) && (((List)localObject3).size() == 1)) {
         ((TextView)localObject2).setOnClickListener((View.OnClickListener)localObject1);
       }
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener((View.OnClickListener)localObject1);
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener((View.OnClickListener)localObject1);
       this.m.setOnClickListener((View.OnClickListener)localObject1);
-      localObject2 = new dso(this);
-      localObject3 = new dsp(this);
-      localObject5 = new dsq(this);
+      localObject2 = new dsn(this);
+      localObject3 = new dso(this);
+      localObject5 = new dsp(this);
       localObject1 = null;
       if (TextUtils.isEmpty(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_actor_describe.get())) {
         break label2013;
@@ -418,7 +418,7 @@ public class TroopRequestActivity
         break label2076;
       }
       this.e.setText("");
-      this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131233193));
+      this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131233192));
       switch (TroopNotificationUtils.a(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get()))
       {
       default: 
@@ -475,9 +475,9 @@ public class TroopRequestActivity
         }
         localImageView2.setVisibility(0);
         localImageView2.setBackgroundResource(2130838181);
-        this.i = ((TextView)findViewById(2131233187));
-        this.h = ((TextView)findViewById(2131233186));
-        this.g = ((TextView)findViewById(2131233185));
+        this.i = ((TextView)findViewById(2131233186));
+        this.h = ((TextView)findViewById(2131233185));
+        this.g = ((TextView)findViewById(2131233184));
         this.i.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
         this.g.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         i2 = 0;
@@ -865,7 +865,7 @@ public class TroopRequestActivity
     }
     localActionSheet.a(str);
     localActionSheet.a(getString(2131561560), 3);
-    localActionSheet.a(new dst(this, localActionSheet));
+    localActionSheet.a(new dss(this, localActionSheet));
     localActionSheet.d(2131561746);
     localActionSheet.show();
   }
@@ -917,7 +917,7 @@ public class TroopRequestActivity
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     localActionSheet.a(getString(2131562771), 3);
-    localActionSheet.a(new dsu(this, localActionSheet));
+    localActionSheet.a(new dst(this, localActionSheet));
     localActionSheet.d(2131561746);
     localActionSheet.show();
   }

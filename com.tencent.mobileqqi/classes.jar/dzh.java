@@ -1,15 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 
 public class dzh
-  extends BaseBubbleBuilder.ViewHolder
+  implements AnimationTextView.OnDoubleClick
 {
-  public ImageView a;
-  public TextView a;
+  public dzh(LongMsgItemBuilder paramLongMsgItemBuilder) {}
   
-  public dzh(LocationItemBuilder paramLocationItemBuilder) {}
+  public void a(View paramView)
+  {
+    ChatActivityUtils.a(LongMsgItemBuilder.a(this.a), paramView, (ChatActivity)LongMsgItemBuilder.a(this.a));
+  }
 }
 
 

@@ -1,44 +1,44 @@
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.appcommon.Common;
-import com.tencent.open.appcommon.ResourceUpdater;
-import com.tencent.open.appcommon.TaskThread;
-import com.tencent.open.base.FileUtils;
-import com.tencent.open.base.LogUtility;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.preference.PreferenceManager;
+import com.tencent.open.appcommon.js.AppInterface;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.MyAppDialog;
 
 public class hkk
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public hkk(TaskThread paramTaskThread, int paramInt) {}
+  public hkk(AppInterface paramAppInterface, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    paramDialogInterface = "";
+    if (paramInt == 2131560009)
     {
-      switch (this.jdField_a_of_type_Int)
+      StaticAnalyz.a("200", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
+      paramDialogInterface = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.activity).edit();
+      paramDialogInterface.putBoolean("qqsetting_package_scan_flag", false);
+      paramDialogInterface.commit();
+      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog != null) && (this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.isShowing())) {
+        this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.dismiss();
+      }
+      paramDialogInterface = "javascript:QzoneApp.fire('interface.gSetPackageScanSetting',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'0'});void(0);";
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.mHandler.post(new hkl(this, paramDialogInterface));
+      return;
+      if (paramInt == 2131560008)
       {
-      case 1: 
-        if (!Common.a()) {
-          return;
+        if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog != null) && (this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.isShowing())) {
+          this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog.dismiss();
         }
-        LogUtility.c(TaskThread.a, "try check md5");
-        ResourceUpdater.a();
-        return;
+        paramDialogInterface = "javascript:QzoneApp.fire('interface.gSetPackageScanSetting',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'1'});void(0);";
       }
     }
-    catch (Exception localException)
-    {
-      LogUtility.c(TaskThread.a, "runTask exception", localException);
-      return;
-    }
-    TaskThread.a(CommonDataAdapter.a().a());
-    return;
-    FileUtils.a("Page/system", Common.f());
-    return;
-    this.jdField_a_of_type_ComTencentOpenAppcommonTaskThread.a(true, null);
-    return;
-    LogUtility.b(TaskThread.a, ">>start reset js ,del local and copy from assets");
-    this.jdField_a_of_type_ComTencentOpenAppcommonTaskThread.a(false, null);
-    return;
   }
 }
 

@@ -116,7 +116,7 @@ public class LebaListMgrAdapter
     {
       localViewHolder = new LebaListMgrAdapter.ViewHolder(this);
       localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903585, null);
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView.findViewById(2131232992));
+      localViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView.findViewById(2131232991));
       localView.setTag(localViewHolder);
       localViewHolder.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem = localLebaViewItem;
       localViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strResName);

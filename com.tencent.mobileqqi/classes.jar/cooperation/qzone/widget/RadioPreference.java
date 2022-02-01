@@ -102,7 +102,7 @@ public class RadioPreference
   protected void onBindView(View paramView)
   {
     super.onBindView(paramView);
-    paramView = paramView.findViewById(2131234163);
+    paramView = paramView.findViewById(2131234162);
     if ((paramView != null) && ((paramView instanceof Checkable)))
     {
       ((Checkable)paramView).setChecked(this.jdField_b_of_type_Boolean);

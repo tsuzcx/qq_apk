@@ -85,8 +85,8 @@ public class PopupMenu
   public void a(int paramInt)
   {
     this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131231673));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231674));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131231672));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231673));
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
     super.b(this.jdField_a_of_type_AndroidViewView);
   }
@@ -127,8 +127,8 @@ public class PopupMenu
       this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     }
     Object localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903224, null);
-    ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131231669);
-    Object localObject2 = (TextView)((View)localObject1).findViewById(2131231670);
+    ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131231668);
+    Object localObject2 = (TextView)((View)localObject1).findViewById(2131231669);
     if (localDrawable != null)
     {
       localImageView.setImageDrawable(localDrawable);

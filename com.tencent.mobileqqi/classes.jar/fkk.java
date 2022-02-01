@@ -7,7 +7,7 @@ public class fkk
   
   public void run()
   {
-    DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_Long);
+    DataLineMsgProxy.b(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_Long);
   }
 }
 

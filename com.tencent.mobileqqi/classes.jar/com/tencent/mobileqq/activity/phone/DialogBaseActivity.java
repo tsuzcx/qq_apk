@@ -12,11 +12,11 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import elg;
 import elh;
 import eli;
 import elj;
 import elk;
-import ell;
 
 public class DialogBaseActivity
   extends IphoneTitleBarActivity
@@ -28,7 +28,7 @@ public class DialogBaseActivity
   private View jdField_a_of_type_AndroidViewView;
   public PhoneContactManager a;
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private ell jdField_a_of_type_Ell;
+  private elk jdField_a_of_type_Elk;
   public QQProgressDialog b;
   
   public void a(int paramInt)
@@ -36,7 +36,7 @@ public class DialogBaseActivity
     if ((!isFinishing()) && (this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog == null))
     {
       this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, d());
-      this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new eli(this));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new elh(this));
       this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(paramInt);
       this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
       this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
@@ -45,8 +45,8 @@ public class DialogBaseActivity
   
   public void a(int paramInt, long paramLong)
   {
-    Message localMessage = this.jdField_a_of_type_Ell.obtainMessage(1, paramInt, 0);
-    this.jdField_a_of_type_Ell.sendMessageDelayed(localMessage, paramLong);
+    Message localMessage = this.jdField_a_of_type_Elk.obtainMessage(1, paramInt, 0);
+    this.jdField_a_of_type_Elk.sendMessageDelayed(localMessage, paramLong);
   }
   
   protected void a(DialogInterface.OnClickListener paramOnClickListener)
@@ -54,8 +54,8 @@ public class DialogBaseActivity
     if ((isFinishing()) || (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 231, getString(2131559983), getString(2131559982), 2131559984, 2131559985, paramOnClickListener, new elj(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnKeyListener(new elk(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 231, getString(2131559983), getString(2131559982), 2131559984, 2131559985, paramOnClickListener, new eli(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnKeyListener(new elj(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
@@ -63,7 +63,7 @@ public class DialogBaseActivity
   public void a(String paramString1, String paramString2)
   {
     if (!isFinishing()) {
-      DialogUtil.a(this, 231, paramString1, paramString2, new elh(this), null).show();
+      DialogUtil.a(this, 231, paramString1, paramString2, new elg(this), null).show();
     }
   }
   
@@ -82,7 +82,7 @@ public class DialogBaseActivity
     if (!isFinishing())
     {
       b(paramInt);
-      this.jdField_a_of_type_Ell.sendEmptyMessageDelayed(2, paramLong);
+      this.jdField_a_of_type_Elk.sendEmptyMessageDelayed(2, paramLong);
     }
   }
   
@@ -95,7 +95,7 @@ public class DialogBaseActivity
   
   public void d()
   {
-    this.jdField_a_of_type_Ell.removeMessages(1);
+    this.jdField_a_of_type_Elk.removeMessages(1);
     if (this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
     {
       this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
@@ -106,7 +106,7 @@ public class DialogBaseActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Ell = new ell(this);
+    this.jdField_a_of_type_Elk = new elk(this);
     this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager = ((PhoneContactManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10));
     return true;
   }

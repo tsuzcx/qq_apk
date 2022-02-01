@@ -1,15 +1,29 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.phone.TosActivity;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class ely
-  implements View.OnLongClickListener
+  extends AsyncTask
 {
-  public ely(TosActivity paramTosActivity) {}
+  public ely(AlbumListActivity paramAlbumListActivity) {}
   
-  public boolean onLongClick(View paramView)
+  protected List a(Object... paramVarArgs)
   {
-    return true;
+    return this.a.a();
+  }
+  
+  protected void a(List paramList)
+  {
+    AlbumListActivity.b(this.a);
+    AlbumListActivity.a(this.a, paramList);
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    this.a.a.setEmptyView(null);
+    AlbumListActivity.a(this.a);
   }
 }
 

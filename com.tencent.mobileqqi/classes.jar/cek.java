@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.app.CardObserver;
 
 public class cek
-  implements DialogInterface.OnDismissListener
+  extends CardObserver
 {
-  public cek(Contacts paramContacts) {}
+  private cek(Contacts paramContacts) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.a = null;
+    if ((paramBoolean) && (this.a.a)) {
+      this.a.a(1400L, true);
+    }
   }
 }
 

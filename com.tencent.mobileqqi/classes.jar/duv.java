@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VerifyCodeActivity2;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class duv
-  implements View.OnClickListener
+  extends Handler
 {
-  public duv(VerifyCodeActivity2 paramVerifyCodeActivity2) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.d();
-  }
+  public duv(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     duv
  * JD-Core Version:    0.7.0.1
  */

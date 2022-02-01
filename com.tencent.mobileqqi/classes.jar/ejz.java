@@ -1,15 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class ejz
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnKeyListener
 {
   public ejz(BaseActivityView paramBaseActivityView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a = null;
+    return (paramInt == 4) && (this.a.a.i()) && (NetworkUtil.e(this.a.getContext()));
   }
 }
 

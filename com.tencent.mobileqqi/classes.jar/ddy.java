@@ -1,6 +1,8 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ddy
   implements DialogInterface.OnClickListener
@@ -9,7 +11,11 @@ public class ddy
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clean_chat_log", 0, 0, "", "", "", "");
+    if (!this.a.isFinishing()) {
+      this.a.showDialog(1);
+    }
+    ThreadManager.b(new ddz(this));
   }
 }
 

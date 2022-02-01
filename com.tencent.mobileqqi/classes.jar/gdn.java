@@ -1,17 +1,35 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
 
 public class gdn
+  implements DialogInterface.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public gdn(PermissionsDialog paramPermissionsDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.parse("package:" + PermissionsDialog.a(this.a).getPackageName()));
+      PermissionsDialog.a(this.a).startActivity(paramDialogInterface);
+      PermissionsDialog.a(this.a).finish();
+      PermissionsDialog.a(this.a).b();
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    PermissionsDialog.a(this.a).a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gdn
  * JD-Core Version:    0.7.0.1
  */

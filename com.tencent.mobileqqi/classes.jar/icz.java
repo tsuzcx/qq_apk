@@ -1,20 +1,75 @@
-import cooperation.qzone.music.RemoteMusicManager;
-import cooperation.qzone.music.RemoteMusicManager.MusicEventListener;
-import cooperation.qzone.remote.RecvMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.IBinder;
+import cooperation.qzone.remote.IActionListener;
 
-class icz
-  implements Runnable
+public class icz
+  implements IActionListener
 {
-  icz(icy paramicy, RecvMsg paramRecvMsg) {}
+  private IBinder a;
   
-  public void run()
+  public icz(IBinder paramIBinder)
   {
-    Iterator localIterator = RemoteMusicManager.access$000(this.jdField_a_of_type_Icy.a).iterator();
-    while (localIterator.hasNext()) {
-      ((RemoteMusicManager.MusicEventListener)localIterator.next()).onMusicEvent(this.jdField_a_of_type_CooperationQzoneRemoteRecvMsg.getServiceCmd(), this.jdField_a_of_type_CooperationQzoneRemoteRecvMsg.extraData);
-    }
+    this.a = paramIBinder;
+  }
+  
+  public String a()
+  {
+    return "cooperation.qzone.remote.IActionListener";
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  /* Error */
+  public void onRecvFromMsg(cooperation.qzone.remote.RecvMsg paramRecvMsg)
+  {
+    // Byte code:
+    //   0: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: ldc 19
+    //   7: invokevirtual 33	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_1
+    //   11: ifnull +33 -> 44
+    //   14: aload_2
+    //   15: iconst_1
+    //   16: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+    //   19: aload_1
+    //   20: aload_2
+    //   21: iconst_0
+    //   22: invokevirtual 43	cooperation/qzone/remote/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
+    //   25: aload_0
+    //   26: getfield 15	icz:a	Landroid/os/IBinder;
+    //   29: iconst_1
+    //   30: aload_2
+    //   31: aconst_null
+    //   32: iconst_1
+    //   33: invokeinterface 49 5 0
+    //   38: pop
+    //   39: aload_2
+    //   40: invokevirtual 52	android/os/Parcel:recycle	()V
+    //   43: return
+    //   44: aload_2
+    //   45: iconst_0
+    //   46: invokevirtual 37	android/os/Parcel:writeInt	(I)V
+    //   49: goto -24 -> 25
+    //   52: astore_1
+    //   53: aload_2
+    //   54: invokevirtual 52	android/os/Parcel:recycle	()V
+    //   57: aload_1
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	this	icz
+    //   0	59	1	paramRecvMsg	cooperation.qzone.remote.RecvMsg
+    //   3	51	2	localParcel	android.os.Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	10	52	finally
+    //   14	25	52	finally
+    //   25	39	52	finally
+    //   44	49	52	finally
   }
 }
 

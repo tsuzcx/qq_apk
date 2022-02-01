@@ -1,19 +1,13 @@
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
 
 public class eat
   implements DialogInterface.OnClickListener
 {
-  public eat(StructingMsgItemBuilder paramStructingMsgItemBuilder, Context paramContext, ChatMessage paramChatMessage) {}
+  public eat(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ChatActivityFacade.a(StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder), this.jdField_a_of_type_AndroidContentContext, StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

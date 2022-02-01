@@ -1,21 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.TroopObserver;
 
 public class erw
-  implements Runnable
+  extends TroopObserver
 {
   public erw(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListInnerFrame", 2, "read troop members from database before updating data from server");
-    }
-    Object localObject = TroopMemberListInnerFrame.a(this.a, this.a.b);
-    localObject = this.a.a.obtainMessage(1, localObject);
-    this.a.a.sendMessage((Message)localObject);
+    new Thread(new erx(this)).start();
   }
 }
 

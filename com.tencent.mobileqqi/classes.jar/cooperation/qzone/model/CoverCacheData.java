@@ -7,8 +7,8 @@ import android.content.ContentValues;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import icg;
 import ich;
-import ici;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,8 +16,8 @@ public class CoverCacheData
   extends DbCacheData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ici();
-  public static final DbCacheData.DbCreator DB_CREATOR = new ich();
+  public static final Parcelable.Creator CREATOR = new ich();
+  public static final DbCacheData.DbCreator DB_CREATOR = new icg();
   public static final String JIGSAW = "jigsaw";
   public static final String LOCAL_URL = "local_url";
   public static final String PACKAGE_INFO = "package_info";

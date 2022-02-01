@@ -1,23 +1,14 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.book.BookEditText;
-import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.activity.book.ResizeLayout;
+import com.tencent.mobileqq.activity.book.ResizeLayout.OnResizeListener;
 
 public class ect
-  implements InputFilter
+  implements Runnable
 {
-  public ect(BookEditText paramBookEditText) {}
+  public ect(ResizeLayout paramResizeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void run()
   {
-    this.a.a(paramSpanned.toString());
-    if (this.a.a(paramCharSequence.toString()) == 0) {
-      BookEditText.a(this.a);
-    }
-    while (!QQText.a(paramCharSequence.toString())) {
-      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
-    }
-    return "";
+    ResizeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout).a(this.jdField_a_of_type_Int, this.b, this.c, this.d);
   }
 }
 

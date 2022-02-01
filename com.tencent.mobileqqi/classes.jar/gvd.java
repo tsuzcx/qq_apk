@@ -1,29 +1,24 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.troop.data.TroopAioTips;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.troop.data.TroopAndDiscMsgProxy;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class gvd
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  public gvd(TroopAioTips paramTroopAioTips) {}
+  public gvd(TroopAndDiscMsgProxy paramTroopAndDiscMsgProxy, boolean paramBoolean) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
-    }
-    if (paramFloat2 < -10.0F) {}
-    for (;;)
+    StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
+    String str = TroopAndDiscMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAndDiscMsgProxy).a();
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      return false;
-      if (paramFloat2 <= 10.0F) {}
+      localStatisticCollector.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
+      return;
     }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
   }
 }
 

@@ -2,8 +2,9 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.mobileqq.activity.voip.VoipHistoryActivity;
 import com.tencent.mobileqq.activity.voip.VoipHistoryAllType;
-import com.tencent.mobileqq.activity.voip.VoipHistoryInterface;
-import com.tencent.mobileqq.data.voip.VoipHistoryData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QCallRecent;
+import com.tencent.mobileqq.qcall.QCallFacade;
 import com.tencent.widget.AdapterView.AdapterContextMenuInfo;
 import java.util.ArrayList;
 
@@ -16,7 +17,10 @@ public class ewo
   {
     paramMenuItem = (AdapterView.AdapterContextMenuInfo)paramMenuItem.getMenuInfo();
     paramMenuItem = (VoipHistoryAllType)VoipHistoryActivity.a(this.a).get(paramMenuItem.a);
-    VoipHistoryActivity.a(this.a).a((VoipHistoryData)paramMenuItem.obj);
+    QCallFacade localQCallFacade = (QCallFacade)this.a.b.getManager(36);
+    if (localQCallFacade != null) {
+      localQCallFacade.a(((QCallRecent)paramMenuItem.obj).uin, ((QCallRecent)paramMenuItem.obj).type);
+    }
     this.a.doOnResume();
     return true;
   }

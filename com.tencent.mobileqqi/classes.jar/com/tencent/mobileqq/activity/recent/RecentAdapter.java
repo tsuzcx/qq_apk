@@ -40,7 +40,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.BubblePopupWindow;
 import com.tencent.widget.SwipListView;
 import com.tencent.widget.XListView;
-import eou;
+import eot;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -55,7 +55,7 @@ public class RecentAdapter
   private long jdField_a_of_type_Long = 0L;
   private Dialog jdField_a_of_type_AndroidAppDialog;
   protected Context a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eou(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eot(this);
   private OnRecentUserOpsListener jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener = null;
   protected RecentBaseData a;
   protected RecentFaceDecoder a;
@@ -136,7 +136,7 @@ public class RecentAdapter
       View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i);
       if (localView != null)
       {
-        localView = localView.findViewById(2131234180);
+        localView = localView.findViewById(2131234179);
         if ((localView != null) && ((localView instanceof DragTextView)))
         {
           DragTextView localDragTextView = (DragTextView)localView;

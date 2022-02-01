@@ -3,9 +3,9 @@ package com.tencent.mobileqq.permissionsDialog;
 import android.app.Activity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import gdn;
 import gdo;
 import gdp;
-import gdq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -85,7 +85,7 @@ public class PermissionsDialog
     if (paramArrayOfString.length > 0)
     {
       paramPermissionDialogCallback = paramArrayOfString[0];
-      paramPermissionDialogCallback = new gdo(this);
+      paramPermissionDialogCallback = new gdn(this);
       paramActivity = DialogUtil.a(paramActivity, 230);
       paramActivity.setTitle(2131563365);
       paramActivity.setMessage(a(paramArrayOfString));
@@ -99,7 +99,7 @@ public class PermissionsDialog
   public void a(Activity paramActivity, PermissionDialogShowMessageCallback paramPermissionDialogShowMessageCallback)
   {
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    paramPermissionDialogShowMessageCallback = new gdp(this, paramPermissionDialogShowMessageCallback);
+    paramPermissionDialogShowMessageCallback = new gdo(this, paramPermissionDialogShowMessageCallback);
     paramActivity = DialogUtil.a(paramActivity, 230);
     paramActivity.setContentView(2130903166);
     paramActivity.setTitle(2131563372);
@@ -115,7 +115,7 @@ public class PermissionsDialog
   {
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentMobileqqPermissionsDialogPermissionDialogCallback = paramPermissionDialogCallback;
-    paramPermissionDialogCallback = new gdq(this);
+    paramPermissionDialogCallback = new gdp(this);
     paramActivity = DialogUtil.a(paramActivity, 230);
     paramActivity.setTitle(2131563366);
     paramActivity.setMessage(a(paramArrayOfString));

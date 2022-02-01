@@ -1,48 +1,85 @@
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
-import com.tencent.mobileqq.richstatus.StatusHistoryActivity.ItemViewHolder;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.richstatus.StatusServlet;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
+import java.util.ArrayList;
+import mqq.app.NewIntent;
 
 public class ghs
-  implements SlideDetectListView.OnSlideListener
+  implements View.OnClickListener
 {
   public ghs(StatusHistoryActivity paramStatusHistoryActivity) {}
   
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((StatusHistoryActivity.b(this.a) == 23) && (paramView != null))
+    int i = 1;
+    boolean bool;
+    if ((paramView != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof Integer)))
     {
-      paramView = paramView.getTag();
-      if (paramView != null)
+      if (!NetworkUtil.e(this.a)) {
+        QQToast.a(this.a, this.a.getString(2131562452), 0).b(this.a.d());
+      }
+      int j;
+      do
       {
-        paramView = (StatusHistoryActivity.ItemViewHolder)paramView;
-        Button localButton = (Button)paramView.jdField_a_of_type_AndroidViewView;
-        localButton.setTag(Integer.valueOf(paramInt));
-        localButton.setOnClickListener(StatusHistoryActivity.a(this.a));
-        paramSlideDetectListView.setDeleteAreaDim(paramView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.getLayoutParams().width, paramView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.getLayoutParams().height);
-        paramView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.a();
-        this.a.a(false);
+        return;
+        j = ((Integer)paramView.getTag()).intValue();
+      } while ((StatusHistoryActivity.a(this.a) == null) || (j < 0) || (j >= StatusHistoryActivity.a(this.a).size()));
+      StatusHistoryActivity.a(this.a, (RichStatus)StatusHistoryActivity.a(this.a).get(j));
+      paramView = this.a;
+      if (j != 0) {
+        break label271;
+      }
+      bool = true;
+      StatusHistoryActivity.b(paramView, bool);
+      StatusHistoryActivity.a(this.a, new QQProgressDialog(this.a, this.a.d()));
+      StatusHistoryActivity.a(this.a).a(this.a.getString(2131559283));
+      StatusHistoryActivity.a(this.a).show();
+      if ((!StatusHistoryActivity.b(this.a)) || (StatusHistoryActivity.a(this.a).size() != 1)) {
+        break label277;
+      }
+      paramView = (StatusManager)this.a.b.getManager(13);
+      if (paramView != null) {
+        paramView.a(RichStatus.a(), -1);
       }
     }
-  }
-  
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
-  {
-    if (paramView != null)
+    label271:
+    label277:
+    for (;;)
     {
-      paramSlideDetectListView = paramView.getTag();
-      if (paramSlideDetectListView != null)
+      label250:
+      if (StatusHistoryActivity.a(this.a) != null)
       {
-        paramSlideDetectListView = (StatusHistoryActivity.ItemViewHolder)paramSlideDetectListView;
-        paramSlideDetectListView.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.d();
-        paramSlideDetectListView.jdField_a_of_type_AndroidViewView.setTag(null);
-        paramSlideDetectListView.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-        this.a.a(true);
+        StatusHistoryActivity.a(this.a).d();
+        return;
+        bool = false;
+        break;
+        if ((StatusHistoryActivity.a(this.a) != null) && (this.a.b != null) && (StatusHistoryActivity.a(this.a).a != null))
+        {
+          paramView = new NewIntent(this.a.b.a(), StatusServlet.class);
+          paramView.putExtra("k_cmd", 5);
+          paramView.putExtra("k_status_key", StatusHistoryActivity.a(this.a).a);
+          if (!StatusHistoryActivity.c(this.a)) {
+            break label387;
+          }
+        }
       }
+    }
+    for (;;)
+    {
+      paramView.putExtra("k_status_flag", i);
+      this.a.b.startServlet(paramView);
+      break label250;
+      break;
+      label387:
+      i = 0;
     }
   }
 }

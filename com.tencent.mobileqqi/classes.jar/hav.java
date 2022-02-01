@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public final class hav
-  extends Thread
+  implements Runnable
 {
-  public hav(String paramString1, String paramString2) {}
+  public hav(String paramString) {}
   
   public void run()
   {
-    String str1 = CardHandler.a(this.a, CardHandler.c(BaseApplication.getContext()));
-    int i = CardHandler.d(BaseApplication.getContext());
-    String str2 = CardHandler.a(this.a, i);
-    ImageUtil.a(this.b, str1);
-    ImageUtil.a(this.b, str2, i, i);
-    FileUtils.a(this.b, true);
+    File localFile = new File(this.a);
+    if ((localFile.exists()) && (localFile.isFile()))
+    {
+      boolean bool = localFile.delete();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.VoiceIntro", 2, "delete result=" + bool + " f.path=" + this.a);
+      }
+    }
   }
 }
 

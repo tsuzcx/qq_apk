@@ -20,7 +20,7 @@ public class bty
       paramView.setContentView(2130903942);
       ((TextView)paramView.findViewById(2131231029)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131563294));
       ((ProgressBar)paramView.findViewById(2131231028)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131234123)).setImageResource(2130837961);
+      ((ImageView)paramView.findViewById(2131234122)).setImageResource(2130837961);
       paramView.show();
       return;
     }

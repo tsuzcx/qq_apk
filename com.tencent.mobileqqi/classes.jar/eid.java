@@ -1,16 +1,16 @@
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.config.ResourcePluginListener;
 
 public class eid
-  extends ResourcePluginListener
+  implements Runnable
 {
   public eid(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a(byte paramByte)
+  public void run()
   {
-    if (paramByte == 4) {}
-    while (paramByte != 5) {
-      return;
+    if ((!BaseApplicationImpl.a(BaseApplicationImpl.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) && (MainAssistObserver.a(this.a) < 5)) {
+      BaseApplicationImpl.jdField_a_of_type_AndroidOsHandler.postDelayed(MainAssistObserver.a(this.a), MainAssistObserver.b(this.a) * 30000);
     }
   }
 }

@@ -1,30 +1,47 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class cyr
-  extends BizTroopObserver
+  extends MessageObserver
 {
-  cyr(cyp paramcyp) {}
+  cyr(cyo paramcyo) {}
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
   {
-    if (!paramString2.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
-      cyp.a(this.a);
-      return;
+    int k = 0;
+    int j = k;
+    int i;
+    if (paramArrayOfString != null) {
+      i = 0;
     }
-    if (!this.a.jdField_b_of_type_Boolean)
+    for (;;)
     {
-      this.a.jdField_c_of_type_Boolean = true;
-      this.a.jdField_a_of_type_JavaLangString = paramString1;
-      this.a.jdField_b_of_type_JavaLangString = paramString2;
-      this.a.d = paramBoolean;
-      this.a.jdField_c_of_type_JavaLangString = paramString3;
-      return;
+      j = k;
+      if (i < paramArrayOfString.length)
+      {
+        if (paramArrayOfString[i].equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
+          j = 1;
+        }
+      }
+      else
+      {
+        if (j != 0)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131559091));
+          paramArrayOfString = Message.obtain();
+          paramArrayOfString.what = 1003;
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramArrayOfString);
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.c(this.a.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+        return;
+      }
+      i += 1;
     }
-    cyp.a(this.a, paramString1, paramString2, paramBoolean, paramString3);
   }
 }
 

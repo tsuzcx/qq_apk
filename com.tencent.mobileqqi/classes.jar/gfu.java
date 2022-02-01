@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import com.tencent.mobileqq.qcall.QCallProxy;
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
 
-public class gfu
-  implements Comparator
+public final class gfu
+  implements Runnable
 {
-  public gfu(QCallProxy paramQCallProxy) {}
+  public gfu(RedTouchManager paramRedTouchManager, Conversation paramConversation, Handler paramHandler) {}
   
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public void run()
   {
-    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
-      return 0;
-    }
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    RedTouchManager localRedTouchManager = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager;
+    gfv localgfv = new gfv(this);
+    localRedTouchManager.a(new int[] { 0, 1, 2 }, localgfv);
   }
 }
 

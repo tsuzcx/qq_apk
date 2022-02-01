@@ -1,19 +1,24 @@
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.util.DisplayMetrics;
 import com.tencent.mobileqq.activity.IndividuationSetActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qphone.base.util.QLog;
 
-class cqw
+public class cqw
   implements Runnable
 {
-  cqw(cqv paramcqv, Bitmap paramBitmap) {}
+  public cqw(IndividuationSetActivity paramIndividuationSetActivity) {}
   
   public void run()
   {
-    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    int i = this.jdField_a_of_type_Cqv.a.getResources().getDimensionPixelSize(2131427612);
-    IndividuationSetActivity.a(this.jdField_a_of_type_Cqv.a).setRightIcon(localBitmapDrawable, i, i);
+    int i = (int)(this.a.getResources().getDisplayMetrics().density * 35.0F);
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDownloadTrace", 2, "reqWidth is:" + i + ",reqHeight is:" + i);
+    }
+    Bitmap localBitmap = IndividuationSetActivity.a(this.a, i, i);
+    if (localBitmap != null) {
+      this.a.runOnUiThread(new cqx(this, localBitmap));
+    }
   }
 }
 

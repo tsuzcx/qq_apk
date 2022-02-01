@@ -18,7 +18,7 @@ public class GroupAreaWrapper$ActivityInfo
   protected void a(View paramView)
   {
     ((NearbyTroops.ActivityAndTopicViewHolder)paramView.getTag()).a.setTextColor(paramView.getContext().getResources().getColor(2131361942));
-    paramView.findViewById(2131232394).setBackgroundResource(2130838388);
+    paramView.findViewById(2131232393).setBackgroundResource(2130838388);
   }
   
   protected void a(TextView paramTextView)
@@ -32,10 +32,10 @@ public class GroupAreaWrapper$ActivityInfo
   {
     super.onClick(paramView);
     int i = paramView.getId();
-    if (i == 2131232388) {
+    if (i == 2131232387) {
       ReportController.b(this.a, "P_CliOper", "Grp_nearby", "", "ac", "Clk_list", 0, 0, "", "", "", "");
     }
-    while (i != 2131232392) {
+    while (i != 2131232391) {
       return;
     }
     ReportController.b(this.a, "P_CliOper", "Grp_nearby", "", "ac", "Clk_detail", 0, 0, "", "", "", "");

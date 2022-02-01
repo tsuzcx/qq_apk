@@ -1,24 +1,20 @@
-import android.os.Handler;
-import android.widget.TextView;
+import android.media.AudioManager;
 import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class ewg
   implements Runnable
 {
-  public ewg(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
+  public ewg(VoipDialInterfaceActivity paramVoipDialInterfaceActivity, boolean paramBoolean) {}
   
   public void run()
   {
-    if (VoipDialInterfaceActivity.c(this.a))
+    AudioManager localAudioManager = (AudioManager)this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipDialInterfaceActivity.getSystemService("audio");
+    if (this.jdField_a_of_type_Boolean)
     {
-      VoipDialInterfaceActivity.a(this.a);
-      new String();
-      String str = this.a.a(VoipDialInterfaceActivity.b(this.a) * 1000L);
-      if (VoipDialInterfaceActivity.a(this.a) != null) {
-        VoipDialInterfaceActivity.a(this.a).setText(str);
-      }
+      localAudioManager.setSpeakerphoneOn(true);
+      return;
     }
-    this.a.a.postDelayed(this, 1000L);
+    localAudioManager.setSpeakerphoneOn(false);
   }
 }
 

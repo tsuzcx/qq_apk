@@ -1,93 +1,33 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class dox
-  extends BaseAdapter
+  extends Thread
 {
-  public dox(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
+  public dox(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public int getCount()
+  public void run()
   {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130904025, null);
-    }
-    TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131234601);
-    TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131234603);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131234602);
-    GroupCatalogBean localGroupCatalogBean2 = (GroupCatalogBean)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    Object localObject;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) && (localGroupCatalogBean2.jdField_a_of_type_Int < this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.jdField_a_of_type_Int))
+    try
     {
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
-      paramView = ((GroupCatalogBean)localObject).jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
-      if ((paramView == null) || (paramView.jdField_a_of_type_Int < localGroupCatalogBean2.jdField_a_of_type_Int)) {
-        break label310;
+      TroopHandler localTroopHandler = (TroopHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(19);
+      if (localTroopHandler != null)
+      {
+        long l = Long.parseLong(this.a.jdField_b_of_type_JavaLangString);
+        localTroopHandler.a(l, 0L, 5, null, 6, 1);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(Long.valueOf(l));
+        localTroopHandler.a(localArrayList);
       }
-      if (!localGroupCatalogBean2.b.equals(paramView.b)) {}
+      return;
     }
-    label302:
-    label310:
-    for (paramInt = 1;; paramInt = 0)
+    catch (Exception localException)
     {
-      if (paramInt != 0)
-      {
-        localTextView2.setVisibility(0);
-        localTextView2.setText(((GroupCatalogBean)localObject).jdField_a_of_type_JavaLangString);
-        localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130840347, 0);
-      }
-      for (;;)
-      {
-        localTextView1.setText(localGroupCatalogBean2.jdField_a_of_type_JavaLangString);
-        if ((localGroupCatalogBean2.jdField_a_of_type_JavaUtilArrayList == null) || (localGroupCatalogBean2.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-          break label302;
-        }
-        localImageView.setVisibility(0);
-        return paramViewGroup;
-        GroupCatalogBean localGroupCatalogBean1 = paramView.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
-        localObject = paramView;
-        paramView = localGroupCatalogBean1;
-        break;
-        localTextView2.setVisibility(4);
-        continue;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) && (localGroupCatalogBean2.b.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.b)))
-        {
-          localTextView2.setVisibility(0);
-          localTextView2.setText("");
-          localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130840347, 0);
-        }
-        else
-        {
-          localTextView2.setVisibility(4);
-        }
-      }
-      localImageView.setVisibility(4);
-      return paramViewGroup;
+      while (!QLog.isColorLevel()) {}
+      QLog.i("Q.troopdisband.disband", 2, localException.toString());
     }
   }
 }

@@ -1,31 +1,55 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.GridView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.DataTag;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.widget.AdapterViewPagerAdapter.AdapterViewFactory;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
 public class gfh
-  implements AdapterViewPagerAdapter.AdapterViewFactory
+  implements View.OnClickListener
 {
+  private static final long jdField_a_of_type_Long = 1000L;
+  private long b = 0L;
+  
   public gfh(QzonePhotoView paramQzonePhotoView) {}
   
-  public AdapterView a(Context paramContext, int paramInt)
+  public void onClick(View paramView)
   {
-    paramContext = new GridView(paramContext);
-    paramContext.setNumColumns(4);
-    paramContext.setFadingEdgeLength(0);
-    paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-    paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
-    paramContext.setStretchMode(2);
-    paramContext.setScrollingCacheEnabled(false);
-    paramContext.setSelector(2131361815);
-    ViewPager.LayoutParams localLayoutParams = new ViewPager.LayoutParams();
-    localLayoutParams.gravity = 17;
-    localLayoutParams.height = -2;
-    localLayoutParams.width = -1;
-    paramContext.setLayoutParams(localLayoutParams);
-    return paramContext;
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.b) < 1000L) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          this.b = l;
+        } while ((paramView == null) || (!(paramView.getTag() instanceof DataTag)));
+        paramView = (DataTag)paramView.getTag();
+      } while (paramView == null);
+      int i = paramView.C;
+      paramView = QzonePhotoView.a(this.a).a.a;
+      switch (i)
+      {
+      default: 
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("ProfileCard.QzonePhotoView", 2, "View.OnClickListener click type is photo wall view");
+      }
+      paramView = this.a.a();
+    } while (paramView == null);
+    paramView.type = "PhotoWallCover";
+    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
+    localUserInfo.a = this.a.a.a();
+    localUserInfo.b = this.a.a.e();
+    localUserInfo.c = this.a.a.getSid();
+    QZoneHelper.b(QzonePhotoView.a(this.a), localUserInfo, paramView, 1008);
   }
 }
 

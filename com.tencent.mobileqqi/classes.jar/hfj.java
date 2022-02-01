@@ -1,8 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.utils.CameraUtil;
+import android.content.res.Resources;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.widget.CameraFrameLayout;
-import com.tencent.qphone.base.util.QLog;
 
 public class hfj
   implements Runnable
@@ -11,24 +11,21 @@ public class hfj
   
   public void run()
   {
-    long l1 = System.currentTimeMillis();
-    for (;;)
+    CameraFrameLayout.a(this.a, true);
+    synchronized (CameraFrameLayout.a(this.a))
     {
-      synchronized (CameraFrameLayout.a(this.a))
+      if (CameraFrameLayout.a(this.a) != null)
       {
-        CameraFrameLayout.a(this.a, CameraUtil.a());
-        if (CameraFrameLayout.a(this.a) == null)
-        {
-          i = -1;
-          long l2 = System.currentTimeMillis();
-          if (QLog.isColorLevel()) {
-            QLog.d("CameraFrameLayout", 2, "openRealtimeBg.open camera cost time:" + (l2 - l1));
-          }
-          CameraFrameLayout.a(this.a).obtainMessage(1, i, 0).sendToTarget();
-          return;
-        }
+        CameraFrameLayout.a(this.a, new ImageView(this.a.getContext()));
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        localLayoutParams.addRule(11);
+        localLayoutParams.addRule(3, CameraFrameLayout.a(this.a));
+        CameraFrameLayout.a(this.a).setLayoutParams(localLayoutParams);
+        CameraFrameLayout.a(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837673));
+        CameraFrameLayout.a(this.a).addView(CameraFrameLayout.a(this.a));
+        CameraFrameLayout.a(this.a).setOnClickListener(new hfk(this));
       }
-      int i = 0;
+      return;
     }
   }
 }

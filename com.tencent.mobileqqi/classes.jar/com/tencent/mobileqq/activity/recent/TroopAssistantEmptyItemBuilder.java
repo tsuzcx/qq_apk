@@ -54,7 +54,7 @@ public class TroopAssistantEmptyItemBuilder
       if ((paramObject instanceof Integer))
       {
         paramObject = (Integer)paramObject;
-        paramDrawable = (TextView)paramView.findViewById(2131234592);
+        paramDrawable = (TextView)paramView.findViewById(2131234591);
         if (paramObject.intValue() != 4) {
           break label219;
         }

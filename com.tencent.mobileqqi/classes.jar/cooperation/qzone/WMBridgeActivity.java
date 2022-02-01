@@ -20,7 +20,7 @@ import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedL
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
-import icg;
+import icf;
 import java.io.File;
 import java.math.BigDecimal;
 
@@ -87,9 +87,9 @@ public class WMBridgeActivity
       QLog.d("IphoneTitleBarActivity", 4, "[WMBridgeActivity] [initUI] start!");
     }
     setTitle("水印相机");
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131234859));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234858));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234860));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131234858));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131234857));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234859));
     if (new File(c + "watermark.jpg").exists())
     {
       if (QLog.isDevelopLevel()) {
@@ -169,7 +169,7 @@ public class WMBridgeActivity
   
   public void d()
   {
-    new Thread(new icg(this)).start();
+    new Thread(new icf(this)).start();
   }
   
   public boolean handleMessage(Message paramMessage)

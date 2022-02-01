@@ -12,8 +12,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
+import coy;
 import coz;
-import cpa;
 
 public class GesturePWDSettingActivity
   extends IphoneTitleBarActivity
@@ -21,7 +21,7 @@ public class GesturePWDSettingActivity
   static final int jdField_a_of_type_Int = 11;
   public static final String a = "key_reset";
   private static final int jdField_b_of_type_Int = 10;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cpa(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new coz(this);
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
@@ -41,18 +41,18 @@ public class GesturePWDSettingActivity
   private void d()
   {
     setTitle(2131562589);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131231746);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131231750);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131231753);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231747));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231751));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231749);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131231745);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131231749);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131231752);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231746));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231750));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231748);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_c_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_d_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231745));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new coz(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231744));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new coy(this));
   }
   
   private void e()

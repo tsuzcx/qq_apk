@@ -1,22 +1,19 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
-import mqq.app.permission.PermissionItem;
-import mqq.app.permission.PermissionManager;
+import mqq.app.permission.PermissionCallback;
 
-public class cth
-  implements PermissionDialogCallback
+class cth
+  implements PermissionCallback
 {
-  public cth(LoginActivity paramLoginActivity, View paramView) {}
+  cth(ctg paramctg) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    LoginActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity, this.jdField_a_of_type_AndroidViewView);
+    LoginActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity, this.a.jdField_a_of_type_AndroidViewView);
   }
   
-  public void b()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).request(new cti(this));
+    LoginActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity, this.a.jdField_a_of_type_AndroidViewView);
   }
 }
 

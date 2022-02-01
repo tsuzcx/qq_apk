@@ -1,7 +1,7 @@
 package com.tencent.wstt.SSCM;
 
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import hxh;
+import hxg;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -36,7 +36,7 @@ public class SSCMTimer
   
   private TimerTask a()
   {
-    return new hxh(this);
+    return new hxg(this);
   }
   
   public int a()

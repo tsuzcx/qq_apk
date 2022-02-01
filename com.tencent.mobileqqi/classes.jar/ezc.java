@@ -1,30 +1,20 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import mqq.app.AppRuntime;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ezc
-  extends fcu
+  implements Runnable
 {
-  protected void a(String paramString)
-  {
-    this.a.a(3, paramString);
-  }
+  public ezc(BaseActivity paramBaseActivity) {}
   
-  protected void b()
+  public void run()
   {
-    this.a.a(4, "fake_p_msg");
-  }
-  
-  protected void b(String paramString)
-  {
-    this.a.b(false);
-    CoreService.b();
-    this.a.e();
-    this.a.a(new String[0]);
-    long l = this.a.a(Process.myPid());
-    BaseApplicationImpl.a.a().onAppGuardModeChange(false, 0, (int)l);
+    if (BaseActivity.a() == null)
+    {
+      ezf localezf = new ezf(null);
+      SensorManager localSensorManager = (SensorManager)this.a.getSystemService("sensor");
+      localSensorManager.registerListener(localezf, localSensorManager.getDefaultSensor(1), 0);
+      BaseActivity.a(localezf);
+    }
   }
 }
 

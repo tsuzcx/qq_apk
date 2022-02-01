@@ -23,8 +23,8 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.qcall.QCallFacade;
 import com.tencent.mobileqq.qcall.QCallProxy;
 import com.tencent.mobileqq.utils.ContactUtils;
+import ewt;
 import ewu;
-import ewv;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -72,7 +72,7 @@ public class VoipHistoryInterface
   
   public ArrayList a(Context paramContext)
   {
-    ewu localewu = new ewu(this);
+    ewt localewt = new ewt(this);
     ArrayList localArrayList = new ArrayList();
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
     Object localObject1 = (PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
@@ -228,7 +228,7 @@ public class VoipHistoryInterface
         }
         ((QCallRecent)localObject3).displayName = paramContext.getString(2131560604);
         break;
-        Collections.sort(localArrayList, localewu);
+        Collections.sort(localArrayList, localewt);
         return localArrayList;
       }
     }
@@ -236,7 +236,7 @@ public class VoipHistoryInterface
   
   public List a(VoipContact paramVoipContact)
   {
-    Object localObject3 = new ewv(this);
+    Object localObject3 = new ewu(this);
     Object localObject2 = new ArrayList();
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a());
     ((ArrayList)localObject2).clear();

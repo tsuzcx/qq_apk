@@ -1,7 +1,7 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class dhr
   implements DialogInterface.OnClickListener
@@ -10,10 +10,9 @@ public class dhr
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = true;
-    SendMultiPictureHelper.b(this.a);
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    this.a.a.show();
+    this.a.b = false;
+    SendMultiPictureHelper.c(this.a);
   }
 }
 

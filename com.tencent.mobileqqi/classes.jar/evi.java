@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipDialInterface;
 import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class evi
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public evi(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("uin", this.a.b.a());
-    this.a.startActivity(paramDialogInterface.putExtra("url", "http://mp.imqq.com/user/charge"));
-    this.a.finish();
+    this.a.a.a("6");
+    VoipDialInterfaceActivity.a(this.a, '6');
+    if (VoipDialInterfaceActivity.b(this.a)) {
+      new Thread(new evj(this)).start();
+    }
   }
 }
 

@@ -1,15 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-class etc
-  implements Runnable
+public class etc
+  implements DialogInterface.OnClickListener
 {
-  etc(etb parametb) {}
+  public etc(VoipAddressBookView paramVoipAddressBookView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VoipAddressBookView.f(this.a.a).e();
-    this.a.a.a.sendEmptyMessage(3);
+    VoipAddressBookView.l(this.a);
+    this.a.n();
   }
 }
 

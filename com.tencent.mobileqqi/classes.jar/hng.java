@@ -1,37 +1,28 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.adapter.CommonDataAdapter;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.appreport.AppReport;
 import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.io.File;
+import com.tencent.tmassistantsdk.downloadclient.ITMAssistantDownloadSDKClientListener;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 
 public class hng
-  implements Runnable
+  implements ITMAssistantDownloadSDKClientListener
 {
   public hng(DownloadManager paramDownloadManager) {}
   
-  public void run()
+  public void OnDownloadSDKTaskProgressChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString, long paramLong1, long paramLong2)
   {
-    Context localContext = CommonDataAdapter.a().a();
-    boolean bool = localContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false);
-    SimpleAccount localSimpleAccount = BaseApplicationImpl.a().getFirstSimpleAccount();
-    String str = "";
-    if (localSimpleAccount != null) {
-      str = localSimpleAccount.getUin();
-    }
-    if (!bool)
-    {
-      LogUtility.c(DownloadManager.a, "getUpdateApp will do full report");
-      AppReport.a(localContext, null, null, str);
-    }
-    while (!new File(localContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists()) {
-      return;
-    }
-    LogUtility.c(DownloadManager.a, "getUpdateApp will do incremental report");
-    AppReport.a(localContext, null, 0, null, null, str);
+    ThreadManager.b().post(new hni(this, paramLong1, paramLong2, paramString));
+  }
+  
+  public void OnDownloadSDKTaskStateChanged(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    ThreadManager.b().post(new hnh(this, paramTMAssistantDownloadSDKClient, paramInt1, paramString1, paramInt2, paramString2));
+  }
+  
+  public void OnDwonloadSDKServiceInvalid(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient)
+  {
+    LogUtility.e(DownloadManager.a, "OnDwonloadSDKServiceInvalid");
   }
 }
 

@@ -1,32 +1,12 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.managers.ShieldMsgManger;
-import java.util.List;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class ccu
-  extends ShieldListObserver
+  extends MessageObserver
 {
   public ccu(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected void a(boolean paramBoolean, List paramList)
-  {
-    if (!ChatSettingActivity.c(this.a)) {}
-    do
-    {
-      return;
-      ChatSettingActivity.c(this.a, false);
-      ChatSettingActivity.e(this.a);
-    } while (!paramBoolean);
-    paramList = (ShieldMsgManger)this.a.b.getManager(14);
-    if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
-      ChatSettingActivity.b(this.a, paramList.a(ChatSettingActivity.d(this.a)));
-    }
-    ChatSettingActivity.c(this.a);
-  }
-  
-  protected void b(boolean paramBoolean, List paramList)
+  protected void b(boolean paramBoolean, String paramString)
   {
     if (!ChatSettingActivity.c(this.a)) {
       return;
@@ -35,14 +15,31 @@ public class ccu
     ChatSettingActivity.e(this.a);
     if (paramBoolean)
     {
-      paramList = (ShieldMsgManger)this.a.b.getManager(14);
-      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.b(this.a, paramList.a(ChatSettingActivity.d(this.a)));
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.b(this.a, true);
       }
       ChatSettingActivity.c(this.a);
       return;
     }
-    ChatSettingActivity.a(this.a, 2131561761, 1);
+    ChatSettingActivity.a(this.a, 2131562919, 1);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    if (!ChatSettingActivity.c(this.a)) {
+      return;
+    }
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.e(this.a);
+    if (paramBoolean)
+    {
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.b(this.a, false);
+      }
+      ChatSettingActivity.c(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131562919, 1);
   }
 }
 

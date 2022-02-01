@@ -9,6 +9,7 @@ public class iay
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    QlinkStandardDialogActivity.a(this.a);
     this.a.finish();
   }
 }

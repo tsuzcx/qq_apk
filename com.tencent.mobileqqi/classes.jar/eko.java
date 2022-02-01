@@ -1,21 +1,18 @@
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.util.Utils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class eko
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public eko(BindVerifyActivity paramBindVerifyActivity, String paramString1, String paramString2) {}
+  public eko(ContactListView paramContactListView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = Utils.b(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() > 0) && (BindVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBindVerifyActivity) != null))
-    {
-      BindVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBindVerifyActivity).setText(str);
-      BindVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBindVerifyActivity).setEnabled(true);
-    }
+    this.a.a.a(new ekp(this));
+    this.a.h();
+    this.a.m();
   }
 }
 

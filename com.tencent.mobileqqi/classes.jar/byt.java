@@ -1,19 +1,18 @@
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
-import mqq.app.permission.PermissionItem;
-import mqq.app.permission.PermissionManager;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
 class byt
-  implements PermissionDialogCallback
+  implements PermissionCallback
 {
   byt(bys parambys) {}
   
-  public void a() {}
-  
-  public void b()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.RECORD_AUDIO", 400), PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new byu(this));
+    new PermissionsDialog().a(this.a.a.a.a(), paramInt, paramArrayOfString, new byu(this));
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

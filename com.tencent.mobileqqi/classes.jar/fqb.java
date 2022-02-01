@@ -1,20 +1,46 @@
-import android.view.View;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
-class fqb
-  implements ActionSheet.OnButtonClickListener
+public class fqb
+  extends FMObserver
 {
-  fqb(fqa paramfqa, RecentFileAdapter.ItemHolder paramItemHolder, ActionSheet paramActionSheet) {}
+  public fqb(FMActivity paramFMActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a()
   {
-    FileManagerUtil.a(this.jdField_a_of_type_Fqa.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter$ItemHolder.a, this.jdField_a_of_type_Fqa.a.b, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter$ItemHolder.a.bSend);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    super.a();
+    this.a.runOnUiThread(new fqf(this));
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (this.a.d) {
+      return;
+    }
+    this.a.runOnUiThread(new fqg(this, paramBoolean));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.runOnUiThread(new fqc(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.runOnUiThread(new fqd(this, paramLong2));
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    if (!this.a.d) {
+      FMToastUtil.a(paramString);
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.runOnUiThread(new fqe(this));
   }
 }
 

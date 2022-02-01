@@ -1,39 +1,29 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.util.QLog;
 
 public class ccy
-  implements QvipSpecialSoundManager.CallBack
+  implements Runnable
 {
-  public ccy(ChatSettingActivity paramChatSettingActivity) {}
+  public ccy(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {}
-    for (;;)
+    Message localMessage = null;
+    Object localObject = localMessage;
+    if (this.jdField_a_of_type_JavaLangStringBuilder != null)
     {
-      try
-      {
-        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCareManager.a(ChatSettingActivity.a(this.a)));
-        ChatSettingActivity.a(this.a).setRightText(str);
-        return;
+      localObject = localMessage;
+      if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
+        localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        ChatSettingActivity.b(this.a);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i(ChatSettingActivity.b(this.a), 2, "loadSpecialSoundConfig fail.");
-      }
-      ChatSettingActivity.a(this.a).setRightText("");
+    }
+    if (ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), this.jdField_a_of_type_JavaLangStringBuilder) > 0)
+    {
+      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.a.obtainMessage();
+      localMessage.what = 18;
+      localMessage.obj = localObject;
+      localMessage.sendToTarget();
     }
   }
 }

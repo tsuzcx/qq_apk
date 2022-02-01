@@ -1,19 +1,57 @@
-class fla
-  implements Runnable
+import android.os.Build.VERSION;
+import java.util.AbstractCollection;
+import java.util.ArrayDeque;
+import java.util.concurrent.ArrayBlockingQueue;
+
+public class fla
 {
-  fla(fkz paramfkz, Runnable paramRunnable) {}
+  final AbstractCollection a;
   
-  public void run()
+  public fla(int paramInt)
   {
-    try
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      this.a = new ArrayDeque();
       return;
     }
-    finally
+    this.a = new ArrayBlockingQueue(30);
+  }
+  
+  public int a()
+  {
+    return this.a.size();
+  }
+  
+  public Object a()
+  {
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      this.jdField_a_of_type_Fkz.a();
+      if ((this.a instanceof ArrayDeque)) {
+        return ((ArrayDeque)this.a).poll();
+      }
     }
+    else if ((this.a instanceof ArrayBlockingQueue)) {
+      return ((ArrayBlockingQueue)this.a).poll();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      if ((this.a instanceof ArrayDeque)) {
+        ((ArrayDeque)this.a).offer(paramObject);
+      }
+    }
+    while (!(this.a instanceof ArrayBlockingQueue)) {
+      return;
+    }
+    ((ArrayBlockingQueue)this.a).offer(paramObject);
   }
 }
 

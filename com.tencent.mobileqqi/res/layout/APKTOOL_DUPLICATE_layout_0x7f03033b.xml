@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00ba" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d81" android:paddingLeft="10.0dip" android:paddingTop="20.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0b8d" android:singleLine="true" />
-    <com.qzone.widget.CommonLine android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d82" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01ad" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00ba" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d80" android:paddingLeft="10.0dip" android:paddingTop="20.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0b8d" android:singleLine="true" />
+    <com.qzone.widget.CommonLine android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d81" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01ad" />
 </LinearLayout>

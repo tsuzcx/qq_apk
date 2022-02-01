@@ -2,7 +2,7 @@ import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 import com.tencent.qphone.base.util.QLog;
 
 public class fvw
-  extends fvb
+  extends fva
 {
   public fvw(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
@@ -11,7 +11,7 @@ public class fvw
   
   protected String a()
   {
-    return "StateSaveToWeiYunByPCWhenPause";
+    return "StateSaveToWeiYunByPCWhenToOffFailed";
   }
   
   protected void a()
@@ -23,8 +23,8 @@ public class fvw
     }
     OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
     OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Fvb = new fvv(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fva.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Fva = new fvu(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
   }
 }
 

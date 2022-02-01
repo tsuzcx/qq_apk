@@ -1,51 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.SearchTroopListActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.activity.TroopSearchLogicActivity;
-import java.util.List;
-import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.troop.activity.TroopTagViewActivity;
 
 public class guq
-  extends Handler
+  implements View.OnClickListener
 {
-  public guq(TroopSearchLogicActivity paramTroopSearchLogicActivity) {}
+  public guq(TroopTagViewActivity paramTroopTagViewActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    boolean bool;
-    if (paramMessage.what == 1)
-    {
-      this.a.d();
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 != 1) {
-        break label183;
-      }
-      bool = true;
-      paramMessage = (List)paramMessage.obj;
-      if ((paramMessage == null) || (paramMessage.size() != 1)) {
-        break label188;
-      }
-      paramMessage = (SearchGroup.GroupInfo)paramMessage.get(0);
-      paramMessage = TroopInfoActivity.a(6, String.valueOf(paramMessage.dwGroupCode.get()), "", paramMessage.sGroupName.get(), String.valueOf(paramMessage.dwGroupOwnerId.get()), "", (byte)SearchTroopListActivity.a(paramMessage), paramMessage.dwGroupFlagExt.get(), (short)paramMessage.dwGroupFaceId.get(), paramMessage.sGroupFingerMem.get(), paramMessage.sGroupLocation.get(), paramMessage.bGroupIn.get(), null, paramMessage.dwGroupFlagExt.get(), paramMessage.dwAuthGroupType.get(), this.a.jdField_d_of_type_Int);
-      ChatSettingForTroop.a(this.a, paramMessage, 2);
+    paramView = new Intent(this.a, TroopTagViewActivity.class);
+    paramView.putExtra("troopuin", TroopTagViewActivity.a(this.a));
+    paramView.putExtra("tags", TroopTagViewActivity.b(this.a));
+    paramView.putExtra("act_type", 2);
+    paramView.putExtra("modifyToSrv", this.a.d);
+    if ((this.a.getAppRuntime() instanceof BrowserAppInterface)) {
+      paramView.putExtra("uin", ((BrowserAppInterface)this.a.getAppRuntime()).a());
     }
-    for (;;)
-    {
-      this.a.finish();
-      return;
-      label183:
-      bool = false;
-      break;
-      label188:
-      if ((paramMessage != null) && (paramMessage.size() > 1)) {
-        SearchTroopListActivity.a(this.a, this.a.jdField_d_of_type_JavaLangString, paramMessage, bool);
-      }
-    }
+    this.a.startActivity(paramView);
   }
 }
 

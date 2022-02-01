@@ -4,7 +4,7 @@
         <item>China 86 11 Muy-a-menudo-los-países-seleccionados</item>
         <item>Macao-(China) 853 8 Muy-a-menudo-los-países-seleccionados</item>
         <item>Hong-Kong-(China) 852 8 Muy-a-menudo-los-países-seleccionados</item>
-        <item>Taiwán 886 10 Muy-a-menudo-los-países-seleccionados</item>
+        <item>Taiwán(China) 886 10 Muy-a-menudo-los-países-seleccionados</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002d">
         <item>Muy-a-menudo-los-países-seleccionados</item>
@@ -204,7 +204,7 @@
         <item>Suriname 597 6 S</item>
         <item>Swazilandia 268 7 S</item>
         <item>Tailandia 66 10 T</item>
-        <item>Taiwan 886 10 T</item>
+        <item>Taiwan(China) 886 10 T</item>
         <item>Tanzania 255 11 T</item>
         <item>Tayikistán 992 6 T</item>
         <item>Timor-Leste 670 0 T</item>

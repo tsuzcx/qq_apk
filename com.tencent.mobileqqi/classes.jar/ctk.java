@@ -7,7 +7,9 @@ public class ctk
   
   public void run()
   {
-    LoginActivity.a(this.a, true);
+    if (!this.a.isFinishing()) {
+      this.a.showDialog(3);
+    }
   }
 }
 

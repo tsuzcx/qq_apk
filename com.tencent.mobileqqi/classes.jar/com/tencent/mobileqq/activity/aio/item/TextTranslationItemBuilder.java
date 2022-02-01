@@ -48,8 +48,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqfav.QfavBuilder;
 import cooperation.qqfav.QfavReport;
+import ebe;
 import ebf;
-import ebg;
 import java.util.HashMap;
 
 public class TextTranslationItemBuilder
@@ -130,8 +130,8 @@ public class TextTranslationItemBuilder
   
   private void a(BaseChatItemLayout paramBaseChatItemLayout, TextTranslationItemBuilder.Holder paramHolder)
   {
-    paramHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramHolder.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233300));
-    paramHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramHolder.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233301));
+    paramHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramHolder.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233299));
+    paramHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramHolder.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233300));
   }
   
   private void a(TextTranslationItemBuilder.Holder paramHolder)
@@ -289,7 +289,7 @@ public class TextTranslationItemBuilder
     i1 = paramHolder.jdField_a_of_type_AndroidWidgetTextView.getMeasuredHeight();
     paramHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramChatMessage);
     paramChatMessage = new BubbleResizeAnimation(paramHolder.jdField_a_of_type_AndroidViewViewGroup, 300, m, i1 - n);
-    paramChatMessage.setAnimationListener(new ebf(this, paramHolder, (CharSequence)localObject2));
+    paramChatMessage.setAnimationListener(new ebe(this, paramHolder, (CharSequence)localObject2));
     paramHolder.jdField_a_of_type_AndroidViewViewGroup.startAnimation(paramChatMessage);
   }
   
@@ -321,7 +321,7 @@ public class TextTranslationItemBuilder
     {
       paramViewHolder = (LinearLayout)((Activity)localContext).getLayoutInflater().inflate(2130903661, null);
       paramBaseChatItemLayout.jdField_a_of_type_AndroidViewViewGroup = paramViewHolder;
-      paramBaseChatItemLayout.jdField_a_of_type_AndroidWidgetTextView = ((AnimationTextView)paramViewHolder.findViewById(2131231227));
+      paramBaseChatItemLayout.jdField_a_of_type_AndroidWidgetTextView = ((AnimationTextView)paramViewHolder.findViewById(2131231226));
       paramBaseChatItemLayout.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(BaseChatItemLayout.f);
       paramBaseChatItemLayout.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(new LinkMovementMethod());
     }
@@ -435,7 +435,7 @@ public class TextTranslationItemBuilder
       }
       i += 1;
       paramHolder.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-      if (!AITranslator.a().a(localContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramHolder, paramHolder.jdField_a_of_type_JavaLangString, Language.fromString(str), new ebg(this, paramHolder, localContext, str)).booleanValue())
+      if (!AITranslator.a().a(localContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramHolder, paramHolder.jdField_a_of_type_JavaLangString, Language.fromString(str), new ebf(this, paramHolder, localContext, str)).booleanValue())
       {
         b(paramHolder);
         TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(str, paramHolder.jdField_b_of_type_JavaLangString, paramHolder.jdField_a_of_type_Long, Boolean.valueOf(false));
@@ -471,7 +471,7 @@ public class TextTranslationItemBuilder
   public void onClick(View paramView)
   {
     boolean bool = false;
-    if ((paramView.getId() == 2131230779) || (paramView.getId() == 2131231227))
+    if ((paramView.getId() == 2131230779) || (paramView.getId() == 2131231226))
     {
       if (QQText.a.booleanValue())
       {

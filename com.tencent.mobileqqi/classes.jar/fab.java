@@ -1,22 +1,41 @@
 import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.conditionsearch.data.AddressHelper;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public class fab
+class fab
   implements Runnable
 {
-  public fab(ConditionSearchManager paramConditionSearchManager, File paramFile) {}
+  fab(faa paramfaa) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
-    ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager, AddressHelper.a(ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager), this.jdField_a_of_type_JavaIoFile));
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "updateLocal | doParse cost " + (System.currentTimeMillis() - l) / 1000L + " seconds");
+    ConditionSearchManager.a(this.a.a, false);
+    if (this.a.a.b)
+    {
+      if (this.a.a.a != null)
+      {
+        Iterator localIterator = this.a.a.a.iterator();
+        if (localIterator.hasNext())
+        {
+          ConditionSearchManager.IConfigListener localIConfigListener = (ConditionSearchManager.IConfigListener)localIterator.next();
+          if (ConditionSearchManager.a(this.a.a) != null) {}
+          for (boolean bool = true;; bool = false)
+          {
+            localIConfigListener.a(2, bool);
+            break;
+          }
+        }
+      }
     }
-    ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager).runOnUiThread(new fac(this));
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearch.Manager", 2, "updateLocal | SearchActivity is not running");
+      }
+      ConditionSearchManager.a(this.a.a, null);
+    }
   }
 }
 

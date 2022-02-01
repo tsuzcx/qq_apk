@@ -2,13 +2,13 @@ package com.tencent.widget;
 
 import android.database.DataSetObserver;
 import android.widget.BaseAdapter;
-import hxd;
+import hxc;
 
 public abstract class XBaseAdapter
   extends BaseAdapter
   implements XListAdapter
 {
-  private final hxd a = new hxd(this);
+  private final hxc a = new hxc(this);
   
   public void a(int paramInt1, int paramInt2)
   {

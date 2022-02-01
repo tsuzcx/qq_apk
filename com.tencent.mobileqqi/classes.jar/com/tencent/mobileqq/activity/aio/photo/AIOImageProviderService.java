@@ -19,9 +19,9 @@ import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqfav.QfavBuilder;
+import ecn;
 import eco;
 import ecp;
-import ecq;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -90,7 +90,7 @@ public class AIOImageProviderService
   
   public void a(long paramLong, int paramInt)
   {
-    ThreadManager.a().post(new ecq(this, paramLong, paramInt));
+    ThreadManager.a().post(new ecp(this, paramLong, paramInt));
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2)
@@ -117,7 +117,7 @@ public class AIOImageProviderService
         PicReq localPicReq = PicBusiManager.a(j, 1);
         localPicReq.a(localMessageForPic.getPicDownloadInfo());
         String str = AbsDownloader.d(URLDrawableHelper.a(localMessageForPic, i, null).toString().toString());
-        localPicReq.a(new eco(this, paramLong, paramInt1, paramInt2, localMessageForPic.size, str));
+        localPicReq.a(new ecn(this, paramLong, paramInt1, paramInt2, localMessageForPic.size, str));
         PicBusiManager.a(localPicReq, (QQAppInterface)localObject);
         return;
       }
@@ -140,7 +140,7 @@ public class AIOImageProviderService
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack == null) {
       return;
     }
-    ThreadManager.a().post(new ecp(this));
+    ThreadManager.a().post(new eco(this));
   }
   
   public void b(long paramLong, int paramInt1, int paramInt2)

@@ -1,31 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.PublicAccountChatActivity;
-import java.util.List;
-import mqq.observer.BusinessObserver;
 
 public class dba
-  implements BusinessObserver
+  implements View.OnClickListener
 {
   public dba(PublicAccountChatActivity paramPublicAccountChatActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBundle != null)
-    {
-      paramInt = paramBundle.getInt("update_type");
-      if (paramInt != 2) {}
-    }
-    do
-    {
-      return;
-      if (paramInt == 1) {
-        PublicAccountChatActivity.a(this.a).a();
-      }
-      paramBundle = PublicAccountChatActivity.a(this.a).a(this.a.b, this.a.c());
-      PublicAccountChatActivity.a(this.a, paramBundle);
-    } while ((paramBundle == null) || (paramBundle.isEmpty()));
-    this.a.d(true);
+    paramView.setVisibility(8);
   }
 }
 

@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import cgx;
 import cgy;
 import cgz;
 import cha;
@@ -35,11 +36,10 @@ import chi;
 import chj;
 import chk;
 import chl;
-import chm;
+import chn;
 import cho;
-import chp;
+import chq;
 import chr;
-import chs;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -123,20 +123,20 @@ public class DiscussionInfoCardActivity
   private float jdField_a_of_type_Float;
   protected final int a;
   private long jdField_a_of_type_Long;
-  private DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new chj(this);
+  private DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new chi(this);
   private Intent jdField_a_of_type_AndroidContentIntent;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public Handler a;
   private Button jdField_a_of_type_AndroidWidgetButton;
   protected ImageView a;
-  private chs jdField_a_of_type_Chs;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new chf(this);
+  private chr jdField_a_of_type_Chr;
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new che(this);
   private CardHandler jdField_a_of_type_ComTencentMobileqqAppCardHandler;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cgz(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cgy(this);
   private DiscussionHandler jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler;
-  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new chp(this);
+  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new cho(this);
   private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cho(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new chn(this);
   public DiscussionInfo a;
   private DiscussionMemberManager jdField_a_of_type_ComTencentMobileqqManagersDiscussionMemberManager;
   private QQCustomDialogWtihInput jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput;
@@ -150,12 +150,12 @@ public class DiscussionInfoCardActivity
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean = false;
   private long jdField_b_of_type_Long;
-  private DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new chk(this);
+  private DialogInterface.OnClickListener jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new chj(this);
   public Handler b;
   private FormSimpleItem jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   private FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private QQProgressDialog jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private Handler jdField_c_of_type_AndroidOsHandler = new cha(this);
+  private Handler jdField_c_of_type_AndroidOsHandler = new cgz(this);
   private FormSimpleItem jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   private FormSimpleItem jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   private FormSimpleItem e;
@@ -204,8 +204,8 @@ public class DiscussionInfoCardActivity
     this.jdField_a_of_type_Int = 10;
     this.jdField_h_of_type_Int = 0;
     this.jdField_j_of_type_Int = 2;
-    this.jdField_a_of_type_AndroidOsHandler = new chl(this);
-    this.jdField_b_of_type_AndroidOsHandler = new chm(this);
+    this.jdField_a_of_type_AndroidOsHandler = new chk(this);
+    this.jdField_b_of_type_AndroidOsHandler = new chl(this);
   }
   
   private Bitmap a()
@@ -292,7 +292,7 @@ public class DiscussionInfoCardActivity
       String str = ((TicketManager)paramQQAppInterface.getManager(2)).getSkey(paramQQAppInterface.getAccount());
       if (!TextUtils.isEmpty(str))
       {
-        new Thread(new chg(paramLong, paramQQAppInterface, paramString2, str, paramActivity, paramString3, paramString1, paramInt, paramQQProgressDialog)).start();
+        new Thread(new chf(paramLong, paramQQAppInterface, paramString2, str, paramActivity, paramString3, paramString1, paramInt, paramQQProgressDialog)).start();
         return;
       }
     }
@@ -404,7 +404,7 @@ public class DiscussionInfoCardActivity
   {
     try
     {
-      new Thread(new chi(this, paramString)).start();
+      new Thread(new chh(this, paramString)).start();
       return;
     }
     finally
@@ -478,18 +478,18 @@ public class DiscussionInfoCardActivity
     Object localObject2 = View.inflate(this, 2130903118, null);
     ((XListView)localObject1).setAdapter(new XSimpleListAdapter((View)localObject2));
     setContentView((View)localObject1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)((View)localObject2).findViewById(2131231290));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView = ((MyGridView)((View)localObject2).findViewById(2131231282));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231281));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231286));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231285));
-    this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231284));
-    this.f = ((FormSimpleItem)((View)localObject2).findViewById(2131231288));
-    this.g = ((FormSimpleItem)((View)localObject2).findViewById(2131231289));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject2).findViewById(2131231292));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)((View)localObject2).findViewById(2131231291));
-    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231283));
-    this.jdField_h_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231287));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)((View)localObject2).findViewById(2131231289));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView = ((MyGridView)((View)localObject2).findViewById(2131231281));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231280));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231285));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231284));
+    this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231283));
+    this.f = ((FormSimpleItem)((View)localObject2).findViewById(2131231287));
+    this.g = ((FormSimpleItem)((View)localObject2).findViewById(2131231288));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject2).findViewById(2131231291));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)((View)localObject2).findViewById(2131231290));
+    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231282));
+    this.jdField_h_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)((View)localObject2).findViewById(2131231286));
     this.jdField_h_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
     a(this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView);
     this.f.setOnClickListener(this);
@@ -498,7 +498,7 @@ public class DiscussionInfoCardActivity
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
     this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new cgy(this));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new cgx(this));
     this.jdField_h_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
     setTitle(2131561803);
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(this.jdField_k_of_type_JavaLangString);
@@ -518,7 +518,7 @@ public class DiscussionInfoCardActivity
     {
       localObject2 = getString(2131562883);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription((CharSequence)localObject2);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new chh(this, (DiscussionInfo)localObject1));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new chg(this, (DiscussionInfo)localObject1));
       this.jdField_a_of_type_ComTencentMobileqqManagersDiscussionMemberManager = ((DiscussionMemberManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(27));
       this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(Long.valueOf(this.jdField_l_of_type_JavaLangString).longValue());
       if ((localObject1 == null) || (((DiscussionInfo)localObject1).ownerUin == null) || (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a() == null) || (!((DiscussionInfo)localObject1).ownerUin.equals(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a()))) {
@@ -628,8 +628,8 @@ public class DiscussionInfoCardActivity
     localObject2 = DialogUtil.a(this, 230);
     ((QQCustomDialog)localObject2).setTitle(getString(2131562705));
     ((QQCustomDialog)localObject2).setMessage(String.format(getString(2131561975), new Object[] { localObject1 }));
-    ((QQCustomDialog)localObject2).setPositiveButton(2131562703, new chb(this));
-    ((QQCustomDialog)localObject2).setNegativeButton(2131561751, new chc(this));
+    ((QQCustomDialog)localObject2).setPositiveButton(2131562703, new cha(this));
+    ((QQCustomDialog)localObject2).setNegativeButton(2131561751, new chb(this));
     ((QQCustomDialog)localObject2).show();
   }
   
@@ -787,7 +787,7 @@ public class DiscussionInfoCardActivity
           localArrayList.add(localObject2);
         }
       }
-      Collections.sort(localArrayList, new chr(this));
+      Collections.sort(localArrayList, new chq(this));
       localArrayList.add(0, localObject1);
       paramList = new ArrayList();
       localObject1 = new ArrayList();
@@ -883,8 +883,8 @@ public class DiscussionInfoCardActivity
           do
           {
             return;
-          } while (this.jdField_a_of_type_Chs == null);
-          this.jdField_a_of_type_Chs.notifyDataSetChanged();
+          } while (this.jdField_a_of_type_Chr == null);
+          this.jdField_a_of_type_Chr.notifyDataSetChanged();
           return;
           t();
           finish();
@@ -930,8 +930,8 @@ public class DiscussionInfoCardActivity
       if ((paramIntent != null) && (paramIntent.getBooleanExtra("finchat", false))) {
         finish();
       }
-    } while (this.jdField_a_of_type_Chs == null);
-    this.jdField_a_of_type_Chs.notifyDataSetChanged();
+    } while (this.jdField_a_of_type_Chr == null);
+    this.jdField_a_of_type_Chr.notifyDataSetChanged();
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -991,8 +991,8 @@ public class DiscussionInfoCardActivity
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
     localQQCustomDialog.setTitle(getString(2131561953));
     localQQCustomDialog.setMessage(getString(2131561670));
-    localQQCustomDialog.setPositiveButton(2131562544, new chd(this));
-    localQQCustomDialog.setNegativeButton(2131561751, new che(this));
+    localQQCustomDialog.setPositiveButton(2131562544, new chc(this));
+    localQQCustomDialog.setNegativeButton(2131561751, new chd(this));
     localQQCustomDialog.show();
   }
   
@@ -1099,31 +1099,31 @@ public class DiscussionInfoCardActivity
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     switch (paramView.getId())
     {
-    case 2131231282: 
-    case 2131231284: 
+    case 2131231281: 
+    case 2131231283: 
+    case 2131231289: 
     case 2131231290: 
-    case 2131231291: 
     default: 
       return;
-    case 2131231281: 
+    case 2131231280: 
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput = DialogUtil.a(this, 2131562432, null, this.jdField_k_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
       return;
-    case 2131231286: 
+    case 2131231285: 
       n();
       return;
-    case 2131231285: 
+    case 2131231284: 
       b();
       return;
-    case 2131231288: 
+    case 2131231287: 
       p();
       return;
-    case 2131231289: 
+    case 2131231288: 
       q();
       return;
-    case 2131231292: 
+    case 2131231291: 
       s();
       return;
-    case 2131231287: 
+    case 2131231286: 
       d();
       return;
     }

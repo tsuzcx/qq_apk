@@ -1,27 +1,27 @@
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.animation.AnimationSet;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class hhp
-  implements Runnable
+class hhp
+  implements Animation.AnimationListener
 {
-  public hhp(ScrollerRunnable paramScrollerRunnable, View paramView) {}
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_Hho.a.getBackground();
   
-  public void run()
+  hhp(hho paramhho) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    hhr localhhr1 = new hhr(this.jdField_a_of_type_AndroidViewView, 1.0F, 0.0F);
-    localhhr1.setFillEnabled(true);
-    localhhr1.setDuration(700L);
-    hhr localhhr2 = new hhr(this.jdField_a_of_type_AndroidViewView, 0.0F, 1.0F);
-    localhhr2.setFillEnabled(true);
-    localhhr2.setStartTime(700L);
-    localhhr2.setDuration(700L);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localhhr1);
-    localAnimationSet.addAnimation(localhhr2);
-    localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new hhq(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+    this.jdField_a_of_type_Hho.a.clearAnimation();
+    this.jdField_a_of_type_Hho.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_Hho.a.setBackgroundResource(17170443);
   }
 }
 

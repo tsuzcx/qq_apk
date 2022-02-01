@@ -1,18 +1,17 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class eem
-  implements View.OnClickListener
+  implements Runnable
 {
-  public eem(NewFriendActivity paramNewFriendActivity, SharedPreferences paramSharedPreferences) {}
+  public eem(NewFriendActivity paramNewFriendActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("newfriend_enter_time", System.currentTimeMillis()).commit();
-    NewFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity, false, true);
+    ((PhoneContactManagerImp)this.a.b.getManager(10)).f();
+    ReportController.b(this.a.b, "CliOper", "", "", "frd_recommend", "clean_offer", 0, 0, "", "", "", "");
   }
 }
 

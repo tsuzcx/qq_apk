@@ -1,25 +1,18 @@
 import com.tencent.mobileqq.config.ConfigManager;
-import java.util.TimerTask;
 
 public class fmm
-  extends TimerTask
 {
-  int jdField_a_of_type_Int = 0;
+  public byte a;
+  public String a;
+  public byte b;
+  public String b;
   
-  public fmm(ConfigManager paramConfigManager) {}
-  
-  public void run()
+  public fmm(ConfigManager paramConfigManager)
   {
-    synchronized (ConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqConfigConfigManager))
-    {
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_a_of_type_Int > 30)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqConfigConfigManager.d();
-        cancel();
-      }
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_b_of_type_Byte = 0;
+    this.jdField_b_of_type_JavaLangString = "";
   }
 }
 

@@ -72,12 +72,12 @@ public class FileCategoryAdapter
       localView.setTag(paramView);
       if ((localFileCategoryEntity.C == 0) || (localFileCategoryEntity.C == 3))
       {
-        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131232725));
+        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131232724));
         paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232720));
-        paramView.b = ((TextView)localView.findViewById(2131232721));
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232727));
-        paramView.c = ((TextView)localView.findViewById(2131232726));
+        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232719));
+        paramView.b = ((TextView)localView.findViewById(2131232720));
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232726));
+        paramView.c = ((TextView)localView.findViewById(2131232725));
         paramViewGroup = paramView;
         paramView = localView;
       }
@@ -115,8 +115,8 @@ public class FileCategoryAdapter
             if (localFileCategoryEntity.C != 1) {
               break label523;
             }
-            paramView.d = ((TextView)localView.findViewById(2131232723));
-            paramView.e = ((TextView)localView.findViewById(2131232724));
+            paramView.d = ((TextView)localView.findViewById(2131232722));
+            paramView.e = ((TextView)localView.findViewById(2131232723));
             paramViewGroup = paramView;
             paramView = localView;
             break label164;

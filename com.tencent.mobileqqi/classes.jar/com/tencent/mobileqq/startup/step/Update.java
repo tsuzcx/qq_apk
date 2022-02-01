@@ -104,14 +104,14 @@ public class Update
             return true;
             localObject = this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a;
           } while (!(localObject instanceof InstallActivity));
-          paramMessage = ((Activity)localObject).findViewById(2131234511);
-          localObject = (RelativeLayout)((Activity)localObject).findViewById(2131234510);
+          paramMessage = ((Activity)localObject).findViewById(2131234510);
+          localObject = (RelativeLayout)((Activity)localObject).findViewById(2131234509);
         } while ((paramMessage == null) || (localObject == null));
         paramMessage.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a.getApplicationContext(), 2130903985, null));
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131234513));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131234514));
+        this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131234512));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131234513));
         this.jdField_a_of_type_AndroidWidgetTextView.setText("升级中，请耐心等待...");
         ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);

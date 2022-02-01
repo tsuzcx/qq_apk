@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.DiscussionObserver;
 import com.tencent.mobileqq.qcall.QCallFacade;
 
 public class gfs
-  extends FriendListObserver
+  extends DiscussionObserver
 {
   public gfs(QCallFacade paramQCallFacade) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected void b(boolean paramBoolean, String paramString)
   {
-    this.a.a(String.valueOf(paramObject));
+    this.a.a(paramString, 3000);
   }
 }
 

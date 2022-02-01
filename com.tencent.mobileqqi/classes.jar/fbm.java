@@ -1,113 +1,112 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DPCConfigInfo;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.utils.ReflectedMethods;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class fbm
-  implements Runnable
+  extends DefaultHandler
 {
-  public fbm(DeviceProfileManager paramDeviceProfileManager, PBRepeatField paramPBRepeatField) {}
+  public static HashMap a;
+  private int jdField_a_of_type_Int = 0;
+  private String jdField_a_of_type_JavaLangString = "0";
+  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
+  private boolean jdField_a_of_type_Boolean = false;
   
-  public void run()
+  private boolean a(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceProfileManager.a, 4, "onDPCResponse is called");
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return false;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatField == null) || (this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatField.size() == 0)) {}
-    while (!DeviceProfileManager.a().compareAndSet(false, true)) {
-      return;
+    return Pattern.compile("^([0-9]{0,5}|\\{([\\s\\S]*)\\})(,([0-9]{0,5}|\\{([\\s\\S]*)\\}))*$").matcher(paramString).matches();
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_JavaLangStringBuffer.append(paramArrayOfChar, paramInt1, paramInt2);
     }
-    int i = 0;
-    label590:
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (!a(this.jdField_a_of_type_JavaLangStringBuffer.toString()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(DeviceProfileManager.jdField_a_of_type_JavaLangString, 2, "DPCXmlHandler format is error: " + paramString2 + "-" + this.jdField_a_of_type_JavaLangStringBuffer.toString());
+        }
+        return;
+      }
+      if (!jdField_a_of_type_JavaUtilHashMap.containsKey(paramString2)) {
+        break label222;
+      }
+      paramString1 = (fbn)jdField_a_of_type_JavaUtilHashMap.get(paramString2);
+      if (QLog.isColorLevel()) {
+        QLog.d(DeviceProfileManager.jdField_a_of_type_JavaLangString, 2, "DPCXmlHandler parse to TEMPMAP update oldInfo: " + paramString2 + "-" + paramString1.toString());
+      }
+      if (paramString1.jdField_a_of_type_Int < this.jdField_a_of_type_Int)
+      {
+        paramString1.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        paramString1.b = this.jdField_a_of_type_JavaLangStringBuffer.toString();
+        paramString1.c = this.jdField_a_of_type_JavaLangString;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(DeviceProfileManager.jdField_a_of_type_JavaLangString, 2, "DPCXmlHandler parse to TEMPMAP update newInfo: " + paramString2 + "-" + paramString1.toString());
+      }
+    }
     for (;;)
     {
-      try
+      this.jdField_a_of_type_Boolean = false;
+      return;
+      label222:
+      paramString1 = new fbn();
+      paramString1.jdField_a_of_type_JavaLangString = paramString2;
+      paramString1.b = this.jdField_a_of_type_JavaLangStringBuffer.toString();
+      paramString1.c = this.jdField_a_of_type_JavaLangString;
+      paramString1.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      jdField_a_of_type_JavaUtilHashMap.put(paramString2, paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d(DeviceProfileManager.jdField_a_of_type_JavaLangString, 2, "DPCXmlHandler parse to TEMPMAP add: " + paramString2 + "-" + paramString1.toString());
+      }
+    }
+  }
+  
+  public void startDocument()
+  {
+    super.startDocument();
+    if (jdField_a_of_type_JavaUtilHashMap == null) {
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    int i = 0;
+    if (paramString2.equals("features"))
+    {
+      if (i < paramAttributes.getLength())
       {
-        if (i < this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatField.size())
+        if (paramAttributes.getLocalName(i).equals("weight")) {
+          this.jdField_a_of_type_Int = Integer.parseInt(paramAttributes.getValue(i));
+        }
+        for (;;)
         {
-          if (!this.jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager.a((String)this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatField.get(i)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e(DeviceProfileManager.a, 2, "onDPCResponse parseDPCXML error, so return");
-            }
-            DeviceProfileManager.a().set(false);
-            return;
-          }
           i += 1;
-        }
-        else
-        {
-          SharedPreferences.Editor localEditor2;
-          synchronized (this.jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager)
-          {
-            Iterator localIterator = fbn.a.entrySet().iterator();
-            localEditor2 = ReflectedMethods.a(BaseApplicationImpl.getContext(), "dpcConfig").edit();
-            if (localIterator.hasNext())
-            {
-              Object localObject1 = (Map.Entry)localIterator.next();
-              if (localObject1 == null) {
-                continue;
-              }
-              String str = (String)((Map.Entry)localObject1).getKey();
-              fbo localfbo = (fbo)((Map.Entry)localObject1).getValue();
-              if (QLog.isColorLevel()) {
-                QLog.d(DeviceProfileManager.a, 2, "onDPCResponse DPCXmlHandler.tempMap: key=" + str + ", value=" + localfbo.toString());
-              }
-              localObject1 = (DeviceProfileManager.DPCConfigInfo)DeviceProfileManager.a(this.jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager).get(str);
-              if (localObject1 != null) {
-                break label590;
-              }
-              localObject1 = (DeviceProfileManager.DPCConfigInfo)DeviceProfileManager.b(this.jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager).get(str);
-              bool = true;
-              if (localObject1 == null) {
-                continue;
-              }
-              if (QLog.isDevelopLevel()) {
-                QLog.d(DeviceProfileManager.a, 4, "onDPCResponse mFeatureMapLV2 old value: key=" + str + " " + localObject1 + ", isAddConfig=" + bool);
-              }
-              DeviceProfileManager.a(this.jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager, (DeviceProfileManager.DPCConfigInfo)localObject1, localfbo.b.toString().trim());
-              if (bool) {
-                DeviceProfileManager.a(this.jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager).put(str, localObject1);
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d(DeviceProfileManager.a, 2, "onDPCResponse mFeatureMapLV2 new value: key=" + str + " " + localObject1 + ", isAddConfig=" + bool);
-              }
-              localEditor2.putString(str, localfbo.b);
-              localEditor2.putString(str + "_attachInfo", localfbo.c);
-            }
+          break;
+          if (paramAttributes.getLocalName(i).equals("taskId")) {
+            this.jdField_a_of_type_JavaLangString = paramAttributes.getValue(i);
           }
-          SharedPreferences.Editor localEditor1;
-          boolean bool = false;
         }
       }
-      catch (Exception localException)
-      {
-        return;
-        localEditor2.commit();
-        fbn.a = null;
-        localEditor1 = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
-        localEditor1.putLong("last_update_time", System.currentTimeMillis());
-        localEditor1.commit();
-        if (QLog.isColorLevel()) {
-          QLog.d(DeviceProfileManager.a, 2, "onDPCResponse KEY_LAST_UPDATE_TIME=" + System.currentTimeMillis());
-        }
-        return;
-      }
-      finally
-      {
-        DeviceProfileManager.a().set(false);
-      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.jdField_a_of_type_JavaLangStringBuffer.length());
     }
   }
 }

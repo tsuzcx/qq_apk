@@ -1,161 +1,135 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
-import com.tencent.mobileqq.richstatus.StatusHistoryActivity.ItemViewHolder;
-import com.tencent.mobileqq.richstatus.StatusHistoryActivity.MoreViewHolder;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.utils.TimeFormatterUtils;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.mobileqq.richstatus.StatusObserver;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 public class ghu
-  extends BaseAdapter
+  extends StatusObserver
 {
   private ghu(StatusHistoryActivity paramStatusHistoryActivity) {}
   
-  public int getCount()
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList paramArrayList, boolean paramBoolean3)
   {
-    int i = 1;
-    int j = StatusHistoryActivity.a(this.a).size();
-    if (j == 0) {
-      return 1;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("onGetHistory.issuccess=").append(paramBoolean1).append(",start=").append(paramInt1).append(",end=").append(paramInt2).append(",over=").append(paramBoolean2).append(",datasize=");
+      if (paramArrayList != null) {
+        break label299;
+      }
     }
-    if (StatusHistoryActivity.a(this.a) != 0) {}
+    label299:
+    for (int i = 0;; i = paramArrayList.size())
+    {
+      QLog.d("Q.richstatus.history", 2, i + ",isaddfromcard=" + paramBoolean3);
+      StatusHistoryActivity.a(this.a, paramBoolean1);
+      if (!paramBoolean1) {
+        break label399;
+      }
+      if ((paramBoolean3) && (paramArrayList != null) && (paramArrayList.size() == 1)) {
+        StatusHistoryActivity.a(this.a, true);
+      }
+      this.a.b.c(true, true);
+      if (paramInt1 != 0) {
+        break label352;
+      }
+      if ((paramInt2 == 2147483647) && (StatusHistoryActivity.a(this.a).size() > 0)) {
+        StatusHistoryActivity.a(this.a).clear();
+      }
+      if (StatusHistoryActivity.a(this.a).size() <= 0) {
+        break;
+      }
+      localObject = paramArrayList.iterator();
+      RichStatus localRichStatus1 = (RichStatus)StatusHistoryActivity.a(this.a).get(StatusHistoryActivity.a(this.a).size() - 1);
+      while (((Iterator)localObject).hasNext())
+      {
+        RichStatus localRichStatus2 = (RichStatus)((Iterator)localObject).next();
+        if ((localRichStatus2.jdField_a_of_type_Long <= localRichStatus1.jdField_a_of_type_Long) && ((localRichStatus2.jdField_a_of_type_Long != localRichStatus1.jdField_a_of_type_Long) || (!Arrays.equals(localRichStatus2.a(), localRichStatus1.a())))) {
+          break;
+        }
+        ((Iterator)localObject).remove();
+      }
+    }
+    StatusHistoryActivity.a(this.a).addAll(StatusHistoryActivity.a(this.a).size(), paramArrayList);
+    paramArrayList = this.a;
+    if (!paramBoolean2)
+    {
+      paramInt1 = 1;
+      StatusHistoryActivity.a(paramArrayList, paramInt1);
+      label352:
+      if (StatusHistoryActivity.a(this.a).size() != 0) {
+        break label420;
+      }
+      paramArrayList = this.a;
+      if (!paramBoolean1) {
+        break label415;
+      }
+      paramInt1 = 3;
+      label377:
+      StatusHistoryActivity.a(paramArrayList, paramInt1);
+    }
     for (;;)
     {
-      return i + j;
-      i = 0;
-    }
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return getItemViewType(paramInt);
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    int i = StatusHistoryActivity.a(this.a).size();
-    if (i == 0) {
-      return 2;
-    }
-    if (paramInt < i) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = getItemViewType(paramInt);
-    if (i == 2)
-    {
-      StatusHistoryActivity.a(this.a).setLayoutParams(new AbsListView.LayoutParams(StatusHistoryActivity.a(this.a).getWidth(), StatusHistoryActivity.a(this.a).getHeight()));
-      return StatusHistoryActivity.a(this.a);
-    }
-    if (i == 0)
-    {
-      RichStatus localRichStatus;
-      if (paramView == null)
-      {
-        paramView = LayoutInflater.from(this.a).inflate(2130903989, null);
-        paramView.setFocusable(true);
-        paramViewGroup = new StatusHistoryActivity.ItemViewHolder();
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131234528));
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView = ((ClickableColorSpanTextView)paramView.findViewById(2131234529));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131234527));
-        paramViewGroup.b = paramView.findViewById(2131234526);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView.setTag(paramViewGroup);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView.setSpanClickListener(this.a);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131230987));
-        paramViewGroup.jdField_a_of_type_AndroidViewView = paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.findViewById(2131231701);
-        paramView.setTag(paramViewGroup);
-        paramView.setClickable(true);
-        localRichStatus = (RichStatus)StatusHistoryActivity.a(this.a).get(paramInt);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = localRichStatus;
-        if (!TextUtils.isEmpty(localRichStatus.c)) {
-          break label352;
-        }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840236);
-        label240:
-        if (StatusHistoryActivity.a(this.a).size() != 1) {
-          break label380;
-        }
-        paramViewGroup.b.setVisibility(8);
+      StatusHistoryActivity.a(this.a).notifyDataSetChanged();
+      return;
+      paramInt1 = 0;
+      break;
+      label399:
+      if (paramInt1 != 0) {
+        break label352;
       }
-      for (;;)
+      StatusHistoryActivity.a(this.a, 3);
+      break label352;
+      label415:
+      paramInt1 = 2;
+      break label377;
+      label420:
+      StatusHistoryActivity.a(this.a).setVisible(false, false);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.history", 2, "onDeleteStatus. isSuccess=" + paramBoolean + ",key=" + paramArrayOfByte + ",errorCode=" + paramInt);
+    }
+    if ((StatusHistoryActivity.a(this.a) != null) && (StatusHistoryActivity.a(this.a).isShowing())) {
+      StatusHistoryActivity.a(this.a).dismiss();
+    }
+    if (paramBoolean) {
+      if (paramArrayOfByte != null)
       {
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView.setText(localRichStatus.a(null, this.a.getResources().getColor(2131362083)));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRichStatus.a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView, TimeFormatterUtils.a(this.a, 3, localRichStatus.a * 1000L) + "    "));
-        return paramView;
-        paramViewGroup = (StatusHistoryActivity.ItemViewHolder)paramView.getTag();
-        break;
-        label352:
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(StatusHistoryActivity.a(this.a).a(localRichStatus.b, 201));
-        break label240;
-        label380:
-        paramViewGroup.b.setVisibility(0);
-        if (paramInt == 0) {
-          paramViewGroup.b.setBackgroundResource(2130840239);
-        } else if (paramInt == StatusHistoryActivity.a(this.a).size() - 1) {
-          paramViewGroup.b.setBackgroundResource(2130840237);
-        } else {
-          paramViewGroup.b.setBackgroundResource(2130840238);
+        Iterator localIterator = StatusHistoryActivity.a(this.a).iterator();
+        while (localIterator.hasNext())
+        {
+          RichStatus localRichStatus = (RichStatus)localIterator.next();
+          if ((localRichStatus != null) && (Arrays.equals(localRichStatus.jdField_a_of_type_ArrayOfByte, paramArrayOfByte))) {
+            localIterator.remove();
+          }
+        }
+        if (StatusHistoryActivity.a(this.a).size() == 0) {
+          StatusHistoryActivity.a(this.a, 3);
+        }
+        if (StatusHistoryActivity.a(this.a) != null) {
+          StatusHistoryActivity.a(this.a).notifyDataSetChanged();
         }
       }
     }
-    paramViewGroup = paramView;
-    if (paramView == null)
+    for (;;)
     {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130903283, null);
-      paramViewGroup.setOnClickListener(this.a);
-      paramView = new StatusHistoryActivity.MoreViewHolder();
-      paramViewGroup.setTag(paramView);
-      paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131231066));
-      paramViewGroup.findViewById(2131231868).setVisibility(8);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231869));
+      StatusHistoryActivity.a(this.a, null);
+      StatusHistoryActivity.b(this.a, false);
+      return;
+      QQToast.a(BaseApplicationImpl.getContext(), 2131562059, 0).b(this.a.d());
     }
-    if (StatusHistoryActivity.a(this.a) == 1)
-    {
-      StatusHistoryActivity.a(this.a, 2);
-      this.a.a(false, false);
-    }
-    paramView = (StatusHistoryActivity.MoreViewHolder)paramViewGroup.getTag();
-    if (StatusHistoryActivity.a(this.a) == 3)
-    {
-      paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131559278));
-      return paramViewGroup;
-    }
-    paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131559279));
-    return paramViewGroup;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 3;
-  }
-  
-  public boolean isEnabled(int paramInt)
-  {
-    return 2 != getItemViewType(paramInt);
   }
 }
 

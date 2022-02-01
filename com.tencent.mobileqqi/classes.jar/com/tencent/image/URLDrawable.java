@@ -687,7 +687,7 @@ public class URLDrawable
         }
         int j = Math.min((int)(255.0F * (1.0F - (1.0F - f) * (1.0F - f))), 255);
         Rect localRect = getBounds();
-        paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.width(), localRect.height(), j, 20);
+        paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.width(), localRect.height(), j, 24);
         invalidateSelf();
       }
     }

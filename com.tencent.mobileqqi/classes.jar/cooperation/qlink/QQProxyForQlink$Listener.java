@@ -3,7 +3,7 @@ package cooperation.qlink;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
-import ian;
+import iam;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -36,7 +36,7 @@ public class QQProxyForQlink$Listener
     paramObservable = Looper.getMainLooper();
     if (Thread.currentThread() != paramObservable.getThread())
     {
-      new Handler(paramObservable).post(new ian(this, paramObject));
+      new Handler(paramObservable).post(new iam(this, paramObject));
       return;
     }
     a(paramObject);

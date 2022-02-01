@@ -3,20 +3,20 @@ import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
 
 class hzy
-  extends hzx
+  extends hzw
 {
   public Context a;
   
-  public hzy(hzv paramhzv, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  public hzy(hzu paramhzu, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    super(paramhzv);
+    super(paramhzu);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
   }
   
   public void a()
   {
-    IPluginManager.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+    IPluginManager.d(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
   }
 }
 

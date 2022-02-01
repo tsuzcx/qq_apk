@@ -3,11 +3,11 @@ import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity
 class gsz
   implements Runnable
 {
-  gsz(gsy paramgsy) {}
+  gsz(gsx paramgsx) {}
   
   public void run()
   {
-    this.a.a.a(0);
+    this.a.a.a(1);
   }
 }
 

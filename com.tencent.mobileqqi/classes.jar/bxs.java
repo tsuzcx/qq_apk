@@ -1,18 +1,32 @@
-import android.os.Handler;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bxs
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
   public bxs(ChatActivity paramChatActivity) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if ((ChatActivity.a(this.a)) && (this.a.a != null))
+    ReportController.b(this.a.b, "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
+    ChatActivityFacade.d(this.a.b, this.a.a.jdField_a_of_type_JavaLangString);
+    ChatActivity.a(this.a);
+    paramView = null;
+    String str = null;
+    if (this.a.a.jdField_a_of_type_Int == 1006) {
+      str = this.a.a.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
     {
-      ChatActivity.a(this.a, false);
-      this.a.a.sendEmptyMessageDelayed(23, 100L);
+      ChatActivityUtils.a(this.a.b, this.a, this.a.a.jdField_a_of_type_Int, paramView, this.a.a.d, str, true, this.a.a.b, true, true, null, "");
+      ReportController.b(this.a.b, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
+      return;
+      paramView = this.a.a.jdField_a_of_type_JavaLangString;
     }
   }
 }

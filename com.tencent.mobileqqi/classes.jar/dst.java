@@ -1,6 +1,8 @@
 import android.view.View;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -16,18 +18,28 @@ public class dst
   {
     switch (paramInt)
     {
-    default: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    }
-    if (NetworkUtil.e(BaseApplication.getContext())) {
-      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity);
     }
     for (;;)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p, TroopRequestActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity), "", "");
-      break;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.d());
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if (NetworkUtil.e(BaseApplication.getContext())) {}
+      try
+      {
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b.a();
+        ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, "", TroopRequestActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity), paramView, false);
+        for (;;)
+        {
+          label66:
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "report", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p, TroopRequestActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity), "", "");
+          break;
+          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.d());
+        }
+      }
+      catch (Exception paramView)
+      {
+        break label66;
+      }
     }
   }
 }

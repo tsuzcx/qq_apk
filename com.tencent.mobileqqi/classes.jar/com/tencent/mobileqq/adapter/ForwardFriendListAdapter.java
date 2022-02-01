@@ -28,9 +28,9 @@ import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import eyb;
 import eyc;
 import eyd;
-import eye;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -57,7 +57,7 @@ public class ForwardFriendListAdapter
   public QQAppInterface a;
   private QQServiceEntry jdField_a_of_type_ComTencentMobileqqAppQQServiceEntry;
   FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
-  private eye jdField_a_of_type_Eye;
+  private eyd jdField_a_of_type_Eyd;
   private List jdField_a_of_type_JavaUtilList;
   public Map a;
   private Set jdField_a_of_type_JavaUtilSet;
@@ -98,7 +98,7 @@ public class ForwardFriendListAdapter
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(paramActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
-    this.jdField_a_of_type_Eye = new eye(this, paramActivity);
+    this.jdField_a_of_type_Eyd = new eyd(this, paramActivity);
     this.jdField_b_of_type_JavaUtilSet = new HashSet();
     this.jdField_b_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
@@ -156,13 +156,13 @@ public class ForwardFriendListAdapter
     {
       int k = (int)getGroupId(j);
       if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Eye.onQueryComplete(k, null, eyd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, k));
+        this.jdField_a_of_type_Eyd.onQueryComplete(k, null, eyc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, k));
       }
       for (;;)
       {
         j += 1;
         break;
-        this.jdField_a_of_type_Eye.startQuery(k, null, Uri.parse("content://qqi.friendlist/friendlist/" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), null, "groupid=?", new String[] { String.valueOf(k) }, "status,sqqtype desc,name asc");
+        this.jdField_a_of_type_Eyd.startQuery(k, null, Uri.parse("content://qqi.friendlist/friendlist/" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), null, "groupid=?", new String[] { String.valueOf(k) }, "status,sqqtype desc,name asc");
       }
     }
   }
@@ -179,7 +179,7 @@ public class ForwardFriendListAdapter
     {
       str = paramString2;
     }
-    return DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230).setTitle(str).setItems(2131689474, new eyc(this, paramString2));
+    return DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230).setTitle(str).setItems(2131689474, new eyb(this, paramString2));
   }
   
   public List a()
@@ -270,8 +270,8 @@ public class ForwardFriendListAdapter
     String str2 = paramCursor.getString(paramCursor.getColumnIndex("uin"));
     int k = paramCursor.getInt(paramCursor.getColumnIndex("status"));
     System.currentTimeMillis();
-    Object localObject = (TextView)paramView.findViewById(2131231395);
-    TextView localTextView = (TextView)paramView.findViewById(2131231396);
+    Object localObject = (TextView)paramView.findViewById(2131231394);
+    TextView localTextView = (TextView)paramView.findViewById(2131231395);
     label158:
     int j;
     label211:
@@ -296,7 +296,7 @@ public class ForwardFriendListAdapter
       j = 1;
       m = paramCursor.getInt(paramCursor.getColumnIndex("sqqOnLineState"));
       n = paramCursor.getInt(paramCursor.getColumnIndex("detalStatusFlag"));
-      paramContext = (ImageView)paramView.findViewById(2131231394);
+      paramContext = (ImageView)paramView.findViewById(2131231393);
       bool = false;
       paramBoolean = bool;
       if (paramContext != null)
@@ -431,9 +431,9 @@ public class ForwardFriendListAdapter
       {
         paramView.setBackgroundResource(2130837849);
         paramView.getLayoutParams().height = ((int)(this.jdField_a_of_type_Float * 50.0F));
-        paramContext = (TextView)paramView.findViewById(2131231389);
+        paramContext = (TextView)paramView.findViewById(2131231388);
         LocaleString.a(paramCursor.getString(0), paramContext);
-        paramView = (TextView)paramView.findViewById(2131231390);
+        paramView = (TextView)paramView.findViewById(2131231389);
         if (this.jdField_a_of_type_JavaUtilMap == null) {
           break label256;
         }

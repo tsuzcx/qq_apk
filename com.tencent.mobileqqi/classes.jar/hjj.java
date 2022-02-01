@@ -1,37 +1,18 @@
 import com.tencent.open.agent.OpenSdkFriendService;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback;
-import com.tencent.open.agent.datamodel.ImageLoader;
-import com.tencent.open.agent.datamodel.QZonePortraitData;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.open.agent.OpenSdkFriendService.GetFriendListCallback;
+import java.util.ArrayList;
 
 public class hjj
   implements Runnable
 {
-  public hjj(OpenSdkFriendService.CheckAvatarUpdateCallback paramCheckAvatarUpdateCallback, int paramInt, JSONArray paramJSONArray) {}
+  public hjj(OpenSdkFriendService.GetFriendListCallback paramGetFriendListCallback, ArrayList paramArrayList, String paramString) {}
   
   public void run()
   {
-    int i = 0;
-    for (;;)
+    if ("action_invite".equals(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.i))
     {
-      if (i < this.jdField_a_of_type_Int) {
-        try
-        {
-          String str = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i).getString("openid");
-          str = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$CheckAvatarUpdateCallback.a.f, str);
-          ImageLoader.a().a(str);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

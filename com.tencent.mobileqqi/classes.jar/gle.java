@@ -1,24 +1,28 @@
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTimer;
+import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
 import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
 
 public class gle
-  implements CountdownTextView.TimerCallback
+  extends CountDownTimer.CountDownTimerListener
 {
-  public gle(StructMsgItemTimer paramStructMsgItemTimer, CountdownTextView paramCountdownTextView) {}
-  
-  public void a()
+  public gle(CountdownTextView paramCountdownTextView, long paramLong, CountdownTextView.TimerCallback paramTimerCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, 0L));
+    super(paramLong);
   }
   
-  public void a(long paramLong)
+  public void b()
   {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, paramLong));
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = paramLong;
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
+  }
+  
+  public void b(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a(paramLong);
+    }
   }
 }
 

@@ -1,20 +1,31 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.downloadnew.MyAppDialog;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.UpdateManager;
+import java.io.File;
 
 public class hol
-  implements View.OnClickListener
+  implements Runnable
 {
-  public hol(MyAppDialog paramMyAppDialog, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  public hol(UpdateManager paramUpdateManager, String paramString, DownloadInfo paramDownloadInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog, this.jdField_a_of_type_Int);
+    try
+    {
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists())
+      {
+        long l = localFile.length();
+        DownloadManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
+        return;
+      }
+      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report file not exists");
+      return;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
+    catch (Exception localException)
+    {
+      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report>>>", localException);
     }
   }
 }

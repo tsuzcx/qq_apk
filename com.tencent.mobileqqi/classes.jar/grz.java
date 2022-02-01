@@ -1,32 +1,42 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.TroopBarPageEntity;
+import com.tencent.mobileqq.data.TroopBarPageEntity.TypeListEntity;
 import com.tencent.mobileqq.troop.activity.TroopBarPageActivity;
+import com.tencent.mobileqq.troop.widget.TroopBarPostAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class grz
-  implements View.OnTouchListener
+  implements AbsListView.OnScrollListener
 {
-  public grz(TroopBarPageActivity paramTroopBarPageActivity, TextView paramTextView) {}
+  int jdField_a_of_type_Int = 0;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public grz(TroopBarPageActivity paramTroopBarPageActivity) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "onScrollStateChanged lastVisibleIndex = " + this.jdField_a_of_type_Int + ", scrollState = " + paramInt);
     }
-    for (;;)
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopBarPostAdapter.getCount() - 1) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.curType != null))
     {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.7F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-        }
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity.curType.type;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
+        break label138;
       }
     }
+    label138:
+    for (long l = 0L;; l = ((Long)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).longValue())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity.r, paramInt, l, false, false);
+      return;
+    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
   }
 }
 

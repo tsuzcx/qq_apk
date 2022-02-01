@@ -1,22 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.Process;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
 public final class ecf
-  extends Handler
+  implements Parcelable.Creator
 {
-  public void handleMessage(Message paramMessage)
+  public AIOImageData a(Parcel paramParcel)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PEAK", 2, "self-destory BOOM!!!!");
-    }
-    Process.killProcess(Process.myPid());
+    AIOImageData localAIOImageData = new AIOImageData();
+    localAIOImageData.a = paramParcel.readLong();
+    localAIOImageData.jdField_d_of_type_Int = paramParcel.readInt();
+    localAIOImageData.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localAIOImageData.e = paramParcel.readString();
+    localAIOImageData.f = paramParcel.readString();
+    localAIOImageData.g = paramParcel.readString();
+    localAIOImageData.b = paramParcel.readLong();
+    localAIOImageData.c = paramParcel.readLong();
+    return localAIOImageData;
+  }
+  
+  public AIOImageData[] a(int paramInt)
+  {
+    return new AIOImageData[paramInt];
   }
 }
 

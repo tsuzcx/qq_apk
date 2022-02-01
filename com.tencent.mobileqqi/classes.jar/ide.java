@@ -1,30 +1,18 @@
-import cooperation.qzone.remote.RecvMsg;
-import cooperation.qzone.remote.RemoteServiceProxy;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import cooperation.qzone.remote.SendMsg;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class ide
-  extends Thread
+public final class ide
+  implements Parcelable.Creator
 {
-  public ide(RemoteServiceProxy paramRemoteServiceProxy) {}
-  
-  public void run()
+  public SendMsg a(Parcel paramParcel)
   {
-    while (!this.a.sendMsgQueue.isEmpty())
-    {
-      SendMsg localSendMsg = (SendMsg)this.a.sendMsgQueue.poll();
-      if (localSendMsg != null) {
-        try
-        {
-          this.a.sendMsgToService(localSendMsg);
-        }
-        catch (Exception localException)
-        {
-          RecvMsg localRecvMsg = this.a.createWaiteRespTimeout(localSendMsg, "sendMsgToServiceFailed，" + localException.toString());
-          this.a.sendFailedRespToApp(localSendMsg, localRecvMsg);
-        }
-      }
-    }
+    return new SendMsg(paramParcel);
+  }
+  
+  public SendMsg[] a(int paramInt)
+  {
+    return new SendMsg[paramInt];
   }
 }
 

@@ -5,11 +5,11 @@ import com.tencent.mobileqq.widget.QQToast;
 public final class fyc
   implements Runnable
 {
-  public fyc(String paramString) {}
+  public fyc(int paramInt) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 1).b(FMToastUtil.a());
+    QQToast.a(BaseApplicationImpl.getContext(), 0, this.a, 0).b(FMToastUtil.a());
   }
 }
 

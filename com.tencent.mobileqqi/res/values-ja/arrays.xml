@@ -2,9 +2,9 @@
 <resources>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002c">
         <item>中国 86 11 ほとんどの場合、選択した国</item>
-        <item>マカオ（中国） 853 8 ほとんどの場合、選択した国</item>
-        <item>香港（中国） 852 8 ほとんどの場合、選択した国</item>
-        <item>台湾（中国） 886 10 ほとんどの場合、選択した国</item>
+        <item>中国マカオ 853 8 ほとんどの場合、選択した国</item>
+        <item>中国香港 852 8 ほとんどの場合、選択した国</item>
+        <item>中国台湾 886 10 ほとんどの場合、選択した国</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002d">
         <item>ほとんどの場合、選択した国</item>
@@ -111,7 +111,7 @@
         <item>ソマリア 252 7 そ</item>
         <item>ソロモン諸島 677 7 そ</item>
         <item>タイ 66 10 た</item>
-        <item>台湾 886 10 た</item>
+        <item>中国台湾 886 10 た</item>
         <item>タジキスタン 992 6 た</item>
         <item>タンザニア 255 11 た</item>
         <item>チェコ共和国 420 9 ち</item>
@@ -183,11 +183,11 @@
         <item>ボスニア·ヘルツェゴビナ 387 0 ほ</item>
         <item>ボツワナ 267 7 ほ</item>
         <item>ボリビア 591 7 ほ</item>
-        <item>香港 852 8 ほ</item>
+        <item>中国香港 852 8 ほ</item>
         <item>ポルトガル 351 9 ほ</item>
         <item>ホンジュラス 504 7 ほ</item>
         <item>マーシャル諸島 692 0 ま</item>
-        <item>マカオ 853 8 ま</item>
+        <item>中国マカオ 853 8 ま</item>
         <item>マケドニア 389 0 ま</item>
         <item>マダガスカル 261 7 ま</item>
         <item>マヨット島 262 0 ま</item>

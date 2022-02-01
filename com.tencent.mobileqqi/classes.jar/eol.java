@@ -1,41 +1,23 @@
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.mobileqq.redtouch.VipBannerInfo;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
 
 public class eol
   implements View.OnClickListener
 {
-  public eol(BannerManager paramBannerManager, VipBannerInfo paramVipBannerInfo, RedTouchManager paramRedTouchManager, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  public eol(BannerManager paramBannerManager) {}
   
   public void onClick(View paramView)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.c;
-    paramView = str;
-    if (str == null) {
-      paramView = "";
-    }
-    switch (this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.e)
+    this.a.a(null);
+    if (UpgradeController.a().a() == 4)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.a, 3);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).removeMessages(9);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendEmptyMessage(9);
+      UpgradeController.a().a(BannerManager.a(this.a));
       return;
-      VipUtils.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeivip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeisvip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeivip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeisvip%s", new Object[] { paramView }));
     }
+    UpgradeDetailActivity.a(BannerManager.a(this.a), UpgradeController.a().a(), true, true, true);
   }
 }
 

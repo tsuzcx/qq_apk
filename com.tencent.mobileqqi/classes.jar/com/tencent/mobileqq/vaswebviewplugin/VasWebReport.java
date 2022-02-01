@@ -49,7 +49,7 @@ public class VasWebReport
       }
       while (this.erroMap.containsKey(paramString))
       {
-        ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 1, "errocode:" + this.erroMap.get(paramString), paramMap, paramString, "6.0.2--android--" + Build.VERSION.SDK_INT);
+        ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 1, "errocode:" + this.erroMap.get(paramString), paramMap, paramString, "6.0.3--android--" + Build.VERSION.SDK_INT);
         this.erroMap.remove(paramString);
         this.startTimeMap.remove(paramString);
         return false;
@@ -64,7 +64,7 @@ public class VasWebReport
       if (this.startTimeMap.containsKey(paramString)) {}
       for (long l = System.currentTimeMillis() - ((Long)this.startTimeMap.get(paramString)).longValue();; l = -1L)
       {
-        ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 0, "" + l, paramMap, paramString, "6.0.2--android--" + Build.VERSION.SDK_INT);
+        ReportController.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 0, "" + l, paramMap, paramString, "6.0.3--android--" + Build.VERSION.SDK_INT);
         break;
         if (QLog.isColorLevel()) {
           QLog.e("VasWebReport", 2, "VasWebReport--EVENT_LOAD_FINISH:report erro,there is not starttime for " + paramString);

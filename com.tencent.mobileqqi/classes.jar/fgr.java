@@ -1,23 +1,50 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.ShieldOperationItem;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.ProtoServlet;
+import com.tencent.ims.signature.SignatureReport;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.StartAppCheckHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.app.NewIntent;
 
-public final class fgr
-  implements Parcelable.Creator
+public class fgr
+  extends Handler
 {
-  public ShieldOperationItem a(Parcel paramParcel)
+  public fgr(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
   {
-    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
-    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localShieldOperationItem.b = paramParcel.readInt();
-    localShieldOperationItem.c = paramParcel.readInt();
-    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
-    return localShieldOperationItem;
+    super(paramLooper);
   }
   
-  public ShieldOperationItem[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return null;
+    switch (paramMessage.what)
+    {
+    case 2: 
+    default: 
+      return;
+    case 1: 
+      Object localObject;
+      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
+      {
+        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), ProtoServlet.class);
+        ((NewIntent)localObject).putExtra("data", ((fgw)paramMessage.obj).a.toByteArray());
+        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
+        ((NewIntent)localObject).setObserver(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Boolean = false;
+        this.a.jdField_a_of_type_Fgw = null;
+        return;
+        localObject = this.a.a("SecCheckSigSvc.UploadReq");
+        ((ToServiceMsg)localObject).putWupBuffer(((fgw)paramMessage.obj).a.toByteArray());
+        this.a.b((ToServiceMsg)localObject);
+      }
+    }
+    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
   }
 }
 

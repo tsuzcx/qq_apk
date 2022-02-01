@@ -22,6 +22,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import ccs;
 import cct;
 import ccu;
 import ccv;
@@ -33,7 +34,6 @@ import cda;
 import cdb;
 import cdc;
 import cdd;
-import cde;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
@@ -112,13 +112,13 @@ public class ChatSettingActivity
   public TextView a;
   public QvipSpecialCareManager a;
   public QvipSpecialSoundManager a;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cde(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new cdd(this);
   private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cdd(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ccv(this);
-  private QvipSpecialCareObserver jdField_a_of_type_ComTencentMobileqqAppQvipSpecialCareObserver = new ccx(this);
-  private ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new ccu(this);
-  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new ccw(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cdc(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ccu(this);
+  private QvipSpecialCareObserver jdField_a_of_type_ComTencentMobileqqAppQvipSpecialCareObserver = new ccw(this);
+  private ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new cct(this);
+  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new ccv(this);
   public RichStatus a;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
@@ -179,7 +179,7 @@ public class ChatSettingActivity
     this.l = 0;
     this.o = "";
     this.p = "";
-    this.jdField_a_of_type_AndroidOsHandler = new cdc(this);
+    this.jdField_a_of_type_AndroidOsHandler = new cdb(this);
   }
   
   private void C()
@@ -712,7 +712,7 @@ public class ChatSettingActivity
   
   private void f(String paramString)
   {
-    DialogUtil.a(this, 230).setTitle(getString(2131561924)).setMessage(getString(2131561974)).setPositiveButton(2131562750, new cdb(this, paramString)).setNegativeButton(2131561751, new cda(this)).show();
+    DialogUtil.a(this, 230).setTitle(getString(2131561924)).setMessage(getString(2131561974)).setPositiveButton(2131562750, new cda(this, paramString)).setNegativeButton(2131561751, new ccz(this)).show();
   }
   
   private void g()
@@ -772,18 +772,18 @@ public class ChatSettingActivity
     this.jdField_a_of_type_ComTencentWidgetXSimpleListAdapter = new XSimpleListAdapter(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentWidgetXSimpleListAdapter);
     setContentView(this.jdField_a_of_type_ComTencentWidgetXListView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131231296));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231297));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231298));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231299));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131231300));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131231295));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231296));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231297));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231298));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131231299));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231288));
-    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231289));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231304));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131231305));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231302));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231303));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231287));
+    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231288));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231303));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131231304));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231301));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231302));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
@@ -829,7 +829,7 @@ public class ChatSettingActivity
   private void j()
   {
     Object localObject = View.inflate(this, 2130903123, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)((View)localObject).findViewById(2131231313));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)((View)localObject).findViewById(2131231312));
     this.jdField_a_of_type_ComTencentWidgetXListView.setPadding(0, 0, 0, 0);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
@@ -837,14 +837,14 @@ public class ChatSettingActivity
     this.jdField_a_of_type_ComTencentWidgetXSimpleListAdapter = new XSimpleListAdapter(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentWidgetXSimpleListAdapter);
     setContentView((View)localObject);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131231306));
-    this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231310));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231307));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231308));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231309));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231311));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131231312));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131231314));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131231305));
+    this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231309));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231306));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231307));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231308));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.jdField_a_of_type_AndroidViewView.findViewById(2131231310));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131231311));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131231313));
     this.jdField_c_of_type_AndroidWidgetRelativeLayout.setContentDescription(getString(2131563185));
     this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131561829));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131558463));
@@ -908,7 +908,7 @@ public class ChatSettingActivity
       return;
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setClickable(true);
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(true);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new cct(this));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new ccs(this));
       break;
       label673:
       localObject = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.q, (byte)3);
@@ -1030,13 +1030,13 @@ public class ChatSettingActivity
   private void q()
   {
     d();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new ccy(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new ccx(this));
   }
   
   private void r()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new ccz(this, localStringBuilder));
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new ccy(this, localStringBuilder));
     a(2, getString(2131561800));
   }
   
@@ -1327,12 +1327,12 @@ public class ChatSettingActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131231300: 
+    case 2131231299: 
+    case 2131231287: 
     case 2131231288: 
-    case 2131231289: 
-    case 2131231304: 
-    case 2131231310: 
-    case 2131231314: 
+    case 2131231303: 
+    case 2131231309: 
+    case 2131231313: 
       do
       {
         return;
@@ -1355,17 +1355,17 @@ public class ChatSettingActivity
       } while (!a(this.jdField_b_of_type_Int));
       ProfileCardUtil.a(this, "", this.jdField_g_of_type_JavaLangString, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), false);
       return;
-    case 2131231306: 
+    case 2131231305: 
       C();
       return;
-    case 2131231312: 
+    case 2131231311: 
       D();
       ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80040F2", "0X80040F2", 0, 0, "", "", "", "");
       return;
-    case 2131231296: 
+    case 2131231295: 
       E();
       return;
-    case 2131231305: 
+    case 2131231304: 
       f(this.jdField_g_of_type_JavaLangString);
       ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80040F0", "0X80040F0", 0, 0, "", "", "", "");
       return;

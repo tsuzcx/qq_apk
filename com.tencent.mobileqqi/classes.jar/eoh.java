@@ -1,9 +1,9 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.recent.RecentCallHelper;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.util.VersionUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class eoh
   implements View.OnClickListener
@@ -12,12 +12,13 @@ public class eoh
   
   public void onClick(View paramView)
   {
-    if (VersionUtils.e())
+    if (BannerManager.a(this.a) != null)
     {
-      BannerManager.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
-      return;
+      BannerManager.a(this.a).b();
+      if (BannerManager.a(this.a) != null) {
+        ReportController.b(BannerManager.a(this.a).b, "CliOper", "", "", "0X80040AA", "0X80040AA", 0, 0, "", "", "", "");
+      }
     }
-    BannerManager.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

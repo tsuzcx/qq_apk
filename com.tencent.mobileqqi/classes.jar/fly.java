@@ -1,29 +1,37 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.ISearchListener;
+import android.graphics.Bitmap;
+import android.view.View;
 import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import java.util.List;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.widget.XListView;
 
 public class fly
-  implements ConditionSearchManager.ISearchListener
+  implements IIconListener
 {
   public fly(SearchResultActivity paramSearchResultActivity) {}
   
-  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (!paramBoolean1)
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    for (;;)
     {
-      this.a.b = 3;
-      this.a.jdField_a_of_type_Fma.notifyDataSetChanged();
       return;
-    }
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    paramList = this.a;
-    if (paramBoolean2) {}
-    for (int i = 1;; i = 0)
-    {
-      paramList.b = i;
-      break;
+      if (this.a.jdField_a_of_type_Int == 0)
+      {
+        int i = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          paramBitmap = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof fma)))
+          {
+            paramBitmap = (fma)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              SearchResultActivity.a(this.a, paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
+          }
+          paramInt2 += 1;
+        }
+      }
     }
   }
 }

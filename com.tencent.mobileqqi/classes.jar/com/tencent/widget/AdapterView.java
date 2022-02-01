@@ -21,7 +21,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import hvo;
+import hvn;
 import java.lang.reflect.Field;
 
 public abstract class AdapterView
@@ -42,7 +42,7 @@ public abstract class AdapterView
   private View jdField_a_of_type_AndroidViewView;
   AdapterView.OnItemLongClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemLongClickListener;
   AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener;
-  private hvo jdField_a_of_type_Hvo;
+  private hvn jdField_a_of_type_Hvn;
   private boolean jdField_a_of_type_Boolean;
   @ViewDebug.ExportedProperty(category="list")
   public int aA = -1;
@@ -187,10 +187,10 @@ public abstract class AdapterView
       if ((!this.o) && (!this.q)) {
         break label78;
       }
-      if (this.jdField_a_of_type_Hvo == null) {
-        this.jdField_a_of_type_Hvo = new hvo(this, null);
+      if (this.jdField_a_of_type_Hvn == null) {
+        this.jdField_a_of_type_Hvn = new hvn(this, null);
       }
-      post(this.jdField_a_of_type_Hvo);
+      post(this.jdField_a_of_type_Hvn);
     }
     for (;;)
     {
@@ -410,7 +410,7 @@ public abstract class AdapterView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    removeCallbacks(this.jdField_a_of_type_Hvo);
+    removeCallbacks(this.jdField_a_of_type_Hvn);
   }
   
   @SuppressLint({"NewApi"})

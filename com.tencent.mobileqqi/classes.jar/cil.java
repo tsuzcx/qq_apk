@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.DoodlePicView;
 
-public class cil
-  implements View.OnClickListener
+class cil
+  implements DialogInterface.OnClickListener
 {
-  public cil(DoodleActivity paramDoodleActivity) {}
+  cil(cik paramcik) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DialogUtil.a(this.a, 230, this.a.getString(2131561832), this.a.getString(2131561823), 2131561746, 2131561915, new cim(this), new cin(this)).show();
+    this.a.a.a.b();
   }
 }
 

@@ -19,8 +19,8 @@ import com.tencent.open.downloadnew.MyAppApi;
 import com.tencent.open.downloadnew.UpdateManager;
 import com.tencent.open.downloadnew.UpdateManager.OnCheckUpdateListener;
 import com.tencent.smtt.sdk.WebView;
+import hkv;
 import hkw;
-import hkx;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -348,7 +348,7 @@ public class DownloadInterface
         localArrayList.add(localDownloadInfo);
         i += 1;
       }
-      DownloadApi.a(localArrayList, new hkw(this, paramString));
+      DownloadApi.a(localArrayList, new hkv(this, paramString));
       return;
     }
     catch (JSONException paramJSONArray)
@@ -369,7 +369,7 @@ public class DownloadInterface
   
   public void jsCallBack(String paramString)
   {
-    this.mHandler.post(new hkx(this, paramString));
+    this.mHandler.post(new hkw(this, paramString));
   }
   
   public int openDownloaderWebview(String paramString)

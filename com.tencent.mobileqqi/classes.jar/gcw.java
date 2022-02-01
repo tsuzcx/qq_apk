@@ -1,26 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
 
-public class gcw
-  extends BroadcastReceiver
+public final class gcw
+  extends Handler
 {
-  public gcw(QQPlayerService paramQQPlayerService) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public gcw(QQPlayerService paramQQPlayerService, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
-    }
-    if (("com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) || ("qqplayer_exit_action".equals(paramIntent.getAction())))
-    {
-      if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
-        this.a.a.b = true;
-      }
-      QQPlayerService.c(this.a.getApplicationContext());
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    QQPlayerService.a(this.a, (Intent)paramMessage.obj);
   }
 }
 

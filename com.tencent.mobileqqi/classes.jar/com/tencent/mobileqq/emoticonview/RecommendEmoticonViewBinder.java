@@ -23,7 +23,7 @@ import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.pb.emosm.EmosmPb.STRecommendTabInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fpc;
+import fpb;
 import java.io.File;
 import java.net.URL;
 import java.util.List;
@@ -114,9 +114,9 @@ public class RecommendEmoticonViewBinder
         this.jdField_a_of_type_JavaUtilList = EmoticonUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
       EmosmPb.STRecommendTabInfo localSTRecommendTabInfo = (EmosmPb.STRecommendTabInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131233325);
-      Button localButton = (Button)paramView.findViewById(2131233324);
-      paramView = (TextView)paramView.findViewById(2131233323);
+      URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131233324);
+      Button localButton = (Button)paramView.findViewById(2131233323);
+      paramView = (TextView)paramView.findViewById(2131233322);
       if (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
         jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839141);
       }
@@ -134,7 +134,7 @@ public class RecommendEmoticonViewBinder
       }
       for (;;)
       {
-        localButton.setOnClickListener(new fpc(this));
+        localButton.setOnClickListener(new fpb(this));
         return;
         localURLImageView.setImageDrawable(jdField_b_of_type_AndroidGraphicsDrawableDrawable);
       }
@@ -142,14 +142,14 @@ public class RecommendEmoticonViewBinder
     if (this.jdField_b_of_type_JavaLangString == null) {
       this.jdField_b_of_type_JavaLangString = EmoticonUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    ((Button)paramView.findViewById(2131231611)).setOnClickListener(this);
+    ((Button)paramView.findViewById(2131231610)).setOnClickListener(this);
     if (c == null) {
       c = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839127);
     }
     if (d == null) {
       d = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839126);
     }
-    paramView = (URLImageView)paramView.findViewById(2131233325);
+    paramView = (URLImageView)paramView.findViewById(2131233324);
     paramView.setImageDrawable(URLDrawable.getDrawable(this.jdField_b_of_type_JavaLangString, c, d));
     paramView.setURLDrawableDownListener(this);
   }

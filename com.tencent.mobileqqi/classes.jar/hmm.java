@@ -3,11 +3,11 @@ import com.tencent.open.downloadnew.DownloadManager;
 public final class hmm
   implements Runnable
 {
-  public hmm(String paramString1, String paramString2, boolean paramBoolean) {}
+  public hmm(String paramString) {}
   
   public void run()
   {
-    DownloadManager.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    DownloadManager.a().a(this.a);
   }
 }
 

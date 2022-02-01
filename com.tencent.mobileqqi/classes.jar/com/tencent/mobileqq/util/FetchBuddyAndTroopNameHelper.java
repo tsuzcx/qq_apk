@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import hal;
+import hak;
 
 public class FetchBuddyAndTroopNameHelper
 {
@@ -16,7 +16,7 @@ public class FetchBuddyAndTroopNameHelper
   
   private FetchInfoListManager a()
   {
-    return new FetchInfoListManager(new hal(this));
+    return new FetchInfoListManager(new hak(this));
   }
   
   public void a()

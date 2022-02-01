@@ -12,9 +12,9 @@ public class fgj
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Fgm.a(true);
+    ScreenShot.a(this.a);
     if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-      KapalaiAdapterUtil.a().b(this.a.jdField_a_of_type_AndroidViewWindow);
+      KapalaiAdapterUtil.a().b(this.a.a);
     }
   }
 }

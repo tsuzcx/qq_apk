@@ -51,7 +51,7 @@ public class PubAccountAssistantSettingActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(2130903425);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232568));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232567));
     paramBundle = View.inflate(this, 2130903426, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(paramBundle);
     d();

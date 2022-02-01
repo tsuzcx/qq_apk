@@ -1,13 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 class eip
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnDismissListener
 {
-  eip(ein paramein) {}
+  eip(eim parameim) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     this.a.a.a(this.a.a.a);
   }

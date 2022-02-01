@@ -1,51 +1,36 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
-import android.view.View;
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class czi
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnClickListener
 {
-  czi(czh paramczh, ActionSheet paramActionSheet) {}
+  czi(czh paramczh) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    if (paramInt == 0) {
-      if (1 == PermisionPrivacyActivity.a(this.jdField_a_of_type_Czh.a).b()) {
-        PermisionPrivacyActivity.a(this.jdField_a_of_type_Czh.a);
-      }
-    }
-    while (paramInt != 1)
+    if (!this.a.a.a.isFinishing())
     {
-      return;
-      if (2 == PermisionPrivacyActivity.b(this.jdField_a_of_type_Czh.a).b())
-      {
-        PermisionPrivacyActivity.b(this.jdField_a_of_type_Czh.a);
-        return;
-      }
-      if (!NetworkUtil.e(this.jdField_a_of_type_Czh.a))
-      {
-        QQToast.a(paramView.getContext(), 0, this.jdField_a_of_type_Czh.a.getResources().getString(2131562488), 0).b(this.jdField_a_of_type_Czh.a.d());
-        return;
-      }
-      this.jdField_a_of_type_Czh.a.setResult(2);
-      this.jdField_a_of_type_Czh.a.finish();
+      paramDialogInterface.dismiss();
+      this.a.a.a.showDialog(1);
+    }
+    if (!NetworkUtil.e(this.a.a.a))
+    {
+      QQToast.a(this.a.a.a, 0, this.a.a.a.getResources().getString(2131562488), 0).b(this.a.a.a.d());
       return;
     }
-    paramView = DialogUtil.c(paramView.getContext(), 230, null, null, 2131561746, 2131562545, null, null);
-    paramView.setMessage(2131561621);
-    czj localczj = new czj(this);
-    czl localczl = new czl(this);
-    paramView.setPositiveButton(2131562545, localczj);
-    paramView.setNegativeButton(2131561746, localczl);
-    paramView.show();
+    if (this.a.a.a.a == null)
+    {
+      this.a.a.a.a = new czj(this);
+      this.a.a.a.b.registObserver(this.a.a.a.a);
+    }
+    PermisionPrivacyActivity.c(this.a.a.a).c();
+    PermisionPrivacyActivity.a(this.a.a.a, 2131562875, 0L);
   }
 }
 

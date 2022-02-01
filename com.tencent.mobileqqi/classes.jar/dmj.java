@@ -1,21 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.SubAccountSettingActivity;
-import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
 
-class dmj
-  implements DialogInterface.OnClickListener
+public class dmj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  dmj(dmi paramdmi) {}
+  public dmj(SubAccountSettingActivity paramSubAccountSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a.a().setTitle("");
-    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    SubAccountAssistantImpl.a().a(this.a.b, paramBoolean);
+    QQAppInterface localQQAppInterface = this.a.b;
+    if (paramBoolean) {}
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "Bind_account", "Top_bind_account", 0, 0, paramCompoundButton, "", "", "");
+      return;
+    }
   }
 }
 

@@ -1,27 +1,53 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class czz
-  implements Parcelable.Creator
+public class czz
+  implements DialogInterface.OnClickListener
 {
-  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
-  {
-    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
-    localCardContactInfo.a = paramParcel.readString();
-    localCardContactInfo.c = paramParcel.readString();
-    localCardContactInfo.b = paramParcel.readString();
-    return localCardContactInfo;
-  }
+  public czz(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ProfileActivity.CardContactInfo[paramInt];
+    paramDialogInterface = ProfileCardMoreActivity.a(this.a).getInputValue();
+    if (!paramDialogInterface.equals(this.a.jdField_a_of_type_JavaLangString))
+    {
+      if (!NetworkUtil.e(BaseApplication.getContext())) {
+        break label133;
+      }
+      if (paramDialogInterface.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h)) {
+        break label122;
+      }
+      FriendListHandler localFriendListHandler = (FriendListHandler)this.a.b.a(1);
+      if (localFriendListHandler != null)
+      {
+        localFriendListHandler.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramDialogInterface);
+        ProfileCardMoreActivity.a(this.a, ProfileCardMoreActivity.a(this.a) | 0x1);
+        this.a.b(paramDialogInterface);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.a(2131562435, 1);
+    return;
+    label122:
+    this.a.a(2131562516, 0);
+    return;
+    label133:
+    this.a.a(2131562445, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     czz
  * JD-Core Version:    0.7.0.1
  */

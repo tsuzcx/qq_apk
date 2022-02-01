@@ -18,7 +18,7 @@ import com.tencent.mobileqq.data.TroopBarPageEntity;
 import com.tencent.mobileqq.data.TroopBarPostContentEntity;
 import com.tencent.mobileqq.data.TroopBarPostEntity;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import gvh;
+import gvg;
 
 public class TroopBarPostLayout2
   extends TroopBarPostAbsLayout
@@ -29,19 +29,19 @@ public class TroopBarPostLayout2
   
   public View a(Activity paramActivity, LayoutInflater paramLayoutInflater, View paramView, TroopBarAbsDataEntity paramTroopBarAbsDataEntity)
   {
-    gvh localgvh;
+    gvg localgvg;
     if (paramView == null)
     {
       paramView = paramLayoutInflater.inflate(2130903406, null);
-      localgvh = (gvh)a(paramView);
-      paramView.setTag(localgvh);
+      localgvg = (gvg)a(paramView);
+      paramView.setTag(localgvg);
     }
     for (;;)
     {
       paramTroopBarAbsDataEntity = (TroopBarPostEntity)paramTroopBarAbsDataEntity;
-      localgvh.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopBarAbsDataEntity.title);
+      localgvg.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopBarAbsDataEntity.title);
       paramActivity = paramActivity.getResources();
-      TroopBarUtils.a(paramActivity, paramLayoutInflater, localgvh.jdField_b_of_type_AndroidWidgetLinearLayout, paramTroopBarAbsDataEntity.getIconListEntitys());
+      TroopBarUtils.a(paramActivity, paramLayoutInflater, localgvg.jdField_b_of_type_AndroidWidgetLinearLayout, paramTroopBarAbsDataEntity.getIconListEntitys());
       ColorDrawable localColorDrawable;
       if (paramTroopBarAbsDataEntity.contentBytes != null)
       {
@@ -53,26 +53,26 @@ public class TroopBarPostLayout2
       }
       try
       {
-        localgvh.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable(paramLayoutInflater.image1, localColorDrawable, localColorDrawable));
+        localgvg.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable(paramLayoutInflater.image1, localColorDrawable, localColorDrawable));
         label122:
         if (!TextUtils.isEmpty(paramTroopBarAbsDataEntity.subscript_addr)) {}
         try
         {
-          localgvh.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
-          localgvh.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable(TroopBarPageEntity.sPostCornerImgPrefix + paramTroopBarAbsDataEntity.subscript_addr, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+          localgvg.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
+          localgvg.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable(TroopBarPageEntity.sPostCornerImgPrefix + paramTroopBarAbsDataEntity.subscript_addr, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
           label188:
-          localgvh.jdField_b_of_type_AndroidWidgetTextView.setText(paramTroopBarAbsDataEntity.brief);
+          localgvg.jdField_b_of_type_AndroidWidgetTextView.setText(paramTroopBarAbsDataEntity.brief);
           paramLayoutInflater = paramActivity.getString(2131560693, new Object[] { TroopBarUtils.a(paramTroopBarAbsDataEntity.subscribers) });
           paramActivity = paramActivity.getString(2131560692, new Object[] { TroopBarUtils.a(paramTroopBarAbsDataEntity.total_comment) });
-          localgvh.c.setText(paramLayoutInflater);
-          localgvh.d.setText(paramActivity);
-          localgvh.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131230861, paramTroopBarAbsDataEntity);
-          localgvh.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+          localgvg.c.setText(paramLayoutInflater);
+          localgvg.d.setText(paramActivity);
+          localgvg.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131230861, paramTroopBarAbsDataEntity);
+          localgvg.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
           return paramView;
-          localgvh = (gvh)paramView.getTag();
+          localgvg = (gvg)paramView.getTag();
           continue;
           label298:
-          localgvh.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localColorDrawable);
+          localgvg.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localColorDrawable);
         }
         catch (Exception paramLayoutInflater)
         {
@@ -88,7 +88,7 @@ public class TroopBarPostLayout2
   
   public TroopBarPostAbsLayout.AbsItemViewHolder a(View paramView)
   {
-    return new gvh(this, paramView);
+    return new gvg(this, paramView);
   }
   
   public void onClick(View paramView)

@@ -11,8 +11,8 @@ import android.text.method.MovementMethod;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
+import hga;
 import hgb;
-import hgc;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -47,7 +47,7 @@ public class ContainerView$SelectableTextView
     setTextColor(-16777216);
     setVisibility(4);
     if (Build.VERSION.SDK_INT >= 11) {
-      setCustomSelectionActionModeCallback(new hgb(this, paramContainerView));
+      setCustomSelectionActionModeCallback(new hga(this, paramContainerView));
     }
   }
   
@@ -130,7 +130,7 @@ public class ContainerView$SelectableTextView
     setFocusable(true);
     setFocusableInTouchMode(true);
     setClickable(paramBoolean);
-    setOnLongClickListener(new hgc(this));
+    setOnLongClickListener(new hgb(this));
   }
   
   public void setTextSelectHandle(int paramInt)

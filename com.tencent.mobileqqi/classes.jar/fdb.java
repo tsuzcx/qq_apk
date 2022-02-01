@@ -1,110 +1,94 @@
-import com.rookery.translate.tencent.TranslateRespWrapperFYJ;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.app.I18nTranslatorHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import KQQ.HttpUploadReq;
+import KQQ.UploadInfo;
+import com.tencent.common.config.AppSetting;
+import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 
-public class fdb
-  implements Callable
+public final class fdb
+  extends Thread
 {
-  Long jdField_a_of_type_JavaLangLong;
-  String jdField_a_of_type_JavaLangString;
-  List jdField_a_of_type_JavaUtilList;
+  public fdb(byte[] paramArrayOfByte, String paramString) {}
   
-  public fdb(I18nTranslatorHandler paramI18nTranslatorHandler, String paramString, Long paramLong, List paramList)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public Boolean a()
-  {
-    j = 0;
-    HttpUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler.a.getApplication());
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new StringBuilder("https://macqq.translator.qq.com/translate");
-    for (;;)
+    boolean bool3 = false;
+    boolean bool1 = false;
+    boolean bool2 = bool3;
+    try
     {
-      try
+      Object localObject1 = new UploadInfo();
+      bool2 = bool3;
+      ((UploadInfo)localObject1).lAppID = AppSetting.a;
+      bool2 = bool3;
+      ((UploadInfo)localObject1).lFromMID = 9901L;
+      bool2 = bool3;
+      ((UploadInfo)localObject1).lToMID = 0L;
+      bool2 = bool3;
+      ((UploadInfo)localObject1).shType = 2;
+      bool2 = bool3;
+      ((UploadInfo)localObject1).vSignature = "NoSignature".getBytes();
+      bool2 = bool3;
+      localObject1 = ((UploadInfo)localObject1).toByteArray();
+      bool2 = bool3;
+      Object localObject2 = new Cryptor().encrypt((byte[])localObject1, this.jdField_a_of_type_ArrayOfByte);
+      bool2 = bool3;
+      localObject1 = new HttpUploadReq();
+      bool2 = bool3;
+      ((HttpUploadReq)localObject1).vEncryptUploadInfo = ((byte[])localObject2);
+      bool2 = bool3;
+      ((HttpUploadReq)localObject1).vFileData = this.jdField_a_of_type_JavaLangString.getBytes();
+      int i = 0;
+      for (;;)
       {
-        ((StringBuilder)localObject).append("?");
-        ((StringBuilder)localObject).append("platform=android");
-        ((StringBuilder)localObject).append("&uin=" + this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler.a.a());
-        ((StringBuilder)localObject).append("&skey=" + URLEncoder.encode(this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler.a.d(), "utf-8"));
-        ((StringBuilder)localObject).append("&source=auto");
-        ((StringBuilder)localObject).append("&target=" + I18nTranslatorHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler, this.jdField_a_of_type_JavaLangString));
-        if (this.jdField_a_of_type_JavaUtilList != null)
+        bool2 = bool1;
+        if (bool1) {
+          break;
+        }
+        bool2 = bool1;
+        if (i >= 3) {
+          break;
+        }
+        bool2 = bool1;
+        localObject2 = new HttpPost("http://bugtrace.3g.qq.com/upload/1/0");
+        bool2 = bool1;
+        ((HttpPost)localObject2).setEntity(new ByteArrayEntity(((HttpUploadReq)localObject1).toByteArray()));
+        bool2 = bool1;
+        localObject2 = new DefaultHttpClient().execute((HttpUriRequest)localObject2);
+        bool3 = bool1;
+        bool2 = bool1;
+        if (((HttpResponse)localObject2).getStatusLine().getStatusCode() == 200)
         {
-          i = 0;
-          if (i < this.jdField_a_of_type_JavaUtilList.size())
+          bool2 = bool1;
+          localObject2 = ((HttpResponse)localObject2).getEntity();
+          bool3 = bool1;
+          if (localObject2 != null)
           {
-            ((StringBuilder)localObject).append("&source_text=" + URLEncoder.encode((String)this.jdField_a_of_type_JavaUtilList.get(i), "utf-8"));
-            i += 1;
-            continue;
+            bool2 = bool1;
+            localObject2 = EntityUtils.toString((HttpEntity)localObject2);
+            bool2 = bool1;
+            bool3 = Pattern.compile("ret\\s*=\\s*0", 2).matcher((CharSequence)localObject2).find();
           }
         }
-        localObject = ((StringBuilder)localObject).toString();
+        i += 1;
+        bool1 = bool3;
       }
-      catch (Exception localException2)
-      {
-        String str = "https://macqq.translator.qq.com/translate";
-        continue;
-        boolean bool = false;
-        int i = j;
-        continue;
-      }
-      try
-      {
-        localObject = new JSONArray(I18nTranslatorHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler, (String)localObject));
-        if (((JSONArray)localObject).getJSONObject(0).getInt("ret") == 0)
-        {
-          bool = true;
-          i = j;
-          if (i < ((JSONArray)localObject).length())
-          {
-            localArrayList.add(((JSONArray)localObject).getJSONObject(i).getString("target_text"));
-            i += 1;
-            continue;
-          }
-          if (bool)
-          {
-            localObject = new TranslateRespWrapperFYJ();
-            ((TranslateRespWrapperFYJ)localObject).jdField_a_of_type_JavaLangLong = this.jdField_a_of_type_JavaLangLong;
-            ((TranslateRespWrapperFYJ)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
-            this.jdField_a_of_type_ComTencentMobileqqAppI18nTranslatorHandler.a(80002, bool, localObject);
-          }
-          return Boolean.valueOf(bool);
-        }
-      }
-      catch (IOException localIOException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Translate", 2, "Request fail IOException");
-        }
-        return Boolean.FALSE;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Translate", 2, "Request fail OutOfMemoryError");
-        }
-        return Boolean.FALSE;
-      }
-      catch (Exception localException1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Translate", 2, "Request fail Exception");
-        }
-        localException1.printStackTrace();
-        return Boolean.FALSE;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("DexLoad", 2, "upload result: " + bool2 + ", " + this.jdField_a_of_type_JavaLangString);
       }
     }
   }

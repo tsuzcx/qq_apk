@@ -1,29 +1,15 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.MQPIntChkHandler;
 
 public class fdg
-  extends fcu
+  implements DialogInterface.OnClickListener
 {
-  protected void a(String paramString)
-  {
-    this.a.a(3, paramString);
-  }
+  public fdg(MQPIntChkHandler paramMQPIntChkHandler, int paramInt) {}
   
-  protected void b()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(6, "fake_p_msg");
-  }
-  
-  public void b(String paramString)
-  {
-    CoreService.b();
-    this.a.e();
-    this.a.b(true);
-    long l = this.a.a(Process.myPid());
-    BaseApplicationImpl.a.a().onAppGuardModeChange(false, 2, (int)l);
+    MQPIntChkHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMQPIntChkHandler, paramDialogInterface, paramInt, this.jdField_a_of_type_Int);
   }
 }
 

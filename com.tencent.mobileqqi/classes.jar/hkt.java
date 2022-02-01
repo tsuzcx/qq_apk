@@ -1,15 +1,32 @@
 import android.os.Bundle;
+import com.tencent.open.appcommon.AppViewBaseActivity;
 import com.tencent.open.appcommon.js.BaseJsCallBack;
-import com.tencent.open.downloadnew.MyAppApi;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class hkt
   implements Runnable
 {
-  public hkt(BaseJsCallBack paramBaseJsCallBack, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2) {}
+  public hkt(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
   
   public void run()
   {
-    MyAppApi.a().a(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.b);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("iconType", localJSONObject.optString("iconType"));
+      localBundle.putString("visible", localJSONObject.optString("visible"));
+      localBundle.putString("callBackKey", localJSONObject.optString("callBackKey"));
+      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity instanceof AppViewBaseActivity)) {
+        ((AppViewBaseActivity)this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity).b(localBundle);
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
 }
 

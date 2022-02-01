@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
-class eiv
-  implements PermissionDialogCallback
+public class eiv
+  implements DialogInterface.OnClickListener
 {
-  eiv(eiu parameiu) {}
+  public eiv(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a() {}
-  
-  public void b() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    Intent localIntent = new Intent(this.a.a, GesturePWDSettingActivity.class);
+    localIntent.putExtra("key_reset", true);
+    this.a.a.startActivity(localIntent);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

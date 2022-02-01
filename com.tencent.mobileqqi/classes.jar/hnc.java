@@ -1,35 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadConstants;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.common.DownloadDBHelper;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-class hnc
-  implements DialogInterface.OnClickListener
+public class hnc
+  implements Runnable
 {
-  hnc(hna paramhna) {}
+  public hnc(DownloadManager paramDownloadManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
+    DownloadInfo localDownloadInfo;
     try
     {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.a);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.e);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.h);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.k);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.x, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_Int, bool);
-      this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(10, paramDialogInterface);
+      if (!CommonDataAdapter.a().a().getSharedPreferences("opensdk_config", 0).getBoolean("download_clear_unuse", false))
+      {
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+        for (;;)
+        {
+          if (!localIterator.hasNext()) {
+            break label174;
+          }
+          localDownloadInfo = (DownloadInfo)localIterator.next();
+          if (localDownloadInfo.jdField_h_of_type_Int != 0) {
+            break label135;
+          }
+          if (localDownloadInfo.f != 0) {
+            break;
+          }
+          String str = localDownloadInfo.c;
+          label77:
+          if (this.a.a(str) == null)
+          {
+            this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+            DownloadDBHelper.a().a(localDownloadInfo.b);
+          }
+        }
+      }
       return;
     }
-    catch (Exception paramDialogInterface)
+    catch (Exception localException)
     {
-      break label6;
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "checkDownloadList>>>", localException);
     }
+    label135:
+    label174:
+    do
+    {
+      localObject = localDownloadInfo.jdField_h_of_type_JavaLangString;
+      break label77;
+      if (this.a.a(localDownloadInfo) != null) {
+        break;
+      }
+      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+      DownloadDBHelper.a().a(localDownloadInfo.b);
+      break;
+    } while (this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() <= 200);
+    Object localObject = CommonDataAdapter.a().a().getSharedPreferences("opensdk_config", 0).edit();
+    ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
+    ((SharedPreferences.Editor)localObject).commit();
   }
 }
 

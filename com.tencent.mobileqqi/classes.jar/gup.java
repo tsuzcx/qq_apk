@@ -1,48 +1,49 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.SearchTroopListActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.troop.activity.TroopSearchLogicActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import java.util.List;
+import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
 
 public class gup
-  extends TroopObserver
+  extends Handler
 {
   public gup(TroopSearchLogicActivity paramTroopSearchLogicActivity) {}
   
-  protected void a(int paramInt1, boolean paramBoolean, int paramInt2, List paramList)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 1;
-    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
-    if ((paramInt1 == 0) && (paramList != null) && (paramList.size() > 0))
+    boolean bool;
+    if (paramMessage.what == 1)
     {
-      Message localMessage = Message.obtain();
-      localMessage.what = 1;
-      localMessage.obj = paramList;
-      localMessage.arg1 = paramInt2;
-      if (paramBoolean) {}
-      for (paramInt1 = i;; paramInt1 = 0)
-      {
-        localMessage.arg2 = paramInt1;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 300L);
-        return;
+      this.a.d();
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 != 1) {
+        break label183;
       }
-    }
-    this.a.d();
-    if (paramInt1 == 0) {
-      this.a.b(2131562483);
+      bool = true;
+      paramMessage = (List)paramMessage.obj;
+      if ((paramMessage == null) || (paramMessage.size() != 1)) {
+        break label188;
+      }
+      paramMessage = (SearchGroup.GroupInfo)paramMessage.get(0);
+      paramMessage = TroopInfoActivity.a(6, String.valueOf(paramMessage.dwGroupCode.get()), "", paramMessage.sGroupName.get(), String.valueOf(paramMessage.dwGroupOwnerId.get()), "", (byte)SearchTroopListActivity.a(paramMessage), paramMessage.dwGroupFlagExt.get(), (short)paramMessage.dwGroupFaceId.get(), paramMessage.sGroupFingerMem.get(), paramMessage.sGroupLocation.get(), paramMessage.bGroupIn.get(), null, paramMessage.dwGroupFlagExt.get(), paramMessage.dwAuthGroupType.get(), this.a.jdField_d_of_type_Int);
+      ChatSettingForTroop.a(this.a, paramMessage, 2);
     }
     for (;;)
     {
       this.a.finish();
       return;
-      if (paramInt1 == 68) {
-        this.a.b(2131562483);
-      } else if (!NetworkUtil.e(BaseApplication.getContext())) {
-        this.a.b(2131562948);
-      } else {
-        this.a.b(2131562510);
+      label183:
+      bool = false;
+      break;
+      label188:
+      if ((paramMessage != null) && (paramMessage.size() > 1)) {
+        SearchTroopListActivity.a(this.a, this.a.jdField_d_of_type_JavaLangString, paramMessage, bool);
       }
     }
   }

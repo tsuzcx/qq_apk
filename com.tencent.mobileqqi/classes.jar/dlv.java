@@ -1,14 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SubAccountMessageActivity;
 
 public class dlv
-  implements Runnable
+  implements View.OnClickListener
 {
   public dlv(SubAccountMessageActivity paramSubAccountMessageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.h();
-    SubAccountMessageActivity.d(this.a);
+    SubAccountMessageActivity.a(this.a);
   }
 }
 

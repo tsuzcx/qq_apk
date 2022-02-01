@@ -28,9 +28,9 @@ import com.tencent.open.base.LogUtility;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebSettings.PluginState;
 import com.tencent.smtt.sdk.WebView;
+import hjy;
 import hjz;
 import hka;
-import hkb;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -214,12 +214,12 @@ public class QZoneAppCenterActivity
     e();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(2131560958);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new hjz(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new hjy(this));
     this.jdField_l_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setText("应用消息");
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new hka(this));
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new hjz(this));
   }
   
   protected void j()
@@ -239,8 +239,8 @@ public class QZoneAppCenterActivity
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setFocusableInTouchMode(true);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setHorizontalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(this.jdField_a_of_type_Hkh);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setOnLongClickListener(new hkb(this));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(this.jdField_a_of_type_Hkg);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setOnLongClickListener(new hka(this));
     Object localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
     ((WebSettings)localObject).setAllowFileAccess(true);
     ((WebSettings)localObject).setJavaScriptCanOpenWindowsAutomatically(true);
@@ -260,7 +260,7 @@ public class QZoneAppCenterActivity
       ((WebSettings)localObject).setAppCacheEnabled(true);
       ((WebSettings)localObject).setAppCachePath(getApplicationContext().getDir("cache", 2).getPath());
     }
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(this.jdField_a_of_type_Hkg);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(this.jdField_a_of_type_Hkf);
     localObject = new ArrayList();
     this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack = new BaseJsCallBack(this);
     DownloadInterface localDownloadInterface = new DownloadInterface(this, this.jdField_a_of_type_ComTencentSmttSdkWebView);
@@ -286,7 +286,7 @@ public class QZoneAppCenterActivity
         this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("accessibility");
         this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("accessibilityTraversal");
       }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232114));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232113));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentSmttSdkWebView);
       return;
       InterfaceRegisterUtils.a((List)localObject, this.jdField_a_of_type_ComTencentSmttSdkWebView, d, this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge);

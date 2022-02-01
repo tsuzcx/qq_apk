@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import cooperation.qzone.widget.RadioPreference;
+import ibv;
 import ibw;
-import ibx;
 
 public class QZoneStatisticsSettingActivity
   extends PreferenceActivity
@@ -21,9 +21,9 @@ public class QZoneStatisticsSettingActivity
   private static final String jdField_d_of_type_JavaLangString = "leiji";
   private static final String jdField_e_of_type_JavaLangString = "leiji2";
   private static final String jdField_f_of_type_JavaLangString = "leijiDefault";
-  Preference.OnPreferenceClickListener jdField_a_of_type_AndroidPreferencePreference$OnPreferenceClickListener = new ibw(this);
+  Preference.OnPreferenceClickListener jdField_a_of_type_AndroidPreferencePreference$OnPreferenceClickListener = new ibv(this);
   RadioPreference jdField_a_of_type_CooperationQzoneWidgetRadioPreference;
-  Preference.OnPreferenceClickListener jdField_b_of_type_AndroidPreferencePreference$OnPreferenceClickListener = new ibx(this);
+  Preference.OnPreferenceClickListener jdField_b_of_type_AndroidPreferencePreference$OnPreferenceClickListener = new ibw(this);
   RadioPreference jdField_b_of_type_CooperationQzoneWidgetRadioPreference;
   RadioPreference jdField_c_of_type_CooperationQzoneWidgetRadioPreference;
   RadioPreference jdField_d_of_type_CooperationQzoneWidgetRadioPreference;

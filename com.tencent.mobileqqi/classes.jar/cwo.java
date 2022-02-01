@@ -1,21 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.MyPublishedHornActivity;
 import com.tencent.mobileqq.app.NearHornHandler;
+import com.tencent.mobileqq.data.HornDetail;
+import com.tencent.mobileqq.maproam.Utils;
 
 public class cwo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public cwo(MyPublishedHornActivity paramMyPublishedHornActivity, Boolean paramBoolean) {}
+  public cwo(MyPublishedHornActivity paramMyPublishedHornActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (String str = "1";; str = "0")
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.b, str, this.jdField_a_of_type_ComTencentMobileqqActivityMyPublishedHornActivity.jdField_a_of_type_JavaLangString);
-      }
-      return;
-    }
+    this.a.a.b(this.a.b.hornKey, this.a.e);
+    Utils.a();
   }
 }
 

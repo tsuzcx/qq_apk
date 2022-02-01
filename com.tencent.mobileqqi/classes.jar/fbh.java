@@ -1,17 +1,14 @@
-import android.content.Context;
-import android.content.res.Resources;
 import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class fbh
   implements Runnable
 {
-  public fbh(DataLineHandler paramDataLineHandler, String paramString) {}
+  public fbh(DataLineHandler paramDataLineHandler) {}
   
   public void run()
   {
-    FMToastUtil.a("'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131558519));
+    FMToastUtil.a(2131558548);
   }
 }
 

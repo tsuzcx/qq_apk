@@ -1,14 +1,19 @@
-import android.database.Cursor;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
 
-public abstract interface hvv
+public final class hvv
+  implements Parcelable.Creator
 {
-  public abstract Cursor a();
+  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
+  {
+    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
+  }
   
-  public abstract Cursor a(CharSequence paramCharSequence);
-  
-  public abstract CharSequence a(Cursor paramCursor);
-  
-  public abstract void a(Cursor paramCursor);
+  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
+  {
+    return new ExpandableListConnector.GroupMetadata[paramInt];
+  }
 }
 
 

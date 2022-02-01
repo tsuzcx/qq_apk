@@ -1,28 +1,18 @@
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
+import java.util.TimerTask;
 
 public class bxw
-  extends Handler
+  extends TimerTask
 {
   public bxw(ChatActivity paramChatActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 101)
-    {
-      ChatActivity.a(this.a, 2);
-      ChatActivity.a(this.a);
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (paramMessage.what == 102) {
-        ChatActivity.a(this.a).a();
-      }
-    }
+    Message localMessage = new Message();
+    localMessage.what = 101;
+    ChatActivity.a(this.a).sendMessage(localMessage);
   }
 }
 

@@ -1,21 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.EditTagActivity;
 
 public class cju
-  extends Handler
+  implements View.OnClickListener
 {
   public cju(EditTagActivity paramEditTagActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.setResult(-1);
     this.a.finish();
   }
 }

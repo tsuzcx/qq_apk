@@ -24,11 +24,11 @@ import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
+import esj;
 import esk;
 import esl;
 import esm;
 import esn;
-import eso;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -48,12 +48,12 @@ public class QvipSpecialCarePersonActivity
   private QvipSpecialCareManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCareManager = null;
   private QvipSpecialCarePersonActivity.SpecialCareAdapter jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCarePersonActivity$SpecialCareAdapter;
   private QvipSpecialSoundManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager = null;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new esm(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new esl(this);
   private FriendsManagerImp jdField_a_of_type_ComTencentMobileqqAppFriendsManagerImp = null;
-  private QvipSpecialCareObserver jdField_a_of_type_ComTencentMobileqqAppQvipSpecialCareObserver = new esn(this);
+  private QvipSpecialCareObserver jdField_a_of_type_ComTencentMobileqqAppQvipSpecialCareObserver = new esm(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = null;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new esl(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new esk(this);
   private int b;
   
   private String a(String paramString)
@@ -121,15 +121,15 @@ public class QvipSpecialCarePersonActivity
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131233454));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131233453));
     Object localObject = LayoutInflater.from(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232884);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232883);
     View localView = ((LayoutInflater)localObject).inflate(2130903703, this.jdField_a_of_type_ComTencentWidgetXListView, false);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(localView);
     localObject = ((LayoutInflater)localObject).inflate(2130903696, this.jdField_a_of_type_ComTencentWidgetXListView, false);
     this.jdField_a_of_type_ComTencentWidgetXListView.b((View)localObject);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131233455).setOnClickListener(this);
-    ((View)localObject).findViewById(2131233453).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131233454).setOnClickListener(this);
+    ((View)localObject).findViewById(2131233452).setOnClickListener(this);
   }
   
   private void f()
@@ -149,7 +149,7 @@ public class QvipSpecialCarePersonActivity
   private void g()
   {
     d();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new esk(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new esj(this));
   }
   
   @SuppressLint({"NewApi"})
@@ -210,9 +210,9 @@ public class QvipSpecialCarePersonActivity
         Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1);
         if (localObject != null)
         {
-          localObject = (eso)((View)localObject).getTag();
-          if ((localObject != null) && (((eso)localObject).jdField_a_of_type_JavaLangString.endsWith(paramString)) && (((eso)localObject).jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) && (paramBitmap != null)) {
-            ((eso)localObject).jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftIcon(new BitmapDrawable(paramBitmap), this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
+          localObject = (esn)((View)localObject).getTag();
+          if ((localObject != null) && (((esn)localObject).jdField_a_of_type_JavaLangString.endsWith(paramString)) && (((esn)localObject).jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem != null) && (paramBitmap != null)) {
+            ((esn)localObject).jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftIcon(new BitmapDrawable(paramBitmap), this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
           }
         }
       }
@@ -286,7 +286,7 @@ public class QvipSpecialCarePersonActivity
       paramView.b(2131559929);
       paramView.a();
       return;
-      paramView = (eso)paramView.getTag();
+      paramView = (esn)paramView.getTag();
     } while (paramView == null);
     a(paramView.jdField_a_of_type_JavaLangString, paramView.b);
   }

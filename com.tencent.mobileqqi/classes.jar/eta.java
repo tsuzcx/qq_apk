@@ -1,56 +1,18 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
-import com.tencent.mobileqq.activity.voip.VoipAddressBookActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FakeImageView;
-import com.tencent.mobileqq.widget.FakeTextView;
-import mqq.app.MobileQQ;
 
 public class eta
-  implements BaseActivityView.IPhoneContext
+  implements DialogInterface.OnClickListener
 {
-  public eta(VoipAddressBookActivity paramVoipAddressBookActivity) {}
+  public eta(VoipAddressBookView paramVoipAddressBookView) {}
   
-  public View a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new View(this.a.b.getApplication().getApplicationContext());
-  }
-  
-  public ImageView a()
-  {
-    return new FakeImageView(this.a.b.getApplication().getApplicationContext());
-  }
-  
-  public TextView a()
-  {
-    return new FakeTextView(this.a.b.getApplication().getApplicationContext());
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.b;
-  }
-  
-  public View b()
-  {
-    return new View(this.a.b.getApplication().getApplicationContext());
-  }
-  
-  public TextView b()
-  {
-    return new FakeTextView(this.a.b.getApplication().getApplicationContext());
-  }
-  
-  public TextView c()
-  {
-    return new FakeTextView(this.a.b.getApplication().getApplicationContext());
-  }
-  
-  public TextView d()
-  {
-    return new FakeTextView(this.a.b.getApplication().getApplicationContext());
+    VoipAddressBookView.b(this.a).a(new etb(this));
+    VoipAddressBookView.k(this.a);
+    this.a.n();
   }
 }
 

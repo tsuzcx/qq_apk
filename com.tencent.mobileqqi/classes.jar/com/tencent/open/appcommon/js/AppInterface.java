@@ -32,8 +32,8 @@ import com.tencent.open.business.base.appreport.AppReport;
 import com.tencent.open.business.base.appreport.AppUpdate;
 import com.tencent.open.downloadnew.MyAppDialog;
 import com.tencent.smtt.sdk.WebView;
-import hkl;
-import hkn;
+import hkk;
+import hkm;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -76,7 +76,7 @@ public class AppInterface
       if (paramString1.equals("0"))
       {
         StaticAnalyz.a("100", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
-        paramString1 = new hkl(this, paramString2);
+        paramString1 = new hkk(this, paramString2);
         paramString2 = this.activity.getResources();
         MyAppDialog localMyAppDialog = new MyAppDialog(this.activity);
         localMyAppDialog.a(2131560008, paramString1, true);
@@ -84,7 +84,7 @@ public class AppInterface
         localMyAppDialog.a(paramString2.getString(2131560000));
         localMyAppDialog.b(paramString2.getString(2131560010));
         localMyAppDialog.setCancelable(false);
-        localMyAppDialog.setOnDismissListener(new hkn(this));
+        localMyAppDialog.setOnDismissListener(new hkm(this));
         localMyAppDialog.show();
         this.tipDialog = localMyAppDialog;
         return null;

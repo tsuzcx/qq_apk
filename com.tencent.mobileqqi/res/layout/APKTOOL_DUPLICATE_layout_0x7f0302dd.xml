@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080acc" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02083a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080acb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02083a" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080acd" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01f7" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01f7" />
+    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080acc" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01f7" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01f7" />
     <ImageView android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="1.0px" />
 </LinearLayout>

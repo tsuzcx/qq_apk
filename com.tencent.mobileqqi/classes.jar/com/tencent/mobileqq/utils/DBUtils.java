@@ -18,7 +18,7 @@ import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import friendlist.stTroopRemarkInfo;
-import hbr;
+import hbq;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -47,7 +47,7 @@ public class DBUtils
   
   public static DBUtils a()
   {
-    return hbr.a;
+    return hbq.a;
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, int paramInt)

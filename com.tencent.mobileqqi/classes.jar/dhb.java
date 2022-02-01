@@ -1,23 +1,47 @@
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.SearchFriendListActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import java.util.ArrayList;
 
 public class dhb
-  extends FriendListObserver
+  extends BaseAdapter
 {
-  public dhb(SearchFriendListActivity paramSearchFriendListActivity) {}
+  private dhb(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public int getCount()
   {
-    if (paramBoolean) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
+    return SearchFriendListActivity.a(this.a).size();
   }
   
-  protected void b(boolean paramBoolean, String paramString)
+  public Object getItem(int paramInt)
   {
-    if ((paramBoolean) && (paramString != null)) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    return SearchFriendListActivity.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = this.a.getLayoutInflater().inflate(2130903945, paramViewGroup, false);
+      paramView = new dhc();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232908));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232910));
+      paramView.b = ((TextView)localView.findViewById(2131234403));
+      localView.setTag(paramView);
+      localView.setOnClickListener(this.a);
     }
+    this.a.a(localView, paramInt);
+    return localView;
   }
 }
 

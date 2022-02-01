@@ -2,17 +2,16 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
 
 public class gvz
   implements DialogInterface.OnClickListener
 {
-  public gvz(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
+  public gvz(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
     }
   }
 }

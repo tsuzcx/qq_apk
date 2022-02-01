@@ -43,10 +43,11 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.Gallery;
+import grj;
 import grk;
 import grl;
 import grm;
-import grn;
+import gro;
 import grp;
 import grq;
 import grr;
@@ -54,7 +55,6 @@ import grs;
 import grt;
 import gru;
 import grv;
-import grw;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -96,7 +96,7 @@ public class TroopAvatarWallPreviewActivity
   public TroopAvatarWallPreviewActivity()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new grn(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new grm(this);
   }
   
   private Bitmap a(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, Drawable paramDrawable, boolean paramBoolean)
@@ -221,7 +221,7 @@ public class TroopAvatarWallPreviewActivity
   
   private void b(URLDrawable paramURLDrawable, String paramString)
   {
-    new gru(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new grt(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   private boolean c()
@@ -254,9 +254,9 @@ public class TroopAvatarWallPreviewActivity
     this.d = true;
     this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.a((Bitmap)localObject2, localRect3, localRect2, localRect1, (Rect)localObject1, this.jdField_a_of_type_Long);
     this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setAnimationListener(new grv(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setAnimationListener(new gru(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new grw(this), this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new grv(this), this.jdField_a_of_type_Long);
     localObject1 = new AlphaAnimation(1.0F, 0.0F);
     ((AlphaAnimation)localObject1).setInterpolator(new DecelerateInterpolator());
     ((AlphaAnimation)localObject1).setDuration(500L);
@@ -296,7 +296,7 @@ public class TroopAvatarWallPreviewActivity
       localActionSheet.a(2131561928, 3);
     }
     localActionSheet.d(2131561746);
-    localActionSheet.a(new grr(this, bool, (URLDrawable)localObject, localActionSheet));
+    localActionSheet.a(new grq(this, bool, (URLDrawable)localObject, localActionSheet));
     localActionSheet.show();
   }
   
@@ -379,7 +379,7 @@ public class TroopAvatarWallPreviewActivity
         }
       }
     }
-    DialogUtil.a(this, 230).setTitle(getString(2131562802)).setMessage(getString(2131561976)).setPositiveButton(getString(2131562765), new grt(this, paramURLDrawable, str)).setNegativeButton(getString(2131562473), new grs(this)).show();
+    DialogUtil.a(this, 230).setTitle(getString(2131562802)).setMessage(getString(2131561976)).setPositiveButton(getString(2131562765), new grs(this, paramURLDrawable, str)).setNegativeButton(getString(2131562473), new grr(this)).show();
   }
   
   public void a(URLDrawable paramURLDrawable, String paramString)
@@ -490,8 +490,8 @@ public class TroopAvatarWallPreviewActivity
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new grl(this));
-    this.jdField_a_of_type_ComTencentWidgetGallery.postDelayed(new grm(this), 500L);
+    localAnimationSet.setAnimationListener(new grk(this));
+    this.jdField_a_of_type_ComTencentWidgetGallery.postDelayed(new grl(this), 500L);
     this.jdField_a_of_type_ComTencentWidgetGallery.startAnimation(localAnimationSet);
     this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
@@ -520,16 +520,16 @@ public class TroopAvatarWallPreviewActivity
     super.onCreate(paramBundle);
     setContentView(2130903250);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231777));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231776));
     this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230976));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231116));
     this.jdField_a_of_type_AndroidViewView = findViewById(2131230991);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231776));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131231775));
     this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131230986));
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView = ((ImageAnimationView)findViewById(2131231778));
-    ((ImageView)findViewById(2131231779)).setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView = ((ImageAnimationView)findViewById(2131231777));
+    ((ImageView)findViewById(2131231778)).setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
     this.jdField_b_of_type_Boolean = paramBundle.getBoolean("IS_EDIT");
     if (this.jdField_b_of_type_Boolean)
@@ -552,9 +552,9 @@ public class TroopAvatarWallPreviewActivity
       this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter);
       this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131427411));
       this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new grk(this));
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new grp(this));
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new grq(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new grj(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new gro(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new grp(this));
       return;
       this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(4);
     }

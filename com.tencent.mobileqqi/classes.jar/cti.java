@@ -1,19 +1,15 @@
 import com.tencent.mobileqq.activity.LoginActivity;
-import mqq.app.permission.PermissionCallback;
 
-class cti
-  implements PermissionCallback
+public class cti
+  implements Runnable
 {
-  cti(cth paramcth) {}
+  public cti(LoginActivity paramLoginActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void run()
   {
-    LoginActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity, this.a.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    LoginActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity, this.a.jdField_a_of_type_AndroidViewView);
+    if (!this.a.isFinishing()) {
+      this.a.showDialog(3);
+    }
   }
 }
 

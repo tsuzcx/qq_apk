@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e02" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop"
+<com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e01" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop"
   xmlns:android="http://schemas.android.com/apk/res/android" />

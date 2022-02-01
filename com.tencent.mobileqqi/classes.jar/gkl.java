@@ -1,31 +1,50 @@
-import com.tencent.feedback.eup.CrashHandleListener;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class gkl
-  implements CrashHandleListener
 {
-  public gkl(StatisticCollector paramStatisticCollector) {}
+  public int a;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public byte[] getCrashExtraData(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
+  public gkl(long paramLong, String paramString1, String paramString2)
   {
-    return null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    int i;
+    if (paramString1 == null)
+    {
+      i = 0;
+      if (paramString2 != null) {
+        break label67;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = (j + (i + 19 + 1) + 1);
+      return;
+      i = paramString1.getBytes().length;
+      break;
+      label67:
+      j = paramString2.getBytes().length;
+    }
   }
   
-  public String getCrashExtraMessage(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
+  public String toString()
   {
-    return null;
-  }
-  
-  public boolean onCrashHandleEnd(boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public void onCrashHandleStart(boolean paramBoolean) {}
-  
-  public boolean onCrashSaving(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    Date localDate = new Date(this.jdField_a_of_type_Long);
+    localStringBuilder.append(StatisticCollector.a().format(localDate));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
 }
 

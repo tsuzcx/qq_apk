@@ -9,7 +9,7 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gnp;
+import gno;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class NetworkCenter
@@ -17,7 +17,7 @@ public class NetworkCenter
   public static NetworkCenter a;
   public static final String a = "NetworkCenter";
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private Runnable jdField_a_of_type_JavaLangRunnable = new gnp(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new gno(this);
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private String b = "";
   

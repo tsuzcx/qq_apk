@@ -12,8 +12,8 @@ import android.view.ViewConfiguration;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
+import hht;
 import hhu;
-import hhv;
 import java.util.ArrayList;
 
 public class SlideDetectListView
@@ -22,7 +22,7 @@ public class SlideDetectListView
 {
   public static final float a = 1.73F;
   int jdField_a_of_type_Int = 0;
-  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new hhu(this);
+  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new hht(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = null;
   View jdField_a_of_type_AndroidViewView;
   private SlideDetectListView.OnScrollGroupFloatingListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnScrollGroupFloatingListener = null;
@@ -44,7 +44,7 @@ public class SlideDetectListView
     super(paramContext, paramAttributeSet);
     this.jdField_c_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = false;
-    super.setOnScrollListener(new hhv(this));
+    super.setOnScrollListener(new hhu(this));
     this.d = (ViewConfiguration.getTouchSlop() + 2);
   }
   

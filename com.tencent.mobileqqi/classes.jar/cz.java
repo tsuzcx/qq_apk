@@ -22,7 +22,7 @@ public class cz
     paramView = paramView.findViewById(2131230987);
     if (paramView != null)
     {
-      Button localButton = (Button)paramView.findViewById(2131231701);
+      Button localButton = (Button)paramView.findViewById(2131231700);
       LiteMpFileDownloadActivity.a(this.a).a(paramSlideDetectListView);
       LiteMpFileDownloadActivity.a(this.a, paramSlideDetectListView.c);
       localButton.setOnClickListener(this.a.a);

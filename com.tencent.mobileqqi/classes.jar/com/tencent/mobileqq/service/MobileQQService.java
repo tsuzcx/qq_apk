@@ -12,7 +12,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.util.DisplayMetrics;
-import android.widget.RemoteViews;
 import com.tencent.common.app.BaseProtocolCoder;
 import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.activity.voip.VoipSSOService;
@@ -26,7 +25,6 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.compatible.ActionListener;
 import com.tencent.mobileqq.managers.LoadingStateManager;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.service.RegisterProxySvcPack.RegisterProxySvcPackService;
 import com.tencent.mobileqq.service.cardpay.CardPayService;
 import com.tencent.mobileqq.service.config.ConfigService;
@@ -41,8 +39,6 @@ import com.tencent.mobileqq.service.report.ReportService;
 import com.tencent.mobileqq.util.NotifyLightUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.IBaseActionListener;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -50,9 +46,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.notification.NotificationFactory;
 import com.tencent.util.notification.QQNotificationManager;
+import gio;
 import gip;
 import giq;
-import gir;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -74,9 +70,9 @@ public class MobileQQService
   public static final String b = "req_pb_protocol_flag";
   public static volatile int c = 0;
   private static final String c = "sendtimekey";
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gir(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new giq(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ActionListener jdField_a_of_type_ComTencentMobileqqCompatibleActionListener = new gip(this);
+  private ActionListener jdField_a_of_type_ComTencentMobileqqCompatibleActionListener = new gio(this);
   private QQNotificationManager jdField_a_of_type_ComTencentUtilNotificationQQNotificationManager;
   private DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("0.00");
   private Random jdField_a_of_type_JavaUtilRandom = new Random();
@@ -101,53 +97,17 @@ public class MobileQQService
   
   private Notification a(Intent paramIntent, Bitmap paramBitmap, String paramString1, String paramString2)
   {
-    PendingIntent localPendingIntent = PendingIntent.getActivity(BaseApplication.getContext(), 0, paramIntent, 134217728);
-    Notification localNotification;
-    int i;
-    int j;
-    if (!MobileIssueSettings.e)
-    {
-      localNotification = KapalaiAdapterUtil.a().a(BaseApplication.getContext(), 2130838144);
-      paramIntent = localNotification;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("MobileQQService", 2, "buildIdleNotification by newNotificationForMeizu. nf=" + localNotification);
-        paramIntent = localNotification;
-      }
-      paramIntent.icon = 2130838144;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
-      i = a(MobileQQ.getContext());
-      if (!this.e) {
-        break label214;
-      }
-      if (paramBitmap != null)
-      {
-        j = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a("icon");
-        if ((j > 0) && (paramIntent.contentView != null)) {
-          paramIntent.contentView.setImageViewBitmap(j, Bitmap.createScaledBitmap(paramBitmap, i, i, true));
-        }
-      }
-      paramIntent.setLatestEventInfo(BaseApplication.getContext(), paramString1, paramString2, localPendingIntent);
+    paramIntent = PendingIntent.getActivity(BaseApplication.getContext(), 0, paramIntent, 134217728);
+    NotificationCompat.Builder localBuilder = NotificationFactory.a("CHANNEL_ID_HIDE_BADGE").setSmallIcon(2130838144).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis());
+    localBuilder.setContentTitle(paramString1).setContentText(paramString2).setContentIntent(paramIntent);
+    if (paramBitmap != null) {
+      localBuilder.setLargeIcon(paramBitmap);
     }
-    label214:
-    do
-    {
-      do
-      {
-        return paramIntent;
-        localNotification = new Notification(2130838144, null, System.currentTimeMillis());
-        paramIntent = localNotification;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("MobileQQService", 2, "buildIdleNotification by default. nf=" + localNotification);
-        paramIntent = localNotification;
-        break;
-        paramIntent.setLatestEventInfo(BaseApplication.getContext(), paramString1, paramString2, localPendingIntent);
-      } while (paramBitmap == null);
-      j = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a("icon");
-    } while ((j <= 0) || (paramIntent.contentView == null));
-    paramIntent.contentView.setImageViewBitmap(j, Bitmap.createScaledBitmap(paramBitmap, i, i, true));
+    if ((Build.VERSION.SDK_INT >= 24) || (this.b)) {
+      localBuilder.setPriority(1).setVibrate(new long[0]);
+    }
+    paramIntent = localBuilder.build();
+    QQNotificationManager.a(paramIntent, "CHANNEL_ID_SHOW_BADGE");
     return paramIntent;
   }
   
@@ -168,13 +128,8 @@ public class MobileQQService
     else
     {
       paramIntent = NotificationFactory.a("").setSmallIcon(i).setAutoCancel(true).setOngoing(false).setWhen(System.currentTimeMillis()).setTicker(paramString1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
-      paramString1 = MobileQQ.getContext();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
-      if (SettingCloneUtil.readValue(paramString1, null, MobileQQ.getContext().getResources().getString(2131563455), "qqsetting_notify_icon_key", false))
-      {
-        paramString1 = new Intent("notification_cancelled");
-        paramIntent.setDeleteIntent(PendingIntent.getBroadcast(BaseApplication.getContext(), 0, paramString1, 134217728));
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b()) {
+        paramIntent.setOngoing(true);
       }
       if (paramInt > 1) {
         paramIntent.setContentInfo(String.valueOf(paramInt));
@@ -182,16 +137,13 @@ public class MobileQQService
       if (NotifyLightUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
         paramInt = Calendar.getInstance().get(11);
-        if ((paramInt < 23) && (paramInt >= 8)) {
-          break label358;
-        }
-        label236:
+        if ((paramInt < 23) && (paramInt < 8)) {}
         paramIntent.setLights(-16711936, 2000, 2000);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
       paramInt = a(MobileQQ.getContext());
       if (!this.e) {
-        break label361;
+        break label303;
       }
       if (paramBitmap != null) {
         paramIntent.setLargeIcon(Bitmap.createScaledBitmap(paramBitmap, paramInt, paramInt, true));
@@ -208,9 +160,7 @@ public class MobileQQService
       return paramIntent;
       i = 2130838181;
       break;
-      label358:
-      break label236;
-      label361:
+      label303:
       paramIntent.setContentTitle(paramString2).setContentText(paramString3).setContentIntent(localPendingIntent);
       if (paramBitmap != null) {
         try
@@ -375,7 +325,7 @@ public class MobileQQService
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
-    paramToServiceMsg = new giq(this, paramToServiceMsg);
+    paramToServiceMsg = new gip(this, paramToServiceMsg);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
       ThreadManager.a().post(paramToServiceMsg);

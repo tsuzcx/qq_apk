@@ -1,15 +1,16 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.IActionListener;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 
 public class ddn
-  implements IActionListener
+  extends GameCenterObserver
 {
   public ddn(QQSettingMe paramQQSettingMe) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.a.b) && (paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.o();
+    if (this.a.b) {
+      this.a.g();
     }
   }
 }

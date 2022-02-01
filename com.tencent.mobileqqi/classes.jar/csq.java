@@ -1,17 +1,17 @@
 import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
 import java.util.List;
 
-public class csq
+class csq
   implements Runnable
 {
-  public csq(LebaListMgrActivity paramLebaListMgrActivity) {}
+  csq(csp paramcsp, List paramList) {}
   
   public void run()
   {
-    LebaShowListManager.a().a(this.a, this.a.b);
-    List localList = LebaShowListManager.a().a();
-    this.a.runOnUiThread(new csr(this, localList));
+    if (LebaListMgrActivity.a(this.jdField_a_of_type_Csp.a) != null) {
+      LebaListMgrActivity.a(this.jdField_a_of_type_Csp.a).a(this.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 

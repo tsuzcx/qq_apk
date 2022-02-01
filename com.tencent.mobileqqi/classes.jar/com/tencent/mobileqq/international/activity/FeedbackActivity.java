@@ -14,12 +14,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import fze;
 import fzf;
 import fzg;
 import fzh;
 import fzi;
 import fzj;
-import fzk;
 import java.io.ByteArrayOutputStream;
 import java.util.zip.GZIPOutputStream;
 import mqq.manager.AccountManager;
@@ -32,12 +32,12 @@ public class FeedbackActivity
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   protected ProgressBar a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new fzi(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new fzh(this);
   private Runnable b;
   
   public FeedbackActivity()
   {
-    this.jdField_b_of_type_JavaLangRunnable = new fzj(this);
+    this.jdField_b_of_type_JavaLangRunnable = new fzi(this);
   }
   
   private static int a(Context paramContext, float paramFloat)
@@ -57,7 +57,7 @@ public class FeedbackActivity
   private void a(String paramString)
   {
     paramString.replace(" ", "%20");
-    ((AccountManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(0)).updateSTwxWeb(new fzk(this, paramString));
+    ((AccountManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(0)).updateSTwxWeb(new fzj(this, paramString));
   }
   
   private String b(String paramString)
@@ -74,7 +74,7 @@ public class FeedbackActivity
   private void d()
   {
     this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231065));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new fzf(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new fze(this));
   }
   
   private void e()
@@ -92,13 +92,13 @@ public class FeedbackActivity
     setTitle(2131559863);
     TextView localTextView = this.k;
     localTextView.setVisibility(0);
-    localTextView.setOnClickListener(new fzg(this));
+    localTextView.setOnClickListener(new fzf(this));
     this.jdField_a_of_type_AndroidWidgetTextView = this.m;
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131563018));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(2131562654);
     this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new fzh(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new fzg(this));
   }
   
   private void h()

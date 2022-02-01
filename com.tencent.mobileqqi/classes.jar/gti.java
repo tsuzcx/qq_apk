@@ -1,47 +1,18 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.activity.TroopCreateAvatarActivity;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class gti
-  extends Handler
+  implements View.OnClickListener
 {
   public gti(TroopCreateAvatarActivity paramTroopCreateAvatarActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    int i;
-    int j;
-    do
-    {
-      return;
-      paramMessage = paramMessage.getData();
-      Object localObject = paramMessage.getStringArrayList("AVATAR_WALL_LIST");
-      i = paramMessage.getInt("newSeq");
-      j = paramMessage.getInt("CMD_TYPE");
-      paramMessage = new ArrayList();
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          AvatarWallAdapter.AvatarInfo localAvatarInfo = new AvatarWallAdapter.AvatarInfo();
-          localAvatarInfo.b = str;
-          localAvatarInfo.c = "AVATAR_URL_STR";
-          paramMessage.add(localAvatarInfo);
-        }
-      }
-    } while (this.a.a == null);
-    this.a.a.a(paramMessage, i, j);
+    this.a.a.putExtra("isBack", 1);
+    this.a.setResult(-1, this.a.a);
+    this.a.finish();
   }
 }
 

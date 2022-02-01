@@ -1,19 +1,27 @@
-class fbo
+import com.tencent.mobileqq.app.DiscussionIconHelper;
+import java.util.Comparator;
+
+public class fbo
+  implements Comparator
 {
-  public int a;
-  public String a;
-  public String b = "";
-  public String c = "0";
+  public fbo(DiscussionIconHelper paramDiscussionIconHelper) {}
   
-  fbo()
+  public int a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public String toString()
-  {
-    return "DPCXMLParseInfo: key=" + this.jdField_a_of_type_JavaLangString + ",value=" + this.b + ",weight=" + this.jdField_a_of_type_Int + ",taskId=" + this.c;
+    try
+    {
+      long l1 = Long.parseLong(paramString1);
+      long l2 = Long.parseLong(paramString2);
+      if (l1 == l2) {
+        return 0;
+      }
+      if (l1 > l2) {
+        return 2;
+      }
+      return -1;
+    }
+    catch (Exception paramString1) {}
+    return 0;
   }
 }
 

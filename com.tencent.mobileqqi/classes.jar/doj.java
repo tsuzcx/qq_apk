@@ -1,38 +1,56 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.troop.activity.TroopAssistantFeedsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class doj
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public doj(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public doj(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (System.currentTimeMillis() - this.a.a >= 1500L) {}
+    if (!NetworkUtil.e(BaseApplication.getContext()))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.a(2, 2131562449, 1500);
+    }
     try
     {
-      this.a.e();
-      paramView = new Intent(this.a, TroopAssistantFeedsActivity.class);
-      paramView.putExtra("url", "http://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
-      paramView.putExtra("webStyle", "noBottomBar");
-      paramView.putExtra("hide_more_button", true);
-      paramView.putExtra("hide_operation_bar", true);
-      paramView.putExtra("isShowAd", false);
-      this.a.startActivity(paramView);
-      this.a.a = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:http://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
+      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       }
       return;
+      int i = -1;
+      switch (paramInt)
+      {
+      default: 
+        paramInt = i;
+      }
+      while (paramInt != this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.b.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
+        break;
+        paramInt = 1;
+        continue;
+        paramInt = 4;
+        continue;
+        paramInt = 2;
+        continue;
+        paramInt = 3;
+      }
     }
     catch (Exception paramView)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + paramView.toString());
+      QLog.i("TroopAssistantActivity", 2, paramView.toString());
     }
   }
 }

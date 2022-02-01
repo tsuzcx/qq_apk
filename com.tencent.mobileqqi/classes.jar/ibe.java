@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qlink.SendMsg;
 
-public class ibe
-  implements DialogInterface.OnClickListener
+public final class ibe
+  implements Parcelable.Creator
 {
-  public ibe(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public SendMsg a(Parcel paramParcel)
   {
-    this.a.finish();
+    return new SendMsg(paramParcel);
+  }
+  
+  public SendMsg[] a(int paramInt)
+  {
+    return new SendMsg[paramInt];
   }
 }
 

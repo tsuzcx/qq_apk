@@ -1,27 +1,30 @@
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import mqq.observer.AccountObserver;
 
 public class cdf
-  extends AccountObserver
+  implements View.OnClickListener
 {
   public cdf(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  @SuppressLint({"ServiceCast"})
+  @TargetApi(11)
+  public void onClick(View paramView)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    if (paramString1 == null) {
-      while (i > 0)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b - 1);
-        i -= 1;
-      }
+    if ((ChatSettingForTroop.a(this.a) != null) && (ChatSettingForTroop.a(this.a).isShowing())) {
+      ChatSettingForTroop.a(this.a).dismiss();
     }
-    TroopUtils.a(paramString1, this.a.b.a(), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.d, this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter);
+    if (Build.VERSION.SDK_INT < 11)
+    {
+      ((android.text.ClipboardManager)this.a.getSystemService("clipboard")).setText(this.a.a.f + "/n" + this.a.a.c);
+      return;
+    }
+    ((android.content.ClipboardManager)this.a.getSystemService("clipboard")).setText(this.a.a.f + "/n" + this.a.a.c);
   }
 }
 

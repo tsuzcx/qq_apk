@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class cgv
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  public cgv(DialogActivity paramDialogActivity) {}
+  public cgv(DialogActivity paramDialogActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    DialogActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDialogActivity, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
   }
 }
 

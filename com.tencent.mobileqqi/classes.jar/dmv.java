@@ -4,14 +4,11 @@ import com.tencent.mobileqq.widget.ClearableEditText;
 class dmv
   implements Runnable
 {
-  dmv(dmu paramdmu) {}
+  dmv(dmt paramdmt) {}
   
   public void run()
   {
-    String str = SubLoginActivity.a(this.a.a).getText().toString();
-    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
-      SubLoginActivity.a(this.a.a).setText("");
-    }
+    SubLoginActivity.a(this.a.a).setText("");
   }
 }
 

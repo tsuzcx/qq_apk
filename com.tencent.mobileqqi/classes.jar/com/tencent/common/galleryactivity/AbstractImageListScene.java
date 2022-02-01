@@ -85,14 +85,14 @@ public abstract class AbstractImageListScene
     {
       b(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131230941));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232872));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232871));
       this.jdField_b_of_type_AndroidWidgetTextView = new FakeTextView(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_b_of_type_AndroidWidgetTextView.setId(2131232873);
+      this.jdField_b_of_type_AndroidWidgetTextView.setId(2131232872);
       this.jdField_b_of_type_AndroidWidgetTextView.setText(2131561810);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232875));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232876));
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232874);
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232877));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232874));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232875));
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232873);
+      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131232876));
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setGravity(17);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setScrollBarStyle(0);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setNumColumns(4);

@@ -1,47 +1,50 @@
-import android.os.Process;
-import com.tencent.mobileqq.app.EmoticonManagerImp;
-import com.tencent.mobileqq.data.EmoticonKeyword;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.GuardManager;
 
 public class fcc
-  implements Runnable
+  extends fct
 {
-  public fcc(EmoticonManagerImp paramEmoticonManagerImp, String paramString) {}
+  private String a;
   
-  public void run()
+  public fcc()
   {
-    Process.setThreadPriority(10);
-    Object localObject = EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp).a(EmoticonKeyword.class, EmoticonKeyword.class.getSimpleName(), false, "epId=?", new String[] { this.jdField_a_of_type_JavaLangString }, null, null, null, null);
-    if (localObject != null)
+    this.jdField_a_of_type_JavaLangString = null;
+  }
+  
+  protected void a()
+  {
+    this.b += 1L;
+    this.jdField_a_of_type_Long += 1L;
+    if (this.b >= 4L)
     {
-      localObject = ((List)localObject).iterator();
-      for (;;)
-      {
-        if (((Iterator)localObject).hasNext())
-        {
-          EmoticonKeyword localEmoticonKeyword = (EmoticonKeyword)((Iterator)localObject).next();
-          try
-          {
-            Thread.sleep(300L);
-            EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp).b(localEmoticonKeyword);
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            for (;;)
-            {
-              localInterruptedException.printStackTrace();
-            }
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(new String[] { "com.tencent.mobileqq:qzone", this.jdField_a_of_type_JavaLangString });
+      this.b = 0L;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManagerImp", 2, "asyncRemoveEmotionKeyword,epId=" + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void a(String paramString)
+  {
+    if (!"com.tencent.mobileqqi".equals(paramString)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
     }
-    EmoticonManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppEmoticonManagerImp);
+  }
+  
+  protected void b(String paramString)
+  {
+    this.b = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.d();
+  }
+  
+  protected void c(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected void d(String paramString)
+  {
+    if ("com.tencent.mobileqqi".equals(paramString)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
+    }
   }
 }
 

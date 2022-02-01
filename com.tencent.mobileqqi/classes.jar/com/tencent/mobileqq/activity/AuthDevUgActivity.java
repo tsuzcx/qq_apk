@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import bvz;
+import bvy;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -41,7 +41,7 @@ public class AuthDevUgActivity
   private static final String j = "Q.devlock.AuthDevUgActivity";
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new bvz(this);
+  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new bvy(this);
   private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
   private boolean jdField_a_of_type_Boolean = false;
   private Button jdField_b_of_type_AndroidWidgetButton;
@@ -200,11 +200,11 @@ public class AuthDevUgActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232959));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232960));
-      this.c = ((TextView)super.findViewById(2131232961));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232962));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232951));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232958));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232959));
+      this.c = ((TextView)super.findViewById(2131232960));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232961));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232950));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
       d();
@@ -345,7 +345,7 @@ public class AuthDevUgActivity
     {
     default: 
       return;
-    case 2131232962: 
+    case 2131232961: 
       if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface != null) {
         this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.sendWirelessMeibaoReq(1);
       }
@@ -373,7 +373,7 @@ public class AuthDevUgActivity
       }
       EquipLockWebEntrance.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
-    case 2131232951: 
+    case 2131232950: 
       if (this.jdField_a_of_type_Boolean)
       {
         paramView = new Intent(this, AuthDevVerifyCodeActivity.class);

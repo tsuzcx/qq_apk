@@ -41,10 +41,10 @@ import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import com.tencent.widget.XListView;
+import ghl;
 import ghm;
 import ghn;
 import gho;
-import ghp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -85,7 +85,7 @@ public class SameStatusActivity
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private ghp jdField_a_of_type_Ghp;
+  private gho jdField_a_of_type_Gho;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private HashSet jdField_a_of_type_JavaUtilHashSet = new HashSet();
@@ -140,7 +140,7 @@ public class SameStatusActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppCardObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ghn(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ghm(this);
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
     }
     if (this.jdField_a_of_type_JavaUtilHashMap == null)
@@ -217,12 +217,12 @@ public class SameStatusActivity
     this.l.setCompoundDrawables(null, null, localDrawable, null);
     this.l.setOnClickListener(this);
     b(this.g);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234530));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234529));
     this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837729);
     this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903988, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231657));
+    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231656));
     this.e.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231656));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131231655));
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130837862);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, true);
@@ -231,8 +231,8 @@ public class SameStatusActivity
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
-    this.jdField_a_of_type_Ghp = new ghp(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ghp);
+    this.jdField_a_of_type_Gho = new gho(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Gho);
   }
   
   private void g()
@@ -246,7 +246,7 @@ public class SameStatusActivity
   
   private void h()
   {
-    d(new gho(this));
+    d(new ghn(this));
   }
   
   private void i()
@@ -284,11 +284,11 @@ public class SameStatusActivity
   private void j()
   {
     View localView = getLayoutInflater().inflate(2130903235, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231704));
-    ((TextView)localView.findViewById(2131231705)).setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231707));
-    this.c = ((TextView)localView.findViewById(2131231706));
-    this.d = ((TextView)localView.findViewById(2131231708));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231703));
+    ((TextView)localView.findViewById(2131231704)).setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231706));
+    this.c = ((TextView)localView.findViewById(2131231705));
+    this.d = ((TextView)localView.findViewById(2131231707));
     this.d.setText(getString(2131559275));
     localView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -354,7 +354,7 @@ public class SameStatusActivity
       if (this.r != 2)
       {
         this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.b();
-        this.jdField_a_of_type_Ghp.notifyDataSetChanged();
+        this.jdField_a_of_type_Gho.notifyDataSetChanged();
       }
     }
     else
@@ -462,7 +462,7 @@ public class SameStatusActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ghp.notifyDataSetChanged();
+      this.jdField_a_of_type_Gho.notifyDataSetChanged();
       return;
       g();
       break;
@@ -507,7 +507,7 @@ public class SameStatusActivity
     e(2130903990);
     e();
     f();
-    b(new ghm(this));
+    b(new ghl(this));
     return true;
   }
   

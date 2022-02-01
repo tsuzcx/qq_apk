@@ -1,26 +1,26 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
+import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class cye
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public cye(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = new Intent(this.a, QvipSpecialCarePersonActivity.class);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.b, "CliOper", "", "", "Special_remind", "Clk_special_remind", 80, 0, "", "", "", "");
-    PreferenceManager.getDefaultSharedPreferences(this.a).edit().putBoolean("spcial_care_qq_setting", false).commit();
-    NotifyPushSettingActivity.a(this.a).setRightIcon(null);
+    NotifyPushSettingActivity.f(this.a).setContentDescription("消息列表显示共享相册助手");
+    paramCompoundButton = this.a.b;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "0X800403D", "0X800403D", 0, i, "", "", "", "");
+      QZoneShareAlbumAssistantManager.a().a(this.a.b, paramBoolean);
+      return;
+    }
   }
 }
 

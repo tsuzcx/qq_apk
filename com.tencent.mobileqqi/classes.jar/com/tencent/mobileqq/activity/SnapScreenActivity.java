@@ -18,10 +18,10 @@ import android.view.Window;
 import android.widget.Button;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qphone.base.util.BaseApplication;
+import dil;
 import dim;
 import din;
 import dio;
-import dip;
 import mqq.util.NativeUtil;
 
 public class SnapScreenActivity
@@ -36,7 +36,7 @@ public class SnapScreenActivity
   private ViewGroup a;
   public Window a;
   public Button a;
-  public dip a;
+  public dio a;
   public Bitmap b;
   public Drawable b;
   public Button b;
@@ -69,15 +69,15 @@ public class SnapScreenActivity
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839692);
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839691);
       paramContext = (LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater");
-      this.jdField_a_of_type_Dip = new dip(this, this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Dip, 0);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234396));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234397));
-      this.d = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234395));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234394));
-      this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new dim(this));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new din(this));
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new dio(this));
+      this.jdField_a_of_type_Dio = new dio(this, this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Dio, 0);
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234395));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234396));
+      this.d = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234394));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234393));
+      this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new dil(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new dim(this));
+      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new din(this));
       return;
     }
   }
@@ -110,8 +110,8 @@ public class SnapScreenActivity
   public void b()
   {
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration().orientation;
-    this.jdField_a_of_type_Dip.k = 0;
-    this.jdField_a_of_type_Dip.a.setEmpty();
+    this.jdField_a_of_type_Dio.k = 0;
+    this.jdField_a_of_type_Dio.a.setEmpty();
     Bitmap localBitmap = NativeUtil.screenshot(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
     this.jdField_c_of_type_AndroidGraphicsBitmap = localBitmap;

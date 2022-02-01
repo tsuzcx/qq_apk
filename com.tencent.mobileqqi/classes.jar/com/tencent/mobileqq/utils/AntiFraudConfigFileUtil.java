@@ -11,9 +11,9 @@ import com.tencent.mobileqq.app.AntiFraudGetConfigObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import hbg;
+import hbf;
+import hbh;
 import hbi;
-import hbj;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -45,11 +45,11 @@ public class AntiFraudConfigFileUtil
   private static final String q = "Type";
   private static final String r = "Value";
   private Bundle jdField_a_of_type_AndroidOsBundle = null;
-  private AntiFraudGetConfigObserver jdField_a_of_type_ComTencentMobileqqAppAntiFraudGetConfigObserver = new hbg(this);
+  private AntiFraudGetConfigObserver jdField_a_of_type_ComTencentMobileqqAppAntiFraudGetConfigObserver = new hbf(this);
   
   public static AntiFraudConfigFileUtil a()
   {
-    return hbj.a;
+    return hbi.a;
   }
   
   private String a(String paramString)
@@ -94,7 +94,7 @@ public class AntiFraudConfigFileUtil
   
   private void a(String paramString1, String paramString2, String paramString3)
   {
-    new hbi(this, paramString1, paramString3, paramString2).run();
+    new hbh(this, paramString1, paramString3, paramString2).run();
   }
   
   private void b(String paramString)

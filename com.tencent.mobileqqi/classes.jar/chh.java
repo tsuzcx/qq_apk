@@ -1,61 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.List;
 
 public class chh
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
-  public chh(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, DiscussionInfo paramDiscussionInfo) {}
+  public chh(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    boolean bool = false;
-    if (!NetworkUtil.e(BaseApplication.getContext()))
-    {
-      paramCompoundButton = DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
-      if (!paramBoolean) {
-        bool = true;
-      }
-      paramCompoundButton.setChecked(bool);
-      return;
+    Object localObject = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.b.getManager(48);
+    new ArrayList();
+    localObject = ((DiscussionManager)localObject).a(this.jdField_a_of_type_JavaLangString);
+    if (localObject != null) {
+      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, ((List)localObject).size());
     }
-    label93:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131562883);
-      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).setContentDescription(paramCompoundButton);
-      if ((!paramBoolean) || (this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.hasCollect)) {
-        break label158;
-      }
-      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).e(Long.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity)).longValue());
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.b;
-      if (!paramBoolean) {
-        break label198;
-      }
-    }
-    label158:
-    label198:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X80040EC", "0X80040EC", 0, 0, paramCompoundButton, "", "", "");
-      return;
-      paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131562883);
-      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).setContentDescription(paramCompoundButton);
-      break;
-      if ((paramBoolean) || (!this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.hasCollect)) {
-        break label93;
-      }
-      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).f(Long.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity)).longValue());
-      break label93;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a((List)localObject);
   }
 }
 

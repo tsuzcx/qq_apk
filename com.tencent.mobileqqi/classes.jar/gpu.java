@@ -1,13 +1,23 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
 
-class gpu
-  implements Runnable
+public class gpu
+  implements View.OnClickListener
 {
-  gpu(gpt paramgpt) {}
+  public gpu(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a(this.a.a.a, this.a.a.b, this.a.a.c, this.a.a.d, this.a.a.e);
+    paramView = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    paramView.putExtra("url", this.a.a);
+    paramView.putExtra("hide_operation_bar", true);
+    paramView.putExtra("hide_more_button", true);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.b, "P_CliOper", "Grp_nearby", "", "hot", "Clk", 0, 0, "", "", "", "");
   }
 }
 

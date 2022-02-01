@@ -1,36 +1,25 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.io.File;
 
 public class esw
+  implements Runnable
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public esw(QvipSpecialSoundManager paramQvipSpecialSoundManager, esv paramesv) {}
   
-  public static esw a(JSONObject paramJSONObject)
+  public void run()
   {
-    if (paramJSONObject == null) {
-      return new esw();
-    }
-    esw localesw = new esw();
-    try
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(this.jdField_a_of_type_Esv.c))
     {
-      localesw.jdField_a_of_type_Int = paramJSONObject.getInt("id");
-      localesw.jdField_a_of_type_JavaLangString = paramJSONObject.getString("soundName");
-      localesw.jdField_b_of_type_Int = paramJSONObject.getInt("type");
-      localesw.jdField_b_of_type_JavaLangString = paramJSONObject.getString("soundVersion");
-      localesw.c = paramJSONObject.getString("soundUrl");
-      localesw.d = paramJSONObject.getString("whiteList");
-      return localesw;
+      File localFile = new File(QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager).getFilesDir(), this.jdField_a_of_type_Esv.c);
+      if (localFile != null) {}
+      for (long l = localFile.length();; l = 0L)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(l);
+        return;
+      }
     }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return localesw;
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.b("updateSpecialSound down fial, id=" + this.jdField_a_of_type_Esv.a);
   }
 }
 

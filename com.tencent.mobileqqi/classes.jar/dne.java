@@ -1,31 +1,28 @@
+import android.text.Editable;
 import android.view.View;
-import android.widget.Button;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListenner;
 
 public class dne
-  implements InputMethodRelativeLayout.onSizeChangedListenner
+  implements View.OnFocusChangeListener
 {
   public dne(SubLoginActivity paramSubLoginActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramBoolean)
+    if (true == paramBoolean)
     {
-      int[] arrayOfInt = new int[2];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = arrayOfInt[1];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
-      if (paramInt1 > 0) {
-        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
+      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
+        SubLoginActivity.a(this.a).setVisibility(0);
       }
-      SubLoginActivity.b(this.a).setVisibility(8);
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
       return;
     }
-    SubLoginActivity.b(this.a).setVisibility(0);
-    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

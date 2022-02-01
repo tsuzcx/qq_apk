@@ -9,7 +9,7 @@ public class gjn
   
   public void onClick(View paramView)
   {
-    QZoneShareAlbumAssistantActivity.a(this.a);
+    this.a.e();
   }
 }
 

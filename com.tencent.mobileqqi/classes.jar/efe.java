@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
 
-public final class efe
+public class efe
   implements Runnable
 {
-  public efe(QQAppInterface paramQQAppInterface) {}
+  public efe(SystemMsgListView paramSystemMsgListView) {}
   
   public void run()
   {
-    FriendSystemMsgController.a().c(this.a);
+    this.a.j();
   }
 }
 

@@ -7,14 +7,16 @@ import com.tencent.mobileqq.activity.SubLoginActivity;
 public class dmf
   implements DialogInterface.OnClickListener
 {
-  public dmf(SubAccountMessageActivity paramSubAccountMessageActivity) {}
+  public dmf(SubAccountMessageActivity paramSubAccountMessageActivity, String paramString) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(this.a, SubLoginActivity.class);
-    this.a.startActivity(paramDialogInterface);
-    this.a.f();
-    this.a.finish();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity, SubLoginActivity.class);
+    paramDialogInterface.putExtra("is_need_bind", false);
+    paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.f();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.finish();
   }
 }
 

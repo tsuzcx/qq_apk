@@ -1,19 +1,17 @@
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import java.net.URL;
 
 public class gnh
+  implements BitmapDecoder
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b = false;
-  public boolean c = false;
+  public gnh(FileAssistantDownloader paramFileAssistantDownloader) {}
   
-  public gnh(FileAssistantDownloader paramFileAssistantDownloader)
+  public Bitmap a(URL paramURL)
   {
-    this.jdField_a_of_type_Boolean = false;
+    paramURL = this.a.a(paramURL);
+    return FileAssistantDownloader.a(this.a, paramURL);
   }
 }
 

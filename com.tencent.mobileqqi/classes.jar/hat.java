@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.util.ImageCreator;
-import com.tencent.mobileqq.util.ImageLoader;
+import com.tencent.mobileqq.util.InfiniteTaskThreadPool;
+import java.util.concurrent.ThreadFactory;
 
 public class hat
+  implements ThreadFactory
 {
-  ImageCreator a;
-  public ImageLoader a;
-  public haq a;
-  
-  public hat(ImageCreator paramImageCreator, ImageLoader paramImageLoader, haq paramhaq)
+  public Thread newThread(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilImageCreator = paramImageCreator;
-    this.jdField_a_of_type_ComTencentMobileqqUtilImageLoader = paramImageLoader;
-    this.jdField_a_of_type_Haq = paramhaq;
+    InfiniteTaskThreadPool.a();
+    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + InfiniteTaskThreadPool.b());
+    paramRunnable.setDaemon(true);
+    return paramRunnable;
   }
 }
 

@@ -22,7 +22,7 @@ import com.tencent.mobileqq.text.EmotcationConstants;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import gxf;
+import gxe;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -201,7 +201,7 @@ public class AtTroopMemberSpan
       return localStringBuffer.toString();
     }
     if (arrayOfAtTroopMemberSpan.length > 1) {
-      Arrays.sort(arrayOfAtTroopMemberSpan, new gxf(paramEditable));
+      Arrays.sort(arrayOfAtTroopMemberSpan, new gxe(paramEditable));
     }
     int j = 0;
     while (i < arrayOfAtTroopMemberSpan.length)
@@ -309,7 +309,7 @@ public class AtTroopMemberSpan
     localCanvas.drawRect((RectF)localObject2, (Paint)localObject1);
     ((Paint)localObject1).setColor(i);
     localCanvas.drawText(this.e, 0.0F, f4, (Paint)localObject1);
-    localCanvas.save(31);
+    localCanvas.save();
     localCanvas.restore();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap);
     i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
@@ -317,7 +317,7 @@ public class AtTroopMemberSpan
     localObject1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     if (i > 0) {
       if (j <= 0) {
-        break label292;
+        break label290;
       }
     }
     for (;;)
@@ -327,7 +327,7 @@ public class AtTroopMemberSpan
       return;
       i = 0;
       break;
-      label292:
+      label290:
       j = 0;
     }
   }

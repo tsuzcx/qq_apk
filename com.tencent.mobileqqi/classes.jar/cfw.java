@@ -1,17 +1,35 @@
+import android.os.Handler;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout.OnDragModeChangedListener;
+import java.util.List;
 
 public class cfw
-  extends ConfigObserver
+  implements DragRelativeLayout.OnDragModeChangedListener
 {
-  public cfw(Conversation paramConversation) {}
+  private int jdField_a_of_type_Int = -2147483648;
+  private List jdField_a_of_type_JavaUtilList;
   
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  private cfw(Conversation paramConversation) {}
+  
+  public void a(int paramInt, List paramList) {}
+  
+  public void a(boolean paramBoolean, int paramInt, DragRelativeLayout paramDragRelativeLayout)
   {
-    if (paramBoolean) {
-      this.a.a(0L);
+    if (paramDragRelativeLayout.a() == -1)
+    {
+      if ((this.jdField_a_of_type_Int == -2147483648) || (Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation) != null)) {
+        Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).sendEmptyMessage(10);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setDrawerEnabled(true);
+      }
     }
+    while (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setDrawerEnabled(false);
   }
 }
 

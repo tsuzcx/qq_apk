@@ -1,7 +1,6 @@
-import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.QQLSUnlockActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.XEditTextEx;
 
 public class dbx
   implements Runnable
@@ -10,12 +9,11 @@ public class dbx
   
   public void run()
   {
-    if (!QQLSActivity.a(this.a))
-    {
-      ReportController.b(QQLSActivity.a(this.a), "CliOper", "", "", "0X800444B", "0X800444B", 0, 0, "", "", "", "");
-      Intent localIntent = new Intent(this.a, QQLSUnlockActivity.class);
-      this.a.startActivity(localIntent);
+    if ((QQLSActivity.a(this.a).getVisibility() == 0) && (!TextUtils.isEmpty(QQLSActivity.a(this.a).getText()))) {
+      return;
     }
+    QQLSActivity.a(this.a);
+    QQLSActivity.b(this.a);
   }
 }
 

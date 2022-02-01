@@ -1,21 +1,19 @@
-import android.app.Dialog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-class erc
-  implements Runnable
+public class erc
+  implements View.OnTouchListener
 {
-  erc(era paramera) {}
+  public erc(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      if (!this.a.a.isFinishing()) {
-        this.a.a.a.dismiss();
-      }
-      return;
+    if (paramMotionEvent.getAction() == 0) {
+      this.a.g();
     }
-    catch (Exception localException) {}
+    return false;
   }
 }
 

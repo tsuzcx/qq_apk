@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.data.Friends;
+import android.widget.TextView;
 
 public class ext
 {
   public int a;
-  public Friends a;
-  
-  public ext(Friends paramFriends, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public TextView a;
+  public TextView b;
 }
 
 

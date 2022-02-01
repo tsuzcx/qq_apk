@@ -1,38 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TroopShareTmpActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class dsv
-  extends Handler
+  extends FriendListObserver
 {
-  public dsv(TroopRequestActivity paramTroopRequestActivity) {}
+  public dsv(TroopShareTmpActivity paramTroopShareTmpActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void c(boolean paramBoolean, String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      if (TroopRequestActivity.a(this.a) != null) {
-        TroopRequestActivity.a(this.a).dismiss();
-      }
-      QQToast.a(this.a, this.a.getString(2131562880), 0).b(this.a.d());
-      this.a.finish();
-      return;
-    case 1: 
-      this.a.a(true);
-      if (TroopRequestActivity.a(this.a) != null) {
-        TroopRequestActivity.a(this.a).dismiss();
-      }
-      QQToast.a(this.a, this.a.getString(2131561435), 0).b(this.a.d());
-      return;
+    if ((paramBoolean) && (paramString != null) && (paramString.equalsIgnoreCase(TroopShareTmpActivity.a(this.a)))) {
+      TroopShareTmpActivity.a(this.a).setImageDrawable(this.a.b.a(TroopShareTmpActivity.a(this.a)));
     }
-    paramMessage = (String)paramMessage.obj;
-    this.a.a.setText(paramMessage + "");
   }
 }
 

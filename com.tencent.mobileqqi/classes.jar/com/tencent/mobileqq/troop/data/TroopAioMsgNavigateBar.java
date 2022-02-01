@@ -34,8 +34,8 @@ import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import guy;
 import guz;
-import gva;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -208,7 +208,7 @@ public class TroopAioMsgNavigateBar
   {
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      new Handler(Looper.getMainLooper()).post(new guz(this));
+      new Handler(Looper.getMainLooper()).post(new guy(this));
       return;
     }
     i();
@@ -495,7 +495,7 @@ public class TroopAioMsgNavigateBar
   {
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      new Handler(Looper.getMainLooper()).post(new gva(this));
+      new Handler(Looper.getMainLooper()).post(new guz(this));
       return;
     }
     k();

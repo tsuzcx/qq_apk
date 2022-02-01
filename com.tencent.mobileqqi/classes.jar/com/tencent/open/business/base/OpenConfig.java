@@ -6,7 +6,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.SystemClock;
 import com.tencent.mobileqq.app.ThreadManager;
-import hlw;
+import hlv;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
@@ -293,7 +293,7 @@ public class OpenConfig
     localBundle.putString("status_version", Build.VERSION.SDK);
     localBundle.putString("sdkv", "1.5");
     localBundle.putString("sdkp", "a");
-    ThreadManager.a(new hlw(this, localBundle));
+    ThreadManager.a(new hlv(this, localBundle));
   }
   
   public boolean b(String paramString)

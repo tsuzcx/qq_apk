@@ -1,14 +1,15 @@
 import com.tencent.mobileqq.startup.director.StartupDirector;
-import com.tencent.mobileqq.statistics.ReportController;
+import mqq.app.AppActivity;
 
 public class gjx
   implements Runnable
 {
-  public gjx(StartupDirector paramStartupDirector, int paramInt) {}
+  public gjx(StartupDirector paramStartupDirector, AppActivity paramAppActivity) {}
   
   public void run()
   {
-    ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "web_start", 0, 1, this.jdField_a_of_type_Int, "", "", "", "");
+    this.jdField_a_of_type_MqqAppAppActivity.superFinish();
+    System.exit(0);
   }
 }
 

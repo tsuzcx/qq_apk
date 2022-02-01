@@ -118,11 +118,11 @@ public class bmd
     if (this.a.jdField_b_of_type_Long - System.currentTimeMillis() / 1000L > 0L) {}
     for (i = 1;; i = 0)
     {
-      this.a.findViewById(2131232584).setOnClickListener(this.a);
+      this.a.findViewById(2131232583).setOnClickListener(this.a);
       if ((this.a.i == null) || (this.a.j == null) || (i == 0)) {
         break label1059;
       }
-      ((TextView)this.a.findViewById(2131232583)).setText(this.a.i);
+      ((TextView)this.a.findViewById(2131232582)).setText(this.a.i);
       this.a.jdField_e_of_type_AndroidViewView.setVisibility(0);
       if (this.a.f != 540)
       {

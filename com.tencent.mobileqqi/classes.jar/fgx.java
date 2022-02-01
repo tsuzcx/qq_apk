@@ -1,21 +1,26 @@
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.StrangerHandler;
+import com.tencent.mobileqq.data.Stranger;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 public class fgx
+  implements Runnable
 {
-  public int a;
-  public long a;
-  signature.SignatureReport jdField_a_of_type_ComTencentImsSignature$SignatureReport;
-  fgw jdField_a_of_type_Fgw;
-  public String a;
-  String b;
-  String c;
-  String d;
+  public fgx(StrangerHandler paramStrangerHandler) {}
   
-  public fgx(StartAppCheckHandler paramStartAppCheckHandler, String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentImsSignature$SignatureReport = new signature.SignatureReport();
+    Object localObject = this.a.a.a().createEntityManager();
+    List localList = ((EntityManager)localObject).a(Stranger.class);
+    ((EntityManager)localObject).a();
+    localObject = localList;
+    if (localList == null) {
+      localObject = new ArrayList();
+    }
+    this.a.a(3, true, localObject);
   }
 }
 

@@ -22,8 +22,8 @@ import com.tencent.mobileqq.data.MessageForActivity;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.troop.browser.TroopQQBrowserHelper;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import dyf;
 import dyg;
-import dyh;
 
 public class ActivityChatItemBuilder
   extends AbstractChatItemBuilder
@@ -38,15 +38,15 @@ public class ActivityChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramLinearLayout = (dyh)paramViewHolder;
+    paramLinearLayout = (dyg)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
       paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903366, null);
-      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131232294));
-      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131232299));
-      paramLinearLayout.d = ((TextView)paramViewHolder.findViewById(2131232300));
-      paramLinearLayout.a = ((ImageView)paramViewHolder.findViewById(2131232297));
+      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131232293));
+      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131232298));
+      paramLinearLayout.d = ((TextView)paramViewHolder.findViewById(2131232299));
+      paramLinearLayout.a = ((ImageView)paramViewHolder.findViewById(2131232296));
       paramViewHolder.setOnClickListener(this);
       paramLinearLayout.b.setOnClickListener(this);
       paramLinearLayout.c.setOnClickListener(this);
@@ -93,14 +93,14 @@ public class ActivityChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new dyh(this);
+    return new dyg(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
   
   protected void a(String paramString, TextView paramTextView)
   {
-    paramTextView.getViewTreeObserver().addOnPreDrawListener(new dyg(this, paramTextView, paramString));
+    paramTextView.getViewTreeObserver().addOnPreDrawListener(new dyf(this, paramTextView, paramString));
   }
   
   public QQCustomMenuItem[] a(View paramView)

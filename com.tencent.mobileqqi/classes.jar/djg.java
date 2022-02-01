@@ -1,13 +1,16 @@
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
 import com.tencent.mobileqq.activity.SpaceGateActivity;
 
 public class djg
-  implements Runnable
+  extends Handler
 {
   public djg(SpaceGateActivity paramSpaceGateActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a(0);
+    ((View)paramMessage.obj).setVisibility(paramMessage.arg1);
   }
 }
 

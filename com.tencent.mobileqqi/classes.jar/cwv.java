@@ -1,19 +1,19 @@
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import java.util.ArrayList;
 
 public class cwv
   implements Runnable
 {
-  public cwv(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
+  public cwv(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
   public void run()
   {
-    this.a.c();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());
-    this.a.a.a(this.a.jdField_b_of_type_JavaLangString, this.a.c, localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.a.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.b.setText(this.b);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.c.setText(this.c);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d.setText(this.d);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e.setText(this.e);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.f.setText(this.f);
   }
 }
 

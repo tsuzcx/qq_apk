@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceCloseListener;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceTextUpdateListener;
 import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
 public class gau
-  implements MagicfaceActionManager.MagicfaceCloseListener
+  implements MagicfaceActionManager.MagicfaceTextUpdateListener
 {
-  public gau(MagicfaceViewController paramMagicfaceViewController, MagicfaceActionManager paramMagicfaceActionManager) {}
+  public gau(MagicfaceViewController paramMagicfaceViewController, int paramInt, TextView paramTextView) {}
   
-  public void a()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.e();
+    MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).post(new gav(this, paramString));
+  }
+  
+  public void b(String paramString)
+  {
+    MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).post(new gaw(this, paramString));
+  }
+  
+  public void c(String paramString)
+  {
+    MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).post(new gax(this, paramString));
   }
 }
 

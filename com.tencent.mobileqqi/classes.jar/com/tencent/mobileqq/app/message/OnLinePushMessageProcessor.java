@@ -107,11 +107,11 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import fjj;
 import fjk;
 import fjl;
 import fjm;
 import fjn;
-import fjo;
 import friendlist.AddGroupResp;
 import friendlist.DelGroupResp;
 import friendlist.RenameGroupResp;
@@ -186,7 +186,7 @@ public class OnLinePushMessageProcessor
   public static final byte i = 7;
   public static final byte j = 22;
   private QvipSpecialCareManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialCareManager = null;
-  public fjn a;
+  public fjm a;
   private final Timer jdField_a_of_type_JavaUtilTimer = ThreadManager.a();
   public final ConcurrentHashMap a;
   
@@ -194,7 +194,7 @@ public class OnLinePushMessageProcessor
   {
     super(paramQQAppInterface, paramMessageHandler);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_Fjn = new fjn(this, null);
+    this.jdField_a_of_type_Fjm = new fjm(this, null);
   }
   
   private MessageRecord a(MsgInfo paramMsgInfo, long paramLong)
@@ -1246,7 +1246,7 @@ public class OnLinePushMessageProcessor
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.BaseMessageProcessor.discuss", 2, "cOptye:9 +sTips=" + (String)localObject1 + "+lUin=" + paramLong);
       }
-      this.jdField_a_of_type_JavaUtilTimer.schedule(new fjk(this, (ArrayList)localObject3, paramLong, l1, (String)localObject1, paramMsgInfo, l2), 2000L);
+      this.jdField_a_of_type_JavaUtilTimer.schedule(new fjj(this, (ArrayList)localObject3, paramLong, l1, (String)localObject1, paramMsgInfo, l2), 2000L);
       return null;
     case 22: 
       l3 = PkgTools.a((byte[])localObject4, 5);
@@ -1322,7 +1322,7 @@ public class OnLinePushMessageProcessor
           }
         }
         ((DiscussionHandler)localObject3).a(l1, String.valueOf(l3), (List)localObject5, 0);
-        this.jdField_a_of_type_JavaUtilTimer.schedule(new fjl(this, l3, paramLong, (Pair)localObject6, paramMsgInfo, l1, l2, b1, l4, (Pair)localObject7, localArrayList), 2000L);
+        this.jdField_a_of_type_JavaUtilTimer.schedule(new fjk(this, l3, paramLong, (Pair)localObject6, paramMsgInfo, l1, l2, b1, l4, (Pair)localObject7, localArrayList), 2000L);
       }
       localObject2 = ((RecentUserProxy)localObject1).a(Long.toString(l1), 3000);
       ((RecentUser)localObject2).uin = Long.toString(l1);
@@ -1454,7 +1454,7 @@ public class OnLinePushMessageProcessor
     }
   }
   
-  private fjo b(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  private fjn b(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     return this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(OnLinePushMsgTypeProcessorDispatcher.a(paramInt)).a(OnLinePushMsgTypeProcessorDispatcher.a(String.valueOf(paramInt)), paramMsgInfo, paramSvcReqPushMsg);
   }
@@ -1556,7 +1556,7 @@ public class OnLinePushMessageProcessor
       DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
       SubAccountAssistantImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1));
       if (SubAccountAssistantImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1))) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), String.valueOf(l1), new fjm(this));
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), String.valueOf(l1), new fjl(this));
       }
       ((SubAccountBackProtocData)localObject).p = 0;
       a(8004, true, localObject);

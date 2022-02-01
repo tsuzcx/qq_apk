@@ -1,27 +1,45 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class cuj
-  extends Handler
+  implements Runnable
 {
-  public cuj(LoginInfoActivity paramLoginInfoActivity) {}
+  public cuj(LoginInfoActivity paramLoginInfoActivity, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    for (;;)
     {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.LoginInfoActivity", 2, "handleMessage.msg.arg1=" + paramMessage.arg1);
+      try
+      {
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.isFinishing())
+        {
+          if ((LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity) != null) && (LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).isShowing()))
+          {
+            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).dismiss();
+            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).cancel();
+            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, null);
+          }
+          LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.a(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.d()));
+          int i = this.jdField_a_of_type_Int;
+          switch (i)
+          {
+          }
+        }
       }
-    } while (LoginInfoActivity.a(this.a) == null);
-    LoginInfoActivity.a(this.a).DevSetup = paramMessage.arg1;
-    LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        continue;
+        LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).b(2131562645);
+        continue;
+      }
+      if ((LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity) != null) && (!LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).isShowing())) {
+        LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).show();
+      }
+      return;
+      LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).b(2131562300);
+    }
   }
 }
 

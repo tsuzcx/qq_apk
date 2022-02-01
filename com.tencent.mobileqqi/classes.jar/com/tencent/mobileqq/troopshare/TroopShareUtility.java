@@ -43,11 +43,11 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import cooperation.qzone.QZoneShareManager;
+import gzv;
 import gzw;
 import gzx;
 import gzy;
 import gzz;
-import haa;
 import java.util.ArrayList;
 
 public class TroopShareUtility
@@ -65,7 +65,7 @@ public class TroopShareUtility
   private static final int i = 0;
   private static final int j = 1;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new haa(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gzz(this);
   private TroopInfoData jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet = null;
@@ -534,12 +534,12 @@ public class TroopShareUtility
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131562908);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new gzw(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new gzv(this));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131562137);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131562715);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131560516);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131561882);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new gzx(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new gzw(this));
     }
     if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())
     {
@@ -554,8 +554,8 @@ public class TroopShareUtility
     this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131561682);
     this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131563148);
     this.jdField_b_of_type_ComTencentWidgetActionSheet.d(2131561746);
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new gzy(this));
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new gzz(this));
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new gzx(this));
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new gzy(this));
     String str;
     switch (this.k)
     {

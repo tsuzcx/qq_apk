@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public final class fyg
-  implements Comparator
+  implements FMDialogUtil.FMDialogInterface
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  public fyg(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
+  
+  public void a()
   {
-    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
+    FileManagerUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 

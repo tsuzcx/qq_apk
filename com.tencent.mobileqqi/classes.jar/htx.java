@@ -1,24 +1,29 @@
 import android.os.Handler;
-import android.widget.TextView;
+import android.os.Message;
 import com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2;
 
 public class htx
-  implements Runnable
+  extends Handler
 {
   public htx(AuthDevVerifyCodeActivity2 paramAuthDevVerifyCodeActivity2) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (AuthDevVerifyCodeActivity2.a(this.a) <= 1)
-    {
-      AuthDevVerifyCodeActivity2.a(this.a).setText(2131562863);
-      AuthDevVerifyCodeActivity2.a(this.a).setEnabled(true);
-      AuthDevVerifyCodeActivity2.a(this.a).setClickable(true);
+    if (paramMessage == null) {
       return;
     }
-    AuthDevVerifyCodeActivity2.b(this.a);
-    AuthDevVerifyCodeActivity2.a(this.a).setText(this.a.getString(2131562863) + "(" + AuthDevVerifyCodeActivity2.a(this.a) + ")");
-    this.a.a.postDelayed(this, 1000L);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    AuthDevVerifyCodeActivity2.d(this.a);
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131563125);
+    }
+    AuthDevVerifyCodeActivity2.e(this.a, paramMessage, 1);
   }
 }
 

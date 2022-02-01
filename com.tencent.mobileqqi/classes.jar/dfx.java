@@ -1,13 +1,21 @@
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.service.profile.ProfileUtil;
+import com.tencent.widget.TimePickerView.TimePickerListener;
 
-class dfx
-  implements Runnable
+public class dfx
+  implements TimePickerView.TimePickerListener
 {
-  dfx(dfw paramdfw) {}
+  public dfx(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    RegisterPhoneNumActivity.a(this.a.a, true);
+    paramInt1 = ProfileUtil.a(paramInt1, paramInt2, paramInt3);
+    if (RegisterPhoneNumActivity.a(this.a) != null) {
+      RegisterPhoneNumActivity.a(this.a).setText(ProfileUtil.a(paramInt1));
+    }
+    this.a.g = paramInt1;
+    RegisterPhoneNumActivity.a(this.a);
   }
 }
 

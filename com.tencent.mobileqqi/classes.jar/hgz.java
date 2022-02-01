@@ -1,4 +1,4 @@
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
 import java.util.Stack;
 
@@ -8,17 +8,17 @@ public class hgz
   
   public hgz(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
   
-  public ChatThumbView a()
+  public AnimationTextView a()
   {
     if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
       return null;
     }
-    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
+    return (AnimationTextView)this.jdField_a_of_type_JavaUtilStack.pop();
   }
   
-  public void a(ChatThumbView paramChatThumbView)
+  public void a(AnimationTextView paramAnimationTextView)
   {
-    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
+    this.jdField_a_of_type_JavaUtilStack.push(paramAnimationTextView);
   }
 }
 

@@ -52,8 +52,8 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.widget.MotionViewSetter;
+import eyf;
 import eyg;
-import eyh;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -88,7 +88,7 @@ public class ForwardRecentListAdapter
   private int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = null;
-  private View.OnLongClickListener jdField_b_of_type_AndroidViewView$OnLongClickListener = new eyg(this);
+  private View.OnLongClickListener jdField_b_of_type_AndroidViewView$OnLongClickListener = new eyf(this);
   private String jdField_b_of_type_JavaLangString;
   private HashMap jdField_b_of_type_JavaUtilHashMap;
   private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
@@ -325,7 +325,7 @@ public class ForwardRecentListAdapter
     {
       str = paramString2;
     }
-    return DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(str).setItems(2131689474, new eyh(this, paramString2));
+    return DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(str).setItems(2131689474, new eyg(this, paramString2));
   }
   
   public void a()
@@ -422,7 +422,7 @@ public class ForwardRecentListAdapter
     }
     localView.setTag(-1, Integer.valueOf(paramInt));
     RecentUser localRecentUser = (RecentUser)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localView.setTag(2131231416, Integer.valueOf(paramInt));
+    localView.setTag(2131231415, Integer.valueOf(paramInt));
     if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
       localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     }
@@ -445,7 +445,7 @@ public class ForwardRecentListAdapter
     for (;;)
     {
       localView.setTag(2131230985, null);
-      localView.setTag(2131233145, Integer.valueOf(n));
+      localView.setTag(2131233144, Integer.valueOf(n));
       paramViewGroup = null;
       Object localObject2;
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)
@@ -475,7 +475,7 @@ public class ForwardRecentListAdapter
         }
         else
         {
-          localImageView2 = (ImageView)localView.findViewById(2131231394);
+          localImageView2 = (ImageView)localView.findViewById(2131231393);
           switch (n)
           {
           default: 

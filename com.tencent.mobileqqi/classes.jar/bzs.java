@@ -1,75 +1,106 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class bzs
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+  extends FMObserver
 {
   private bzs(ChatActivity paramChatActivity) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  protected void a(int paramInt, long paramLong, String paramString)
   {
-    if (paramInt == 4)
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if (paramTextView.length() > 0)
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1) {
-          break label118;
-        }
-        paramTextView = new ArrayList();
-        paramKeyEvent = AtTroopMemberSpan.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText(), paramTextView);
-        ChatActivityFacade.a(this.a.b, this.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramKeyEvent, paramTextView);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-        ChatActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c, -1);
-        return true;
-        label118:
-        ChatActivityFacade.a(this.a.b, this.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramTextView, null);
-      }
+    FileManagerUtil.a(paramLong, paramInt, paramString);
+    if (ChatActivity.a(this.a) != null) {
+      ChatActivity.a(this.a).notifyDataSetChanged();
     }
-    return false;
   }
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (paramKeyEvent.getKeyCode() == 66)
+    ChatActivity.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    if ((paramString2 != null) && (paramString2.length() > 0))
     {
-      if (paramKeyEvent.getAction() == 1)
+      FileManagerUtil.a(paramString2);
+      return;
+    }
+    FileManagerUtil.a(paramLong);
+  }
+  
+  protected void a(ThumbnailInfo paramThumbnailInfo)
+  {
+    if (paramThumbnailInfo == null) {}
+    do
+    {
+      return;
+      if ((paramThumbnailInfo.a instanceof FileManagerEntity))
       {
-        paramKeyEvent = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-        if ((this.a.c) && (paramKeyEvent.length() > 0))
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
+        if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0))
         {
-          if ((!paramKeyEvent.endsWith("\r")) && (!paramKeyEvent.endsWith("\n"))) {
-            break label94;
-          }
-          paramView = paramKeyEvent.substring(0, paramKeyEvent.length() - 1);
+          localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
+          this.a.b.a().c(localFileManagerEntity);
         }
       }
-      for (;;)
-      {
-        if (paramView.length() > 0) {
-          this.a.b();
-        }
-        return true;
-        label94:
-        paramView = paramKeyEvent;
-        if (paramKeyEvent.endsWith("\r\n")) {
-          paramView = paramKeyEvent.substring(0, paramKeyEvent.length() - 2);
-        }
+    } while (ChatActivity.a(this.a) == null);
+    ChatActivity.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void a(Integer paramInteger, long paramLong, String paramString)
+  {
+    if (ChatActivity.a(this.a) != null) {
+      ChatActivity.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    ChatActivity.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+    }
+    paramString1 = this.a.b.a().a(paramLong2);
+    if (paramBoolean) {
+      FileManagerUtil.a(paramLong2);
+    }
+    for (;;)
+    {
+      ChatActivity.a(this.a).notifyDataSetChanged();
+      return;
+      if ((paramString1.nOpType == 4) || (paramString1.nOpType == 6)) {
+        FileManagerUtil.a(paramLong2, paramInt2, paramString2);
       }
     }
-    return false;
+  }
+  
+  protected void b()
+  {
+    ChatActivity.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    ChatActivity.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void c()
+  {
+    if (ChatActivity.a(this.a) != null) {
+      ChatActivity.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 

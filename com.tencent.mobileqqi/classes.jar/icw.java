@@ -9,8 +9,8 @@ public class icw
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.resumePlay();
-    QzoneWebMusicJsPlugin.access$002(this.a, true);
+    this.a.stopPlay();
+    QzoneWebMusicJsPlugin.access$200(this.a, "cancel");
     paramDialogInterface.dismiss();
     QzoneWebMusicJsPlugin.access$302(this.a, false);
   }

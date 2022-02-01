@@ -15,9 +15,9 @@ import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
+import dha;
 import dhb;
 import dhc;
-import dhd;
 import java.util.ArrayList;
 
 public class SearchFriendListActivity
@@ -25,31 +25,31 @@ public class SearchFriendListActivity
   implements View.OnClickListener
 {
   public static final String a = "param_search_resp";
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dhb(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dha(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private dhc jdField_a_of_type_Dhc;
+  private dhb jdField_a_of_type_Dhb;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
   public void a(View paramView, int paramInt)
   {
     SearchInfo localSearchInfo = (SearchInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    dhd localdhd = (dhd)paramView.getTag();
+    dhc localdhc = (dhc)paramView.getTag();
     if (!TextUtils.isEmpty(localSearchInfo.strNick))
     {
-      localdhd.jdField_a_of_type_AndroidWidgetTextView.setText(localSearchInfo.strNick);
+      localdhc.jdField_a_of_type_AndroidWidgetTextView.setText(localSearchInfo.strNick);
       if (localSearchInfo.eSource != 1) {
         break label190;
       }
-      localdhd.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.b.b(String.valueOf(localSearchInfo.lUIN)));
-      localdhd.b.setText(getString(2131559109) + localSearchInfo.lUIN);
+      localdhc.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.b.b(String.valueOf(localSearchInfo.lUIN)));
+      localdhc.b.setText(getString(2131559109) + localSearchInfo.lUIN);
     }
     for (;;)
     {
-      localdhd.jdField_a_of_type_Int = paramInt;
-      paramView.setContentDescription(localdhd.jdField_a_of_type_AndroidWidgetTextView.getText());
+      localdhc.jdField_a_of_type_Int = paramInt;
+      paramView.setContentDescription(localdhc.jdField_a_of_type_AndroidWidgetTextView.getText());
       return;
-      TextView localTextView = localdhd.jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = localdhc.jdField_a_of_type_AndroidWidgetTextView;
       if (localSearchInfo.eSource == 1) {}
       for (String str = localSearchInfo.lUIN + "";; str = localSearchInfo.strMobile)
       {
@@ -57,8 +57,8 @@ public class SearchFriendListActivity
         break;
       }
       label190:
-      localdhd.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.b.a(localSearchInfo.strMobile, (byte)3));
-      localdhd.b.setText(getString(2131559110) + localSearchInfo.strMobile);
+      localdhc.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.b.a(localSearchInfo.strMobile, (byte)3));
+      localdhc.b.setText(getString(2131559110) + localSearchInfo.strMobile);
     }
   }
   
@@ -68,7 +68,7 @@ public class SearchFriendListActivity
     setContentView(2130903946);
     j(2130837729);
     setTitle(getString(2131559108));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234405));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234404));
     this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837729);
     a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     paramBundle = new JceInputStream(getIntent().getByteArrayExtra("param_search_resp"));
@@ -76,8 +76,8 @@ public class SearchFriendListActivity
     localRespSearch.readFrom(paramBundle);
     this.jdField_a_of_type_JavaUtilArrayList = localRespSearch.vRecords;
     this.jdField_a_of_type_ArrayOfByte = localRespSearch.vSecureSig;
-    this.jdField_a_of_type_Dhc = new dhc(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dhc);
+    this.jdField_a_of_type_Dhb = new dhb(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dhb);
     return true;
   }
   
@@ -107,7 +107,7 @@ public class SearchFriendListActivity
       startActivity((Intent)localObject);
     }
     label104:
-    while (!(localObject instanceof dhd))
+    while (!(localObject instanceof dhc))
     {
       return;
       ((Intent)localObject).putExtra("type", 3);
@@ -122,11 +122,11 @@ public class SearchFriendListActivity
       }
     }
     label173:
-    localObject = (dhd)paramView.getTag();
-    paramView = (SearchInfo)this.jdField_a_of_type_JavaUtilArrayList.get(((dhd)localObject).jdField_a_of_type_Int);
+    localObject = (dhc)paramView.getTag();
+    paramView = (SearchInfo)this.jdField_a_of_type_JavaUtilArrayList.get(((dhc)localObject).jdField_a_of_type_Int);
     if (paramView.bIsEnterpriseQQ == 0)
     {
-      AddFriendActivity.a(this, (SearchInfo)this.jdField_a_of_type_JavaUtilArrayList.get(((dhd)localObject).jdField_a_of_type_Int), this.b.a(), this.jdField_a_of_type_ArrayOfByte);
+      AddFriendActivity.a(this, (SearchInfo)this.jdField_a_of_type_JavaUtilArrayList.get(((dhc)localObject).jdField_a_of_type_Int), this.b.a(), this.jdField_a_of_type_ArrayOfByte);
       return;
     }
     localObject = new Intent(this, EnterpriseDetailActivity.class);

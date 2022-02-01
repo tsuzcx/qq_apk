@@ -26,7 +26,7 @@ import com.tencent.mobileqq.redtouch.RedTouchManager;
 import com.tencent.mobileqq.servlet.QZoneManagerImp;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import eyl;
+import eyk;
 import java.util.List;
 
 public class LebaListViewAdapter
@@ -42,7 +42,7 @@ public class LebaListViewAdapter
   private float jdField_a_of_type_Float;
   Context jdField_a_of_type_AndroidContentContext;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new eyl(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new eyk(this);
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -315,15 +315,15 @@ public class LebaListViewAdapter
         {
           paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.e, null);
           paramViewGroup = new LebaListViewAdapter.CornerListItemHolder(this);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131231555));
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231557));
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231556));
-          paramViewGroup.d = ((ImageView)paramView.findViewById(2131231560));
-          paramViewGroup.e = ((ImageView)paramView.findViewById(2131231561));
-          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231295));
-          paramViewGroup.c = ((ImageView)paramView.findViewById(2131231559));
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231558));
-          paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131231562);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131231554));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231556));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231555));
+          paramViewGroup.d = ((ImageView)paramView.findViewById(2131231559));
+          paramViewGroup.e = ((ImageView)paramView.findViewById(2131231560));
+          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231294));
+          paramViewGroup.c = ((ImageView)paramView.findViewById(2131231558));
+          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231557));
+          paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131231561);
           paramView.setTag(paramViewGroup);
           label227:
           paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strResName);

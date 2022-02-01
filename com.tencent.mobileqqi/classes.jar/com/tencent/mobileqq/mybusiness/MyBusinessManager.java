@@ -8,7 +8,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gdh;
+import gdg;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class MyBusinessManager
   public int a;
   Carrier jdField_a_of_type_MyCarrierCarrier = null;
   public QQAppInterface a;
-  private MyBusinessObserver jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessObserver = new gdh(this);
+  private MyBusinessObserver jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessObserver = new gdg(this);
   public boolean a;
   boolean b = false;
   

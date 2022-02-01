@@ -1,29 +1,61 @@
 import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.mobileqq.widget.QQMapView.QQMapViewObserver;
 import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 
 public class hhd
-  extends Handler
+  extends Thread
 {
-  public hhd(QQMapView paramQQMapView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public hhd(QQMapView paramQQMapView, String paramString)
   {
-    GeoPoint localGeoPoint;
-    if ((paramMessage != null) && (paramMessage.obj != null) && (this.a.a != null)) {
-      localGeoPoint = (GeoPoint)paramMessage.obj;
+    super(paramString);
+  }
+  
+  public void run()
+  {
+    if (this.a.e <= 0) {
+      try
+      {
+        while (this.a.jdField_a_of_type_JavaLangThread != null) {
+          synchronized (this.a.jdField_a_of_type_JavaLangThread)
+          {
+            this.a.e = 0;
+            this.a.b = true;
+            wait();
+          }
+        }
+        return;
+      }
+      catch (InterruptedException localInterruptedException) {}
     }
-    switch (paramMessage.arg1)
+    this.a.b = false;
+    GeoPoint localGeoPoint = this.a.getMapCenter();
+    if ((this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint != null) && (localGeoPoint != null))
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a.b(localGeoPoint);
-      return;
+      if ((Math.abs(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6() - localGeoPoint.getLatitudeE6()) >= 1) || (Math.abs(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6() - localGeoPoint.getLongitudeE6()) >= 1)) {
+        break label213;
+      }
+      if ((this.a.d) && (!this.a.c))
+      {
+        this.a.d = false;
+        if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(this.a.a(0, localGeoPoint));
+        }
+      }
     }
-    this.a.a.c(localGeoPoint);
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = localGeoPoint;
+      this.a.e = 0;
+      break;
+      label213:
+      if ((!this.a.d) && (this.a.c))
+      {
+        this.a.d = true;
+        if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(this.a.a(1, localGeoPoint));
+        }
+      }
+    }
   }
 }
 

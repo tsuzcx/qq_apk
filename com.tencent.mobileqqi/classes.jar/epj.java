@@ -1,24 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class epj
-  implements View.OnClickListener
+  extends Handler
 {
   public epj(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_b_of_type_Boolean) {
-      ReportController.b(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    if (paramMessage.what == 0)
     {
-      this.a.finish();
-      return;
-      ReportController.b(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
+      this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new epk(this));
+      paramMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, this.a.jdField_a_of_type_Long);
     }
+    while ((1 != paramMessage.what) || (this.a.jdField_b_of_type_Boolean)) {
+      return;
+    }
+    this.a.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.a.jdField_a_of_type_JavaLangStringBuffer.length());
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838934);
+    this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838934);
+    this.a.c.setImageResource(2130838934);
+    this.a.d.setImageResource(2130838934);
+    this.a.e.setEnabled(true);
+    this.a.f.setEnabled(true);
+    this.a.g.setEnabled(true);
+    this.a.h.setEnabled(true);
+    this.a.i.setEnabled(true);
+    this.a.j.setEnabled(true);
+    this.a.k.setEnabled(true);
+    this.a.l.setEnabled(true);
+    this.a.m.setEnabled(true);
+    this.a.n.setEnabled(true);
+    this.a.o.setEnabled(true);
   }
 }
 

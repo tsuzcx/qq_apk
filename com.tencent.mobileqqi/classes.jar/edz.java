@@ -1,19 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.activity.contact.newfriend.CircleGroupListView;
+import com.tencent.mobileqq.data.CircleGroup;
+import java.util.ArrayList;
 
 public class edz
-  implements DialogInterface.OnDismissListener
+  extends BaseAdapter
 {
-  public edz(CircleGroupListView paramCircleGroupListView, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  private edz(CircleGroupListView paramCircleGroupListView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int getCount()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendCircleGroupListView.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendCircleGroupListView.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendCircleGroupListView.a = null;
+    return this.a.a.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.a.a();
+    }
+    this.a.a(paramViewGroup, (CircleGroup)this.a.a.get(paramInt));
+    return paramViewGroup;
   }
 }
 

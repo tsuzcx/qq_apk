@@ -1,21 +1,15 @@
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.service.profile.ProfileUtil;
-import com.tencent.widget.TimePickerView.TimePickerListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
-class ejh
-  implements TimePickerView.TimePickerListener
+public class ejh
+  implements DialogInterface.OnDismissListener
 {
-  ejh(ejg paramejg) {}
+  public ejh(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramInt1 = ProfileUtil.a(paramInt1, paramInt2, paramInt3);
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ProfileUtil.a(paramInt1));
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b = paramInt1;
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.a.a = false;
   }
 }
 

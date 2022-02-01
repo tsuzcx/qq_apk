@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ba3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:adjustViewBounds="true" />
+    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ba2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:adjustViewBounds="true" />
 </merge>

@@ -1,20 +1,21 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.open.downloadnew.MyAppDialog;
 
 public class hoj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public hoj(MyAppApi.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
+  public hoj(MyAppDialog paramMyAppDialog, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener.a.a != null) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener.a.a.isShowing())) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener.a.a.dismiss();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog, this.jdField_a_of_type_Int);
     }
-    DownloadManager.a().c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
+    }
   }
 }
 

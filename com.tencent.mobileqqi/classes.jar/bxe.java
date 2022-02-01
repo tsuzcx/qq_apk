@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.MessageQueue.IdleHandler;
 import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bxe
-  implements DialogInterface.OnClickListener
+  implements MessageQueue.IdleHandler
 {
   public bxe(ChatActivity paramChatActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean queueIdle()
   {
-    paramDialogInterface.dismiss();
+    ChatActivity.b(this.a);
+    return false;
   }
 }
 

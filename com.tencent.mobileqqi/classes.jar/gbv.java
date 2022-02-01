@@ -1,15 +1,13 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.maproam.activity.RoamingActivity;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog.OnRoamResultObserver;
-import java.util.List;
 
 public class gbv
-  implements RoamSearchDialog.OnRoamResultObserver
+  implements DialogInterface.OnClickListener
 {
   public gbv(RoamingActivity paramRoamingActivity) {}
   
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(int paramInt, List paramList) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

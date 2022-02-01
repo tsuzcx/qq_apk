@@ -1,46 +1,36 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class ffm
-  extends Handler
+  extends FriendListObserver
 {
-  public ffm(QQAppInterface paramQQAppInterface, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ffm(QQAppInterface paramQQAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    if (paramMessage.what == 990)
-    {
-      paramMessage = QQAppInterface.a(this.a);
-      QQAppInterface.a(this.a, null);
-      QQAppInterface.a(this.a).removeMessages(990);
-      ArrayList localArrayList = new ArrayList();
-      if ((paramMessage != null) && (paramMessage.size() > 0))
-      {
-        int i = 0;
-        while (i < paramMessage.size())
-        {
-          localArrayList.add(this.a.b(1, (String)paramMessage.get(i)));
-          i += 1;
-        }
-        Intent localIntent = new Intent("com.tencent.qqhead.getheadresp");
-        localIntent.putStringArrayListExtra("uinList", paramMessage);
-        localIntent.putStringArrayListExtra("headPathList", localArrayList);
-        this.a.a().sendBroadcast(localIntent);
-      }
-      if (QLog.isColorLevel()) {
-        QQUtils.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, getQQHead resp uinList: ", paramMessage);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(QQAppInterface.b + "_friendListObserver", 2, "onUpdateFriendInfo uin:" + paramString + ",isSuccess:" + paramBoolean);
     }
+    if (this.a.jdField_a_of_type_JavaUtilSet.contains(paramString))
+    {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.c() == 1) && (paramString != null) && (paramString.equals(((QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a().get(0)).frienduin)) && (this.a.isBackground_Pause) && (this.a.f()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(QQAppInterface.b + "_friendListObserver", 2, "update notifcation");
+        }
+        this.a.a((QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a().get(0), false);
+      }
+      this.a.jdField_a_of_type_JavaUtilSet.remove(paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(QQAppInterface.b + "_friendListObserver", 2, "removeObserver");
+    }
+    this.a.c(this);
   }
 }
 

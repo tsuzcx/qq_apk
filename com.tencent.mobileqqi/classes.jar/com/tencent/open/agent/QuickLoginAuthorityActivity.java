@@ -27,7 +27,7 @@ import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.Login;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import hjl;
+import hjk;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -78,7 +78,7 @@ public class QuickLoginAuthorityActivity
     this.jdField_a_of_type_MqqManagerWtloginManager = null;
     this.jdField_a_of_type_ArrayOfByte = null;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new hjl(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new hjk(this);
   }
   
   public void a(int paramInt, byte[] paramArrayOfByte, String paramString1, String paramString2)
@@ -208,14 +208,14 @@ public class QuickLoginAuthorityActivity
   protected void d()
   {
     this.k.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232098));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232097));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131232096));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131232095));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232093));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232095));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232094));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131232099));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232092));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232094));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232093));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131232098));
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
     e();
   }

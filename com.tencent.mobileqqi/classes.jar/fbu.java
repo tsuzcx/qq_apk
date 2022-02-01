@@ -1,26 +1,15 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.DragBaseActivity;
 
 public class fbu
-  extends Handler
+  implements View.OnClickListener
 {
-  private WeakReference a;
+  public fbu(DragBaseActivity paramDragBaseActivity) {}
   
-  private fbu(Looper paramLooper, Handler.Callback paramCallback)
+  public void onClick(View paramView)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
-    }
+    this.a.b();
   }
 }
 

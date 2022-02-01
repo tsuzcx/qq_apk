@@ -1,17 +1,45 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.FileAssistantDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import java.net.URL;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.ForwardImageProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class gni
-  implements BitmapDecoder
+  extends TransProcessorHandler
 {
-  public gni(FileAssistantDownloader paramFileAssistantDownloader) {}
+  public gni(ForwardImageProcessor paramForwardImageProcessor) {}
   
-  public Bitmap a(URL paramURL)
+  public void handleMessage(Message paramMessage)
   {
-    paramURL = this.a.a(paramURL);
-    return FileAssistantDownloader.a(this.a, paramURL);
+    int i = paramMessage.what;
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((i == 2002) || ((ForwardImageProcessor.a(this.a).equals(localFileMsg.m)) && (localFileMsg.e == 1) && (i != 2002)))
+    {
+      if ((localFileMsg.o == null) || (!localFileMsg.o.equals(ForwardImageProcessor.b(this.a)))) {
+        return;
+      }
+      switch (i)
+      {
+      }
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      ForwardImageProcessor.a(this.a);
+      continue;
+      if (FileUtils.b(ForwardImageProcessor.c(this.a)))
+      {
+        ForwardImageProcessor.a(this.a).a().b(this);
+        ForwardImageProcessor.b(this.a);
+      }
+      else
+      {
+        ForwardImageProcessor.a(this.a);
+      }
+    }
   }
 }
 

@@ -1,24 +1,13 @@
-import android.graphics.Bitmap;
-import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.LoginActivity;
 
-class ctd
-  implements Runnable
+public class ctd
+  implements DialogInterface.OnClickListener
 {
-  ctd(ctc paramctc, Bitmap paramBitmap) {}
+  public ctd(LoginActivity paramLoginActivity) {}
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_Ctc.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_Ctc.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(500L);
-      this.jdField_a_of_type_Ctc.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_Ctc.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-      return;
-    }
-    this.jdField_a_of_type_Ctc.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838113);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

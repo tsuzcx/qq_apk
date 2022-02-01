@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.SplashActivity;
 
 public class djq
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public djq(SplashActivity paramSplashActivity) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.g();
-  }
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {}
 }
 
 

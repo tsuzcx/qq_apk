@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
+import java.util.Comparator;
 
 public class gjk
-  implements View.OnClickListener
+  implements Comparator
 {
   public gjk(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
   
-  public void onClick(View paramView)
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    QZoneShareAlbumAssistantActivity.b(this.a);
-    QZoneShareAlbumAssistantActivity.c(this.a);
+    long l1 = paramRecentBaseData1.a();
+    long l2 = paramRecentBaseData2.a();
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

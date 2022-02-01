@@ -1,13 +1,20 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import mqq.app.permission.PermissionItem;
+import mqq.app.permission.PermissionManager;
 
 class csh
-  implements Runnable
+  implements PermissionDialogCallback
 {
-  csh(csc paramcsc) {}
+  csh(csb paramcsb, View paramView, int paramInt) {}
   
-  public void run()
+  public void a() {}
+  
+  public void b()
   {
-    Leba.b(this.a.a, true);
+    this.jdField_a_of_type_Csb.a.a().permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new csi(this));
   }
 }
 

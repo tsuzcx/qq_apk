@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.PicFowardInfo;
-import com.tencent.mobileqq.pic.PicUploadInfo;
-import com.tencent.mobileqq.pic.UiCallBack;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract interface gdx
+public class gdx
+  extends TimerTask
 {
-  public abstract MessageRecord a(PicFowardInfo paramPicFowardInfo);
+  public gdx(PicPreDownloader paramPicPreDownloader) {}
   
-  public abstract MessageRecord a(PicUploadInfo paramPicUploadInfo);
-  
-  public abstract void a(CompressInfo paramCompressInfo);
-  
-  public abstract void a(PicFowardInfo paramPicFowardInfo);
-  
-  public abstract void a(PicUploadInfo paramPicUploadInfo);
-  
-  public abstract void a(UiCallBack paramUiCallBack);
+  public void run()
+  {
+    if (!this.a.a.get())
+    {
+      this.a.a.set(true);
+      Logger.b("PIC_TAG_PRELOAD", "timer count off,picPreDownload set on", "mIsPicPreloadSuitable" + this.a.a.get());
+    }
+  }
 }
 
 

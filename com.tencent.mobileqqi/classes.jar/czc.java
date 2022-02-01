@@ -1,15 +1,14 @@
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-public class czc
+class czc
   implements Runnable
 {
-  public czc(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  czc(czb paramczb, boolean paramBoolean) {}
   
   public void run()
   {
-    boolean bool = this.a.b.p();
-    this.a.runOnUiThread(new czd(this, bool));
+    PermisionPrivacyActivity.a(this.jdField_a_of_type_Czb.a, this.jdField_a_of_type_Czb.a.b.a(), this.jdField_a_of_type_Boolean);
   }
 }
 

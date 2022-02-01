@@ -1,9 +1,13 @@
-import com.tencent.mobileqq.data.ResourcePluginInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class dki
+public final class dki
+  implements DialogInterface.OnClickListener
 {
-  public ResourcePluginInfo a;
-  public String a;
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

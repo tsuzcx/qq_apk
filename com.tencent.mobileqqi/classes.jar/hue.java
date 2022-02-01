@@ -1,28 +1,27 @@
+import android.text.Editable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import com.tencent.qqconnect.wtlogin.Login;
 
 public class hue
-  implements View.OnFocusChangeListener
+  implements View.OnTouchListener
 {
   public hue(Login paramLogin) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
-    {
-      if (true == paramBoolean) {
-        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
-      }
-      if (!paramBoolean) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
+      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
       }
     }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
-      return;
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
+      return false;
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return false;
   }
 }
 

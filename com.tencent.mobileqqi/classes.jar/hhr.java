@@ -1,41 +1,20 @@
-import android.graphics.Color;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class hhr
   extends Animation
 {
-  private float jdField_a_of_type_Float;
-  private View jdField_a_of_type_AndroidViewView;
-  private float b;
-  
-  public hhr(View paramView, float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-  }
+  public hhr(ShaderAnimLayout paramShaderAnimLayout) {}
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.a.jdField_a_of_type_Boolean == true) {}
+    for (this.a.jdField_a_of_type_Float = (1.0F - paramFloat);; this.a.jdField_a_of_type_Float = paramFloat)
+    {
+      this.a.invalidate();
       return;
     }
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.b;
-    float f3 = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb((int)((f1 + (f2 - f3) * paramFloat) * 255.0F), 255, 255, 255));
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return false;
-  }
-  
-  public boolean willChangeTransformationMatrix()
-  {
-    return false;
   }
 }
 

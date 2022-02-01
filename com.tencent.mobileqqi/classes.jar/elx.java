@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.phone.TosActivity;
 
-class elx
-  extends ContactBindObserver
+public class elx
+  implements View.OnLongClickListener
 {
-  elx(elw paramelw) {}
+  public elx(TosActivity paramTosActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public boolean onLongClick(View paramView)
   {
-    super.a(paramBoolean);
-    this.a.a.d();
-    this.a.a.b.unRegistObserver(this);
-    if (paramBoolean)
-    {
-      this.a.a.setResult(-1);
-      this.a.a.finish();
-    }
+    return true;
   }
 }
 

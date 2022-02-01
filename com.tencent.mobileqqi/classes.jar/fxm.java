@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 
-public final class fxm
-  implements Parcelable.Creator
+public class fxm
+  implements Runnable
 {
-  public FileInfo a(Parcel paramParcel)
-  {
-    return new FileInfo(paramParcel, null);
-  }
+  public fxm(FileManagerProxy paramFileManagerProxy, FileManagerEntity paramFileManagerEntity) {}
   
-  public FileInfo[] a(int paramInt)
+  public void run()
   {
-    return new FileInfo[paramInt];
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, null);
   }
 }
 

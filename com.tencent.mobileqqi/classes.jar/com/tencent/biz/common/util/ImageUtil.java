@@ -147,7 +147,7 @@ public class ImageUtil
         i += 30;
       }
     }
-    localCanvas.save(31);
+    localCanvas.save();
     return localBitmap;
   }
   
@@ -222,7 +222,7 @@ public class ImageUtil
         }
       }
     }
-    localCanvas.save(31);
+    localCanvas.save();
     return localBitmap;
   }
   
@@ -283,11 +283,11 @@ public class ImageUtil
         paramInt2 = i1;
         label85:
         if (paramInt1 <= n) {
-          break label382;
+          break label380;
         }
         paramInt1 = n;
       }
-      label382:
+      label380:
       for (;;)
       {
         Object localObject = new Rect(j, m, i, k);
@@ -309,7 +309,7 @@ public class ImageUtil
         paramBitmap = Bitmap.createBitmap(paramInt3 * 2 + paramInt2, paramInt3 * 2 + paramInt1, Bitmap.Config.ARGB_8888);
         localObject = new Canvas(paramBitmap);
         ((Canvas)localObject).drawBitmap(localBitmap, localRect, new Rect(paramInt3, paramInt3, paramInt2 + paramInt3, paramInt1 + paramInt3), null);
-        ((Canvas)localObject).save(31);
+        ((Canvas)localObject).save();
         localBitmap.recycle();
         return paramBitmap;
         k = paramInt1 / 2;
@@ -594,7 +594,7 @@ public class ImageUtil
     Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
-    localCanvas.save(31);
+    localCanvas.save();
     return localBitmap;
   }
   

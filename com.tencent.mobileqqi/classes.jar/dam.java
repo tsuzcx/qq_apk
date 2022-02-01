@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.PublicAccountActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class dam
-  implements DialogInterface.OnDismissListener
+  extends FriendListObserver
 {
-  public dam(PublicAccountActivity paramPublicAccountActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  public dam(PublicAccountActivity paramPublicAccountActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    PublicAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountActivity, null);
+    if (paramBoolean) {
+      PublicAccountActivity.a(this.a).sendEmptyMessageDelayed(3, 1200L);
+    }
   }
 }
 

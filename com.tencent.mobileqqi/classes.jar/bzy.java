@@ -1,37 +1,33 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorFilter;
-import java.lang.ref.WeakReference;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.RecentEmotionData;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bzy
-  implements TroopFileError.TroopFileErrorFilter
+public final class bzy
+  extends AsyncTask
 {
-  private WeakReference a;
+  public bzy(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public bzy(ChatActivity paramChatActivity)
+  protected Void a(Void... paramVarArgs)
   {
-    this.a = new WeakReference(paramChatActivity);
-  }
-  
-  public long a()
-  {
-    if (this.a != null)
-    {
-      ChatActivity localChatActivity = (ChatActivity)this.a.get();
-      if ((localChatActivity != null) && (localChatActivity.a.jdField_a_of_type_Int == 1)) {
-        try
-        {
-          long l = Long.parseLong(localChatActivity.a.jdField_a_of_type_JavaLangString);
-          return l;
-        }
-        catch (Exception localException)
-        {
-          return 0L;
-        }
-      }
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    List localList = localEntityManager.a(RecentEmotionData.class, false, null, null, null, null, null, null);
+    paramVarArgs = localList;
+    if (localList == null) {
+      paramVarArgs = new ArrayList();
     }
-    return 0L;
+    if (ChatActivityFacade.a(paramVarArgs, 3, 0, this.jdField_a_of_type_JavaLangString) < 0) {
+      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localEntityManager, 3, 0, this.jdField_a_of_type_JavaLangString, paramVarArgs);
+    }
+    localEntityManager.a();
+    return null;
   }
+  
+  protected void a(Void paramVoid) {}
 }
 
 

@@ -1,33 +1,20 @@
-import cooperation.qzone.QzoneCommonProxyActivity;
-import cooperation.qzone.QzoneGPUPluginProxyActivity;
-import cooperation.qzone.QzonePictureExtPluginProxyActivity;
-import cooperation.qzone.QzonePicturePluginProxyActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.QzoneTransNoTitlePluginProxyActivity;
-import cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
+import cooperation.qzone.ServerSetting;
+import cooperation.qzone.widget.RadioPreference;
 
 public class ibz
+  implements Preference.OnPreferenceClickListener
 {
-  public static Class a()
-  {
-    return QzoneCommonProxyActivity.class;
-  }
+  public ibz(ServerSetting paramServerSetting) {}
   
-  public static Class a(String paramString)
+  public boolean onPreferenceClick(Preference paramPreference)
   {
-    if (QzonePluginProxyActivity.a(QzonePluginProxyActivity.a(), paramString)) {
-      return QzonePicturePluginProxyActivity.class;
-    }
-    if (QzonePluginProxyActivity.a(QzonePluginProxyActivity.b(), paramString)) {
-      return QzoneTransNoTitlePluginProxyActivity.class;
-    }
-    if ("com.qzone.common.activities.FeedActionPanelActivity".equals(paramString)) {
-      return QzoneTransWithKeyboardPluginProxyActivity.class;
-    }
-    if ("com.qzone.face.ui.QzoneMarkFaceActivity".equals(paramString)) {
-      return QzonePictureExtPluginProxyActivity.class;
-    }
-    return QzoneGPUPluginProxyActivity.class;
+    ServerSetting.a(this.a);
+    ((RadioPreference)paramPreference).a(true);
+    paramPreference = ((RadioPreference)paramPreference).getKey();
+    ServerSetting.a(this.a, paramPreference, 0);
+    return false;
   }
 }
 

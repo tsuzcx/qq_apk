@@ -1,41 +1,39 @@
 import android.os.Handler;
 import android.os.Message;
-import android.widget.Scroller;
-import com.tencent.mobileqq.widget.TCTransitDrawable;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class hhw
   extends Handler
 {
-  public hhw(TCTransitDrawable paramTCTransitDrawable) {}
+  public hhw(TabBarView paramTabBarView) {}
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 1) {
-      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.b) && (this.a.c)) {}
-    }
-    while (paramMessage.what != 2)
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+    case 0: 
+      TabBarView.a(this.a, 0.0F);
+      TabBarView.a(this.a, 0.1D);
+      this.a.invalidate();
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (TabBarView.a(this.a) < 1.0F)
       {
-        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-        int k = this.a.f;
-        int m = this.a.g;
-        this.a.f = i;
-        this.a.g = j;
-        paramMessage = this.a;
-        paramMessage.d += i - k;
-        paramMessage = this.a;
-        paramMessage.e += j - m;
-        this.a.invalidateSelf();
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 50L);
+        TabBarView.a(this.a, 0.1D);
+        this.a.invalidate();
+        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
         return;
       }
-      this.a.d();
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
       return;
     }
-    this.a.d();
+    TabBarView.a(this.a, 1.0F);
+    TabBarView.a(this.a, TabBarView.a(this.a), TabBarView.b(this.a));
+    TabBarView.a(this.a, TabBarView.b(this.a));
+    this.a.invalidate();
   }
 }
 

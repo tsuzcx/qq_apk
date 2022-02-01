@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.tencent.open.agent.datamodel.FriendDataManager;
 import com.tencent.open.base.LogUtility;
 import com.tencent.widget.XListView;
-import hjg;
+import hjf;
 
 public class GroupListOpenFrame
   extends OpenFrame
@@ -65,19 +65,19 @@ public class GroupListOpenFrame
   
   protected void f()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131232612));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131232611));
     LinearLayout localLinearLayout = (LinearLayout)super.a().getLayoutInflater().inflate(2130903344, null);
-    localLinearLayout.findViewById(2131233086).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localLinearLayout.findViewById(2131232171));
-    this.b = ((TextView)localLinearLayout.findViewById(2131232178));
-    this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager = ((RecommendListManager)localLinearLayout.findViewById(2131232172));
+    localLinearLayout.findViewById(2131233085).setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localLinearLayout.findViewById(2131232170));
+    this.b = ((TextView)localLinearLayout.findViewById(2131232177));
+    this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager = ((RecommendListManager)localLinearLayout.findViewById(2131232171));
     this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.setActivity(this.jdField_a_of_type_ComTencentOpenAgentSocialFriendChooser);
     this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.a();
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131361815);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(localLinearLayout);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)localLinearLayout.findViewById(2131233087));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new hjg(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)localLinearLayout.findViewById(2131233086));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new hjf(this));
   }
   
   public void g()

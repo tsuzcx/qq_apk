@@ -1,17 +1,23 @@
 import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
 import com.tencent.mobileqq.statistics.ReportController;
 
 class eeh
   implements Runnable
 {
-  eeh(eeg parameeg) {}
+  eeh(eef parameef) {}
   
   public void run()
   {
-    ((PhoneContactManagerImp)this.a.a.b.getManager(10)).f();
-    ReportController.b(this.a.a.b, "CliOper", "", "", "frd_recommend", "clean_offer", 0, 0, "", "", "", "");
+    if (NewFriendActivity.a(this.a.a) != null) {
+      NewFriendActivity.a(this.a.a).k();
+    }
+    for (;;)
+    {
+      ReportController.b(this.a.a.b, "CliOper", "", "", "frd_recommend", "clean_apply", 0, 0, "", "", "", "");
+      return;
+      SystemMsgListView.a(this.a.a.b);
+    }
   }
 }
 

@@ -134,13 +134,13 @@ public class PoiMapActivity$PoiItemAdapter
     {
       paramViewGroup = new PoiMapActivity.PoiItemViewHolder(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
       paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2130903422, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232549));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232550));
-      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131232552);
-      paramViewGroup.c = paramView.findViewById(2131232551);
-      paramViewGroup.d = paramView.findViewById(2131232554);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232548);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232553));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232548));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232549));
+      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131232551);
+      paramViewGroup.c = paramView.findViewById(2131232550);
+      paramViewGroup.d = paramView.findViewById(2131232553);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232547);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232552));
       paramView.setTag(paramViewGroup);
     }
     while ((paramInt == this.jdField_a_of_type_JavaUtilArrayList.size()) || ((this.jdField_a_of_type_Boolean) && (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size() - 1)))

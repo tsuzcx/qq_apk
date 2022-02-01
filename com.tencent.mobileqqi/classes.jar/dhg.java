@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SearchTroopListActivity;
 
 public class dhg
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
   public dhg(SearchTroopListActivity paramSearchTroopListActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a = null;
-    if (!this.a.isFinishing()) {
-      this.a.finish();
-    }
+    this.a.d();
   }
 }
 

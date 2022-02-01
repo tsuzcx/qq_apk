@@ -1,25 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.SubaccountUgActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
-public class dnn
-  extends MessageObserver
+class dnn
+  implements DialogInterface.OnClickListener
 {
-  public dnn(SubaccountUgActivity paramSubaccountUgActivity) {}
+  dnn(dnm paramdnm) {}
   
-  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    paramString = this.a.getString(2131562520);
-    if (paramSubAccountBackProtocData.p == 0) {}
-    for (int i = 2131563288;; i = 2131563291)
-    {
-      paramSubAccountBackProtocData = this.a.getString(i);
-      this.a.a(paramString, paramSubAccountBackProtocData, this.a.getString(2131562543), new dno(this));
-      return;
-    }
+    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

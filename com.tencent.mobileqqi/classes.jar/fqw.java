@@ -1,48 +1,36 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
 import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
 
 public class fqw
-  implements SlideDetectListView.OnSlideListener
+  extends FMObserver
 {
   public fqw(FMRecentFileActivity paramFMRecentFileActivity) {}
   
-  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  protected void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-    }
-    if (!this.a.f())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(Integer.valueOf(-1));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
-      paramView.setPressed(false);
-      return;
-    }
-    paramSlideDetectListView = paramView.findViewById(2131230987);
-    paramView = (FileManagerEntity)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.getItem(paramInt);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(paramView);
-    this.a.jdField_a_of_type_Long = paramView.nSessionId;
-    if (paramSlideDetectListView != null)
-    {
-      ((Button)paramSlideDetectListView.findViewById(2131231701)).setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-      ((ShaderAnimLayout)paramSlideDetectListView).a();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
-    }
-    FMRecentFileActivity.a(this.a);
+    super.a();
+    this.a.runOnUiThread(new frb(this));
   }
   
-  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  protected void a(ThumbnailInfo paramThumbnailInfo)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(null);
-    FMRecentFileActivity.a(this.a);
+    this.a.runOnUiThread(new fqz(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.runOnUiThread(new fqx(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.runOnUiThread(new fqy(this, paramLong2));
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.runOnUiThread(new fra(this));
   }
 }
 

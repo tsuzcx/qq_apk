@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ThemeSwitchDlgActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class dnw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dnw(SubaccountUgActivity paramSubaccountUgActivity) {}
+  public dnw(ThemeSwitchDlgActivity paramThemeSwitchDlgActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.i();
+    if ((ThemeSwitchDlgActivity.a(this.a) != null) && (ThemeSwitchDlgActivity.a(this.a).isShowing()))
+    {
+      ThemeSwitchDlgActivity.a(this.a).dismiss();
+      ThemeSwitchDlgActivity.a(this.a, null);
+    }
+    ReportController.b(ThemeSwitchDlgActivity.a(this.a), "CliOper", "", "", "Setting_tab", "Night_mode_us", 0, 0, "0", "", "", "");
+    this.a.finish();
   }
 }
 

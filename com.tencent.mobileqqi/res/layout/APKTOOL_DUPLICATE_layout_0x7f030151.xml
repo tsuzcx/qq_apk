@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08065a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080659" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.TabBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08065b" android:layout_width="fill_parent" android:layout_height="46.0dip" />
+    <com.tencent.mobileqq.widget.TabBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08065a" android:layout_width="fill_parent" android:layout_height="46.0dip" />
 </LinearLayout>

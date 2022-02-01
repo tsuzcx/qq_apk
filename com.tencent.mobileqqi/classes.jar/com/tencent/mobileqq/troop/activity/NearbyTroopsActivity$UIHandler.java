@@ -10,7 +10,7 @@ import com.tencent.mobileqq.troop.data.NearbyTroopsExpandableListViewAdapter;
 import com.tencent.mobileqq.troop.widget.NearbyTroopsExpandableListView;
 import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 import com.tencent.tencentmap.mapsdk.map.MapController;
-import gqb;
+import gqa;
 import java.lang.ref.WeakReference;
 
 public class NearbyTroopsActivity$UIHandler
@@ -65,7 +65,7 @@ public class NearbyTroopsActivity$UIHandler
     } while ((i == 0) || (j == 0) || (k == 0) || (m == 0) || (TextUtils.isEmpty(paramMessage)));
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity.jdField_a_of_type_ComTencentMobileqqAppLBSHandler.a(paramMessage, k, m, i, j);
     return;
-    paramMessage = new gqb(this);
+    paramMessage = new gqa(this);
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity.b.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.animateTo(new GeoPoint(this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity.d, this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity.e), paramMessage);

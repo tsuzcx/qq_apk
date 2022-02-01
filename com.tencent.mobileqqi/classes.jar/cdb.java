@@ -1,33 +1,80 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatActivity;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.managers.ShieldMsgManger;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class cdb
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public cdb(ChatSettingActivity paramChatSettingActivity, String paramString) {}
+  public cdb(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (NetworkUtil.e(BaseApplication.getContext()))
+    switch (paramMessage.what)
     {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.b.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.b.a(ChatActivity.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.b, "CliOper", "", "", "AIO", "AIO_delete_frd", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.finish();
+    default: 
+    case 18: 
+    case 16711681: 
+      do
+      {
+        do
+        {
+          return;
+          paramMessage = (String)paramMessage.obj;
+          ChatSettingActivity.a(this.a, paramMessage);
+          return;
+        } while (ChatSettingActivity.a(this.a) != 0);
+        paramMessage = (String)paramMessage.obj;
+      } while ((ChatSettingActivity.a(this.a) == null) || (paramMessage == null) || (!ChatSettingActivity.a(this.a).equals(paramMessage)));
+      this.a.finish();
       return;
+    case 32: 
+      if (ChatSettingActivity.a(this.a) != 1001) {
+        if (ChatSettingActivity.a(this.a) == 1006)
+        {
+          if (TextUtils.isEmpty(ChatSettingActivity.c(this.a))) {
+            ChatSettingActivity.a(this.a, false);
+          }
+        }
+        else
+        {
+          paramMessage = (ShieldMsgManger)this.a.b.getManager(14);
+          if ((paramMessage != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
+            ChatSettingActivity.b(this.a, paramMessage.a(ChatSettingActivity.d(this.a)));
+          }
+        }
+      }
+      for (;;)
+      {
+        ChatSettingActivity.c(this.a);
+        return;
+        paramMessage = ContactUtils.d(this.a.b, ChatSettingActivity.c(this.a));
+        if (TextUtils.isEmpty(paramMessage))
+        {
+          ChatSettingActivity.a(this.a, false);
+          break;
+        }
+        ChatSettingActivity.a(this.a, true);
+        ChatSettingActivity.a(this.a, paramMessage);
+        break;
+        paramMessage = (FriendManager)this.a.b.getManager(8);
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.c(ChatSettingActivity.d(this.a));
+          if ((paramMessage != null) && (paramMessage.groupid == -1002)) {
+            ChatSettingActivity.b(this.a, true);
+          } else {
+            ChatSettingActivity.b(this.a, false);
+          }
+        }
+      }
     }
-    ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 2131561432, 1);
+    ChatSettingActivity.d(this.a);
   }
 }
 

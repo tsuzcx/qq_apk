@@ -296,7 +296,7 @@ public class AccountManageActivity
       }
       this.jdField_b_of_type_AndroidAppDialog = new Dialog(this, 2131624405);
       this.jdField_b_of_type_AndroidAppDialog.setContentView(2130903162);
-      TextView localTextView2 = (TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131231469);
+      TextView localTextView2 = (TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131231468);
       if (localTextView2 == null) {
         break label193;
       }
@@ -308,13 +308,13 @@ public class AccountManageActivity
       localTextView2.requestFocus();
       localTextView2.setText(localException);
       localTextView2.setContentDescription(localException);
-      TextView localTextView1 = (TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131231472);
+      TextView localTextView1 = (TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131231471);
       if (localTextView1 == null) {
         break label263;
       }
       localTextView1.setText(2131561746);
       localTextView1.setOnClickListener(new bsz(this));
-      localTextView1 = (TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131231473);
+      localTextView1 = (TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131231472);
       if (localTextView1 == null) {
         break label300;
       }

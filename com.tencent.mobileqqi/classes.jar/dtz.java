@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class dtz
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
   public dtz(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    this.a.d();
   }
 }
 

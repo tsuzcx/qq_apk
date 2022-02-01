@@ -1,29 +1,15 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ghd
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnDismissListener
 {
   public ghd(EditActivity paramEditActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-      } while (System.currentTimeMillis() - this.a.jdField_a_of_type_Long <= 1300L);
-      this.a.e();
-      return;
-    }
-    EditActivity.a(this.a).e = null;
-    EditActivity.c(this.a, true);
+    this.a.g();
   }
 }
 

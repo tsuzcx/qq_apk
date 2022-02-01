@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class etz
-  implements View.OnClickListener
+  implements TextWatcher
 {
   public etz(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.k();
-  }
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

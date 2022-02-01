@@ -98,14 +98,15 @@ public class SkinEngine
     {
       b = bool;
       IS_PROBLEM_MIUI = false;
-      Object localObject1 = { "drawable-hdpi/", "drawable-xhdpi/", "drawable-mdpi/", "drawable/" };
-      Object localObject2 = { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/" };
-      d = new String[][] { { "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, localObject1, localObject2, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable/" }, { "drawable-xxhdpi", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" } };
-      localObject1 = new int[] { 320, 240, 160, 160 };
-      localObject2 = new int[] { 240, 320, 160, 160 };
-      int[] arrayOfInt1 = { 120, 160, 240, 320, 160 };
-      int[] arrayOfInt2 = { 480, 320, 240, 160, 160 };
-      e = new int[][] { localObject1, localObject2, { 160, 160, 240, 320 }, arrayOfInt1, arrayOfInt2 };
+      Object localObject1 = { "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" };
+      Object localObject2 = { "drawable-hdpi/", "drawable-xhdpi/", "drawable-mdpi/", "drawable/" };
+      Object localObject3 = { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/" };
+      String[] arrayOfString = { "drawable-xxhdpi", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" };
+      d = new String[][] { localObject1, localObject2, localObject3, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable/" }, arrayOfString };
+      localObject1 = new int[] { 160, 160, 240, 320 };
+      localObject2 = new int[] { 120, 160, 240, 320, 160 };
+      localObject3 = new int[] { 480, 320, 240, 160, 160 };
+      e = new int[][] { { 320, 240, 160, 160 }, { 240, 320, 160, 160 }, localObject1, localObject2, localObject3 };
       f = 0;
       g = 1;
       h = 2;

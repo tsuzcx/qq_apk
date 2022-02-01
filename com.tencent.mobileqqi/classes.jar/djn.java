@@ -1,20 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.SplashActivity;
 
 public class djn
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  public djn(SplashActivity paramSplashActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public djn(SplashActivity paramSplashActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramMessage.what == 7000) {
-      SplashActivity.a(this.a);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

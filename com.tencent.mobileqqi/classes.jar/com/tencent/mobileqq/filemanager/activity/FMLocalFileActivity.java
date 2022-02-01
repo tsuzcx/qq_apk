@@ -11,8 +11,8 @@ import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.widget.XListView;
+import fqs;
 import fqt;
-import fqu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +30,7 @@ public class FMLocalFileActivity
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fqu(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fqt(this);
   }
   
   private void a(int paramInt)
@@ -129,7 +129,7 @@ public class FMLocalFileActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(2130903495);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232730));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232729));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = new FileCategoryAdapter(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter);
     h();
@@ -145,7 +145,7 @@ public class FMLocalFileActivity
   
   public void g()
   {
-    new fqt(this).execute(new Void[0]);
+    new fqs(this).execute(new Void[0]);
   }
 }
 

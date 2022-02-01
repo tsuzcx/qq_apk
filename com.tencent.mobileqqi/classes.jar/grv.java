@@ -1,25 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.widget.ImageAnimationView;
-import com.tencent.widget.Gallery;
 
 public class grv
-  implements Animation.AnimationListener
+  implements Runnable
 {
   public grv(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setVisibility(4);
-    this.a.finish();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
+    this.a.d = false;
   }
 }
 

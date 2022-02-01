@@ -1,37 +1,36 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.widget.PinnedHeaderIphoneTreeView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter;
+import com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter.ViewHolder;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
 public class gzh
-  implements View.OnTouchListener
+  implements URLDrawableDownListener
 {
-  public gzh(PinnedHeaderIphoneTreeView paramPinnedHeaderIphoneTreeView) {}
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter$ViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public gzh(TroopAvatarBigPhotoAdapter paramTroopAvatarBigPhotoAdapter, TroopAvatarBigPhotoAdapter.ViewHolder paramViewHolder) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      bool = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
     }
-    do
-    {
-      return bool;
-      paramView.setPressed(true);
-      this.a.invalidate();
-      return true;
-      paramView.setPressed(false);
-      this.a.invalidate();
-      break;
-    } while (!paramView.isPressed());
-    paramView.setPressed(false);
-    this.a.d(this.a.jdField_b_of_type_Int);
-    this.a.setSelectedGroup(this.a.jdField_b_of_type_Int);
-    this.a.jdField_b_of_type_AndroidViewView = null;
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter$ViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

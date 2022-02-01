@@ -23,10 +23,10 @@ import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQProgressDialog;
+import ekf;
 import ekg;
 import ekh;
 import eki;
-import ekj;
 
 public class BindNumberBusinessActivity
   extends DialogBaseActivity
@@ -84,19 +84,19 @@ public class BindNumberBusinessActivity
       if (this.jdField_b_of_type_Boolean) {
         a(2131561746, null);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232016));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232015));
       this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131558954) + " " + this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131232017));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131232016));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
       this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine();
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131232019);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131232018);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131232020));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131232019));
       this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription("已同意");
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232021));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232020));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232018));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232017));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       if (this.jdField_c_of_type_JavaLangString != null) {
@@ -139,7 +139,7 @@ public class BindNumberBusinessActivity
     if ((!isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, d());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new ekh(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new ekg(this));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(paramInt);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
@@ -222,7 +222,7 @@ public class BindNumberBusinessActivity
     if (this.jdField_a_of_type_AndroidWidgetEditText == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new ekg(this), 300L);
+    this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new ekf(this), 300L);
   }
   
   public void finish()
@@ -247,7 +247,7 @@ public class BindNumberBusinessActivity
       return true;
       finish();
       return true;
-      this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new eki(this);
+      this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ekh(this);
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       paramMessage = (PhoneContactManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
       a(2131562875, 1000L);
@@ -266,7 +266,7 @@ public class BindNumberBusinessActivity
       return true;
       if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ekj(this);
+        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new eki(this);
         this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       }
       this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.a(this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, 1);
@@ -296,13 +296,13 @@ public class BindNumberBusinessActivity
     boolean bool = false;
     switch (paramView.getId())
     {
-    case 2131232020: 
+    case 2131232019: 
     default: 
       return;
-    case 2131232018: 
+    case 2131232017: 
       f();
       return;
-    case 2131232021: 
+    case 2131232020: 
       paramView = new Intent(this, TosActivity.class);
       paramView.putExtra("frombusiness", 0);
       startActivity(paramView);

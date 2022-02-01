@@ -14,7 +14,7 @@ import com.tencent.open.component.cache.database.DbCacheManager;
 import com.tencent.open.component.cache.database.DbCacheService;
 import com.tencent.open.settings.OpensdkPreference;
 import com.tencent.open.settings.ServerSetting;
-import hji;
+import hjh;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,7 +122,7 @@ public class OpenSdkFriendService
   
   public void a(Handler paramHandler)
   {
-    new Handler(Looper.getMainLooper()).post(new hji(this, paramHandler));
+    new Handler(Looper.getMainLooper()).post(new hjh(this, paramHandler));
   }
   
   public void a(String paramString)

@@ -1,19 +1,46 @@
-import com.tencent.mobileqq.activity.TroopManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity.ViewHolder;
+import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.mobileqq.data.TroopMemberCard.CustomEntry;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class dqa
-  implements Runnable
+public class dqa
+  implements View.OnClickListener
 {
-  dqa(dpz paramdpz) {}
+  public dqa(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TroopHandler localTroopHandler = (TroopHandler)this.a.a.b.a(19);
-    if (localTroopHandler != null) {
-      localTroopHandler.k(this.a.a.a.troopuin);
+    if ((this.a.a == null) || (this.a.a.customEntryList == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnCustomItemClickListener: mTroopMemberCard == null || mTroopMemberCard.customEntryList == null");
+      }
     }
+    int i;
+    int j;
+    do
+    {
+      Object localObject;
+      do
+      {
+        return;
+        localObject = paramView.getTag();
+      } while ((localObject == null) || (!(localObject instanceof TroopMemberCardActivity.ViewHolder)));
+      i = ((TroopMemberCardActivity.ViewHolder)paramView.getTag()).a;
+      j = this.a.a.customEntryList.size();
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnCustomItemClickListener, index:" + i + " size:" + j);
+      }
+    } while ((i < 0) || (i >= j));
+    paramView = (TroopMemberCard.CustomEntry)this.a.a.customEntryList.get(i);
+    this.a.e(paramView.linkUrl);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "mOnCustomItemClickListener, linkUrl:" + paramView.linkUrl + " reportId:" + paramView.reportId);
+    }
+    this.a.d("Clk_dynamic", paramView.reportId + "");
   }
 }
 

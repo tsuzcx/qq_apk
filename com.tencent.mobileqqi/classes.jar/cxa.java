@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
 
 public class cxa
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public cxa(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
+  public cxa(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.b = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.a.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d);
+  }
 }
 
 

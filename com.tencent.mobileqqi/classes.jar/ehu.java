@@ -1,36 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.VerifyCreditCardIdentityActivity;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.PrivacyDeclareHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.util.EUCountryUtils;
 
 public class ehu
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ehu(MainAssistObserver paramMainAssistObserver, TextView paramTextView, ejj paramejj, QQCustomDialog paramQQCustomDialog) {}
+  public ehu(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_AndroidWidgetTextView.getText().equals(""))
-    {
-      EUCountryUtils.c(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.b.a(), this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b);
-      if (EUCountryUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString())) {
-        this.jdField_a_of_type_Ejj.a();
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-        }
-        return;
-        this.jdField_a_of_type_Ejj.b();
-      }
+    Intent localIntent = new Intent(this.a.a, VerifyCreditCardIdentityActivity.class);
+    localIntent.putExtra("reqType", 4);
+    localIntent.putExtra("title", this.a.a.getString(2131561842));
+    localIntent.putExtra("uin", this.a.a.b.a());
+    this.a.a.startActivityForResult(localIntent.putExtra("url", PrivacyDeclareHelper.a(this.a.a)), 2000);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a, 2131563356, 0).a();
   }
 }
 

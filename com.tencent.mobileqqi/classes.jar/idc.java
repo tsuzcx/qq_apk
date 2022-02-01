@@ -1,18 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.remote.RecvMsg;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.remote.IServiceHandler.Stub;
+import cooperation.qzone.remote.RemoteServiceProxy;
+import cooperation.qzone.remote.SendMsg;
 
-public final class idc
-  implements Parcelable.Creator
+public class idc
+  implements ServiceConnection
 {
-  public RecvMsg a(Parcel paramParcel)
+  public idc(RemoteServiceProxy paramRemoteServiceProxy) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    return new RecvMsg(paramParcel);
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
+    }
+    this.a.serviceHandler = IServiceHandler.Stub.asInterface(paramIBinder);
+    if (RemoteServiceProxy.access$000(this.a) != null)
+    {
+      paramComponentName = new SendMsg("cmd.registerListener");
+      paramComponentName.actionListener = RemoteServiceProxy.access$000(this.a);
+      this.a.sendMsg(paramComponentName);
+    }
+    this.a.onBaseServiceConnected();
   }
   
-  public RecvMsg[] a(int paramInt)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    return new RecvMsg[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
+    }
+    this.a.serviceHandler = null;
   }
 }
 

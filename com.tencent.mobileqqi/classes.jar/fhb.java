@@ -1,45 +1,70 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.os.Binder;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.MessageQueue;
+import com.tencent.widget.TraceUtils;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public final class fhb
-  extends Timer
+public class fhb
+  extends HandlerThread
 {
   public fhb(String paramString)
   {
     super(paramString);
   }
   
-  public void cancel()
+  protected void onLooperPrepared()
   {
-    QLog.e("ThreadManager", 1, "Can't cancel Global Timer");
-  }
-  
-  public void schedule(TimerTask paramTimerTask, long paramLong)
-  {
-    try
+    for (;;)
     {
-      super.schedule(paramTimerTask, paramLong);
-      return;
-    }
-    catch (Exception paramTimerTask)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ThreadManager", 2, "timer schedule err", paramTimerTask);
-    }
-  }
-  
-  public void schedule(TimerTask paramTimerTask, long paramLong1, long paramLong2)
-  {
-    try
-    {
-      super.schedule(paramTimerTask, paramLong1, paramLong2);
-      return;
-    }
-    catch (Exception paramTimerTask)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ThreadManager", 2, "timer schedule2 err", paramTimerTask);
+      Message localMessage;
+      try
+      {
+        Method localMethod = MessageQueue.class.getDeclaredMethod("next", new Class[0]);
+        localMethod.setAccessible(true);
+        MessageQueue localMessageQueue = Looper.myQueue();
+        Binder.clearCallingIdentity();
+        Binder.clearCallingIdentity();
+        localMessage = (Message)localMethod.invoke(localMessageQueue, new Object[0]);
+        if (localMessage == null) {
+          return;
+        }
+        if (localMessage.getCallback() != null)
+        {
+          TraceUtils.a(localMessage.getCallback().getClass().getName() + "." + "run");
+          localMessage.getCallback().run();
+          TraceUtils.a();
+          Binder.clearCallingIdentity();
+          localMessage.recycle();
+          continue;
+        }
+        localHandler = localMessage.getTarget();
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      Handler localHandler;
+      Object localObject = Handler.class.getDeclaredField("mCallback");
+      ((Field)localObject).setAccessible(true);
+      localObject = (Handler.Callback)((Field)localObject).get(localHandler);
+      if (localObject != null)
+      {
+        TraceUtils.a(localObject.getClass().getName() + "." + "dispatchMsg");
+        ((Handler.Callback)localObject).handleMessage(localMessage);
+        TraceUtils.a();
+      }
+      else
+      {
+        TraceUtils.a(localHandler + "." + "dispatchMsg");
+        localHandler.handleMessage(localMessage);
+        TraceUtils.a();
+      }
     }
   }
 }

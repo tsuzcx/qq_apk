@@ -5,7 +5,7 @@ import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import ezn;
+import ezm;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -36,7 +36,7 @@ public class CardPayObserver
   {
     if (a != null)
     {
-      paramString = new ezn(paramString, System.currentTimeMillis());
+      paramString = new ezm(paramString, System.currentTimeMillis());
       a.put(paramString, paramOnInvokeFinishLinstener);
     }
   }
@@ -81,12 +81,12 @@ public class CardPayObserver
     Iterator localIterator = a.keySet().iterator();
     if (localIterator.hasNext())
     {
-      ezn localezn = (ezn)localIterator.next();
-      if (!localezn.jdField_a_of_type_JavaLangString.equals(localObject1)) {
+      ezm localezm = (ezm)localIterator.next();
+      if (!localezm.jdField_a_of_type_JavaLangString.equals(localObject1)) {
         break label355;
       }
-      localOnInvokeFinishLinstener = (RemoteCommand.OnInvokeFinishLinstener)a.get(localezn);
-      localObject2 = localezn;
+      localOnInvokeFinishLinstener = (RemoteCommand.OnInvokeFinishLinstener)a.get(localezm);
+      localObject2 = localezm;
     }
     label355:
     for (;;)
@@ -105,7 +105,7 @@ public class CardPayObserver
         if (paramBoolean) {}
         for (i = 1;; i = 0)
         {
-          ReportController.a(null, "P_CliOper", "cardpay", "", "sso-req", "finish", paramInt, i, "" + (System.currentTimeMillis() - ((ezn)localObject2).jdField_a_of_type_Long), ((ezn)localObject2).jdField_a_of_type_JavaLangString, "", "");
+          ReportController.a(null, "P_CliOper", "cardpay", "", "sso-req", "finish", paramInt, i, "" + (System.currentTimeMillis() - ((ezm)localObject2).jdField_a_of_type_Long), ((ezm)localObject2).jdField_a_of_type_JavaLangString, "", "");
           return;
         }
       }

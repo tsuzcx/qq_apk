@@ -1,17 +1,19 @@
-import android.os.Handler;
 import cooperation.qzone.music.RemoteMusicManager;
-import cooperation.qzone.remote.IActionListener.Stub;
+import cooperation.qzone.music.RemoteMusicManager.MusicEventListener;
 import cooperation.qzone.remote.RecvMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class icy
-  extends IActionListener.Stub
+class icy
+  implements Runnable
 {
-  public icy(RemoteMusicManager paramRemoteMusicManager) {}
+  icy(icx paramicx, RecvMsg paramRecvMsg) {}
   
-  public void onRecvFromMsg(RecvMsg paramRecvMsg)
+  public void run()
   {
-    if (RemoteMusicManager.access$000(this.a) != null) {
-      RemoteMusicManager.access$100(this.a).post(new icz(this, paramRecvMsg));
+    Iterator localIterator = RemoteMusicManager.access$000(this.jdField_a_of_type_Icx.a).iterator();
+    while (localIterator.hasNext()) {
+      ((RemoteMusicManager.MusicEventListener)localIterator.next()).onMusicEvent(this.jdField_a_of_type_CooperationQzoneRemoteRecvMsg.getServiceCmd(), this.jdField_a_of_type_CooperationQzoneRemoteRecvMsg.extraData);
     }
   }
 }

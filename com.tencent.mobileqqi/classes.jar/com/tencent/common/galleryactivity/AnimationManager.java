@@ -172,8 +172,8 @@ public class AnimationManager
   
   public void f()
   {
-    this.jdField_a_of_type_AndroidViewView = ((Gallery)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131231777));
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131231778));
+    this.jdField_a_of_type_AndroidViewView = ((Gallery)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131231776));
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131231777));
     this.jdField_b_of_type_AndroidViewView = ((RelativeLayout)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131231116));
     this.c = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131230991);
   }

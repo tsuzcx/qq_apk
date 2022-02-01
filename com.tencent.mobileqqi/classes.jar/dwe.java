@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
-import mqq.app.permission.PermissionCallback;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
 class dwe
-  implements PermissionCallback
+  implements PermissionDialogCallback
 {
   dwe(dwd paramdwd) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    new PermissionsDialog().a(this.a.jdField_a_of_type_MqqAppAppActivity, paramInt, paramArrayOfString, new dwf(this));
-  }
+  public void a() {}
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    PlusPanelUtils.a(this.a.jdField_a_of_type_MqqAppAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
+  public void b() {}
 }
 
 

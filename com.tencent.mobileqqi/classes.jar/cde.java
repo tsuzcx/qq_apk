@@ -1,35 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import mqq.observer.AccountObserver;
 
 public class cde
-  extends CardObserver
+  extends AccountObserver
 {
-  public cde(ChatSettingActivity paramChatSettingActivity) {}
+  public cde(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onUpdateSKey(String paramString1, String paramString2)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramBoolean) && (paramObject != null))
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    if (paramString1 == null) {
+      while (i > 0)
       {
-        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.a(this.a).equals(paramObject.uin)))
-        {
-          String str = ((FriendManager)this.a.b.getManager(8)).b(ChatSettingActivity.a(this.a));
-          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
-            ChatSettingActivity.c(this.a, str);
-          }
-        }
-        if ((this.a.a != null) && (!TextUtils.isEmpty(ChatSettingActivity.a(this.a))) && (ChatSettingActivity.a(this.a).equals(paramObject.uin))) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a)), this.a.a);
-        }
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b - 1);
+        i -= 1;
       }
-      return;
     }
+    TroopUtils.a(paramString1, this.a.b.a(), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.d, this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter);
   }
 }
 

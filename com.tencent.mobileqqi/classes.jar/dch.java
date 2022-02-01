@@ -1,12 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 class dch
   implements DialogInterface.OnClickListener
 {
-  dch(dcg paramdcg) {}
+  dch(dcf paramdcf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.m();
+  }
 }
 
 

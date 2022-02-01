@@ -1,41 +1,65 @@
-import com.tencent.mobileqq.app.LBSHandler;
+import com.tencent.mobileqq.app.LBSObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class fpe
-  implements Runnable
+  extends LBSObserver
 {
   public fpe(EnterpriseQQManager paramEnterpriseQQManager) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, byte[] arg2, String paramString1, String paramString2, String paramString3)
   {
-    if ((EnterpriseQQManager.a(this.a) != null) && (EnterpriseQQManager.a(this.a) != null))
+    if (paramBoolean)
     {
-      EnterpriseQQManager.a(this.a).a(this.a.a);
-      ??? = EnterpriseQQManager.a(this.a).b();
-      ((LBSHandler)EnterpriseQQManager.a(this.a).a(3)).a(???);
-      return;
-    }
-    synchronized (EnterpriseQQManager.a())
-    {
-      if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-        break label180;
-      }
-      Iterator localIterator = EnterpriseQQManager.a(this.a).iterator();
-      while (localIterator.hasNext())
+      double d1 = Double.valueOf(paramString1).doubleValue();
+      double d2 = Double.valueOf(paramString2).doubleValue();
+      EnterpriseQQManager.a(this.a, d1);
+      EnterpriseQQManager.b(this.a, d2);
+      EnterpriseQQManager.a(this.a, System.currentTimeMillis());
+      synchronized (EnterpriseQQManager.a())
       {
-        fpg localfpg = (fpg)localIterator.next();
-        if (localfpg != null) {
-          this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localfpg.a, localfpg.b, false, 0.0D, 0.0D);
+        if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
+          break label173;
+        }
+        paramString1 = EnterpriseQQManager.a(this.a).iterator();
+        while (paramString1.hasNext())
+        {
+          paramString2 = (fpf)paramString1.next();
+          if (paramString2 != null) {
+            this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), paramString2.a, paramString2.b, true, d1, d2);
+          }
         }
       }
+      EnterpriseQQManager.a(this.a).clear();
     }
-    EnterpriseQQManager.a(this.a).clear();
-    label180:
-    EnterpriseQQManager.a(this.a, null);
-    EnterpriseQQManager.a(this.a, null);
+    label173:
+    label338:
+    for (;;)
+    {
+      if (EnterpriseQQManager.a(this.a) != null) {
+        EnterpriseQQManager.a(this.a).c(this.a.a);
+      }
+      EnterpriseQQManager.a(this.a, null);
+      EnterpriseQQManager.a(this.a, null);
+      return;
+      synchronized (EnterpriseQQManager.a())
+      {
+        if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
+          break label338;
+        }
+        paramString1 = EnterpriseQQManager.a(this.a).iterator();
+        while (paramString1.hasNext())
+        {
+          paramString2 = (fpf)paramString1.next();
+          if (paramString2 != null) {
+            this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), paramString2.a, paramString2.b, false, 0.0D, 0.0D);
+          }
+        }
+      }
+      EnterpriseQQManager.a(this.a).clear();
+    }
   }
 }
 

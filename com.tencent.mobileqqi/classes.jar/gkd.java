@@ -1,30 +1,22 @@
-import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
-import com.tencent.mobileqq.startup.director.StartupDirector;
+import android.os.Process;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 import com.tencent.mobileqq.startup.step.SetPermission;
-import java.io.PrintStream;
-import mqq.app.permission.PermissionCallback;
+import mqq.app.AppActivity;
 
-public class gkd
-  implements PermissionCallback
+class gkd
+  implements PermissionDialogCallback
 {
-  public gkd(SetPermission paramSetPermission) {}
+  gkd(gkc paramgkc) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a()
   {
-    new PermissionsDialog().a(SetPermission.a(this.a), paramInt, paramArrayOfString, new gke(this));
+    SetPermission.a(this.a.a).superFinish();
+    Process.killProcess(Process.myPid());
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void b()
   {
-    if (paramInt == 100) {
-      this.a.a.b();
-    }
-    for (;;)
-    {
-      System.out.println("success  +++++++++++++++++++++++++++++++");
-      return;
-      this.a.a.a();
-    }
+    Process.killProcess(Process.myPid());
   }
 }
 

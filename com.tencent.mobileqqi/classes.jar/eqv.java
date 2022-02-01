@@ -1,15 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.adapter.ContactsSearchResultAdapter;
+import com.tencent.mobileqq.search.ContactsSearchableCircleBuddy;
+import com.tencent.mobileqq.search.ConversationSearchAdapter.SearchResultCallBack;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class eqv
-  implements View.OnClickListener
+  implements ConversationSearchAdapter.SearchResultCallBack
 {
   public eqv(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.i();
+    if (1 == paramInt)
+    {
+      if (SelectMemberActivity.a(this.a).getCount() != 0) {
+        break label71;
+      }
+      SelectMemberActivity.a(this.a).setVisibility(0);
+    }
+    for (;;)
+    {
+      if (ContactsSearchableCircleBuddy.a) {
+        ReportController.b(this.a.b, "CliOper", "", "", "Network_circle", "Search_circle_exp", 82, 0, "", "", "", "");
+      }
+      ContactsSearchableCircleBuddy.a = false;
+      return;
+      label71:
+      SelectMemberActivity.a(this.a).setVisibility(8);
+    }
   }
 }
 

@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.EmosmDetailActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ckn
+public final class ckn
   implements Runnable
 {
-  ckn(ckm paramckm, EmoticonPackage paramEmoticonPackage) {}
+  public ckn(Context paramContext) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ckm.a.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131561494), 0).b(this.a.getResources().getDimensionPixelSize(2131427376));
   }
 }
 

@@ -1,19 +1,15 @@
-import android.text.Editable;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class cub
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
   public cub(LoginActivity paramLoginActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (true == paramBoolean) {
-      this.a.a.setSelection(this.a.a.getText().length());
-    }
+    this.a.c();
   }
 }
 

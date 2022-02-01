@@ -16,7 +16,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import ebl;
+import ebk;
 
 public class TroopUnreadTipsChatItemBuilder
   extends AbstractChatItemBuilder
@@ -28,20 +28,20 @@ public class TroopUnreadTipsChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramMessageRecord = (ebl)paramViewHolder;
+    paramMessageRecord = (ebk)paramViewHolder;
     paramMessageRecord = paramView;
     if (paramView == null)
     {
       paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903133, null);
-      paramMessageRecord = (TextView)paramViewHolder.findViewById(2131231357);
+      paramMessageRecord = (TextView)paramViewHolder.findViewById(2131231356);
       paramMessageRecord.setMovementMethod(null);
       paramMessageRecord.setTextColor(paramViewHolder.getResources().getColorStateList(2131361807));
       paramMessageRecord.setGravity(17);
       paramMessageRecord = paramViewHolder;
       if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
-        paramMessageRecord = (TextView)paramViewHolder.findViewById(2131231368);
-        paramView = (TextView)paramViewHolder.findViewById(2131231369);
+        paramMessageRecord = (TextView)paramViewHolder.findViewById(2131231367);
+        paramView = (TextView)paramViewHolder.findViewById(2131231368);
         paramMessageRecord.setBackgroundColor(2130838455);
         paramView.setBackgroundColor(2130838455);
         paramMessageRecord = paramViewHolder;
@@ -52,7 +52,7 @@ public class TroopUnreadTipsChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new ebl(this);
+    return new ebk(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

@@ -41,19 +41,19 @@ public class LocalFileAdapter
     if (!paramFileInfo.a())
     {
       paramFileInfo = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903500, paramViewGroup, false);
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramFileInfo.findViewById(2131232740));
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramFileInfo.findViewById(2131232739));
       localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
       localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_AndroidViewView$OnLongClickListener);
       localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localLocalFileItemHolder);
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramFileInfo.findViewById(2131232741));
-      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131232742));
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131232744));
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramFileInfo.findViewById(2131232743));
-      localLocalFileItemHolder.b = ((TextView)paramFileInfo.findViewById(2131232745));
-      localLocalFileItemHolder.c = ((TextView)paramFileInfo.findViewById(2131232746));
-      localLocalFileItemHolder.d = ((TextView)paramFileInfo.findViewById(2131231883));
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramFileInfo.findViewById(2131232740));
+      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131232741));
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131232743));
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramFileInfo.findViewById(2131232742));
+      localLocalFileItemHolder.b = ((TextView)paramFileInfo.findViewById(2131232744));
+      localLocalFileItemHolder.c = ((TextView)paramFileInfo.findViewById(2131232745));
+      localLocalFileItemHolder.d = ((TextView)paramFileInfo.findViewById(2131231882));
       localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramFileInfo.findViewById(2131230987));
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramFileInfo.findViewById(2131231701));
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramFileInfo.findViewById(2131231700));
     }
     for (;;)
     {
@@ -61,9 +61,9 @@ public class LocalFileAdapter
       return paramFileInfo;
       paramFileInfo = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903496, paramViewGroup, false);
       paramFileInfo.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
-      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131232731));
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131232733));
-      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramFileInfo.findViewById(2131232732));
+      localLocalFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131232730));
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131232732));
+      localLocalFileItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramFileInfo.findViewById(2131232731));
     }
   }
   

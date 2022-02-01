@@ -1,17 +1,24 @@
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.activity.voip.VoipGoogleWalletPayActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.mobileqq.activity.voip.VoipHistoryActivity;
+import com.tencent.mobileqq.activity.voip.VoipHistoryAllType;
+import com.tencent.mobileqq.activity.voip.VoipHistoryInterface;
+import com.tencent.mobileqq.data.voip.VoipHistoryData;
+import com.tencent.widget.AdapterView.AdapterContextMenuInfo;
+import java.util.ArrayList;
 
 public class ewn
-  implements Runnable
+  implements MenuItem.OnMenuItemClickListener
 {
-  public ewn(VoipGoogleWalletPayActivity paramVoipGoogleWalletPayActivity) {}
+  public ewn(VoipHistoryActivity paramVoipHistoryActivity) {}
   
-  public void run()
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.a.a.hide();
-    QRUtils.a(1, 2131562452);
-    this.a.finish();
+    paramMenuItem = (AdapterView.AdapterContextMenuInfo)paramMenuItem.getMenuInfo();
+    paramMenuItem = (VoipHistoryAllType)VoipHistoryActivity.a(this.a).get(paramMenuItem.a);
+    VoipHistoryActivity.a(this.a).a((VoipHistoryData)paramMenuItem.obj);
+    this.a.doOnResume();
+    return true;
   }
 }
 

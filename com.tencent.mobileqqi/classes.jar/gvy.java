@@ -1,18 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
 import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
 public class gvy
   implements DialogInterface.OnClickListener
 {
-  public gvy(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
+  public gvy(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.jdField_a_of_type_Long).a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
-    paramDialogInterface.dismiss();
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
+    }
   }
 }
 

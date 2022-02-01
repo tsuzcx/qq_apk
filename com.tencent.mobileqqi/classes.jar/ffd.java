@@ -1,31 +1,28 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.securemodule.service.CloudScanListener;
 
 public class ffd
-  implements Runnable
+  implements CloudScanListener
 {
-  public ffd(QQAppInterface paramQQAppInterface, String paramString, File paramFile) {}
+  public ffd(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onFinish(int paramInt)
   {
-    File localFile;
-    if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile))
-    {
-      localFile = new File(QQAppInterface.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getApplicationContext().getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      if (localFile == null) {
-        break label64;
-      }
+    if (paramInt == 0) {
+      PreferenceManager.getDefaultSharedPreferences(QQAppInterface.f(this.a)).edit().putLong("security_scan_last_time", System.currentTimeMillis()).putBoolean("security_scan_last_result", false).commit();
     }
-    label64:
-    for (long l = localFile.length();; l = 0L)
-    {
-      QQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(l);
-      return;
+  }
+  
+  public void onRiskFound()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("security_scan", 2, "Find Risk");
     }
+    PreferenceManager.getDefaultSharedPreferences(QQAppInterface.e(this.a)).edit().putBoolean("security_scan_last_result", true).commit();
   }
 }
 

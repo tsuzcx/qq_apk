@@ -1,22 +1,10 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class cih
-  implements TextWatcher
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  private cih(DiscussionMemberActivity paramDiscussionMemberActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.b(paramEditable);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public TextView a;
 }
 
 

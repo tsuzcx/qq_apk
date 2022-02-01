@@ -1,23 +1,24 @@
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class dqv
-  implements ActionSheet.OnButtonClickListener
+public class dqv
+  implements Animation.AnimationListener
 {
-  dqv(dqu paramdqu) {}
+  public dqv(TroopMemberListActivity paramTroopMemberListActivity, View paramView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    TroopMemberListActivity.a(this.a.a);
-    this.a.a.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

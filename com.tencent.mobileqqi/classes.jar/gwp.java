@@ -1,24 +1,13 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.troop.jsp.TroopAssistantFeedsJsHandler;
+import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
 
 public class gwp
-  implements TroopMemberApiClient.Callback
+  implements Runnable
 {
-  public gwp(TroopAssistantFeedsJsHandler paramTroopAssistantFeedsJsHandler, String paramString1, String paramString2) {}
+  public gwp(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    if (paramBundle != null)
-    {
-      if (paramBundle.getBoolean("ret", false)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopAssistantFeedsJsHandler.a(this.jdField_a_of_type_JavaLangString, this.b);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopAssistantFeedsJsHandler.c(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,25 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.AutoReplySettingActivity;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class bwj
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public bwj(AutoReplySettingActivity paramAutoReplySettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = BaseApplication.getContext().getSharedPreferences("share", 0);
-    Intent localIntent = new Intent(this.a, EditActivity.class);
-    localIntent.putExtra("title", 2131561873).putExtra("limit", 210).putExtra("current", paramView.getString("auto_reply_msg" + this.a.b.a(), this.a.getString(2131561450))).putExtra("canPostNull", false).putExtra("hint", this.a.getResources().getString(2131562624)).putExtra("multiLine", true);
-    this.a.startActivityForResult(localIntent, 2010);
+    if (this.a.b != null)
+    {
+      this.a.b.edit().putBoolean(this.a.getString(2131563452) + this.a.jdField_a_of_type_JavaLangString, paramBoolean).commit();
+      if (paramBoolean)
+      {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        AutoReplySettingActivity.a(this.a).setVisibility(0);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    AutoReplySettingActivity.a(this.a).setVisibility(8);
   }
 }
 

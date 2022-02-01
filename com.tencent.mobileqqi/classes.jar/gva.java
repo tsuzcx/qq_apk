@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troop.data.TroopAioNewMessageBar;
 
 public class gva
-  implements Runnable
+  extends Handler
 {
-  public gva(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar) {}
+  public gva(TroopAioNewMessageBar paramTroopAioNewMessageBar) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    TroopAioMsgNavigateBar.b(this.a);
+    if ((paramMessage.what == TroopAioNewMessageBar.a()) && (TroopAioNewMessageBar.b() == TroopAioNewMessageBar.a(this.a))) {
+      TroopAioNewMessageBar.a(this.a);
+    }
   }
 }
 

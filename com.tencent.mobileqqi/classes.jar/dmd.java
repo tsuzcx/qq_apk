@@ -1,23 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
-class dmd
-  implements DialogInterface.OnClickListener
+public class dmd
+  implements OverScrollViewListener
 {
-  dmd(dmb paramdmb) {}
+  public dmd(SubAccountMessageActivity paramSubAccountMessageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if (paramInt == 1)
+    if (this.a.b.s())
     {
-      this.a.a.d();
-      SubAccountMessageActivity.c(this.a.a, true);
-      SubAccountAssistantManager.a().a(this.a.a.b);
-      this.a.a.f();
+      SubAccountMessageActivity.a(this.a).a();
+      return;
     }
+    SubAccountMessageActivity.a(this.a).c(0L);
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.b.s()) {
+      return true;
+    }
+    SubAccountMessageActivity.a(this.a).a(0L);
+    SubAccountMessageActivity.b(this.a, true);
+    SubAccountMessageActivity.a(this.a, true);
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.b.s()) {
+      return;
+    }
+    SubAccountMessageActivity.a(this.a).b(0L);
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

@@ -1,5 +1,6 @@
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity.UIHandler;
 import com.tencent.mobileqq.troop.widget.NearbyTroopsMapView;
 
 public class gzf
@@ -9,7 +10,11 @@ public class gzf
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.showNearestPopView();
+    if (this.a.a != null)
+    {
+      this.a.a.sendEmptyMessage(5);
+      this.a.a.sendEmptyMessage(7);
+    }
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

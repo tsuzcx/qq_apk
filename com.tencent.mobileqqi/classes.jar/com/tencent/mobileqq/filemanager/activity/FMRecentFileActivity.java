@@ -21,16 +21,16 @@ import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.BubblePopupWindow;
+import fqv;
 import fqw;
-import fqx;
+import frc;
 import frd;
 import fre;
 import frf;
 import frg;
 import frh;
-import fri;
+import frj;
 import frk;
-import frl;
 import java.util.List;
 
 public class FMRecentFileActivity
@@ -58,7 +58,7 @@ public class FMRecentFileActivity
   private FMObserver b;
   public View.OnClickListener c;
   boolean c;
-  public View.OnClickListener d = new frl(this);
+  public View.OnClickListener d = new frk(this);
   int e = 0;
   
   static
@@ -71,11 +71,11 @@ public class FMRecentFileActivity
     this.jdField_a_of_type_Long = -1L;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter = null;
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new frd(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new frh(this);
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new fri(this);
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = new frk(this);
-    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fqx(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new frc(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new frg(this);
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new frh(this);
+    this.jdField_c_of_type_AndroidViewView$OnClickListener = new frj(this);
+    this.jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fqw(this);
   }
   
   private void h()
@@ -95,12 +95,12 @@ public class FMRecentFileActivity
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232718));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232717));
     this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = new ScrollerRunnable(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelection(0);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(Integer.valueOf(-1));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new fqw(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new fqv(this));
   }
   
   private void j()
@@ -159,9 +159,9 @@ public class FMRecentFileActivity
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     localActionSheet.a(getResources().getStringArray(2131689515)[0], 3);
-    localActionSheet.a(new fre(this, localActionSheet));
-    localActionSheet.setOnDismissListener(new frf(this));
-    localActionSheet.setOnCancelListener(new frg(this));
+    localActionSheet.a(new frd(this, localActionSheet));
+    localActionSheet.setOnDismissListener(new fre(this));
+    localActionSheet.setOnCancelListener(new frf(this));
     localActionSheet.d(2131561746);
     localActionSheet.show();
   }

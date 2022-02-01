@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
 
 public class gxh
-  implements Runnable
+  extends AsyncTask
 {
-  public gxh(HttpWebCgiAsyncTask paramHttpWebCgiAsyncTask, JSONObject paramJSONObject) {}
+  private RollangleImageView b;
   
-  public void run()
+  public gxh(RollangleImageView paramRollangleImageView) {}
+  
+  protected Bitmap a(Boolean... paramVarArgs)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask.jdField_a_of_type_AndroidOsBundle);
+    return RollangleImageView.a(this.a, paramVarArgs[0].booleanValue());
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      this.a.setImageBitmap(paramBitmap);
     }
   }
 }

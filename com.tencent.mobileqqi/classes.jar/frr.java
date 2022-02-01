@@ -1,14 +1,13 @@
 import com.tencent.mobileqq.filemanager.activity.FileAssistantActivity;
-import cooperation.weiyun.WeiyunRemoteCommand.OnStateChangeListener;
 
-public class frr
-  implements WeiyunRemoteCommand.OnStateChangeListener
+class frr
+  implements Runnable
 {
-  public frr(FileAssistantActivity paramFileAssistantActivity) {}
+  frr(frq paramfrq) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    this.a.runOnUiThread(new frs(this));
+    FileAssistantActivity.e(this.a.a);
   }
 }
 

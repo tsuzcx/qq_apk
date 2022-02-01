@@ -1,27 +1,54 @@
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.international.LocaleString;
+import java.util.List;
 
 public class cwj
-  extends FriendListObserver
+  extends BaseAdapter
 {
-  public cwj(MoveToGroupActivity paramMoveToGroupActivity) {}
+  private cwj(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  protected void a(String paramString, byte paramByte1, byte paramByte2)
+  public int getCount()
   {
-    if (this.a.isFinishing()) {
-      return;
+    if (this.a.jdField_a_of_type_JavaUtilList != null) {
+      return this.a.jdField_a_of_type_JavaUtilList.size();
     }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      QQToast.a(this.a, this.a.getString(2131562081), 0).b(this.a.d());
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.a.getLayoutInflater().inflate(2130903285, null);
+    }
+    int i = (byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_id;
+    paramView = (ImageView)paramViewGroup.findViewById(2131231937);
+    if (i == this.a.jdField_a_of_type_Byte) {
+      paramView.setVisibility(0);
     }
     for (;;)
     {
-      MoveToGroupActivity.b(this.a);
-      this.a.b(MoveToGroupActivity.a(this.a));
-      return;
-      QQToast.a(this.a, 2, this.a.getString(2131562990), 0).b(this.a.d());
+      paramView = (TextView)paramViewGroup.findViewById(2131231936);
+      LocaleString.a(((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_name, paramView);
+      return paramViewGroup;
+      paramView.setVisibility(8);
     }
   }
 }

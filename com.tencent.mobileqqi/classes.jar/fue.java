@@ -1,38 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 
 public class fue
-  extends BroadcastReceiver
+  extends Handler
 {
-  public fue(FileManagerDataCenter paramFileManagerDataCenter) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public fue(FileManagerNotifyCenter paramFileManagerNotifyCenter, Looper paramLooper)
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      localBundle = paramIntent.getBundleExtra("extraBundle");
-      if (localBundle != null) {
-        break label46;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "INTENT_ACTION_RENAME_FILENAME extra is null!!!");
-      }
+    default: 
+      return;
     }
-    return;
-    label46:
-    paramContext = localBundle.getString("peerUin");
-    int i = localBundle.getInt("peerType");
-    paramIntent = localBundle.getString("sourceStr");
-    String str = localBundle.getString("filePath");
-    long l = localBundle.getLong("dataLength");
-    int j = localBundle.getInt("fileSourceId");
-    Bundle localBundle = localBundle.getBundle("otherData");
-    this.a.a(paramContext, i, str, l, j, paramIntent, localBundle);
+    this.a.a.a().b();
+    this.a.a.a().b(-1);
   }
 }
 

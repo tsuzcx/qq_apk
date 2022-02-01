@@ -1,40 +1,27 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.BookShareAdviceEditActivity;
-import com.tencent.mobileqq.activity.book.BookEditText;
+import com.tencent.mobileqq.activity.book.ResizeLayout;
+import com.tencent.mobileqq.activity.book.ResizeLayout.OnResizeListener;
 
 public class bwt
-  implements TextWatcher
+  implements ResizeLayout.OnResizeListener
 {
   public bwt(BookShareAdviceEditActivity paramBookShareAdviceEditActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramEditable = this.a.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.getText().toString();
-    if ((paramEditable != null) && ("".equals(paramEditable))) {
-      BookShareAdviceEditActivity.a(this.a).setEnabled(false);
-    }
-    for (;;)
+    if (Math.abs(paramInt2 - paramInt4) < BookShareAdviceEditActivity.a(this.a, this.a, 100.0F)) {}
+    do
     {
-      int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText.a(paramEditable);
-      this.a.c = (40 - (i + 2) / 3);
-      if (this.a.c < 0) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#9A9A9A"));
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.c));
       return;
-      BookShareAdviceEditActivity.b(this.a).setEnabled(true);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-65536);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.c));
+      if (paramInt2 - paramInt4 < 0)
+      {
+        this.a.a(true);
+        return;
+      }
+    } while (paramInt2 - paramInt4 <= 0);
+    this.a.a(false);
+    this.a.a.post(new bwu(this));
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

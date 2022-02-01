@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
+import com.qq.jce.wup.UniAttribute;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.qzone.QZoneFeedCountPackeger;
 
 public final class gjc
-  implements Parcelable.Creator
+  implements Runnable
 {
-  public MessageRecordInfo a(Parcel paramParcel)
-  {
-    return new MessageRecordInfo(paramParcel);
-  }
+  public gjc(UniAttribute paramUniAttribute, QQAppInterface paramQQAppInterface) {}
   
-  public MessageRecordInfo[] a(int paramInt)
+  public void run()
   {
-    return new MessageRecordInfo[paramInt];
+    QZoneFeedCountPackeger.a(this.jdField_a_of_type_ComQqJceWupUniAttribute, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

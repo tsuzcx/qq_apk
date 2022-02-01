@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
 import com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class gul
-  implements DialogInterface.OnDismissListener
+  implements ActionSheet.OnButtonClickListener
 {
   public gul(TroopLocationModifyActivity paramTroopLocationModifyActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramDialogInterface == this.a.b) {
-      this.a.b = null;
+    TroopLocationModifyActivity.a(this.a);
+    if (paramInt == 0) {
+      TroopLocationModifyActivity.a(this.a, "");
     }
   }
 }

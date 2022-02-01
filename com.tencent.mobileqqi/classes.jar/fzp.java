@@ -1,52 +1,39 @@
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.jsp.DataApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.webviewplugin.WebViewPlugin.PluginRuntime;
+import java.io.IOException;
 
 public class fzp
-  extends Client.onRemoteRespObserver
+  implements Runnable
 {
-  public fzp(DataApiPlugin paramDataApiPlugin) {}
+  public fzp(DataApiPlugin paramDataApiPlugin, String paramString1, String paramString2, Bundle paramBundle1, Bundle paramBundle2, String paramString3) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public void run()
   {
-    Object localObject;
-    String str;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver.key))
-    {
-      localObject = paramBundle.getString("cmd");
-      str = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response");
-      if (QLog.isColorLevel()) {
-        QLog.i(DataApiPlugin.jdField_a_of_type_JavaLangString, 2, "response:" + (String)localObject);
-      }
-      if ((localObject == null) || (!"getUserVipType".equals(localObject))) {}
-    }
+    i = 200;
+    Object localObject1 = null;
     try
     {
-      localObject = new JSONObject();
-      int i = paramBundle.getInt("type");
-      ((JSONObject)localObject).put("result", 0);
-      ((JSONObject)localObject).put("message", "ok");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("uin", paramBundle.getString("uin"));
-      localJSONObject.put("type", i);
-      ((JSONObject)localObject).put("data", localJSONObject);
-      if (!TextUtils.isEmpty(str)) {
-        this.a.callJs(str + "(" + ((JSONObject)localObject).toString() + ");");
-      }
-      return;
+      localObject2 = HttpUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.jdField_b_of_type_AndroidOsBundle);
+      localObject1 = localObject2;
     }
-    catch (JSONException paramBundle) {}
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Object localObject2;
+        i = 0;
+        localIOException.printStackTrace();
+      }
+    }
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqJspDataApiPlugin.mRuntime.a();
+    if ((!TextUtils.isEmpty(this.c)) && (localObject2 != null)) {
+      ((Activity)localObject2).runOnUiThread(new fzq(this, (Activity)localObject2, localObject1, i));
+    }
   }
 }
 

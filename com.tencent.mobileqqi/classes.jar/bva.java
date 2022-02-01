@@ -2,7 +2,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.TrafficStatActivity;
+import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 
 public class bva
@@ -12,9 +12,10 @@ public class bva
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, TrafficStatActivity.class);
+    paramView = new Intent(this.a, ChatBackgroundSettingActivity.class);
+    paramView.putExtra("bg_replace_entrance", 8);
     this.a.startActivity(paramView);
-    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_traffic_statistics", 0, 0, "", "", "", "");
+    ReportController.b(this.a.b, "CliOper", "", "", "Trends_tab", "Enter_background", 0, 0, "", "", "", "");
   }
 }
 

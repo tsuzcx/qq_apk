@@ -1,50 +1,36 @@
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.StatFs;
-import android.widget.Toast;
+import android.content.Intent;
+import android.view.View;
 import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.DoodleTextView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileProvider7Helper;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 import java.io.File;
 
 public class cis
-  extends Handler
+  implements ActionSheet.OnButtonClickListener
 {
-  public cis(DoodleActivity paramDoodleActivity) {}
+  public cis(DoodleActivity paramDoodleActivity, ActionSheet paramActionSheet) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
-    case 3: 
-    case 4: 
-    case 5: 
     default: 
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
     case 0: 
-      this.a.a.c();
-      return;
-    case 1: 
-      QQToast.a(this.a, "已达到上限，无法输入", 0).b(this.a.d());
-      return;
-    case 2: 
-      this.a.a.b();
-      sendEmptyMessageDelayed(2, 600L);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDoodleActivity.getIntent();
+      paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+      PhotoUtils.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityDoodleActivity, DoodleActivity.class.getName(), 1, true);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
     }
-    if (Environment.getExternalStorageState().equals("mounted"))
-    {
-      if (new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1)
-      {
-        this.a.c();
-        return;
-      }
-      Toast.makeText(this.a.b.a(), 2131562046, 0).show();
-      return;
-    }
-    Toast.makeText(this.a.b.a(), 2131562824, 0).show();
+    paramView = new Intent();
+    this.jdField_a_of_type_ComTencentMobileqqActivityDoodleActivity.a = FileProvider7Helper.setSystemCapture(this.jdField_a_of_type_ComTencentMobileqqActivityDoodleActivity, new File(AppConstants.an + "photo/" + System.currentTimeMillis() + ".jpg"), paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDoodleActivity.startActivityForResult(paramView, 1);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

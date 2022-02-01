@@ -1,37 +1,100 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
+import android.os.SystemClock;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.PerformanceReportUtils;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Hashtable;
+import java.util.HashMap;
+import mqq.manager.ServerConfigManager.ConfigType;
 
-public class hcb
-  extends FriendListObserver
+public final class hcb
+  extends AsyncTask
 {
-  private JumpAction b;
+  public hcb(int paramInt, long paramLong, String paramString) {}
   
-  public hcb(JumpAction paramJumpAction1, JumpAction paramJumpAction2)
+  protected Void a(Void... paramVarArgs)
   {
-    this.b = paramJumpAction2;
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((!paramBoolean) || (JumpAction.a(this.a) == null) || (!JumpAction.a(this.a).containsKey(paramString))) {}
-    do
+    int i = 1;
+    paramVarArgs = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.a());
+    if (QLog.isDevelopLevel()) {
+      QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch openStr ：" + paramVarArgs);
+    }
+    if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {}
+    for (;;)
     {
-      return;
-      JumpAction.a(this.a).remove(paramString);
-      if (JumpAction.a(this.a).size() == 0) {
-        JumpAction.a(this.a).c(JumpAction.a(this.a));
+      return null;
+      try
+      {
+        HashMap localHashMap = new HashMap();
+        if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3000))
+        {
+          if (QQAppInterface.c) {
+            i = 0;
+          }
+          localHashMap.put("actloginTypt", String.valueOf(i));
+          if (!QQAppInterface.c) {
+            QQAppInterface.c = true;
+          }
+        }
+        switch (this.jdField_a_of_type_Int)
+        {
+        }
+        long l1;
+        for (;;)
+        {
+          SharedPreferences localSharedPreferences = PerformanceReportUtils.a();
+          if ((paramVarArgs == null) || (this.jdField_a_of_type_Long <= 0L)) {
+            break;
+          }
+          long l2 = localSharedPreferences.getLong(paramVarArgs, 0L);
+          l1 = PerformanceReportUtils.a();
+          String str = QQUtils.a(ServerConfigManager.ConfigType.common, PerformanceReportUtils.g());
+          if (str != null) {
+            if (QLog.isDevelopLevel()) {
+              QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch  server time：" + str);
+            }
+          }
+          try
+          {
+            l1 = Long.valueOf(str).longValue();
+            l1 *= 1000L;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              l1 = PerformanceReportUtils.a();
+            }
+            paramVarArgs = null;
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch report_time ：" + l1 + ",lastRp" + l2);
+          }
+          if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2) && (SystemClock.uptimeMillis() - l2 < l1)) {
+            break;
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d(PerformanceReportUtils.b(), 4, "reportUISwitch timeConsumed ：" + this.jdField_a_of_type_Long);
+          }
+          StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, paramVarArgs, true, this.jdField_a_of_type_Long, 0L, localHashMap, PerformanceReportUtils.h());
+          localSharedPreferences.edit().putLong(paramVarArgs, SystemClock.uptimeMillis()).commit();
+          return null;
+          paramVarArgs = PerformanceReportUtils.c();
+          continue;
+          paramVarArgs = PerformanceReportUtils.d();
+          continue;
+          paramVarArgs = PerformanceReportUtils.e();
+          continue;
+          paramVarArgs = PerformanceReportUtils.f();
+        }
+        return null;
       }
-      Object localObject = Uri.parse(JumpAction.a(this.a) + "&uin=" + paramString);
-      localObject = new Intent(this.b.bm, (Uri)localObject);
-      JumpAction.a(this.a).sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-    } while (!QLog.isColorLevel());
-    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + this.b.bm);
+      catch (Exception paramVarArgs) {}
+    }
   }
 }
 

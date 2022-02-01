@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.app.Activity;
 import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import java.util.TimerTask;
 
 public class gvr
-  implements DialogInterface.OnDismissListener
+  extends TimerTask
 {
   public gvr(TroopCreateLogic paramTroopCreateLogic) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new gvs(this));
     }
   }
 }

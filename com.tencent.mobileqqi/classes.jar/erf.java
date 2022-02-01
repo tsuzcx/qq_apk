@@ -9,7 +9,7 @@ public class erf
   
   public void onClick(View paramView)
   {
-    this.a.f();
+    this.a.g();
   }
 }
 

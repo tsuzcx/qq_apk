@@ -1,28 +1,67 @@
+import android.os.Handler;
 import android.view.View;
+import com.tencent.mobileqq.activity.Contacts.OverScrollViewTag;
 import com.tencent.mobileqq.troop.activity.TroopBarPageActivity;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
 public class gsb
-  implements ActionSheet.OnButtonClickListener
+  implements OverScrollViewListener
 {
-  public gsb(TroopBarPageActivity paramTroopBarPageActivity, ActionSheet paramActionSheet) {}
+  public gsb(TroopBarPageActivity paramTroopBarPageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    switch (paramInt)
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
+      paramView.c(l);
+      return;
+    }
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!NetworkUtil.f(this.a.a())) {
+        break label110;
+      }
+      this.a.a(false);
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new gsc(this), 300L);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      TroopBarPageActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity);
-      continue;
-      TroopBarUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPageActivity, "all_bar", new String[0]);
+      ((Contacts.OverScrollViewTag)paramView.getTag()).a = true;
+      TroopBarUtils.a("Clk_refresh", this.a.r, "");
+      return true;
+      l = this.a.jdField_a_of_type_Long;
+      break;
+      label110:
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new gsd(this), 300L);
     }
   }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

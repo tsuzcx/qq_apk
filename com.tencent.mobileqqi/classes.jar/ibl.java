@@ -1,22 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class ibl
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
   public ibl(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.h.clearAnimation();
-    this.a.h.setVisibility(8);
+    this.a.onBackPressed();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

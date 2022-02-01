@@ -1,10 +1,12 @@
+import android.content.ComponentName;
 import android.content.Intent;
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.MusicSharePlayActivity;
 import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 
 public class eny
@@ -14,10 +16,28 @@ public class eny
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(BannerManager.a(this.a), TroopAssisSettingActivity.class);
-    BannerManager.a(this.a).startActivityForResult(paramView, 9001);
-    BannerManager.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-    ReportController.b(BannerManager.a(this.a).b, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
+    paramView = QQPlayerService.a();
+    int i;
+    if (paramView != null)
+    {
+      BannerManager.a(this.a).startActivity(paramView);
+      paramView = paramView.getComponent().getClassName();
+      if (!paramView.equals(MusicSharePlayActivity.class.getName())) {
+        break label92;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      ReportController.b(BannerManager.a(this.a).b, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
+      return;
+      label92:
+      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
+        i = 1;
+      } else {
+        i = -1;
+      }
+    }
   }
 }
 

@@ -141,9 +141,9 @@ public class PullRefreshHeader
   {
     super.onFinishInflate();
     this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231066));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232083));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232084));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232085));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232082));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232083));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232084));
     c(0L);
   }
 }

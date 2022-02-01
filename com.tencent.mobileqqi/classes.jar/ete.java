@@ -1,19 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.search.ContactsSearchablePhoneContact;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ete
-  implements DialogInterface.OnKeyListener
+  extends SearchResultDialog
 {
-  public ete(VoipAddressBookView paramVoipAddressBookView) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public ete(VoipAddressBookView paramVoipAddressBookView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
   {
-    if (paramInt == 4) {
-      VoipAddressBookView.m(this.a);
+    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new ArrayList();
+    ((ArrayList)localObject).addAll(this.a.a);
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(new ContactsSearchablePhoneContact(paramContext, paramQQAppInterface, (PhoneContact)((Iterator)localObject).next(), 38654705664L));
     }
-    return false;
+    return localArrayList;
   }
 }
 

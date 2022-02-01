@@ -51,14 +51,14 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BadgeUtils;
+import cui;
 import cuj;
 import cuk;
 import cul;
-import cum;
+import cup;
 import cuq;
 import cur;
 import cus;
-import cut;
 import java.net.URLEncoder;
 import java.util.List;
 import mqq.observer.WtloginObserver;
@@ -74,20 +74,20 @@ public class LoginInfoActivity
   public static final int c = 20140331;
   private static final int e = 0;
   private static final int f = 1;
-  private Handler jdField_a_of_type_AndroidOsHandler = new cuj(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new cui(this);
   private View jdField_a_of_type_AndroidViewView;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new cus(this);
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new cur(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = null;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
   private TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cuq(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cup(this);
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = null;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private List jdField_a_of_type_JavaUtilList = null;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new cur(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new cuq(this);
   private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
   private View jdField_b_of_type_AndroidViewView;
   private TextView jdField_b_of_type_AndroidWidgetTextView = null;
@@ -101,7 +101,7 @@ public class LoginInfoActivity
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new cuk(this, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new cuj(this, paramInt));
   }
   
   private void a(List paramList)
@@ -145,12 +145,12 @@ public class LoginInfoActivity
       ((RelativeLayout)localObject1).setBackgroundResource(2130837877);
       getResources().getString(2131561840);
       localObject2 = getResources().getString(2131561897);
-      localTextView1 = (TextView)localView.findViewById(2131231901);
-      localButton = (Button)localView.findViewById(2131231902);
+      localTextView1 = (TextView)localView.findViewById(2131231900);
+      localButton = (Button)localView.findViewById(2131231901);
       localTextView1.setContentDescription(getString(2131561897));
       localButton.setContentDescription(getString(2131561840));
       localTextView2 = (TextView)localView.findViewById(2131231000);
-      localObject1 = (TextView)localView.findViewById(2131231507);
+      localObject1 = (TextView)localView.findViewById(2131231506);
       localImageView = (ImageView)localView.findViewById(2131230940);
       if (i != 0) {
         break label464;
@@ -205,7 +205,7 @@ public class LoginInfoActivity
       localButton.setTag(localSvcDevLoginInfo);
       localButton.setClickable(true);
       localImageView.setImageResource(2130838118);
-      localButton.setOnClickListener(new cum(this, localButton, i));
+      localButton.setOnClickListener(new cul(this, localButton, i));
       break label273;
       label517:
       localTextView2.setText(localSvcDevLoginInfo.strDeviceName);
@@ -250,7 +250,7 @@ public class LoginInfoActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new cul(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new cuk(this));
   }
   
   private void e()
@@ -427,24 +427,24 @@ public class LoginInfoActivity
     super.doOnCreate(paramBundle);
     setContentView(2130903271);
     setTitle(2131562034);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231895));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231894));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231888));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231896));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231894));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231893));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231887));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231895));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231889));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131231892));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231888));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131231891));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131231897));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131231896));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231893));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231892));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131562418));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231898);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231900));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231897);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131231899));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131562841));
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131231899);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131231898);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
     paramBundle = SharedPreUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), "account_logout_url", "");
     if (TextUtils.isEmpty(paramBundle)) {
@@ -465,11 +465,11 @@ public class LoginInfoActivity
       }
       this.jdField_c_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
       paramBundle = new SpannableString(getResources().getString(2131561943));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231891));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231618));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231890));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231890));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131231617));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231889));
       int i = paramBundle.length();
-      paramBundle.setSpan(new cut(this, null), 0, i, 33);
+      paramBundle.setSpan(new cus(this, null), 0, i, 33);
       paramBundle.setSpan(new ForegroundColorSpan(getResources().getColor(2131362086)), 0, i, 33);
       this.jdField_c_of_type_AndroidWidgetTextView.setText(paramBundle);
       try
@@ -548,15 +548,15 @@ public class LoginInfoActivity
   {
     switch (paramView.getId())
     {
+    case 2131231888: 
     case 2131231889: 
     case 2131231890: 
     case 2131231891: 
     case 2131231892: 
     case 2131231893: 
     case 2131231894: 
-    case 2131231895: 
     default: 
-    case 2131231888: 
+    case 2131231887: 
       do
       {
         return;
@@ -603,7 +603,7 @@ public class LoginInfoActivity
       paramView.putExtra("auth_dev_open", false);
       startActivityForResult(paramView, 0);
       return;
-    case 2131231896: 
+    case 2131231895: 
       if (!NetworkUtil.e(this))
       {
         QQToast.a(this, getString(2131562452), 0).b(d());
@@ -612,10 +612,10 @@ public class LoginInfoActivity
       ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "My_eq", "Clk_eq_recently", 0, 0, "", "", "", "");
       startActivity(new Intent(this, RecentLoginDevActivity.class));
       return;
-    case 2131231897: 
+    case 2131231896: 
       startActivityForResult(new Intent(this, GesturePWDSettingActivity.class), 1);
       return;
-    case 2131231898: 
+    case 2131231897: 
       if (PhoneNumLoginImpl.a().a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a()))
       {
         paramView = new Intent(this, QQBrowserActivity.class);
@@ -632,7 +632,7 @@ public class LoginInfoActivity
       ((StringBuilder)localObject).append(paramView);
       ((StringBuilder)localObject).append("&plat=1");
       ((StringBuilder)localObject).append("&app=1");
-      ((StringBuilder)localObject).append("&version=6.0.2.6602");
+      ((StringBuilder)localObject).append("&version=6.0.3.6604");
       ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
       ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
       ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));

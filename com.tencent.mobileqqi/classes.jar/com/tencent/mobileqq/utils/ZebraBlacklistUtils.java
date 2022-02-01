@@ -13,7 +13,7 @@ import com.qq.jce.wup.UniPacket;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import hek;
+import hej;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -40,7 +40,7 @@ public class ZebraBlacklistUtils
   private static final String l = Build.MODEL;
   private Context jdField_a_of_type_AndroidContentContext = null;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private ZebraBlacklistUtils.JceRequestCallback jdField_a_of_type_ComTencentMobileqqUtilsZebraBlacklistUtils$JceRequestCallback = new hek(this);
+  private ZebraBlacklistUtils.JceRequestCallback jdField_a_of_type_ComTencentMobileqqUtilsZebraBlacklistUtils$JceRequestCallback = new hej(this);
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
   private ZebraBlacklistUtils(Context paramContext)

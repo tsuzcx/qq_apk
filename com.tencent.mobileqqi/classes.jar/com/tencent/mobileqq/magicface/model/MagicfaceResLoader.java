@@ -50,16 +50,16 @@ public class MagicfaceResLoader
     //   39: astore_1
     //   40: aload_1
     //   41: invokevirtual 61	java/io/InputStream:available	()I
-    //   44: istore_2
-    //   45: iload_2
+    //   44: istore_3
+    //   45: iload_3
     //   46: newarray byte
     //   48: astore 6
     //   50: aload_1
     //   51: aload 6
     //   53: invokevirtual 65	java/io/InputStream:read	([B)I
-    //   56: istore_3
-    //   57: iload_3
-    //   58: iload_2
+    //   56: istore_2
+    //   57: iload_2
+    //   58: iload_3
     //   59: if_icmpeq +3 -> 62
     //   62: aload_1
     //   63: invokevirtual 68	java/io/InputStream:close	()V
@@ -102,8 +102,8 @@ public class MagicfaceResLoader
     //   start	length	slot	name	signature
     //   0	121	0	this	MagicfaceResLoader
     //   0	121	1	paramString	String
-    //   44	16	2	i	int
-    //   56	4	3	j	int
+    //   56	4	2	i	int
+    //   44	16	3	j	int
     //   16	3	4	bool	boolean
     //   1	92	5	arrayOfByte1	byte[]
     //   107	1	5	localObject1	Object
@@ -169,119 +169,119 @@ public class MagicfaceResLoader
     //   32: dup
     //   33: aload_1
     //   34: invokespecial 55	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   37: astore 4
-    //   39: aload 4
-    //   41: astore_1
-    //   42: aload 4
-    //   44: invokevirtual 61	java/io/InputStream:available	()I
-    //   47: newarray byte
-    //   49: astore_3
-    //   50: aload 4
-    //   52: astore_1
-    //   53: aload 4
-    //   55: aload_3
-    //   56: invokevirtual 65	java/io/InputStream:read	([B)I
-    //   59: pop
-    //   60: aload 4
-    //   62: astore_1
-    //   63: new 98	java/lang/String
-    //   66: dup
-    //   67: aload_3
-    //   68: ldc 100
-    //   70: invokespecial 103	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   73: astore_3
+    //   37: astore_3
+    //   38: aload_3
+    //   39: astore_1
+    //   40: aload_3
+    //   41: invokevirtual 61	java/io/InputStream:available	()I
+    //   44: newarray byte
+    //   46: astore 4
+    //   48: aload_3
+    //   49: astore_1
+    //   50: aload_3
+    //   51: aload 4
+    //   53: invokevirtual 65	java/io/InputStream:read	([B)I
+    //   56: pop
+    //   57: aload_3
+    //   58: astore_1
+    //   59: new 98	java/lang/String
+    //   62: dup
+    //   63: aload 4
+    //   65: ldc 100
+    //   67: invokespecial 103	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   70: astore 4
+    //   72: aload_3
+    //   73: astore_1
     //   74: aload 4
-    //   76: astore_1
-    //   77: aload_3
-    //   78: ldc 105
-    //   80: ldc 107
-    //   82: invokevirtual 111	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   85: astore 5
-    //   87: aload 4
-    //   89: invokevirtual 68	java/io/InputStream:close	()V
-    //   92: aload 5
-    //   94: areturn
-    //   95: astore_1
-    //   96: aload 5
-    //   98: areturn
+    //   76: ldc 105
+    //   78: ldc 107
+    //   80: invokevirtual 111	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   83: astore 5
+    //   85: aload_3
+    //   86: invokevirtual 68	java/io/InputStream:close	()V
+    //   89: aload 5
+    //   91: areturn
+    //   92: astore_1
+    //   93: aload 5
+    //   95: areturn
+    //   96: astore 4
+    //   98: aconst_null
     //   99: astore_3
-    //   100: aconst_null
-    //   101: astore 4
-    //   103: aload 4
-    //   105: astore_1
-    //   106: ldc 8
-    //   108: iconst_2
-    //   109: new 74	java/lang/StringBuilder
-    //   112: dup
-    //   113: invokespecial 75	java/lang/StringBuilder:<init>	()V
-    //   116: ldc 113
-    //   118: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: aload_3
-    //   122: invokevirtual 116	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   125: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   131: invokestatic 121	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   134: aload 4
-    //   136: invokevirtual 68	java/io/InputStream:close	()V
+    //   100: aload_3
+    //   101: astore_1
+    //   102: ldc 8
+    //   104: iconst_2
+    //   105: new 74	java/lang/StringBuilder
+    //   108: dup
+    //   109: invokespecial 75	java/lang/StringBuilder:<init>	()V
+    //   112: ldc 113
+    //   114: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: aload 4
+    //   119: invokevirtual 116	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   122: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   128: invokestatic 121	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   131: aload_3
+    //   132: invokevirtual 68	java/io/InputStream:close	()V
+    //   135: aload 5
+    //   137: areturn
+    //   138: astore_1
     //   139: aload 5
     //   141: areturn
-    //   142: astore_1
-    //   143: aload 5
-    //   145: areturn
-    //   146: astore_3
-    //   147: aconst_null
-    //   148: astore_1
-    //   149: aload_1
-    //   150: invokevirtual 68	java/io/InputStream:close	()V
-    //   153: aload_3
-    //   154: athrow
-    //   155: astore_1
-    //   156: aconst_null
-    //   157: areturn
-    //   158: astore_1
-    //   159: goto -6 -> 153
-    //   162: astore_3
-    //   163: goto -14 -> 149
-    //   166: astore_3
-    //   167: goto -64 -> 103
-    //   170: astore_1
-    //   171: aload_3
-    //   172: astore 5
-    //   174: aload_1
-    //   175: astore_3
-    //   176: goto -73 -> 103
+    //   142: astore_3
+    //   143: aconst_null
+    //   144: astore_1
+    //   145: aload_1
+    //   146: invokevirtual 68	java/io/InputStream:close	()V
+    //   149: aload_3
+    //   150: athrow
+    //   151: astore_1
+    //   152: aconst_null
+    //   153: areturn
+    //   154: astore_1
+    //   155: goto -6 -> 149
+    //   158: astore_3
+    //   159: goto -14 -> 145
+    //   162: astore 4
+    //   164: goto -64 -> 100
+    //   167: astore_1
+    //   168: aload 4
+    //   170: astore 5
+    //   172: aload_1
+    //   173: astore 4
+    //   175: goto -75 -> 100
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	179	0	this	MagicfaceResLoader
-    //   0	179	1	paramString	String
+    //   0	178	0	this	MagicfaceResLoader
+    //   0	178	1	paramString	String
     //   16	2	2	bool	boolean
-    //   49	29	3	localObject1	Object
-    //   99	23	3	localException1	java.lang.Exception
-    //   146	8	3	localObject2	Object
-    //   162	1	3	localObject3	Object
-    //   166	6	3	localException2	java.lang.Exception
-    //   175	1	3	str	String
-    //   37	98	4	localFileInputStream	java.io.FileInputStream
-    //   1	172	5	localObject4	Object
+    //   37	95	3	localFileInputStream	java.io.FileInputStream
+    //   142	8	3	localObject1	Object
+    //   158	1	3	localObject2	Object
+    //   46	29	4	localObject3	Object
+    //   96	22	4	localException1	java.lang.Exception
+    //   162	7	4	localException2	java.lang.Exception
+    //   173	1	4	str	String
+    //   1	170	5	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   87	92	95	java/lang/Exception
-    //   3	17	99	java/lang/Exception
-    //   29	39	99	java/lang/Exception
-    //   134	139	142	java/lang/Exception
-    //   3	17	146	finally
-    //   29	39	146	finally
-    //   21	29	155	java/lang/Exception
-    //   149	153	158	java/lang/Exception
-    //   42	50	162	finally
-    //   53	60	162	finally
-    //   63	74	162	finally
-    //   77	87	162	finally
-    //   106	134	162	finally
-    //   42	50	166	java/lang/Exception
-    //   53	60	166	java/lang/Exception
-    //   63	74	166	java/lang/Exception
-    //   77	87	170	java/lang/Exception
+    //   85	89	92	java/lang/Exception
+    //   3	17	96	java/lang/Exception
+    //   29	38	96	java/lang/Exception
+    //   131	135	138	java/lang/Exception
+    //   3	17	142	finally
+    //   29	38	142	finally
+    //   21	29	151	java/lang/Exception
+    //   145	149	154	java/lang/Exception
+    //   40	48	158	finally
+    //   50	57	158	finally
+    //   59	72	158	finally
+    //   74	85	158	finally
+    //   102	131	158	finally
+    //   40	48	162	java/lang/Exception
+    //   50	57	162	java/lang/Exception
+    //   59	72	162	java/lang/Exception
+    //   74	85	167	java/lang/Exception
   }
 }
 

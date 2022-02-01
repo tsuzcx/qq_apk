@@ -1,21 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
 import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class dew
   implements DialogInterface.OnClickListener
 {
-  public dew(RegisterActivity paramRegisterActivity, String paramString) {}
+  public dew(RegisterActivity paramRegisterActivity, String paramString1, String paramString2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
     paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.getString(2131559099, new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, 60000L);
   }
 }
 

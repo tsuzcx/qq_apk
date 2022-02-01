@@ -3,13 +3,13 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import icn;
+import icm;
 import java.util.Map;
 
 public class MapParcelable
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new icn();
+  public static final Parcelable.Creator CREATOR = new icm();
   private Map a;
   
   public MapParcelable(Map paramMap)

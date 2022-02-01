@@ -1,77 +1,16 @@
-import android.os.Handler;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
 
-public class dlm
-  extends FriendListObserver
+class dlm
+  implements Runnable
 {
-  public dlm(SubAccountBindActivity paramSubAccountBindActivity) {}
+  dlm(dll paramdll, String paramString, int paramInt) {}
   
-  void a(String paramString, int paramInt)
+  public void run()
   {
-    ThreadManager.a().post(new dln(this, paramString, paramInt));
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
-    {
-      return;
-      int i;
-      if (SubAccountBindActivity.a(this.a) != null) {
-        i = SubAccountBindActivity.a(this.a).getChildCount();
-      }
-      while (j < SubAccountBindActivity.a(this.a).size())
-      {
-        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
-        {
-          TextView localTextView1 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131231000);
-          TextView localTextView2 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131231001);
-          localTextView1.setText(ContactUtils.g(this.a.b, paramString));
-          localTextView2.setText(this.a.b.b(paramString));
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
-    {
-      return;
-      int i;
-      if (SubAccountBindActivity.a(this.a) != null) {
-        i = SubAccountBindActivity.a(this.a).getChildCount();
-      }
-      while (j < SubAccountBindActivity.a(this.a).size())
-      {
-        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
-        {
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
-      }
-    }
+    Drawable localDrawable = this.jdField_a_of_type_Dll.a.b.b(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Dll.a.runOnUiThread(new dln(this, localDrawable));
   }
 }
 

@@ -1,24 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopAssistantData;
 import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.utils.SharedPreferencesHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Set;
+import java.util.Comparator;
 
 public class gbf
-  implements Runnable
+  implements Comparator
 {
-  public gbf(TroopAssistantManager paramTroopAssistantManager, QQAppInterface paramQQAppInterface) {}
+  public gbf(TroopAssistantManager paramTroopAssistantManager) {}
   
-  public void run()
+  public int a(TroopAssistantData paramTroopAssistantData1, TroopAssistantData paramTroopAssistantData2)
   {
-    synchronized (TroopAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager))
-    {
-      Object[] arrayOfObject = TroopAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager).toArray();
-      SharedPreferencesHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "troop_assis_new_unread_list", arrayOfObject).commit();
-      return;
+    long l1 = Math.max(paramTroopAssistantData1.lastmsgtime, paramTroopAssistantData1.lastdrafttime);
+    long l2 = Math.max(paramTroopAssistantData2.lastmsgtime, paramTroopAssistantData2.lastdrafttime);
+    if (l1 < l2) {
+      return 1;
     }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

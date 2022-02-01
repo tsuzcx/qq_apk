@@ -23,10 +23,10 @@ import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.model.FriendManager;
 import cooperation.qlink.QLAndQQStructDef.SendFileNbyInfo;
 import cooperation.qlink.QQProxyForQlink;
-import fyz;
+import fyy;
+import fza;
 import fzb;
 import fzc;
-import fzd;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class SendBottomBar
 {
   public ProgressDialog a;
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new fyz(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new fyy(this);
   public TextView a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   private BaseFileAssistantActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
@@ -61,8 +61,8 @@ public class SendBottomBar
   private void d()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)this.jdField_a_of_type_AndroidContentContext);
-    this.c = ((TextView)findViewById(2131232757));
-    this.b = ((TextView)findViewById(2131231498));
+    this.c = ((TextView)findViewById(2131232756));
+    this.b = ((TextView)findViewById(2131231497));
     this.b.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getAppRuntime());
   }
@@ -110,7 +110,7 @@ public class SendBottomBar
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.i();
     if ((1 == i) && (!bool))
     {
-      FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 2131560885, 2131560886, new fzb(this));
+      FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 2131560885, 2131560886, new fza(this));
       return;
     }
     e();
@@ -181,7 +181,7 @@ public class SendBottomBar
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
       this.jdField_a_of_type_AndroidAppProgressDialog.getWindow().setContentView(2130903319);
       this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130903319);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131232069));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131232068));
     }
   }
   
@@ -189,7 +189,7 @@ public class SendBottomBar
   {
     if ((FileManagerUtil.a()) && (FMDataCache.a()) && (paramBoolean))
     {
-      FMDialogUtil.a(SplashActivity.a, 2131558759, 2131558756, new fzc(this));
+      FMDialogUtil.a(SplashActivity.a, 2131558759, 2131558756, new fzb(this));
       return;
     }
     b();
@@ -197,7 +197,7 @@ public class SendBottomBar
   
   public void b()
   {
-    new fzd(this).execute(new Void[0]);
+    new fzc(this).execute(new Void[0]);
   }
   
   public void c()

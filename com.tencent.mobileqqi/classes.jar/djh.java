@@ -1,16 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SpaceGateActivity;
+import com.tencent.mobileqq.widget.SlipLimitedListView;
 
 public class djh
-  extends Handler
+  implements View.OnClickListener
 {
   public djh(SpaceGateActivity paramSpaceGateActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    ((View)paramMessage.obj).setVisibility(paramMessage.arg1);
+    if (SpaceGateActivity.a(this.a) != null) {
+      SpaceGateActivity.a(this.a).b();
+    }
+    SpaceGateActivity.a(this.a).a("");
+    SpaceGateActivity.a(this.a);
   }
 }
 

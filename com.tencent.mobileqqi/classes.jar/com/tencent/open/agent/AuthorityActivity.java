@@ -57,15 +57,15 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.Login;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import hih;
 import hii;
 import hij;
-import hik;
+import hil;
 import him;
 import hin;
-import hio;
+import his;
 import hit;
 import hiu;
-import hiv;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -218,10 +218,10 @@ public class AuthorityActivity
     this.jdField_y_of_type_Int = 6;
     this.jdField_z_of_type_Int = 0;
     this.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new hii(this);
-    this.jdField_a_of_type_JavaLangRunnable = new hik(this);
-    this.jdField_a_of_type_AndroidOsHandler = new hio(this);
-    this.jdField_b_of_type_JavaLangRunnable = new hiv(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new hih(this);
+    this.jdField_a_of_type_JavaLangRunnable = new hij(this);
+    this.jdField_a_of_type_AndroidOsHandler = new hin(this);
+    this.jdField_b_of_type_JavaLangRunnable = new hiu(this);
   }
   
   public static Bitmap a(String paramString)
@@ -298,7 +298,7 @@ public class AuthorityActivity
       }
       localNewIntent.putExtra("data", (byte[])localObject1);
       localNewIntent.putExtra("cmd", (String)localObject2);
-      localNewIntent.setObserver(new him(this));
+      localNewIntent.setObserver(new hil(this));
       super.getAppRuntime().startServlet(localNewIntent);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
@@ -360,7 +360,7 @@ public class AuthorityActivity
     localNewIntent.putExtra("data", paramGetAuthApiListRequest);
     localNewIntent.putExtra("cmd", str);
     this.w = 0;
-    localNewIntent.setObserver(new hij(this));
+    localNewIntent.setObserver(new hii(this));
     super.getAppRuntime().startServlet(localNewIntent);
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
@@ -822,7 +822,7 @@ public class AuthorityActivity
   {
     this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
     if (TextUtils.isEmpty(paramString)) {
-      a(String.format(super.getString(2131562322), new Object[] { Integer.valueOf(paramInt) }), new hit(this));
+      a(String.format(super.getString(2131562322), new Object[] { Integer.valueOf(paramInt) }), new his(this));
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     this.jdField_a_of_type_AndroidWidgetButton.setText(2131562746);
@@ -966,7 +966,7 @@ public class AuthorityActivity
     if (TextUtils.isEmpty(paramString)) {}
     for (paramString = String.format(super.getString(2131562322), new Object[] { Integer.valueOf(paramInt) });; paramString = String.format(super.getString(2131561498), new Object[] { paramString, Integer.valueOf(paramInt) }))
     {
-      a(paramString, new hiu(this, paramInt, localJSONObject));
+      a(paramString, new hit(this, paramInt, localJSONObject));
       return;
     }
   }
@@ -1187,18 +1187,18 @@ public class AuthorityActivity
   protected void g()
   {
     this.jdField_k_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232098));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232097));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131232097);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131232096);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232093));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232094));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232547));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131232099));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232092));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232093));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232546));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131232098));
     this.jdField_y_of_type_JavaLangString = ((String)super.getText(2131562313));
     this.jdField_z_of_type_JavaLangString = ((String)super.getText(2131561674));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232546));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232545));
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
   }
   
@@ -1310,7 +1310,7 @@ public class AuthorityActivity
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentOpenWidgetPermissionView);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232108));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232107));
   }
   
   public void o()
@@ -1784,7 +1784,7 @@ public class AuthorityActivity
     }
     ((NewIntent)localObject5).putExtra("data", (byte[])localObject1);
     ((NewIntent)localObject5).putExtra("cmd", (String)localObject3);
-    ((NewIntent)localObject5).setObserver(new hin(this));
+    ((NewIntent)localObject5).setObserver(new him(this));
     super.getAppRuntime().startServlet((NewIntent)localObject5);
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);

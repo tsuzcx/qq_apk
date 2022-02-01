@@ -1,14 +1,17 @@
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.data.OnlineFileSessionInfo;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class ftv
   implements Runnable
 {
-  public ftv(FileTransferHandler paramFileTransferHandler, int paramInt1, String paramString1, String paramString2, long paramLong1, short paramShort, boolean paramBoolean, int paramInt2, String paramString3, OnlineFileSessionInfo paramOnlineFileSessionInfo, long paramLong2) {}
+  public ftv(FileTransferHandler paramFileTransferHandler, long paramLong, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Short, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataOnlineFileSessionInfo, this.jdField_b_of_type_Long);
+    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "]  handle cmd 0x211-0x1.save to weiyun");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 4);
   }
 }
 

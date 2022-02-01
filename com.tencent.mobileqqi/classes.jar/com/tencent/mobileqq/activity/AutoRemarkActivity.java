@@ -16,8 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import bwg;
 import bwh;
-import bwi;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.MessageHandler;
@@ -70,9 +70,9 @@ public class AutoRemarkActivity
   private ImageView jdField_a_of_type_AndroidWidgetImageView = null;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
   public TextView a;
-  private bwi jdField_a_of_type_Bwi = new bwi(this, null);
+  private bwh jdField_a_of_type_Bwh = new bwh(this, null);
   public FriendListHandler a;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bwh(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new bwg(this);
   public QQProgressDialog a;
   private Switch jdField_a_of_type_ComTencentWidgetSwitch;
   boolean jdField_a_of_type_Boolean;
@@ -202,11 +202,11 @@ public class AutoRemarkActivity
     {
       k = 2131562139;
       setTitle(k);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231149));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231153));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231152));
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231151));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231155));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231148));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231152));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231151));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231150));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231154));
       if (this.e != 0) {
         break label486;
       }
@@ -238,10 +238,10 @@ public class AutoRemarkActivity
       d(true);
       if (!this.jdField_a_of_type_Boolean)
       {
-        this.c = ((RelativeLayout)findViewById(2131231157));
+        this.c = ((RelativeLayout)findViewById(2131231156));
         this.c.setVisibility(0);
-        findViewById(2131231159).setVisibility(0);
-        this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131231158));
+        findViewById(2131231158).setVisibility(0);
+        this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131231157));
         this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this);
       }
       this.k.setContentDescription("返回" + this.k.getText().toString() + "界面");
@@ -252,7 +252,7 @@ public class AutoRemarkActivity
       {
         this.c.setFocusable(true);
         this.c.setContentDescription(getResources().getString(2131562283) + "关闭");
-        findViewById(2131231159).setFocusable(true);
+        findViewById(2131231158).setFocusable(true);
       }
       return;
       k = 2131561597;
@@ -434,7 +434,7 @@ public class AutoRemarkActivity
     this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(1));
     e();
     d();
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Bwi);
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Bwh);
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, d());
     if (((paramBundle == null) || (this.e == 1)) && (NetworkUtil.e(this)) && (c()))
@@ -448,7 +448,7 @@ public class AutoRemarkActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Bwi);
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_Bwh);
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
   }
   

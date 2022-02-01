@@ -1,16 +1,15 @@
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.service.HttpNotify;
+import java.util.TimerTask;
 
 public class fbc
-  implements HttpNotify
+  extends TimerTask
 {
   public fbc(DataLineHandler paramDataLineHandler) {}
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(long paramLong1, boolean paramBoolean, long paramLong2) {}
+  public void run()
+  {
+    this.a.a();
+  }
 }
 
 

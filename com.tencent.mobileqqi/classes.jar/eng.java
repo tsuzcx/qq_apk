@@ -1,6 +1,5 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoMagicStickUtils;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 import java.util.ArrayList;
 
@@ -11,7 +10,9 @@ public class eng
   
   public void onClick(View paramView)
   {
-    PhotoMagicStickUtils.a((String)PhotoPreviewActivity.a(this.a).get(0), this.a, this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c);
+    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      PhotoPreviewActivity.a(this.a, PhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_Int, PhotoPreviewActivity.a(this.a));
+    }
   }
 }
 

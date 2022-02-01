@@ -15,7 +15,7 @@ import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.data.RecommendTroopInfo;
 import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.statistics.ReportController;
-import gdi;
+import gdh;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,19 +31,19 @@ public class RecommendTroopMessage
   public RecommendTroopMessage()
   {
     super(3);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdh(this);
   }
   
   public RecommendTroopMessage(int paramInt)
   {
     super(3, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdh(this);
   }
   
   public RecommendTroopMessage(RecommendTroopInfo paramRecommendTroopInfo, QQAppInterface paramQQAppInterface)
   {
     super(3);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdh(this);
     if (paramRecommendTroopInfo != null)
     {
       this.o = 1;
@@ -56,7 +56,7 @@ public class RecommendTroopMessage
   public RecommendTroopMessage(List paramList, QQAppInterface paramQQAppInterface)
   {
     super(3);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gdh(this);
     if (paramList != null)
     {
       this.o = paramList.size();
@@ -132,15 +132,15 @@ public class RecommendTroopMessage
     if (this.o > 0)
     {
       paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(e(), paramViewGroup, false);
-      Object localObject = (ImageView)paramView.findViewById(2131232919);
-      paramViewGroup = (TextView)paramView.findViewById(2131232921);
+      Object localObject = (ImageView)paramView.findViewById(2131232918);
+      paramViewGroup = (TextView)paramView.findViewById(2131232920);
       a((ImageView)localObject);
       if (this.o > 1)
       {
         localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131560407) + "(" + this.o + ")";
         paramViewGroup.setText((CharSequence)localObject);
         paramViewGroup.setContentDescription((CharSequence)localObject);
-        paramViewGroup = (TextView)paramView.findViewById(2131232922);
+        paramViewGroup = (TextView)paramView.findViewById(2131232921);
         localObject = a();
         paramViewGroup.setText((CharSequence)localObject);
         paramViewGroup.setContentDescription((CharSequence)localObject);

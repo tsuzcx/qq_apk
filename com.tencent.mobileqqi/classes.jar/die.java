@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.SetTroopAdminsActivity.TroopAdmin;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
-public final class die
-  implements Parcelable.Creator
+public class die
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public SetTroopAdminsActivity.TroopAdmin a(Parcel paramParcel)
-  {
-    return new SetTroopAdminsActivity.TroopAdmin(paramParcel, null);
-  }
-  
-  public SetTroopAdminsActivity.TroopAdmin[] a(int paramInt)
-  {
-    return new SetTroopAdminsActivity.TroopAdmin[paramInt];
-  }
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

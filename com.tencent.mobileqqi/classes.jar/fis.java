@@ -1,33 +1,18 @@
-import com.tencent.mobileqq.app.message.AccostMessageProcessor;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.mobileqq.app.message.BaseMessageManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
 
 public class fis
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
-  public long e;
+  public fis(BaseMessageManager paramBaseMessageManager, String paramString, int paramInt1, int paramInt2, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext) {}
   
-  public fis(AccostMessageProcessor paramAccostMessageProcessor, long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList paramArrayList, String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public fis(AccostMessageProcessor paramAccostMessageProcessor, long paramLong, ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.a("refreshMessageListHead uin = " + this.jdField_a_of_type_JavaLangString + ", type = " + this.jdField_a_of_type_Int + ", count = " + this.b + ", context = " + this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext, ", timestamp = " + System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.a.post(new fit(this));
   }
 }
 

@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class icv
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public icv(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QzoneWebMusicJsPlugin.access$200(this.a, "buttonclick");
+    this.a.resumePlay();
+    QzoneWebMusicJsPlugin.access$002(this.a, true);
+    paramDialogInterface.dismiss();
+    QzoneWebMusicJsPlugin.access$302(this.a, false);
   }
 }
 

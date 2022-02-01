@@ -33,12 +33,12 @@ public abstract class GroupAreaWrapper$BaseInfo
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903384, paramViewGroup, false);
     paramViewGroup = new NearbyTroops.ActivityAndTopicViewHolder();
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131232389));
-    paramViewGroup.b = ((TextView)paramContext.findViewById(2131232391));
-    paramViewGroup.c = ((TextView)paramContext.findViewById(2131232395));
-    paramViewGroup.d = ((TextView)paramContext.findViewById(2131232396));
-    paramViewGroup.e = ((TextView)paramContext.findViewById(2131232397));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131232393));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131232388));
+    paramViewGroup.b = ((TextView)paramContext.findViewById(2131232390));
+    paramViewGroup.c = ((TextView)paramContext.findViewById(2131232394));
+    paramViewGroup.d = ((TextView)paramContext.findViewById(2131232395));
+    paramViewGroup.e = ((TextView)paramContext.findViewById(2131232396));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131232392));
     paramContext.setTag(paramViewGroup);
     a(paramContext);
     return paramContext;
@@ -68,11 +68,11 @@ public abstract class GroupAreaWrapper$BaseInfo
       try
       {
         localActivityAndTopicViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable(this.e));
-        localObject = (RelativeLayout)paramView.findViewById(2131232388);
+        localObject = (RelativeLayout)paramView.findViewById(2131232387);
         if (localObject != null) {
           ((RelativeLayout)localObject).setOnClickListener(this);
         }
-        paramView = (RelativeLayout)paramView.findViewById(2131232392);
+        paramView = (RelativeLayout)paramView.findViewById(2131232391);
         if (paramView != null) {
           paramView.setOnClickListener(this);
         }
@@ -92,7 +92,7 @@ public abstract class GroupAreaWrapper$BaseInfo
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131232388)
+    if (i == 2131232387)
     {
       localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
       localIntent.putExtra("url", this.f);
@@ -100,7 +100,7 @@ public abstract class GroupAreaWrapper$BaseInfo
       localIntent.putExtra("hide_more_button", true);
       paramView.getContext().startActivity(localIntent);
     }
-    while (i != 2131232392) {
+    while (i != 2131232391) {
       return;
     }
     Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);

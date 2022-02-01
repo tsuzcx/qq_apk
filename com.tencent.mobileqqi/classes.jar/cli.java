@@ -1,19 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ForwardOperations;
 
 public class cli
-  implements DialogInterface.OnDismissListener
+  implements Handler.Callback
 {
-  public cli(ForwardFriendListActivity paramForwardFriendListActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  public cli(ForwardOperations paramForwardOperations) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    ForwardFriendListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardFriendListActivity, null);
+    ForwardOperations.a(this.a).sendEmptyMessage(1);
+    return false;
   }
 }
 

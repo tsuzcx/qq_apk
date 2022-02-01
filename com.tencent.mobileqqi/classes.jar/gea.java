@@ -1,84 +1,28 @@
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PicPreDownloader;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.ReportInfo;
 
-public class gea
-  extends BroadcastReceiver
+public final class gea
+  implements Parcelable.Creator
 {
-  private String a;
-  
-  public gea(String paramString)
+  public ReportInfo a(Parcel paramParcel)
   {
-    this.a = paramString;
+    ReportInfo localReportInfo = new ReportInfo();
+    localReportInfo.e = paramParcel.readInt();
+    localReportInfo.f = paramParcel.readInt();
+    localReportInfo.g = paramParcel.readInt();
+    localReportInfo.j = paramParcel.readInt();
+    localReportInfo.h = paramParcel.readInt();
+    localReportInfo.i = paramParcel.readInt();
+    localReportInfo.a = paramParcel.readLong();
+    localReportInfo.b = paramParcel.readLong();
+    localReportInfo.c = paramParcel.readLong();
+    return localReportInfo;
   }
   
-  public boolean a(Context paramContext)
+  public ReportInfo[] a(int paramInt)
   {
-    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    boolean bool = true;
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent))
-    {
-      PicPreDownloader.a(PicPreDownloader.a());
-      if (!a(paramContext))
-      {
-        PicPreDownloader.b(bool);
-        label36:
-        Logger.a("PIC_TAG_PRELOAD", "onReceive", "isScreenOn:" + PicPreDownloader.a() + ",lastScreenOnState:" + PicPreDownloader.b());
-        if (PicPreDownloader.b() != PicPreDownloader.a()) {
-          break label138;
-        }
-      }
-    }
-    for (;;)
-    {
-      return;
-      bool = false;
-      break;
-      if ("android.intent.action.SCREEN_OFF".equals(paramIntent))
-      {
-        PicPreDownloader.a(PicPreDownloader.a());
-        PicPreDownloader.b(false);
-        break label36;
-      }
-      if (!"android.intent.action.USER_PRESENT".equals(paramIntent)) {
-        break label36;
-      }
-      PicPreDownloader.a(PicPreDownloader.a());
-      PicPreDownloader.b(true);
-      break label36;
-      try
-      {
-        label138:
-        paramContext = (QQAppInterface)BaseApplicationImpl.a.getAppRuntime(this.a);
-        if (paramContext == null) {
-          continue;
-        }
-        paramContext = paramContext.a();
-        if (paramContext == null) {
-          continue;
-        }
-        paramContext.d();
-        PicPreDownloader.a(paramContext);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          paramContext = null;
-        }
-      }
-    }
+    return new ReportInfo[paramInt];
   }
 }
 

@@ -271,10 +271,10 @@ public class EnterpriseDetailActivity
         if (paramConfigInfo.state_id.get() == 5)
         {
           localObject1 = ((LayoutInflater)localObject2).inflate(2130904009, null);
-          localObject2 = ((View)localObject1).findViewById(2131234580);
-          ((TextView)((View)localObject1).findViewById(2131234581)).setVisibility(0);
+          localObject2 = ((View)localObject1).findViewById(2131234579);
+          ((TextView)((View)localObject1).findViewById(2131234580)).setVisibility(0);
           label589:
-          localObject3 = (Switch)((View)localObject2).findViewById(2131231508);
+          localObject3 = (Switch)((View)localObject2).findViewById(2131231507);
           ((Switch)localObject3).setContentDescription(paramConfigInfo.title.get());
           if (paramConfigInfo.state.get() != 1) {
             break label677;
@@ -307,7 +307,7 @@ public class EnterpriseDetailActivity
         localObject2 = paramConfigInfo.url.get();
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          ((View)localObject1).findViewById(2131232071).setVisibility(0);
+          ((View)localObject1).findViewById(2131232070).setVisibility(0);
           ((View)localObject1).setOnClickListener(new bih(this, (String)localObject2));
         }
         for (boolean bool = true;; bool = false)
@@ -319,7 +319,7 @@ public class EnterpriseDetailActivity
             ((TextView)((View)localObject1).findViewById(2131231118)).setText((CharSequence)localObject3);
             localObject3 = ((JSONObject)localObject2).getJSONArray("pic_list");
             localObject2 = ((JSONObject)localObject2).getJSONArray("thumb_list");
-            a(bool, (LinearLayout)((View)localObject1).findViewById(2131232070), (JSONArray)localObject3, (JSONArray)localObject2);
+            a(bool, (LinearLayout)((View)localObject1).findViewById(2131232069), (JSONArray)localObject3, (JSONArray)localObject2);
             localObject3 = localObject4;
           }
           catch (JSONException localJSONException)
@@ -331,7 +331,7 @@ public class EnterpriseDetailActivity
             localObject3 = localObject4;
           }
           break;
-          ((View)localObject1).findViewById(2131232071).setVisibility(8);
+          ((View)localObject1).findViewById(2131232070).setVisibility(8);
         }
       }
       localObject1 = localJSONException.inflate(2130903196, null);

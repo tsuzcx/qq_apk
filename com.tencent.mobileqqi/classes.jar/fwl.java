@@ -1,60 +1,95 @@
-import com.tencent.mobileqq.filemanager.core.ThumbDownLoader;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import java.io.FileOutputStream;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class fwl
+  implements UniformDownloader.IUniformDownloaderListener
 {
-  public int a;
-  public long a;
-  public FileManagerEntity a;
-  public HttpMsg a;
-  public FileOutputStream a;
-  public String a;
-  public int[] a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public long e;
+  public fwl(UniformDownloadMgr paramUniformDownloadMgr) {}
   
-  public fwl(ThumbDownLoader paramThumbDownLoader)
+  public String a(File paramFile)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = null;
-    this.jdField_a_of_type_JavaIoFileOutputStream = null;
-    this.jdField_a_of_type_ArrayOfInt = new int[0];
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_d_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-  }
-  
-  public String toString()
-  {
-    String str = "taskid[" + String.valueOf(this.jdField_d_of_type_Long) + "]";
-    str = str + "EntitySessionId[" + String.valueOf(this.jdField_a_of_type_Long) + "]";
-    StringBuilder localStringBuilder = new StringBuilder().append(str);
-    if ("discUin[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {}
-    for (str = "entity null";; str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin) + "]")
+    String str1 = "*/*";
+    paramFile = paramFile.getName();
+    int i = paramFile.lastIndexOf('.');
+    Object localObject;
+    if (i < 0) {
+      localObject = str1;
+    }
+    String str2;
+    do
     {
-      str = str;
-      str = str + "recvdSize[" + String.valueOf(this.jdField_c_of_type_Long) + "]";
-      str = str + "thumbSize[" + String.valueOf(this.jdField_a_of_type_Int) + "]";
-      return str + "retryTimes[" + String.valueOf(this.jdField_b_of_type_Int) + "]";
+      return localObject;
+      str2 = paramFile.substring(i, paramFile.length()).toLowerCase();
+      localObject = str1;
+    } while (TextUtils.isEmpty(str2));
+    i = 0;
+    paramFile = str1;
+    for (;;)
+    {
+      localObject = paramFile;
+      if (i >= UniformDownloadMgr.a().length) {
+        break;
+      }
+      if (str2.equals(UniformDownloadMgr.a()[i][0])) {
+        paramFile = UniformDownloadMgr.a()[i][1];
+      }
+      i += 1;
     }
   }
+  
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    UniformDownloadMgr.a(this.a);
+  }
+  
+  public void a(Context paramContext, File paramFile)
+  {
+    Intent localIntent = new Intent();
+    localIntent.addFlags(268435456);
+    localIntent.setAction("android.intent.action.VIEW");
+    String str = a(paramFile);
+    localIntent.setDataAndType(Uri.fromFile(paramFile), str);
+    paramContext.startActivity(localIntent);
+  }
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    paramBundle.getInt("_CB_SID");
+    paramBundle = paramBundle.getString("_CB_URL");
+    UniformDownloadMgr.a(this.a, paramBundle);
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>insertFM and install. PH:" + paramString + " SZ:" + paramLong);
+    if (this.a.a != null) {
+      this.a.a.a().a(null, -1, paramString, paramLong, 16, null, null);
+    }
+    for (;;)
+    {
+      if (UniformDownloadUtil.a(paramString) == -1) {
+        a(this.a.a.a(), new File(paramString));
+      }
+      UniformDownloadMgr.a(this.a);
+      return;
+      FileManagerUtil.c(paramString);
+    }
+  }
+  
+  public void b(int paramInt, Bundle paramBundle) {}
+  
+  public void c(int paramInt, Bundle paramBundle) {}
+  
+  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

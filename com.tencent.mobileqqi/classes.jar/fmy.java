@@ -1,54 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.util.Log;
 import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.qphone.base.util.QLog;
 
 public class fmy
-  extends ContactBindObserver
+  implements Runnable
 {
   public fmy(ContactSyncManager paramContactSyncManager) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    Object localObject = (PhoneContactManager)this.a.a.getManager(10);
-    int i = ((PhoneContactManager)localObject).b();
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "onQueryBindState | state = " + i);
-    }
-    String str;
-    if (((PhoneContactManager)localObject).h())
+    try
     {
-      localObject = this.a.a.a();
-      str = this.a.a();
-      if (!TextUtils.isEmpty(str)) {}
+      this.a.a();
+      return;
     }
-    do
+    catch (Throwable localThrowable)
     {
-      do
-      {
-        ContactSyncManager.a(this.a);
-        do
-        {
-          return;
-        } while (((String)localObject).equals(str));
-        ContactSyncManager.a(this.a);
-        ContactSyncManager.a(this.a);
-        return;
-      } while ((i != 2) && (i != 1));
-      ContactSyncManager.b(this.a);
-      localObject = this.a.a();
-    } while ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equals(this.a.a.a())));
-    ContactSyncManager.a(this.a);
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "onQueryContactList | isSuccess = " + paramBoolean1 + " | hasUpdate = " + paramBoolean2);
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ContactSync.Manager", 2, "onQQContactRefreshed | syncAllContacts exception = " + Log.getStackTraceString(localThrowable));
     }
-    this.a.b();
   }
 }
 

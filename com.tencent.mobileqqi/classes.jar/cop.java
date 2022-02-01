@@ -1,64 +1,34 @@
-import com.tencent.mobileqq.activity.FriendProfileImageModel.InfoUpdateListener;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
 import com.tencent.mobileqq.activity.FriendProfileImagePortraits;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.service.lbs.LbsPortraitUtil;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Stack;
 
 public class cop
-  extends CardObserver
+  extends Handler
 {
   public cop(FriendProfileImagePortraits paramFriendProfileImagePortraits) {}
   
-  protected void a(boolean paramBoolean, Card paramCard, int paramInt, byte[] paramArrayOfByte)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.PhotoWall", 2, "onDeletePortrait() isSuccess: " + paramBoolean);
+    switch (paramMessage.what)
+    {
     }
-    if (!paramCard.uin.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a())) {}
     do
     {
-      do
+      return;
+      paramMessage = (String)FriendProfileImagePortraits.a(this.a).pop();
+      if ((TextUtils.isEmpty(paramMessage)) && (FriendProfileImagePortraits.a(this.a) != null))
       {
-        do
-        {
-          return;
-          switch (paramInt)
-          {
-          default: 
-            return;
-          case 0: 
-            paramCard = HexUtil.a(paramArrayOfByte);
-            this.a.a(paramCard);
-          }
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener == null);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.b();
-        return;
-        LbsPortraitUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), this.a.b, 0);
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener == null);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.c();
-      return;
-      LbsPortraitUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), this.a.b, 0);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.b();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt, Card paramCard)
-  {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener.a();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, ArrayList paramArrayList, long paramLong, byte[] paramArrayOfByte)
-  {
-    if ((!paramBoolean) || (this.a.b == null) || (!this.a.b.equals(paramString))) {
-      return;
-    }
-    this.a.a(this.a.a());
+        paramMessage = (FriendProfileImageModel.ProfileImageInfo)FriendProfileImagePortraits.a(this.a).get(paramMessage);
+        if (paramMessage != null) {
+          this.a.e(paramMessage);
+        }
+      }
+    } while (FriendProfileImagePortraits.a(this.a).isEmpty());
+    FriendProfileImagePortraits.a(this.a).sendEmptyMessageDelayed(1, 300L);
   }
 }
 

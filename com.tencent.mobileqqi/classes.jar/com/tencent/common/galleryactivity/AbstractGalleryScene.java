@@ -190,7 +190,7 @@ public abstract class AbstractGalleryScene
     for (;;)
     {
       b((ViewGroup)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131231116));
-      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131231777));
+      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131231776));
       this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131230991);
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView = a(this.jdField_a_of_type_AndroidAppActivity);
       if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView != null) {

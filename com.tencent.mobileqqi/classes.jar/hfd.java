@@ -1,20 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.FrameLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.widget.AntiphingToast;
 
 public class hfd
-  extends Handler
+  implements Animation.AnimationListener
 {
   public hfd(AntiphingToast paramAntiphingToast) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramMessage.what == 1) {
-      this.a.a(0.0F, 0 - AntiphingToast.a(this.a).getHeight(), true);
-    }
-    super.handleMessage(paramMessage);
+    AntiphingToast.a(this.a, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

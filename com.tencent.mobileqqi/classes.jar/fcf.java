@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.app.Frame;
-import com.tencent.mobileqq.app.FrameActivity;
-import java.util.Collection;
-import java.util.Iterator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.FriendListHandler;
 
 public class fcf
-  implements Runnable
+  extends Handler
 {
-  public fcf(FrameActivity paramFrameActivity, Collection paramCollection) {}
-  
-  public void run()
+  public fcf(FriendListHandler paramFriendListHandler, Looper paramLooper)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilCollection.iterator();
-    while (localIterator.hasNext()) {
-      ((Frame)localIterator.next()).b();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    FriendListHandler.a(this.a);
   }
 }
 

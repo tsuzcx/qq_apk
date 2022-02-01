@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:focusable="false" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08045f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00d6">
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080470" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="6.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d056f" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a7" />
-        <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080471" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:choiceMode="singleChoice" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08045e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00d6">
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08046f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="6.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d056f" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a7" />
+        <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080470" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:choiceMode="singleChoice" />
     </LinearLayout>
 </RelativeLayout>

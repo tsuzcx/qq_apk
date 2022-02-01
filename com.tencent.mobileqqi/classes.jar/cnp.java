@@ -1,15 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class cnp
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public cnp(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public cnp(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FriendProfileImageActivity.a(this.a);
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.c) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
   }
 }
 

@@ -7,7 +7,7 @@ public class dxx
   
   public void run()
   {
-    this.a.d();
+    this.a.e();
   }
 }
 

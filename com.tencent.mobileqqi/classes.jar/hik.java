@@ -1,28 +1,14 @@
-import android.app.ProgressDialog;
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.open.agent.AuthorityActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class hik
-  implements Runnable
+class hik
+  implements DialogInterface.OnClickListener
 {
-  public hik(AuthorityActivity paramAuthorityActivity) {}
+  hik(hij paramhij) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.a.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
-      this.a.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
-    }
-    if (this.a.w == 0) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131562746);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.a.a(this.a.getResources().getString(2131562443), new hil(this));
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.y);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

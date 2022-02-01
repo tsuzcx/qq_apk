@@ -1,10 +1,16 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.SubAccountMessageActivity;
 
 public class dlp
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
   public dlp(SubAccountMessageActivity paramSubAccountMessageActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.f();
+  }
 }
 
 

@@ -1,27 +1,31 @@
 import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.widget.Gallery;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class cof
-  implements Runnable
+public class cof
+  implements ActionSheet.OnButtonClickListener
 {
-  cof(coe paramcoe) {}
+  public cof(FriendProfileImageActivity paramFriendProfileImageActivity, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a.jdField_a_of_type_Int != this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b()) {
-      this.a.a.jdField_a_of_type_Int = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b();
-    }
-    View localView;
-    do
+    switch (paramInt)
     {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      localView = this.a.a.jdField_a_of_type_ComTencentWidgetGallery.a();
-    } while (localView == null);
-    this.a.a.jdField_a_of_type_AndroidViewView = localView;
-    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
-    this.a.a.a(this.a.a.jdField_a_of_type_ComTencentWidgetGallery, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.e);
+      continue;
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+      }
+    }
   }
 }
 

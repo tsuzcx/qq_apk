@@ -1,9 +1,15 @@
-import android.view.View;
+import com.tencent.mobileqq.widget.ImageViewTouchBase;
+import com.tencent.mobileqq.widget.RotateBitmap;
 
 public class hgs
+  implements Runnable
 {
-  private static final int a = 12;
-  public View[] a = new View[12];
+  public hgs(ImageViewTouchBase paramImageViewTouchBase, RotateBitmap paramRotateBitmap, boolean paramBoolean) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.setImageRotateBitmapResetBase(this.jdField_a_of_type_ComTencentMobileqqWidgetRotateBitmap, this.jdField_a_of_type_Boolean);
+  }
 }
 
 

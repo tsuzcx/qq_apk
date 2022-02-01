@@ -1,25 +1,28 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.HornListActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.HornDetail;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class cqg
   implements View.OnClickListener
 {
-  public cqg(HornListActivity paramHornListActivity, String paramString) {}
+  public cqg(HornListActivity paramHornListActivity) {}
   
   public void onClick(View paramView)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.b, "P_CliOper", "Svip", "", "Vip_nearby", "Vip_nearby_enterProfileCard", 0, 0, "", "", "", "");
-    paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_JavaLangString, 41);
-    paramView.g = this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.a.nickName;
-    paramView.a = this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.a.seg;
-    paramView.e = 4;
-    paramView.f = 5;
-    ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity, paramView);
+    if (HornListActivity.a(this.a))
+    {
+      HornListActivity.a(this.a, false);
+      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("uin", this.a.b.a());
+      paramView.putExtra("isShowAd", false);
+      paramView.putExtra("url", String.format("http://imgcache.qq.com/club/horn/rel/comment.html?hornKey=%1$s&_bid=179&uin=%2$s&pvsrc=nearby&_wv=5123", new Object[] { this.a.jdField_a_of_type_ComTencentMobileqqDataHornDetail.hornKey, this.a.b.a() }));
+      paramView.putExtra("business", 2147549184L);
+      this.a.startActivity(paramView);
+    }
   }
 }
 

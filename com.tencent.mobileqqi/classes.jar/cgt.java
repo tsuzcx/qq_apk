@@ -1,6 +1,8 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.TransFileController;
 
 public class cgt
   implements DialogInterface.OnClickListener
@@ -9,7 +11,8 @@ public class cgt
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.cancel();
+    this.a.b.a().e();
+    this.a.finish();
   }
 }
 

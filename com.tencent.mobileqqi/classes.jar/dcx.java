@@ -10,7 +10,7 @@ public class dcx
   
   public void onClick(View paramView)
   {
-    this.a.a.zoomOut();
+    this.a.a.zoomIn();
     this.a.o();
   }
 }

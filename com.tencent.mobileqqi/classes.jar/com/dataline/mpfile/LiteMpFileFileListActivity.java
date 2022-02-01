@@ -276,18 +276,18 @@ public class LiteMpFileFileListActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232799));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232798));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232797));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232796));
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232800));
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232799));
       this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232793));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232792));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231294));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231293));
       this.jdField_a_of_type_ComDatalineMpfileMpfileFileListAdapter = new MpfileFileListAdapter(this);
       this.jdField_a_of_type_ComDatalineMpfileMpfileFileListAdapter.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131231199));
+      this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131231198));
       this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComDatalineMpfileMpfileFileListAdapter);
       this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this);
       localObject = new IntentFilter();

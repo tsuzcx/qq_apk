@@ -5,7 +5,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.util.VersionUtils;
-import dxo;
+import dxn;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -16,7 +16,7 @@ public class FloorJumperSet
   @SuppressLint({"NewApi"})
   static final long jdField_a_of_type_Long;
   public static final int b;
-  dxo jdField_a_of_type_Dxo;
+  dxn jdField_a_of_type_Dxn;
   public ArrayList a;
   private long b;
   
@@ -97,11 +97,11 @@ public class FloorJumperSet
       FloorJumper localFloorJumper = new FloorJumper(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView);
       this.jdField_a_of_type_JavaUtilArrayList.add(localFloorJumper);
       localFloorJumper.a(paramVarArgs);
-      if (this.jdField_a_of_type_Dxo == null)
+      if (this.jdField_a_of_type_Dxn == null)
       {
-        this.jdField_a_of_type_Dxo = new dxo(this, null);
+        this.jdField_a_of_type_Dxn = new dxn(this, null);
         if (this.jdField_b_of_type_Long == 0L) {
-          this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.postDelayed(this.jdField_a_of_type_Dxo, jdField_a_of_type_Long);
+          this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.postDelayed(this.jdField_a_of_type_Dxn, jdField_a_of_type_Long);
         }
       }
       return true;
@@ -125,9 +125,9 @@ public class FloorJumperSet
         localIterator.remove();
       }
     }
-    if ((i != 0) && (this.jdField_a_of_type_Dxo != null))
+    if ((i != 0) && (this.jdField_a_of_type_Dxn != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.post(this.jdField_a_of_type_Dxo);
+      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.post(this.jdField_a_of_type_Dxn);
       return;
     }
     d();
@@ -135,10 +135,10 @@ public class FloorJumperSet
   
   protected void c()
   {
-    if (this.jdField_a_of_type_Dxo != null)
+    if (this.jdField_a_of_type_Dxn != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_Dxo);
-      this.jdField_a_of_type_Dxo = null;
+      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_Dxn);
+      this.jdField_a_of_type_Dxn = null;
     }
   }
 }

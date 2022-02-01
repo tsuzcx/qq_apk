@@ -15,7 +15,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
-import gyn;
+import gym;
 
 public class AvatarWallView
   extends GridView
@@ -60,7 +60,7 @@ public class AvatarWallView
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new gyn(this);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new gym(this);
   }
   
   public AvatarWallView(Context paramContext, AttributeSet paramAttributeSet)
@@ -74,7 +74,7 @@ public class AvatarWallView
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new gyn(this);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new gym(this);
     setOnItemLongClickListener(this);
     setChildrenDrawingOrderEnabled(true);
   }

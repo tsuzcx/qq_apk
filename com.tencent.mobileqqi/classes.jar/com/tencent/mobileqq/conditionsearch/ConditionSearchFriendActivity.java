@@ -31,6 +31,7 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
+import fld;
 import fle;
 import flf;
 import flg;
@@ -40,7 +41,6 @@ import flj;
 import flk;
 import fll;
 import flm;
-import fln;
 import java.util.List;
 
 public class ConditionSearchFriendActivity
@@ -63,16 +63,16 @@ public class ConditionSearchFriendActivity
   private static final int n = 1000;
   private static final int o = 1001;
   public int a;
-  DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new flk(this);
+  DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new flj(this);
   public Handler a;
   Button jdField_a_of_type_AndroidWidgetButton;
   EditText jdField_a_of_type_AndroidWidgetEditText;
-  ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener = new fln(this);
-  ConditionSearchManager.ISearchListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$ISearchListener = new flm(this);
+  ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener = new flm(this);
+  ConditionSearchManager.ISearchListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$ISearchListener = new fll(this);
   public ConditionSearchManager a;
-  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new flf(this);
-  IphonePickerView.IphonePickListener jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener = new flj(this);
-  IphonePickerView.PickerViewAdapter jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter = new fli(this);
+  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new fle(this);
+  IphonePickerView.IphonePickListener jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener = new fli(this);
+  IphonePickerView.PickerViewAdapter jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter = new flh(this);
   public IphonePickerView a;
   public FormSimpleItem a;
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
@@ -103,7 +103,7 @@ public class ConditionSearchFriendActivity
   {
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new fll(this);
+    this.jdField_a_of_type_AndroidOsHandler = new flk(this);
     this.jdField_d_of_type_Boolean = false;
     this.jdField_c_of_type_ArrayOfJavaLangString = null;
   }
@@ -149,12 +149,12 @@ public class ConditionSearchFriendActivity
     this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.c();
     this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131231069));
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(20) });
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new fle(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232914));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232915));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232916));
-    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232917));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232918));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new fld(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232913));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232914));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232915));
+    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131232916));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232917));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftIcon(null);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftText(getResources().getString(2131562161));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int]);
@@ -182,7 +182,7 @@ public class ConditionSearchFriendActivity
     this.jdField_c_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a();
     if (this.jdField_c_of_type_Boolean)
     {
-      if ((!this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.m()) || (!NetworkUtil.e(this))) {
+      if ((!this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.n()) || (!NetworkUtil.e(this))) {
         break label585;
       }
       a(this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
@@ -297,10 +297,10 @@ public class ConditionSearchFriendActivity
     }
     if (this.jdField_c_of_type_ArrayOfJavaLangString[0] == "-1")
     {
-      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new flg(this));
+      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new flf(this));
       return;
     }
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new flh(this));
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new flg(this));
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -398,7 +398,7 @@ public class ConditionSearchFriendActivity
     {
     default: 
       return;
-    case 2131232918: 
+    case 2131232917: 
       ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800424B", "0X800424B", 0, 0, "", "", "", "");
       if (!NetworkUtil.e(this))
       {
@@ -412,13 +412,13 @@ public class ConditionSearchFriendActivity
       this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramView, arrayOfString);
       a(3, getString(2131562333));
       return;
-    case 2131232915: 
+    case 2131232914: 
       b(0);
       return;
-    case 2131232914: 
+    case 2131232913: 
       b(1);
       return;
-    case 2131232917: 
+    case 2131232916: 
       ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004245", "0X8004245", 0, 0, "", "", "", "");
       a(2);
       return;

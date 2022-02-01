@@ -4,11 +4,11 @@ import java.util.HashMap;
 class cmb
   implements Runnable
 {
-  cmb(clz paramclz, HashMap paramHashMap) {}
+  cmb(cly paramcly, HashMap paramHashMap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Clz.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(this.jdField_a_of_type_Clz.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Clz.jdField_a_of_type_Int, this.jdField_a_of_type_Clz.b, this.jdField_a_of_type_JavaUtilHashMap);
+    this.jdField_a_of_type_Cly.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(this.jdField_a_of_type_Cly.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Cly.jdField_a_of_type_Int, this.jdField_a_of_type_Cly.b, this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 

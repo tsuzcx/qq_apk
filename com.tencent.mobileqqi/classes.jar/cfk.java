@@ -1,44 +1,20 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
 import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.newfriend.NewFriendMessage;
+import com.tencent.mobileqq.newfriend.NewFriendPushListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class cfk
-  implements Animation.AnimationListener
+  implements NewFriendPushListener
 {
   public cfk(Conversation paramConversation) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(NewFriendMessage paramNewFriendMessage)
   {
-    if ((Conversation.a(this.a)) && (paramAnimation == this.a.jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation[this.a.Z]))
-    {
-      paramAnimation = this.a;
-      paramAnimation.Z += 1;
-      if ((this.a.Z >= 0) && (this.a.Z < this.a.jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation.length))
-      {
-        this.a.jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation[this.a.Z].reset();
-        Conversation.a(this.a).startAnimation(this.a.jdField_a_of_type_ArrayOfAndroidViewAnimationTranslateAnimation[this.a.Z]);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onRecommendMsgPushed");
     }
-    else
-    {
-      return;
-    }
-    paramAnimation = this.a;
-    paramAnimation.Y += 1;
-    if (this.a.Y % 2 == 0)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1029, 800L);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1029, 160L);
+    this.a.a(0L);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

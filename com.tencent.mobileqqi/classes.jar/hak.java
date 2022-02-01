@@ -1,24 +1,47 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.util.FetchBuddyAndTroopNameHelper;
+import com.tencent.mobileqq.util.FetchInfoListManager.FetchInfoListener;
+import com.tencent.mobileqq.util.FetchInfoReq;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class hak
-  extends FriendListObserver
+  implements FetchInfoListManager.FetchInfoListener
 {
-  private hak(FaceDrawable paramFaceDrawable) {}
+  public hak(FetchBuddyAndTroopNameHelper paramFetchBuddyAndTroopNameHelper) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a(FetchInfoReq paramFetchInfoReq)
   {
-    FaceDrawable.a(this.a, paramBoolean, 1, paramString, FaceDrawable.a(this.a));
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    FaceDrawable.a(this.a, paramBoolean, 11, paramString, FaceDrawable.a(this.a));
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    FaceDrawable.a(this.a, paramBoolean, 4, paramString, FaceDrawable.a(this.a));
+    if ((paramFetchInfoReq == null) || (!paramFetchInfoReq.a())) {}
+    TroopHandler localTroopHandler;
+    do
+    {
+      do
+      {
+        return;
+        localObject = (FriendListHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(1);
+        localTroopHandler = (TroopHandler)FetchBuddyAndTroopNameHelper.a(this.a).a(19);
+      } while ((localObject == null) || (localTroopHandler == null));
+      if (QLog.isColorLevel()) {
+        QLog.d(FetchBuddyAndTroopNameHelper.a(), 2, StringUtil.a(new Object[] { "fetchInfo()", paramFetchInfoReq.toString() }));
+      }
+      if (paramFetchInfoReq.f == 2)
+      {
+        localTroopHandler.j(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      if (paramFetchInfoReq.f == 1)
+      {
+        ((FriendListHandler)localObject).a(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    } while (paramFetchInfoReq.f != 3);
+    Object localObject = new ArrayList();
+    ((ArrayList)localObject).add(paramFetchInfoReq.jdField_a_of_type_JavaLangString);
+    localTroopHandler.a(paramFetchInfoReq.b, (String)paramFetchInfoReq.jdField_a_of_type_JavaLangObject, (ArrayList)localObject);
   }
 }
 

@@ -1,27 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class dou
-  extends Handler
+  implements Runnable
 {
   public dou(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (!this.a.b.isLogin()) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.h();
-      return;
-    }
-    this.a.h();
+    this.a.g();
   }
 }
 

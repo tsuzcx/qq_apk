@@ -1,12 +1,11 @@
-import java.io.File;
 import java.util.Comparator;
 
 public class hlo
   implements Comparator
 {
-  public int a(File paramFile1, File paramFile2)
+  public int a(String paramString1, String paramString2)
   {
-    return paramFile1.getName().compareTo(paramFile2.getName());
+    return paramString1.compareTo(paramString2);
   }
 }
 

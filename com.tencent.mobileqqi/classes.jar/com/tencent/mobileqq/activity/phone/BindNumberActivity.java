@@ -23,9 +23,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import ekc;
 import ekd;
 import eke;
-import ekf;
 
 public class BindNumberActivity
   extends DialogBaseActivity
@@ -69,20 +69,20 @@ public class BindNumberActivity
       if (this.jdField_a_of_type_Boolean) {
         a(2131561746, null);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232016));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232015));
       this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131558951) + " " + this.jdField_b_of_type_JavaLangString);
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131232017));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131232016));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
       this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine();
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131232019);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131232018);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131232020));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131232019));
       this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription("已同意");
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232021));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232020));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232018));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232017));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       return;
@@ -195,7 +195,7 @@ public class BindNumberActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new ekd(this), 300L);
+    this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new ekc(this), 300L);
   }
   
   public void finish()
@@ -214,7 +214,7 @@ public class BindNumberActivity
     default: 
       throw new RuntimeException("Unknown message: " + paramMessage.what);
     case 0: 
-      this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new eke(this);
+      this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ekd(this);
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       paramMessage = (PhoneContactManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
       a(2131562875, 1000L);
@@ -225,7 +225,7 @@ public class BindNumberActivity
       return true;
       if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ekf(this);
+        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new eke(this);
         this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       }
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
@@ -256,17 +256,17 @@ public class BindNumberActivity
   {
     switch (paramView.getId())
     {
-    case 2131232017: 
-    case 2131232020: 
+    case 2131232016: 
+    case 2131232019: 
     default: 
       return;
-    case 2131232016: 
+    case 2131232015: 
       h();
       return;
-    case 2131232018: 
+    case 2131232017: 
       f();
       return;
-    case 2131232021: 
+    case 2131232020: 
       i();
       return;
     }

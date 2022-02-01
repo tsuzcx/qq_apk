@@ -1,17 +1,14 @@
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.statistics.ReportController;
 
 class dzn
   implements Runnable
 {
-  dzn(dzm paramdzm, Emoticon paramEmoticon, String paramString) {}
+  dzn(dzl paramdzl) {}
   
   public void run()
   {
-    ((ChatActivity)this.jdField_a_of_type_Dzm.a.b).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 1, this.jdField_a_of_type_JavaLangString, false);
-    ReportController.b(MarketFaceItemBuilder.i(this.jdField_a_of_type_Dzm.a), "CliOper", "", "", "MbJieshou", "MbZidongBofang", 0, 0, "", "", "", "");
+    ((ChatActivity)this.a.a.b).p();
   }
 }
 

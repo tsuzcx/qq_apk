@@ -1,14 +1,14 @@
 import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
 
 class cou
   implements Runnable
 {
-  cou(cos paramcos) {}
+  cou(cor paramcor) {}
   
   public void run()
   {
-    this.a.a.a.a();
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

@@ -1,29 +1,25 @@
-import android.os.IBinder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.galleryactivity.AbstractImageListModel;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import android.os.MessageQueue.IdleHandler;
 import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageInfo;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
 
 public class ebw
-  implements View.OnClickListener
+  implements MessageQueue.IdleHandler
 {
   public ebw(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void onClick(View paramView)
+  public boolean queueIdle()
   {
-    paramView = (AIOImageInfo)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(AIOGalleryScene.a(this.a).b());
-    if ((paramView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.asBinder().pingBinder()))
+    Object localObject = this.a.a.a();
+    if (localObject != null)
     {
-      this.a.a(true);
-      this.a.jdField_a_of_type_Eca = new eca(this.a, null);
-      this.a.jdField_a_of_type_Eca.jdField_a_of_type_Long = paramView.a.jdField_a_of_type_Long;
-      this.a.jdField_a_of_type_Eca.jdField_a_of_type_Int = paramView.a.d;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.a.jdField_a_of_type_Eca.jdField_a_of_type_Long, this.a.jdField_a_of_type_Eca.jdField_a_of_type_Int, 4);
+      localObject = ((AIOImageInfo)localObject).a;
+      if ((localObject != null) && (((AIOImageData)localObject).a(4)) && (((AIOImageData)localObject).a(4) == null)) {
+        this.a.c(true);
+      }
     }
+    return false;
   }
 }
 

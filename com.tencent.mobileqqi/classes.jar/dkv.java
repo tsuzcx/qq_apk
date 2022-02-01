@@ -15,10 +15,10 @@ public class dkv
   {
     paramView = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (paramView.hasNext()) {
-      ((Stranger)paramView.next()).uiSelected = true;
+      ((Stranger)paramView.next()).uiSelected = false;
     }
     this.a.jdField_a_of_type_ComTencentMobileqqActivityStrangerManageActivity$StrangeManagerListAdapter.notifyDataSetChanged();
-    this.a.c(true);
+    this.a.c(false);
   }
 }
 

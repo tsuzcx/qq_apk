@@ -146,7 +146,7 @@ public class AboutActivity
     setContentView(2130903063);
     setTitle(2131561574);
     paramBundle = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    ((TextView)findViewById(2131230959)).setText("V 6.0.2.6602");
+    ((TextView)findViewById(2131230959)).setText("V 6.0.3.6604");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230967));
     Object localObject = new SpannableString(this.jdField_a_of_type_AndroidWidgetTextView.getText());
     if (LocaleUtil.a(getApplicationContext()) == 2)
@@ -218,18 +218,18 @@ public class AboutActivity
       }
       a(paramBundle);
       paramBundle = "appid: " + String.valueOf(AppSetting.a) + "\n";
-      paramBundle = paramBundle + "LC: CF75553BDA1428DF\n";
-      paramBundle = paramBundle + "buildNum: 6602\n";
+      paramBundle = paramBundle + "LC: C98F0817C2C04949\n";
+      paramBundle = paramBundle + "buildNum: 6604\n";
       paramBundle = paramBundle + "isDebugVersion: " + String.valueOf(false) + "\n";
-      paramBundle = paramBundle + "subVersion: 6.0.2\n";
+      paramBundle = paramBundle + "subVersion: 6.0.3\n";
       paramBundle = paramBundle + "productID: 130\n";
       paramBundle = paramBundle + "quaAppName: AQQ_2013 4.6\n";
       paramBundle = paramBundle + "supVersion: 2013\n";
-      paramBundle = paramBundle + "revision: master\n";
+      paramBundle = paramBundle + "revision: 603\n";
       paramBundle = paramBundle + "isSkinEngieAccelerated: " + String.valueOf(AppSetting.d) + "\n";
-      paramBundle = paramBundle + "reportVersionName: 6.0.2.6602\n";
-      paramBundle = paramBundle + "aboutSubVersionName: V 6.0.2.6602\n";
-      paramBundle = paramBundle + "aboutSubVersionLog: 6.0.2.6602.2020-04-24.rmaster.YingYongBao\n";
+      paramBundle = paramBundle + "reportVersionName: 6.0.3.6604\n";
+      paramBundle = paramBundle + "aboutSubVersionName: V 6.0.3.6604\n";
+      paramBundle = paramBundle + "aboutSubVersionLog: 6.0.3.6604.2020-06-24.r603.YingYongBao\n";
       paramBundle = paramBundle + "isPublicVersion: true\n";
       paramBundle = paramBundle + "versioncode: " + ApkUtils.a(this) + "\n";
       paramBundle = paramBundle + "amem: " + DeviceInfoUtil.d() / 1024L / 1024L + "\n";

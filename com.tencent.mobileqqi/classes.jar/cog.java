@@ -1,32 +1,13 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class cog
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnClickListener
 {
-  public cog(FriendProfileImageActivity paramFriendProfileImageActivity, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo, ActionSheet paramActionSheet) {}
+  public cog(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.e);
-      continue;
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

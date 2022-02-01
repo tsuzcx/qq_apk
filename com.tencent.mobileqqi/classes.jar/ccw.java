@@ -1,18 +1,20 @@
-import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.app.QvipSpecialCareObserver;
 
 public class ccw
-  implements IIconListener
+  extends QvipSpecialCareObserver
 {
   public ccw(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a(Object paramObject)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetTextView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.b == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      ChatSettingActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus, this.a.jdField_a_of_type_AndroidWidgetTextView);
+    if (paramObject != null) {}
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
     }
+    ChatSettingActivity.b(this.a);
   }
 }
 

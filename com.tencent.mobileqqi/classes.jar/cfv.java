@@ -1,19 +1,16 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.data.AppShareID;
 
 public class cfv
-  extends BizTroopObserver
+  extends ConfigObserver
 {
   public cfv(Conversation paramConversation) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
   {
-    if (paramBoolean)
-    {
-      TroopAssistantManager.a().b(paramString1, this.a.a);
-      this.a.a(8, AppConstants.Q, 5000);
+    if (paramBoolean) {
+      this.a.a(0L);
     }
   }
 }

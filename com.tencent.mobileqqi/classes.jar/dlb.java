@@ -1,26 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
 public class dlb
-  extends Handler
+  extends MessageObserver
 {
   public dlb(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    switch (paramMessage.what)
+    paramString = this.a.getString(2131562520);
+    if (paramSubAccountBackProtocData.p == 0) {}
+    for (int i = 2131563288;; i = 2131563291)
     {
-    default: 
-      return;
-    case 1981: 
-      this.a.finish();
-      return;
-    case 1990: 
-      this.a.f();
+      paramSubAccountBackProtocData = this.a.getString(i);
+      this.a.a(paramString, paramSubAccountBackProtocData, this.a.getString(2131562543), new dlc(this));
       return;
     }
-    SubAccountBindActivity.a(this.a);
   }
 }
 

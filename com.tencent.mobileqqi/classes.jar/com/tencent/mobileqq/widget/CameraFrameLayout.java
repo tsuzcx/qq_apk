@@ -13,13 +13,13 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.utils.CameraUtil;
 import com.tencent.qphone.base.util.QLog;
+import hff;
 import hfg;
 import hfh;
 import hfi;
 import hfj;
-import hfk;
+import hfl;
 import hfm;
-import hfn;
 import java.util.concurrent.Executor;
 
 public class CameraFrameLayout
@@ -29,16 +29,16 @@ public class CameraFrameLayout
   private static final String jdField_a_of_type_JavaLangString = "CameraFrameLayout";
   private static final int jdField_b_of_type_Int = 2;
   private Camera jdField_a_of_type_AndroidHardwareCamera;
-  private Handler jdField_a_of_type_AndroidOsHandler = new hfg(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new hff(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private CameraPreview jdField_a_of_type_ComTencentMobileqqWidgetCameraPreview;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new hfk(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new hfj(this);
   Executor jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.a();
   boolean jdField_a_of_type_Boolean = false;
   private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 2131231211;
+  private int jdField_c_of_type_Int = 2131231210;
   private boolean jdField_c_of_type_Boolean = false;
   
   public CameraFrameLayout(Context paramContext, ViewGroup paramViewGroup)
@@ -88,7 +88,7 @@ public class CameraFrameLayout
     {
       QQToast.a(getContext(), 0, getContext().getString(2131561739), 0).b(((BaseActivity)getContext()).d());
       setDoubleClickFlag(false);
-      postDelayed(new hfm(this), 2000L);
+      postDelayed(new hfl(this), 2000L);
     }
     for (paramInt = 4500;; paramInt = 0)
     {
@@ -119,7 +119,7 @@ public class CameraFrameLayout
   {
     if (this.jdField_a_of_type_AndroidViewViewGroup != null)
     {
-      ChatXListView localChatXListView = (ChatXListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131231199);
+      ChatXListView localChatXListView = (ChatXListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131231198);
       if (localChatXListView != null) {
         localChatXListView.n();
       }
@@ -153,7 +153,7 @@ public class CameraFrameLayout
         }
         return;
       }
-      ??? = new hfn(this);
+      ??? = new hfm(this);
       this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute((Runnable)???);
     }
   }
@@ -177,21 +177,21 @@ public class CameraFrameLayout
   
   public void d()
   {
-    hfi localhfi = new hfi(this);
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(localhfi);
+    hfh localhfh = new hfh(this);
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(localhfh);
   }
   
   public void e()
   {
     this.b = false;
-    hfj localhfj = new hfj(this);
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(localhfj);
+    hfi localhfi = new hfi(this);
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(localhfi);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    new Handler().post(new hfh(this));
+    new Handler().post(new hfg(this));
   }
   
   public void setCloseBtnBlewViewResId(int paramInt)

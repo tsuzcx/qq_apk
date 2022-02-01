@@ -1,25 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.view.View;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class elu
-  extends ContactBindObserver
+  implements ActionSheet.OnButtonClickListener
 {
-  public elu(RebindActivity paramRebindActivity) {}
+  public elu(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
   
-  protected void c(boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.d();
-    if (paramBoolean)
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (paramInt == 0)
     {
-      Intent localIntent = new Intent(this.a, BindVerifyActivity.class);
-      localIntent.putExtra("k_number", this.a.d);
-      localIntent.putExtra("kBindType", RebindActivity.a(this.a));
-      this.a.startActivityForResult(localIntent, 1);
+      if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.b(2131562488);
+      }
+    }
+    else {
       return;
     }
-    this.a.b(2131562782);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.setResult(2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2.finish();
   }
 }
 

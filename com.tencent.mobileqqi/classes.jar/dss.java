@@ -1,15 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dss
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public dss(TroopRequestActivity paramTroopRequestActivity) {}
+  public dss(TroopRequestActivity paramTroopRequestActivity, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.e();
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+    }
+    if (NetworkUtil.e(BaseApplication.getContext())) {
+      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity);
+    }
+    for (;;)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p, TroopRequestActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity), "", "");
+      break;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.d());
+    }
   }
 }
 

@@ -11,7 +11,7 @@ import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import eoy;
+import eox;
 
 public class RecentTroopMenuOption
 {
@@ -47,7 +47,7 @@ public class RecentTroopMenuOption
     for (;;)
     {
       localActionSheet.d(2131561746);
-      localActionSheet.a(new eoy(this, i, paramString1, localActionSheet));
+      localActionSheet.a(new eox(this, i, paramString1, localActionSheet));
       localActionSheet.show();
       return;
       localActionSheet.e(0);

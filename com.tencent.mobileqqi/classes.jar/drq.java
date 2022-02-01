@@ -1,23 +1,19 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
 
 public class drq
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   public drq(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = new ProfileActivity.AllInOne(this.a.b.a(), 0);
-    paramView.g = ContactUtils.g(this.a.b, this.a.b.a());
-    paramView.e = 3;
-    paramView.f = 4;
-    ProfileActivity.a(this.a, paramView);
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.f();
+    }
+    return true;
   }
 }
 

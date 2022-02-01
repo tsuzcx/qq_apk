@@ -1,27 +1,27 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.lang.ref.WeakReference;
 
 public class czm
-  implements IStatusListener
+  extends Handler
 {
-  public czm(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  private WeakReference a;
   
-  public void a(int paramInt, RichStatus paramRichStatus) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public czm(PermisionPrivacyActivity paramPermisionPrivacyActivity)
   {
-    PermisionPrivacyActivity.a(this.a, this.a.d.a(), paramBoolean);
+    this.a = new WeakReference(paramPermisionPrivacyActivity);
   }
   
-  public void b(int paramInt, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131562080);
+    if ((PermisionPrivacyActivity)this.a.get() == null) {
+      return;
     }
-    PermisionPrivacyActivity.a(this.a, this.a.d.a(), PermisionPrivacyActivity.a(this.a).b());
+    switch (paramMessage.what)
+    {
+    }
+    throw new RuntimeException("Unknown message: " + paramMessage.what);
   }
 }
 

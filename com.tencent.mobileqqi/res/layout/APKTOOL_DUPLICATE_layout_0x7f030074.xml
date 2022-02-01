@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0802d3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0802d2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0802d4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02017e" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip">
-        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0801bc" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d1091" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020180" android:drawablePadding="10.0dip" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00d0" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0802d3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02017e" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0801bb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d1091" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020180" android:drawablePadding="10.0dip" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00d0" />
         <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02017b" />
     </LinearLayout>
 </LinearLayout>

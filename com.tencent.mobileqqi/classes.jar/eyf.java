@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.adapter.ForwardFriendListAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.adapter.ForwardRecentListAdapter;
+import com.tencent.mobileqq.app.QQServiceEntry.Tag;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class eyf
-  implements Runnable
+public class eyf
+  implements View.OnLongClickListener
 {
-  eyf(eye parameye) {}
+  public eyf(ForwardRecentListAdapter paramForwardRecentListAdapter) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    int i = 0;
-    List localList = this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager().a(Friends.class, false, "groupid>=?", new String[] { "0" }, null, null, "status,name", null);
-    ChnToSpell.a(this.a.a.jdField_a_of_type_AndroidAppActivity);
-    if (localList != null) {
-      while (i < localList.size())
-      {
-        ChnToSpell.a(((Friends)localList.get(i)).name, 2);
-        ChnToSpell.a(((Friends)localList.get(i)).name, 1);
-        i += 1;
-      }
+    paramView = (QQServiceEntry.Tag)paramView.getTag();
+    if ((Long.valueOf(paramView.jdField_a_of_type_JavaLangString).longValue() > 10000L) && (paramView.jdField_a_of_type_Int == 0)) {
+      this.a.a(paramView.b, paramView.jdField_a_of_type_JavaLangString).show();
     }
-    ForwardFriendListAdapter.a(this.a.a, localList);
+    return true;
   }
 }
 

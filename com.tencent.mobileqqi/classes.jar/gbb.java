@@ -1,27 +1,14 @@
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.magicface.view.MagicfaceView;
 import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
-class gbb
+public class gbb
   implements Runnable
 {
-  gbb(gaz paramgaz, ActionGlobalData paramActionGlobalData) {}
+  public gbb(MagicfaceViewController paramMagicfaceViewController) {}
   
   public void run()
   {
-    
-    if (this.jdField_a_of_type_Gaz.jdField_a_of_type_Int == 1)
-    {
-      MagicfaceViewController.a(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).setBackgroundColor(0);
-      this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a();
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.h)) && (PreferenceManager.getDefaultSharedPreferences(MagicfaceViewController.a(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController)).getBoolean(MagicfaceViewController.a(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).getString(2131563437), false))) {
-      MagicfaceViewController.a(this.jdField_a_of_type_Gaz.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).y();
-    }
+    MagicfaceViewController.a(this.a).p();
   }
 }
 

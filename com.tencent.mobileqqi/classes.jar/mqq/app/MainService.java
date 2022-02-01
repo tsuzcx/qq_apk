@@ -342,7 +342,7 @@ public class MainService
     {
       final AppRuntime localAppRuntime = MainService.this.mApplicaiton.waitAppRuntime(null);
       if ((localAppRuntime != null) && (QLog.isColorLevel())) {
-        QLog.d("mqq", 2, "kicked....kickPC...... in popupNotification isSameDevice = " + paramAnonymousBoolean + "; runnbackGroud = " + localAppRuntime.isBackground_Stop + ";action = " + paramAnonymousString1 + "; mApplicaiton.getProcessName() = " + MainService.this.mApplicaiton.getProcessName());
+        QLog.d("mqq", 2, "kicked....kickPC...... in popupNotification isSameDevice = " + paramAnonymousBoolean + "; runnbackGroud = " + localAppRuntime.isBackground_Stop + ";action = " + paramAnonymousString1 + "; mApplicaiton.getProcessName() = " + MainService.this.mApplicaiton.getProcessNames());
       }
       localAppRuntime.runOnUiThread(new Runnable()
       {
@@ -366,7 +366,7 @@ public class MainService
               }
               localAppRuntime.logout(paramAnonymousLogoutReason, true);
             }
-            if ((bool) && (MainService.this.mApplicaiton != null) && (MainService.this.mApplicaiton.getProcessName().equalsIgnoreCase(MainService.this.mApplicaiton.getPackageName())))
+            if ((bool) && (MainService.this.mApplicaiton != null) && (MainService.this.mApplicaiton.getProcessNames().equalsIgnoreCase(MainService.this.mApplicaiton.getPackageName())))
             {
               localIntent = new Intent(paramAnonymousString1);
               localIntent.putExtra("title", paramAnonymousString3);
@@ -796,7 +796,7 @@ public class MainService
       }
       QLog.w("mqq", 2, "[MSF Receive]" + paramFromServiceMsg.getServiceCmd() + " appSeq:" + paramToServiceMsg.getAppSeq() + ",code=" + paramFromServiceMsg.getResultCode() + ",cost=" + l + "ms.");
       break;
-      if (!this.mApplicaiton.getProcessName().endsWith(":video"))
+      if (!this.mApplicaiton.getProcessNames().endsWith(":video"))
       {
         localObject2 = localAppRuntime;
         str1 = str2;

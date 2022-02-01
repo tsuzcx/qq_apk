@@ -1,17 +1,16 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.mobileqq.app.DataLineHandler;
-import java.util.List;
-import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
+import com.tencent.mobileqq.service.HttpNotify;
 
 public class fbb
-  implements Runnable
+  implements HttpNotify
 {
-  public fbb(DataLineHandler paramDataLineHandler, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList) {}
+  public fbb(DataLineHandler paramDataLineHandler) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.onFileOperate0x211(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList);
-  }
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(long paramLong1, long paramLong2, long paramLong3) {}
+  
+  public void a(long paramLong1, boolean paramBoolean, long paramLong2) {}
 }
 
 

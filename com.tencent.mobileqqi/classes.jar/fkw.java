@@ -1,18 +1,24 @@
-import java.util.concurrent.ThreadFactory;
+import android.os.Message;
+import android.os.Process;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
-public final class fkw
-  implements ThreadFactory
+public class fkw
+  implements Runnable
 {
-  public Thread newThread(Runnable paramRunnable)
+  public fkw(QQAnimationDrawable paramQQAnimationDrawable) {}
+  
+  public void run()
   {
-    paramRunnable = new Thread("Bubble_Animation");
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
+    QQAnimationDrawable.a(this.a, true);
+    Process.setThreadPriority(10);
+    QQAnimationDrawable.b(this.a, QQAnimationDrawable.a(this.a, QQAnimationDrawable.a(this.a, true, 0)));
+    QQAnimationDrawable.a(this.a, 1);
+    if (QQAnimationDrawable.a(this.a))
+    {
+      Message localMessage = QQAnimationDrawable.a(this.a).obtainMessage();
+      localMessage.obj = Integer.valueOf(0);
+      localMessage.sendToTarget();
     }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
-    }
-    return paramRunnable;
   }
 }
 

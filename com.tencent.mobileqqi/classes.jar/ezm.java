@@ -1,27 +1,12 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import java.util.ArrayList;
-
 public class ezm
-  extends Thread
 {
-  public ezm(CardHandler paramCardHandler, int paramInt, ArrayList paramArrayList) {}
+  public long a;
+  public String a;
   
-  public void run()
+  public ezm(String paramString, long paramLong)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.a();
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.getManager(46);
-    Card localCard = localFriendsManager.a(str);
-    if (localCard != null)
-    {
-      localCard.iVoteIncrement = this.jdField_a_of_type_Int;
-      localFriendsManager.a(localCard);
-    }
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      CardHandler.a(str, this.jdField_a_of_type_JavaUtilArrayList);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

@@ -1,53 +1,65 @@
 import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopBarImagePreviewAdapter;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.activity.Contacts.OverScrollViewTag;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishBarSelectActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
 public class gsr
-  extends Handler
+  implements OverScrollViewListener
 {
-  public gsr(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public gsr(TroopBarPublishBarSelectActivity paramTroopBarPublishBarSelectActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if (this.a.isFinishing()) {}
-    do
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      return;
-      switch (paramMessage.what)
-      {
-      case 1002: 
-      default: 
-        return;
-      case 1001: 
-        this.a.b(false);
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        }
-        TroopBarPublishActivity.a(this.a).setEnabled(true);
-        QQToast.a(this.a, 2131560743, 1).b(this.a.d());
-      }
-    } while (!(paramMessage.obj instanceof String));
-    paramMessage = (String)paramMessage.obj;
-    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarImagePreviewAdapter.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-    paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarImagePreviewAdapter;
-    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() < 8) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramMessage.a(bool, true);
+      paramView.c(l);
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    this.a.b(false);
-    this.a.b();
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!NetworkUtil.f(this.a.a())) {
+        break label113;
+      }
+      this.a.a(this.a.b, this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback);
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new gss(this), 300L);
+    }
+    for (;;)
+    {
+      ((Contacts.OverScrollViewTag)paramView.getTag()).a = true;
+      return true;
+      l = this.a.jdField_a_of_type_Long;
+      break;
+      label113:
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new gst(this), 300L);
+    }
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

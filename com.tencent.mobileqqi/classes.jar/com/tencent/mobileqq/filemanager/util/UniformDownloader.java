@@ -3,7 +3,7 @@ package com.tencent.mobileqq.filemanager.util;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qphone.base.util.QLog;
-import fyn;
+import fym;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,7 +101,7 @@ public class UniformDownloader
     }
     for (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader$IUniformDownloader = new UniformDownloaderAppBaby(paramLong);; this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader$IUniformDownloader = new UniformDownloaderGen(paramLong))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader$IUniformDownloader.a(new fyn(this));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader$IUniformDownloader.a(new fym(this));
       return;
       this.ac = 2;
     }

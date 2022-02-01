@@ -39,9 +39,9 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 import com.tencent.widget.ActionSheet.OnDismissListener;
+import fzw;
 import fzx;
-import fzy;
-import gaa;
+import fzz;
 import java.io.File;
 import java.util.Map;
 import org.json.JSONArray;
@@ -936,7 +936,7 @@ public class UiApiPlugin
           QQCustomDialog localQQCustomDialog = DialogUtil.a(paramString3, 0);
           localQQCustomDialog.setTitle(paramJsBridgeListener);
           localQQCustomDialog.setMessage((String)localObject);
-          localObject = new fzx(this, paramVarArgs);
+          localObject = new fzw(this, paramVarArgs);
           if (bool2)
           {
             paramJsBridgeListener = paramString2;
@@ -954,7 +954,7 @@ public class UiApiPlugin
             localQQCustomDialog.setPositiveButton(paramJsBridgeListener, (DialogInterface.OnClickListener)localObject);
           }
           if (!TextUtils.isEmpty(paramVarArgs)) {
-            localQQCustomDialog.setOnCancelListener(new fzy(this, paramVarArgs));
+            localQQCustomDialog.setOnCancelListener(new fzx(this, paramVarArgs));
           }
           try
           {
@@ -1101,7 +1101,7 @@ public class UiApiPlugin
             if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
               this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
             }
-            new gaa(this, paramString1, paramJsBridgeListener.optInt("outMaxWidth", 1280), paramJsBridgeListener.optInt("outMaxHeight", 1280), paramJsBridgeListener.optInt("inMinWidth", 1), paramJsBridgeListener.optInt("inMinHeight", 1), paramString2).start();
+            new fzz(this, paramString1, paramJsBridgeListener.optInt("outMaxWidth", 1280), paramJsBridgeListener.optInt("outMaxHeight", 1280), paramJsBridgeListener.optInt("inMinWidth", 1), paramJsBridgeListener.optInt("inMinHeight", 1), paramString2).start();
           }
           catch (JSONException paramJsBridgeListener)
           {
@@ -1350,7 +1350,7 @@ public class UiApiPlugin
     //   449: getfield 799	com/tencent/mobileqq/jsp/UiApiPlugin:jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog	Lcom/tencent/mobileqq/widget/QQProgressDialog;
     //   452: invokevirtual 813	com/tencent/mobileqq/widget/QQProgressDialog:show	()V
     //   455: aload_0
-    //   456: new 868	fzz
+    //   456: new 868	fzy
     //   459: dup
     //   460: aload_0
     //   461: aload 6
@@ -1371,7 +1371,7 @@ public class UiApiPlugin
     //   499: iconst_1
     //   500: invokevirtual 672	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   503: aload_1
-    //   504: invokespecial 871	fzz:<init>	(Lcom/tencent/mobileqq/jsp/UiApiPlugin;Ljava/lang/String;IIII[Ljava/lang/String;)V
+    //   504: invokespecial 871	fzy:<init>	(Lcom/tencent/mobileqq/jsp/UiApiPlugin;Ljava/lang/String;IIII[Ljava/lang/String;)V
     //   507: putfield 480	com/tencent/mobileqq/jsp/UiApiPlugin:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
     //   510: aload_0
     //   511: getfield 480	com/tencent/mobileqq/jsp/UiApiPlugin:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;

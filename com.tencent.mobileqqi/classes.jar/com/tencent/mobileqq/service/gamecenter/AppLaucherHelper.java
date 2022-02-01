@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.LoginHelper;
+import giw;
 import gix;
-import giy;
 import java.util.HashMap;
 import mqq.app.NewIntent;
 
@@ -114,14 +114,14 @@ public class AppLaucherHelper
   private void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
     // Byte code:
-    //   0: new 125	giz
+    //   0: new 125	giy
     //   3: dup
     //   4: aload_0
     //   5: invokestatic 131	java/lang/System:currentTimeMillis	()J
     //   8: aload 5
     //   10: aload_2
     //   11: iload 7
-    //   13: invokespecial 134	giz:<init>	(Lcom/tencent/mobileqq/service/gamecenter/AppLaucherHelper;JLjava/lang/String;Landroid/content/Context;I)V
+    //   13: invokespecial 134	giy:<init>	(Lcom/tencent/mobileqq/service/gamecenter/AppLaucherHelper;JLjava/lang/String;Landroid/content/Context;I)V
     //   16: astore 14
     //   18: aload_0
     //   19: getfield 49	com/tencent/mobileqq/service/gamecenter/AppLaucherHelper:jdField_a_of_type_MqqAppNewIntent	Lmqq/app/NewIntent;
@@ -398,7 +398,7 @@ public class AppLaucherHelper
     //   421	10	13	localNoSuchAlgorithmException1	java.security.NoSuchAlgorithmException
     //   553	1	13	localNoSuchAlgorithmException2	java.security.NoSuchAlgorithmException
     //   558	1	13	localException	Exception
-    //   16	474	14	localgiz	giz
+    //   16	474	14	localgiy	giy
     //   46	431	15	localAuthorizeRequest	com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeRequest
     //   289	34	16	arrayOfSignature	android.content.pm.Signature[]
     // Exception table:
@@ -440,7 +440,7 @@ public class AppLaucherHelper
     }
     jdField_a_of_type_Boolean = true;
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new gix(this, Looper.getMainLooper(), paramContext, paramString3, paramInt, paramAppInterface, paramString1, paramString2);
+      this.jdField_a_of_type_AndroidOsHandler = new giw(this, Looper.getMainLooper(), paramContext, paramString3, paramInt, paramAppInterface, paramString1, paramString2);
     }
     if (paramString2.startsWith("?")) {}
     long l;
@@ -455,7 +455,7 @@ public class AppLaucherHelper
       return true;
     }
     jdField_a_of_type_Long = l;
-    new LoginHelper(paramContext, paramAppInterface, new giy(this, paramAppInterface, paramContext, paramString1, paramString2, paramString3, paramInt));
+    new LoginHelper(paramContext, paramAppInterface, new gix(this, paramAppInterface, paramContext, paramString1, paramString2, paramString3, paramInt));
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 2000L);
     return true;
   }

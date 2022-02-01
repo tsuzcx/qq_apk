@@ -1,13 +1,15 @@
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceCloseListener;
 import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
 public class gat
-  implements Runnable
+  implements MagicfaceActionManager.MagicfaceCloseListener
 {
-  public gat(MagicfaceViewController paramMagicfaceViewController) {}
+  public gat(MagicfaceViewController paramMagicfaceViewController, MagicfaceActionManager paramMagicfaceActionManager) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a(MagicfaceViewController.a(this.a), 1, null);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.e();
   }
 }
 

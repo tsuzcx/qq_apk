@@ -1,28 +1,33 @@
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantItemData;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager.onShareAlbumResultListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.util.WeakReferenceHandler;
 
-public class gji
-  implements QZoneShareAlbumAssistantManager.onShareAlbumResultListener
+class gji
+  implements Runnable
 {
-  public gji(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
+  gji(gjh paramgjh, boolean paramBoolean) {}
   
-  public void a(QZoneShareAlbumAssistantItemData paramQZoneShareAlbumAssistantItemData)
+  public void run()
   {
-    QZoneShareAlbumAssistantManager.a().h(this.a.b);
-    QZoneShareAlbumAssistantActivity.a(this.a, paramQZoneShareAlbumAssistantItemData);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareAlbumAssistantActivity", 2, "ShareAlbum ondata Rsp");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gjh.a).sendEmptyMessageDelayed(8877, 800L);
+      QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gjh.a).a(0);
+      QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gjh.a, QZoneShareAlbumAssistantActivity.b(this.jdField_a_of_type_Gjh.a));
     }
-    QZoneShareAlbumAssistantActivity.a(this.a, false);
-    QZoneShareAlbumAssistantActivity.a(this.a);
-    this.a.runOnUiThread(new gjj(this, paramBoolean));
+    for (;;)
+    {
+      if ((QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gjh.a) != null) && (QZoneShareAlbumAssistantActivity.b(this.jdField_a_of_type_Gjh.a) != null))
+      {
+        QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gjh.a).a(QZoneShareAlbumAssistantActivity.b(this.jdField_a_of_type_Gjh.a));
+        QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gjh.a).notifyDataSetChanged();
+      }
+      return;
+      this.jdField_a_of_type_Gjh.a.a(1, this.jdField_a_of_type_Gjh.a.getString(2131562097));
+      this.jdField_a_of_type_Gjh.a.a.B();
+    }
   }
 }
 

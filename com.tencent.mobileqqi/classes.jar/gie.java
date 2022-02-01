@@ -1,49 +1,15 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.richstatus.ISameStatusListener;
+import PersonalState.UserProfile;
 import com.tencent.mobileqq.richstatus.StatusManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.Comparator;
 
 public class gie
-  extends AsyncTask
+  implements Comparator
 {
   public gie(StatusManager paramStatusManager) {}
   
-  protected ArrayList a(Void... paramVarArgs)
+  public int a(UserProfile paramUserProfile1, UserProfile paramUserProfile2)
   {
-    return this.a.a();
-  }
-  
-  protected void a(ArrayList paramArrayList)
-  {
-    StatusManager.b(this.a, paramArrayList);
-    StatusManager.b(this.a, null);
-    if (StatusManager.c(this.a) != null)
-    {
-      paramArrayList = this.a.a(StatusManager.b(this.a), StatusManager.c(this.a), StatusManager.b(this.a));
-      StatusManager.a(this.a, null);
-      if (StatusManager.c(this.a) != null)
-      {
-        Iterator localIterator = StatusManager.c(this.a).iterator();
-        if (localIterator.hasNext())
-        {
-          ISameStatusListener localISameStatusListener = (ISameStatusListener)localIterator.next();
-          int i = StatusManager.b(this.a);
-          if ((StatusManager.a(this.a) != null) && (StatusManager.a(this.a).length > 1)) {}
-          for (boolean bool = true;; bool = false)
-          {
-            localISameStatusListener.a(true, true, i, paramArrayList, bool);
-            break;
-          }
-        }
-      }
-    }
-  }
-  
-  protected void onCancelled()
-  {
-    StatusManager.b(this.a, null);
+    return (int)(paramUserProfile2.richTime - paramUserProfile1.richTime);
   }
 }
 

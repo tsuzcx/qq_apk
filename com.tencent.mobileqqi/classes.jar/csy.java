@@ -1,39 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class csy
-  extends Handler
+  implements Runnable
 {
   public csy(LoginActivity paramLoginActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    case 14826: 
-    default: 
-    case 14825: 
-      do
-      {
-        return;
-      } while (this.a.isFinishing());
-      try
-      {
-        this.a.dismissDialog(0);
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
-      }
+    if (!this.a.isFinishing()) {
+      this.a.showDialog(3);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity", 2, "recv message FINISH_ACTIVITY.. finish activity");
-    }
-    this.a.finish();
   }
 }
 

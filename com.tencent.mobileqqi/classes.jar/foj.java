@@ -1,136 +1,82 @@
+import android.content.Context;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
 import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
-import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class foj
-  extends EmoticonPackageDownloadListener
+class foj
+  implements Runnable
 {
-  public foj(EmoticonMainPanel paramEmoticonMainPanel) {}
+  foj(foi paramfoi, EmoticonPackage paramEmoticonPackage, int paramInt) {}
   
-  public void onCoverComplete(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "onCoverComplete");
-    }
-    if ((paramEmoticonPackage == null) || (EmoticonMainPanel.b(this.a) == null)) {
-      break label28;
-    }
-    label28:
-    label284:
-    for (;;)
+    int i;
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType != 3)
     {
-      return;
-      if ((paramInt2 == 0) && (EmoticonMainPanel.b() == 1))
+      if (this.jdField_a_of_type_Int != 0) {
+        break label244;
+      }
+      if (EmoticonMainPanel.b(this.jdField_a_of_type_Foi.a) != null)
       {
-        label60:
-        Object localObject;
-        if (paramInt1 == 4)
+        int j = EmoticonMainPanel.b(this.jdField_a_of_type_Foi.a).size();
+        i = 0;
+        if (i < j)
         {
-          paramInt2 = EmoticonMainPanel.b(this.a).size();
-          paramInt1 = 0;
-          if (paramInt1 >= paramInt2) {
-            break label279;
+          localObject = (EmoticonViewBinder)EmoticonMainPanel.b(this.jdField_a_of_type_Foi.a).get(i);
+          if ((localObject == null) || (!(localObject instanceof BigEmoticonViewBinder))) {
+            break label237;
           }
-          localObject = (EmoticonViewBinder)EmoticonMainPanel.b(this.a).get(paramInt1);
-          if ((localObject != null) && ((localObject instanceof BigEmoticonViewBinder)))
-          {
-            localObject = (BigEmoticonViewBinder)localObject;
-            if ((((BigEmoticonViewBinder)localObject).a != null) && (((BigEmoticonViewBinder)localObject).a.epId.equals(paramEmoticonPackage.epId))) {
-              paramEmoticonPackage = ((BigEmoticonViewBinder)localObject).a(this.a.getContext());
-            }
+          localObject = (BigEmoticonViewBinder)localObject;
+          if ((((BigEmoticonViewBinder)localObject).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) || (!((BigEmoticonViewBinder)localObject).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))) {
+            break label237;
           }
-        }
-        for (;;)
-        {
-          if ((EmoticonMainPanel.a(this.a) == null) || (paramInt1 == -1)) {
-            break label284;
+          ((BigEmoticonViewBinder)localObject).a(100);
+          if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.isRecommendation) {
+            ReportController.b(EmoticonMainPanel.a(this.jdField_a_of_type_Foi.a), "CliOper", "", "", "ep_mall", "Ep_endoffer_download", 0, 0, "", "", "", "");
           }
-          EmoticonMainPanel.a(this.a).a(paramEmoticonPackage, paramInt1);
-          return;
-          paramInt1 += 1;
-          break label60;
-          if (paramInt1 != 2) {
-            break;
-          }
-          paramInt2 = EmoticonMainPanel.b(this.a).size();
-          paramInt1 = 0;
-          while (paramInt1 < paramInt2)
-          {
-            localObject = (EmoticonViewBinder)EmoticonMainPanel.b(this.a).get(paramInt1);
-            if ((localObject != null) && ((localObject instanceof BigEmoticonViewBinder)))
-            {
-              localObject = (BigEmoticonViewBinder)localObject;
-              if ((((BigEmoticonViewBinder)localObject).a != null) && (((BigEmoticonViewBinder)localObject).a.epId.equals(paramEmoticonPackage.epId)))
-              {
-                ((BigEmoticonViewBinder)localObject).c();
-                return;
-              }
-            }
-            paramInt1 += 1;
-          }
-          break label28;
-          paramEmoticonPackage = null;
-          paramInt1 = -1;
         }
       }
+      EmoticonMainPanel.b(this.jdField_a_of_type_Foi.a, true);
+      EmoticonMainPanel.c(this.jdField_a_of_type_Foi.a, false);
+      if ((this.jdField_a_of_type_Foi.a.getVisibility() == 0) && (EmoticonMainPanel.b() == 1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("EmoticonMainPanel", 2, "Emoticon pkg downloaded in panel, refresh");
+        }
+        EmoticonMainPanel.a(this.jdField_a_of_type_Foi.a, 1, 0);
+      }
     }
-  }
-  
-  public void onPackageEnd(EmoticonPackage paramEmoticonPackage, int paramInt)
-  {
-    if (paramEmoticonPackage == null) {
+    label237:
+    label244:
+    do
+    {
       return;
-    }
-    this.a.post(new fok(this, paramEmoticonPackage, paramInt));
-  }
-  
-  public void onPackageProgress(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    if (paramEmoticonPackage == null) {}
-    Object localObject;
-    do
-    {
-      do
+      i += 1;
+      break;
+      if ((EmoticonMainPanel.b() == 2) && (EmoticonMainPanel.a(this.jdField_a_of_type_Foi.a) != null) && (EmoticonMainPanel.c() < EmoticonMainPanel.a(this.jdField_a_of_type_Foi.a).size()))
       {
-        do
+        localObject = (EmoticonViewBinder)EmoticonMainPanel.a(this.jdField_a_of_type_Foi.a).get(EmoticonMainPanel.c());
+        if ((localObject != null) && ((localObject instanceof BigEmoticonViewBinder)))
         {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("EmoticonMainPanel", 2, "onPackageProgress: epId=" + paramEmoticonPackage.epId);
+          localObject = (BigEmoticonViewBinder)localObject;
+          if ((((BigEmoticonViewBinder)localObject).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (((BigEmoticonViewBinder)localObject).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))) {
+            ((BigEmoticonViewBinder)localObject).b();
           }
-        } while ((EmoticonMainPanel.b() != 1) || (EmoticonMainPanel.b(this.a) == null) || (EmoticonMainPanel.d() >= EmoticonMainPanel.b(this.a).size()));
-        localObject = (EmoticonViewBinder)EmoticonMainPanel.b(this.a).get(EmoticonMainPanel.d());
-      } while ((localObject == null) || (!(localObject instanceof BigEmoticonViewBinder)));
-      localObject = (BigEmoticonViewBinder)localObject;
-    } while ((((BigEmoticonViewBinder)localObject).a == null) || (!((BigEmoticonViewBinder)localObject).a.epId.equals(paramEmoticonPackage.epId)));
-    ((BigEmoticonViewBinder)localObject).a((int)(100.0F * paramInt2 / paramInt1));
-  }
-  
-  public void onPackageStart(EmoticonPackage paramEmoticonPackage)
-  {
-    if (paramEmoticonPackage == null) {}
-    Object localObject;
-    do
-    {
-      do
+        }
+      }
+      if (this.jdField_a_of_type_Int == 11000)
       {
-        do
-        {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("EmoticonMainPanel", 2, "onPackageStart: epId=" + paramEmoticonPackage.epId);
-          }
-        } while ((EmoticonMainPanel.b() != 1) || (EmoticonMainPanel.a(this.a) == null) || (EmoticonMainPanel.c() >= EmoticonMainPanel.a(this.a).size()));
-        localObject = (EmoticonViewBinder)EmoticonMainPanel.a(this.a).get(EmoticonMainPanel.c());
-      } while ((localObject == null) || (!(localObject instanceof BigEmoticonViewBinder)));
-      localObject = (BigEmoticonViewBinder)localObject;
-    } while ((((BigEmoticonViewBinder)localObject).a == null) || (!((BigEmoticonViewBinder)localObject).a.epId.equals(paramEmoticonPackage.epId)));
-    ((BigEmoticonViewBinder)localObject).a(0);
+        QQToast.a(EmoticonMainPanel.a(this.jdField_a_of_type_Foi.a), EmoticonMainPanel.a(this.jdField_a_of_type_Foi.a).getString(2131562498), 1).b(this.jdField_a_of_type_Foi.a.c);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 11001);
+    QQToast.a(EmoticonMainPanel.a(this.jdField_a_of_type_Foi.a), EmoticonMainPanel.a(this.jdField_a_of_type_Foi.a).getString(2131562822), 1).b(this.jdField_a_of_type_Foi.a.c);
   }
 }
 

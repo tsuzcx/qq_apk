@@ -1,27 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class dot
-  implements View.OnClickListener
+  extends Handler
 {
   public dot(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_b_of_type_Boolean = false;
-    if (TroopAssistantActivity.a(this.a) != null)
+    if (!this.a.b.isLogin()) {
+      return;
+    }
+    switch (paramMessage.what)
     {
-      TroopAssistantActivity.a(this.a).a(4);
-      this.a.i();
+    default: 
+      return;
+    case 1: 
       this.a.h();
+      return;
     }
-    if (TroopAssistantManager.a().c()) {
-      TroopAssistantManager.a().f(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    TroopAssistantActivity.a(this.a);
+    this.a.h();
   }
 }
 

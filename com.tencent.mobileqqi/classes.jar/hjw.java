@@ -1,23 +1,40 @@
+import android.database.Cursor;
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.open.agent.datamodel.FriendGroup;
+import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
+import com.tencent.open.component.cache.database.DbCacheData.Structure;
 
 public final class hjw
-  implements Parcelable.Creator
+  implements DbCacheData.DbCreator
 {
-  public Friend a(Parcel paramParcel)
+  public int a()
   {
-    Friend localFriend = new Friend();
-    localFriend.a = paramParcel.readString();
-    localFriend.b = paramParcel.readString();
-    localFriend.c = paramParcel.readString();
-    localFriend.d = paramParcel.readString();
-    return localFriend;
+    return 0;
   }
   
-  public Friend[] a(int paramInt)
+  public FriendGroup a(Cursor paramCursor)
   {
-    return new Friend[paramInt];
+    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
+    if (localObject == null) {
+      return null;
+    }
+    paramCursor = Parcel.obtain();
+    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
+    paramCursor.setDataPosition(0);
+    localObject = new FriendGroup();
+    ((FriendGroup)localObject).a(paramCursor);
+    paramCursor.recycle();
+    return localObject;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public DbCacheData.Structure[] a()
+  {
+    return new DbCacheData.Structure[] { new DbCacheData.Structure("groupId", "INTEGER UNIQUE"), new DbCacheData.Structure("data", "BLOB") };
   }
 }
 

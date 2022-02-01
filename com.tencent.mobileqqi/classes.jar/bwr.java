@@ -1,13 +1,33 @@
-import com.tencent.mobileqq.activity.BaseSystemActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BookShareAdviceEditActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bwr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public bwr(BaseSystemActivity paramBaseSystemActivity) {}
+  public bwr(BookShareAdviceEditActivity paramBookShareAdviceEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a();
+    if (this.a.c < 0)
+    {
+      QQToast.a(this.a, 1, this.a.getString(2131561490), 0).b(this.a.d());
+      return;
+    }
+    if (!NetworkUtil.e(BaseApplication.getContext()))
+    {
+      QQToast.a(this.a, 2131562452, 0).b(this.a.d());
+      return;
+    }
+    if (this.a.a == null)
+    {
+      QQToast.a(this.a, 2131561769, 0).b(this.a.d());
+      return;
+    }
+    BookShareAdviceEditActivity.a(this.a);
   }
 }
 

@@ -1,20 +1,21 @@
+import com.tencent.open.base.ImageUtil;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.img.ImageCache;
+import com.tencent.open.base.img.ImageDownCallback;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
 
 public class hms
-  implements Runnable
+  implements ImageDownCallback
 {
-  public hms(DownloadManager paramDownloadManager) {}
+  public hms(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2, String paramString3) {}
+  
+  public void b(String paramString1, String paramString2, String paramString3)
   {
-    if (!this.a.a)
-    {
-      if (!MyAppApi.a().b()) {
-        this.a.a(true);
-      }
-      this.a.a = true;
-    }
+    LogUtility.d(DownloadManager.a, ">>download apk icon err,should load another size icon");
+    ImageCache.a("app", ImageUtil.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b, 75), null);
   }
 }
 

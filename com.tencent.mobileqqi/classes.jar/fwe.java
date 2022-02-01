@@ -1,7 +1,7 @@
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class fwe
-  extends fvj
+  extends fvi
 {
   public fwe(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
@@ -10,7 +10,7 @@ public class fwe
   
   protected String a()
   {
-    return "StateUploadoneWhenChangeToOff";
+    return "StateUploadoneWhenPause";
   }
 }
 

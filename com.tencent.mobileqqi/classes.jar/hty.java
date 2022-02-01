@@ -1,29 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2;
 
 public class hty
-  extends Handler
+  implements Runnable
 {
   public hty(AuthDevVerifyCodeActivity2 paramAuthDevVerifyCodeActivity2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    try
     {
-    default: 
+      if ((AuthDevVerifyCodeActivity2.a(this.a) == null) && (!this.a.isFinishing()))
+      {
+        AuthDevVerifyCodeActivity2.a(this.a, new QQProgressDialog(this.a, this.a.d()));
+        AuthDevVerifyCodeActivity2.a(this.a).b(2131562645);
+        AuthDevVerifyCodeActivity2.a(this.a).c(true);
+      }
+      if ((AuthDevVerifyCodeActivity2.a(this.a) != null) && (!AuthDevVerifyCodeActivity2.a(this.a).isShowing())) {
+        AuthDevVerifyCodeActivity2.a(this.a).show();
+      }
       return;
     }
-    AuthDevVerifyCodeActivity2.d(this.a);
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131563125);
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
-    AuthDevVerifyCodeActivity2.e(this.a, paramMessage, 1);
   }
 }
 

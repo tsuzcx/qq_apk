@@ -3,11 +3,11 @@ import com.tencent.mobileqq.activity.QQSettingMe;
 class ddg
   implements Runnable
 {
-  ddg(dde paramdde) {}
+  ddg(ddd paramddd) {}
   
   public void run()
   {
-    this.a.a.h();
+    this.a.a.o();
   }
 }
 

@@ -1,17 +1,23 @@
+import android.content.ContentValues;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 
 public class fxn
   implements Runnable
 {
-  public fxn(FileManagerProxy paramFileManagerProxy, FileManagerEntity paramFileManagerEntity) {}
+  public fxn(FileManagerProxy paramFileManagerProxy, ContentValues paramContentValues, long paramLong) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(FileManagerEntity.tableName(), this.jdField_a_of_type_AndroidContentContentValues, "nSessionId=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) }, null);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, null);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

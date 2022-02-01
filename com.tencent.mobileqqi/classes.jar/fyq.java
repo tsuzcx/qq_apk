@@ -7,7 +7,7 @@ public class fyq
   
   public void run()
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 2);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 3);
     UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
   }
 }

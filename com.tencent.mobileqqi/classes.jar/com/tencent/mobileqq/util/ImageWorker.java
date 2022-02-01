@@ -15,11 +15,11 @@ import android.view.View;
 import android.widget.ImageView;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import hao;
+import han;
+import hap;
 import haq;
 import har;
 import has;
-import hat;
 import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
@@ -111,17 +111,17 @@ public class ImageWorker
     finally {}
   }
   
-  private har a(View paramView)
+  private haq a(View paramView)
   {
     if (paramView != null)
     {
-      hat localhat = (hat)this.jdField_a_of_type_JavaUtilMap.get(paramView);
-      if (localhat != null) {
-        paramView = localhat.jdField_a_of_type_Haq;
+      has localhas = (has)this.jdField_a_of_type_JavaUtilMap.get(paramView);
+      if (localhas != null) {
+        paramView = localhas.jdField_a_of_type_Hap;
       }
-      while ((paramView instanceof haq))
+      while ((paramView instanceof hap))
       {
-        return ((haq)paramView).a();
+        return ((hap)paramView).a();
         if ((paramView instanceof ImageView)) {
           paramView = ((ImageView)paramView).getDrawable();
         } else {
@@ -132,7 +132,7 @@ public class ImageWorker
     return null;
   }
   
-  private void a(boolean paramBoolean, View paramView, Drawable paramDrawable, hat paramhat)
+  private void a(boolean paramBoolean, View paramView, Drawable paramDrawable, has paramhas)
   {
     Object localObject = paramDrawable;
     if (this.jdField_c_of_type_Boolean)
@@ -153,8 +153,8 @@ public class ImageWorker
       }
     }
     paramDrawable = null;
-    if (paramhat != null) {
-      paramDrawable = paramhat.jdField_a_of_type_ComTencentMobileqqUtilImageLoader;
+    if (paramhas != null) {
+      paramDrawable = paramhas.jdField_a_of_type_ComTencentMobileqqUtilImageLoader;
     }
     if (paramDrawable != null)
     {
@@ -258,16 +258,16 @@ public class ImageWorker
         paramView.setBackgroundDrawable((Drawable)localObject);
         return;
       } while (!a(paramString, paramView));
-      localObject = new har(this, paramView);
-      haq localhaq = new haq(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap, (har)localObject);
+      localObject = new haq(this, paramView);
+      hap localhap = new hap(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap, (haq)localObject);
       paramBitmap = paramImageCreator;
       if (paramImageCreator == null) {
-        paramBitmap = new has(this, paramString);
+        paramBitmap = new har(this, paramString);
       }
       if (paramImageLoader != null)
       {
-        paramImageLoader.a(paramView, localhaq);
-        this.jdField_a_of_type_JavaUtilMap.put(paramView, new hat(paramBitmap, paramImageLoader, localhaq));
+        paramImageLoader.a(paramView, localhap);
+        this.jdField_a_of_type_JavaUtilMap.put(paramView, new has(paramBitmap, paramImageLoader, localhap));
       }
       while (paramBoolean)
       {
@@ -276,17 +276,17 @@ public class ImageWorker
           this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
           this.jdField_a_of_type_AndroidOsHandler = new Handler();
         }
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new hao(this, (har)localObject, paramString, paramBitmap));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new han(this, (haq)localObject, paramString, paramBitmap));
         return;
         if ((paramView instanceof ImageView)) {
-          ((ImageView)paramView).setImageDrawable(localhaq);
+          ((ImageView)paramView).setImageDrawable(localhap);
         } else {
-          paramView.setBackgroundDrawable(localhaq);
+          paramView.setBackgroundDrawable(localhap);
         }
       }
-      paramBitmap = ((har)localObject).a(new Object[] { paramString, paramBitmap, Boolean.valueOf(false) });
+      paramBitmap = ((haq)localObject).a(new Object[] { paramString, paramBitmap, Boolean.valueOf(false) });
     } while (paramBitmap == null);
-    ((har)localObject).a(paramBitmap);
+    ((haq)localObject).a(paramBitmap);
   }
   
   public void a(View paramView)
@@ -307,7 +307,7 @@ public class ImageWorker
     paramView = a(paramView);
     if (paramView != null)
     {
-      Object localObject = har.a(paramView);
+      Object localObject = haq.a(paramView);
       if ((localObject == null) || (!localObject.equals(paramObject))) {
         paramView.cancel(true);
       }

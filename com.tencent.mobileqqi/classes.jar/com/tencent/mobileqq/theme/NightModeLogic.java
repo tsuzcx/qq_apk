@@ -48,7 +48,7 @@ public class NightModeLogic
     {
       localObject1 = new Dialog(this.mActivity, 2131624405);
       ((Dialog)localObject1).setContentView(2130903162);
-      TextView localTextView = (TextView)((Dialog)localObject1).findViewById(2131231469);
+      TextView localTextView = (TextView)((Dialog)localObject1).findViewById(2131231468);
       if (localTextView != null) {
         localTextView.setText((CharSequence)localObject2);
       }
@@ -56,13 +56,13 @@ public class NightModeLogic
       if (localObject2 != null) {
         ((TextView)localObject2).setText(paramString);
       }
-      paramString = (TextView)((Dialog)localObject1).findViewById(2131231472);
+      paramString = (TextView)((Dialog)localObject1).findViewById(2131231471);
       if (paramString != null)
       {
         paramString.setText(str2);
         paramString.setOnClickListener(paramOnClickListener1);
       }
-      paramString = (TextView)((Dialog)localObject1).findViewById(2131231473);
+      paramString = (TextView)((Dialog)localObject1).findViewById(2131231472);
       if (paramString != null)
       {
         paramString.setText(str1);

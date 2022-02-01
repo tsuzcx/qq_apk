@@ -1,19 +1,16 @@
 import android.app.Activity;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
 public class dyt
-  implements FileManagerUtil.TipsClickedInterface
+  extends ClickableSpan
 {
   public dyt(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    FileManagerUtil.b((Activity)GrayTipsItemBuilder.b(this.a), GrayTipsItemBuilder.c(this.a).a(), GrayTipsItemBuilder.c(this.a).a, GrayTipsItemBuilder.d(this.a).d);
+    ((Activity)GrayTipsItemBuilder.c(this.a)).showDialog(230);
   }
 }
 

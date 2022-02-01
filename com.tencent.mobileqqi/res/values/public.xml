@@ -5157,22 +5157,22 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801d7" id="0x7f0801d7" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801d8" id="0x7f0801d8" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801d9" id="0x7f0801d9" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801da" id="0x7f0801da" />
-    <public type="id" name="tipsprogerss_show" id="0x7f0801db" />
-    <public type="id" name="msgTextView" id="0x7f0801dc" />
+    <public type="id" name="tipsprogerss_show" id="0x7f0801da" />
+    <public type="id" name="msgTextView" id="0x7f0801db" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801dc" id="0x7f0801dc" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801dd" id="0x7f0801dd" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801de" id="0x7f0801de" />
-    <public type="id" name="listView1" id="0x7f0801df" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801e0" id="0x7f0801e0" />
-    <public type="id" name="inputBar" id="0x7f0801e1" />
+    <public type="id" name="listView1" id="0x7f0801de" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801df" id="0x7f0801df" />
+    <public type="id" name="inputBar" id="0x7f0801e0" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801e1" id="0x7f0801e1" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801e2" id="0x7f0801e2" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801e3" id="0x7f0801e3" />
-    <public type="id" name="fun_btn" id="0x7f0801e4" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801e5" id="0x7f0801e5" />
-    <public type="id" name="input" id="0x7f0801e6" />
-    <public type="id" name="emo_btn" id="0x7f0801e7" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801e8" id="0x7f0801e8" />
-    <public type="id" name="plus_btn" id="0x7f0801e9" />
+    <public type="id" name="fun_btn" id="0x7f0801e3" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801e4" id="0x7f0801e4" />
+    <public type="id" name="input" id="0x7f0801e5" />
+    <public type="id" name="emo_btn" id="0x7f0801e6" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801e7" id="0x7f0801e7" />
+    <public type="id" name="plus_btn" id="0x7f0801e8" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801e9" id="0x7f0801e9" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801ea" id="0x7f0801ea" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801eb" id="0x7f0801eb" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0801ec" id="0x7f0801ec" />
@@ -5250,15 +5250,15 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080234" id="0x7f080234" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080235" id="0x7f080235" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080236" id="0x7f080236" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080237" id="0x7f080237" />
-    <public type="id" name="chatHistory" id="0x7f080238" />
+    <public type="id" name="chatHistory" id="0x7f080237" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080238" id="0x7f080238" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080239" id="0x7f080239" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08023a" id="0x7f08023a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08023b" id="0x7f08023b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08023c" id="0x7f08023c" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08023d" id="0x7f08023d" />
-    <public type="id" name="textView1" id="0x7f08023e" />
-    <public type="id" name="flag_new" id="0x7f08023f" />
+    <public type="id" name="textView1" id="0x7f08023d" />
+    <public type="id" name="flag_new" id="0x7f08023e" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08023f" id="0x7f08023f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080240" id="0x7f080240" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080241" id="0x7f080241" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080242" id="0x7f080242" />
@@ -5275,8 +5275,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08024d" id="0x7f08024d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08024e" id="0x7f08024e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08024f" id="0x7f08024f" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080250" id="0x7f080250" />
-    <public type="id" name="common_xlistview" id="0x7f080251" />
+    <public type="id" name="common_xlistview" id="0x7f080250" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080251" id="0x7f080251" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080252" id="0x7f080252" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080253" id="0x7f080253" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080254" id="0x7f080254" />
@@ -5295,8 +5295,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080261" id="0x7f080261" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080262" id="0x7f080262" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080263" id="0x7f080263" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080264" id="0x7f080264" />
-    <public type="id" name="listViewHistory" id="0x7f080265" />
+    <public type="id" name="listViewHistory" id="0x7f080264" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080265" id="0x7f080265" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080266" id="0x7f080266" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080267" id="0x7f080267" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080268" id="0x7f080268" />
@@ -5306,8 +5306,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08026c" id="0x7f08026c" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08026d" id="0x7f08026d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08026e" id="0x7f08026e" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08026f" id="0x7f08026f" />
-    <public type="id" name="buttonDelete" id="0x7f080270" />
+    <public type="id" name="buttonDelete" id="0x7f08026f" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080270" id="0x7f080270" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080271" id="0x7f080271" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080272" id="0x7f080272" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080273" id="0x7f080273" />
@@ -5319,12 +5319,12 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080279" id="0x7f080279" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08027a" id="0x7f08027a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08027b" id="0x7f08027b" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08027c" id="0x7f08027c" />
-    <public type="id" name="graybar" id="0x7f08027d" />
+    <public type="id" name="graybar" id="0x7f08027c" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08027d" id="0x7f08027d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08027e" id="0x7f08027e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08027f" id="0x7f08027f" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080280" id="0x7f080280" />
-    <public type="id" name="bodyLayout" id="0x7f080281" />
+    <public type="id" name="bodyLayout" id="0x7f080280" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080281" id="0x7f080281" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080282" id="0x7f080282" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080283" id="0x7f080283" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080284" id="0x7f080284" />
@@ -5338,34 +5338,34 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08028c" id="0x7f08028c" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08028d" id="0x7f08028d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08028e" id="0x7f08028e" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08028f" id="0x7f08028f" />
-    <public type="id" name="ivTitleName" id="0x7f080290" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080291" id="0x7f080291" />
-    <public type="id" name="rb_list_grouping" id="0x7f080292" />
-    <public type="id" name="rb_list_all" id="0x7f080293" />
-    <public type="id" name="ivTitleBtnRightText" id="0x7f080294" />
+    <public type="id" name="ivTitleName" id="0x7f08028f" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080290" id="0x7f080290" />
+    <public type="id" name="rb_list_grouping" id="0x7f080291" />
+    <public type="id" name="rb_list_all" id="0x7f080292" />
+    <public type="id" name="ivTitleBtnRightText" id="0x7f080293" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080294" id="0x7f080294" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080295" id="0x7f080295" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080296" id="0x7f080296" />
-    <public type="id" name="rl_all_list" id="0x7f080297" />
+    <public type="id" name="rl_all_list" id="0x7f080296" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080297" id="0x7f080297" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080298" id="0x7f080298" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080299" id="0x7f080299" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08029a" id="0x7f08029a" />
-    <public type="id" name="group_item_layout" id="0x7f08029b" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08029c" id="0x7f08029c" />
-    <public type="id" name="group_name" id="0x7f08029d" />
-    <public type="id" name="contact_count" id="0x7f08029e" />
+    <public type="id" name="group_item_layout" id="0x7f08029a" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08029b" id="0x7f08029b" />
+    <public type="id" name="group_name" id="0x7f08029c" />
+    <public type="id" name="contact_count" id="0x7f08029d" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08029e" id="0x7f08029e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08029f" id="0x7f08029f" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802a0" id="0x7f0802a0" />
-    <public type="id" name="elv_buddies" id="0x7f0802a1" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802a2" id="0x7f0802a2" />
-    <public type="id" name="text1" id="0x7f0802a3" />
-    <public type="id" name="text2" id="0x7f0802a4" />
+    <public type="id" name="elv_buddies" id="0x7f0802a0" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802a1" id="0x7f0802a1" />
+    <public type="id" name="text1" id="0x7f0802a2" />
+    <public type="id" name="text2" id="0x7f0802a3" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802a4" id="0x7f0802a4" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802a5" id="0x7f0802a5" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802a6" id="0x7f0802a6" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802a7" id="0x7f0802a7" />
-    <public type="id" name="local_search" id="0x7f0802a8" />
-    <public type="id" name="result_layout" id="0x7f0802a9" />
-    <public type="id" name="search_result_list" id="0x7f0802aa" />
+    <public type="id" name="local_search" id="0x7f0802a7" />
+    <public type="id" name="result_layout" id="0x7f0802a8" />
+    <public type="id" name="search_result_list" id="0x7f0802a9" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802aa" id="0x7f0802aa" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802ab" id="0x7f0802ab" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802ac" id="0x7f0802ac" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802ad" id="0x7f0802ad" />
@@ -5373,29 +5373,29 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802af" id="0x7f0802af" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802b0" id="0x7f0802b0" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802b1" id="0x7f0802b1" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802b2" id="0x7f0802b2" />
-    <public type="id" name="tv_name" id="0x7f0802b3" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802b4" id="0x7f0802b4" />
-    <public type="id" name="tv_member_count" id="0x7f0802b5" />
+    <public type="id" name="tv_name" id="0x7f0802b2" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802b3" id="0x7f0802b3" />
+    <public type="id" name="tv_member_count" id="0x7f0802b4" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802b5" id="0x7f0802b5" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802b6" id="0x7f0802b6" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802b7" id="0x7f0802b7" />
-    <public type="id" name="relativeItem" id="0x7f0802b8" />
-    <public type="id" name="text1Area" id="0x7f0802b9" />
+    <public type="id" name="relativeItem" id="0x7f0802b7" />
+    <public type="id" name="text1Area" id="0x7f0802b8" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802b9" id="0x7f0802b9" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802ba" id="0x7f0802ba" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802bb" id="0x7f0802bb" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802bc" id="0x7f0802bc" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802bd" id="0x7f0802bd" />
-    <public type="id" name="conversation_head" id="0x7f0802be" />
+    <public type="id" name="conversation_head" id="0x7f0802bd" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802be" id="0x7f0802be" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802bf" id="0x7f0802bf" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802c0" id="0x7f0802c0" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802c1" id="0x7f0802c1" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802c2" id="0x7f0802c2" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802c3" id="0x7f0802c3" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802c4" id="0x7f0802c4" />
-    <public type="id" name="recent_chat_list" id="0x7f0802c5" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802c6" id="0x7f0802c6" />
-    <public type="id" name="conversation_loading_bar" id="0x7f0802c7" />
-    <public type="id" name="no_chat" id="0x7f0802c8" />
+    <public type="id" name="recent_chat_list" id="0x7f0802c4" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802c5" id="0x7f0802c5" />
+    <public type="id" name="conversation_loading_bar" id="0x7f0802c6" />
+    <public type="id" name="no_chat" id="0x7f0802c7" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802c8" id="0x7f0802c8" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802c9" id="0x7f0802c9" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802ca" id="0x7f0802ca" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802cb" id="0x7f0802cb" />
@@ -5410,58 +5410,58 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802d4" id="0x7f0802d4" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802d5" id="0x7f0802d5" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802d6" id="0x7f0802d6" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802d7" id="0x7f0802d7" />
-    <public type="id" name="rlCommenTitle" id="0x7f0802d8" />
+    <public type="id" name="rlCommenTitle" id="0x7f0802d7" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802d8" id="0x7f0802d8" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802d9" id="0x7f0802d9" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802da" id="0x7f0802da" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802db" id="0x7f0802db" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802dc" id="0x7f0802dc" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802dd" id="0x7f0802dd" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802de" id="0x7f0802de" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802df" id="0x7f0802df" />
-    <public type="id" name="ivTitleBtnLeft" id="0x7f0802e0" />
-    <public type="id" name="ivTitleBtnLeftButton" id="0x7f0802e1" />
+    <public type="id" name="ivTitleBtnLeft" id="0x7f0802df" />
+    <public type="id" name="ivTitleBtnLeftButton" id="0x7f0802e0" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802e1" id="0x7f0802e1" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802e2" id="0x7f0802e2" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802e3" id="0x7f0802e3" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802e4" id="0x7f0802e4" />
-    <public type="id" name="ivTitleBtnRightImage" id="0x7f0802e5" />
+    <public type="id" name="ivTitleBtnRightImage" id="0x7f0802e4" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802e5" id="0x7f0802e5" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802e6" id="0x7f0802e6" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802e7" id="0x7f0802e7" />
-    <public type="id" name="ivTitleBtnRightHintImg" id="0x7f0802e8" />
-    <public type="id" name="dialogRoot" id="0x7f0802e9" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802ea" id="0x7f0802ea" />
-    <public type="id" name="dialogDivider" id="0x7f0802eb" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802ec" id="0x7f0802ec" />
-    <public type="id" name="dialogTitle" id="0x7f0802ed" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802ee" id="0x7f0802ee" />
-    <public type="id" name="btnLayout" id="0x7f0802ef" />
-    <public type="id" name="dialogLeftBtn" id="0x7f0802f0" />
-    <public type="id" name="dialogRightBtn" id="0x7f0802f1" />
-    <public type="id" name="item_text" id="0x7f0802f2" />
-    <public type="id" name="item_checkbox" id="0x7f0802f3" />
-    <public type="id" name="list" id="0x7f0802f4" />
-    <public type="id" name="dummy2" id="0x7f0802f5" />
+    <public type="id" name="ivTitleBtnRightHintImg" id="0x7f0802e7" />
+    <public type="id" name="dialogRoot" id="0x7f0802e8" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802e9" id="0x7f0802e9" />
+    <public type="id" name="dialogDivider" id="0x7f0802ea" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802eb" id="0x7f0802eb" />
+    <public type="id" name="dialogTitle" id="0x7f0802ec" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802ed" id="0x7f0802ed" />
+    <public type="id" name="btnLayout" id="0x7f0802ee" />
+    <public type="id" name="dialogLeftBtn" id="0x7f0802ef" />
+    <public type="id" name="dialogRightBtn" id="0x7f0802f0" />
+    <public type="id" name="item_text" id="0x7f0802f1" />
+    <public type="id" name="item_checkbox" id="0x7f0802f2" />
+    <public type="id" name="list" id="0x7f0802f3" />
+    <public type="id" name="dummy2" id="0x7f0802f4" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802f5" id="0x7f0802f5" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802f6" id="0x7f0802f6" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802f7" id="0x7f0802f7" />
-    <public type="id" name="previewImage" id="0x7f0802f8" />
+    <public type="id" name="previewImage" id="0x7f0802f7" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802f8" id="0x7f0802f8" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802f9" id="0x7f0802f9" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802fa" id="0x7f0802fa" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802fb" id="0x7f0802fb" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802fc" id="0x7f0802fc" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802fd" id="0x7f0802fd" />
-    <public type="id" name="dialogMiddleBtn" id="0x7f0802fe" />
+    <public type="id" name="dialogMiddleBtn" id="0x7f0802fd" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802fe" id="0x7f0802fe" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0802ff" id="0x7f0802ff" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080300" id="0x7f080300" />
-    <public type="id" name="dialogMainIcon" id="0x7f080301" />
-    <public type="id" name="title_sub" id="0x7f080302" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080303" id="0x7f080303" />
-    <public type="id" name="ivTitleBtnRightCall" id="0x7f080304" />
-    <public type="id" name="split_text" id="0x7f080305" />
+    <public type="id" name="dialogMainIcon" id="0x7f080300" />
+    <public type="id" name="title_sub" id="0x7f080301" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080302" id="0x7f080302" />
+    <public type="id" name="ivTitleBtnRightCall" id="0x7f080303" />
+    <public type="id" name="split_text" id="0x7f080304" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080305" id="0x7f080305" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080306" id="0x7f080306" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080307" id="0x7f080307" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080308" id="0x7f080308" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080309" id="0x7f080309" />
-    <public type="id" name="send" id="0x7f08030a" />
+    <public type="id" name="send" id="0x7f080309" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08030a" id="0x7f08030a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08030b" id="0x7f08030b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08030c" id="0x7f08030c" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08030d" id="0x7f08030d" />
@@ -5516,13 +5516,13 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08033e" id="0x7f08033e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08033f" id="0x7f08033f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080340" id="0x7f080340" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080341" id="0x7f080341" />
-    <public type="id" name="delRoamMsg" id="0x7f080342" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080343" id="0x7f080343" />
-    <public type="id" name="letsIcon" id="0x7f080344" />
-    <public type="id" name="letsTextView" id="0x7f080345" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080346" id="0x7f080346" />
-    <public type="id" name="flag_red" id="0x7f080347" />
+    <public type="id" name="delRoamMsg" id="0x7f080341" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080342" id="0x7f080342" />
+    <public type="id" name="letsIcon" id="0x7f080343" />
+    <public type="id" name="letsTextView" id="0x7f080344" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080345" id="0x7f080345" />
+    <public type="id" name="flag_red" id="0x7f080346" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080347" id="0x7f080347" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080348" id="0x7f080348" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080349" id="0x7f080349" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08034a" id="0x7f08034a" />
@@ -5567,8 +5567,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080371" id="0x7f080371" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080372" id="0x7f080372" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080373" id="0x7f080373" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080374" id="0x7f080374" />
-    <public type="id" name="pic" id="0x7f080375" />
+    <public type="id" name="pic" id="0x7f080374" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080375" id="0x7f080375" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080376" id="0x7f080376" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080377" id="0x7f080377" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080378" id="0x7f080378" />
@@ -5592,8 +5592,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08038a" id="0x7f08038a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08038b" id="0x7f08038b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08038c" id="0x7f08038c" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08038d" id="0x7f08038d" />
-    <public type="id" name="emoview" id="0x7f08038e" />
+    <public type="id" name="emoview" id="0x7f08038d" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08038e" id="0x7f08038e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08038f" id="0x7f08038f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080390" id="0x7f080390" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080391" id="0x7f080391" />
@@ -5603,8 +5603,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080395" id="0x7f080395" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080396" id="0x7f080396" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080397" id="0x7f080397" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080398" id="0x7f080398" />
-    <public type="id" name="tabs" id="0x7f080399" />
+    <public type="id" name="tabs" id="0x7f080398" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080399" id="0x7f080399" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08039a" id="0x7f08039a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08039b" id="0x7f08039b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08039c" id="0x7f08039c" />
@@ -5617,8 +5617,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803a3" id="0x7f0803a3" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803a4" id="0x7f0803a4" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803a5" id="0x7f0803a5" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803a6" id="0x7f0803a6" />
-    <public type="id" name="tabView" id="0x7f0803a7" />
+    <public type="id" name="tabView" id="0x7f0803a6" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803a7" id="0x7f0803a7" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803a8" id="0x7f0803a8" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803a9" id="0x7f0803a9" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803aa" id="0x7f0803aa" />
@@ -5629,8 +5629,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803af" id="0x7f0803af" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803b0" id="0x7f0803b0" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803b1" id="0x7f0803b1" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803b2" id="0x7f0803b2" />
-    <public type="id" name="checkBoxConfirm" id="0x7f0803b3" />
+    <public type="id" name="checkBoxConfirm" id="0x7f0803b2" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803b3" id="0x7f0803b3" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803b4" id="0x7f0803b4" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803b5" id="0x7f0803b5" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803b6" id="0x7f0803b6" />
@@ -5683,8 +5683,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803e5" id="0x7f0803e5" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803e6" id="0x7f0803e6" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803e7" id="0x7f0803e7" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803e8" id="0x7f0803e8" />
-    <public type="id" name="discussion_entry_iv" id="0x7f0803e9" />
+    <public type="id" name="discussion_entry_iv" id="0x7f0803e8" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803e9" id="0x7f0803e9" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803ea" id="0x7f0803ea" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803eb" id="0x7f0803eb" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0803ec" id="0x7f0803ec" />
@@ -5739,8 +5739,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08041d" id="0x7f08041d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08041e" id="0x7f08041e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08041f" id="0x7f08041f" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080420" id="0x7f080420" />
-    <public type="id" name="gallery" id="0x7f080421" />
+    <public type="id" name="gallery" id="0x7f080420" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080421" id="0x7f080421" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080422" id="0x7f080422" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080423" id="0x7f080423" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080424" id="0x7f080424" />
@@ -5845,11 +5845,11 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080487" id="0x7f080487" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080488" id="0x7f080488" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080489" id="0x7f080489" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08048a" id="0x7f08048a" />
-    <public type="id" name="lastMsgTime" id="0x7f08048b" />
+    <public type="id" name="lastMsgTime" id="0x7f08048a" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08048b" id="0x7f08048b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08048c" id="0x7f08048c" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08048d" id="0x7f08048d" />
-    <public type="id" name="lebasv" id="0x7f08048e" />
+    <public type="id" name="lebasv" id="0x7f08048d" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08048e" id="0x7f08048e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08048f" id="0x7f08048f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080490" id="0x7f080490" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080491" id="0x7f080491" />
@@ -5870,10 +5870,10 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804a0" id="0x7f0804a0" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804a1" id="0x7f0804a1" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804a2" id="0x7f0804a2" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804a3" id="0x7f0804a3" />
-    <public type="id" name="password" id="0x7f0804a4" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804a5" id="0x7f0804a5" />
-    <public type="id" name="login" id="0x7f0804a6" />
+    <public type="id" name="password" id="0x7f0804a3" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804a4" id="0x7f0804a4" />
+    <public type="id" name="login" id="0x7f0804a5" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804a6" id="0x7f0804a6" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804a7" id="0x7f0804a7" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804a8" id="0x7f0804a8" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804a9" id="0x7f0804a9" />
@@ -5955,15 +5955,15 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804f5" id="0x7f0804f5" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804f6" id="0x7f0804f6" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804f7" id="0x7f0804f7" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804f8" id="0x7f0804f8" />
-    <public type="id" name="dialog_button_cancel" id="0x7f0804f9" />
-    <public type="id" name="dialog_button_ok" id="0x7f0804fa" />
+    <public type="id" name="dialog_button_cancel" id="0x7f0804f8" />
+    <public type="id" name="dialog_button_ok" id="0x7f0804f9" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804fa" id="0x7f0804fa" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804fb" id="0x7f0804fb" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804fc" id="0x7f0804fc" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804fd" id="0x7f0804fd" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804fe" id="0x7f0804fe" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0804ff" id="0x7f0804ff" />
-    <public type="id" name="receive_msg_whenexit" id="0x7f080500" />
+    <public type="id" name="receive_msg_whenexit" id="0x7f0804ff" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080500" id="0x7f080500" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080501" id="0x7f080501" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080502" id="0x7f080502" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080503" id="0x7f080503" />
@@ -5972,9 +5972,9 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080506" id="0x7f080506" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080507" id="0x7f080507" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080508" id="0x7f080508" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080509" id="0x7f080509" />
-    <public type="id" name="toast_icon" id="0x7f08050a" />
-    <public type="id" name="toast_msg" id="0x7f08050b" />
+    <public type="id" name="toast_icon" id="0x7f080509" />
+    <public type="id" name="toast_msg" id="0x7f08050a" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08050b" id="0x7f08050b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08050c" id="0x7f08050c" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08050d" id="0x7f08050d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08050e" id="0x7f08050e" />
@@ -6004,8 +6004,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080526" id="0x7f080526" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080527" id="0x7f080527" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080528" id="0x7f080528" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080529" id="0x7f080529" />
-    <public type="id" name="phone_enable_btn" id="0x7f08052a" />
+    <public type="id" name="phone_enable_btn" id="0x7f080529" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08052a" id="0x7f08052a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08052b" id="0x7f08052b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08052c" id="0x7f08052c" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08052d" id="0x7f08052d" />
@@ -6024,15 +6024,15 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08053a" id="0x7f08053a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08053b" id="0x7f08053b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08053c" id="0x7f08053c" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08053d" id="0x7f08053d" />
-    <public type="id" name="photo_preview_left" id="0x7f08053e" />
-    <public type="id" name="photo_preview_right" id="0x7f08053f" />
+    <public type="id" name="photo_preview_left" id="0x7f08053d" />
+    <public type="id" name="photo_preview_right" id="0x7f08053e" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08053f" id="0x7f08053f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080540" id="0x7f080540" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080541" id="0x7f080541" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080542" id="0x7f080542" />
-    <public type="id" name="send_btn" id="0x7f080543" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080544" id="0x7f080544" />
-    <public type="id" name="photo_prievew_progress_dialog_text" id="0x7f080545" />
+    <public type="id" name="send_btn" id="0x7f080542" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080543" id="0x7f080543" />
+    <public type="id" name="photo_prievew_progress_dialog_text" id="0x7f080544" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080545" id="0x7f080545" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080546" id="0x7f080546" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080547" id="0x7f080547" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080548" id="0x7f080548" />
@@ -6051,8 +6051,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080555" id="0x7f080555" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080556" id="0x7f080556" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080557" id="0x7f080557" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080558" id="0x7f080558" />
-    <public type="id" name="close" id="0x7f080559" />
+    <public type="id" name="close" id="0x7f080558" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080559" id="0x7f080559" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08055a" id="0x7f08055a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08055b" id="0x7f08055b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08055c" id="0x7f08055c" />
@@ -6080,15 +6080,15 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080572" id="0x7f080572" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080573" id="0x7f080573" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080574" id="0x7f080574" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080575" id="0x7f080575" />
-    <public type="id" name="notification_root" id="0x7f080576" />
-    <public type="id" name="notification_icon" id="0x7f080577" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080578" id="0x7f080578" />
-    <public type="id" name="notification_title" id="0x7f080579" />
-    <public type="id" name="notification_progress" id="0x7f08057a" />
-    <public type="id" name="notification_content" id="0x7f08057b" />
-    <public type="id" name="notif_pro_bar_layout" id="0x7f08057c" />
-    <public type="id" name="notif_pro_bar" id="0x7f08057d" />
+    <public type="id" name="notification_root" id="0x7f080575" />
+    <public type="id" name="notification_icon" id="0x7f080576" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080577" id="0x7f080577" />
+    <public type="id" name="notification_title" id="0x7f080578" />
+    <public type="id" name="notification_progress" id="0x7f080579" />
+    <public type="id" name="notification_content" id="0x7f08057a" />
+    <public type="id" name="notif_pro_bar_layout" id="0x7f08057b" />
+    <public type="id" name="notif_pro_bar" id="0x7f08057c" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08057d" id="0x7f08057d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08057e" id="0x7f08057e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08057f" id="0x7f08057f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080580" id="0x7f080580" />
@@ -6263,8 +6263,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080629" id="0x7f080629" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08062a" id="0x7f08062a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08062b" id="0x7f08062b" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08062c" id="0x7f08062c" />
-    <public type="id" name="head" id="0x7f08062d" />
+    <public type="id" name="head" id="0x7f08062c" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08062d" id="0x7f08062d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08062e" id="0x7f08062e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08062f" id="0x7f08062f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080630" id="0x7f080630" />
@@ -6274,8 +6274,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080634" id="0x7f080634" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080635" id="0x7f080635" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080636" id="0x7f080636" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080637" id="0x7f080637" />
-    <public type="id" name="lv_discussion" id="0x7f080638" />
+    <public type="id" name="lv_discussion" id="0x7f080637" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080638" id="0x7f080638" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080639" id="0x7f080639" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08063a" id="0x7f08063a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08063b" id="0x7f08063b" />
@@ -6452,8 +6452,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0806e6" id="0x7f0806e6" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0806e7" id="0x7f0806e7" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0806e8" id="0x7f0806e8" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0806e9" id="0x7f0806e9" />
-    <public type="id" name="root_layout" id="0x7f0806ea" />
+    <public type="id" name="root_layout" id="0x7f0806e9" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0806ea" id="0x7f0806ea" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0806eb" id="0x7f0806eb" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0806ec" id="0x7f0806ec" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0806ed" id="0x7f0806ed" />
@@ -6613,8 +6613,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080787" id="0x7f080787" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080788" id="0x7f080788" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080789" id="0x7f080789" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08078a" id="0x7f08078a" />
-    <public type="id" name="qb_troop_list_view" id="0x7f08078b" />
+    <public type="id" name="qb_troop_list_view" id="0x7f08078a" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08078b" id="0x7f08078b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08078c" id="0x7f08078c" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08078d" id="0x7f08078d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08078e" id="0x7f08078e" />
@@ -6644,8 +6644,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0807a6" id="0x7f0807a6" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0807a7" id="0x7f0807a7" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0807a8" id="0x7f0807a8" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0807a9" id="0x7f0807a9" />
-    <public type="id" name="note" id="0x7f0807aa" />
+    <public type="id" name="note" id="0x7f0807a9" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0807aa" id="0x7f0807aa" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0807ab" id="0x7f0807ab" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0807ac" id="0x7f0807ac" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0807ad" id="0x7f0807ad" />
@@ -6829,13 +6829,13 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08085f" id="0x7f08085f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080860" id="0x7f080860" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080861" id="0x7f080861" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080862" id="0x7f080862" />
-    <public type="id" name="press_to_speak_iv" id="0x7f080863" />
+    <public type="id" name="press_to_speak_iv" id="0x7f080862" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080863" id="0x7f080863" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080864" id="0x7f080864" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080865" id="0x7f080865" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080866" id="0x7f080866" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080867" id="0x7f080867" />
-    <public type="id" name="close_btn" id="0x7f080868" />
+    <public type="id" name="close_btn" id="0x7f080867" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080868" id="0x7f080868" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080869" id="0x7f080869" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08086a" id="0x7f08086a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08086b" id="0x7f08086b" />
@@ -6845,10 +6845,10 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08086f" id="0x7f08086f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080870" id="0x7f080870" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080871" id="0x7f080871" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080872" id="0x7f080872" />
-    <public type="id" name="album_list" id="0x7f080873" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080874" id="0x7f080874" />
-    <public type="id" name="album_item_title" id="0x7f080875" />
+    <public type="id" name="album_list" id="0x7f080872" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080873" id="0x7f080873" />
+    <public type="id" name="album_item_title" id="0x7f080874" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080875" id="0x7f080875" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080876" id="0x7f080876" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080877" id="0x7f080877" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080878" id="0x7f080878" />
@@ -6913,11 +6913,11 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808b3" id="0x7f0808b3" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808b4" id="0x7f0808b4" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808b5" id="0x7f0808b5" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808b6" id="0x7f0808b6" />
-    <public type="id" name="ug_btn" id="0x7f0808b7" />
+    <public type="id" name="ug_btn" id="0x7f0808b6" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808b7" id="0x7f0808b7" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808b8" id="0x7f0808b8" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808b9" id="0x7f0808b9" />
-    <public type="id" name="confirm_btn" id="0x7f0808ba" />
+    <public type="id" name="confirm_btn" id="0x7f0808b9" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808ba" id="0x7f0808ba" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808bb" id="0x7f0808bb" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808bc" id="0x7f0808bc" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808bd" id="0x7f0808bd" />
@@ -6940,9 +6940,9 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808ce" id="0x7f0808ce" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808cf" id="0x7f0808cf" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808d0" id="0x7f0808d0" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808d1" id="0x7f0808d1" />
-    <public type="id" name="laba_entrys_layout" id="0x7f0808d2" />
-    <public type="id" name="qzone_feed_entry" id="0x7f0808d3" />
+    <public type="id" name="laba_entrys_layout" id="0x7f0808d1" />
+    <public type="id" name="qzone_feed_entry" id="0x7f0808d2" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808d3" id="0x7f0808d3" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808d4" id="0x7f0808d4" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808d5" id="0x7f0808d5" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f0808d6" id="0x7f0808d6" />
@@ -6990,8 +6990,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080900" id="0x7f080900" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080901" id="0x7f080901" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080902" id="0x7f080902" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080903" id="0x7f080903" />
-    <public type="id" name="photo_list_gv" id="0x7f080904" />
+    <public type="id" name="photo_list_gv" id="0x7f080903" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080904" id="0x7f080904" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080905" id="0x7f080905" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080906" id="0x7f080906" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080907" id="0x7f080907" />
@@ -7002,8 +7002,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08090c" id="0x7f08090c" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08090d" id="0x7f08090d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08090e" id="0x7f08090e" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08090f" id="0x7f08090f" />
-    <public type="id" name="txt" id="0x7f080910" />
+    <public type="id" name="txt" id="0x7f08090f" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080910" id="0x7f080910" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080911" id="0x7f080911" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080912" id="0x7f080912" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080913" id="0x7f080913" />
@@ -7042,29 +7042,29 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080934" id="0x7f080934" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080935" id="0x7f080935" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080936" id="0x7f080936" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080937" id="0x7f080937" />
-    <public type="id" name="tipsimage_show" id="0x7f080938" />
+    <public type="id" name="tipsimage_show" id="0x7f080937" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080938" id="0x7f080938" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080939" id="0x7f080939" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08093a" id="0x7f08093a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08093b" id="0x7f08093b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08093c" id="0x7f08093c" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08093d" id="0x7f08093d" />
-    <public type="id" name="btn_cancel_search" id="0x7f08093e" />
-    <public type="id" name="et_search_keyword" id="0x7f08093f" />
-    <public type="id" name="ib_clear_text" id="0x7f080940" />
+    <public type="id" name="btn_cancel_search" id="0x7f08093d" />
+    <public type="id" name="et_search_keyword" id="0x7f08093e" />
+    <public type="id" name="ib_clear_text" id="0x7f08093f" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080940" id="0x7f080940" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080941" id="0x7f080941" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080942" id="0x7f080942" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080943" id="0x7f080943" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080944" id="0x7f080944" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080945" id="0x7f080945" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080946" id="0x7f080946" />
-    <public type="id" name="head_layout" id="0x7f080947" />
+    <public type="id" name="head_layout" id="0x7f080946" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080947" id="0x7f080947" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080948" id="0x7f080948" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080949" id="0x7f080949" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08094a" id="0x7f08094a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08094b" id="0x7f08094b" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08094c" id="0x7f08094c" />
-    <public type="id" name="settings" id="0x7f08094d" />
+    <public type="id" name="settings" id="0x7f08094c" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08094d" id="0x7f08094d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08094e" id="0x7f08094e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08094f" id="0x7f08094f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080950" id="0x7f080950" />
@@ -7084,11 +7084,11 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08095e" id="0x7f08095e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08095f" id="0x7f08095f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080960" id="0x7f080960" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080961" id="0x7f080961" />
-    <public type="id" name="qq_setting_sync_msg_switch" id="0x7f080962" />
-    <public type="id" name="delRecentList" id="0x7f080963" />
-    <public type="id" name="delChatHistory" id="0x7f080964" />
-    <public type="id" name="del_off_line_data" id="0x7f080965" />
+    <public type="id" name="qq_setting_sync_msg_switch" id="0x7f080961" />
+    <public type="id" name="delRecentList" id="0x7f080962" />
+    <public type="id" name="delChatHistory" id="0x7f080963" />
+    <public type="id" name="del_off_line_data" id="0x7f080964" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080965" id="0x7f080965" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080966" id="0x7f080966" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080967" id="0x7f080967" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080968" id="0x7f080968" />
@@ -7099,16 +7099,16 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08096d" id="0x7f08096d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08096e" id="0x7f08096e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08096f" id="0x7f08096f" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080970" id="0x7f080970" />
-    <public type="id" name="account_switch" id="0x7f080971" />
-    <public type="id" name="qqsetting2_msg_notify" id="0x7f080972" />
-    <public type="id" name="qqsetting2_msg_history" id="0x7f080973" />
+    <public type="id" name="account_switch" id="0x7f080970" />
+    <public type="id" name="qqsetting2_msg_notify" id="0x7f080971" />
+    <public type="id" name="qqsetting2_msg_history" id="0x7f080972" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080973" id="0x7f080973" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080974" id="0x7f080974" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080975" id="0x7f080975" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080976" id="0x7f080976" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080977" id="0x7f080977" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080978" id="0x7f080978" />
-    <public type="id" name="about" id="0x7f080979" />
+    <public type="id" name="about" id="0x7f080978" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080979" id="0x7f080979" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08097a" id="0x7f08097a" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08097b" id="0x7f08097b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f08097c" id="0x7f08097c" />
@@ -7387,8 +7387,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080a8d" id="0x7f080a8d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080a8e" id="0x7f080a8e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080a8f" id="0x7f080a8f" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080a90" id="0x7f080a90" />
-    <public type="id" name="newer_mask_layout" id="0x7f080a91" />
+    <public type="id" name="newer_mask_layout" id="0x7f080a90" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080a91" id="0x7f080a91" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080a92" id="0x7f080a92" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080a93" id="0x7f080a93" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080a94" id="0x7f080a94" />
@@ -7726,8 +7726,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080be0" id="0x7f080be0" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080be1" id="0x7f080be1" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080be2" id="0x7f080be2" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080be3" id="0x7f080be3" />
-    <public type="id" name="ivTitleprogress" id="0x7f080be4" />
+    <public type="id" name="ivTitleprogress" id="0x7f080be3" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080be4" id="0x7f080be4" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080be5" id="0x7f080be5" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080be6" id="0x7f080be6" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080be7" id="0x7f080be7" />
@@ -7852,8 +7852,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080c5e" id="0x7f080c5e" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080c5f" id="0x7f080c5f" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080c60" id="0x7f080c60" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080c61" id="0x7f080c61" />
-    <public type="id" name="main" id="0x7f080c62" />
+    <public type="id" name="main" id="0x7f080c61" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080c62" id="0x7f080c62" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080c63" id="0x7f080c63" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080c64" id="0x7f080c64" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080c65" id="0x7f080c65" />
@@ -8142,8 +8142,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080d80" id="0x7f080d80" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080d81" id="0x7f080d81" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080d82" id="0x7f080d82" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080d83" id="0x7f080d83" />
-    <public type="id" name="unreadmsg" id="0x7f080d84" />
+    <public type="id" name="unreadmsg" id="0x7f080d83" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080d84" id="0x7f080d84" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080d85" id="0x7f080d85" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080d86" id="0x7f080d86" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080d87" id="0x7f080d87" />
@@ -8271,8 +8271,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e01" id="0x7f080e01" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e02" id="0x7f080e02" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e03" id="0x7f080e03" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e04" id="0x7f080e04" />
-    <public type="id" name="title_container" id="0x7f080e05" />
+    <public type="id" name="title_container" id="0x7f080e04" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e05" id="0x7f080e05" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e06" id="0x7f080e06" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e07" id="0x7f080e07" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e08" id="0x7f080e08" />
@@ -8357,8 +8357,8 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e57" id="0x7f080e57" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e58" id="0x7f080e58" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e59" id="0x7f080e59" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e5a" id="0x7f080e5a" />
-    <public type="id" name="cancel" id="0x7f080e5b" />
+    <public type="id" name="cancel" id="0x7f080e5a" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e5b" id="0x7f080e5b" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e5c" id="0x7f080e5c" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e5d" id="0x7f080e5d" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e5e" id="0x7f080e5e" />
@@ -8368,9 +8368,9 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e62" id="0x7f080e62" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e63" id="0x7f080e63" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e64" id="0x7f080e64" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e65" id="0x7f080e65" />
-    <public type="id" name="search_box" id="0x7f080e66" />
-    <public type="id" name="searchList" id="0x7f080e67" />
+    <public type="id" name="search_box" id="0x7f080e65" />
+    <public type="id" name="searchList" id="0x7f080e66" />
+    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e67" id="0x7f080e67" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e68" id="0x7f080e68" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e69" id="0x7f080e69" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f080e6a" id="0x7f080e6a" />
@@ -8867,7 +8867,6 @@
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f081055" id="0x7f081055" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f081056" id="0x7f081056" />
     <public type="id" name="APKTOOL_DUPLICATE_id_0x7f081057" id="0x7f081057" />
-    <public type="id" name="APKTOOL_DUPLICATE_id_0x7f081058" id="0x7f081058" />
     <public type="bool" name="0" id="0x7f090000" />
     <public type="bool" name="APKTOOL_DUPLICATE_bool_0x7f090001" id="0x7f090001" />
     <public type="bool" name="APKTOOL_DUPLICATE_bool_0x7f090002" id="0x7f090002" />
@@ -14747,6 +14746,7 @@
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d137c" id="0x7f0d137c" />
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d137d" id="0x7f0d137d" />
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d137e" id="0x7f0d137e" />
+    <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d137f" id="0x7f0d137f" />
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d1382" id="0x7f0d1382" />
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d1383" id="0x7f0d1383" />
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d1384" id="0x7f0d1384" />
@@ -14815,7 +14815,6 @@
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d13c5" id="0x7f0d13c5" />
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d08a3" id="0x7f0d08a3" />
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d0940" id="0x7f0d0940" />
-    <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d137f" id="0x7f0d137f" />
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d1380" id="0x7f0d1380" />
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d1381" id="0x7f0d1381" />
     <public type="string" name="APKTOOL_DUPLICATE_string_0x7f0d1385" id="0x7f0d1385" />

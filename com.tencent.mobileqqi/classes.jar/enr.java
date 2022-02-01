@@ -1,28 +1,23 @@
-import android.content.Intent;
-import com.dataline.activities.LiteActivity;
-import com.dataline.util.DataLineReportUtil;
-import com.tencent.mobileqq.activity.qfileJumpActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.qquserguide.UserguideVideoFragment;
 
 public class enr
-  implements Runnable
+  implements MediaPlayer.OnCompletionListener
 {
-  public enr(qfileJumpActivity paramqfileJumpActivity) {}
+  public enr(UserguideVideoFragment paramUserguideVideoFragment) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    DataLineReportUtil.r(this.a.b);
-    Intent localIntent = new Intent(this.a, LiteActivity.class);
-    localIntent.addFlags(67108864);
-    localIntent.putExtra("leftViewText", this.a.b.a().getString(2131561692));
-    this.a.startActivity(localIntent);
-    this.a.finish();
+    if (this.a.a.getVisibility() == 8) {
+      this.a.a.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     enr
  * JD-Core Version:    0.7.0.1
  */

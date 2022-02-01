@@ -5,11 +5,11 @@ import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
 public class dwq
   implements Runnable
 {
-  public dwq(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
+  public dwq(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(0) });
   }
 }
 

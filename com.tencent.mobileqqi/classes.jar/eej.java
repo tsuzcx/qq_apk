@@ -1,37 +1,21 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.contact.newfriend.BaseNewFriendView.INewFriendContext;
 import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.service.circle.ISwitchObserver;
+import com.tencent.mobileqq.newfriend.NewFriendMessage;
+import com.tencent.qphone.base.util.QLog;
 
 public class eej
-  implements ISwitchObserver
+  implements Runnable
 {
-  public eej(NewFriendActivity paramNewFriendActivity) {}
+  public eej(NewFriendActivity paramNewFriendActivity, Object paramObject) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    if ((!this.a.isFinishing()) && (NewFriendActivity.a(this.a) != null))
-    {
-      if (!paramBoolean1) {
-        break label92;
-      }
-      this.a.c = paramBoolean2;
-      if (!paramBoolean2) {
-        break label79;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "init red dot from NewFriendManager push");
     }
-    label79:
-    for (String str = this.a.getString(2131561652);; str = this.a.getString(2131562507))
-    {
-      str = this.a.getString(2131562212, new Object[] { str });
-      NewFriendActivity.a(this.a).a(str, 2);
-      return;
+    if (NewFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity) != this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity.a(((NewFriendMessage)this.jdField_a_of_type_JavaLangObject).b())) {
+      NewFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity);
     }
-    label92:
-    NewFriendActivity.a(this.a).a(this.a.getResources().getString(2131562080), 1);
   }
-  
-  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
 }
 
 

@@ -1,96 +1,85 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.utils.Base64Util;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.OutputStream;
+import com.tencent.qphone.base.util.QLog;
 
 public class fct
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
+  static final int a = 0;
+  public static final String[] a;
+  static final int jdField_b_of_type_Int = 1;
+  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "MSG", "RESUME", "FG", "BG", "TICK", "ENTER", "MAIN" };
+  static final int c = 2;
+  static final int d = 3;
+  static final int e = 4;
+  static final int f = 5;
+  static final int g = 6;
+  static final int h = 7;
+  static final int i = 8;
+  static final int j = 9;
+  public static final int k = 0;
+  public static final int l = 1;
+  protected static final int m = 2;
+  public static final int n = 2;
+  public static final int o = 3;
+  public static final int p = 4;
+  protected static final int q = 5;
+  public static final int r = 6;
+  protected long a;
+  public GuardManager a;
+  protected long b;
+  public int s = 0;
   
-  public fct(GuardManager paramGuardManager) {}
-  
-  public void a()
+  static
   {
-    try
-    {
-      Object localObject = BaseApplicationImpl.a().getSharedPreferences("MemoryInfomation", 0).getString("MemoryInfomation", null);
-      if (localObject != null)
-      {
-        if (((String)localObject).length() == 0) {
-          return;
-        }
-        localObject = new DataInputStream(new ByteArrayInputStream(Base64Util.a((String)localObject, 0)));
-        this.jdField_a_of_type_Long = ((DataInputStream)localObject).readLong();
-        this.jdField_a_of_type_Int = ((DataInputStream)localObject).readInt();
-        this.jdField_b_of_type_Long = ((DataInputStream)localObject).readLong();
-        this.jdField_c_of_type_Long = ((DataInputStream)localObject).readLong();
-        this.d = ((DataInputStream)localObject).readLong();
-        this.e = ((DataInputStream)localObject).readLong();
-        this.f = ((DataInputStream)localObject).readLong();
-        this.g = ((DataInputStream)localObject).readLong();
-        this.h = ((DataInputStream)localObject).readLong();
-        this.jdField_b_of_type_Int = ((DataInputStream)localObject).readInt();
-        this.jdField_c_of_type_Int = ((DataInputStream)localObject).readInt();
-        return;
-      }
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "DEFAULT", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
+  }
+  
+  protected void a() {}
+  
+  public final void a(int paramInt, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.s] + " onEvent " + jdField_b_of_type_ArrayOfJavaLangString[paramInt] + ", " + paramObject + ", " + this.jdField_a_of_type_Long + ", " + this.jdField_b_of_type_Long);
     }
-    catch (Exception localException) {}
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.d = 0L;
-    this.e = 0L;
-    this.f = 0L;
-    this.g = 0L;
-    this.h = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-  }
-  
-  public void c()
-  {
-    try
+    switch (paramInt)
     {
-      Object localObject = new ByteArrayOutputStream();
-      DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
-      localDataOutputStream.writeLong(this.jdField_a_of_type_Long);
-      localDataOutputStream.writeInt(this.jdField_a_of_type_Int);
-      localDataOutputStream.writeLong(this.jdField_b_of_type_Long);
-      localDataOutputStream.writeLong(this.jdField_c_of_type_Long);
-      localDataOutputStream.writeLong(this.d);
-      localDataOutputStream.writeLong(this.e);
-      localDataOutputStream.writeLong(this.f);
-      localDataOutputStream.writeLong(this.g);
-      localDataOutputStream.writeLong(this.h);
-      localDataOutputStream.writeInt(this.jdField_b_of_type_Int);
-      localDataOutputStream.writeInt(this.jdField_c_of_type_Int);
-      localDataOutputStream.flush();
-      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-      BaseApplicationImpl.a().getSharedPreferences("MemoryInfomation", 0).edit().putString("MemoryInfomation", Base64Util.a((byte[])localObject, 0)).commit();
+    default: 
+      return;
+    case 4: 
+      a();
+      return;
+    case 0: 
+      b();
+      return;
+    case 2: 
+      a((String)paramObject);
+      return;
+    case 3: 
+      d((String)paramObject);
+      return;
+    case 5: 
+      b((String)paramObject);
+      return;
+    case 6: 
+      c();
       return;
     }
-    catch (Exception localException) {}
+    c((String)paramObject);
   }
+  
+  protected void a(String paramString) {}
+  
+  protected void b() {}
+  
+  protected void b(String paramString) {}
+  
+  protected void c(String paramString) {}
+  
+  protected void d(String paramString) {}
 }
 
 

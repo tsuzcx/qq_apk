@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.util.BinderWarpper;
+import com.tencent.util.DumpMemInfoHandler;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public final class hup
-  implements Parcelable.Creator
+public class hup
+  implements Comparator
 {
-  public BinderWarpper a(Parcel paramParcel)
-  {
-    return new BinderWarpper(paramParcel.readStrongBinder());
-  }
+  public hup(DumpMemInfoHandler paramDumpMemInfoHandler) {}
   
-  public BinderWarpper[] a(int paramInt)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    return new BinderWarpper[paramInt];
+    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
+    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
+    if (i == j) {
+      return 0;
+    }
+    if (i < j) {
+      return 2;
+    }
+    return -1;
   }
 }
 

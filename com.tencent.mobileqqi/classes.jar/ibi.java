@@ -1,12 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqfav.widget.FavoriteActionSheet;
 
-public final class ibi
-  implements DialogInterface.OnClickListener
+public class ibi
+  implements DialogInterface.OnDismissListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ibi(FavoriteActionSheet paramFavoriteActionSheet) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    this.a.a = false;
   }
 }
 

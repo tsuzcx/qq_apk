@@ -1,17 +1,23 @@
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.mobileqq.app.LBSObserver;
 import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class flw
-  extends Handler
+  extends LBSObserver
 {
   public flw(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
   {
-    if (paramMessage.what == 1000) {
-      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
+    if (Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L)
+    {
+      this.a.a(paramBoolean, paramArrayOfString);
+      return;
     }
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
+    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramArrayOfString };
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
   }
 }
 

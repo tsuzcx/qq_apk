@@ -1,17 +1,21 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import android.media.MediaPlayer.OnErrorListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.SplashActivityCore;
 import com.tencent.qphone.base.util.QLog;
 
 class dko
-  implements MediaPlayer.OnPreparedListener
+  implements MediaPlayer.OnErrorListener
 {
-  dko(dkl paramdkl) {}
+  dko(dkk paramdkk) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("Splash.testCanPlayMp4", 4, "onPrepare");
+      QLog.d("Splash.testCanPlayMp4", 4, "onError");
     }
+    this.a.a.handler.sendEmptyMessage(5);
+    return false;
   }
 }
 

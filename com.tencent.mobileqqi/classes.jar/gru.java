@@ -1,39 +1,25 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.IOException;
+import com.tencent.mobileqq.widget.ImageAnimationView;
+import com.tencent.widget.Gallery;
 
 public class gru
-  extends AsyncTask
+  implements Animation.AnimationListener
 {
-  public gru(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public gru(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  protected String a(Void... paramVarArgs)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131562608) + " " + paramVarArgs;
-      }
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131561446);
-      return paramVarArgs;
-    }
-    catch (IOException paramVarArgs)
-    {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131561446);
-    }
-    catch (OutOfMemoryError paramVarArgs) {}
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131561446);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setVisibility(4);
+    this.a.finish();
   }
   
-  protected void a(String paramString)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.d());
+    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
   }
 }
 

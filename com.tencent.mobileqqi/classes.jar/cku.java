@@ -1,73 +1,32 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.EmosmDetailActivity;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class cku
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
   public cku(EmosmDetailActivity paramEmosmDetailActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    this.a.a(false);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    EmosmDetailActivity.a(this.a.b, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_ep_download", 0);
-    if (EmosmDetailActivity.e != null)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.h != 3)
-      {
-        int i = paramURLDrawable.getIntrinsicWidth();
-        int j = paramURLDrawable.getIntrinsicHeight();
-        EmosmDetailActivity.a(this.a, (i * EmosmDetailActivity.a(this.a) + (EmosmDetailActivity.b(this.a) >> 1)) / EmosmDetailActivity.b(this.a));
-        EmosmDetailActivity.b(this.a, (j * EmosmDetailActivity.a(this.a) + (EmosmDetailActivity.b(this.a) >> 1)) / EmosmDetailActivity.b(this.a));
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)EmosmDetailActivity.e.getLayoutParams();
-        localLayoutParams.height = EmosmDetailActivity.c(this.a);
-        localLayoutParams.width = EmosmDetailActivity.d(this.a);
-        localLayoutParams.addRule(14, -1);
-        EmosmDetailActivity.e.setLayoutParams(localLayoutParams);
-      }
-      EmosmDetailActivity.e.setImageDrawable(paramURLDrawable);
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.EmosmDetailActivity", 2, "bigImage load successed");
+      QLog.i("Q.emoji.EmosmDetailActivity", 2, "voice icon clicked");
     }
-    this.a.a(false);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isSound)
+    EmosmDetailActivity.a(this.a.b, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Ep_detail_play", 0);
+    if (this.a.b.d())
     {
-      if (!this.a.b.c()) {
-        break label290;
-      }
-      QQToast.a(this.a.b.a(), 2131561724, 0).b(this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131427376));
-    }
-    for (;;)
-    {
-      EmosmDetailActivity.a(this.a, true);
-      if (EmosmDetailActivity.a(this.a) == true) {
-        this.a.d();
-      }
+      QQToast.a(this.a.b.a(), 2131561724, 0).b(this.a.a.getResources().getDimensionPixelSize(2131427376));
       return;
-      label290:
-      MediaPlayerManager.a(this.a.b).a(MarketFaceItemBuilder.a);
     }
+    MediaPlayerManager.a(this.a.b).a(MarketFaceItemBuilder.a);
   }
 }
 

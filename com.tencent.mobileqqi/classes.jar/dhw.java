@@ -1,28 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.SetTroopAdminsActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 
 public class dhw
-  implements View.OnClickListener
+  implements Runnable
 {
   public dhw(SetTroopAdminsActivity paramSetTroopAdminsActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((SetTroopAdminsActivity.a(this.a) > 0) && (SetTroopAdminsActivity.a(this.a) <= SetTroopAdminsActivity.a(this.a).size() - 1))
-    {
-      QQToast.a(this.a, 1, String.format(this.a.getString(2131562353), new Object[] { Integer.valueOf(SetTroopAdminsActivity.a(this.a)) }), 0).b(this.a.d());
-      return;
-    }
-    paramView = new Intent(this.a, TroopMemberListActivity.class);
-    paramView.putExtra("troop_code", SetTroopAdminsActivity.a(this.a));
-    paramView.putExtra("troop_uin", SetTroopAdminsActivity.b(this.a));
-    paramView.putExtra("mode", 1);
-    this.a.startActivityForResult(paramView, 0);
+    ArrayList localArrayList = this.a.a();
+    this.a.a.sendMessage(this.a.a.obtainMessage(2, localArrayList));
   }
 }
 

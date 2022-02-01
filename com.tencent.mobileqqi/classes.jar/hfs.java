@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import com.tencent.mobileqq.widget.CameraFrameLayout;
+import com.tencent.mobileqq.widget.CameraFrameLayoutProxy;
 
-class hfs
-  implements PermissionDialogCallback
+public class hfs
+  implements Runnable
 {
-  hfs(hfr paramhfr) {}
+  public hfs(CameraFrameLayoutProxy paramCameraFrameLayoutProxy) {}
   
-  public void a() {}
-  
-  public void b() {}
+  public void run()
+  {
+    if ((CameraFrameLayoutProxy.a(this.a) != null) && (!CameraFrameLayoutProxy.a(this.a).a())) {}
+    while ((!this.a.a) || (this.a.b)) {
+      return;
+    }
+    CameraFrameLayoutProxy.a(this.a);
+  }
 }
 
 

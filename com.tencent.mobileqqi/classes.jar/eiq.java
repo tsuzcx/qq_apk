@@ -1,16 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import android.content.DialogInterface.OnClickListener;
 
 class eiq
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  eiq(ein paramein) {}
+  eiq(eim parameim) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.a(this.a.a.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

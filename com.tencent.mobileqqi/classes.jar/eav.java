@@ -1,36 +1,33 @@
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.ViewCache;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.widget.AbsListView.RecyclerListener;
+import java.lang.ref.SoftReference;
 
 public class eav
-  implements AbsListView.RecyclerListener
 {
-  public eav(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  public String a;
+  SoftReference a;
+  SoftReference b;
   
-  public void a(View paramView)
+  public eav(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramView == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localObject = AIOUtils.a(paramView);
-        } while (!StructingMsgItemBuilder.StructingMsgViewHolder.class.isInstance(localObject));
-        localObject = (StructingMsgItemBuilder.StructingMsgViewHolder)localObject;
-      } while ((!StructingMsgItemBuilder.StructingMsgViewHolder.class.isInstance(localObject)) || (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (!MessageForStructing.class.isInstance(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage)) || (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (!(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing)));
-      localObject = (MessageForStructing)((StructingMsgItemBuilder.StructingMsgViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    } while ((((MessageForStructing)localObject).structingMsg == null) || (!(((MessageForStructing)localObject).structingMsg instanceof StructMsgForGeneralShare)));
-    Object localObject = ((StructMsgForGeneralShare)((MessageForStructing)localObject).structingMsg).getLayoutStr();
-    StructingMsgItemBuilder.a().a((String)localObject, (ViewGroup)paramView.findViewById(2131230779));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
+    this.b = new SoftReference(paramViewGroup);
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+  }
+  
+  public ViewGroup a()
+  {
+    return (ViewGroup)this.b.get();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.b = new SoftReference(paramViewGroup);
   }
 }
 

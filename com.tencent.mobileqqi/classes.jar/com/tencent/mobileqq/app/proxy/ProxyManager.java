@@ -20,7 +20,7 @@ import com.tencent.mobileqq.statistics.ReportController.ReportProxyAdapter;
 import com.tencent.mobileqq.util.ReflectionUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.TraceUtils;
-import fkn;
+import fkm;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -69,7 +69,7 @@ public class ProxyManager
     this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy = new RecentUserProxy(paramQQAppInterface, this);
     this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy = new QCallProxy(paramQQAppInterface, this);
     this.jdField_a_of_type_ArrayOfComTencentMobileqqAppProxyBaseProxy = new BaseProxy[] { this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy, this.jdField_a_of_type_ComTencentMobileqqAppMessageMsgProxyContainer, this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy, this.jdField_a_of_type_ComTencentMobileqqStatisticsReportController$ReportProxyAdapter, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransProxy, this.jdField_a_of_type_ComTencentMobileqqAppMessageConversationProxy, this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy };
-    this.jdField_a_of_type_JavaLangThread = new Thread(new fkn(this));
+    this.jdField_a_of_type_JavaLangThread = new Thread(new fkm(this));
     this.jdField_a_of_type_Boolean = false;
   }
   

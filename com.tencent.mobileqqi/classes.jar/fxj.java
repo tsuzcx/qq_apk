@@ -1,6 +1,7 @@
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.qphone.base.util.QLog;
 import com.weiyun.sdk.IWyFileSystem.IWyCallback;
 import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
@@ -8,22 +9,24 @@ import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
 public class fxj
   implements IWyFileSystem.IWyCallback
 {
-  public fxj(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  public fxj(WeiYunLogicCenter paramWeiYunLogicCenter, String paramString1, String paramString2) {}
   
-  public void a(String paramString)
+  public void a(Void paramVoid)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getPreviewUrl onSucceed.");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onSucceed  strFileId[" + this.jdField_a_of_type_JavaLangString + "]strFileName[" + String.valueOf(this.b) + "]");
     }
-    this.a.a.a().a(true, 40, new Object[] { paramString });
+    FMDataCache.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a(true, 20, new Object[] { Integer.valueOf(0), null, this.jdField_a_of_type_JavaLangString, this.b, Boolean.valueOf(false) });
   }
   
   public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getPreviewUrl onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onFailed  strFileId[" + this.jdField_a_of_type_JavaLangString + "]strFileName[" + String.valueOf(this.b) + "]errorCode[" + String.valueOf(paramWyErrorStatus.errorCode) + "],errorMsg[" + paramWyErrorStatus.errorMsg + "]");
     }
-    this.a.a.a().a(false, 40, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg });
+    FMDataCache.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.a.a().a(false, 20, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg, this.jdField_a_of_type_JavaLangString, this.b, Boolean.valueOf(false) });
   }
 }
 

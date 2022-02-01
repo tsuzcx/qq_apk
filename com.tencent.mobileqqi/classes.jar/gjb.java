@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import msf.msgcomm.msg_comm.Msg;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
 
 public final class gjb
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public gjb(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
-  
-  public void run()
+  public MessageRecordInfo a(Parcel paramParcel)
   {
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+    return new MessageRecordInfo(paramParcel);
+  }
+  
+  public MessageRecordInfo[] a(int paramInt)
+  {
+    return new MessageRecordInfo[paramInt];
   }
 }
 

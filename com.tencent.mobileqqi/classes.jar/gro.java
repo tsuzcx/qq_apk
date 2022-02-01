@@ -1,24 +1,28 @@
 import android.view.View;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
-class gro
-  implements ActionSheet.OnButtonClickListener
+public class gro
+  implements AdapterView.OnItemSelectedListener
 {
-  gro(grn paramgrn, ActionSheet paramActionSheet) {}
+  public gro(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (paramView == null) {
       return;
-      this.jdField_a_of_type_Grn.a.a(this.jdField_a_of_type_Grn.a.a);
     }
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      ReportController.b(this.a.b, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.j, "0", "", "");
+      return;
+    }
+    ReportController.b(this.a.b, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.j, "1", "", "");
   }
 }
 

@@ -1,37 +1,65 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.IphoneTreeView;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.widget.MicroPhoneClipImageView;
+import com.tencent.mobileqq.widget.MicroPhoneDialog;
+import com.tencent.mobileqq.widget.OvalProgress;
 
 public class hgv
-  implements View.OnTouchListener
+  extends Handler
 {
-  public hgv(IphoneTreeView paramIphoneTreeView) {}
+  public hgv(MicroPhoneDialog paramMicroPhoneDialog) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction())
+    switch (paramMessage.what)
     {
-    case 2: 
     default: 
-      bool = false;
+      return;
+    case 1: 
+      if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b();
+      }
+      AudioUtil.a(this.a.jdField_a_of_type_AndroidContentContext, false);
+      return;
+    case 2: 
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetMicroPhoneClipImageView.setSoundWave(paramMessage.arg1);
+      return;
+    case 3: 
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetMicroPhoneClipImageView.setSoundWave(0);
+      return;
+    case 4: 
+      this.a.a(true);
+      return;
+    case 5: 
+      this.a.a(false);
+      return;
+    case 6: 
+      this.a.a();
+      return;
+    case 7: 
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setProgressParams(0L, 0L);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
+      return;
+    case 9: 
+      MicroPhoneDialog.a(this.a);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
+      return;
+    case 8: 
+      MicroPhoneDialog.b(this.a);
+      return;
+    case 10: 
+      MicroPhoneDialog.a(this.a);
+      MicroPhoneDialog.c(this.a);
+      return;
+    case 11: 
+      this.a.c.setText(Integer.toString((int)Math.round(this.a.g * 1.0D / 1000.0D)) + "\"");
+      return;
     }
-    do
-    {
-      return bool;
-      paramView.setPressed(true);
-      this.a.invalidate();
-      return true;
-      paramView.setPressed(false);
-      this.a.invalidate();
-      break;
-    } while (!paramView.isPressed());
-    paramView.setPressed(false);
-    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
-    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_AndroidViewView = null;
-    return true;
+    MicroPhoneDialog.a(this.a, 2131562618, 1);
   }
 }
 

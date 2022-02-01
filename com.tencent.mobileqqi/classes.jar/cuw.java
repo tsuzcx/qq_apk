@@ -1,16 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
 class cuw
   implements DialogInterface.OnClickListener
 {
-  cuw(cuv paramcuv) {}
+  cuw(cuu paramcuu) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    LoginPhoneNumActivity.a(this.a.a);
   }
 }
 

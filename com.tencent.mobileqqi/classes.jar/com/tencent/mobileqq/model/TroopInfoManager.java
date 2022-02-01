@@ -19,8 +19,8 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.util.VersionUtils;
+import gcl;
 import gcm;
-import gcn;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -54,7 +54,7 @@ public class TroopInfoManager
   private Handler jdField_b_of_type_AndroidOsHandler = null;
   private ConcurrentHashMap jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = null;
   private boolean jdField_b_of_type_Boolean = false;
-  private Handler jdField_c_of_type_AndroidOsHandler = new gcn(this, ThreadManager.b());
+  private Handler jdField_c_of_type_AndroidOsHandler = new gcm(this, ThreadManager.b());
   private ConcurrentHashMap jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
   public TroopInfoManager(QQAppInterface paramQQAppInterface)
@@ -107,7 +107,7 @@ public class TroopInfoManager
   private void b()
   {
     if (this.jdField_b_of_type_AndroidOsHandler == null) {
-      this.jdField_b_of_type_AndroidOsHandler = new gcm(this, ThreadManager.b());
+      this.jdField_b_of_type_AndroidOsHandler = new gcl(this, ThreadManager.b());
     }
     Message localMessage = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(1, 0, 0);
     this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 500L);

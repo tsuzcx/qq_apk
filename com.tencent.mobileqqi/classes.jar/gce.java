@@ -1,42 +1,27 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class gce
-  implements AbsListView.OnScrollListener
+  implements TextWatcher
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  
   public gce(RoamSearchDialog paramRoamSearchDialog) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.b == 0) {}
-    while ((this.jdField_a_of_type_Int != this.b) || (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Gcl == null) || (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Gcl.b != true)) {
+    if (this.a.a.getText().toString().trim().length() == 0)
+    {
+      this.a.findViewById(2131233087).setVisibility(8);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i(RoamSearchDialog.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Gcl.a = true;
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_Gcl.notifyDataSetChanged();
-    paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog;
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.b;
-    RoamSearchDialog localRoamSearchDialog = this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog;
-    paramInt = localRoamSearchDialog.k + 1;
-    localRoamSearchDialog.k = paramInt;
-    paramAbsListView.a(str1, str2, 10, paramInt);
+    this.a.findViewById(2131233087).setVisibility(0);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.b = paramInt3;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

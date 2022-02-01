@@ -12,21 +12,13 @@ public class cyh
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      NotifyPushSettingActivity.a(this.a).setVisibility(0);
-      SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131563458), "qqsetting_notify_showcontent_key", paramBoolean);
-      if (!paramBoolean) {
-        break label95;
-      }
-    }
-    label95:
+    NotifyPushSettingActivity.b(this.a).setContentDescription("夜间防骚扰模式");
+    SettingCloneUtil.writeValue(this.a, null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", paramBoolean);
+    if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
+      ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_night_mode", 0, i, String.valueOf(i), "", "", "");
       return;
-      NotifyPushSettingActivity.a(this.a).setVisibility(8);
-      break;
     }
   }
 }

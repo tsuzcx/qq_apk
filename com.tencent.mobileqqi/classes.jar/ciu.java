@@ -1,6 +1,5 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.DoodleActivity;
 
 public class ciu
@@ -10,8 +9,7 @@ public class ciu
   
   public void onClick(View paramView)
   {
-    this.a.a.setVisibility(0);
-    this.a.b.setVisibility(8);
+    this.a.finish();
   }
 }
 

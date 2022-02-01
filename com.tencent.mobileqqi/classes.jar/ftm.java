@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 class ftm
-  implements DialogInterface.OnClickListener
+  implements FMDialogUtil.FMDialogInterface
 {
-  ftm(ftl paramftl, SharedPreferences paramSharedPreferences, QQCustomDialog paramQQCustomDialog) {}
+  ftm(ftk paramftk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("FileViewFirstTips5.0", true).commit();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.a.e();
   }
+  
+  public void b() {}
 }
 
 

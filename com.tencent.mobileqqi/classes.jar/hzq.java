@@ -1,19 +1,24 @@
 import android.app.Activity;
-import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
 
 public final class hzq
-  implements Runnable
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public hzq(IPluginManager.PluginParams paramPluginParams, Activity paramActivity1, Activity paramActivity2) {}
+  public hzq(IPluginManager.PluginParams paramPluginParams, Activity paramActivity) {}
   
-  public void run()
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.jdField_a_of_type_AndroidAppDialog != null) {
-      new SplashDialogWrapper(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.jdField_a_of_type_AndroidAppDialog, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.jdField_a_of_type_Boolean, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c).show();
+    if (paramPluginManagerClient.isPluginInstalled(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b))
+    {
+      IPluginManager.d(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+      IPluginManager.a(null);
+      return;
     }
-    IPluginManager.b(this.b, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+    paramPluginManagerClient.installPlugin(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, new hzr(this));
+    IPluginManager.a(null);
   }
 }
 

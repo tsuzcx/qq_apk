@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.activity.aio.anim.BubbleAnimation;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
 
-class dxg
-  implements Runnable
+public class dxg
+  extends AnimatorListenerAdapter
 {
-  dxg(dxf paramdxf) {}
+  public dxg(ComboAnimation3 paramComboAnimation3) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a.d();
+    this.a.d();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.d();
   }
 }
 

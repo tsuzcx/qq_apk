@@ -9,28 +9,7 @@ public class fek
   
   public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    int i;
-    if ((localObject2 == null) || (str == null)) {
-      i = 0;
-    }
-    int j;
-    do
-    {
-      return i;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      j = ((String)localObject1).compareTo((String)localObject2);
-      i = j;
-    } while (j != 0);
-    return paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 

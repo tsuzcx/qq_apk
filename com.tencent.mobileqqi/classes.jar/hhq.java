@@ -1,27 +1,41 @@
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.animation.Transformation;
 
-class hhq
-  implements Animation.AnimationListener
+public class hhq
+  extends Animation
 {
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_Hhp.a.getBackground();
+  private float jdField_a_of_type_Float;
+  private View jdField_a_of_type_AndroidViewView;
+  private float b;
   
-  hhq(hhp paramhhp) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public hhq(View paramView, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Hhp.a.clearAnimation();
-    this.jdField_a_of_type_Hhp.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_Hhp.a.setBackgroundResource(17170443);
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
+    }
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.b;
+    float f3 = this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb((int)((f1 + (f2 - f3) * paramFloat) * 255.0F), 255, 255, 255));
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return false;
+  }
+  
+  public boolean willChangeTransformationMatrix()
+  {
+    return false;
   }
 }
 

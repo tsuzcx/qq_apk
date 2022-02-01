@@ -1,51 +1,36 @@
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class cze
-  extends LBSObserver
+  extends CardObserver
 {
   public cze(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
-    }
-    if (paramBoolean1)
-    {
-      if (paramInt != 1) {
-        break label67;
-      }
-      this.a.a(paramBoolean2);
-    }
-    label67:
-    while (paramInt != 64) {
+    if (!this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().equals(paramString)) {
       return;
     }
-    this.a.b(paramBoolean2);
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateSetPeopleVisible| isSuc = " + paramBoolean1 + ", isVisible = " + paramBoolean2);
-    }
     if (!paramBoolean1) {
       this.a.a(2131562080, 1);
     }
-    this.a.a(paramBoolean2);
+    if (paramBoolean2)
+    {
+      PermisionPrivacyActivity.a(this.a, this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean3);
+      return;
+    }
+    PermisionPrivacyActivity.a(this.a, PermisionPrivacyActivity.a(this.a), paramBoolean3);
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  protected void b(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
+    if (!this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().equals(paramString)) {
+      return;
     }
-    if (!paramBoolean1) {
-      this.a.a(2131562080, 1);
-    }
-    this.a.b(paramBoolean2);
+    PermisionPrivacyActivity.a(this.a, this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean2);
+    PermisionPrivacyActivity.a(this.a, PermisionPrivacyActivity.a(this.a), paramBoolean3);
   }
 }
 

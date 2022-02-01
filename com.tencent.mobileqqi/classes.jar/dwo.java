@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-class dwo
-  implements PermissionDialogCallback
+public final class dwo
+  implements Parcelable.Creator
 {
-  dwo(dwn paramdwn) {}
+  public SessionInfo a(Parcel paramParcel)
+  {
+    return new SessionInfo(paramParcel);
+  }
   
-  public void a() {}
-  
-  public void b() {}
+  public SessionInfo[] a(int paramInt)
+  {
+    return new SessionInfo[paramInt];
+  }
 }
 
 

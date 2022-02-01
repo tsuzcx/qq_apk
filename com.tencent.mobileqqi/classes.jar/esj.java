@@ -1,63 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
-import com.tencent.mobileqq.activity.specialcare.SpecialCareTipsController;
-import com.tencent.mobileqq.app.QvipSpecialCareObserver;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialCarePersonActivity;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
+import com.tencent.qphone.base.util.QLog;
 
 public class esj
-  extends QvipSpecialCareObserver
+  implements QvipSpecialSoundManager.CallBack
 {
-  public esj(QvipSpecialCareActivity paramQvipSpecialCareActivity) {}
+  public esj(QvipSpecialCarePersonActivity paramQvipSpecialCarePersonActivity) {}
   
-  public void a(Object paramObject)
+  public void a(boolean paramBoolean)
   {
-    if (paramObject != null)
-    {
-      QvipSpecialCareActivity.f(this.a);
-      if (QvipSpecialCareActivity.a(this.a) != null) {
-        QvipSpecialCareActivity.a(this.a).removeMessages(0);
-      }
-      switch (((Integer)paramObject).intValue())
-      {
-      }
-    }
-    do
-    {
-      return;
-      QvipSpecialCareActivity.a(this.a).setVisibility(8);
-      if (!QvipSpecialCareActivity.g(this.a)) {
-        QvipSpecialCareActivity.d(this.a);
-      }
-      QvipSpecialCareActivity.a(this.a);
-      return;
-      QvipSpecialCareActivity.a(this.a);
-      return;
-      QvipSpecialCareActivity.a(this.a).setVisibility(8);
-    } while (QvipSpecialCareActivity.a(this.a) == null);
-    QvipSpecialCareActivity.a(this.a).a();
-  }
-  
-  public void b(Object paramObject)
-  {
-    if (paramObject != null)
-    {
-      QvipSpecialCareActivity.h(this.a);
-      if (QvipSpecialCareActivity.a(this.a) != null) {
-        QvipSpecialCareActivity.a(this.a).removeMessages(0);
-      }
-      if (((Integer)paramObject).intValue() != 10010) {
-        break label83;
-      }
-      QvipSpecialCareActivity.a(this.a, this.a.getString(2131562091));
-      QvipSpecialCareActivity.a(this.a).a(null, 1, null);
-    }
+    if (paramBoolean) {}
     for (;;)
     {
-      QvipSpecialCareActivity.a(this.a);
-      return;
-      label83:
-      QvipSpecialCareActivity.a(this.a, this.a.getString(2131562882));
+      try
+      {
+        QvipSpecialCarePersonActivity.a(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        QvipSpecialCarePersonActivity.a(this.a);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QvipSpecialCarePersonActivity", 2, "loadSpecialSoundConfig fail.");
+      }
     }
   }
 }

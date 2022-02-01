@@ -1,23 +1,17 @@
 import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.app.RedTouchObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import java.util.List;
 
-public class csu
-  extends RedTouchObserver
+class csu
+  implements Runnable
 {
-  public csu(LebaListMgrActivity paramLebaListMgrActivity) {}
+  csu(cst paramcst, List paramList) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
+    if (LebaListMgrActivity.a(this.jdField_a_of_type_Cst.a) != null) {
+      LebaListMgrActivity.a(this.jdField_a_of_type_Cst.a).a(this.jdField_a_of_type_JavaUtilList);
     }
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
-      return;
-    }
-    paramObject = LebaShowListManager.a().a();
-    this.a.runOnUiThread(new csv(this, paramObject));
   }
 }
 

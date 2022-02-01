@@ -1,5 +1,5 @@
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class bzm
   implements Runnable
@@ -8,7 +8,7 @@ public class bzm
   
   public void run()
   {
-    QQToast.a(this.a, 2131562218, 1).b(this.a.d());
+    this.a.a.E();
   }
 }
 

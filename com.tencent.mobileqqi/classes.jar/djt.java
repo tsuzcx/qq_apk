@@ -1,31 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.widget.QQTabWidget.onTabWidgetTouchMoveListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class djt
-  implements DialogInterface.OnClickListener
+  implements QQTabWidget.onTabWidgetTouchMoveListener
 {
-  public djt(SplashActivity paramSplashActivity, CheckBox paramCheckBox) {}
+  public djt(SplashActivity paramSplashActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.d()) {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.a();
+    int i = GesturePWDUtils.getGesturePWDState(this.a, this.a.b.a());
+    int j = GesturePWDUtils.getGesturePWDMode(this.a, this.a.b.a());
+    if ((i == 2) && (j == 20))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("mainactivity", 2, "gesturepwd manual move.");
+      }
+      SplashActivity.c(this.a);
+      this.a.overridePendingTransition(2130968598, 2130968595);
     }
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).edit();
-    localEditor.putBoolean("notToastPushMsg" + paramDialogInterface, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563456) + paramDialogInterface, true);
-    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563457) + paramDialogInterface, true);
-    localEditor.putBoolean("discussion_msg_notify" + paramDialogInterface, true);
-    localEditor.putBoolean(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563459) + paramDialogInterface, true);
-    localEditor.commit();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.finish();
   }
 }
 

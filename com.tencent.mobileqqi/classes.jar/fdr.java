@@ -1,31 +1,29 @@
-import android.app.NotificationManager;
 import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 
 public class fdr
   implements Runnable
 {
-  public fdr(MessageHandler paramMessageHandler, NotificationManager paramNotificationManager) {}
+  public fdr(MessageHandler paramMessageHandler, long paramLong1, String paramString1, String paramString2, byte paramByte, String paramString3, long paramLong2, long paramLong3) {}
   
   public void run()
   {
-    try
-    {
-      Thread.sleep(5000L);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.msg.MessageHandler", 4, "PConline time expired cancel now");
+    long l1 = 480000L;
+    long l2 = 3L - this.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_Long == 0L) {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a().a(this.jdField_a_of_type_JavaLangString, 1001).hasReply) {
+        break label105;
       }
-      this.jdField_a_of_type_AndroidAppNotificationManager.cancel(MessageHandler.bO);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, false);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, null);
-      return;
     }
-    catch (Exception localException)
+    label105:
+    for (boolean bool = true;; bool = false)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "PConline thread Interrupt");
-      }
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, null);
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Byte, bool, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, l1);
+      return;
+      l1 = l2 * 480000L / 3L - l2 * 2000L;
+      break;
     }
   }
 }

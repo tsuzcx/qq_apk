@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.AbsListView.SavedState;
+import com.tencent.widget.AbsListView;
 
-public final class hvg
-  implements Parcelable.Creator
+public class hvg
 {
-  public AbsListView.SavedState a(Parcel paramParcel)
+  private int a;
+  
+  private hvg(AbsListView paramAbsListView) {}
+  
+  public void a()
   {
-    return new AbsListView.SavedState(paramParcel, null);
+    this.a = AbsListView.a(this.b);
   }
   
-  public AbsListView.SavedState[] a(int paramInt)
+  public boolean a()
   {
-    return new AbsListView.SavedState[paramInt];
+    return (this.b.hasWindowFocus()) && (AbsListView.b(this.b) == this.a);
   }
 }
 

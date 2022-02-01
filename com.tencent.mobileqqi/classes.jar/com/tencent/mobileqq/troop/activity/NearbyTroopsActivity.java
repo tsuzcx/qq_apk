@@ -59,16 +59,16 @@ import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
+import gpp;
 import gpq;
 import gpr;
 import gps;
-import gpt;
+import gpu;
 import gpv;
 import gpw;
 import gpx;
 import gpy;
 import gpz;
-import gqa;
 import java.util.ArrayList;
 import java.util.List;
 import tencent.im.cs.nearby_troop_activity.nearby_troop_activity.ActivityDigest;
@@ -128,7 +128,7 @@ public class NearbyTroopsActivity
   public NearbyTroopsMapView a;
   public PullRefreshHeader a;
   public MapController a;
-  gqa jdField_a_of_type_Gqa;
+  gpz jdField_a_of_type_Gpz;
   public String a;
   public ArrayList a;
   public String[] a;
@@ -163,9 +163,9 @@ public class NearbyTroopsActivity
     this.jdField_e_of_type_Int = 0;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new gpq(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gps(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new gpt(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new gpp(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gpr(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new gps(this);
   }
   
   private void c(boolean paramBoolean)
@@ -173,14 +173,14 @@ public class NearbyTroopsActivity
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
     this.jdField_a_of_type_ArrayOfJavaLangString = getResources().getStringArray(2131689495);
     localActionSheet.d(this.jdField_a_of_type_ArrayOfJavaLangString[2]);
-    localActionSheet.a(new gpx(this));
+    localActionSheet.a(new gpw(this));
     int i1 = 0;
     while (i1 < 2)
     {
       localActionSheet.a(this.jdField_a_of_type_ArrayOfJavaLangString[i1], false);
       i1 += 1;
     }
-    localActionSheet.a(new gpy(this, localActionSheet));
+    localActionSheet.a(new gpx(this, localActionSheet));
     localActionSheet.show();
   }
   
@@ -532,16 +532,16 @@ public class NearbyTroopsActivity
       setContentView(2130903385);
       this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903325, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsExpandableListView, false));
       this.jdField_e_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903386, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsExpandableListView, false);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsExpandableListView = ((NearbyTroopsExpandableListView)findViewById(2131232398));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_e_of_type_AndroidViewView.findViewById(2131232402));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131232404));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131232405));
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131232399);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131232400));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131232401));
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsExpandableListView = ((NearbyTroopsExpandableListView)findViewById(2131232397));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_e_of_type_AndroidViewView.findViewById(2131232401));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131232403));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131232404));
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131232398);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131232399));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131232400));
       this.p.setVisibility(0);
       this.p.setImageResource(2130838011);
-      this.p.setTag(new gpz(this, 1, null));
+      this.p.setTag(new gpy(this, 1, null));
       this.p.setOnClickListener(this);
       this.p.setContentDescription(getString(2131563180));
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsExpandableListView.setContentBackground(2130837729);
@@ -552,16 +552,16 @@ public class NearbyTroopsActivity
       this.jdField_e_of_type_AndroidViewView.setContentDescription("");
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Boolean.valueOf(false));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new gpv(this));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new gpu(this));
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsExpandableListView.setFocusable(true);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsExpandableListView.setClickable(true);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsExpandableListView.setLongClickable(true);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsExpandableListView.setOnTouchListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView = ((NearbyTroopsMapView)this.jdField_e_of_type_AndroidViewView.findViewById(2131232406));
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView = ((NearbyTroopsMapView)this.jdField_e_of_type_AndroidViewView.findViewById(2131232405));
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView.setUIHandler(this.jdField_a_of_type_ComTencentMobileqqTroopActivityNearbyTroopsActivity$UIHandler);
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView.getController();
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.setZoom(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView.getMinZoomLevel());
-      this.jdField_a_of_type_AndroidViewView = this.jdField_e_of_type_AndroidViewView.findViewById(2131232407);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_e_of_type_AndroidViewView.findViewById(2131232406);
       this.jdField_k_of_type_JavaLangString = paramIntent.getExtras().getString("leftViewText");
     }
     if ((this.jdField_k_of_type_AndroidWidgetTextView != null) && ((this.jdField_k_of_type_AndroidWidgetTextView instanceof TextView)) && (paramIntent != null) && (paramIntent.getExtras() != null))
@@ -583,23 +583,23 @@ public class NearbyTroopsActivity
     for (;;)
     {
       this.m.setText(getString(2131559299));
-      this.m.setTag(new gpz(this, 3, null));
+      this.m.setTag(new gpy(this, 3, null));
       this.m.setOnClickListener(this);
       this.m.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView.setBuiltInZoomControls(false);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView.setClickable(true);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetNearbyTroopsMapView.setObserver(this);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetButton.setTag(new gpz(this, 4, null));
+      this.jdField_a_of_type_AndroidWidgetButton.setTag(new gpy(this, 4, null));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidViewView = findViewById(2131231644);
-      this.jdField_c_of_type_AndroidViewView.setTag(new gpz(this, 3, null));
+      this.jdField_c_of_type_AndroidViewView = findViewById(2131231643);
+      this.jdField_c_of_type_AndroidViewView.setTag(new gpy(this, 3, null));
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_c_of_type_AndroidViewView.setLongClickable(true);
-      this.jdField_c_of_type_AndroidViewView.setOnTouchListener(new gpw(this));
+      this.jdField_c_of_type_AndroidViewView.setOnTouchListener(new gpv(this));
       this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131562793));
       this.jdField_c_of_type_AndroidViewView.setContentDescription(getString(2131561844));
-      this.jdField_a_of_type_AndroidViewView.setTag(new gpz(this, 2, null));
+      this.jdField_a_of_type_AndroidViewView.setTag(new gpy(this, 2, null));
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidViewView.setContentDescription(getString(2131562027));
       if (this.jdField_a_of_type_ComTencentMobileqqTroopDataNearbyTroopsExpandableListViewAdapter == null) {
@@ -694,7 +694,7 @@ public class NearbyTroopsActivity
       if ((getAppRuntime() instanceof QQAppInterface)) {
         this.jdField_a_of_type_ComTencentMobileqqAppLBSHandler = ((LBSHandler)((QQAppInterface)getAppRuntime()).a(3));
       }
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this, new gpr(this));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this, new gpq(this));
       a(this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
       a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     }
@@ -1650,13 +1650,13 @@ public class NearbyTroopsActivity
   
   public void onClick(View paramView)
   {
-    if ((paramView == null) || (!(paramView.getTag() instanceof gpz))) {}
+    if ((paramView == null) || (!(paramView.getTag() instanceof gpy))) {}
     do
     {
       do
       {
         return;
-        switch (((gpz)paramView.getTag()).jdField_a_of_type_Int)
+        switch (((gpy)paramView.getTag()).jdField_a_of_type_Int)
         {
         default: 
           return;
@@ -1671,9 +1671,9 @@ public class NearbyTroopsActivity
     b(false);
     return;
     ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_nearby", "", "nearbygrp_map", "Clk_back", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_Gqa = new gqa(this, 1, 1, 1, 8);
+    this.jdField_a_of_type_Gpz = new gpz(this, 1, 1, 1, 8);
     SOSOMapLBSApi.getInstance().verifyRegCode("QQ2013", "LWPAH-5CHEJ-Y6CR2-AQPLX-IV2JQ");
-    SOSOMapLBSApi.getInstance().requestLocationUpdate(getApplicationContext(), this.jdField_a_of_type_Gqa);
+    SOSOMapLBSApi.getInstance().requestLocationUpdate(getApplicationContext(), this.jdField_a_of_type_Gpz);
   }
   
   protected void onRestart()
@@ -1700,15 +1700,15 @@ public class NearbyTroopsActivity
     if (this.jdField_k_of_type_AndroidWidgetTextView != null) {
       return;
     }
-    b((ViewGroup)findViewById(2131231448));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231376));
+    b((ViewGroup)findViewById(2131231447));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231375));
     this.jdField_d_of_type_AndroidWidgetTextView = new FakeTextView(this);
-    this.m = ((TextView)findViewById(2131231380));
-    this.p = ((ImageView)findViewById(2131231461));
+    this.m = ((TextView)findViewById(2131231379));
+    this.p = ((ImageView)findViewById(2131231460));
     b(this.m);
     b(this.p);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this);
-    this.jdField_k_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231456));
+    this.jdField_k_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231455));
     this.jdField_k_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     b(this.jdField_k_of_type_AndroidWidgetTextView);
   }

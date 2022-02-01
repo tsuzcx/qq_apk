@@ -1,15 +1,25 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class clx
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
   public clx(ForwardOperations paramForwardOperations) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
+    if (paramMessage.what == 0) {
+      QQToast.a(this.a.a, BaseApplicationImpl.getContext().getString(2131559072), 0).a();
+    }
+    while (1 != paramMessage.what) {
+      return;
+    }
+    this.a.a.setResult(-1);
     this.a.a.finish();
   }
 }

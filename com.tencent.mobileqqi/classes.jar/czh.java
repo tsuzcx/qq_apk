@@ -1,53 +1,51 @@
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.activity.StrangerManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class czh
-  implements View.OnClickListener
+class czh
+  implements ActionSheet.OnButtonClickListener
 {
-  public czh(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  czh(czg paramczg, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidViewView)
-    {
-      this.a.c();
-      ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Vfc_method_clk", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (paramInt == 0) {
+      if (1 == PermisionPrivacyActivity.a(this.jdField_a_of_type_Czg.a).b()) {
+        PermisionPrivacyActivity.a(this.jdField_a_of_type_Czg.a);
+      }
     }
-    do
+    while (paramInt != 1)
     {
       return;
-      if (paramView == this.a.d)
+      if (2 == PermisionPrivacyActivity.b(this.jdField_a_of_type_Czg.a).b())
       {
-        paramView = QZoneHelper.UserInfo.a();
-        paramView.a = this.a.b.a();
-        paramView.b = this.a.b.e();
-        paramView.c = this.a.b.getSid();
-        QZoneHelper.c(this.a, paramView, -1);
+        PermisionPrivacyActivity.b(this.jdField_a_of_type_Czg.a);
         return;
       }
-      if (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem)
+      if (!NetworkUtil.e(this.jdField_a_of_type_Czg.a))
       {
-        paramView = (ActionSheet)ActionSheetHelper.a(paramView.getContext(), null);
-        paramView.a(2131562384);
-        paramView.a(2131563090, 1);
-        paramView.a(2131561944, 1);
-        paramView.setCanceledOnTouchOutside(true);
-        paramView.a(new czi(this, paramView));
-        paramView.d(2131561746);
-        paramView.show();
+        QQToast.a(paramView.getContext(), 0, this.jdField_a_of_type_Czg.a.getResources().getString(2131562488), 0).b(this.jdField_a_of_type_Czg.a.d());
         return;
       }
-    } while (paramView != PermisionPrivacyActivity.a(this.a));
-    StrangerManageActivity.a(this.a);
-    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Manage_stranger_clk", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Czg.a.setResult(2);
+      this.jdField_a_of_type_Czg.a.finish();
+      return;
+    }
+    paramView = DialogUtil.c(paramView.getContext(), 230, null, null, 2131561746, 2131562545, null, null);
+    paramView.setMessage(2131561621);
+    czi localczi = new czi(this);
+    czk localczk = new czk(this);
+    paramView.setPositiveButton(2131562545, localczi);
+    paramView.setNegativeButton(2131561746, localczk);
+    paramView.show();
   }
 }
 

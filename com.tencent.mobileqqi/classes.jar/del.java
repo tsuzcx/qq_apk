@@ -1,21 +1,48 @@
-import QQService.SvcDevLoginInfo;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 import java.util.ArrayList;
 
 public class del
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public del(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public del(RecentLoginDevActivity paramRecentLoginDevActivity, String paramString, ArrayList paramArrayList, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramView.stDeviceItemDes);
-    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, paramView.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if ((RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity) != null) && (RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.isFinishing()))
+      {
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).dismiss();
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity).cancel();
+        RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, null);
+      }
+      return;
+      if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.getString(2131562452), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.d());
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "OnClick begin to delHistoryDev");
+        }
+        if (EquipmentLockImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int)) {
+          RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity);
+        } else if (QLog.isColorLevel()) {
+          QLog.d("Q.devlock.RecentLoginDevActivity", 2, "showDelDevActionSheet.OnClick delHistoryDev failed");
+        }
+      }
+    }
   }
 }
 

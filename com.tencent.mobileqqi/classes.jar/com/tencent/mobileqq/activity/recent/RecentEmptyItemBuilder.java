@@ -37,8 +37,8 @@ public class RecentEmptyItemBuilder
       paramView.height = i;
       paramDrawable.setLayoutParams(paramView);
       paramDrawable.setTag(Boolean.valueOf(true));
-      paramView = (TextView)paramDrawable.findViewById(2131231432);
-      paramViewGroup = (Button)paramDrawable.findViewById(2131231433);
+      paramView = (TextView)paramDrawable.findViewById(2131231431);
+      paramViewGroup = (Button)paramDrawable.findViewById(2131231432);
       if (!(paramObject instanceof Integer)) {
         break label454;
       }

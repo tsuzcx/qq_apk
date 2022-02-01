@@ -1,16 +1,24 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTimer;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
 
 public class glc
-  extends URLDrawableDownListener.Adapter
+  implements CountdownTextView.TimerCallback
 {
-  public glc(StructMsgItemCover paramStructMsgItemCover) {}
+  public glc(StructMsgItemTimer paramStructMsgItemTimer, CountdownTextView paramCountdownTextView) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void a()
   {
-    paramView.setBackgroundDrawable(null);
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, 0L));
+  }
+  
+  public void a(long paramLong)
+  {
+    paramLong /= 1000L;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, paramLong));
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_c_of_type_Long = paramLong;
   }
 }
 

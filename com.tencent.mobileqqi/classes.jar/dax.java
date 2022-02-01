@@ -1,16 +1,14 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
+import com.tencent.biz.common.util.LoadedBack;
 import com.tencent.mobileqq.activity.PublicAccountChatActivity;
 
 public class dax
-  implements PublicAccountManager.InitDoneObserver
+  implements LoadedBack
 {
   public dax(PublicAccountChatActivity paramPublicAccountChatActivity) {}
   
-  public void a()
-  {
-    PublicAccountChatActivity.a(this.a).sendEmptyMessage(1);
-  }
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt) {}
 }
 
 

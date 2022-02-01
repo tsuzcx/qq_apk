@@ -1,13 +1,31 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.RecentFileAdapter;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-class frc
-  implements Runnable
+public class frc
+  implements View.OnClickListener
 {
-  frc(fqx paramfqx) {}
+  public frc(FMRecentFileActivity paramFMRecentFileActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FMRecentFileActivity.a(this.a.a);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
+    }
+    if ((((Button)paramView.findViewById(2131231700)).getTag() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(null);
+    }
+    if (this.a.b.a().b(this.a.jdField_a_of_type_Long)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(Integer.valueOf(-1));
+    FMRecentFileActivity.a(this.a);
   }
 }
 

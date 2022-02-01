@@ -1,18 +1,15 @@
 import android.graphics.Bitmap;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-public class dqc
+class dqc
   implements Runnable
 {
-  public dqc(TroopMemberCardActivity paramTroopMemberCardActivity, String paramString) {}
+  dqc(dqb paramdqb, Bitmap paramBitmap) {}
   
   public void run()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.b.a(this.jdField_a_of_type_JavaLangString, (byte)3, true);
-    if (localBitmap != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.runOnUiThread(new dqd(this, localBitmap));
-    }
+    this.jdField_a_of_type_Dqb.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

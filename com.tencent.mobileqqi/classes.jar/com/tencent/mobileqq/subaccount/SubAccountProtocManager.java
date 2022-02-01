@@ -6,8 +6,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SubAccountBindHandler;
 import com.tencent.mobileqq.app.SubAccountBindObserver;
 import com.tencent.qphone.base.util.QLog;
+import glj;
 import glk;
-import gll;
 import mqq.manager.Manager;
 
 public class SubAccountProtocManager
@@ -20,8 +20,8 @@ public class SubAccountProtocManager
   private static byte[] jdField_c_of_type_ArrayOfByte = new byte[0];
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new glk(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new gll(this);
+  private SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new glj(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new glk(this);
   private boolean jdField_a_of_type_Boolean = false;
   private boolean jdField_b_of_type_Boolean = false;
   private boolean jdField_c_of_type_Boolean = false;

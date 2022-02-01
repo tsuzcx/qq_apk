@@ -1,13 +1,19 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 
 public class fuq
-  implements Runnable
+  extends Handler
 {
-  public fuq(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt) {}
-  
-  public void run()
+  public fuq(OnlineFileSessionCenter paramOnlineFileSessionCenter, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter.a(this.jdField_a_of_type_Int);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.d();
   }
 }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08057e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02011c" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:checked="true" android:adjustViewBounds="false" />
-    <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08057f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="允许发布分享" />
+    <ImageView android:layout_gravity="center|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08057d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02011c" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:checked="true" android:adjustViewBounds="false" />
+    <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08057e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="允许发布分享" />
 </LinearLayout>

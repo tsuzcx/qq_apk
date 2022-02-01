@@ -1,27 +1,30 @@
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 import com.tencent.mobileqq.activity.QuickLoginActivity;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import mqq.observer.AccountObserver;
 
 public class dei
-  implements AdapterView.OnItemClickListener
+  extends AccountObserver
 {
   public dei(QuickLoginActivity paramQuickLoginActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    Log.d("QuickLogin", ((HashMap)this.a.a.get(paramInt)).toString());
-    paramAdapterView = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
-    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
-    paramView = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
-    this.a.getAppRuntime().login(paramAdapterView, paramView, QuickLoginActivity.a(this.a));
-    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
+    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
+  }
+  
+  protected void onLoginTimeout(String paramString)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
+  }
+  
+  protected void onUserCancel(String paramString)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
   }
 }
 

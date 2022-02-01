@@ -18,8 +18,8 @@ import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import iab;
 import iac;
-import iad;
 import java.io.File;
 import java.util.HashMap;
 
@@ -131,7 +131,7 @@ public class PluginDownloader
     paramNetReq = (String)paramNetReq.a();
     if (paramInt2 > 0)
     {
-      PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = iad.a((iad)this.b.get(paramNetReq));
+      PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = iac.a((iac)this.b.get(paramNetReq));
       if (localOnPluginDownLoadListener != null) {
         localOnPluginDownLoadListener.a(paramInt1, paramInt2, paramNetReq);
       }
@@ -147,7 +147,7 @@ public class PluginDownloader
     if (paramNetResp.d == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = iad.a((iad)this.b.remove(str));
+      PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = iac.a((iac)this.b.remove(str));
       if (localOnPluginDownLoadListener != null) {
         localOnPluginDownLoadListener.a(bool, str);
       }
@@ -165,11 +165,11 @@ public class PluginDownloader
     if (QLog.isColorLevel()) {
       QLog.d("plugin_tag", 2, "doCancelInstall: " + paramString);
     }
-    Object localObject = (iad)this.b.remove(paramString);
+    Object localObject = (iac)this.b.remove(paramString);
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0).b(iad.a((iad)localObject));
-      localObject = iad.a((iad)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0).b(iac.a((iac)localObject));
+      localObject = iac.a((iac)localObject);
       if (localObject != null) {
         ((PluginDownloader.OnPluginDownLoadListener)localObject).d(paramString);
       }
@@ -244,10 +244,10 @@ public class PluginDownloader
       localHttpNetReq.c = 0;
       localHttpNetReq.a(paramPluginInfo.mID);
       localHttpNetReq.b = new File(a(this.jdField_a_of_type_AndroidContentContext), paramPluginInfo.mID).getPath();
-      iad localiad = new iad(null);
-      iad.a(localiad, localHttpNetReq);
-      iad.a(localiad, paramOnPluginDownLoadListener);
-      this.b.put(paramPluginInfo.mID, localiad);
+      iac localiac = new iac(null);
+      iac.a(localiac, localHttpNetReq);
+      iac.a(localiac, paramOnPluginDownLoadListener);
+      this.b.put(paramPluginInfo.mID, localiac);
       localINetEngine.a(localHttpNetReq);
       this.jdField_a_of_type_JavaUtilHashMap.put(paramPluginInfo.mID, Long.valueOf(SystemClock.uptimeMillis()));
     } while (!QLog.isColorLevel());
@@ -261,7 +261,7 @@ public class PluginDownloader
   
   public boolean a(String paramString)
   {
-    paramString = a(this.jdField_a_of_type_AndroidContentContext).listFiles(new iac(this, paramString));
+    paramString = a(this.jdField_a_of_type_AndroidContentContext).listFiles(new iab(this, paramString));
     return (paramString != null) && (paramString.length > 0);
   }
   

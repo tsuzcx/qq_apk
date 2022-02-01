@@ -8,7 +8,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.os.RemoteException;
 
-public abstract interface RemoteCallback
+public abstract interface RemotesCallback
   extends IInterface
 {
   public abstract void onCallback(Bundle paramBundle)
@@ -16,24 +16,24 @@ public abstract interface RemoteCallback
   
   public static abstract class Stub
     extends Binder
-    implements RemoteCallback
+    implements RemotesCallback
   {
-    private static final String DESCRIPTOR = "com.tencent.mobileqq.pluginsdk.ipc.RemoteCallback";
+    private static final String DESCRIPTOR = "com.tencent.mobileqq.pluginsdk.ipc.RemotesCallback";
     static final int TRANSACTION_onCallback = 1;
     
     public Stub()
     {
-      attachInterface(this, "com.tencent.mobileqq.pluginsdk.ipc.RemoteCallback");
+      attachInterface(this, "com.tencent.mobileqq.pluginsdk.ipc.RemotesCallback");
     }
     
-    public static RemoteCallback asInterface(IBinder paramIBinder)
+    public static RemotesCallback asInterface(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
       }
-      IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.pluginsdk.ipc.RemoteCallback");
-      if ((localIInterface != null) && ((localIInterface instanceof RemoteCallback))) {
-        return (RemoteCallback)localIInterface;
+      IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.pluginsdk.ipc.RemotesCallback");
+      if ((localIInterface != null) && ((localIInterface instanceof RemotesCallback))) {
+        return (RemotesCallback)localIInterface;
       }
       return new Proxy(paramIBinder);
     }
@@ -51,10 +51,10 @@ public abstract interface RemoteCallback
       default: 
         return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
       case 1598968902: 
-        paramParcel2.writeString("com.tencent.mobileqq.pluginsdk.ipc.RemoteCallback");
+        paramParcel2.writeString("com.tencent.mobileqq.pluginsdk.ipc.RemotesCallback");
         return true;
       }
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pluginsdk.ipc.RemoteCallback");
+      paramParcel1.enforceInterface("com.tencent.mobileqq.pluginsdk.ipc.RemotesCallback");
       if (paramParcel1.readInt() != 0) {}
       for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
       {
@@ -65,7 +65,7 @@ public abstract interface RemoteCallback
     }
     
     private static class Proxy
-      implements RemoteCallback
+      implements RemotesCallback
     {
       private IBinder mRemote;
       
@@ -81,7 +81,7 @@ public abstract interface RemoteCallback
       
       public String getInterfaceDescriptor()
       {
-        return "com.tencent.mobileqq.pluginsdk.ipc.RemoteCallback";
+        return "com.tencent.mobileqq.pluginsdk.ipc.RemotesCallback";
       }
       
       /* Error */
@@ -106,7 +106,7 @@ public abstract interface RemoteCallback
         //   25: iconst_0
         //   26: invokevirtual 50	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
         //   29: aload_0
-        //   30: getfield 19	com/tencent/mobileqq/pluginsdk/ipc/RemoteCallback$Stub$Proxy:mRemote	Landroid/os/IBinder;
+        //   30: getfield 19	com/tencent/mobileqq/pluginsdk/ipc/RemotesCallback$Stub$Proxy:mRemote	Landroid/os/IBinder;
         //   33: iconst_1
         //   34: aload_2
         //   35: aload_3
@@ -150,6 +150,6 @@ public abstract interface RemoteCallback
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
- * Qualified Name:     com.tencent.mobileqq.pluginsdk.ipc.RemoteCallback
+ * Qualified Name:     com.tencent.mobileqq.pluginsdk.ipc.RemotesCallback
  * JD-Core Version:    0.7.0.1
  */

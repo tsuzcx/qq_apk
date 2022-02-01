@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
-import mqq.app.permission.PermissionCallback;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
 
 class hfr
-  implements PermissionCallback
+  implements PermissionDialogCallback
 {
   hfr(hfq paramhfq) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    new PermissionsDialog().a(this.a.a, paramInt, paramArrayOfString, new hfs(this));
-  }
+  public void a() {}
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public void b() {}
 }
 
 

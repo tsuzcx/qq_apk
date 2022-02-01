@@ -1,15 +1,36 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.activity.TroopMemberCardActivity.ViewHolder;
 
-class dqd
-  implements Runnable
+public class dqd
+  implements View.OnClickListener
 {
-  dqd(dqc paramdqc, Bitmap paramBitmap) {}
+  public dqd(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Dqc.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramView = paramView.getTag();
+    if ((paramView == null) || (!(paramView instanceof TroopMemberCardActivity.ViewHolder))) {}
+    do
+    {
+      return;
+      paramView = (TroopMemberCardActivity.ViewHolder)paramView;
+      if (paramView.a == 0)
+      {
+        this.a.c(this.a.e);
+        this.a.f("Clk_account");
+        return;
+      }
+      if (paramView.a == 1)
+      {
+        this.a.b(this.a.c, this.a.e);
+        this.a.f("Clk_name");
+        return;
+      }
+    } while (paramView.a != 3);
+    this.a.a(this.a.c, this.a.e);
+    this.a.f("Clk_set");
   }
 }
 

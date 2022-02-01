@@ -1,24 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class cpk
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public cpk(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public cpk(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.d();
+    this.a.finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
  * Qualified Name:     cpk
  * JD-Core Version:    0.7.0.1
  */

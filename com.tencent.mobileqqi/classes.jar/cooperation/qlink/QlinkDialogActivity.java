@@ -21,10 +21,10 @@ import com.tencent.mobileqq.util.NoDisturbUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
+import iao;
 import iap;
 import iaq;
 import iar;
-import ias;
 
 public class QlinkDialogActivity
   extends BaseActivity
@@ -70,17 +70,17 @@ public class QlinkDialogActivity
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
     }
-    iap localiap = new iap(this, paramString1);
-    paramString1 = new iaq(this, paramString1);
-    iar localiar = new iar(this);
+    iao localiao = new iao(this, paramString1);
+    paramString1 = new iap(this, paramString1);
+    iaq localiaq = new iaq(this);
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new ias(this, paramActivity, paramString2, localiap, paramString1, localiar));
+      new Handler(localLooper).post(new iar(this, paramActivity, paramString2, localiao, paramString1, localiaq));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getString(2131560849), paramString2, 2131560847, 2131560848, localiap, paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(localiar);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getString(2131560849), paramString2, 2131560847, 2131560848, localiao, paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(localiaq);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
@@ -107,21 +107,21 @@ public class QlinkDialogActivity
         {
           return;
           System.currentTimeMillis();
-          bool1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.g();
+          bool1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.h();
           bool2 = NoDisturbUtil.a(((BaseApplicationImpl)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a()).getApplicationContext(), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
         } while ((bool1) || (!bool2));
         localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a());
         localVibrator = (Vibrator)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().getSystemService("vibrator");
       } while (localVibrator == null);
-      bool1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c();
+      bool1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.d();
       bool2 = d();
       boolean bool3 = c();
-      boolean bool4 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.l();
+      boolean bool4 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.m();
       boolean bool5 = e();
       if ((bool3) && (bool4) && (!bool1) && (bool5)) {
         localVibrator.vibrate(jdField_a_of_type_ArrayOfLong, -1);
       }
-    } while ((!paramBoolean) || (!bool2) || (bool1) || (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.j()) || (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.k()) || (!this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.l()) || (!e()));
+    } while ((!paramBoolean) || (!bool2) || (bool1) || (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.k()) || (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.l()) || (!this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.m()) || (!e()));
     int i = localSharedPreferences.getInt("sound_type" + this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), 2131165197);
     if (a(paramString)) {
       i = 2131165215;

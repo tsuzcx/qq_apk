@@ -30,6 +30,7 @@ import com.tencent.widget.ActionSheet.OnButtonClickListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import com.tencent.widget.XListView;
+import dkp;
 import dkq;
 import dkr;
 import dks;
@@ -40,7 +41,6 @@ import dkw;
 import dkx;
 import dky;
 import dkz;
-import dla;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -89,15 +89,15 @@ public class StrangerManageActivity
     this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppStrangerObserver = new dkr(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dkt(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dku(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new dkv(this);
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = new dkw(this);
-    this.jdField_d_of_type_AndroidViewView$OnClickListener = new dkx(this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(new dky(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppStrangerObserver = new dkq(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new dks(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dkt(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new dku(this);
+    this.jdField_c_of_type_AndroidViewView$OnClickListener = new dkv(this);
+    this.jdField_d_of_type_AndroidViewView$OnClickListener = new dkw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new dkx(this));
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangRunnable = new dkz(this);
+    this.jdField_a_of_type_JavaLangRunnable = new dky(this);
   }
   
   public static List a(String paramString, List paramList)
@@ -107,7 +107,7 @@ public class StrangerManageActivity
     for (;;)
     {
       return paramList;
-      Collections.sort(paramList, new dks());
+      Collections.sort(paramList, new dkr());
       int i = paramList.size() - 1;
       if (i >= 0) {
         if (!TextUtils.equals(paramString, ((Stranger)paramList.get(i)).uin)) {}
@@ -193,9 +193,9 @@ public class StrangerManageActivity
       paramInt = 0;
       while (paramInt < i)
       {
-        dkq localdkq = (dkq)paramAbsListView.getChildAt(paramInt).getTag();
-        if ((localdkq != null) && (localdkq.jdField_a_of_type_JavaLangString != null) && (localdkq.jdField_a_of_type_JavaLangString.length() > 0)) {
-          a(localdkq);
+        dkp localdkp = (dkp)paramAbsListView.getChildAt(paramInt).getTag();
+        if ((localdkp != null) && (localdkp.jdField_a_of_type_JavaLangString != null) && (localdkp.jdField_a_of_type_JavaLangString.length() > 0)) {
+          a(localdkp);
         }
         paramInt += 1;
       }
@@ -204,16 +204,16 @@ public class StrangerManageActivity
   
   public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(dkq paramdkq)
+  public void a(dkp paramdkp)
   {
-    if (paramdkq == null) {}
-    while ((paramdkq.jdField_a_of_type_Long * 1000L > System.currentTimeMillis()) || (this.jdField_a_of_type_JavaUtilHashSet.contains(paramdkq.jdField_a_of_type_JavaLangString))) {
+    if (paramdkp == null) {}
+    while ((paramdkp.jdField_a_of_type_Long * 1000L > System.currentTimeMillis()) || (this.jdField_a_of_type_JavaUtilHashSet.contains(paramdkp.jdField_a_of_type_JavaLangString))) {
       return;
     }
     try
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(Long.valueOf(paramdkq.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_JavaUtilHashSet.add(paramdkq.jdField_a_of_type_JavaLangString);
+      this.jdField_b_of_type_JavaUtilArrayList.add(Long.valueOf(paramdkp.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_JavaUtilHashSet.add(paramdkp.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
       return;
@@ -267,7 +267,7 @@ public class StrangerManageActivity
     }
     if (paramBoolean)
     {
-      c(2131561746, new dla(this));
+      c(2131561746, new dkz(this));
       a(2131561641, this.jdField_b_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
@@ -351,7 +351,7 @@ public class StrangerManageActivity
     {
       ((TextView)localObject).setEnabled(bool);
       this.k.setVisibility(8);
-      this.k = ((TextView)findViewById(2131231456));
+      this.k = ((TextView)findViewById(2131231455));
       b(this.k);
       this.k.setVisibility(0);
       this.k.setOnClickListener(this.f);
@@ -379,7 +379,7 @@ public class StrangerManageActivity
   {
     boolean bool = false;
     paramView.getId();
-    paramView = (dkq)paramView.getTag();
+    paramView = (dkp)paramView.getTag();
     int i;
     if (paramView != null)
     {
@@ -425,8 +425,8 @@ public class StrangerManageActivity
     super.setContentView(2130903447);
     super.setTitle(2131562348);
     getWindow().setBackgroundDrawable(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232617));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232619));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232616));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232618));
     paramBundle = getLayoutInflater().inflate(2130903448, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqActivityStrangerManageActivity$StrangeManagerListAdapter = new StrangerManageActivity.StrangeManagerListAdapter(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView);
@@ -436,7 +436,7 @@ public class StrangerManageActivity
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130837729);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232618));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232617));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     c(2131562001, this.jdField_d_of_type_AndroidViewView$OnClickListener);
     this.m.setEnabled(false);

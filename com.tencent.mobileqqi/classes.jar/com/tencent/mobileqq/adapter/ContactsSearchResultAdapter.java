@@ -20,7 +20,7 @@ import com.tencent.mobileqq.search.IContactSearchable;
 import com.tencent.mobileqq.search.SearchAdapterInterface;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import exx;
+import exw;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -91,13 +91,13 @@ public class ContactsSearchResultAdapter
     {
       paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903149, paramViewGroup, false);
       paramViewGroup = new ContactsSearchResultAdapter.ViewTag();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231408));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231409));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231412));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231411));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231413));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231414));
-      paramViewGroup.d = ((ImageView)paramView.findViewById(2131231415));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231407));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231408));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231411));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231410));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231412));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231413));
+      paramViewGroup.d = ((ImageView)paramView.findViewById(2131231414));
       paramView.setTag(paramViewGroup);
       localObject1 = (IContactSearchable)getItem(paramInt);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((IContactSearchable)localObject1).c());
@@ -107,7 +107,7 @@ public class ContactsSearchResultAdapter
         break label351;
       }
       paramViewGroup.d.setVisibility(0);
-      paramViewGroup.d.setOnClickListener(new exx(this, (IContactSearchable)localObject1));
+      paramViewGroup.d.setOnClickListener(new exw(this, (IContactSearchable)localObject1));
       if (!(this.jdField_a_of_type_AndroidContentContext instanceof SelectMemberActivity)) {
         break label426;
       }

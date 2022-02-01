@@ -254,7 +254,7 @@
         <item>China 86 11 Most-often-selected-countries</item>
         <item>Macau(China) 853 8 Most-often-selected-countries</item>
         <item>Hong-Kong(China) 852 8 Most-often-selected-countries</item>
-        <item>Taiwan 886 10 Most-often-selected-countries</item>
+        <item>Taiwan(China) 886 10 Most-often-selected-countries</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002d">
         <item>Most-often-selected-countries</item>
@@ -447,7 +447,7 @@
         <item>Sweden 46 6 S</item>
         <item>Switzerland 41 10 S</item>
         <item>Syria 963 9 S</item>
-        <item>Taiwan 886 10 T</item>
+        <item>Taiwan(China) 886 10 T</item>
         <item>Tajikistan 992 6 T</item>
         <item>Tanzania 255 11 T</item>
         <item>Thailand 66 10 T</item>

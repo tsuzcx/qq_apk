@@ -1,17 +1,15 @@
 import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ddj
+class ddj
   implements Runnable
 {
-  public ddj(QQSettingMe paramQQSettingMe, String paramString) {}
+  ddj(ddi paramddi, Drawable paramDrawable) {}
   
   public void run()
   {
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new ddk(this, localDrawable));
+    this.jdField_a_of_type_Ddi.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

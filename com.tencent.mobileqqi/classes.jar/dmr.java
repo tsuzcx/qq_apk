@@ -1,28 +1,38 @@
 import android.text.TextUtils;
-import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.SubAccountSettingActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.utils.ContactUtils;
 
-class dmr
-  implements ActionSheet.OnButtonClickListener
+public class dmr
+  extends FriendListObserver
 {
-  dmr(dmp paramdmp, ActionSheet paramActionSheet) {}
+  public dmr(SubAccountSettingActivity paramSubAccountSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    switch (paramInt)
+    if ((paramBoolean) && (SubAccountSettingActivity.a(this.a) != null) && (SubAccountSettingActivity.a(this.a).subuin != null) && (paramString != null) && (SubAccountSettingActivity.a(this.a).subuin.equals(paramString)))
     {
+      paramString = ContactUtils.b(this.a.b, paramString, false);
+      if ((!TextUtils.isEmpty(paramString)) && ((TextUtils.isEmpty(SubAccountSettingActivity.a(this.a).subname)) || (!paramString.equals(SubAccountSettingActivity.a(this.a).subname))))
+      {
+        SubAccountSettingActivity.a(this.a).subname = paramString;
+        SubAccountSettingActivity.a(this.a).setText(SubAccountSettingActivity.a(this.a).subname);
+      }
     }
-    do
-    {
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (SubAccountSettingActivity.a(this.a) == null) || (!paramString.equals(SubAccountSettingActivity.a(this.a).subuin))) {}
+    while (SubAccountSettingActivity.a(this.a) == null) {
       return;
-    } while ((!this.jdField_a_of_type_Dmp.a.f()) || ((SubAccountSettingActivity.a(this.jdField_a_of_type_Dmp.a) != null) && (TextUtils.isEmpty(SubAccountSettingActivity.a(this.jdField_a_of_type_Dmp.a).subuin))));
-    this.jdField_a_of_type_Dmp.a.d();
-    SubAccountAssistantManager.a().a(this.jdField_a_of_type_Dmp.a.b, SubAccountSettingActivity.a(this.jdField_a_of_type_Dmp.a).subuin);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    }
+    paramString = this.a.b.b(SubAccountSettingActivity.a(this.a).subuin);
+    SubAccountSettingActivity.a(this.a).setImageDrawable(paramString);
   }
 }
 

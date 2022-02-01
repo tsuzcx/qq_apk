@@ -1,45 +1,30 @@
-import android.os.Handler;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class dpj
-  extends FriendListObserver
+  extends BizTroopObserver
 {
   public dpj(TroopInfoActivity paramTroopInfoActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  protected void a(boolean paramBoolean, long paramLong)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.p))) {
-      return;
+    this.a.n();
+    int i;
+    if (!paramBoolean) {
+      i = 2131562078;
     }
-    this.a.jdField_b_of_type_Boolean = false;
-    Object localObject = (FriendManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8);
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((FriendManager)localObject).c(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.p))
+    for (;;)
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.q = ((String)localObject);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("Q.troopinfo", 2, "onUpdateFriendInfo|uin = " + paramString + ", tmpNickName = " + (String)localObject);
+      QQToast.a(this.a, i, 1).b(this.a.d());
+      this.a.finish();
       return;
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.c))) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      if ((this.a.a.q == 3) || (this.a.a.q == 2)) {
+        i = 2131562983;
+      } else {
+        i = 2131562984;
+      }
     }
   }
 }

@@ -1,16 +1,22 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import java.util.Comparator;
 
 public class dsi
-  implements Comparator
+  implements TextWatcher
 {
   private dsi(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public int a(TroopMemberListActivity.ATroopMember paramATroopMember1, TroopMemberListActivity.ATroopMember paramATroopMember2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    return paramATroopMember1.f.compareToIgnoreCase(paramATroopMember2.f);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.d(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

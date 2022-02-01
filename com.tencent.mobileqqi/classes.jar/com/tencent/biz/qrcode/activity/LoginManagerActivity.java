@@ -75,10 +75,10 @@ public class LoginManagerActivity
     super.onCreate(paramBundle);
     super.setContentView(2130903439);
     super.setTitle(2131560502);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232593));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232591));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232592));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232590));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232592));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232590));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232591));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232589));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramBundle = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();
     this.jdField_b_of_type_AndroidWidgetTextView.setText(ContactUtils.g(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle));

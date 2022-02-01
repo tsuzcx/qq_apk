@@ -1,32 +1,27 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.troop.widget.MediaControllerX;
+import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
 
 public class gyu
-  implements View.OnClickListener
+  extends Handler
 {
   public gyu(MediaControllerX paramMediaControllerX) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (!this.a.b)
+    switch (paramMessage.what)
     {
-      this.a.b = true;
-      MediaControllerX.b(this.a).setBackgroundResource(2130838546);
-      MediaControllerX.b(this.a).setContentDescription(this.a.getResources().getString(2131558476));
     }
-    for (;;)
+    int i;
+    do
     {
-      if (this.a.c != null) {
-        this.a.c.onClick(paramView);
-      }
       return;
-      this.a.b = false;
-      MediaControllerX.b(this.a).setBackgroundResource(2130838536);
-      MediaControllerX.b(this.a).setContentDescription(this.a.getResources().getString(2131558477));
-    }
+      this.a.c();
+      return;
+      i = MediaControllerX.a(this.a);
+    } while ((MediaControllerX.b(this.a)) || (!MediaControllerX.a(this.a)) || (!MediaControllerX.a(this.a).a()));
+    sendMessageDelayed(obtainMessage(2), 1000 - i % 1000);
   }
 }
 

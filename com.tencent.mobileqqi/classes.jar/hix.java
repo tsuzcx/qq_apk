@@ -1,30 +1,30 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.InnerFrameManager;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.FriendChooser.GridViewAdapter;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.open.agent.datamodel.FriendDataManager;
-import java.util.ArrayList;
 
 public class hix
-  implements AdapterView.OnItemClickListener
+  implements View.OnTouchListener
 {
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
+  
   public hix(FriendChooser paramFriendChooser) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramAdapterView = (Friend)this.a.jdField_a_of_type_ComTencentOpenAgentFriendChooser$GridViewAdapter.getItem(paramInt);
-    if (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a))
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
-      this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.b(paramAdapterView.a);
-      this.a.b.remove(paramAdapterView);
-      this.a.i();
-      ((OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).g();
-      this.a.b(false);
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
     }
+    while ((i != 2) || ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float <= 10.0F) && (paramMotionEvent.getRawY() - this.b <= 10.0F))) {
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

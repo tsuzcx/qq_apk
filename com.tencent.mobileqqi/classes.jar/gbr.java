@@ -1,21 +1,18 @@
-import EncounterSvc.RespGetEncounterV2;
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.mobileqq.activity.PeopleAroundBaseActivity.BaseLbsObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.maproam.Utils;
 import com.tencent.mobileqq.maproam.activity.RoamingActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class gbr
-  extends PeopleAroundBaseActivity.BaseLbsObserver
+  implements View.OnClickListener
 {
-  public gbr(RoamingActivity paramRoamingActivity)
-  {
-    super(paramRoamingActivity);
-  }
+  public gbr(RoamingActivity paramRoamingActivity) {}
   
-  protected void a(boolean paramBoolean1, String paramString, int paramInt1, RespGetEncounterV2 paramRespGetEncounterV2, boolean paramBoolean2, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if (paramInt2 == PeopleAroundBaseActivity.x) {
-      super.a(paramBoolean1, paramString, paramInt1, paramRespGetEncounterV2, paramBoolean2, paramInt2, paramInt3);
-    }
+    VipUtils.b(this.a, 1, "mvip.gongneng.mobileqq.ditumanyou.numberandroid");
+    Utils.a();
   }
 }
 

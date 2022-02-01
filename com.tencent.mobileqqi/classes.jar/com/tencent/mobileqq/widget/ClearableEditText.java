@@ -10,8 +10,8 @@ import android.util.DisplayMetrics;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.mobileqqi.R.styleable;
+import hfw;
 import hfx;
-import hfy;
 import java.lang.reflect.Field;
 
 public class ClearableEditText
@@ -59,8 +59,8 @@ public class ClearableEditText
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.b);
       setClearButtonVisible(false);
     }
-    setOnTouchListener(new hfx(this));
-    addTextChangedListener(new hfy(this));
+    setOnTouchListener(new hfw(this));
+    addTextChangedListener(new hfx(this));
     paramContext.recycle();
   }
   

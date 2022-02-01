@@ -42,10 +42,10 @@ public class RegisterProxySvcPackService
     localSvcReqRegister.lBid = 7L;
     localSvcReqRegister.cConnType = 0;
     AppRuntime.Status localStatus = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineStatus();
-    switch (gis.a[localStatus.ordinal()])
+    switch (gir.a[localStatus.ordinal()])
     {
     default: 
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b()) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()) {
         break;
       }
     }

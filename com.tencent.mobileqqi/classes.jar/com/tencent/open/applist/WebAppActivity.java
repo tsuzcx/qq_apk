@@ -52,6 +52,7 @@ import com.tencent.smtt.sdk.WebSettings.PluginState;
 import com.tencent.smtt.sdk.WebSettings.RenderPriority;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
+import hle;
 import hlf;
 import hlg;
 import hlh;
@@ -60,7 +61,6 @@ import hlj;
 import hlk;
 import hll;
 import hlm;
-import hln;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -147,12 +147,12 @@ public class WebAppActivity
     this.jdField_a_of_type_ComTencentOpenApplistWebAppActivity$HttpGetAppInfoAsyncTask = null;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentSmttSdkWebViewClient = new hlf(this);
-    this.jdField_a_of_type_ComTencentSmttSdkWebChromeClient = new hlg(this);
-    this.jdField_a_of_type_ComTencentSmttSdkDownloadListener = new hlh(this);
-    this.jdField_b_of_type_AndroidOsHandler = new hli(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new hll(this);
-    this.jdField_a_of_type_ComTencentOpenApplistH5ConfirmDialog$Dialogcallback = new hlm(this);
+    this.jdField_a_of_type_ComTencentSmttSdkWebViewClient = new hle(this);
+    this.jdField_a_of_type_ComTencentSmttSdkWebChromeClient = new hlf(this);
+    this.jdField_a_of_type_ComTencentSmttSdkDownloadListener = new hlg(this);
+    this.jdField_b_of_type_AndroidOsHandler = new hlh(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new hlk(this);
+    this.jdField_a_of_type_ComTencentOpenApplistH5ConfirmDialog$Dialogcallback = new hll(this);
   }
   
   /* Error */
@@ -577,7 +577,7 @@ public class WebAppActivity
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    new Handler().post(new hln(this, paramString1, paramString2, paramBoolean));
+    new Handler().post(new hlm(this, paramString1, paramString2, paramBoolean));
   }
   
   protected void a(List paramList)
@@ -807,7 +807,7 @@ public class WebAppActivity
   
   public void i()
   {
-    a(new hlj(this), 2000L);
+    a(new hli(this), 2000L);
   }
   
   public void j()
@@ -832,11 +832,11 @@ public class WebAppActivity
     setContentView(2130903330);
     x();
     this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232105));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232104));
     if (this.o == 0)
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView = findViewById(2131232107);
+      this.jdField_c_of_type_AndroidViewView = findViewById(2131232106);
       if (this.o != 0) {
         break label181;
       }
@@ -852,17 +852,17 @@ public class WebAppActivity
         this.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)localObject);
       }
       return;
-      this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131232106));
+      this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131232105));
       this.jdField_b_of_type_AndroidWidgetProgressBar.setProgressDrawable(WidgetUtil.a(getResources().getDrawable(2130838195), false, null));
       break;
       label181:
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231189));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231188));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231190));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231189));
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231193));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231192));
       this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.d = ((ImageView)findViewById(2131230740));
       this.d.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -879,7 +879,7 @@ public class WebAppActivity
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setDownloadListener(this.jdField_a_of_type_ComTencentSmttSdkDownloadListener);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setScrollBarStyle(0);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setOnLongClickListener(new hlk(this));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setOnLongClickListener(new hlj(this));
     WebSettings localWebSettings = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
     localWebSettings.setJavaScriptEnabled(true);
     localWebSettings.setNeedInitialFocus(true);

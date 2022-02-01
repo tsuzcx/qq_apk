@@ -1,9 +1,8 @@
 import android.text.Editable;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
 import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class dnf
   implements View.OnFocusChangeListener
@@ -12,17 +11,9 @@ public class dnf
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (true == paramBoolean)
-    {
-      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
+    if (true == paramBoolean) {
       SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
     }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
-      return;
-    }
-    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

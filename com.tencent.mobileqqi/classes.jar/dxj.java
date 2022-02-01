@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-public class dxj
-  extends AnimateUtils.AnimationAdapter
+class dxj
+  implements Runnable
 {
-  public dxj(ComboAnimation3 paramComboAnimation3) {}
+  dxj(dxi paramdxi) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if ((ComboAnimation3.a(this.a) != null) && (ComboAnimation3.a(this.a).isShown())) {
-      this.a.a.post(new dxk(this));
-    }
+    this.a.a.d();
+    this.a.a.a.invalidate();
   }
 }
 

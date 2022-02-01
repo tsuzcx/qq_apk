@@ -34,8 +34,8 @@ import com.tencent.mobileqq.text.QQTextBuilder;
 import com.tencent.mobileqq.utils.FileProvider7Helper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import gxk;
 import gxl;
-import gxm;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -67,7 +67,7 @@ public class TroopBarUtils
   protected static final String J = "前天";
   protected static final String K = "全部";
   protected static final String L = "精华";
-  private static final String M = "&_wv=1031&_bid=128&platform=android&from=native&version=6.0.2";
+  private static final String M = "&_wv=1031&_bid=128&platform=android&from=native&version=6.0.3";
   public static final int a = 20;
   public static final TroopBarPageEntity.TypeListEntity a;
   public static final String a = "TroopBar";
@@ -412,7 +412,7 @@ public class TroopBarUtils
     if ((paramBundle1 == null) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
       return;
     }
-    paramBundle1.putString("version", "6.0.2");
+    paramBundle1.putString("version", "6.0.3");
     paramBundle1.putString("platform", "android");
     paramBundle1.putString("Cookie", "uin=" + paramString2 + ";skey=" + paramString3);
     paramBundle1.putString("Referer", "http://xiaoqu.qq.com");
@@ -428,7 +428,7 @@ public class TroopBarUtils
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("http://xiaoqu.qq.com/cgi-bin/bar/jump?").append("action=").append(paramString).append("&_wv=1031&_bid=128&platform=android&from=native&version=6.0.2");
+    localStringBuilder.append("http://xiaoqu.qq.com/cgi-bin/bar/jump?").append("action=").append(paramString).append("&_wv=1031&_bid=128&platform=android&from=native&version=6.0.3");
     if (paramVarArgs != null)
     {
       int i2 = paramVarArgs.length;
@@ -492,7 +492,7 @@ public class TroopBarUtils
     if ((paramQQAppInterface == null) || (paramEntity == null)) {
       return;
     }
-    new Thread(new gxl(paramQQAppInterface, paramEntity)).start();
+    new Thread(new gxk(paramQQAppInterface, paramEntity)).start();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, List paramList)
@@ -501,7 +501,7 @@ public class TroopBarUtils
     while (paramList.size() == 0) {
       return;
     }
-    new Thread(new gxm(paramQQAppInterface, paramList)).start();
+    new Thread(new gxl(paramQQAppInterface, paramList)).start();
   }
   
   public static final void a(String paramString1, String paramString2, String paramString3)

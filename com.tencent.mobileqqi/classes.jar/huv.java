@@ -1,28 +1,46 @@
+import android.view.View;
 import com.tencent.widget.AbsListView;
-import com.tencent.widget.AdapterView.AdapterDataSetObserver;
-import com.tencent.widget.FastScroller;
 
 public class huv
-  extends AdapterView.AdapterDataSetObserver
+  extends hvg
+  implements Runnable
 {
-  public huv(AbsListView paramAbsListView)
+  private huv(AbsListView paramAbsListView)
   {
-    super(paramAbsListView);
+    super(paramAbsListView, null);
   }
   
-  public void onChanged()
+  public void run()
   {
-    super.onChanged();
-    if (this.a.a != null) {
-      this.a.a.c();
+    View localView;
+    if ((this.a.isPressed()) && (this.a.aA >= 0))
+    {
+      int i = this.a.aA;
+      int j = this.a.ap;
+      localView = this.a.getChildAt(i - j);
+      if (this.a.p) {
+        break label108;
+      }
+      if (!a()) {
+        break label128;
+      }
     }
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    if (this.a.a != null) {
-      this.a.a.c();
+    label128:
+    for (boolean bool = this.a.b(localView, this.a.aA, this.a.d);; bool = false)
+    {
+      if (bool)
+      {
+        this.a.setPressed(false);
+        localView.setPressed(false);
+      }
+      label108:
+      do
+      {
+        return;
+        this.a.setPressed(false);
+      } while (localView == null);
+      localView.setPressed(false);
+      return;
     }
   }
 }

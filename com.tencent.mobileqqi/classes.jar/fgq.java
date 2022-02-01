@@ -1,16 +1,23 @@
-import android.graphics.Rect;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.ShieldOperationItem;
 
-class fgq
-  implements Runnable
+public final class fgq
+  implements Parcelable.Creator
 {
-  fgq(fgp paramfgp) {}
-  
-  public void run()
+  public ShieldOperationItem a(Parcel paramParcel)
   {
-    if (!this.a.a.a.jdField_a_of_type_Boolean) {
-      this.a.a.a.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
-    }
-    this.a.a.a.invalidate();
+    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
+    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localShieldOperationItem.b = paramParcel.readInt();
+    localShieldOperationItem.c = paramParcel.readInt();
+    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
+    return localShieldOperationItem;
+  }
+  
+  public ShieldOperationItem[] a(int paramInt)
+  {
+    return null;
   }
 }
 

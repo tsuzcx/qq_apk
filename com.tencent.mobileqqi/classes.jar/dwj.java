@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
-import mqq.app.AppActivity;
-import mqq.app.permission.PermissionItem;
-import mqq.app.permission.PermissionManager;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
-public final class dwj
-  implements PermissionDialogCallback
+class dwj
+  implements PermissionCallback
 {
-  public dwj(AppActivity paramAppActivity, boolean paramBoolean, String paramString, int paramInt, SessionInfo paramSessionInfo) {}
+  dwj(dwi paramdwi) {}
   
-  public void a() {}
-  
-  public void b()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_MqqAppAppActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.CAMERA", 200), PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new dwk(this));
+    new PermissionsDialog().a(this.a.jdField_a_of_type_MqqAppAppActivity, paramInt, paramArrayOfString, new dwk(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    PlusPanelUtils.a(this.a.jdField_a_of_type_MqqAppAppActivity, this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

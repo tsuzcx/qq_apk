@@ -1,20 +1,22 @@
-import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 class ggw
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  ggw(ggv paramggv, ImageView paramImageView, TextView paramTextView) {}
+  ggw(ggv paramggv) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(200L);
-    localAlphaAnimation.setAnimationListener(new ggx(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAlphaAnimation);
-    this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(localAlphaAnimation);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,21 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.CustomAlertDialog;
-import com.tencent.mobileqq.widget.CustomAlertDialog.OnOptionMenuClick;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
 
-class hgh
+public class hgh
   implements View.OnClickListener
 {
-  hgh(hgg paramhgg, int paramInt) {}
+  public hgh(CustomedTabWidget paramCustomedTabWidget) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Hgg.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.a != null) {
-      this.jdField_a_of_type_Hgg.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.a.a(((Integer)((HashMap)this.jdField_a_of_type_Hgg.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).get("commandId")).intValue());
-    }
-    this.jdField_a_of_type_Hgg.jdField_a_of_type_ComTencentMobileqqWidgetCustomAlertDialog.dismiss();
+    this.a.setCurrentTab(this.a.indexOfChild(paramView));
   }
 }
 

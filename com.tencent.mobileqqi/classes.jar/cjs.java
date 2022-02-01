@@ -9,7 +9,7 @@ public class cjs
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    this.a.a();
   }
 }
 

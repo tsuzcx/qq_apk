@@ -1,18 +1,13 @@
-import android.app.Dialog;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class duy
   implements Runnable
 {
-  public duy(VerifyPhoneNumActivity paramVerifyPhoneNumActivity, int paramInt) {}
+  public duy(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity, 2131624405);
-    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.setContentView(2130903073);
-    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.findViewById(2131231029)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.getString(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqActivityVerifyPhoneNumActivity.a.show();
+    VerifyPhoneNumActivity.a(this.a);
   }
 }
 

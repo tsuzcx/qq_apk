@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.util.InfiniteTaskThreadPool;
-import java.util.concurrent.ThreadFactory;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class hau
-  implements ThreadFactory
+public final class hau
+  extends Thread
 {
-  public Thread newThread(Runnable paramRunnable)
+  public hau(String paramString1, String paramString2) {}
+  
+  public void run()
   {
-    InfiniteTaskThreadPool.a();
-    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + InfiniteTaskThreadPool.b());
-    paramRunnable.setDaemon(true);
-    return paramRunnable;
+    String str1 = CardHandler.a(this.a, CardHandler.c(BaseApplication.getContext()));
+    int i = CardHandler.d(BaseApplication.getContext());
+    String str2 = CardHandler.a(this.a, i);
+    ImageUtil.a(this.b, str1);
+    ImageUtil.a(this.b, str2, i, i);
+    FileUtils.a(this.b, true);
   }
 }
 

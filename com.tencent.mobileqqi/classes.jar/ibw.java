@@ -10,10 +10,10 @@ public class ibw
   
   public boolean onPreferenceClick(Preference paramPreference)
   {
-    QZoneStatisticsSettingActivity.a(this.a, 0);
+    QZoneStatisticsSettingActivity.a(this.a, 1);
     ((RadioPreference)paramPreference).a(true);
     paramPreference = ((RadioPreference)paramPreference).getKey();
-    QZoneStatisticsSettingActivity.a(this.a, paramPreference, 0);
+    QZoneStatisticsSettingActivity.a(this.a, paramPreference, 1);
     return false;
   }
 }

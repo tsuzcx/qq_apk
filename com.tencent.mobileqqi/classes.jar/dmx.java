@@ -1,28 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class dmx
-  implements TextWatcher
+  implements View.OnClickListener
 {
   public dmx(SubLoginActivity paramSubLoginActivity) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if (paramCharSequence.length() > 0) {
-      if (SubLoginActivity.a(this.a) != null) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
+    if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).isShown())) {
+      SubLoginActivity.a(this.a).setVisibility(8);
     }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
-      return;
-    }
-    SubLoginActivity.a(this.a).setVisibility(8);
+    SubLoginActivity.a(this.a).setText("");
+    SubLoginActivity.a(this.a).setText("");
   }
 }
 

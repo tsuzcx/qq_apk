@@ -1,5 +1,8 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.utils.CameraUtil;
 import com.tencent.mobileqq.widget.CameraFrameLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class hfi
   implements Runnable
@@ -8,14 +11,24 @@ public class hfi
   
   public void run()
   {
-    synchronized (CameraFrameLayout.a(this.a))
+    long l1 = System.currentTimeMillis();
+    for (;;)
     {
-      if (CameraFrameLayout.a(this.a) != null)
+      synchronized (CameraFrameLayout.a(this.a))
       {
-        CameraUtil.a(CameraFrameLayout.a(this.a));
-        CameraFrameLayout.a(this.a, null);
+        CameraFrameLayout.a(this.a, CameraUtil.a());
+        if (CameraFrameLayout.a(this.a) == null)
+        {
+          i = -1;
+          long l2 = System.currentTimeMillis();
+          if (QLog.isColorLevel()) {
+            QLog.d("CameraFrameLayout", 2, "openRealtimeBg.open camera cost time:" + (l2 - l1));
+          }
+          CameraFrameLayout.a(this.a).obtainMessage(1, i, 0).sendToTarget();
+          return;
+        }
       }
-      return;
+      int i = 0;
     }
   }
 }

@@ -29,8 +29,8 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import gmt;
 import gmu;
-import gmv;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -61,7 +61,7 @@ public class BuddyTransfileProcessor
   private String U = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
   private String V;
   private String W;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gmu(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gmt(this);
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   public boolean a;
   int aD = -1;
@@ -780,7 +780,7 @@ public class BuddyTransfileProcessor
         return;
       }
     } while ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService == null) || (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new gmv(this, str, paramShort, paramBoolean));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new gmu(this, str, paramShort, paramBoolean));
   }
   
   public void a(boolean paramBoolean)

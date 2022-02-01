@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-
-public class eji
-  implements DialogInterface.OnDismissListener
+public abstract interface eji
 {
-  public eji(MainAssistObserver paramMainAssistObserver) {}
+  public abstract void a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a = false;
-  }
+  public abstract void b();
 }
 
 

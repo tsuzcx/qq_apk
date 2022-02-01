@@ -1,23 +1,27 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.fpsreport.FPSCalculator;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.international.activity.FeedbackActivity;
 
 public class fze
-  extends AsyncTask
+  implements TextWatcher
 {
-  public fze(FPSCalculator paramFPSCalculator) {}
+  public fze(FeedbackActivity paramFeedbackActivity) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramVarArgs = FPSCalculator.a(this.a).iterator();
-    while (paramVarArgs.hasNext()) {
-      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
+    if (TextUtils.isEmpty(paramEditable.toString().trim()))
+    {
+      FeedbackActivity.a(this.a).setEnabled(false);
+      return;
     }
-    FPSCalculator.a(this.a).clear();
-    return null;
+    FeedbackActivity.a(this.a).setEnabled(true);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

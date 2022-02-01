@@ -1,22 +1,19 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class hnn
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public hnn(DownloadManager paramDownloadManager, String paramString) {}
+  public hnn(MyAppApi paramMyAppApi) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
+    LogUtility.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
+    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.i.intent.action.ACCOUNT_EXPIRED"))) {
+      this.a.f();
     }
   }
 }

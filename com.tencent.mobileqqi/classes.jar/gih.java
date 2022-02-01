@@ -1,103 +1,74 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.search.ConversationSearchAdapter;
-import com.tencent.mobileqq.search.ConversationSearchAdapter.SearchResultCallBack;
-import com.tencent.mobileqq.search.ISearchable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.service.HttpNotify;
 
 public class gih
-  extends AsyncTask
+  implements HttpNotify
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List jdField_a_of_type_JavaUtilList;
-  private String jdField_b_of_type_JavaLangString;
-  private List jdField_b_of_type_JavaUtilList;
+  private long jdField_a_of_type_Long = 0L;
+  private HttpNotify jdField_a_of_type_ComTencentMobileqqServiceHttpNotify;
   
-  public gih(ConversationSearchAdapter paramConversationSearchAdapter, String paramString1, String paramString2, List paramList)
+  public gih(HttpNotify paramHttpNotify)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify = paramHttpNotify;
   }
   
-  protected Void a(Void... paramVarArgs)
+  public void a(long paramLong1, long paramLong2)
   {
-    ISearchable localISearchable;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
     {
-      paramVarArgs = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (paramVarArgs.hasNext())
-      {
-        localISearchable = (ISearchable)paramVarArgs.next();
-        if (!isCancelled()) {}
-      }
-      else
-      {
-        if (!this.jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))
-        {
-          paramVarArgs = this.jdField_b_of_type_JavaUtilList.iterator();
-          label68:
-          if (paramVarArgs.hasNext())
-          {
-            localISearchable = (ISearchable)paramVarArgs.next();
-            if (!isCancelled()) {
-              break label227;
-            }
-          }
-        }
-        this.jdField_a_of_type_ComTencentMobileqqSearchConversationSearchAdapter.b(this.jdField_b_of_type_JavaUtilList);
-      }
+      new Handler(localLooper).post(new gii(this, paramLong1, paramLong2));
+      return;
     }
-    for (this.jdField_a_of_type_ComTencentMobileqqSearchConversationSearchAdapter.a = false;; this.jdField_a_of_type_ComTencentMobileqqSearchConversationSearchAdapter.a = true)
-    {
-      return null;
-      localISearchable.a(this.jdField_a_of_type_JavaLangString);
-      if (localISearchable.a() == -9223372036854775808L) {
-        break;
-      }
-      if (!this.jdField_b_of_type_JavaUtilList.contains(localISearchable))
-      {
-        this.jdField_b_of_type_JavaUtilList.add(localISearchable);
-        break;
-      }
-      int i = this.jdField_b_of_type_JavaUtilList.indexOf(localISearchable);
-      if (((ISearchable)this.jdField_b_of_type_JavaUtilList.get(i)).a() >= localISearchable.a()) {
-        break;
-      }
-      this.jdField_b_of_type_JavaUtilList.set(i, localISearchable);
-      break;
-      label227:
-      long l = localISearchable.a();
-      localISearchable.a(this.jdField_b_of_type_JavaLangString);
-      if (localISearchable.a() != -9223372036854775808L) {
-        break label68;
-      }
-      localISearchable.a(l);
-      break label68;
-    }
+    b(paramLong1, paramLong2);
   }
   
-  protected void a(Void paramVoid)
+  public void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    ConversationSearchAdapter.a(this.jdField_a_of_type_ComTencentMobileqqSearchConversationSearchAdapter).clear();
-    ConversationSearchAdapter.a(this.jdField_a_of_type_ComTencentMobileqqSearchConversationSearchAdapter).addAll(this.jdField_b_of_type_JavaUtilList);
-    this.jdField_b_of_type_JavaUtilList.clear();
-    if (ConversationSearchAdapter.a(this.jdField_a_of_type_ComTencentMobileqqSearchConversationSearchAdapter) != null)
-    {
-      int i = 1;
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchConversationSearchAdapter.a) {
-        i = 0;
-      }
-      ConversationSearchAdapter.a(this.jdField_a_of_type_ComTencentMobileqqSearchConversationSearchAdapter).a(i);
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 200L) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchConversationSearchAdapter.notifyDataSetChanged();
+    this.jdField_a_of_type_Long = l;
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new gij(this, paramLong1, paramLong2, paramLong3));
+      return;
+    }
+    b(paramLong1, paramLong2, paramLong3);
+  }
+  
+  public void a(long paramLong1, boolean paramBoolean, long paramLong2)
+  {
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new gik(this, paramLong1, paramBoolean, paramLong2));
+      return;
+    }
+    b(paramLong1, paramBoolean, paramLong2);
+  }
+  
+  public void b(long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramLong2);
+  }
+  
+  public void b(long paramLong1, long paramLong2, long paramLong3)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramLong2, paramLong3);
+  }
+  
+  public void b(long paramLong1, boolean paramBoolean, long paramLong2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqServiceHttpNotify.a(paramLong1, paramBoolean, paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gih
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,41 @@
-import android.content.Intent;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.dataline.activities.LiteWifiphotoActivity;
 import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.redtouch.VipBannerInfo;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
 public class eok
   implements View.OnClickListener
 {
-  public eok(BannerManager paramBannerManager) {}
+  public eok(BannerManager paramBannerManager, VipBannerInfo paramVipBannerInfo, RedTouchManager paramRedTouchManager, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    String str = this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.c;
+    paramView = str;
+    if (str == null) {
+      paramView = "";
     }
-    paramView = new Intent(BannerManager.a(this.a), LiteWifiphotoActivity.class);
-    paramView.putExtra("isFromStatusbar", true);
-    BannerManager.a(this.a).startActivity(paramView);
+    switch (this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.e)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.a, 3);
+      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).removeMessages(9);
+      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendEmptyMessage(9);
+      return;
+      VipUtils.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeivip%s", new Object[] { paramView }));
+      continue;
+      VipUtils.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeisvip%s", new Object[] { paramView }));
+      continue;
+      VipUtils.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeivip%s", new Object[] { paramView }));
+      continue;
+      VipUtils.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeisvip%s", new Object[] { paramView }));
+    }
   }
 }
 

@@ -36,13 +36,13 @@ import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.GestureSelectGridView;
 import com.tencent.widget.GestureSelectGridView.OnSelectListener;
+import ecg;
 import ech;
 import eci;
 import ecj;
 import eck;
 import ecl;
 import ecm;
-import ecn;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -73,7 +73,7 @@ public class AIOImageListScene
   Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   private AIOImageListModel jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel;
   private IAIOImageProvider jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
-  private ecn jdField_a_of_type_Ecn;
+  private ecm jdField_a_of_type_Ecm;
   public ArrayList a;
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean = false;
@@ -167,7 +167,7 @@ public class AIOImageListScene
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new eci(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new ech(this));
     Object localObject;
     switch (paramInt1)
     {
@@ -182,7 +182,7 @@ public class AIOImageListScene
       return;
     case 0: 
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131562944);
-      localObject = new ecj(this, paramInt2);
+      localObject = new eci(this, paramInt2);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131561746, (DialogInterface.OnClickListener)localObject);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131560540, (DialogInterface.OnClickListener)localObject);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -237,7 +237,7 @@ public class AIOImageListScene
       this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this);
     }
     String str = paramInt2 + "%";
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131232069);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131232068);
     switch (paramInt1)
     {
     }
@@ -417,7 +417,7 @@ public class AIOImageListScene
   
   protected View.OnClickListener a()
   {
-    return new ecm(this);
+    return new ecl(this);
   }
   
   protected AbstractImageAdapter a(Activity paramActivity, int paramInt)
@@ -429,12 +429,12 @@ public class AIOImageListScene
   
   protected AdapterView.OnItemClickListener a()
   {
-    return new eck(this);
+    return new ecj(this);
   }
   
   protected GestureSelectGridView.OnSelectListener a()
   {
-    return new ecl(this);
+    return new eck(this);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -536,17 +536,17 @@ public class AIOImageListScene
             ((AIOPhotoListAdapter)this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a(i1), (View)localObject1);
           }
         }
-      } while ((paramInt2 != 2) || (this.jdField_a_of_type_Ecn == null));
-      localObject1 = this.jdField_a_of_type_Ecn;
-    } while ((((ecn)localObject1).a == null) || (((ecn)localObject1).a.a.jdField_a_of_type_Long != paramLong) || (((ecn)localObject1).a.a.jdField_d_of_type_Int != paramInt1));
-    Object localObject3 = ((ecn)localObject1).a.a;
+      } while ((paramInt2 != 2) || (this.jdField_a_of_type_Ecm == null));
+      localObject1 = this.jdField_a_of_type_Ecm;
+    } while ((((ecm)localObject1).a == null) || (((ecm)localObject1).a.a.jdField_a_of_type_Long != paramLong) || (((ecm)localObject1).a.a.jdField_d_of_type_Int != paramInt1));
+    Object localObject3 = ((ecm)localObject1).a.a;
     if (paramInt3 == 1) {}
     for (;;)
     {
       ((AIOImageData)localObject3).e = ???;
-      synchronized (((ecn)localObject1).a)
+      synchronized (((ecm)localObject1).a)
       {
-        ((ecn)localObject1).a.notifyAll();
+        ((ecm)localObject1).a.notifyAll();
         return;
       }
       String str = "I:E";
@@ -564,8 +564,8 @@ public class AIOImageListScene
   public void a(Integer... paramVarArgs)
   {
     c(paramVarArgs[0].intValue(), 0);
-    this.jdField_a_of_type_Ecn = new ecn(this, this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Ecn.execute(paramVarArgs);
+    this.jdField_a_of_type_Ecm = new ecm(this, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Ecm.execute(paramVarArgs);
   }
   
   public boolean c()
@@ -639,7 +639,7 @@ public class AIOImageListScene
       localActionSheet.a(2131562778, 5);
     }
     localActionSheet.d(2131561746);
-    localActionSheet.a(new ech(this, localActionSheet));
+    localActionSheet.a(new ecg(this, localActionSheet));
     localActionSheet.show();
     a("Multi_Pic_Forward", this.jdField_a_of_type_JavaUtilArrayList.size());
   }
@@ -697,9 +697,9 @@ public class AIOImageListScene
   public void onCancel(DialogInterface paramDialogInterface)
   {
     this.jdField_a_of_type_AndroidAppDialog = null;
-    paramDialogInterface = this.jdField_a_of_type_Ecn;
+    paramDialogInterface = this.jdField_a_of_type_Ecm;
     if (paramDialogInterface != null) {
-      ecn.a(paramDialogInterface, false);
+      ecm.a(paramDialogInterface, false);
     }
   }
 }

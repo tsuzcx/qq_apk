@@ -1,23 +1,21 @@
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
-import android.graphics.Rect;
-import android.view.View;
 import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout.IDragViewProvider;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.List;
 
 public class eoz
   implements Runnable
 {
-  public static final int a = 40;
-  private List jdField_a_of_type_JavaUtilList;
+  public static final int a = 50;
+  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
   private int b;
   
-  public eoz(DragRelativeLayout paramDragRelativeLayout, List paramList)
+  public eoz(DragRelativeLayout paramDragRelativeLayout, PointF paramPointF)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+    this.jdField_a_of_type_AndroidGraphicsPointF.set(paramPointF);
     this.b = -1;
   }
   
@@ -46,54 +44,42 @@ public class eoz
     return null;
   }
   
-  public PointF a()
-  {
-    PointF localPointF = new PointF();
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
-      Rect localRect = new Rect();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.getGlobalVisibleRect(localRect);
-      int i = localRect.left;
-      int j = localRect.top;
-      localView.getGlobalVisibleRect(localRect);
-      localRect.left -= i;
-      localRect.top -= j;
-      localRect.right -= i;
-      localRect.bottom -= j;
-      localPointF.set(localRect.centerX(), localRect.centerY());
-    }
-    return localPointF;
-  }
-  
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+    if (this.b == DragRelativeLayout.a().length)
     {
       if (this == DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout)) {
         DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, null);
       }
-      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, -1);
-      if (QLog.isColorLevel()) {
-        QLog.d("Drag", 2, "DONE!");
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, null);
+      if (DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout) == 2)
+      {
+        List localList = DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout).a();
+        if ((DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout) != null) && (localList.size() > 0))
+        {
+          DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, 5);
+          DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, new eoy(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, localList));
+          DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, null);
+        }
       }
-      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, true);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout.invalidate();
       return;
-      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
-      if (this.b == DragRelativeLayout.a().length)
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        this.b = -1;
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, -1);
+      if (QLog.isColorLevel()) {
+        QLog.d("Drag", 2, "DONE!");
       }
-      else
-      {
-        localView.setVisibility(4);
-        this.b += 1;
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, true);
+      break;
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, -1);
+      if (QLog.isColorLevel()) {
+        QLog.d("Drag", 2, "DONE!");
       }
+      DragRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragRelativeLayout, true);
+      break;
+      this.b += 1;
     }
   }
 }

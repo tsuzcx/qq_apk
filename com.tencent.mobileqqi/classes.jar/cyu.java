@@ -1,13 +1,24 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
+import com.tencent.widget.ActionSheet;
 
 public class cyu
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
   public cyu(PeopleAroundBaseActivity paramPeopleAroundBaseActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.h();
+    try
+    {
+      PeopleAroundBaseActivity.a(this.a).dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
   }
 }
 

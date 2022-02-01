@@ -17,7 +17,7 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import fbv;
+import fbu;
 import java.lang.reflect.Method;
 
 public class DragBaseActivity
@@ -39,7 +39,7 @@ public class DragBaseActivity
   
   public DragBaseActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fbv(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fbu(this);
   }
   
   public static void a(View paramView)
@@ -58,7 +58,7 @@ public class DragBaseActivity
   
   protected View a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231456));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231455));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     IphoneTitleBarActivity.b(this.jdField_a_of_type_AndroidWidgetTextView);
     return this.jdField_a_of_type_AndroidWidgetTextView;
@@ -87,10 +87,10 @@ public class DragBaseActivity
     {
       super.setContentView(2130903360);
       this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131232290);
+      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131232289);
       localFrameLayout.setForeground(getResources().getDrawable(2130840102));
       this.jdField_a_of_type_AndroidWidgetFrameLayout = localFrameLayout;
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131231448));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131231447));
       IphoneTitleBarActivity.b(this.jdField_a_of_type_AndroidViewViewGroup);
       a();
       b();
@@ -121,7 +121,7 @@ public class DragBaseActivity
   
   protected View b()
   {
-    this.b = ((TextView)findViewById(2131231376));
+    this.b = ((TextView)findViewById(2131231375));
     return this.b;
   }
   
@@ -130,7 +130,7 @@ public class DragBaseActivity
     setContentView(paramInt);
     try
     {
-      findViewById(2131231374).setVisibility(8);
+      findViewById(2131231373).setVisibility(8);
       return;
     }
     catch (Throwable localThrowable) {}
@@ -158,8 +158,8 @@ public class DragBaseActivity
   
   protected View c()
   {
-    this.c = ((TextView)findViewById(2131231380));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231461));
+    this.c = ((TextView)findViewById(2131231379));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231460));
     IphoneTitleBarActivity.b(this.c);
     IphoneTitleBarActivity.b(this.jdField_a_of_type_AndroidWidgetImageView);
     return this.c;

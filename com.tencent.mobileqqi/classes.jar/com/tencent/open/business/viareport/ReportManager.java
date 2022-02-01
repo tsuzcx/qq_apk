@@ -9,8 +9,8 @@ import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.APNUtil;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.MobileInfoUtil;
+import hma;
 import hmb;
-import hmc;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TimeZone;
@@ -91,7 +91,7 @@ public class ReportManager
   {
     String str = String.valueOf(CommonDataAdapter.a().a());
     if (a(str)) {
-      ThreadManager.a(new hmc(this, str));
+      ThreadManager.a(new hmb(this, str));
     }
   }
   
@@ -144,7 +144,7 @@ public class ReportManager
   
   public void a(String paramString, BatchReportInfo paramBatchReportInfo, Bundle paramBundle, boolean paramBoolean)
   {
-    ThreadManager.a(new hmb(this, paramBoolean, paramBatchReportInfo, paramBundle, paramString));
+    ThreadManager.a(new hma(this, paramBoolean, paramBatchReportInfo, paramBundle, paramString));
   }
   
   /* Error */

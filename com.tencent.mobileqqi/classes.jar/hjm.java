@@ -1,17 +1,16 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.open.agent.RecommendListManager;
-import java.util.HashMap;
+import android.text.Editable;
+import com.tencent.open.agent.SendStoryActivity;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
 public class hjm
-  implements Runnable
+  implements Comparator
 {
-  public hjm(RecommendListManager paramRecommendListManager, String paramString, Bitmap paramBitmap) {}
+  public hjm(SendStoryActivity paramSendStoryActivity, Editable paramEditable) {}
   
-  public void run()
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    ((ImageView)((View)this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.a.get(this.jdField_a_of_type_JavaLangString)).findViewById(2131230940)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2);
   }
 }
 

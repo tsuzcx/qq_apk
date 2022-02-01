@@ -35,7 +35,7 @@ public class StructMsgItemMore
     if (paramView == null)
     {
       localView = LayoutInflater.from(paramContext).inflate(2130903995, null);
-      paramView = (TextView)localView.findViewById(2131234546);
+      paramView = (TextView)localView.findViewById(2131234545);
       if (TextUtils.isEmpty(this.h)) {
         this.h = paramContext.getString(2131559295);
       }

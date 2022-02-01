@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import java.util.TimerTask;
-
 public class gdf
-  extends TimerTask
 {
-  public gdf(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  public int a;
+  public String a;
   
-  public void run()
+  public gdf()
   {
-    MusicGeneWebViewPlugin.a(this.a);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     gdf
  * JD-Core Version:    0.7.0.1
  */

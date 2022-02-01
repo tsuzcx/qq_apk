@@ -7,7 +7,7 @@ public class guz
   
   public void run()
   {
-    TroopAioMsgNavigateBar.a(this.a);
+    TroopAioMsgNavigateBar.b(this.a);
   }
 }
 

@@ -1,72 +1,64 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.app.ShakeListener;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.util.ReflectionUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class ezi
-  extends ShakeListener
+  extends BroadcastReceiver
 {
-  public void a()
+  public ezi(BrowserAppInterface paramBrowserAppInterface) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = Build.VERSION.SDK_INT;
-    Object localObject = BaseApplicationImpl.a;
-    boolean bool1;
-    if (i > 10)
+    String str = paramIntent.getAction();
+    if (str == null) {}
+    do
     {
-      i = 4;
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("screen_shot", i).getString("currentactivity", null);
-      if ((BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2 != null) && (BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getClass().getName().equals(localObject)))
+      do
       {
-        bool1 = SettingCloneUtil.readValue(BaseApplicationImpl.a, null, BaseApplicationImpl.a.getString(2131563437), "qqsetting_screenshot_key", false);
-        boolean bool2 = ReflectionUtil.a(BaseApplication.getContext());
-        if ((bool1) && (bool2))
+        do
         {
-          if (BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot == null)
-          {
-            if (!BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.f) {
-              break label159;
-            }
-            localObject = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getApplicationContext();
-            label118:
-            BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot = new ScreenShot((Context)localObject, BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getWindow());
+          return;
+          if (!str.equals("com.tencent.process.exit")) {
+            break label192;
           }
-          bool1 = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot.a();
-          if (!bool1) {
-            break label167;
+          paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(1);
+          if (paramContext.size() < 1) {
+            break;
           }
-        }
-      }
-    }
-    for (;;)
+          paramContext = ((ActivityManager.RunningTaskInfo)paramContext.get(0)).topActivity.getClassName();
+          if (QLog.isColorLevel()) {
+            QLog.d(BrowserAppInterface.b, 2, "runningActivity=" + paramContext);
+          }
+        } while ((paramContext != null) && (paramContext.length() > 0) && ((paramContext.contains("com.pay")) || (paramContext.contains("com.tenpay"))));
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      paramIntent = paramContext.getStringArrayList("procNameList");
+    } while ((!BrowserAppInterface.a(paramContext.getString("verify"), paramIntent)) || (!BrowserAppInterface.a(paramIntent, MobileQQ.getContext())));
+    try
     {
+      MsfServiceSdk.get().unRegisterMsfService();
+      MsfServiceSdk.get().unbindMsfService();
+      new ezj(this).start();
       return;
-      i = 0;
-      break;
-      label159:
-      localObject = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2;
-      break label118;
-      label167:
-      if (!BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot.b()) {
-        BaseActivity2.a(BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2);
-      }
-      while (QLog.isColorLevel())
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
       {
-        QLog.d("BaseActivity", 2, "snapshot activate " + bool1);
-        return;
-        if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-          KapalaiAdapterUtil.a().a(BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getWindow());
-        }
+        paramContext.printStackTrace();
       }
     }
+    label192:
+    this.a.getApplication().otherProcessExit(true);
   }
 }
 

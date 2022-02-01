@@ -25,8 +25,8 @@ public class ShareAioResultDialog
   
   public void a()
   {
-    this.a = ((TextView)super.findViewById(2131231472));
-    this.b = ((TextView)super.findViewById(2131231473));
+    this.a = ((TextView)super.findViewById(2131231471));
+    this.b = ((TextView)super.findViewById(2131231472));
   }
   
   public void a(DialogInterface.OnClickListener paramOnClickListener)

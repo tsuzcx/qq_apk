@@ -1,24 +1,29 @@
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.UpdateManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
-class hnj
+public class hnj
   implements Runnable
 {
-  hnj(hnh paramhnh, long paramLong1, long paramLong2, String paramString) {}
+  public hnj(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
-    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Hnh.a.c(this.jdField_a_of_type_JavaLangString, i);
-    if (localDownloadInfo == null) {
-      LogUtility.d(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info == null");
-    }
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_Hnh.a.a(2, localDownloadInfo);
+      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h) != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h).mSavePath;
+        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      }
       return;
-      LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.k);
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
     }
   }
 }

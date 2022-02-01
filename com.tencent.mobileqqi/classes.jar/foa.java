@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
-import com.tencent.mobileqq.model.EmoticonManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emoticonview.EmoticonGridViewAdapter;
 
 public class foa
-  implements Runnable
+  implements View.OnClickListener
 {
-  public foa(BigEmoticonViewBinder paramBigEmoticonViewBinder) {}
+  public foa(EmoticonGridViewAdapter paramEmoticonGridViewAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((EmoticonManager)BigEmoticonViewBinder.a(this.a).getManager(12)).a(this.a.a.epId, Boolean.valueOf(true));
+    EmoticonGridViewAdapter.a(this.a, paramView);
   }
 }
 

@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewParent;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import fpd;
+import fpc;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,20 +29,20 @@ public class SystemEmoticonPanel
   public SystemEmoticonPanel(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangRunnable = new fpd(this);
+    this.jdField_a_of_type_JavaLangRunnable = new fpc(this);
   }
   
   public SystemEmoticonPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaLangRunnable = new fpd(this);
+    this.jdField_a_of_type_JavaLangRunnable = new fpc(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
   public SystemEmoticonPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangRunnable = new fpd(this);
+    this.jdField_a_of_type_JavaLangRunnable = new fpc(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -63,8 +63,8 @@ public class SystemEmoticonPanel
   
   protected void a(Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonViewPager = ((EmoticonViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131231633));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131231651));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonViewPager = ((EmoticonViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131231632));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131231650));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);

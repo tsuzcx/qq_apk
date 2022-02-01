@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import com.tencent.mobileqq.activity.Leba;
 
 class csg
-  implements PermissionDialogCallback
+  implements Runnable
 {
-  csg(cse paramcse) {}
+  csg(csb paramcsb) {}
   
-  public void a() {}
-  
-  public void b() {}
+  public void run()
+  {
+    Leba.b(this.a.a, true);
+  }
 }
 
 

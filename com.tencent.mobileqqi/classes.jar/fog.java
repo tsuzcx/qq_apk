@@ -1,49 +1,19 @@
-import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import com.tencent.mobileqq.app.ClubContentUpdateHandler.ClubContentUpdateListener;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import java.util.HashMap;
 
 public class fog
-  implements Runnable
+  implements ClubContentUpdateHandler.ClubContentUpdateListener
 {
-  private int jdField_a_of_type_Int;
+  public fog(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public fog(EmoticonLinearLayout paramEmoticonLinearLayout) {}
-  
-  public void a()
+  public void a(HashMap paramHashMap)
   {
-    this.jdField_a_of_type_Int = EmoticonLinearLayout.d(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout);
-  }
-  
-  public void run()
-  {
-    EmoticonInfo localEmoticonInfo;
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.getParent() != null) && (this.jdField_a_of_type_Int == EmoticonLinearLayout.c(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout)) && (EmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout) != null))
-    {
-      localEmoticonInfo = (EmoticonInfo)EmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout).getTag();
-      if (localEmoticonInfo != null)
-      {
-        if ((EmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout) != null) && (EmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout).a(localEmoticonInfo))) {
-          break label173;
-        }
-        EmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout, true);
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.getParent().requestDisallowInterceptTouchEvent(true);
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.sendAccessibilityEvent(2);
-        if (!"delete".equals(localEmoticonInfo.a)) {
-          break label133;
-        }
-        EmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout).run();
-      }
-    }
-    label133:
-    while (("setting".equals(localEmoticonInfo.a)) || ("add".equals(localEmoticonInfo.a))) {
+    if ((paramHashMap == null) || (paramHashMap.size() == 0)) {}
+    while ((!EmoticonMainPanel.a(this.a)) || (this.a.getVisibility() != 0) || (EmoticonMainPanel.b() != 2)) {
       return;
     }
-    EmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout, EmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout), localEmoticonInfo);
-    return;
-    label173:
-    EmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout, null);
+    this.a.post(new foh(this));
   }
 }
 

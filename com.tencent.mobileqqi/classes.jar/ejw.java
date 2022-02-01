@@ -1,8 +1,16 @@
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
 public class ejw
+  implements View.OnClickListener
 {
-  public TextView a;
+  public ejw(BaseActivityView paramBaseActivityView) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.f();
+  }
 }
 
 

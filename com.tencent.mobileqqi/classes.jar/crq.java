@@ -1,18 +1,34 @@
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class crq
-  extends FMObserver
+  extends GameCenterObserver
 {
   public crq(Leba paramLeba) {}
   
-  protected void b()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.a.a.notifyDataSetChanged();
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, "onSomethingchaned. notifyData.");
+    if ((!paramBoolean1) || (paramInt == 2)) {}
+    for (;;)
+    {
+      return;
+      if (Leba.c(this.a))
+      {
+        ArrayList localArrayList = new ArrayList();
+        List localList = LebaShowListManager.a().b();
+        LebaShowListManager.a().a(localArrayList, localList);
+        this.a.b(new crr(this, localArrayList));
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.d(this.a));
+        return;
+        LebaShowListManager.c |= 0x2;
+      }
     }
   }
 }

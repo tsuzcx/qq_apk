@@ -1,27 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopAioNewMessageBar;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.troop.data.TroopAioTips;
+import com.tencent.qphone.base.util.QLog;
 
 public class gvc
-  implements View.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public gvc(TroopAioNewMessageBar paramTroopAioNewMessageBar) {}
+  public gvc(TroopAioTips paramTroopAioTips) {}
   
-  public void onClick(View paramView)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    TroopAioNewMessageBar.a(this.a);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.a() - 1);
-    if (TroopAioNewMessageBar.a(this.a) == TroopAioNewMessageBar.c()) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_newmsgcue", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
     }
-    while (TroopAioNewMessageBar.a(this.a) != TroopAioNewMessageBar.b()) {
-      return;
+    if (paramFloat2 < -10.0F) {}
+    for (;;)
+    {
+      return false;
+      if (paramFloat2 <= 10.0F) {}
     }
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_backbase", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
   }
 }
 

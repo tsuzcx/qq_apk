@@ -1,19 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.service.message.MessageCache;
 
 public class fur
-  extends Handler
 {
-  public fur(OnlineFileSessionCenter paramOnlineFileSessionCenter, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
   
-  public void handleMessage(Message paramMessage)
+  public fur(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt)
   {
-    this.a.d();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = MessageCache.a();
   }
 }
 

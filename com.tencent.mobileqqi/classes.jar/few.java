@@ -1,20 +1,9 @@
-import android.os.Process;
-import com.tencent.mobileqq.app.ProcessExitReceiver;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class few
-  extends Thread
 {
-  public few(ProcessExitReceiver paramProcessExitReceiver) {}
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProcessExitReceiver", 2, "Kill process " + MobileQQ.getMobileQQ().getProcessName());
-    }
-    Process.killProcess(Process.myPid());
-  }
+  public int a;
+  public PublicAccountInfo a;
 }
 
 

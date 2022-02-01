@@ -1,30 +1,25 @@
-import com.tencent.mobileqq.activity.ChatActivity;
+import android.view.View;
 import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.TransFileController.OnCancelListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ead
-  implements TransFileController.OnCancelListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public ead(PicItemBuilder paramPicItemBuilder) {}
+  public ead(PicItemBuilder paramPicItemBuilder, MessageForPic paramMessageForPic, ActionSheet paramActionSheet) {}
   
-  public void a(ArrayList paramArrayList)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    switch (paramInt)
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramArrayList.next();
-      PicItemBuilder.a(this.a).a().a(localMessageRecord, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("cancelpic", 2, "remove pic:" + localMessageRecord.uniseq);
-      }
     }
-    ((ChatActivity)PicItemBuilder.a(this.a)).a(196612);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    }
   }
 }
 

@@ -67,11 +67,11 @@ import cooperation.qzone.QZoneShareManager;
 import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.TranslucentActivity;
 import cooperation.troop.TroopProxyActivity;
+import hbw;
 import hbx;
 import hby;
 import hbz;
 import hca;
-import hcb;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -203,7 +203,7 @@ public class JumpAction
   public static final String z = "chat";
   private Context jdField_a_of_type_AndroidContentContext;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private hcb jdField_a_of_type_Hcb = new hcb(this, this);
+  private hca jdField_a_of_type_Hca = new hca(this, this);
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private Hashtable jdField_a_of_type_JavaUtilHashtable = new Hashtable();
   private boolean jdField_a_of_type_Boolean;
@@ -254,7 +254,7 @@ public class JumpAction
         ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult((Intent)localObject1, 1);
         return true;
       }
-      localObject2 = new hbz(this);
+      localObject2 = new hby(this);
       return ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, true, true, (Handler.Callback)localObject2);
     }
     return false;
@@ -289,7 +289,7 @@ public class JumpAction
           localObject1 = ((PhoneContact)localObject1).name;
         }
         if (TextUtils.isEmpty(str1)) {}
-        new hca(this);
+        new hbz(this);
         return false;
       }
     }
@@ -651,13 +651,13 @@ public class JumpAction
     {
       if ("head".equals(this.bh))
       {
-        if (this.jdField_a_of_type_Hcb == null) {
-          this.jdField_a_of_type_Hcb = new hcb(this, this);
+        if (this.jdField_a_of_type_Hca == null) {
+          this.jdField_a_of_type_Hca = new hca(this, this);
         }
         if (this.jdField_a_of_type_JavaUtilHashtable == null) {
           this.jdField_a_of_type_JavaUtilHashtable = new Hashtable();
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Hcb);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Hca);
         long l1 = System.currentTimeMillis();
         String[] arrayOfString = ((String)this.jdField_a_of_type_JavaUtilHashMap.get("uin")).split(",");
         FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
@@ -1335,10 +1335,10 @@ public class JumpAction
       {
         if ((this.br != null) && (this.br.trim().equalsIgnoreCase("com.qq.yijianfankui")))
         {
-          localStringBuffer.append("&version=6.0.2.6602");
+          localStringBuffer.append("&version=6.0.3.6604");
           localStringBuffer.append("&appid=" + AppSetting.a);
           localStringBuffer.append("&QUA=" + QUA.a());
-          localStringBuffer.append("&adtag=6602");
+          localStringBuffer.append("&adtag=6604");
           if (localStringBuffer.indexOf("sid=") < 0) {
             localStringBuffer.append("&sid=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getSid());
           }
@@ -1628,7 +1628,7 @@ public class JumpAction
           }
           ((Bundle)localObject2).putInt("req_type", i2);
           com.tencent.mobileqq.app.PhoneContactManagerImp.c = true;
-          localObject1 = new hby(this);
+          localObject1 = new hbx(this);
           QZoneShareManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, (Bundle)localObject2, (DialogInterface.OnDismissListener)localObject1);
         }
       }
@@ -1725,7 +1725,7 @@ public class JumpAction
   
   public boolean a()
   {
-    new hbx(this).start();
+    new hbw(this).start();
     return b();
   }
   

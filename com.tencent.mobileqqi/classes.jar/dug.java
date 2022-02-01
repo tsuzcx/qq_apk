@@ -1,18 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class dug
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
   public dug(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    ReportController.b(this.a.b, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
-    this.a.finish();
-    this.a.e();
+    if (paramInt == 4)
+    {
+      this.a.finish();
+      this.a.e();
+    }
+    return false;
   }
 }
 

@@ -7,7 +7,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import gcp;
+import gco;
 
 public abstract class IQQPlayerService$Stub
   extends Binder
@@ -54,7 +54,7 @@ public abstract class IQQPlayerService$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQQPlayerService))) {
       return (IQQPlayerService)localIInterface;
     }
-    return new gcp(paramIBinder);
+    return new gco(paramIBinder);
   }
   
   public IBinder asBinder()

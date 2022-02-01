@@ -1,19 +1,35 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadApi;
 import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
 class hnb
   implements DialogInterface.OnClickListener
 {
-  hnb(hna paramhna) {}
+  hnb(hmz paramhmz) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(DownloadConstants.q, false);
-    DownloadApi.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.b);
-    paramDialogInterface.dismiss();
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.a);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.e);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.h);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.k);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.x, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_Int, bool);
+      this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(10, paramDialogInterface);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 

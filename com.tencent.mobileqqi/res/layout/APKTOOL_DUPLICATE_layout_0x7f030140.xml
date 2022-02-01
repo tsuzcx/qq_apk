@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080621" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080620" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08028e" android:visibility="gone" android:layout_alignParentTop="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030076" />
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080622" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f08028e" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08028d" android:visibility="gone" android:layout_alignParentTop="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030076" />
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080621" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f08028d" />
 </com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout>

@@ -1,21 +1,14 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
 class cet
   implements Runnable
 {
-  cet(cer paramcer, boolean paramBoolean) {}
+  cet(ceq paramceq) {}
   
   public void run()
   {
-    Conversation.a(this.jdField_a_of_type_Cer.a, 800L);
-    PullRefreshHeader localPullRefreshHeader = Conversation.a(this.jdField_a_of_type_Cer.a);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      return;
-    }
+    this.a.a.a.b();
   }
 }
 

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.activity.phone.PhoneFrame;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.statistics.ReportController;
-import eta;
+import esz;
 
 public class VoipAddressBookActivity
   extends IphoneTitleBarActivity
@@ -30,12 +30,12 @@ public class VoipAddressBookActivity
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131232039));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131232038));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.d = true;
     g(getString(2131561872));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setActivity(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipAddressBookActivity = this;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new eta(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new esz(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(null);
     Bundle localBundle;
     if (getIntent() != null)
@@ -140,7 +140,7 @@ public class VoipAddressBookActivity
     {
     default: 
       return super.onOptionsItemSelected(paramMenuItem);
-    case 2131231380: 
+    case 2131231379: 
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipAddressBookView != null)) {
         this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipAddressBookView.m();
       }

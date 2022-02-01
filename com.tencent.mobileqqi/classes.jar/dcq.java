@@ -9,8 +9,14 @@ public class dcq
   
   public void onClick(View paramView)
   {
-    this.a.onBackPressed();
-    this.a.c();
+    if (this.a.i)
+    {
+      this.a.p();
+      return;
+    }
+    this.a.setResult(-1, this.a.a());
+    this.a.finish();
+    this.a.d();
   }
 }
 

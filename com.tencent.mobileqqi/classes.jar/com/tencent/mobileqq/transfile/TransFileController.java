@@ -16,8 +16,8 @@ import com.tencent.mobileqq.streamtransfile.StreamDataManager;
 import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.QLog;
-import gnx;
-import gnz;
+import gnw;
+import gny;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -38,7 +38,7 @@ public class TransFileController
   public static final int c = 2;
   public static final String c = "use";
   public QQAppInterface a;
-  public gnz a;
+  public gny a;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public ConcurrentHashMap a;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
@@ -47,13 +47,13 @@ public class TransFileController
   
   public TransFileController(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Gnz = null;
+    this.jdField_a_of_type_Gny = null;
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
     if (QLog.isColorLevel()) {
       QLog.d("Q.richmedia.TransFileController", 2, "construct transfilecontroller:" + this);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Gnz = new gnz(ThreadManager.b());
+    this.jdField_a_of_type_Gny = new gny(ThreadManager.b());
   }
   
   public static String a(TransferRequest paramTransferRequest)
@@ -490,7 +490,7 @@ public class TransFileController
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    ThreadManager.b(new gnx(this, paramString, paramQQAppInterface));
+    ThreadManager.b(new gnw(this, paramString, paramQQAppInterface));
   }
   
   public void a(NetReq paramNetReq, int paramInt1, int paramInt2) {}
@@ -534,8 +534,8 @@ public class TransFileController
             {
               this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramTransferRequest);
               paramTransferRequest.b(str);
-              if (this.jdField_a_of_type_Gnz != null) {
-                this.jdField_a_of_type_Gnz.a(paramTransferRequest);
+              if (this.jdField_a_of_type_Gny != null) {
+                this.jdField_a_of_type_Gny.a(paramTransferRequest);
               }
             }
             return;

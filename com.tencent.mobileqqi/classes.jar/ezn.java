@@ -1,12 +1,13 @@
+import com.tencent.mobileqq.app.CircleManager;
+
 public class ezn
+  implements Runnable
 {
-  public long a;
-  public String a;
+  public ezn(CircleManager paramCircleManager) {}
   
-  public ezn(String paramString, long paramLong)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    CircleManager.a(this.a);
   }
 }
 

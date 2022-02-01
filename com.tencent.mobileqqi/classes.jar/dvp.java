@@ -1,19 +1,27 @@
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
 import com.tencent.mobileqq.activity.aio.FileTransferManager;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
+import java.lang.ref.WeakReference;
 
 public class dvp
-  extends TransProcessorHandler
 {
-  public dvp(FileTransferManager paramFileTransferManager, Looper paramLooper)
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public WeakReference b;
+  
+  public dvp(FileTransferManager paramFileTransferManager, View paramView, FileTransferManager.Callback paramCallback)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramCallback);
   }
   
-  public void handleMessage(Message paramMessage)
+  public View a()
   {
-    this.a.a(paramMessage);
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public FileTransferManager.Callback a()
+  {
+    return (FileTransferManager.Callback)this.b.get();
   }
 }
 

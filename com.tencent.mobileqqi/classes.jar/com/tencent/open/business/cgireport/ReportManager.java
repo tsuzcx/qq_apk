@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.OpenConfig;
-import hma;
+import hlz;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -646,7 +646,7 @@ public class ReportManager
   
   protected void a(String paramString1, String paramString2, Bundle paramBundle)
   {
-    ThreadManager.a(new hma(this, paramString1, paramBundle));
+    ThreadManager.a(new hlz(this, paramString1, paramBundle));
   }
   
   protected boolean a()

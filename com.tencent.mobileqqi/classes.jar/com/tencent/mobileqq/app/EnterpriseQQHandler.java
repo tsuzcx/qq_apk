@@ -36,7 +36,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fey;
+import fex;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.MobileQQ;
@@ -104,11 +104,11 @@ public class EnterpriseQQHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList begin.");
     }
-    fey localfey = new fey();
+    fex localfex = new fex();
     if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()) || (paramObject == null))
     {
-      localfey.jdField_a_of_type_Int = -1;
-      localfey.jdField_a_of_type_Boolean = true;
+      localfex.jdField_a_of_type_Int = -1;
+      localfex.jdField_a_of_type_Boolean = true;
       if (QLog.isColorLevel()) {
         QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList error");
       }
@@ -120,8 +120,8 @@ public class EnterpriseQQHandler
     }
     if (i != 1000)
     {
-      localfey.jdField_a_of_type_Int = -1;
-      localfey.jdField_a_of_type_Boolean = true;
+      localfex.jdField_a_of_type_Int = -1;
+      localfex.jdField_a_of_type_Boolean = true;
       return;
     }
     long l1 = paramToServiceMsg.extraData.getLong("begin");
@@ -138,11 +138,11 @@ public class EnterpriseQQHandler
           continue;
         }
         i = ((mobileqq_mp.RetInfo)paramToServiceMsg.ret_info.get()).ret_code.get();
-        localfey.jdField_a_of_type_Int = i;
+        localfex.jdField_a_of_type_Int = i;
         if (i == 0) {
           continue;
         }
-        localfey.jdField_a_of_type_Boolean = true;
+        localfex.jdField_a_of_type_Boolean = true;
         bool = false;
       }
       catch (Exception paramToServiceMsg)
@@ -150,8 +150,8 @@ public class EnterpriseQQHandler
         long l3;
         Object localObject;
         RecentUser localRecentUser;
-        localfey.jdField_a_of_type_Int = -1;
-        localfey.jdField_a_of_type_Boolean = true;
+        localfex.jdField_a_of_type_Int = -1;
+        localfex.jdField_a_of_type_Boolean = true;
         paramToServiceMsg.printStackTrace();
         bool = false;
         continue;
@@ -161,7 +161,7 @@ public class EnterpriseQQHandler
         bool = false;
         continue;
       }
-      a(100, bool, localfey);
+      a(100, bool, localfex);
       return;
       i = 0;
       continue;
@@ -170,12 +170,12 @@ public class EnterpriseQQHandler
         i = paramToServiceMsg.seqno.get();
         l3 = Utils.a(i);
         paramObject = PublicAccountInfo.createPublicAccountInfoListFromEqq(paramToServiceMsg.accountInfo.get(), l2);
-        localfey.jdField_a_of_type_JavaUtilList = paramObject;
+        localfex.jdField_a_of_type_JavaUtilList = paramObject;
         if ((!paramToServiceMsg.is_over.has()) || (!paramToServiceMsg.is_over.get())) {
           continue;
         }
         bool = true;
-        localfey.jdField_a_of_type_Boolean = bool;
+        localfex.jdField_a_of_type_Boolean = bool;
         paramFromServiceMsg = (PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
         localObject = paramFromServiceMsg.a(paramObject, l2);
         i = 0;
@@ -196,10 +196,10 @@ public class EnterpriseQQHandler
           if ((i != 0) && (paramObject != null)) {
             paramObject.sendEmptyMessage(1009);
           }
-          if (localfey.jdField_a_of_type_Boolean) {
+          if (localfex.jdField_a_of_type_Boolean) {
             PubAccountAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFromServiceMsg.a());
           }
-          if (!localfey.jdField_a_of_type_Boolean) {
+          if (!localfex.jdField_a_of_type_Boolean) {
             if (!paramToServiceMsg.next_pos.has()) {
               break label611;
             }

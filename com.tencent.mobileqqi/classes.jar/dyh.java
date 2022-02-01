@@ -1,17 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.ActivityChatItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.DetectableAnimationDrawable;
 
 public class dyh
-  extends AbstractChatItemBuilder.ViewHolder
+  implements Runnable
 {
-  public ImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public dyh(DetectableAnimationDrawable paramDetectableAnimationDrawable) {}
   
-  public dyh(ActivityChatItemBuilder paramActivityChatItemBuilder) {}
+  public void run()
+  {
+    this.a.a();
+  }
 }
 
 

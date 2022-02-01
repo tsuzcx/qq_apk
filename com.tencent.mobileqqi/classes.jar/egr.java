@@ -1,35 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.search.ContactSearchableTroop;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.BizTroopObserver;
 
 public class egr
-  extends SearchResultDialog
+  extends BizTroopObserver
 {
-  public egr(TroopView paramTroopView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
-  }
+  public egr(TroopView paramTroopView) {}
   
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    Object localObject = this.a.a.a();
-    ArrayList localArrayList = new ArrayList();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localArrayList.add(new ContactSearchableTroop(paramContext, paramQQAppInterface, (TroopInfo)((Iterator)localObject).next(), 0L, 0L));
-      }
+    if (paramInt2 == 0) {
+      this.a.a();
     }
-    return localArrayList;
+    while (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    this.a.a(paramString2);
   }
 }
 

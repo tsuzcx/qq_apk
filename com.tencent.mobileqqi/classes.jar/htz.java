@@ -10,15 +10,12 @@ public class htz
   {
     try
     {
-      if ((AuthDevVerifyCodeActivity2.a(this.a) == null) && (!this.a.isFinishing()))
+      if ((AuthDevVerifyCodeActivity2.a(this.a) != null) && (AuthDevVerifyCodeActivity2.a(this.a).isShowing()))
       {
-        AuthDevVerifyCodeActivity2.a(this.a, new QQProgressDialog(this.a, this.a.d()));
-        AuthDevVerifyCodeActivity2.a(this.a).b(2131562645);
-        AuthDevVerifyCodeActivity2.a(this.a).c(true);
+        AuthDevVerifyCodeActivity2.a(this.a).dismiss();
+        AuthDevVerifyCodeActivity2.a(this.a).cancel();
       }
-      if ((AuthDevVerifyCodeActivity2.a(this.a) != null) && (!AuthDevVerifyCodeActivity2.a(this.a).isShowing())) {
-        AuthDevVerifyCodeActivity2.a(this.a).show();
-      }
+      AuthDevVerifyCodeActivity2.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

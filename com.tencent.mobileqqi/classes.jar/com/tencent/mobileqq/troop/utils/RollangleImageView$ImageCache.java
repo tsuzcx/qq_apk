@@ -9,7 +9,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import gxk;
+import gxj;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -39,7 +39,7 @@ public class RollangleImageView$ImageCache
     this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838628));
     this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(11), BitmapFactory.decodeResource(BaseApplicationImpl.a().getResources(), 2130838628));
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new gxk(this, BaseApplication.getContext().getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new gxj(this, BaseApplication.getContext().getMainLooper());
   }
   
   public static ImageCache a()
@@ -218,10 +218,10 @@ public class RollangleImageView$ImageCache
     //   66: ifeq +21 -> 87
     //   69: new 166	java/lang/Thread
     //   72: dup
-    //   73: new 168	gxj
+    //   73: new 168	gxi
     //   76: dup
     //   77: aload_0
-    //   78: invokespecial 171	gxj:<init>	(Lcom/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache;)V
+    //   78: invokespecial 171	gxi:<init>	(Lcom/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache;)V
     //   81: invokespecial 174	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
     //   84: invokevirtual 177	java/lang/Thread:start	()V
     //   87: new 109	com/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache$QueueItem

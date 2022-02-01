@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.preference.Preference.BaseSavedState;
-import idj;
+import idi;
 
 public class RadioPreference$SavedState
   extends Preference.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new idj();
+  public static final Parcelable.Creator CREATOR = new idi();
   boolean a;
   
   public RadioPreference$SavedState(Parcel paramParcel)

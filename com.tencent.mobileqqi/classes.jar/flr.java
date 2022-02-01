@@ -1,11 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
 public class flr
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
+  public flr(LocationSelectActivity paramLocationSelectActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b();
+  }
 }
 
 

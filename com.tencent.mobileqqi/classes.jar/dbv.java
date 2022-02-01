@@ -1,52 +1,18 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Adapter;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.XEditTextEx;
 
 public class dbv
-  implements AdapterView.OnItemClickListener
+  implements View.OnTouchListener
 {
   public dbv(QQLSActivity paramQQLSActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = (RecentBaseData)QQLSActivity.a(this.a).getItem(paramInt);
-    paramLong = paramAdapterView.a().getItemId(paramInt);
-    if (Build.VERSION.SDK_INT < 16)
-    {
-      if (paramView != null) {
-        QQLSActivity.a(this.a, paramView);
-      }
-      return;
-    }
-    if (QQLSActivity.a(this.a))
-    {
-      QQLSActivity.a(this.a, paramView);
-      return;
-    }
-    if ((paramLong == QQLSActivity.a(this.a)) && (Math.abs(QQLSActivity.b(this.a) - System.currentTimeMillis()) < 300L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLSActivity", 2, "mRecentList is double click");
-      }
-      QQLSActivity.a(this.a, -1L);
-      QQLSActivity.b(this.a, 0L);
-      QQLSActivity.a(this.a, paramView);
-      QQLSActivity.a(this.a, true);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("QQLSActivity", 2, "mRecentList  click once");
-    }
-    QQLSActivity.a(this.a, paramLong);
-    QQLSActivity.b(this.a, System.currentTimeMillis());
-    paramAdapterView = QQLSActivity.a(this.a).obtainMessage(0);
-    QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
+    QQLSActivity.a(this.a).setCursorVisible(true);
+    return false;
   }
 }
 

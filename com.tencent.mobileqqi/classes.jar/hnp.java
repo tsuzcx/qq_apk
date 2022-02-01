@@ -1,14 +1,26 @@
 import android.app.Activity;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.base.TicketUtils.TicketCallback;
 import com.tencent.open.downloadnew.MyAppApi;
 
 public class hnp
-  implements Runnable
+  implements TicketUtils.TicketCallback
 {
-  public hnp(MyAppApi paramMyAppApi, String paramString, Activity paramActivity) {}
+  public hnp(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidAppActivity);
+    LogUtility.a("MyAppApi", "onGetA1Fail ---");
+    ThreadManager.b().post(new hnr(this));
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    LogUtility.a("MyAppApi", "onGetA1 ---");
+    ThreadManager.b().post(new hnq(this, paramArrayOfByte, paramString));
   }
 }
 

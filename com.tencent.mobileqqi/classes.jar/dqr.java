@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.TroopMemberGagActivity.TroopGagListAdapter;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class dqr
+  implements View.OnClickListener
 {
-  public TroopGagMgr.GagItem a;
-  public boolean a;
+  public dqr(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public dqr(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter, TroopGagMgr.GagItem paramGagItem, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagItem = paramGagItem;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

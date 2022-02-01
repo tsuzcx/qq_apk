@@ -1,18 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class eka
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
   public eka(BaseActivityView paramBaseActivityView) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (paramInt == 4) && (this.a.a.i()) && (NetworkUtil.e(this.a.getContext()));
+    this.a.f();
   }
 }
 

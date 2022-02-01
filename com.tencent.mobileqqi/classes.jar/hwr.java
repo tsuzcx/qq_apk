@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.TCWDatePicker.SavedState;
+import com.tencent.widget.TCWNumberPicker.Formatter;
+import java.util.Formatter;
 
 public final class hwr
-  implements Parcelable.Creator
+  implements TCWNumberPicker.Formatter
 {
-  public TCWDatePicker.SavedState a(Parcel paramParcel)
-  {
-    return new TCWDatePicker.SavedState(paramParcel, null);
-  }
+  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
+  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
   
-  public TCWDatePicker.SavedState[] a(int paramInt)
+  public String a(int paramInt)
   {
-    return new TCWDatePicker.SavedState[paramInt];
+    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
+    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
+    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
+    return this.jdField_a_of_type_JavaUtilFormatter.toString();
   }
 }
 

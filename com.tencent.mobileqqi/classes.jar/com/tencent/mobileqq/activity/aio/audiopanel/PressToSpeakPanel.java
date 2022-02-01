@@ -27,6 +27,7 @@ import com.tencent.mobileqq.streamtransfile.StreamDataManager;
 import com.tencent.mobileqq.util.SkinUtils;
 import com.tencent.mobileqq.utils.QQRecorder.OnQQRecorderListener;
 import com.tencent.qphone.base.util.QLog;
+import dxt;
 import dxu;
 import dxv;
 import dxw;
@@ -37,7 +38,6 @@ import dya;
 import dyb;
 import dyc;
 import dyd;
-import dye;
 
 public class PressToSpeakPanel
   extends RelativeLayout
@@ -174,17 +174,17 @@ public class PressToSpeakPanel
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup2;
     this.jdField_b_of_type_AndroidViewViewGroup = paramViewGroup3;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232864));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232868));
-    this.c = ((ViewGroup)findViewById(2131232869));
-    this.d = ((ViewGroup)findViewById(2131232854));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateView = ((VolumeIndicateView)findViewById(2131232855));
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateView = ((VolumeIndicateView)findViewById(2131232857));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232856));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232867));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelMoveDistIndicateView = ((MoveDistIndicateView)findViewById(2131232865));
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelMoveDistIndicateView = ((MoveDistIndicateView)findViewById(2131232866));
-    this.e = ((ViewGroup)findViewById(2131232863));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232863));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232867));
+    this.c = ((ViewGroup)findViewById(2131232868));
+    this.d = ((ViewGroup)findViewById(2131232853));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateView = ((VolumeIndicateView)findViewById(2131232854));
+    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateView = ((VolumeIndicateView)findViewById(2131232856));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232855));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232866));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelMoveDistIndicateView = ((MoveDistIndicateView)findViewById(2131232864));
+    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelMoveDistIndicateView = ((MoveDistIndicateView)findViewById(2131232865));
+    this.e = ((ViewGroup)findViewById(2131232862));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnTouchListener(this);
     paramQQAppInterface = paramChatActivity.getResources();
     paramChatActivity = SkinUtils.a(paramQQAppInterface.getDrawable(2130839758));
@@ -222,7 +222,7 @@ public class PressToSpeakPanel
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.onRecorderPrepare() is called,path is:" + paramString);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new dxx(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dxw(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a(paramString, false);
   }
   
@@ -232,14 +232,14 @@ public class PressToSpeakPanel
       QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.onRecorderError() is called,path is:" + paramString1 + ",errorCode is:" + paramString2);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a(paramString1);
-    this.jdField_a_of_type_AndroidOsHandler.post(new dya(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dxz(this));
   }
   
   public void a(String paramString, byte[] paramArrayOfByte, int paramInt, double paramDouble)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a(paramString, paramArrayOfByte);
     this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.d(paramString);
-    this.jdField_a_of_type_AndroidOsHandler.post(new dxz(this, paramInt, paramDouble));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dxy(this, paramInt, paramDouble));
   }
   
   public boolean a()
@@ -439,7 +439,7 @@ public class PressToSpeakPanel
     if (i < 512)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.c(paramString);
-      this.jdField_a_of_type_AndroidOsHandler.post(new dyb(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new dya(this));
       return;
     }
     int j = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.b();
@@ -448,17 +448,17 @@ public class PressToSpeakPanel
     }
     if (j == 2)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new dyc(this, paramString));
+      this.jdField_a_of_type_AndroidOsHandler.post(new dyb(this, paramString));
       return;
     }
     if (j == 0)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a(paramString, 1, (int)(this.jdField_a_of_type_Double / 1000.0D));
-      this.jdField_a_of_type_AndroidOsHandler.post(new dyd(this, paramString));
+      this.jdField_a_of_type_AndroidOsHandler.post(new dyc(this, paramString));
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity.a(paramString, 1);
-    this.jdField_a_of_type_AndroidOsHandler.post(new dye(this, paramString));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dyd(this, paramString));
   }
   
   public void d()
@@ -500,7 +500,7 @@ public class PressToSpeakPanel
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.setAnimationListener(new dxu(this));
+    localAnimationSet.setAnimationListener(new dxt(this));
     this.e.startAnimation(localAnimationSet);
   }
   
@@ -509,7 +509,7 @@ public class PressToSpeakPanel
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.onRecorderStart() is called");
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new dxy(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new dxx(this));
   }
   
   public void g()
@@ -547,7 +547,7 @@ public class PressToSpeakPanel
     localScaleAnimation.setDuration(150L);
     localScaleAnimation.setInterpolator(new LinearInterpolator());
     localAnimationSet.addAnimation(localScaleAnimation);
-    localAnimationSet.setAnimationListener(new dxw(this));
+    localAnimationSet.setAnimationListener(new dxv(this));
     this.jdField_b_of_type_AndroidWidgetImageView.startAnimation(localAnimationSet);
   }
   
@@ -557,11 +557,11 @@ public class PressToSpeakPanel
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "PressToSpeakPanel.onTouch() is called,action is:" + i);
     }
-    if (paramView.getId() == 2131232867)
+    if (paramView.getId() == 2131232866)
     {
       if (i == 0)
       {
-        paramView = new dxv(this, paramMotionEvent);
+        paramView = new dxu(this, paramMotionEvent);
         paramView = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, paramView);
         paramView.what = 1;
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 150L);

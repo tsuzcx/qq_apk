@@ -1,41 +1,27 @@
 import android.os.Process;
-import com.tencent.mobileqq.app.CoreService;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.GuardManager;
+import mqq.app.AppRuntime;
 
 public class fdf
-  extends fcu
+  extends fct
 {
-  protected void a()
-  {
-    this.jdField_a_of_type_Long += 1L;
-    this.b += 1L;
-    if (this.jdField_a_of_type_Long >= fcp.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(Process.myPid())) / 12000L) {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(7, null);
-    }
-    while (this.b != 1L) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.f();
-  }
-  
   protected void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
+    this.a.a(3, paramString);
   }
   
   protected void b()
   {
-    if (this.jdField_a_of_type_Long > 2L) {
-      this.jdField_a_of_type_Long -= 2L;
-    }
+    this.a.a(6, "fake_p_msg");
   }
   
-  protected void b(String paramString)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    CoreService.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.d();
+    this.a.e();
+    this.a.b(true);
+    long l = this.a.a(Process.myPid());
+    BaseApplicationImpl.a.a().onAppGuardModeChange(false, 2, (int)l);
   }
 }
 

@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.widget.CameraFrameLayout;
-import com.tencent.mobileqq.widget.CameraFrameLayoutProxy;
-import com.tencent.qphone.base.util.QLog;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.mobileqq.widget.CameraPreview;
 
 public class hfu
-  implements Runnable
+  implements Camera.AutoFocusCallback
 {
-  public hfu(CameraFrameLayoutProxy paramCameraFrameLayoutProxy) {}
+  public hfu(CameraPreview paramCameraPreview) {}
   
-  public void run()
-  {
-    if ((CameraFrameLayoutProxy.a(this.a) != null) && (!CameraFrameLayoutProxy.a(this.a).a())) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraFrameLayoutProxy", 2, "mShouldStartRealtimeBg:" + this.a.a);
-      }
-    } while ((!this.a.a) || (this.a.b));
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraFrameLayoutProxy", 2, "openRealtimeBg");
-    }
-    CameraFrameLayoutProxy.a(this.a);
-  }
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera) {}
 }
 
 

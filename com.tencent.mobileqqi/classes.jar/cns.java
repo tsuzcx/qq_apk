@@ -1,15 +1,24 @@
-import android.widget.TextView;
+import android.os.AsyncTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class cns
-  implements Runnable
+  implements Animation.AnimationListener
 {
   public cns(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.startAnimation(this.a.b);
+    this.a.a.execute(new Void[0]);
+    this.a.c = false;
+    FriendProfileImageActivity.a(this.a).setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,22 +1,11 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class erp
-  implements TextWatcher
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  private erp(SelectMemberActivity paramSelectMemberActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = SelectMemberActivity.a(this.a).getText().toString().trim();
-    this.a.b(paramEditable);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  TextView a;
+  TextView b;
 }
 
 

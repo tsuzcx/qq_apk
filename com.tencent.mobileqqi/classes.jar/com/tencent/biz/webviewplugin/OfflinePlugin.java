@@ -479,10 +479,10 @@ public class OfflinePlugin
       return;
       localActivity = this.mRuntime.a();
     } while ((localActivity == null) || (!(localActivity instanceof QQBrowserActivity)));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localActivity.findViewById(2131231174));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localActivity.findViewById(2131231177));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localActivity.findViewById(2131231176));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localActivity.findViewById(2131231175));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localActivity.findViewById(2131231173));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localActivity.findViewById(2131231176));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localActivity.findViewById(2131231175));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localActivity.findViewById(2131231174));
     this.jdField_a_of_type_ComTencentBizAuthorizeConfig = AuthorizeConfig.a();
     b();
   }

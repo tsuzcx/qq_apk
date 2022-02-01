@@ -1,30 +1,16 @@
+import android.widget.TextView;
 import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.widget.TCWDatePicker;
+import com.tencent.widget.TCWDatePickerDialog.OnDateSetListener;
 
 public class gmo
-  implements Runnable
+  implements TCWDatePickerDialog.OnDateSetListener
 {
-  public gmo(ShareAppLogActivity paramShareAppLogActivity) {}
+  public gmo(ShareAppLogActivity paramShareAppLogActivity, TextView paramTextView) {}
   
-  public void run()
+  public void a(TCWDatePicker paramTCWDatePicker, int paramInt1, int paramInt2, int paramInt3)
   {
-    try
-    {
-      if ((ShareAppLogActivity.a(this.a) != null) && (ShareAppLogActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
-      {
-        ShareAppLogActivity.a(this.a).dismiss();
-        ShareAppLogActivity.a(this.a).cancel();
-      }
-      ShareAppLogActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt1 + "-" + (paramInt2 + 1) + "-" + paramInt3);
   }
 }
 

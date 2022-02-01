@@ -1,20 +1,17 @@
-import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.util.ImageCreator;
-import com.tencent.mobileqq.util.ImageWorker;
+import com.tencent.mobileqq.util.ImageLoader;
 
 public class has
-  implements ImageCreator
 {
-  String jdField_a_of_type_JavaLangString;
+  ImageCreator a;
+  public ImageLoader a;
+  public hap a;
   
-  public has(ImageWorker paramImageWorker, String paramString)
+  public has(ImageCreator paramImageCreator, ImageLoader paramImageLoader, hap paramhap)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqUtilImageCreator = paramImageCreator;
+    this.jdField_a_of_type_ComTencentMobileqqUtilImageLoader = paramImageLoader;
+    this.jdField_a_of_type_Hap = paramhap;
   }
 }
 

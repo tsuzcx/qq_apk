@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.service;
 
 import com.dataline.util.DBNetworkUtil;
-import gii;
-import gin;
-import git;
+import gih;
+import gim;
+import gis;
 import java.io.IOException;
 import java.net.InetAddress;
 
 public class HttpServer
 {
   public static final String a = "dlFileTransfer.Server";
-  private gin a = null;
+  private gim a = null;
   
   public int a()
   {
@@ -22,7 +22,7 @@ public class HttpServer
   
   public String a(long paramLong)
   {
-    return git.a(paramLong);
+    return gis.a(paramLong);
   }
   
   public InetAddress a()
@@ -44,12 +44,12 @@ public class HttpServer
   
   public void a(long paramLong)
   {
-    git.a(paramLong);
+    gis.a(paramLong);
   }
   
   public void a(long paramLong, String paramString)
   {
-    git.a(paramLong, paramString);
+    gis.a(paramLong, paramString);
   }
   
   public boolean a()
@@ -62,7 +62,7 @@ public class HttpServer
   
   public boolean a(String paramString, HttpNotify paramHttpNotify)
   {
-    paramHttpNotify = new gii(paramHttpNotify);
+    paramHttpNotify = new gih(paramHttpNotify);
     try
     {
       if (this.a != null)
@@ -74,7 +74,7 @@ public class HttpServer
       }
       if (DBNetworkUtil.a())
       {
-        this.a = new gin(paramString, paramHttpNotify);
+        this.a = new gim(paramString, paramHttpNotify);
         this.a.setDaemon(false);
         boolean bool = this.a.b();
         return bool;

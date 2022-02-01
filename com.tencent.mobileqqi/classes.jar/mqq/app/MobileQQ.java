@@ -66,7 +66,7 @@ public abstract class MobileQQ
         MobileQQ.this.delStateFile();
         localObject1 = new Intent("mqq.intent.action.EXIT_" + MobileQQ.processName);
         MobileQQ.this.sendBroadcast((Intent)localObject1);
-        if (MobileQQ.this.getProcessName().endsWith(":video"))
+        if (MobileQQ.this.getProcessNames().endsWith(":video"))
         {
           MobileQQ.this.mService.msfSub.unbindMsfService();
           MobileQQ.this.mAppRuntime.onDestroy();
@@ -152,7 +152,7 @@ public abstract class MobileQQ
   {
     this.stopMSF = paramBoolean2;
     MsfServiceSdk localMsfServiceSdk;
-    if (getProcessName().endsWith(":video"))
+    if (getProcessNames().endsWith(":video"))
     {
       localMsfServiceSdk = this.mService.msfSub;
       if (paramBoolean1) {
@@ -172,10 +172,10 @@ public abstract class MobileQQ
             if (MobileQQ.this.mAppRuntime == null) {
               MobileQQ.this.waitAppRuntime(null);
             }
-            if (MobileQQ.this.getProcessName().equals(MobileQQ.this.getPackageName())) {
+            if (MobileQQ.this.getProcessNames().equals(MobileQQ.this.getPackageName())) {
               MobileQQ.this.mAppRuntime.onAppGuardModeChange(true, 0, 0);
             }
-            if (!MobileQQ.this.getProcessName().endsWith(":video"))
+            if (!MobileQQ.this.getProcessNames().endsWith(":video"))
             {
               MobileQQ.this.mAppRuntime.onDestroy();
               if (!paramBoolean1) {
@@ -193,7 +193,7 @@ public abstract class MobileQQ
                 QLog.i("mqq", 2, String.format("Application(%s) exit.", new Object[] { MobileQQ.processName }));
                 QLog.i("mqq", 2, "===========================================================");
               }
-              if (MobileQQ.this.getProcessName().endsWith(":video")) {
+              if (MobileQQ.this.getProcessNames().endsWith(":video")) {
                 MobileQQ.this.mAppRuntime.onDestroy();
               }
               System.exit(0);
@@ -573,7 +573,7 @@ public abstract class MobileQQ
           return;
         }
         ((AppRuntime)localObject1).init(MobileQQ.this, MobileQQ.this.mService, paramSimpleAccount);
-        if (!MobileQQ.this.getProcessName().endsWith(":video")) {
+        if (!MobileQQ.this.getProcessNames().endsWith(":video")) {
           ((AppRuntime)localObject1).getService().msfSub.registerMsfService();
         }
         boolean bool1;
@@ -653,7 +653,7 @@ public abstract class MobileQQ
           }
         }
         Object localObject2 = ((AppRuntime)localObject1).getAccount();
-        if ((localObject2 != null) && (MobileQQ.this.getProcessName().equals(MobileQQ.this.getPackageName())))
+        if ((localObject2 != null) && (MobileQQ.this.getProcessNames().equals(MobileQQ.this.getPackageName())))
         {
           if (QLog.isColorLevel()) {
             QLog.d("MobileQQ", 2, "save lastLogin..." + (String)localObject2);
@@ -832,7 +832,7 @@ public abstract class MobileQQ
     for (boolean bool1 = bool2;; bool1 = false)
     {
       paramLogoutReason.isBackground_Stop = bool1;
-      if (getPackageName().equals(getProcessName()))
+      if (getPackageName().equals(getProcessNames()))
       {
         if (i != 0) {
           break label467;
@@ -931,7 +931,7 @@ public abstract class MobileQQ
     //   153: invokespecial 552	mqq/app/MainService:<init>	(Lmqq/app/MobileQQ;ILjava/lang/String;Z)V
     //   156: putfield 132	mqq/app/MobileQQ:mService	Lmqq/app/MainService;
     //   159: aload_0
-    //   160: invokevirtual 156	mqq/app/MobileQQ:getProcessName	()Ljava/lang/String;
+    //   160: invokevirtual 156	mqq/app/MobileQQ:getProcessNames	()Ljava/lang/String;
     //   163: ldc 158
     //   165: invokevirtual 162	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   168: ifne +13 -> 181
@@ -1279,7 +1279,7 @@ public abstract class MobileQQ
     return (SimpleAccount)localList.get(0);
   }
   
-  public String getProcessName()
+  public String getProcessNames()
   {
     if (processName == null)
     {

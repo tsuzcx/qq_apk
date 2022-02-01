@@ -1,19 +1,52 @@
-import android.text.TextUtils;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.qphone.base.util.QLog;
 
 public class dby
-  implements Runnable
+  implements View.OnTouchListener
 {
   public dby(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((QQLSActivity.a(this.a).getVisibility() == 0) && (!TextUtils.isEmpty(QQLSActivity.a(this.a).getText()))) {
-      return;
+    if (paramMotionEvent.getAction() == 0) {
+      if (Build.VERSION.SDK_INT < 16) {
+        if (QQLSActivity.a(this.a) != null) {
+          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
+        }
+      }
     }
-    QQLSActivity.a(this.a);
-    QQLSActivity.b(this.a);
+    while (paramMotionEvent.getAction() != 1)
+    {
+      return false;
+      if ((QQLSActivity.a(this.a) != null) && (QQLSActivity.b(this.a) != null) && (QQLSActivity.a(this.a, QQLSActivity.b(this.a), QQLSActivity.a(this.a), paramMotionEvent)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQLSActivity", 2, "singlelist  click doble");
+        }
+        if (QQLSActivity.a(this.a) != null)
+        {
+          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
+          QQLSActivity.a(this.a, true);
+        }
+      }
+      for (;;)
+      {
+        QQLSActivity.a(this.a, MotionEvent.obtain(paramMotionEvent));
+        return false;
+        if (QLog.isColorLevel()) {
+          QLog.e("QQLSActivity", 2, "singlelist  click once");
+        }
+        paramView = QQLSActivity.a(this.a).obtainMessage(0);
+        QQLSActivity.a(this.a).sendMessageDelayed(paramView, 500L);
+      }
+    }
+    QQLSActivity.b(this.a, MotionEvent.obtain(paramMotionEvent));
+    return false;
   }
 }
 

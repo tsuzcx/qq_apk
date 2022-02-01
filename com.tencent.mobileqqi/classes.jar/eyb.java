@@ -1,13 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.ForwardDiscussionListAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.adapter.ForwardFriendListAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.utils.QQUtils;
 
 public class eyb
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public eyb(ForwardDiscussionListAdapter paramForwardDiscussionListAdapter) {}
+  public eyb(ForwardFriendListAdapter paramForwardFriendListAdapter, String paramString) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    paramDialogInterface = ((FriendManager)this.jdField_a_of_type_ComTencentMobileqqAdapterForwardFriendListAdapter.a.getManager(8)).a(this.jdField_a_of_type_JavaLangString);
+    QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardFriendListAdapter.a, this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+  }
 }
 
 

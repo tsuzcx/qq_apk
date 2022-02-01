@@ -1,33 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.HornListActivity;
-import com.tencent.mobileqq.activity.HornPublishActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.app.NearHornHandler;
 
 public class cqe
-  implements View.OnClickListener
+  implements Runnable
 {
-  public cqe(HornListActivity paramHornListActivity) {}
+  public cqe(HornListActivity paramHornListActivity, Boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    QQAppInterface localQQAppInterface;
-    if (this.a.a != null)
+    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
+    for (String str = "1";; str = "0")
     {
-      localQQAppInterface = this.a.b;
-      if (!VipUtils.a(this.a.b)) {
-        break label81;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_b_of_type_Long), str, this.jdField_a_of_type_ComTencentMobileqqActivityHornListActivity.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
       }
-    }
-    label81:
-    for (paramView = "1";; paramView = "0")
-    {
-      ReportController.b(localQQAppInterface, "P_CliOper", "Svip", "", "Vip_nearby", "Vip_nearby_enterHornCreate", 0, 0, "isSvip", paramView, "", "");
-      paramView = new Intent(this.a, HornPublishActivity.class);
-      this.a.startActivityForResult(paramView, 0);
       return;
     }
   }

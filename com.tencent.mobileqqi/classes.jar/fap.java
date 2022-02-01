@@ -1,21 +1,60 @@
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
-import java.net.URL;
+import com.tencent.mobileqq.app.ContactSorter;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
 
-public class fap
-  implements Runnable
+public final class fap
+  implements Comparator
 {
-  public fap(ConfigHandler paramConfigHandler, String paramString, File paramFile) {}
-  
-  public void run()
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    try
-    {
-      HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, new URL(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
-      return;
+    int i = 0;
+    if ((paramEntity1 instanceof Groups)) {
+      return ContactSorter.a((Groups)paramEntity1, (Groups)paramEntity2);
     }
-    catch (Exception localException) {}
+    Object localObject = "-";
+    String str = "-";
+    int j;
+    if (((paramEntity1 instanceof TroopInfo)) && ((paramEntity2 instanceof TroopInfo)))
+    {
+      paramEntity1 = (TroopInfo)paramEntity1;
+      localObject = (TroopInfo)paramEntity2;
+      j = paramEntity1.mComparePartInt;
+      i = ((TroopInfo)localObject).mComparePartInt;
+      paramEntity2 = paramEntity1.mCompareSpell;
+      paramEntity1 = ((TroopInfo)localObject).mCompareSpell;
+    }
+    for (;;)
+    {
+      return ContactSorter.a(j, paramEntity2, i, paramEntity1);
+      if (((paramEntity1 instanceof DiscussionInfo)) && ((paramEntity2 instanceof DiscussionInfo)))
+      {
+        paramEntity1 = (DiscussionInfo)paramEntity1;
+        localObject = (DiscussionInfo)paramEntity2;
+        j = paramEntity1.mComparePartInt;
+        i = ((DiscussionInfo)localObject).mComparePartInt;
+        paramEntity2 = paramEntity1.mCompareSpell;
+        paramEntity1 = ((DiscussionInfo)localObject).mCompareSpell;
+      }
+      else if (((paramEntity1 instanceof PublicAccountInfo)) && ((paramEntity2 instanceof PublicAccountInfo)))
+      {
+        paramEntity1 = (PublicAccountInfo)paramEntity1;
+        localObject = (PublicAccountInfo)paramEntity2;
+        j = paramEntity1.mComparePartInt;
+        i = ((PublicAccountInfo)localObject).mComparePartInt;
+        paramEntity2 = paramEntity1.mCompareSpell;
+        paramEntity1 = ((PublicAccountInfo)localObject).mCompareSpell;
+      }
+      else
+      {
+        j = 0;
+        paramEntity1 = str;
+        paramEntity2 = (Entity)localObject;
+      }
+    }
   }
 }
 

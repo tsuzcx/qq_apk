@@ -1,48 +1,31 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.international.LocaleUtil;
+import mqq.app.MobileQQ;
 
 public class dfm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dfm(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, Bundle paramBundle) {}
+  public dfm(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {}
-    do
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    int i = LocaleUtil.a(this.a.b.getApplication().getApplicationContext());
+    if ((i == 2) || (i == 3)) {
+      paramView.putExtra("url", "http://zc.qq.com/chs/agreement1_chs.html");
+    }
+    for (;;)
     {
-      boolean bool1;
-      String str1;
-      boolean bool2;
-      String str2;
-      String str3;
-      do
-      {
-        return;
-        bool1 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("visibility", false);
-        str1 = this.jdField_a_of_type_AndroidOsBundle.getString("enableVersion");
-        bool2 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("checked", false);
-        str2 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockText");
-        str3 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpText");
-        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpURL"));
-      } while ((!bool1) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, "6.0.2", str1) < 0));
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterPhoneNumActivity", 2, "update ui.");
-      }
-      if ((bool2) && (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) != null)) {
-        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).setChecked(bool2);
-      }
-      if (RegisterPhoneNumActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) != null) {
-        RegisterPhoneNumActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).setText(str2);
-      }
-      if (RegisterPhoneNumActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) != null) {
-        RegisterPhoneNumActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).setText(str3);
-      }
-    } while (RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity) == null);
+      paramView.putExtra("title", this.a.getString(2131559804));
+      this.a.startActivity(paramView);
+      return;
+      paramView.putExtra("url", "http://passport.imqq.com/App/MobileQQ/safety.html?_wv=2");
+    }
   }
 }
 

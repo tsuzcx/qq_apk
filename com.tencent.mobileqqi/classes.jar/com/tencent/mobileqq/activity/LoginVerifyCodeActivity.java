@@ -20,13 +20,13 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cva;
 import cvb;
 import cvc;
 import cvd;
-import cve;
+import cvg;
 import cvh;
 import cvi;
-import cvj;
 import mqq.observer.SubAccountObserver;
 import mqq.observer.WtloginObserver;
 
@@ -43,9 +43,9 @@ public class LoginVerifyCodeActivity
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public SubAccountBindObserver a;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new cvb(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new cva(this);
   public SubAccountObserver a;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new cvc(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new cvb(this);
   private boolean jdField_a_of_type_Boolean = false;
   private boolean b;
   private int c;
@@ -55,8 +55,8 @@ public class LoginVerifyCodeActivity
   {
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Int = 60;
-    this.jdField_a_of_type_MqqObserverSubAccountObserver = new cvd(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new cve(this);
+    this.jdField_a_of_type_MqqObserverSubAccountObserver = new cvc(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new cvd(this);
   }
   
   private void b(int paramInt)
@@ -70,14 +70,14 @@ public class LoginVerifyCodeActivity
   
   private void i()
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232964)).setText(getString(2131563062, new Object[] { this.jdField_c_of_type_JavaLangString }));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232966));
+    ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232963)).setText(getString(2131563062, new Object[] { this.jdField_c_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232965));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131562863) + "(" + this.jdField_c_of_type_Int + ")");
     this.jdField_b_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232998));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232997));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232017));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232016));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
   }
   
@@ -152,17 +152,17 @@ public class LoginVerifyCodeActivity
   
   public void e()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new cvh(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new cvg(this));
   }
   
   public void f()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new cvi(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new cvh(this));
   }
   
   public void handleMessage(String paramString1, String paramString2)
   {
-    runOnUiThread(new cvj(this, paramString1, paramString2));
+    runOnUiThread(new cvi(this, paramString1, paramString2));
   }
   
   protected void onAccountChanged()
@@ -186,7 +186,7 @@ public class LoginVerifyCodeActivity
     {
     default: 
       return;
-    case 2131232966: 
+    case 2131232965: 
       k();
       return;
     }

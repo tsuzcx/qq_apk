@@ -1,17 +1,32 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.app.MessageHandler;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public class fed
+  extends Handler
 {
-  String jdField_a_of_type_JavaLangString = "";
-  ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = false;
-  boolean d = false;
-  boolean e = false;
+  public fed(MessageHandler paramMessageHandler, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public fed(MessageHandler paramMessageHandler) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = paramMessage.getData();
+    } while ((paramMessage == null) || (!paramMessage.containsKey("update_unread_uin")) || (!paramMessage.containsKey("update_unread_time")));
+    this.a.a.a().a(paramMessage.getString("update_unread_uin"), paramMessage.getInt("update_unread_type", 0), paramMessage.getLong("update_unread_time"));
+    MessageHandler.a(this.a, 2002, true, null);
+  }
 }
 
 

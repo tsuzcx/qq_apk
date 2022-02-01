@@ -54,6 +54,7 @@ import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import ftt;
 import ftu;
 import ftv;
 import ftw;
@@ -62,7 +63,6 @@ import fty;
 import ftz;
 import fua;
 import fub;
-import fuc;
 import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -178,7 +178,7 @@ public class FileTransferHandler
   
   static
   {
-    jdField_a_of_type_AndroidOsHandler = new ftu(Looper.getMainLooper());
+    jdField_a_of_type_AndroidOsHandler = new ftt(Looper.getMainLooper());
     jdField_a_of_type_ArrayOfByte = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 101 };
   }
   
@@ -276,13 +276,13 @@ public class FileTransferHandler
     return localToServiceMsg;
   }
   
-  private fuc a(byte[] paramArrayOfByte)
+  private fub a(byte[] paramArrayOfByte)
   {
     int i1 = paramArrayOfByte.length;
     if ((paramArrayOfByte == null) || (i1 == 0)) {
       return null;
     }
-    fuc localfuc = new fuc(null);
+    fub localfub = new fub(null);
     int i2;
     byte[] arrayOfByte;
     if (i1 >= 16)
@@ -297,7 +297,7 @@ public class FileTransferHandler
     }
     try
     {
-      localfuc.jdField_a_of_type_JavaLangString = new String(arrayOfByte, "UTF-16LE");
+      localfub.jdField_a_of_type_JavaLangString = new String(arrayOfByte, "UTF-16LE");
       if (i1 >= i2 + 4)
       {
         long l1 = PkgTools.a(paramArrayOfByte, i2);
@@ -316,8 +316,8 @@ public class FileTransferHandler
         if (i1 < i2 + 4) {
           break label234;
         }
-        localfuc.jdField_a_of_type_Long = ((PkgTools.a(paramArrayOfByte, i2) << 32) + l1);
-        return localfuc;
+        localfub.jdField_a_of_type_Long = ((PkgTools.a(paramArrayOfByte, i2) << 32) + l1);
+        return localfub;
         QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- filenamelen");
         return null;
         label180:
@@ -3586,7 +3586,7 @@ public class FileTransferHandler
     if (Thread.currentThread() != localLooper.getThread())
     {
       long l1 = paramInt1;
-      new Handler(localLooper).post(new fua(this, l1, paramInt3, paramInt2, paramString));
+      new Handler(localLooper).post(new ftz(this, l1, paramInt3, paramInt2, paramString));
       return;
     }
     QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + paramInt1 + "] Handle upload progress notify. speed=" + paramInt3 + " progress =" + paramInt2);
@@ -3599,7 +3599,7 @@ public class FileTransferHandler
     if (Thread.currentThread() != localLooper.getThread())
     {
       long l1 = paramInt1;
-      new Handler(localLooper).post(new ftz(this, l1, paramInt2, paramString2, paramString1));
+      new Handler(localLooper).post(new fty(this, l1, paramInt2, paramString2, paramString1));
       return;
     }
     QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + paramInt1 + "] Handle upload failed notify. retCode =" + paramInt2 + "(1:cancel upload) reason=" + paramString2);
@@ -3649,7 +3649,7 @@ public class FileTransferHandler
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new fub(this, paramLong1, paramString1, paramInt, paramString2, paramLong2));
+      new Handler(localLooper).post(new fua(this, paramLong1, paramString1, paramInt, paramString2, paramLong2));
       return;
     }
     QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + paramLong1 + "] upload competed:");
@@ -3661,7 +3661,7 @@ public class FileTransferHandler
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new ftx(this, paramLong, paramBoolean, paramString));
+      new Handler(localLooper).post(new ftw(this, paramLong, paramBoolean, paramString));
       return;
     }
     QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + paramLong + "]  handle recv onlinefile resp. sucess =" + paramBoolean);
@@ -4125,7 +4125,7 @@ public class FileTransferHandler
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new ftv(this, paramInt1, paramString1, paramString2, paramLong1, paramShort, paramBoolean, paramInt2, paramString3, paramOnlineFileSessionInfo, paramLong2));
+      new Handler(localLooper).post(new ftu(this, paramInt1, paramString1, paramString2, paramLong1, paramShort, paramBoolean, paramInt2, paramString3, paramOnlineFileSessionInfo, paramLong2));
       return;
     }
     a(paramInt1, paramString1, paramString2, paramLong1, paramShort, paramBoolean, paramInt2, paramString3, paramOnlineFileSessionInfo, paramLong2);
@@ -4136,7 +4136,7 @@ public class FileTransferHandler
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new ftw(this, paramLong, paramString));
+      new Handler(localLooper).post(new ftv(this, paramLong, paramString));
       return;
     }
     QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + paramLong + "]  handle cmd 0x211-0x1.save to weiyun");
@@ -4148,7 +4148,7 @@ public class FileTransferHandler
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new fty(this, paramLong, paramBoolean, paramString));
+      new Handler(localLooper).post(new ftx(this, paramLong, paramBoolean, paramString));
       return;
     }
     QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + paramLong + "]  handle query onlinefile upload progress resp. sucess =" + paramBoolean);

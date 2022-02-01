@@ -1,17 +1,12 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DoodleActivity;
-import com.tencent.mobileqq.widget.DoodlePicView;
 
 class cim
   implements DialogInterface.OnClickListener
 {
-  cim(cil paramcil) {}
+  cim(cik paramcik) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.a.b();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

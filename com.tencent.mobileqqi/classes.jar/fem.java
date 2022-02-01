@@ -1,5 +1,5 @@
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.RecommendContactMsg;
 import java.util.Comparator;
 
 public class fem
@@ -7,24 +7,9 @@ public class fem
 {
   public fem(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public int a(RecommendContactMsg paramRecommendContactMsg1, RecommendContactMsg paramRecommendContactMsg2)
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
-    }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
-    }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-    }
-    return i;
+    return paramRecommendContactMsg1.friendStatus - paramRecommendContactMsg2.friendStatus;
   }
 }
 

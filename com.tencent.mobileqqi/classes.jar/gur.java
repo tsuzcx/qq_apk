@@ -1,25 +1,30 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.troop.activity.TroopTagViewActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.NearbyOpenTroop;
 
 public class gur
-  implements View.OnClickListener
+  extends BizTroopObserver
 {
-  public gur(TroopTagViewActivity paramTroopTagViewActivity) {}
+  public gur(NearbyOpenTroop paramNearbyOpenTroop) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
   {
-    paramView = new Intent(this.a, TroopTagViewActivity.class);
-    paramView.putExtra("troopuin", TroopTagViewActivity.a(this.a));
-    paramView.putExtra("tags", TroopTagViewActivity.b(this.a));
-    paramView.putExtra("act_type", 2);
-    paramView.putExtra("modifyToSrv", this.a.d);
-    if ((this.a.getAppRuntime() instanceof BrowserAppInterface)) {
-      paramView.putExtra("uin", ((BrowserAppInterface)this.a.getAppRuntime()).a());
+    if (!paramString2.equals(this.a.jdField_a_of_type_JavaLangString))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+      NearbyOpenTroop.a(this.a);
+      return;
     }
-    this.a.startActivity(paramView);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.b = true;
+      this.a.d = paramString1;
+      this.a.e = paramString2;
+      this.a.c = paramBoolean;
+      this.a.f = paramString3;
+      return;
+    }
+    NearbyOpenTroop.a(this.a, paramString1, paramString2, paramBoolean, paramString3);
   }
 }
 

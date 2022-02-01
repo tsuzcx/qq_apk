@@ -1,17 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadApi;
+import com.tencent.tmassistantsdk.downloadclient.ITMAssistantExchangeURLListenner;
+import com.tencent.tmassistantsdk.protocol.jce.AppSimpleDetail;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class hmh
-  implements DialogInterface.OnClickListener
+  implements ITMAssistantExchangeURLListenner
 {
-  public hmh(Bundle paramBundle, int paramInt, ApkUpdateDetail paramApkUpdateDetail) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
   {
-    DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    LogUtility.b(DownloadApi.jdField_a_of_type_JavaLangString, "onExchangedURLSucceed --- ");
+    if ((paramBoolean) && (??? != null) && (???.size() > 0))
+    {
+      ??? = ???.iterator();
+      while (???.hasNext())
+      {
+        Object localObject1 = ???.next();
+        if ((localObject1 instanceof AppSimpleDetail))
+        {
+          int i = ((AppSimpleDetail)localObject1).versionCode;
+          if (i > 0) {
+            DownloadApi.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
+          }
+        }
+      }
+    }
+    synchronized (DownloadApi.jdField_a_of_type_JavaLangObject)
+    {
+      DownloadApi.jdField_a_of_type_JavaLangObject.notify();
+      return;
+    }
   }
 }
 

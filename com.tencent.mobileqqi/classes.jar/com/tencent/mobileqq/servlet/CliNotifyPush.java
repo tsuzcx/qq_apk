@@ -142,7 +142,7 @@ public class CliNotifyPush
     boolean bool2;
     if ((localQQAppInterface.isBackground_Pause) && (a(localQQAppInterface)) && (paramFromServiceMsg != null))
     {
-      bool2 = localQQAppInterface.e();
+      bool2 = localQQAppInterface.f();
       if (!bool2) {
         paramFromServiceMsg = localQQAppInterface.a().getApplicationContext().getString(2131563282, new Object[] { Integer.valueOf(i) });
       }

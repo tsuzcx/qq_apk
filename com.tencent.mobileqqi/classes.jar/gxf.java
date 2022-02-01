@@ -1,24 +1,48 @@
-import android.text.Editable;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.troop.utils.AddTroopHelper;
 
-public final class gxf
-  implements Comparator
+public class gxf
+  extends TroopObserver
 {
-  public gxf(Editable paramEditable) {}
+  public gxf(AddTroopHelper paramAddTroopHelper) {}
   
-  public int a(AtTroopMemberSpan paramAtTroopMemberSpan1, AtTroopMemberSpan paramAtTroopMemberSpan2)
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
   {
-    int i = 0;
-    int j = this.a.getSpanStart(paramAtTroopMemberSpan1);
-    int k = this.a.getSpanStart(paramAtTroopMemberSpan2);
-    if (j < k) {
-      i = -1;
+    this.a.jdField_a_of_type_Int = 0;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.a.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
     }
-    while (j <= k) {
-      return i;
+    if ((!paramBoolean1) || (paramTroopInfo == null) || (paramTroopInfo.troopuin == null) || (this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramTroopInfo.troopuin))) {
+      return;
     }
-    return 1;
+    switch (paramByte)
+    {
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    default: 
+      return;
+    }
+    AddTroopHelper.a(this.a, paramTroopInfo);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    this.a.jdField_a_of_type_Int = 0;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.a.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
+    }
+    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {}
+    do
+    {
+      return;
+      paramString = ((FriendManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).a(paramString);
+    } while (paramString == null);
+    AddTroopHelper.a(this.a, paramString);
   }
 }
 

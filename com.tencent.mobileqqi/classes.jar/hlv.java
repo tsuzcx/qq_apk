@@ -1,25 +1,30 @@
-import com.tencent.open.base.http.HttpCgiAsyncTask;
-import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.open.base.http.HttpBaseUtil;
+import com.tencent.open.base.http.HttpBaseUtil.Statistic;
+import com.tencent.open.business.base.OpenConfig;
 import org.json.JSONObject;
 
 public class hlv
   implements Runnable
 {
-  public hlv(HttpCgiAsyncTask paramHttpCgiAsyncTask, HashMap paramHashMap) {}
+  public hlv(OpenConfig paramOpenConfig, Bundle paramBundle) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a != null)
+    try
     {
-      if (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get("ResultType")).intValue() == 1) {
-        this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a.a((JSONObject)this.jdField_a_of_type_JavaUtilHashMap.get("ResultValue"));
-      }
-    }
-    else {
+      JSONObject localJSONObject = HttpBaseUtil.a(HttpBaseUtil.a("http://cgi.connect.qq.com/qqconnectopen/openapi/policy_conf", "GET", this.jdField_a_of_type_AndroidOsBundle).a);
+      this.jdField_a_of_type_ComTencentOpenBusinessBaseOpenConfig.a(localJSONObject);
+      this.jdField_a_of_type_ComTencentOpenBusinessBaseOpenConfig.a = 0;
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a.a((Exception)this.jdField_a_of_type_JavaUtilHashMap.get("ResultValue"));
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
 }
 

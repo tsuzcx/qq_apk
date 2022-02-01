@@ -51,8 +51,8 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
+import dvk;
 import dvl;
-import dvm;
 import java.io.UnsupportedEncodingException;
 
 public abstract class BaseBubbleBuilder
@@ -65,7 +65,7 @@ public abstract class BaseBubbleBuilder
   public static final int c = 1;
   public static final int d = 2;
   public Context a;
-  View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new dvm(this);
+  View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new dvl(this);
   @Deprecated
   public BaseAdapter a;
   public SessionInfo a;
@@ -143,7 +143,7 @@ public abstract class BaseBubbleBuilder
         a(paramViewHolder, paramChatMessage);
         if ((paramInt1 == paramInt2 - 1) && (paramChatMessage.mAnimFlag))
         {
-          jdField_a_of_type_AndroidOsHandler.post(new dvl(this, paramViewHolder, paramChatMessage));
+          jdField_a_of_type_AndroidOsHandler.post(new dvk(this, paramViewHolder, paramChatMessage));
           paramChatMessage.mAnimFlag = false;
         }
       }
@@ -305,7 +305,7 @@ public abstract class BaseBubbleBuilder
   
   public static void a(QQCustomMenu paramQQCustomMenu, Context paramContext)
   {
-    paramQQCustomMenu.a(2131234874, paramContext.getString(2131562749));
+    paramQQCustomMenu.a(2131234873, paramContext.getString(2131562749));
   }
   
   private void a(String paramString1, int paramInt, String paramString2)

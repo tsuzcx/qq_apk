@@ -1,18 +1,14 @@
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
-public class ddr
-  extends ConfigObserver
+class ddr
+  implements Runnable
 {
-  public ddr(QQSettingMe paramQQSettingMe) {}
+  ddr(ddq paramddq) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void run()
   {
-    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
-    if (this.a.b) {
-      this.a.a.runOnUiThread(new dds(this));
+    if (this.a.a.b) {
+      this.a.a.k();
     }
   }
 }

@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import com.tencent.mobileqq.activity.HornPublishActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.maproam.Utils;
+import com.tencent.mobileqq.app.NearHornHandler;
 
-public class cqn
-  implements View.OnClickListener
+class cqn
+  implements Runnable
 {
-  public cqn(HornPublishActivity paramHornPublishActivity, String paramString) {}
+  cqn(cqm paramcqm) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.a.setEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.b.a(new cqo(this));
-    Utils.a();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityHornPublishActivity.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

@@ -7,10 +7,7 @@ public class gwx
 {
   public gwx(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    VideoPlayLogic.a(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -15,7 +15,7 @@ public class VoipDetailActivity$VoipHistoryListDivider
   {
     super(paramContext, paramAttributeSet);
     LayoutInflater.from(paramContext).inflate(2130904054, this);
-    this.a = ((TextView)findViewById(2131234669));
+    this.a = ((TextView)findViewById(2131234668));
     this.a.setText(paramString);
   }
   

@@ -1,15 +1,14 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.emoticon.EmoticonController;
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 import com.tencent.mobileqq.statistics.StatisticAssist;
-import java.util.Iterator;
-import java.util.List;
+import mqq.app.MobileQQ;
 
 public class cke
   implements View.OnClickListener
@@ -18,19 +17,38 @@ public class cke
   
   public void onClick(View paramView)
   {
-    paramView = EmosmActivity.a(this.a).getSelectedPackages().iterator();
-    while (paramView.hasNext())
+    EmosmActivity.b(this.a).setVisibility(0);
+    EmosmActivity.c(this.a).setEnabled(false);
+    if (!this.a.jdField_b_of_type_Boolean)
     {
-      EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramView.next();
-      EmosmActivity.a(this.a).b(localEmoticonPackage.epId);
-      EmosmActivity.a(this.a).setNotifyOnChange(true);
-      EmosmActivity.a(this.a).remove(localEmoticonPackage);
-      EmoticonController.a(this.a.b).b(localEmoticonPackage);
-      StatisticAssist.a(this.a, this.a.b.a(), "Delete_ep");
-      EmosmActivity.a(this.a, localEmoticonPackage);
+      EmosmActivity.a(this.a).setVisibility(8);
+      EmosmActivity.a(this.a).setDragEnabled(true);
+      EmosmActivity.a(this.a).setEditMode(true);
+      this.a.jdField_b_of_type_Boolean = true;
+      EmosmActivity.a(this.a).notifyDataSetChanged();
+      EmosmActivity.a(this.a).setVisibility(8);
+      EmosmActivity.a(this.a).setEnabled(false);
+      StatisticAssist.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), "Clk_ep_edit");
     }
+    do
+    {
+      return;
+      if (EmosmActivity.d(this.a) == 2)
+      {
+        EmosmActivity.a(this.a).setVisibility(8);
+        EmosmActivity.a(this.a).setDragEnabled(false);
+        EmosmActivity.a(this.a).setEditMode(false);
+        this.a.a();
+        this.a.jdField_b_of_type_Boolean = false;
+        EmosmActivity.a(this.a).notifyDataSetChanged();
+        EmosmActivity.a(this.a).clearSelectStatus();
+        EmosmActivity.a(this.a).setVisibility(8);
+        return;
+      }
+    } while (EmosmActivity.d(this.a) != 1);
     EmosmActivity.a(this.a).clearSelectStatus();
-    EmosmActivity.a(this.a).setEnabled(false);
+    this.a.a();
+    this.a.finish();
   }
 }
 

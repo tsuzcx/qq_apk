@@ -1,37 +1,14 @@
-import com.tencent.image.URLDrawable;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.filemanager.activity.LocalFileCategoryBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class fsi
-  implements AbsListView.OnScrollListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public fsi(LocalFileCategoryBrowserActivity paramLocalFileCategoryBrowserActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectPhotoTrace", 2, LocalFileCategoryBrowserActivity.b + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
-    }
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
-      return;
-    }
-    URLDrawable.pause();
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (paramInt1 != 0) {
-        URLDrawable.resume();
-      }
-      return;
-    }
+    this.a.g();
   }
 }
 

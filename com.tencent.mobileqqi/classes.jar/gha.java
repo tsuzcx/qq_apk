@@ -1,20 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
 import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatusEditText.RichStatusEditListener;
+import com.tencent.mobileqq.widget.ClickableImageSpan;
 
 public class gha
-  implements TextWatcher
+  implements RichStatusEditText.RichStatusEditListener
 {
   public gha(EditActivity paramEditActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(ClickableImageSpan paramClickableImageSpan)
   {
-    EditActivity.a(this.a);
+    if (EditActivity.a(this.a) == paramClickableImageSpan)
+    {
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).a(null);
+      }
+      EditActivity.a(this.a, null);
+      EditActivity.a(this.a).c = null;
+      EditActivity.a(this.a).d = null;
+      EditActivity.a(this.a).e = null;
+      EditActivity.c(this.a, true);
+    }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean a(ClickableImageSpan paramClickableImageSpan)
+  {
+    return paramClickableImageSpan != EditActivity.a(this.a);
+  }
 }
 
 

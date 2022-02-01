@@ -1,15 +1,27 @@
+import android.view.View;
 import com.tencent.mobileqq.maproam.activity.RoamingActivity;
-import com.tencent.mobileqq.maproam.widget.RoamingMapView;
-import com.tencent.tencentmap.mapsdk.map.MapController;
+import com.tencent.mobileqq.maproam.data.LocationDetail;
+import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog.OnSearchResultItemClick;
+import com.tencent.widget.AdapterView;
 
 public class gbt
-  implements Runnable
+  implements RoamSearchDialog.OnSearchResultItemClick
 {
   public gbt(RoamingActivity paramRoamingActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, LocationDetail paramLocationDetail)
   {
-    this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.setZoom(this.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.getMaxZoomLevel() - 1);
+    if (paramLocationDetail != null)
+    {
+      if ((this.a.a != null) && (this.a.a.a != null)) {
+        this.a.a.a.dismiss();
+      }
+      double d1 = paramLocationDetail.a;
+      double d2 = paramLocationDetail.b;
+      RoamingActivity.a(this.a, d1, d2, paramLocationDetail.c);
+    }
   }
 }
 

@@ -1,45 +1,30 @@
-import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import com.tencent.mobileqq.activity.PortraitImageview;
-import com.tencent.mobileqq.activity.PortraitImageview.OnImageTouchedListener;
-import com.tencent.mobileqq.activity.PortraitImageview.SimpleOnGestureListener;
+import com.tencent.mobileqq.activity.PortraitImageview.SimpleOnScaleGestureListener;
 
 public class czs
-  extends PortraitImageview.SimpleOnGestureListener
+  extends PortraitImageview.SimpleOnScaleGestureListener
 {
-  private czs(PortraitImageview paramPortraitImageview) {}
+  public czs(PortraitImageview paramPortraitImageview) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.a.a() > this.a.f()) {
-      this.a.a(this.a.f());
+    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
+      try
+      {
+        float f1 = this.a.a();
+        float f2 = paramScaleGestureDetector.getScaleFactor();
+        f1 = Math.min(this.a.e(), Math.max(f1 * f2, 0.1F));
+        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        this.a.invalidate();
+        return true;
+      }
+      catch (IllegalArgumentException paramScaleGestureDetector)
+      {
+        paramScaleGestureDetector.printStackTrace();
+      }
     }
-    for (;;)
-    {
-      return true;
-      this.a.a(this.a.f() * 3.0F, paramMotionEvent.getX(), paramMotionEvent.getY(), 350.0F);
-    }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (((paramMotionEvent1 != null) && (paramMotionEvent1.getPointerCount() > 1)) || ((paramMotionEvent2 != null) && (paramMotionEvent2.getPointerCount() > 1)) || ((this.a.jdField_a_of_type_AndroidViewScaleGestureDetector != null) && (this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()))) {
-      return false;
-    }
-    this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.a(-paramFloat1, -paramFloat2);
-    this.a.setImageMatrix(this.a.a());
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview$OnImageTouchedListener != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview$OnImageTouchedListener.a();
-      return false;
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    return false;
   }
 }
 

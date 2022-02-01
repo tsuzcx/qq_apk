@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkInfo;
+import android.os.Build.VERSION;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.c.e;
 import com.tencent.mobileqq.msf.service.MsfService;
@@ -106,66 +107,72 @@ public class NetConnInfoCenter
         QLog.d(NetConnInfoCenterImpl.tag, 2, "receive broadcast intent == null return");
       }
     }
+    label299:
+    label309:
     do
     {
       do
       {
-        boolean bool1;
         do
         {
-          do
-          {
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d(NetConnInfoCenterImpl.tag, 2, "receive broadcast " + paramIntent);
-            }
-            if (paramIntent.getAction() != null) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d(NetConnInfoCenterImpl.tag, 2, "receive broadcast intent.getAction() == null return");
           return;
-          if (paramIntent.getAction().equals("com.tencent.mobileqqi.msf.receiveofflinepush"))
-          {
-            paramContext = impl;
-            NetConnInfoCenterImpl.msfCore.pushManager.m();
-            return;
+          if (QLog.isColorLevel()) {
+            QLog.d(NetConnInfoCenterImpl.tag, 2, "receive broadcast " + paramIntent);
           }
-          if (paramIntent.getAction().equals("com.tencent.mobileqqi.msf.offlinepushclearall"))
-          {
-            paramContext = impl;
-            NetConnInfoCenterImpl.msfCore.pushManager.i();
-            return;
-          }
-          if (paramIntent.getAction().equals("com.tencent.mobileqqi.msf.receiveofflinepushav"))
-          {
-            paramContext = impl;
-            NetConnInfoCenterImpl.msfCore.pushManager.n();
-            return;
-          }
-          if (paramIntent.getAction().equals("com.tencent.mobileqqi.msf.offlinepushclearallav"))
-          {
-            paramContext = impl;
-            NetConnInfoCenterImpl.msfCore.pushManager.j();
-            return;
-          }
-          boolean bool2 = false;
-          bool1 = bool2;
-          if (!sHasBooted)
-          {
-            sHasBooted = true;
-            bool1 = bool2;
-            if (SystemClock.elapsedRealtime() < 300000L) {
-              bool1 = true;
-            }
-          }
-          if (!MsfService.inited)
-          {
-            MsfService.sIsCreatedByAutoBoot = bool1;
-            paramContext.startService(new Intent(paramContext, MsfService.class));
-          }
-          if (!paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE")) {
+          if (paramIntent.getAction() != null) {
             break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d(NetConnInfoCenterImpl.tag, 2, "receive broadcast intent.getAction() == null return");
+        return;
+        if (paramIntent.getAction().equals("com.tencent.mobileqqi.msf.receiveofflinepush"))
+        {
+          paramContext = impl;
+          NetConnInfoCenterImpl.msfCore.pushManager.m();
+          return;
+        }
+        if (paramIntent.getAction().equals("com.tencent.mobileqqi.msf.offlinepushclearall"))
+        {
+          paramContext = impl;
+          NetConnInfoCenterImpl.msfCore.pushManager.i();
+          return;
+        }
+        if (paramIntent.getAction().equals("com.tencent.mobileqqi.msf.receiveofflinepushav"))
+        {
+          paramContext = impl;
+          NetConnInfoCenterImpl.msfCore.pushManager.n();
+          return;
+        }
+        if (paramIntent.getAction().equals("com.tencent.mobileqqi.msf.offlinepushclearallav"))
+        {
+          paramContext = impl;
+          NetConnInfoCenterImpl.msfCore.pushManager.j();
+          return;
+        }
+        boolean bool2 = false;
+        boolean bool1 = bool2;
+        if (!sHasBooted)
+        {
+          sHasBooted = true;
+          bool1 = bool2;
+          if (SystemClock.elapsedRealtime() < 300000L) {
+            bool1 = true;
+          }
+        }
+        Intent localIntent;
+        if (!MsfService.inited)
+        {
+          MsfService.sIsCreatedByAutoBoot = bool1;
+          localIntent = new Intent(paramContext, MsfService.class);
+          if (Build.VERSION.SDK_INT <= 28) {
+            break label299;
+          }
+          paramContext.startForegroundService(localIntent);
+        }
+        for (;;)
+        {
+          if (!paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE")) {
+            break label309;
           }
           try
           {
@@ -174,9 +181,13 @@ public class NetConnInfoCenter
             return;
           }
           catch (Exception paramContext) {}
-        } while (!QLog.isColorLevel());
-        QLog.d(NetConnInfoCenterImpl.tag, 2, paramContext.toString(), paramContext);
-        return;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d(NetConnInfoCenterImpl.tag, 2, paramContext.toString(), paramContext);
+          return;
+          paramContext.startService(localIntent);
+        }
         if ((paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE")) || (paramIntent.getAction().equals("android.intent.action.TIME_SET")) || (paramIntent.getAction().equals("android.intent.action.DATE_CHANGED")) || (paramIntent.getAction().equals("android.intent.action.TIMEZONE_CHANGED")))
         {
           if (QLog.isColorLevel()) {

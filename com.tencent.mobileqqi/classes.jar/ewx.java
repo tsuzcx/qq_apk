@@ -1,6 +1,5 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.pay.googlewalletsdk.GoogleWalletPayHelper;
 import com.tencent.mobileqq.activity.voip.VoipPayActivity;
 
 public class ewx
@@ -10,8 +9,7 @@ public class ewx
   
   public void onClick(View paramView)
   {
-    paramView = VoipPayActivity.a(this.a);
-    GoogleWalletPayHelper.getInstance().pay(paramView);
+    this.a.a(this.a.a);
   }
 }
 

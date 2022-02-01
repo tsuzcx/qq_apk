@@ -8,7 +8,6 @@ public class gju
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqSharealbumQZoneShareAlbumAssistantManager.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }

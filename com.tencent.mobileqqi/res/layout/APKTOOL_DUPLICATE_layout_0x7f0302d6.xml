@@ -2,8 +2,8 @@
 <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bb3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207a1" />
-        <TextView android:textColor="#ffc3c7c9" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bb4" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
-        <Button android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bf5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bb2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207a1" />
+        <TextView android:textColor="#ffc3c7c9" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bb3" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
+        <Button android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bf4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
     </LinearLayout>
 </RelativeLayout>

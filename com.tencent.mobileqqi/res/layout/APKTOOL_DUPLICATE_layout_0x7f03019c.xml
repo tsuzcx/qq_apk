@@ -4,7 +4,7 @@
     <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203d3" android:layout_width="fill_parent" android:layout_height="1.0px" />
     <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a0085" android:layout_width="fill_parent" android:layout_height="4.0dip" />
     <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203d3" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080772" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip" android:drawablePadding="4.0dip" />
+    <TextView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080771" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip" android:drawablePadding="4.0dip" />
     <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203d3" android:layout_width="fill_parent" android:layout_height="1.0px" />
     <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a0085" android:layout_width="fill_parent" android:layout_height="4.0dip" />
     <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203d3" android:layout_width="fill_parent" android:layout_height="1.0px" />

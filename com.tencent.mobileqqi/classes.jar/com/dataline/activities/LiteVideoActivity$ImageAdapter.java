@@ -93,8 +93,8 @@ public class LiteVideoActivity$ImageAdapter
       paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903192, null);
       localObject = new cs(this);
       ((cs)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131231016));
-      ((cs)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231542));
-      ((cs)localObject).b = ((ImageView)paramViewGroup.findViewById(2131231543));
+      ((cs)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231541));
+      ((cs)localObject).b = ((ImageView)paramViewGroup.findViewById(2131231542));
       paramViewGroup.setTag(localObject);
       paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.a, this.jdField_a_of_type_ComDatalineActivitiesLiteVideoActivity.b));
       ((cs)localObject).jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(false);

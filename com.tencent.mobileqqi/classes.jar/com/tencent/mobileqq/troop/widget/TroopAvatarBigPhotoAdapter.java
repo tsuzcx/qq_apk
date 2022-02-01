@@ -19,7 +19,7 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
 import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import gzi;
+import gzh;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -138,7 +138,7 @@ public class TroopAvatarBigPhotoAdapter
       label328:
       localURLImageView.setImageDrawable(URLDrawable.getDrawable((URL)localObject1, URLDrawableHelper.d, null, true));
       a(paramViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-      localURLImageView.setURLDrawableDownListener(new gzi(this, paramViewHolder));
+      localURLImageView.setURLDrawableDownListener(new gzh(this, paramViewHolder));
       return;
     }
   }

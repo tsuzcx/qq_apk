@@ -1,20 +1,37 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.SystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener;
 
 public class gme
-  implements Runnable
+  extends Handler
 {
-  public gme(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
-  
-  public void run()
+  public gme(ShareAppLogHelper paramShareAppLogHelper, Looper paramLooper)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("delete_system_msg_item", this.jdField_a_of_type_Boolean).commit();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (ShareAppLogHelper.a(this.a) == null);
+        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
+        return;
+      } while (ShareAppLogHelper.a(this.a) == null);
+      ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
+      return;
+    } while (ShareAppLogHelper.a(this.a) == null);
+    ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
   }
 }
 

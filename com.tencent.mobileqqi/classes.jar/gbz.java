@@ -1,25 +1,24 @@
-import android.widget.TextView;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
-import com.tencent.mobileqq.maproam.activity.RoamingActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
-import com.tencent.tencentmap.mapsdk.map.MapController;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
 
-class gbz
-  implements Runnable
+public class gbz
+  implements Animation.AnimationListener
 {
-  gbz(gby paramgby, SOSOMapLBSApiResult paramSOSOMapLBSApiResult, String paramString) {}
+  public gbz(RoamLocalSearchBar paramRoamLocalSearchBar, View paramView1, View paramView2) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    GeoPoint localGeoPoint = new GeoPoint((int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Latitude * 1000000.0D), (int)(this.jdField_a_of_type_ComTencentMapLbsapiApiSOSOMapLBSApiResult.Longitude * 1000000.0D));
-    this.jdField_a_of_type_Gby.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = localGeoPoint;
-    this.jdField_a_of_type_Gby.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.setCenter(localGeoPoint);
-    this.jdField_a_of_type_Gby.a.f = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Gby.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar.a(this.jdField_a_of_type_Gby.a.f);
-    this.jdField_a_of_type_Gby.a.b.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Gby.a.b.startAnimation(this.jdField_a_of_type_Gby.a.c);
+    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar.a.show();
+    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.b.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

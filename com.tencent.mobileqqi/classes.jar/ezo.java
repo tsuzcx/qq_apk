@@ -1,13 +1,15 @@
 import com.tencent.mobileqq.app.CircleManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.AccountObserver;
 
 public class ezo
-  implements Runnable
+  extends AccountObserver
 {
   public ezo(CircleManager paramCircleManager) {}
   
-  public void run()
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
   {
-    CircleManager.a(this.a);
+    CircleManager.a(this.a).a(new ezp(this));
   }
 }
 

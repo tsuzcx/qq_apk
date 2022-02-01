@@ -1,16 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class dgo
-  implements View.OnClickListener
+  implements Runnable
 {
-  public dgo(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public dgo(RegisterSendUpSms paramRegisterSendUpSms, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    RegisterSendUpSms.a(this.a, this.a.getString(2131562642));
-    RegisterSendUpSms.a(this.a);
+    try
+    {
+      if (RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms) == null) {
+        RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms, new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms.d()));
+      }
+      RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms).a(this.jdField_a_of_type_JavaLangString);
+      RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms).setOnKeyListener(new dgp(this));
+      RegisterSendUpSms.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterSendUpSms).show();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

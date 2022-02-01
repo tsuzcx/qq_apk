@@ -1,31 +1,42 @@
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
+import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK;
-import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK_V2;
+import com.tencent.open.downloadnew.MyAppApi.CopyAndInstallTask;
+import com.tencent.open.downloadnew.MyAppApi.InstallParams;
 
-class hns
-  implements Runnable
+public class hns
+  implements DialogInterface.OnClickListener
 {
-  hns(hnq paramhnq) {}
+  public hns(MyAppApi paramMyAppApi, Bundle paramBundle, boolean paramBoolean, Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
-    this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.c();
-    if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam != null)
+    LogUtility.c("MyAppApi", "---onConfirm--onClick");
+    if (!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b())
     {
-      if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2) {
-        ((TMQQDownloaderOpenSDK)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKBaseQQDownloaderOpenSDK).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, "2");
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam = null;
-        return;
-        ((TMQQDownloaderOpenSDK_V2)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKBaseQQDownloaderOpenSDK).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkOpenSDKTMQQDownloaderOpenSDKParam, "2");
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = new MyAppApi.InstallParams(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi);
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.b = true;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Int = 2;
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
       }
     }
-    LogUtility.e("MyAppApi", "startToAuthorizedDirect->onGetA1Fail lastAuthorizeParam = null, needCarryQQIdentity = true");
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.c = true;
+      StaticAnalyz.a("201", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+      return;
+      new MyAppApi.CopyAndInstallTask(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a).execute(new Void[0]);
+      continue;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d(this.jdField_a_of_type_AndroidAppActivity);
+    }
   }
 }
 

@@ -1,21 +1,24 @@
+import android.widget.TextView;
 import com.tencent.mobileqq.maproam.activity.RoamingActivity;
+import com.tencent.mobileqq.maproam.activity.RoamingActivity.GetAddressTaskListener;
+import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
 import com.tencent.mobileqq.maproam.widget.RoamingMapView;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 
-public class gbk
-  implements Runnable
+class gbk
+  implements RoamingActivity.GetAddressTaskListener
 {
-  public gbk(RoamingActivity paramRoamingActivity) {}
+  gbk(gbj paramgbj) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.a() == 1)
+    if (1 == this.a.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.a())
     {
-      GeoPoint localGeoPoint = this.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.getMapCenter();
-      if (!this.a.a(localGeoPoint)) {
-        this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = localGeoPoint;
+      if (this.a.a.b.getVisibility() != 0) {
+        this.a.a.i();
       }
-      RoamingActivity.a(this.a, this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint, this.a.b, new gbl(this));
+      if ((paramString != null) && (paramString.length() > 0)) {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar.a(paramString);
+      }
     }
   }
 }

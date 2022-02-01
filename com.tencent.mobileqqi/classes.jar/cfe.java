@@ -1,15 +1,22 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.managers.LoadingStateManager;
 
-class cfe
-  implements Runnable
+public class cfe
+  extends Handler
 {
-  cfe(cfd paramcfd) {}
+  public cfe(Conversation paramConversation) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a.a(13, 0);
-    this.a.a.a.a(null);
+    LoadingStateManager.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
+    {
+      Conversation.a(this.a, 1134013, 0L, false);
+      return;
+    }
+    Conversation.a(this.a, true);
   }
 }
 

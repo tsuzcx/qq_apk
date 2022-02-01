@@ -1,28 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 class dbi
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  dbi(dbh paramdbh) {}
+  dbi(dbf paramdbf, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_Dbg.a.b.a().a(this.a.jdField_a_of_type_Dbg.a.b(), 0, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_Dbg.a.b();
-      return;
-    } while (this.a.jdField_a_of_type_Dbg.a.jdField_a_of_type_Dbg.getCount() <= 0);
-    this.a.jdField_a_of_type_Dbg.a.b.a().a(this.a.jdField_a_of_type_Dbg.a.b(), 0);
-    this.a.jdField_a_of_type_Dbg.a.jdField_a_of_type_Dbg.changeCursor(this.a.jdField_a_of_type_Dbg.getCursor());
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    this.jdField_a_of_type_Dbf.a.a.sendEmptyMessageDelayed(1010, 1000L);
   }
 }
 

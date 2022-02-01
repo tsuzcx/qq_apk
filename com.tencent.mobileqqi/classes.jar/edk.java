@@ -1,15 +1,19 @@
+import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 
 public class edk
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public edk(SearchResultDialog paramSearchResultDialog) {}
+  public edk(SearchResultDialog paramSearchResultDialog, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.dismiss();
+    ((InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

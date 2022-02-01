@@ -1,16 +1,15 @@
-import android.app.ProgressDialog;
-import com.tencent.util.DumpMemInfoHandler;
-import java.util.TimerTask;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class gaf
-  extends TimerTask
+  implements View.OnClickListener
 {
-  gaf(gae paramgae, ProgressDialog paramProgressDialog) {}
+  gaf(gac paramgac, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    DumpMemInfoHandler.a(this.jdField_a_of_type_Gae.a.a);
-    this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

@@ -1,28 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class grp
-  implements AdapterView.OnItemSelectedListener
+  implements AdapterView.OnItemLongClickListener
 {
   public grp(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramView == null) {
-      return;
+    if (this.a.c) {
+      TroopAvatarWallPreviewActivity.a(this.a);
     }
-    this.a.jdField_a_of_type_Int = paramInt;
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      ReportController.b(this.a.b, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.j, "0", "", "");
-      return;
-    }
-    ReportController.b(this.a.b, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.j, "1", "", "");
+    return true;
   }
 }
 

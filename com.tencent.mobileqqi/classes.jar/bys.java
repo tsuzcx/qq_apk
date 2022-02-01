@@ -1,35 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
+import mqq.app.permission.PermissionItem;
 import mqq.app.permission.PermissionManager;
 
-public class bys
-  implements View.OnTouchListener
+class bys
+  implements PermissionDialogCallback
 {
-  public bys(ChatActivity paramChatActivity) {}
+  bys(byr parambyr) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a() {}
+  
+  public void b()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if ((!this.a.permissionManager.checkPermission("android.permission.RECORD_AUDIO")) || (!this.a.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE")))
-      {
-        paramView = new PermissionsDialog();
-        paramMotionEvent = this.a.a();
-        localbyt = new byt(this);
-        paramView.a(paramMotionEvent, new String[] { "android.permission.RECORD_AUDIO", "android.permission.WRITE_EXTERNAL_STORAGE" }, localbyt);
-      }
-    }
-    while (paramMotionEvent.getAction() != 1)
-    {
-      byt localbyt;
-      return false;
-      this.a.findViewById(2131231203).setBackgroundResource(2130840096);
-      return false;
-    }
-    this.a.findViewById(2131231203).setBackgroundResource(2130840095);
-    return false;
+    this.a.a.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.RECORD_AUDIO", 400), PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new byt(this));
   }
 }
 

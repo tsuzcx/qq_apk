@@ -16,7 +16,7 @@ import com.tencent.mobileqq.remind.widget.IosTimepicker.OnTimePickerSelectListen
 import com.tencent.mobileqq.webviewplugin.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
-import gfx;
+import gfw;
 import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +95,7 @@ public class RemindHelper
         localActionSheet.getWindow().setFlags(16777216, 16777216);
       }
       localActionSheet.b((View)localObject, null);
-      localActionSheet.setOnDismissListener(new gfx((IosTimepicker)localObject, paramJsBridgeListener));
+      localActionSheet.setOnDismissListener(new gfw((IosTimepicker)localObject, paramJsBridgeListener));
     }
     try
     {

@@ -1,30 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.international.LocaleUtil;
-import mqq.app.MobileQQ;
 
 public class dfn
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public dfn(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    int i = LocaleUtil.a(this.a.b.getApplication().getApplicationContext());
-    if ((i == 2) || (i == 3)) {
-      paramView.putExtra("url", "http://zc.qq.com/chs/agreement1_chs.html");
-    }
-    for (;;)
-    {
-      paramView.putExtra("title", this.a.getString(2131559804));
-      this.a.startActivity(paramView);
-      return;
-      paramView.putExtra("url", "http://passport.imqq.com/App/MobileQQ/safety.html?_wv=2");
+    if (paramDialogInterface == RegisterPhoneNumActivity.a(this.a)) {
+      RegisterPhoneNumActivity.a(this.a, null);
     }
   }
 }

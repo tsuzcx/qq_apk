@@ -1,30 +1,25 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.service.message.MessageFactoryReceiver.UploadStreamStruct;
+import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
+import com.tencent.mobileqq.transfile.FileMsg;
 
-public final class gmt
-  implements INetEngine.IBreakDownFix
+public class gmt
+  extends MessageObserver
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public gmt(BuddyTransfileProcessor paramBuddyTransfileProcessor) {}
+  
+  protected void a(boolean paramBoolean, MessageFactoryReceiver.UploadStreamStruct paramUploadStreamStruct)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
+    this.a.c(2);
+    if ((paramUploadStreamStruct == null) || (paramUploadStreamStruct.a == null) || (!paramUploadStreamStruct.a.equalsIgnoreCase(this.a.a.e))) {
+      return;
+    }
+    if (!paramBoolean)
     {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.k += paramNetResp.h;
-      paramNetResp.h = 0;
-      paramNetResp = "bytes=" + paramNetReq.k + "-";
-      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
-    } while (!paramNetResp.contains("range="));
-    paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-    paramNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + paramNetReq.k);
+      BuddyTransfileProcessor.a(this.a, false, paramUploadStreamStruct);
+      return;
+    }
+    BuddyTransfileProcessor.a(this.a, true, paramUploadStreamStruct);
   }
 }
 

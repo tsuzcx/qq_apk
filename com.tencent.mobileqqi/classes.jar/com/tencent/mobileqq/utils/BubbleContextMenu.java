@@ -15,8 +15,8 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.widget.BubblePopupWindow;
 import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import hbn;
 import hbo;
-import hbp;
 
 public class BubbleContextMenu
 {
@@ -65,7 +65,7 @@ public class BubbleContextMenu
       localButton.setTextSize(18.0F);
       localButton.setGravity(3);
       localButton.setPadding((int)(17.0F * f), (int)(11.0F * f), 0, (int)(11.0F * f));
-      localButton.postDelayed(new hbp(localButton), 1000L);
+      localButton.postDelayed(new hbo(localButton), 1000L);
       localButton.setSelected(true);
       localLinearLayout.addView(localButton);
       if (i != j - 1)
@@ -92,19 +92,19 @@ public class BubbleContextMenu
     if (i < j)
     {
       Object localObject = paramQQCustomMenu.a(i);
-      hbo localhbo = new hbo(paramContext, paramBubblePopupWindow);
+      hbn localhbn = new hbn(paramContext, paramBubblePopupWindow);
       if (((QQCustomMenuItem)localObject).a() != null) {
-        localhbo.setBackgroundDrawable(((QQCustomMenuItem)localObject).a());
+        localhbn.setBackgroundDrawable(((QQCustomMenuItem)localObject).a());
       }
       for (;;)
       {
-        localhbo.setContentDescription(((QQCustomMenuItem)localObject).a() + "操作");
-        localhbo.setId(((QQCustomMenuItem)localObject).a());
-        localhbo.setTextColor(-1);
-        localhbo.setIncludeFontPadding(true);
-        localhbo.setOnClickListener(paramOnClickListener);
-        localhbo.setGravity(17);
-        localLinearLayout.addView(localhbo, new LinearLayout.LayoutParams(-2, -2, 1.0F));
+        localhbn.setContentDescription(((QQCustomMenuItem)localObject).a() + "操作");
+        localhbn.setId(((QQCustomMenuItem)localObject).a());
+        localhbn.setTextColor(-1);
+        localhbn.setIncludeFontPadding(true);
+        localhbn.setOnClickListener(paramOnClickListener);
+        localhbn.setGravity(17);
+        localLinearLayout.addView(localhbn, new LinearLayout.LayoutParams(-2, -2, 1.0F));
         if (i != j - 1)
         {
           localObject = new ImageView(paramContext);
@@ -113,8 +113,8 @@ public class BubbleContextMenu
         }
         i += 1;
         break;
-        localhbo.setText(((QQCustomMenuItem)localObject).a());
-        localhbo.setBackgroundDrawable(null);
+        localhbn.setText(((QQCustomMenuItem)localObject).a());
+        localhbn.setBackgroundDrawable(null);
       }
     }
     return localLinearLayout;

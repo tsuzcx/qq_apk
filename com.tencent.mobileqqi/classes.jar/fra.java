@@ -3,7 +3,7 @@ import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
 class fra
   implements Runnable
 {
-  fra(fqx paramfqx) {}
+  fra(fqw paramfqw) {}
   
   public void run()
   {

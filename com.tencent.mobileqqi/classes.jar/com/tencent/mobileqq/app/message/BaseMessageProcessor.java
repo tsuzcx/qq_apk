@@ -13,9 +13,9 @@ import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import fiu;
 import fiv;
-import fiw;
-import fjo;
+import fjn;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -51,7 +51,7 @@ public abstract class BaseMessageProcessor
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public fjo a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public fjn a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     return null;
   }
@@ -136,7 +136,7 @@ public abstract class BaseMessageProcessor
     }
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong, fiw paramfiw)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong, fiv paramfiv)
   {
     int i;
     if (paramLong == 0L)
@@ -150,11 +150,11 @@ public abstract class BaseMessageProcessor
       long l = System.currentTimeMillis();
       if (!paramBoolean1)
       {
-        paramfiw = paramfiw.a();
+        paramfiv = paramfiv.a();
         if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "processRequest cmd=" + paramfiw.getServiceCmd() + ",reqSeq=" + paramLong);
+          QLog.d("Q.msg.BaseMessageProcessor", 2, "processRequest cmd=" + paramfiv.getServiceCmd() + ",reqSeq=" + paramLong);
         }
-        a(paramfiw, paramLong, paramBoolean2, paramBoolean3);
+        a(paramfiv, paramLong, paramBoolean2, paramBoolean3);
         return;
       }
       SendMessageHandler localSendMessageHandler = new SendMessageHandler();
@@ -162,7 +162,7 @@ public abstract class BaseMessageProcessor
       i = 0;
       while (i < 9)
       {
-        localSendMessageHandler.a(new fiv(this, paramfiw, paramLong, l, paramBoolean2, paramBoolean3));
+        localSendMessageHandler.a(new fiu(this, paramfiv, paramLong, l, paramBoolean2, paramBoolean3));
         i += 1;
       }
       i = 0;

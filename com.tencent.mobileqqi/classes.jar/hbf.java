@@ -1,19 +1,30 @@
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.AntiFraudGetConfigObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public final class hbf
-  implements Comparator
+public class hbf
+  extends AntiFraudGetConfigObserver
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public hbf(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil) {}
+  
+  protected void a(int paramInt, Bundle paramBundle)
   {
-    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
-    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
-    if (l1 == l2) {
-      return 0;
+    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localQQAppInterface != null) {
+      localQQAppInterface.c(AntiFraudConfigFileUtil.a(this.a));
     }
-    if (l1 < l2) {
-      return 2;
+    if (paramInt != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AntiFraudGetConfigObserver", 2, "invalid notification type for onGetUinSafetyWordingConfig:" + Integer.toString(paramInt));
+      }
+      return;
     }
-    return -1;
+    ThreadManager.a(new hbg(this, paramBundle.getString("config_name"), paramBundle.getInt("effect_time", 0), paramBundle.getString("md5"), paramBundle.getString("download_url")));
   }
 }
 
